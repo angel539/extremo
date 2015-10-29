@@ -6,8 +6,8 @@ import org.apache.commons.io.FilenameUtils;
 
 public class HelloOWLWorld {
 	public static void main(String[] arguments){
-		String repository = "/Users/angel/Desktop/workspace/metaRDF/repository";
-		String file = "/Users/angel/Desktop/workspace/metaRDF/repository/pml-provenance.owl";
+		String repository = "/Users/angel/git/metaRDF/metaRDF/repository";
+		String file = "/Users/angel/git/metaRDF/metaRDF/repository/pml-provenance.owl";
 		HelloOWLWorld walker = new HelloOWLWorld();
 		//walker.walkRepository(repository);
 		walker.walkFile(file);
