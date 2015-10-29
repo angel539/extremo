@@ -1,0 +1,518 @@
+@prefix : <http://webprotege.stanford.edu/project/8rKPa5JwL3HRadOzydxEfR#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://webprotege.stanford.edu/project/8rKPa5JwL3HRadOzydxEfR> .
+
+<http://webprotege.stanford.edu/project/8rKPa5JwL3HRadOzydxEfR> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://webprotege.stanford.edu/R7J6m6A0rzC2KqBqOilWhjs
+
+<http://webprotege.stanford.edu/R7J6m6A0rzC2KqBqOilWhjs> rdf:type rdfs:Datatype ;
+                                                         
+                                                         rdfs:label """8.8oz
+""" .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://webprotege.stanford.edu/RClPnlz8hNBmwAN2TWGzMs9
+
+<http://webprotege.stanford.edu/RClPnlz8hNBmwAN2TWGzMs9> rdf:type owl:ObjectProperty ;
+                                                         
+                                                         rdfs:label "madeIn" .
+
+
+
+###  http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv
+
+<http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> rdf:type owl:ObjectProperty ;
+                                                        
+                                                        rdfs:label "hasIngredient" ;
+                                                        
+                                                        rdfs:subPropertyOf owl:topObjectProperty .
+
+
+
+###  http://webprotege.stanford.edu/RoMMhnse3fagF3xnsD0A1m
+
+<http://webprotege.stanford.edu/RoMMhnse3fagF3xnsD0A1m> rdf:type owl:ObjectProperty ;
+                                                        
+                                                        rdfs:label "hasUnits" ;
+                                                        
+                                                        rdfs:subPropertyOf owl:topObjectProperty .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://webprotege.stanford.edu/RDSgpAhWtkCJP7vl3s6jpp2
+
+<http://webprotege.stanford.edu/RDSgpAhWtkCJP7vl3s6jpp2> rdf:type owl:DatatypeProperty ;
+                                                         
+                                                         rdfs:label "hasUnitSize" .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://webprotege.stanford.edu/R1R0OEVfIiyPdxsu2LdJUN
+
+<http://webprotege.stanford.edu/R1R0OEVfIiyPdxsu2LdJUN> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "WalkersPureButterShortbreadFingers-5.3ozBox" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/RCckoNdfTgnmcMJgas5Lf98> ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/RuBoW9mr7RrEHFEGXTkWR8>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/R54aMQsbEBolh2PchgllrL>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/RClPnlz8hNBmwAN2TWGzMs9> ;
+                                                                          owl:hasValue <http://webprotege.stanford.edu/RpdMJEXNh30Vz4MgAlLXpE>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/R7ZQKyKuvJOoP8XqmikYCRS>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/RCmSP0H7iYdIqWFFfGmcHp7>
+                                                                        ] .
+
+
+
+###  http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh
+
+<http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Ingredient" ;
+                                                        
+                                                        rdfs:subClassOf owl:Thing .
+
+
+
+###  http://webprotege.stanford.edu/R54aMQsbEBolh2PchgllrL
+
+<http://webprotege.stanford.edu/R54aMQsbEBolh2PchgllrL> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Sugar" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/R74XG1NP7YCikEfmipmFrGP
+
+<http://webprotege.stanford.edu/R74XG1NP7YCikEfmipmFrGP> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "EvaporatedCanJuice" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/R7UjmTT01yOVgAmFc5GImfg
+
+<http://webprotege.stanford.edu/R7UjmTT01yOVgAmFc5GImfg> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "BrownSugar" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/R7ZQKyKuvJOoP8XqmikYCRS
+
+<http://webprotege.stanford.edu/R7ZQKyKuvJOoP8XqmikYCRS> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Butter" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/R8TkxxkBFLyibeYpaRqIRIm
+
+<http://webprotege.stanford.edu/R8TkxxkBFLyibeYpaRqIRIm> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "PeppermintOil" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/R93K3vx2ii3pxspFzSvY2cT
+
+<http://webprotege.stanford.edu/R93K3vx2ii3pxspFzSvY2cT> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "SeaSalt" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/R9KXxI1gcxVFsI88Qr8tEtw
+
+<http://webprotege.stanford.edu/R9KXxI1gcxVFsI88Qr8tEtw> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "OrganicEvaporatedCaneJuiceInvertSyrup" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/R9TvqMWf8xNQyXHPsnrcAtV
+
+<http://webprotege.stanford.edu/R9TvqMWf8xNQyXHPsnrcAtV> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "PalmOil" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/R9UjTvmfOKJFMoxsDXaUn5D
+
+<http://webprotege.stanford.edu/R9UjTvmfOKJFMoxsDXaUn5D> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Country" ;
+                                                         
+                                                         rdfs:subClassOf owl:Thing .
+
+
+
+###  http://webprotege.stanford.edu/R9fyWZeNXPxXMStNF6Btnxk
+
+<http://webprotege.stanford.edu/R9fyWZeNXPxXMStNF6Btnxk> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "SoyLecithin" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/R9nHa3mDbWJwFwOQ02OKjp5
+
+<http://webprotege.stanford.edu/R9nHa3mDbWJwFwOQ02OKjp5> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "CocoaProcessedWithAlkali" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/R9xB6gTDx8pn8WaA3pcAnM
+
+<http://webprotege.stanford.edu/R9xB6gTDx8pn8WaA3pcAnM> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "CanolaOil" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/RBUGmr3yynTrmcQ0eAZdUlp
+
+<http://webprotege.stanford.edu/RBUGmr3yynTrmcQ0eAZdUlp> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "SunflowerOil" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/RBUcibv6c8TE6WSaiafz1jY
+
+<http://webprotege.stanford.edu/RBUcibv6c8TE6WSaiafz1jY> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "WalkersPureShortBreadRounds-5.3oxBox" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RCckoNdfTgnmcMJgas5Lf98> ,
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                           owl:someValuesFrom <http://webprotege.stanford.edu/R54aMQsbEBolh2PchgllrL>
+                                                                         ] ,
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                           owl:someValuesFrom <http://webprotege.stanford.edu/RuBoW9mr7RrEHFEGXTkWR8>
+                                                                         ] ,
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                           owl:someValuesFrom <http://webprotege.stanford.edu/RCmSP0H7iYdIqWFFfGmcHp7>
+                                                                         ] ,
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                           owl:someValuesFrom <http://webprotege.stanford.edu/R7ZQKyKuvJOoP8XqmikYCRS>
+                                                                         ] .
+
+
+
+###  http://webprotege.stanford.edu/RBgywQLrFHaYQG8Up8abd8q
+
+<http://webprotege.stanford.edu/RBgywQLrFHaYQG8Up8abd8q> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "UnbleachedWheatFlour" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/RCWeYlEkg9yD7LwoGwzgP29
+
+<http://webprotege.stanford.edu/RCWeYlEkg9yD7LwoGwzgP29> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Cinnamon" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/RCckoNdfTgnmcMJgas5Lf98
+
+<http://webprotege.stanford.edu/RCckoNdfTgnmcMJgas5Lf98> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Products" ;
+                                                         
+                                                         rdfs:subClassOf owl:Thing .
+
+
+
+###  http://webprotege.stanford.edu/RCkVx7eYSgWBv47tdQqDeC3
+
+<http://webprotege.stanford.edu/RCkVx7eYSgWBv47tdQqDeC3> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "BackToNatureFudgeMintCookies" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RCckoNdfTgnmcMJgas5Lf98> .
+
+
+
+###  http://webprotege.stanford.edu/RCmSP0H7iYdIqWFFfGmcHp7
+
+<http://webprotege.stanford.edu/RCmSP0H7iYdIqWFFfGmcHp7> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Salt" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/RCyb9idj24GwijM6Zh3I5Yl
+
+<http://webprotege.stanford.edu/RCyb9idj24GwijM6Zh3I5Yl> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "FudgeCoating" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/RCzNqhDBH0fROLgsTOrebtL
+
+<http://webprotege.stanford.edu/RCzNqhDBH0fROLgsTOrebtL> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "SoyBeanOil" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/RU3X0LV6ILUtu4yTzEjFoE
+
+<http://webprotege.stanford.edu/RU3X0LV6ILUtu4yTzEjFoE> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "SodiumBicarbonate" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/RrSiRfMNRJPuKaEwL4TdrP
+
+<http://webprotege.stanford.edu/RrSiRfMNRJPuKaEwL4TdrP> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Lotus Biscoff Cookies 8.8 Oz Box" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/RCckoNdfTgnmcMJgas5Lf98> ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/RCmSP0H7iYdIqWFFfGmcHp7>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/R9xB6gTDx8pn8WaA3pcAnM>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/RClPnlz8hNBmwAN2TWGzMs9> ;
+                                                                          owl:hasValue <http://webprotege.stanford.edu/R8Sq616RDWUqFVgewQ640yE>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/R9TvqMWf8xNQyXHPsnrcAtV>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/RDSgpAhWtkCJP7vl3s6jpp2> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/R7J6m6A0rzC2KqBqOilWhjs>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/RCzNqhDBH0fROLgsTOrebtL>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/RuBoW9mr7RrEHFEGXTkWR8>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/R54aMQsbEBolh2PchgllrL>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/Rwk91x0uTzkPmDQWEvr33W>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/RU3X0LV6ILUtu4yTzEjFoE>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/R7UjmTT01yOVgAmFc5GImfg>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/RCWeYlEkg9yD7LwoGwzgP29>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/RoMMhnse3fagF3xnsD0A1m> ;
+                                                                          owl:hasValue <http://webprotege.stanford.edu/RBoG0qq68SgRxMHOZeWPiWM>
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://webprotege.stanford.edu/Ro2HpeSGqhW0I22MrYqhgv> ;
+                                                                          owl:someValuesFrom <http://webprotege.stanford.edu/RBUGmr3yynTrmcQ0eAZdUlp>
+                                                                        ] .
+
+
+
+###  http://webprotege.stanford.edu/RtayeuDKFbGUVM79k3XHrj
+
+<http://webprotege.stanford.edu/RtayeuDKFbGUVM79k3XHrj> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Mallomar Cookies Pure Chocolate 8. oz Tray" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/RCckoNdfTgnmcMJgas5Lf98> .
+
+
+
+###  http://webprotege.stanford.edu/RuBoW9mr7RrEHFEGXTkWR8
+
+<http://webprotege.stanford.edu/RuBoW9mr7RrEHFEGXTkWR8> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "WheatFlour" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/RwTNab1eOiflryFvXl1i14
+
+<http://webprotege.stanford.edu/RwTNab1eOiflryFvXl1i14> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "BakingSoda" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+###  http://webprotege.stanford.edu/Rwk91x0uTzkPmDQWEvr33W
+
+<http://webprotege.stanford.edu/Rwk91x0uTzkPmDQWEvr33W> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "SoyFlour" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/R398pPtSpXByvPmutXMjlh> .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://webprotege.stanford.edu/R8Sq616RDWUqFVgewQ640yE
+
+<http://webprotege.stanford.edu/R8Sq616RDWUqFVgewQ640yE> rdf:type <http://webprotege.stanford.edu/R9UjTvmfOKJFMoxsDXaUn5D> ,
+                                                                  owl:NamedIndividual ;
+                                                         
+                                                         rdfs:label "Belgium" .
+
+
+
+###  http://webprotege.stanford.edu/RBfY9c1aCP9RWaork5LL4QP
+
+<http://webprotege.stanford.edu/RBfY9c1aCP9RWaork5LL4QP> rdf:type owl:NamedIndividual ;
+                                                         
+                                                         rdfs:label "1" .
+
+
+
+###  http://webprotege.stanford.edu/RBoG0qq68SgRxMHOZeWPiWM
+
+<http://webprotege.stanford.edu/RBoG0qq68SgRxMHOZeWPiWM> rdf:type owl:NamedIndividual ;
+                                                         
+                                                         rdfs:label "32" .
+
+
+
+###  http://webprotege.stanford.edu/RpdMJEXNh30Vz4MgAlLXpE
+
+<http://webprotege.stanford.edu/RpdMJEXNh30Vz4MgAlLXpE> rdf:type <http://webprotege.stanford.edu/R9UjTvmfOKJFMoxsDXaUn5D> ,
+                                                                 owl:NamedIndividual ;
+                                                        
+                                                        rdfs:label "Scotland" .
+
+
+
+
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+

@@ -1,0 +1,1998 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.org/socialparticipation/ocd/ocd.owl#"
+     xml:base="http://purl.org/socialparticipation/ocd/ocd.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://purl.org/socialparticipation/ocd/ocd.owl">
+        <terms:title>Ontologia do Cidade Democrática</terms:title>
+        <terms:description>Ontologia do Cidade Democratica, levantada com base nos dados e para conectar com outras instâncias</terms:description>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/accountable -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/accountable">
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/author -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/author">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/city -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/city">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/City"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/competition -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/competition">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Competition"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/neighborhood -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/neighborhood">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Neighborhood"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Place"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/offerer -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/offerer">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Prize"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/state -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/state">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/State"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/supporter -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/supporter">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Support"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/tag -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/tag">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Tag"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Tagging"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/tagged -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/tagged">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/tagger -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/tagger">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Tagging"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/topic -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/topic">
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/user -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ocd/user">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/abbreviation -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/abbreviation">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/State"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/authorDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/authorDescription">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Competition"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/autoDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/autoDescription">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/awards -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/awards">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Competition"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/birthday -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/birthday">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/body -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/body">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/caption -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/caption">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Image"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/cep -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/cep">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Place"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/commentCount -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/commentCount">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/socialparticipation/ocd/counting"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#integer"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/condition -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/condition">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/contact -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/contact">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Triplestore"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/counting -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/counting"/>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/created -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/created">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#dateTime"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/deleted -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/deleted">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/description -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/description">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/emailTrigger -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/emailTrigger">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Observatory"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/fax -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/fax">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/filename -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/filename">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Image"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/followersCount -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/followersCount">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/socialparticipation/ocd/counting"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#integer"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/gender -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/gender">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/height -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/height">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Image"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/image -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/image">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Inspiration"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/inspirationCount -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/inspirationCount">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/socialparticipation/ocd/counting"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/ip -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/ip">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Login"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/longDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/longDescription">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Competition"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/mbox -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/mbox">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/name -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/name">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/partners -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/partners">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Competition"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/phone -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/phone">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/regulation -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/regulation">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Competition"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/relatedOntology -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/relatedOntology">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Triplestore"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/relevance -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/relevance">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#integer"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/shortDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/shortDescription">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Competition"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/site -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/site">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/size -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/size">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Image"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/software -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/software">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Triplestore"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/start -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/start">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Competition"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/supportCount -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/supportCount">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/socialparticipation/ocd/counting"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#integer"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/text -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/text">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Tag"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/title -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/title">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/type -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/type">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/updated -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/updated">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#dateTime"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/url -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/url">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/width -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/socialparticipation/ocd/width">
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/Image"/>
+        <rdfs:domain rdf:resource="http://purl.org/socialparticipation/ocd/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/City -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/City">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/relevance"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/state"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/State"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Comment -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Comment">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/topic"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/Proposal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/author"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/type"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Competition -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Competition">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/regulation"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/longDescription"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/authorDescription"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/partners"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/start"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/authorDescription"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/shortDescription"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/awards"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/shortDescription"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/regulation"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/partners"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/awards"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/start"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/longDescription"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Image -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Image">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/size"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/size"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/filename"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/type"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/filename"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Inspiration -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Inspiration">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/image"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/title"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/description"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/author"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/image"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/competition"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/Competition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Link -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Link">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/description"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/url"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Login -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Login">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/ip"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/ip"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/user"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/MacroTag -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/MacroTag">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/title"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Neighborhood -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Neighborhood">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/relevance"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/city"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/City"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Observatory -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Observatory">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/user"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/emailTrigger"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/emailTrigger"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Place -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Place"/>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Post -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Post">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/title"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/commentCount"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/relevance"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/followersCount"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/author"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/commentCount"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/supportCount"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/supportCount"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/body"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/followersCount"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Prize -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Prize">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/offerer"/>
+                <owl:allValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/competition"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/Competition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/updated"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/description"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/offerer"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/topic"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/Problem"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Problem -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Problem">
+        <rdfs:subClassOf rdf:resource="http://purl.org/socialparticipation/ocd/Post"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/author"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/commentCount"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/supportCount"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/title"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/followersCount"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/body"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/relevance"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Proposal -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Proposal">
+        <rdfs:subClassOf rdf:resource="http://purl.org/socialparticipation/ocd/Post"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/followersCount"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/commentCount"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/title"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/body"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/supportCount"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/author"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/relevance"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/State -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/State">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/abbreviation"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/abbreviation"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/relevance"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Support -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Support">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/topic"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/Proposal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/supporter"/>
+                <owl:allValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/supporter"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Tag -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Tag">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/relevance"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/text"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/text"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Tagging -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Tagging">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/tag"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/Tag"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/tag"/>
+                <owl:allValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/Tag"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/tagged"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/socialparticipation/ocd/MacroTag"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/Triplestore -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/Triplestore">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/relatedOntology"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/contact"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/contact"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/url"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/relatedOntology"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/software"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/software"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/User -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/User">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/relevance"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/created"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/condition"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/condition"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/socialparticipation/ocd/type"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/XMLSchema#anyURI -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/XMLSchema#anyURI"/>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/XMLSchema#boolean -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/XMLSchema#boolean"/>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/XMLSchema#dateTime -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/XMLSchema#dateTime"/>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/XMLSchema#integer -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/XMLSchema#integer"/>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/XMLSchema#string -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ocd/XMLSchema#string"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#functionalProperty -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/abbreviation -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/abbreviation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/accountable -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/accountable">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/author -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/author">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/authorDescription -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/authorDescription">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/autoDescription -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/autoDescription">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/awards -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/awards">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/birthday -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/birthday">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/body -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/body">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/caption -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/caption">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/cep -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/cep">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/city -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/city">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/commentCount -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/commentCount">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/competition -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/competition">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/condition -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/condition">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/created -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/created">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/deleted -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/deleted">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/description -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/description">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/emailTrigger -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/emailTrigger">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/fax -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/fax">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/filename -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/filename">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/followersCount -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/followersCount">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/gender -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/gender">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/height -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/height">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/image -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/image">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/inspirationCount -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/inspirationCount">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/ip -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/ip">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/longDescription -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/longDescription">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/mbox -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/mbox">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/name -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/name">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/neighborhood -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/neighborhood">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/offerer -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/offerer">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/partners -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/partners">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/phone -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/phone">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/regulation -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/regulation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/relatedOntology -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/relatedOntology">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/relevance -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/relevance">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/shortDescription -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/shortDescription">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/site -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/site">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/size -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/size">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/software -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/software">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/start -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/start">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/state -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/state">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/supportCount -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/supportCount">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/tag -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/tag">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/tagger -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/tagger">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/text -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/text">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/title -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/title">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/topic -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/topic">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/type -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/type">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/updated -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/updated">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/url -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/url">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/user -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/user">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ocd/width -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/socialparticipation/ocd/width">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#functionalProperty"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://purl.org/socialparticipation/ocd/ocd.owl">
+        <owl:versionInfo>0.01au</owl:versionInfo>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

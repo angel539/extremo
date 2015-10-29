@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#"
+     xml:base="http://www.loa-cnr.it/ontologies/SpatialRelations.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl">
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+    &gt;397
+    </owl:versionInfo>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An Ontology of spatial relations, extending the location relations from DOLCE. OWL engineering by Aldo Gangemi.</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Imports: DOLCE-Lite</rdfs:comment>
+        <owl:imports rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location"/>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location-of -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location-of"/>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-location -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-location"/>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#approximate-location -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#approximate-location">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A  spatial location relation holding between any two entities but regions. It assumes a mereotopological association (part, connection, overlaps, etc.) between shared spatial regions.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#generic-location"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#spatio-temporal-particular"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#spatio-temporal-particular"/>
+        <owl:inverseOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#approximate-location-of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#approximate-location-of -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#approximate-location-of">
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#generic-location-of"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#spatio-temporal-particular"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#spatio-temporal-particular"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#d-spatial-location -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#d-spatial-location">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Analytical indirect location holding between non-physical endurants and space regions.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#non-physical-endurant"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#space-region"/>
+        <owl:inverseOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#d-spatial-location-of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#d-spatial-location-of -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#d-spatial-location-of">
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location-of"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#non-physical-endurant"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#space-region"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-origin -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-origin">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Original location of an endurant in a non-physical one. It assumes a shared region between the first and the depend-on of the second (see descriptive place).</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#non-physical-endurant"/>
+        <owl:inverseOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-origin-of"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-place"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-origin-of -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-origin-of">
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#non-physical-endurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-place-of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-place -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-place">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Approximate location of an endurant in a non-physical one. It assumes a shared region.AKA fiat-place.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#non-physical-endurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#approximate-location"/>
+        <owl:inverseOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-place-of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-place-of -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#descriptive-place-of">
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#non-physical-endurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#approximate-location-of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#material-place -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#material-place">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation of approximate location holding for physical endurants. It assumes a physical region that is shared by two physical endurants. Sharedness can be any mereotopological association, but no analytical definition can be done in OWL due to the lack of role value maps.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <owl:inverseOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#material-place-of"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#place"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#material-place-of -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#material-place-of">
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#place-of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#origin -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#origin">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The physical &apos;origin&apos; of a physical endurant in the space region of the spatial quality of another physical endurant.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#material-place"/>
+        <owl:inverseOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#origin-of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#origin-of -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#origin-of">
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#material-place-of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#p-spatial-location -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#p-spatial-location">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Analytical indirect location holding between perdurants and space regions.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#space-region"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#p-spatial-location-of -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#p-spatial-location-of">
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location-of"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#space-region"/>
+        <owl:inverseOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#p-spatial-location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#participant-place -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#participant-place">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The place of a perdurant as provided by a reference region at which the spatial quality of a certain endurant is q-located.</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#approximate-location"/>
+        <owl:inverseOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#participant-place-of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#participant-place-of -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#participant-place-of">
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#approximate-location-of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#place -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#place">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation of approximate location holding between any endurant and physical endurants. It assumes a shared physical region. Sharedness can be any mereotopological association, but no analytical definition can be done in OWL due to the lack of role value maps.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#approximate-location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#place-of -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#place-of">
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#approximate-location-of"/>
+        <owl:inverseOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#place"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#spatial-location -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#spatial-location">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Analytical location holding between physical endurants and spatial regions.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-location"/>
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#space-region"/>
+        <owl:inverseOf rdf:resource="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#spatial-location-of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/SpatialRelations.owl#spatial-location-of -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/SpatialRelations.owl#spatial-location-of">
+        <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-endurant"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-location-of"/>
+        <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#space-region"/>
+    </owl:ObjectProperty>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

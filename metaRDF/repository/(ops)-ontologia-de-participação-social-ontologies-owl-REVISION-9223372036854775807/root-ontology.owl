@@ -1,0 +1,397 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.org/socialparticipation/ops/ops.owl#"
+     xml:base="http://purl.org/socialparticipation/ops/ops.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://purl.org/socialparticipation/ops/ops.owl">
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.02</owl:versionInfo>
+        <rdfs:comment xml:lang="en">Social Participation Ontology headed by Cidade Democrática, Brazilian Federal Government and Corais Platform, in direct collaboration with dozens of actors throughout latin america</rdfs:comment>
+        <rdfs:comment xml:lang="es">Ontología de Participación Social conducida por el Cidade Democrática, el Gobierno Federal de Brasil y la Plataforma Corais, en colaboración directa con docenas de actores en toda América Latina</rdfs:comment>
+        <rdfs:comment xml:lang="pt">Ontologia de Participação Social capitaneada pelo Cidade Democrática, Governo Federal Brazileiro e Plataforma Corais, em colaboração direta com dezenas de agentes de toda américa latina</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://purl.org/socialparticipation/aa"/>
+        <rdfs:seeAlso rdf:resource="http://purl.org/socialparticipation/ocd"/>
+        <rdfs:seeAlso rdf:resource="http://purl.org/socialparticipation/opa"/>
+        <rdfs:seeAlso rdf:resource="http://purl.org/socialparticipation/vbs"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/action -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/action">
+        <rdfs:label xml:lang="en">action</rdfs:label>
+        <rdfs:label xml:lang="es">acción</rdfs:label>
+        <rdfs:label xml:lang="pt">ação</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/belongsTo -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/belongsTo">
+        <rdfs:label xml:lang="en">belongs to</rdfs:label>
+        <rdfs:label xml:lang="es">pertence al</rdfs:label>
+        <rdfs:label xml:lang="pt">pertence ao</rdfs:label>
+        <rdfs:range rdf:resource="http://purl.org/socialparticipation/ops/Scope"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/contributesTo -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/contributesTo">
+        <rdfs:label xml:lang="en">contributes to</rdfs:label>
+        <rdfs:label xml:lang="es">contribuye a la</rdfs:label>
+        <rdfs:label xml:lang="pt">contribui para</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/executes -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/executes">
+        <rdfs:label xml:lang="en">executes</rdfs:label>
+        <rdfs:label xml:lang="es">ejecuta</rdfs:label>
+        <rdfs:label xml:lang="pt">executa</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/generates -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/generates">
+        <rdfs:label xml:lang="en">generates</rdfs:label>
+        <rdfs:label xml:lang="es">genera</rdfs:label>
+        <rdfs:label xml:lang="pt">gera</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/produces -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/produces">
+        <rdfs:label xml:lang="en">produces</rdfs:label>
+        <rdfs:label xml:lang="es">produce</rdfs:label>
+        <rdfs:label xml:lang="pt">produz</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/proposes -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/proposes">
+        <rdfs:label xml:lang="en">proposes</rdfs:label>
+        <rdfs:label xml:lang="es">propone</rdfs:label>
+        <rdfs:label xml:lang="pt">propõe</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/solves -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/solves">
+        <rdfs:label xml:lang="en">solves</rdfs:label>
+        <rdfs:label xml:lang="es">resuelve</rdfs:label>
+        <rdfs:label xml:lang="pt">soluciona</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/starts -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/starts">
+        <rdfs:label xml:lang="en">starts</rdfs:label>
+        <rdfs:label xml:lang="es">inicia</rdfs:label>
+        <rdfs:label xml:lang="pt">inicia</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/supports -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/supports">
+        <rdfs:label xml:lang="en">supports</rdfs:label>
+        <rdfs:label xml:lang="es">apoya</rdfs:label>
+        <rdfs:label xml:lang="pt">apoia</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/theme -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/theme">
+        <rdfs:label xml:lang="en">theme</rdfs:label>
+        <rdfs:label xml:lang="es">tema</rdfs:label>
+        <rdfs:label xml:lang="pt">tema</rdfs:label>
+        <rdfs:range rdf:resource="http://purl.org/socialparticipation/ops/Theme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/trait -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/socialparticipation/ops/trait">
+        <rdfs:label xml:lang="en">trait</rdfs:label>
+        <rdfs:label xml:lang="es">rasgo</rdfs:label>
+        <rdfs:label xml:lang="pt">traço</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Action -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Action">
+        <rdfs:label xml:lang="en">Action</rdfs:label>
+        <rdfs:label xml:lang="es">Acción</rdfs:label>
+        <rdfs:label xml:lang="pt">Ação</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/span#ProcessualEntity"/>
+        <rdfs:comment xml:lang="en">what is done in terms os social participation</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Cause -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Cause">
+        <rdfs:label xml:lang="en">Cause</rdfs:label>
+        <rdfs:label xml:lang="es">Causa</rdfs:label>
+        <rdfs:label xml:lang="pt">Causa</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#IndependentContinuant"/>
+        <rdfs:comment xml:lang="en">the motivation for Action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Executor -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Executor">
+        <rdfs:label xml:lang="en">Executor</rdfs:label>
+        <rdfs:label xml:lang="es">Ejecutor</rdfs:label>
+        <rdfs:label xml:lang="pt">Executor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/socialparticipation/ops/SocialActor"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#MaterialEntity"/>
+        <rdfs:comment xml:lang="en">performs action directly and is responsible for results</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Initiator -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Initiator">
+        <rdfs:label xml:lang="en">Initiator</rdfs:label>
+        <rdfs:label xml:lang="es">Iniciador</rdfs:label>
+        <rdfs:label xml:lang="pt">Iniciador</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/socialparticipation/ops/SocialActor"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#MaterialEntity"/>
+        <rdfs:comment xml:lang="en">originates cause, individually or collaborativelly</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Organization -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Organization">
+        <rdfs:label xml:lang="en">Organization</rdfs:label>
+        <rdfs:label xml:lang="es">Organización</rdfs:label>
+        <rdfs:label xml:lang="pt">Organização</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/socialparticipation/ops/SocialActor"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#MaterialEntity"/>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <owl:disjointWith rdf:resource="http://purl.org/socialparticipation/ops/Person"/>
+        <rdfs:comment xml:lang="en">social actor is a group of individuals, organized formally or informally (e.g. movements, collectives)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/ParticipationCharacteristic -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/ParticipationCharacteristic">
+        <rdfs:label xml:lang="en">Participation Characteristic</rdfs:label>
+        <rdfs:label xml:lang="es">Característica de Participación</rdfs:label>
+        <rdfs:label xml:lang="pt">Característica de Participação</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#DependentContinuant"/>
+        <rdfs:comment xml:lang="en">the way the participation of specific actor is happening</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Person -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Person">
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+        <rdfs:label xml:lang="es">Persona</rdfs:label>
+        <rdfs:label xml:lang="pt">Pessoa</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/socialparticipation/ops/SocialActor"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#MaterialEntity"/>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:comment xml:lang="en">a person (social actor is a person)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Problem -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Problem">
+        <rdfs:label xml:lang="en">Problem</rdfs:label>
+        <rdfs:label xml:lang="es">Problema</rdfs:label>
+        <rdfs:label xml:lang="pt">Problema</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#IndependentContinuant"/>
+        <rdfs:comment xml:lang="en">the problem that the Action aims to solve</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Result -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Result">
+        <rdfs:label xml:lang="en">Result</rdfs:label>
+        <rdfs:label xml:lang="es">Resultado</rdfs:label>
+        <rdfs:label xml:lang="pt">Resultado</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#DependentContinuant"/>
+        <rdfs:comment xml:lang="en">the result obtained with Action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Scope -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Scope">
+        <rdfs:label xml:lang="en">Scope</rdfs:label>
+        <rdfs:label xml:lang="es">Ambito</rdfs:label>
+        <rdfs:label xml:lang="pt">Escopo</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#DependentContinuant"/>
+        <rdfs:comment xml:lang="en">the scope of Action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/SocialActor -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/SocialActor">
+        <rdfs:label xml:lang="en">Social Actor</rdfs:label>
+        <rdfs:label xml:lang="es">Actor Social</rdfs:label>
+        <rdfs:label xml:lang="pt">Ator Social</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#MaterialEntity"/>
+        <rdfs:comment xml:lang="en">entity that might have a participatory role</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Solution -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Solution">
+        <rdfs:label xml:lang="en">Solution</rdfs:label>
+        <rdfs:label xml:lang="es">Solución</rdfs:label>
+        <rdfs:label xml:lang="pt">Solução</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#DependentContinuant"/>
+        <rdfs:comment xml:lang="en">solution achieved with Action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Supporter -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Supporter">
+        <rdfs:label xml:lang="en">Supporter</rdfs:label>
+        <rdfs:label xml:lang="es">Apoyador</rdfs:label>
+        <rdfs:label xml:lang="pt">Apoiador</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/socialparticipation/ops/SocialActor"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#MaterialEntity"/>
+        <rdfs:comment xml:lang="en">supports cause with resources of any kind (e.g. cognitive, financial, equipments)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/socialparticipation/ops/Theme -->
+
+    <owl:Class rdf:about="http://purl.org/socialparticipation/ops/Theme">
+        <rdfs:label xml:lang="en">Theme</rdfs:label>
+        <rdfs:label xml:lang="es">Tema</rdfs:label>
+        <rdfs:label xml:lang="pt">Tema</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.1/snap#IndependentContinuant"/>
+        <rdfs:comment xml:lang="en">the theme in focus by Action</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.1/snap#DependentContinuant -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.1/snap#DependentContinuant"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.1/snap#IndependentContinuant -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.1/snap#IndependentContinuant"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.1/snap#MaterialEntity -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.1/snap#MaterialEntity"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.1/span#ProcessualEntity -->
+
+    <owl:Class rdf:about="http://www.ifomis.org/bfo/1.1/span#ProcessualEntity"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Organization -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://purl.org/socialparticipation/ops/ops.owl">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OPS</rdfs:label>
+        <rdfs:label xml:lang="en">Social Participation Ontology</rdfs:label>
+        <rdfs:label xml:lang="es">Ontología de la participación social</rdfs:label>
+        <rdfs:label xml:lang="pt">Ontologia de Participação Social</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://purl.org/socialparticipation/obs"/>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

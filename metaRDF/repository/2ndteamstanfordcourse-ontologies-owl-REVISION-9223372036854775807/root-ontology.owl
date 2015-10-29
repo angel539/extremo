@@ -1,0 +1,3542 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://protege.stanford.edu/ontologies/grocery-ontology#"
+     xml:base="http://protege.stanford.edu/ontologies/grocery-ontology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:grocery-ontology="http://protege.stanford.edu/ontologies/grocery-ontology/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology">
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</owl:versionInfo>
+        <rdfs:comment>An ontology about grocery items including their ingredients</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/contains -->
+
+    <owl:ObjectProperty rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/contains">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff -->
+
+    <owl:ObjectProperty rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff">
+        <rdfs:subPropertyOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient -->
+
+    <owl:ObjectProperty rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient">
+        <rdfs:subPropertyOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/isLocatedIn -->
+
+    <owl:ObjectProperty rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/isLocatedIn">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/isMadeIn -->
+
+    <owl:ObjectProperty rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/isMadeIn">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/isMadeIn"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/isLocatedIn"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7ccSRwXJRyxFJ2KdmfJq33 -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/R7ccSRwXJRyxFJ2KdmfJq33">
+        <rdfs:label>isCultivatedIn</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8Ai0Go2qLn7rzhGzDwXAf6 -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/R8Ai0Go2qLn7rzhGzDwXAf6">
+        <rdfs:label>hasing</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8XgFiEl3OXjE8HkzTUQ8OU -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/R8XgFiEl3OXjE8HkzTUQ8OU">
+        <rdfs:label>OrganicStatus</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RCHtRlh0WdCE2F8JFapHstb -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/RCHtRlh0WdCE2F8JFapHstb">
+        <rdfs:label>has</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RCIliI6ZEh9FZYExNJJuis3 -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/RCIliI6ZEh9FZYExNJJuis3">
+        <rdfs:label>isProcessedIn</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Rr2NsWFVxIlytCVl213dme -->
+
+    <owl:ObjectProperty rdf:about="http://webprotege.stanford.edu/Rr2NsWFVxIlytCVl213dme">
+        <rdfs:label>hasCoffeeType</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9NDWROvWh1v6RPwycbbtDY -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/R9NDWROvWh1v6RPwycbbtDY">
+        <rdfs:label>packageSize</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBGeUTmsmAW0VAAoGbdt1XQ -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RBGeUTmsmAW0VAAoGbdt1XQ">
+        <rdfs:label>hasPrice</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBLOV4MIEuu4CHpRf9RajUS -->
+
+    <owl:DatatypeProperty rdf:about="http://webprotege.stanford.edu/RBLOV4MIEuu4CHpRf9RajUS">
+        <rdfs:label>TeaBags</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Almond -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Almond">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Nut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/AlphaTocopherolAcetate -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/AlphaTocopherolAcetate">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/AmaranthFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/AmaranthFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/AmmoniumBicarbonate -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/AmmoniumBicarbonate">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Apple -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Apple">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FruitProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/BackToNatureFudgeMintCookies -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/BackToNatureFudgeMintCookies">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FudgeMintCookie"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/BakingSoda -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/BakingSoda">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/BananaPuree -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/BananaPuree">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FruitProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Barley -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Barley">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CerealGrain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/BiscoffCookie -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/BiscoffCookie">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/BakingSoda"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SoyFlour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Salt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Cinnamon"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/BrownSugar"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CanolaOil"/>
+                            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PalmOil"/>
+                            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SoyBeanOil"/>
+                            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SunflowerOil"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/BrownFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/BrownFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/BrownRiceFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/BrownRiceFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/RiceFlour"/>
+        <owl:disjointWith rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WholeGrainBrownRiceFlour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/BrownSugar -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/BrownSugar">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Buckwheat -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Buckwheat">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Wheat"/>
+        <owl:disjointWith rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/HardRedWheat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Butter -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Butter">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/ButterProduct"/>
+        <owl:disjointWith rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CocoaButter"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/ButterProduct -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ButterProduct">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/DairyProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/CalciumCarbonate -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CalciumCarbonate">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/MineralNutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/CaneSyrup -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CaneSyrup">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodSyrup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/CanolaOil -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CanolaOil">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VegetableOil"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Cashew -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Cashew">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Nut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/CerealGrain -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CerealGrain">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/ChiaFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ChiaFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/ChiaSeed -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ChiaSeed">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/ChickenEgg -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ChickenEgg">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Egg"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateLiquor -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateLiquor">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateProduct -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateProduct">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Cinnamon -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Cinnamon">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Spice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/CocoaButter -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CocoaButter">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/ButterProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/CocoaProduct -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CocoaProduct">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Coconut -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Coconut">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FruitProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Continent -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Continent"/>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/CornSyrup -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CornSyrup">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodSyrup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Cornstarch -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Cornstarch">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GrainStarch"/>
+        <owl:disjointWith rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WheatStarch"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/CottonSeedOil -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CottonSeedOil">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VegetableOil"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Country -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Country"/>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/CreamOfTartre -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CreamOfTartre">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/DairyProduct -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/DairyProduct">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/DehydratedCaneJuice -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/DehydratedCaneJuice">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/DriedCaneSyrup -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/DriedCaneSyrup">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CaneSyrup"/>
+        <owl:disjointWith rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/InvertCaneSyrup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/DutchedCocoa -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/DutchedCocoa">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CocoaProduct"/>
+        <owl:disjointWith rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/NaturalCocoa"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Egg -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Egg">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/EnrichedWheatFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/EnrichedWheatFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FolicAcid"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/ReducedIron"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/ThiaminMononitrate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Riboflavin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Niacin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/EssentialOil -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/EssentialOil">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/PlantOil"/>
+        <owl:disjointWith rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VegetableOil"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/EvaporatedSalt -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/EvaporatedSalt">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Salt"/>
+        <owl:disjointWith rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SeaSalt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Extract -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Extract">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/FlakeProduct -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FlakeProduct">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Flour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Flour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/FolicAcid -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FolicAcid">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/FoodSyrup -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FoodSyrup">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Fructan -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Fructan">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/FruitFlake -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FruitFlake">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FlakeProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/FruitProduct -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FruitProduct">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/FudgeCoating -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FudgeCoating">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SoyLecithin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteSugar"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Whey"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/PalmKernelOil"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/FudgeMintCookie -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FudgeMintCookie">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/DutchedCocoa"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/BakingSoda"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SoyLecithin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SeaSalt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/OrganicEvaporatedCaneJuiceInvertSyrup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/PeppermintOil"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FudgeCoating"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/OrganicEvaporatedCaneJuice"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/PalmOil"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Gelatin -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Gelatin">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Ginger -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Ginger">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Spice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Gluten -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Gluten">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/GoldenFlaxFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GoldenFlaxFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/GrainStarch -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GrainStarch">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItemThatContainsDairyProducts -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItemThatContainsDairyProducts">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+                        <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/DairyProduct"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItemThatContainsGluten -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItemThatContainsGluten">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+                        <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Gluten"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItemThatContainsNuts -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItemThatContainsNuts">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+                        <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Nut"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItemThatContainsSoy -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItemThatContainsSoy">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+                        <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Soy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItemThatContainsWheat -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItemThatContainsWheat">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+                        <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Wheat"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/HardRedWheat -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/HardRedWheat">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Wheat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/HardwareStore -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/HardwareStore">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Store"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Hazelnut -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Hazelnut">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Nut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/HighFructoseCornSyrup -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/HighFructoseCornSyrup">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodSyrup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Honey -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Honey">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/HydrogenatedSoyBeanOil -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/HydrogenatedSoyBeanOil">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VegetableOil"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/InvertCaneSugar -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/InvertCaneSugar">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/InvertCaneSyrup -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/InvertCaneSyrup">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CaneSyrup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Iron -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Iron">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/MineralNutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/KashiCrunchChocolateChipBar -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/KashiCrunchChocolateChipBar">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/BakingSoda"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/BrownRiceFlour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Barley"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/UnmodifiedCornstarch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/DriedCaneSyrup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Molasses"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WholeGrainOat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SoyLecithin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/ChiaSeed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WholeOatFlour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Quinoa"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VanillaExtract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Triticale"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SemiSweetChocolateChips"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/EvaporatedSalt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Buckwheat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/InvertCaneSyrup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/HardRedWheat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CanolaOil"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Coconut"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/KashiCrunchChocolateChipBar-7oz -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/KashiCrunchChocolateChipBar-7oz">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/Rtgftxz4218pKFbDDfjH6D"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/KashiCrunchChocolateChipBar"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Lactose -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Lactose">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/LotusBiscoffCookies-8.8ozBox -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/LotusBiscoffCookies-8.8ozBox">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/BiscoffCookie"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/isMadeIn"/>
+                <owl:hasValue rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Belgium"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Macadamia -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Macadamia">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Nut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/MallomarsCookie -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/MallomarsCookie">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SweetChocolateCoating"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/InvertCaneSugar"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/EnrichedWheatFlour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/HighFructoseCornSyrup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Salt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SoyLecithin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CornSyrup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/BakingSoda"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Gelatin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CanolaOil"/>
+                            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PalmKernelOil"/>
+                            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PalmOil"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/MallomarsCookiesPureChocolate-8ozTray -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/MallomarsCookiesPureChocolate-8ozTray">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/isMadeIn"/>
+                <owl:hasValue rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Canada"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/MallomarsCookie"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Milk -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Milk">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/DairyProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/MilkPowder -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/MilkPowder">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/DairyProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Millet -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Millet">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CerealGrain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/MilletFlake -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/MilletFlake">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FlakeProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/MilletFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/MilletFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/MineralNutrient -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/MineralNutrient">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/ModifiedCornstarch -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ModifiedCornstarch">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Cornstarch"/>
+        <owl:disjointWith rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/UnmodifiedCornstarch"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Molasses -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Molasses">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/NaturalCocoa -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/NaturalCocoa">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CocoaProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Niacin -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Niacin">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Niacinamide -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Niacinamide">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Nut -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Nut">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/NutProduct"/>
+        <owl:disjointWith rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/TreeNutMeal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/NutProduct -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/NutProduct">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/NutritionalInformation -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/NutritionalInformation"/>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Oat -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Oat">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/OatFlake -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/OatFlake">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FlakeProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/OatFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/OatFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/OrganicEvaporatedCaneJuice -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/OrganicEvaporatedCaneJuice">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/OrganicEvaporatedCaneJuiceInvertSyrup -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/OrganicEvaporatedCaneJuiceInvertSyrup">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodSyrup"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/PalmKernelOil -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PalmKernelOil">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VegetableOil"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/PalmOil -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PalmOil">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VegetableOil"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Palmitate -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Palmitate">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Pecan -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Pecan">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Nut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/PepperidgeFarmTahoeWhiteChocolateMacadamiaCookies-7.2oz -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PepperidgeFarmTahoeWhiteChocolateMacadamiaCookies-7.2oz">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteChocolateMacadamiaCookie"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/PeppermintOil -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PeppermintOil">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/EssentialOil"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Place -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Place"/>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/PlantOil -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PlantOil">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/PyridoxineHydrochloride -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PyridoxineHydrochloride">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Quinoa -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Quinoa">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CerealGrain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/QuinoaFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/QuinoaFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Raisin -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Raisin">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FruitProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/RaisinJuice -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/RaisinJuice">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FruitProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/RaisinJuiceConcentrate -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/RaisinJuiceConcentrate">
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RM4BKCfUwnAlZfl8UBsW6T"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/ReducedIron -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ReducedIron">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/MineralNutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Region -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Region"/>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Riboflavin -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Riboflavin">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Rice -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Rice">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CerealGrain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/RiceFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/RiceFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Rye -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Rye">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CerealGrain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Salt -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Salt">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/SeaSalt -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SeaSalt">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Salt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/SemiSweetChocolateChips -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SemiSweetChocolateChips">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateProduct"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateLiquor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VanillaBean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SoyLecithin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CocoaButter"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/DriedCaneSyrup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Semolina -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Semolina">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/SemolinaShortBread -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SemolinaShortBread">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Shortbread"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteFlour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Butter"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Semolina"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteSugar"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Salt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Shortbread -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Shortbread">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/SkimMilkPowder -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SkimMilkPowder">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/MilkPowder"/>
+        <owl:disjointWith rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WholeMilkPowder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/SodiumAscorbate -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SodiumAscorbate">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Soy -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Soy">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/SoyBeanOil -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SoyBeanOil">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VegetableOil"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Soy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/SoyFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SoyFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Soy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/SoyLecithin -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SoyLecithin">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Soy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Spice -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Spice">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Store -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Store"/>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/SunflowerOil -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SunflowerOil">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VegetableOil"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/SweetChocolateCoating -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SweetChocolateCoating">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateProduct"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CocoaButter"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateProduct"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteSugar"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/DutchedCocoa"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/ThiaminMononitrate -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ThiaminMononitrate">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Tocopherols -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Tocopherols">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/TreeNutMeal -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/TreeNutMeal">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/NutProduct"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Cashew"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Almond"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Walnut"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Macadamia"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Pecan"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/TripotassiumPhosphate -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/TripotassiumPhosphate">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Triticale -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Triticale">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CerealGrain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/UnmodifiedCornstarch -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/UnmodifiedCornstarch">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Cornstarch"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VanillaBean -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VanillaBean">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Spice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VanillaExtract -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VanillaExtract">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Extract"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VegetableOil -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VegetableOil">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/PlantOil"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminA -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminA">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB1 -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB1">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB12 -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB12">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB2 -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB2">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB3 -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB3">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB5 -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB5">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB6 -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB6">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB7 -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB7">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB9 -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB9">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminC -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminC">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminD -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminD">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminD2 -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminD2">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminD3 -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminD3">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminE -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminE">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/VitaminK -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminK">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WalkersPureButterShortbread -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WalkersPureButterShortbread">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/isMadeIn"/>
+                <owl:hasValue rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Aberlour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WalkersShortbread"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WalkersPureButterShortbreadFingers-5.3ozBox -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WalkersPureButterShortbreadFingers-5.3ozBox">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WalkersPureButterShortbread"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WalkersPureButterShortbreadRounds-5.3ozBox -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WalkersPureButterShortbreadRounds-5.3ozBox">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WalkersPureButterShortbread"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WalkersShortbread -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WalkersShortbread">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Shortbread"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                        <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Butter"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                        <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Salt"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                        <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteFlour"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                        <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteSugar"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>Shortbread made to the Walkers recipe</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Walnut -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Walnut">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Nut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Wheat -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Wheat">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CerealGrain"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Gluten"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlake -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlake">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FlakeProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/contains"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Wheat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WheatStarch -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WheatStarch">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GrainStarch"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Whey -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Whey">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/DairyProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WhiteChocolate -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteChocolate">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateProduct"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CocoaButter"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteSugar"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VanillaExtract"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SkimMilkPowder"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SoyLecithin"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WhiteChocolateMacadamiaCookie -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteChocolateMacadamiaCookie">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Butter"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/AmmoniumBicarbonate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteSugar"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/BakingSoda"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteChocolate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/TreeNutMeal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Macadamia"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/CreamOfTartre"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Cornstarch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Salt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/EnrichedWheatFlour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/BrownSugar"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CottonSeedOil"/>
+                            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/HydrogenatedSoyBeanOil"/>
+                            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PalmOil"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Egg"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WhiteFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WhiteSugar -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteSugar">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WholeGrainBrownRiceFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WholeGrainBrownRiceFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/RiceFlour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WholeGrainOat -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WholeGrainOat">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Oat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WholeMilkPowder -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WholeMilkPowder">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/MilkPowder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WholeOatFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WholeOatFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/OatFlour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WholeSorghumFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WholeSorghumFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WholemealFlour -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WholemealFlour">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlour"/>
+    </owl:Class>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Zinc -->
+
+    <owl:Class rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Zinc">
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/MineralNutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R4WlGajIsTsDr8viWfJseA -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R4WlGajIsTsDr8viWfJseA">
+        <rdfs:label>AmericanoCoffee</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R8K40kcDpDndFR34QauSViv"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R5HDP5WxmuU0chDLudTFFi -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R5HDP5WxmuU0chDLudTFFi">
+        <rdfs:label>GrapeJuiceConcentrate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RM4BKCfUwnAlZfl8UBsW6T"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R79cT4Uxi4vOzLZfsu9dzcq -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R79cT4Uxi4vOzLZfsu9dzcq">
+        <rdfs:label>Juice</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FruitProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7IlMl6aEDImajxgDZ4jPto -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R7IlMl6aEDImajxgDZ4jPto">
+        <rdfs:label>EralyBreakFast</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R9h7TcIW7GwAleQ0QceHuOX"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7l8Pan8jdVtl2BnWjdygje -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R7l8Pan8jdVtl2BnWjdygje"/>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7paiOK3Yz1BKgc7cG64lLp -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R7paiOK3Yz1BKgc7cG64lLp">
+        <rdfs:label>OceanSprayCranberryJuiceCocktail64Oz</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RDU2sx88xyLn5c36bq6QILh"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7wDVljuBzwRNUH1rmWpTFn -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R7wDVljuBzwRNUH1rmWpTFn">
+        <rdfs:label>PomegranateJuice</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R83HZF7DkyJfczvMgnIx6sz -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R83HZF7DkyJfczvMgnIx6sz">
+        <rdfs:label>EspressoCoffee</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R8K40kcDpDndFR34QauSViv"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8EUXt8BB6p3OSjD8eAJQNv -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R8EUXt8BB6p3OSjD8eAJQNv">
+        <rdfs:label>Caffeine_free</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R9PRaoJeLwPcd1BkOTXWLg5"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8K40kcDpDndFR34QauSViv -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R8K40kcDpDndFR34QauSViv">
+        <rdfs:label>Coffee</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/Rr2NsWFVxIlytCVl213dme"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RiSvzWN3SSGkbqbV2wHjUj"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8RjHi7ItduBBdjUJCZWJfY -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R8RjHi7ItduBBdjUJCZWJfY">
+        <rdfs:label>DcafCoffee</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R8K40kcDpDndFR34QauSViv"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8VB7uJWuGMuNrHZ6mlzkNj -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R8VB7uJWuGMuNrHZ6mlzkNj">
+        <rdfs:label>Soda</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8uc2u2sT1ziZNkps4UOAgN -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R8uc2u2sT1ziZNkps4UOAgN">
+        <rdfs:label>ClarifiedPineappleConcentrate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RM4BKCfUwnAlZfl8UBsW6T"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8wAUgbUQwQyQthhZ0yobiy -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R8wAUgbUQwQyQthhZ0yobiy">
+        <rdfs:label>OceanSprayCran-PomegranateJuice-64oz</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RB9qABw6OVIvFuCp7Wi8NPF"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RByi4dZjRoHh0qO79SVTlYd"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RC258ESAcr4GBLkK4FcpNZC"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RDnsY0hydxotfoG285lmmWU"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RGeXY4QOFjOUt0jenj7Tjb"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RBrm5wz2Eeh2aH0uVA7lz7h"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://webprotege.stanford.edu/RB9qABw6OVIvFuCp7Wi8NPF"/>
+                            <rdf:Description rdf:about="http://webprotege.stanford.edu/RFMPozGAYpAJBhiq98CeG6"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RTrXgFgzQbY3OIbznc1pnp"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9Ej6IRKb6K3YxYFodcEkeg -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R9Ej6IRKb6K3YxYFodcEkeg">
+        <rdfs:label>Packaging</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9PRaoJeLwPcd1BkOTXWLg5 -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R9PRaoJeLwPcd1BkOTXWLg5">
+        <rdfs:label>Tea</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+        <rdfs:seeAlso rdf:resource="http://www.japan-guide.com/e/e2041.html"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9ZGcq1GuEAeInLrx8RXAiK -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R9ZGcq1GuEAeInLrx8RXAiK">
+        <rdfs:label>AscorbicAcid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9ZSOCyA0S5VOYGsITUN9Ai -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R9ZSOCyA0S5VOYGsITUN9Ai">
+        <rdfs:label>MiltonsOrganicCoffee-12Oz</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/isMadeIn"/>
+                <owl:hasValue rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Canada"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/RBGeUTmsmAW0VAAoGbdt1XQ"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/RCHtRlh0WdCE2F8JFapHstb"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Rwa7yvpCctgpNYtHKUeeJF"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/R9NDWROvWh1v6RPwycbbtDY"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/R8K40kcDpDndFR34QauSViv"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/RCHtRlh0WdCE2F8JFapHstb"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RXfyYHgFN7QPtp03ihCzPw"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://webprotege.stanford.edu/Rr2NsWFVxIlytCVl213dme"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/R8RjHi7ItduBBdjUJCZWJfY"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9h7TcIW7GwAleQ0QceHuOX -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R9h7TcIW7GwAleQ0QceHuOX">
+        <rdfs:label>Caffeine</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R9PRaoJeLwPcd1BkOTXWLg5"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9u2vZfXEBSCfzegSyVvLeo -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R9u2vZfXEBSCfzegSyVvLeo">
+        <rdfs:label>Regular</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiSvzWN3SSGkbqbV2wHjUj"/>
+        <rdfs:comment>For non-decaf coffee</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9yat2GSgIeXGpmHPoSfMul -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R9yat2GSgIeXGpmHPoSfMul">
+        <rdfs:label>FairTradeCoffee</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R8K40kcDpDndFR34QauSViv"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RB78lO4rEAFzKU26Gm9fvyX -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RB78lO4rEAFzKU26Gm9fvyX">
+        <rdfs:label>RiboseTea</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R8EUXt8BB6p3OSjD8eAJQNv"/>
+        <rdfs:seeAlso rdf:resource="http://sv.wikipedia.org/wiki/Rooibos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RB7KRm4pAavKbG5lnrus5OI -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RB7KRm4pAavKbG5lnrus5OI">
+        <rdfs:label>OceanSprayWhiteGrapefruitJuice60floz</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RDU2sx88xyLn5c36bq6QILh"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RDFqFVP9dksAyFiujq5yHKP"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminC"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/containsFoodStuff"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RBrm5wz2Eeh2aH0uVA7lz7h"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RB9qABw6OVIvFuCp7Wi8NPF -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RB9qABw6OVIvFuCp7Wi8NPF">
+        <rdfs:label>CaneSugar</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBNNitzoxa3FTPtbiqPZgTO -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RBNNitzoxa3FTPtbiqPZgTO">
+        <rdfs:label>Decaf</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RCXjPROQOA44xBHjHcUqr9y"/>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RiSvzWN3SSGkbqbV2wHjUj"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBrm5wz2Eeh2aH0uVA7lz7h -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RBrm5wz2Eeh2aH0uVA7lz7h">
+        <rdfs:label>GrapeFruitJuiceConcentrate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RM4BKCfUwnAlZfl8UBsW6T"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RByi4dZjRoHh0qO79SVTlYd -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RByi4dZjRoHh0qO79SVTlYd">
+        <rdfs:label>FilteredWater</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RDFqFVP9dksAyFiujq5yHKP"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBzWx5cFNXJEC1Lkum3ZAzs -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RBzWx5cFNXJEC1Lkum3ZAzs">
+        <rdfs:label>FantaOrange-12ozCansCaseOf24</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RC258ESAcr4GBLkK4FcpNZC -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RC258ESAcr4GBLkK4FcpNZC">
+        <rdfs:label>FumaricAcid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RC3CY7MOWZasQRztC4ZIdw8 -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RC3CY7MOWZasQRztC4ZIdw8">
+        <rdfs:label>SunFlower</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RC3XDAVoUzkjLZcPPllakaA -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RC3XDAVoUzkjLZcPPllakaA">
+        <rdfs:label>FruitPurees</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FruitProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RCB59WlbdRGsgXSdHTi0k4y -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RCB59WlbdRGsgXSdHTi0k4y">
+        <rdfs:label>NaturalFlavors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RKEsZWX05ftir4Ll1R4H9w"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RCD1vwvMepxMjbAFpbEFOEt -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RCD1vwvMepxMjbAFpbEFOEt">
+        <rdfs:label>CappuccinoCoffee</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R8K40kcDpDndFR34QauSViv"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RCKSuUgM192OBn009k7pUNs -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RCKSuUgM192OBn009k7pUNs">
+        <rdfs:label>TartCherryJuiceConcentrateDynamic Health16OzLiquid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RCXjPROQOA44xBHjHcUqr9y -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RCXjPROQOA44xBHjHcUqr9y">
+        <rdfs:label>CoffeePackage</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R9Ej6IRKb6K3YxYFodcEkeg"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RCYaqfJIzkdSskArQLA95qV -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RCYaqfJIzkdSskArQLA95qV">
+        <rdfs:label>CaffeLatteCoffee</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RCe1vj1ewvpWVsbelXgPs5v -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RCe1vj1ewvpWVsbelXgPs5v">
+        <rdfs:label>ArtificialFlavors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RKEsZWX05ftir4Ll1R4H9w"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RClFGDbniH5x6niZxw6b4Ts -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RClFGDbniH5x6niZxw6b4Ts">
+        <rdfs:label>HawaiianPunchBerryLemonadeBlast128oz</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/HighFructoseCornSyrup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RDFqFVP9dksAyFiujq5yHKP"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RxGx6byDJY8dq8GA1Hm061"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/Rug8TwnymG87vwuhz4a3Gr"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RDEknSpv5Oxs9QyXCRxJmSh"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RCB59WlbdRGsgXSdHTi0k4y"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/R8uc2u2sT1ziZNkps4UOAgN"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RDhWpJcvCG7WsNd3bR7nXzl"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminC"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RXsVSYhPndJkS0W5c6R5iI"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RCe1vj1ewvpWVsbelXgPs5v"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/hasIngredient"/>
+                <owl:someValuesFrom rdf:resource="http://webprotege.stanford.edu/RbtkOVng14hIRoSAd1vMqn"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDEknSpv5Oxs9QyXCRxJmSh -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RDEknSpv5Oxs9QyXCRxJmSh">
+        <rdfs:label>ApricotPuree</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RC3XDAVoUzkjLZcPPllakaA"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDFqFVP9dksAyFiujq5yHKP -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RDFqFVP9dksAyFiujq5yHKP">
+        <rdfs:label>WaterProduct</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDU2sx88xyLn5c36bq6QILh -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RDU2sx88xyLn5c36bq6QILh">
+        <rdfs:label>OceanSpray</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDhWpJcvCG7WsNd3bR7nXzl -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RDhWpJcvCG7WsNd3bR7nXzl">
+        <rdfs:label>PapayaPuree</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RC3XDAVoUzkjLZcPPllakaA"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDnqY514Th8pdQlh6MPPQDS -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RDnqY514Th8pdQlh6MPPQDS">
+        <rdfs:label>BarleyTea</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R8EUXt8BB6p3OSjD8eAJQNv"/>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Roasted_barley_tea"/>
+        <rdfs:seeAlso rdf:resource="http://www.pyroenergen.com/articles09/images/barley-tea2.jpg"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDnsY0hydxotfoG285lmmWU -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RDnsY0hydxotfoG285lmmWU">
+        <rdfs:label>MalicAcid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RDvksp8Z6KILDZhtxzsRfWP -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RDvksp8Z6KILDZhtxzsRfWP">
+        <rdfs:label>Lipton</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RFMPozGAYpAJBhiq98CeG6 -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RFMPozGAYpAJBhiq98CeG6">
+        <rdfs:label>BeetSugar</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RGeXY4QOFjOUt0jenj7Tjb -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RGeXY4QOFjOUt0jenj7Tjb">
+        <rdfs:label>CranberryJuiceConcentrate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RM4BKCfUwnAlZfl8UBsW6T"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RKEsZWX05ftir4Ll1R4H9w -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RKEsZWX05ftir4Ll1R4H9w">
+        <rdfs:label>Flavors</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RM4BKCfUwnAlZfl8UBsW6T -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RM4BKCfUwnAlZfl8UBsW6T">
+        <rdfs:label>ConcentratedJuices</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/FruitProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RTrXgFgzQbY3OIbznc1pnp -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RTrXgFgzQbY3OIbznc1pnp">
+        <rdfs:label>PomegranateJuiceConcentrate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RM4BKCfUwnAlZfl8UBsW6T"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RXfyYHgFN7QPtp03ihCzPw -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RXfyYHgFN7QPtp03ihCzPw">
+        <rdfs:label>OrganicCertification</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RXsVSYhPndJkS0W5c6R5iI -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RXsVSYhPndJkS0W5c6R5iI">
+        <rdfs:label>OrangeConcentrate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RM4BKCfUwnAlZfl8UBsW6T"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RbtkOVng14hIRoSAd1vMqn -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RbtkOVng14hIRoSAd1vMqn">
+        <rdfs:label>AppleJuiceConcentrate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RM4BKCfUwnAlZfl8UBsW6T"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Rd18e22zATAogbLG29N2Zm -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Rd18e22zATAogbLG29N2Zm">
+        <rdfs:label>GreenTea</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R9h7TcIW7GwAleQ0QceHuOX"/>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Green_tea"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RiSvzWN3SSGkbqbV2wHjUj -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RiSvzWN3SSGkbqbV2wHjUj">
+        <rdfs:label>CoffeeType</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RqsIPIW9qVuJU0uWOBIhVt -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RqsIPIW9qVuJU0uWOBIhVt">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RsCra00ytpabZtqo5bN5GG -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RsCra00ytpabZtqo5bN5GG">
+        <rdfs:label>CarbinatedWater</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RDFqFVP9dksAyFiujq5yHKP"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Rtgftxz4218pKFbDDfjH6D -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Rtgftxz4218pKFbDDfjH6D">
+        <rdfs:label>Kashi</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Rug8TwnymG87vwuhz4a3Gr -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Rug8TwnymG87vwuhz4a3Gr">
+        <rdfs:label>GuavaPuree</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RC3XDAVoUzkjLZcPPllakaA"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RvinmfcTIoGlNNz74EfQMT -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RvinmfcTIoGlNNz74EfQMT">
+        <rdfs:label>TartCherryJuiceConcentrate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/R79cT4Uxi4vOzLZfsu9dzcq"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/Rwa7yvpCctgpNYtHKUeeJF -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/Rwa7yvpCctgpNYtHKUeeJF">
+        <rdfs:label>FairTradeCertification</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RxGx6byDJY8dq8GA1Hm061 -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RxGx6byDJY8dq8GA1Hm061">
+        <rdfs:label>PassionfruitConcentrate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://webprotege.stanford.edu/RM4BKCfUwnAlZfl8UBsW6T"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Aberlour -->
+
+    <owl:NamedIndividual rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Aberlour">
+        <rdf:type rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Place"/>
+        <grocery-ontology:isLocatedIn rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Speyside"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Belgium -->
+
+    <owl:NamedIndividual rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Belgium">
+        <rdf:type rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Country"/>
+        <grocery-ontology:isLocatedIn rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Europe"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Canada -->
+
+    <owl:NamedIndividual rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Canada">
+        <rdf:type rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Country"/>
+        <grocery-ontology:isLocatedIn rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/NorthAmerica"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Europe -->
+
+    <owl:NamedIndividual rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Europe">
+        <rdf:type rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Continent"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/NorthAmerica -->
+
+    <owl:NamedIndividual rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/NorthAmerica">
+        <rdf:type rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Continent"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Scotland -->
+
+    <owl:NamedIndividual rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Scotland">
+        <rdf:type rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Country"/>
+        <grocery-ontology:isLocatedIn rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Europe"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/Speyside -->
+
+    <owl:NamedIndividual rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Speyside">
+        <rdf:type rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Region"/>
+        <grocery-ontology:isLocatedIn rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Scotland"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://protege.stanford.edu/ontologies/grocery-ontology/WholeFoodsPaloAlto -->
+
+    <owl:NamedIndividual rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WholeFoodsPaloAlto">
+        <rdf:type rdf:resource="http://protege.stanford.edu/ontologies/grocery-ontology/Store"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R09UZ528ATQG3e2VdZkgvu -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R09UZ528ATQG3e2VdZkgvu">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RDnqY514Th8pdQlh6MPPQDS"/>
+        <rdfs:label>Brand1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7OJ1HKqrQp5vuPP2bT7gYz -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R7OJ1HKqrQp5vuPP2bT7gYz">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Rwa7yvpCctgpNYtHKUeeJF"/>
+        <rdfs:label>We Said It Was Fair Trade</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R7SubhNN0aChBy71EUt65TE -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R7SubhNN0aChBy71EUt65TE">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/Rwa7yvpCctgpNYtHKUeeJF"/>
+        <rdfs:label>UN Certified Fair Trade</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8CXqyRlt5P6MoEMnDhSv07 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R8CXqyRlt5P6MoEMnDhSv07">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RXfyYHgFN7QPtp03ihCzPw"/>
+        <rdfs:label>EU_Organic_Certification</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9RjWZNdFg4UtQjo7gs0hz5 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R9RjWZNdFg4UtQjo7gs0hz5">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RiSvzWN3SSGkbqbV2wHjUj"/>
+        <rdfs:label>Regular</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R9uYSM12273NHPGnwxUKP8Q -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/R9uYSM12273NHPGnwxUKP8Q">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RXfyYHgFN7QPtp03ihCzPw"/>
+        <rdfs:label>California_Eat_Good_Food_Certification</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RNfUl5gat1AEblNUMU5v95 -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RNfUl5gat1AEblNUMU5v95">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RiSvzWN3SSGkbqbV2wHjUj"/>
+        <rdfs:label>Decaf</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RVOriS8RZ0J2Vnj2HZZkcd -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RVOriS8RZ0J2Vnj2HZZkcd">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RDnqY514Th8pdQlh6MPPQDS"/>
+        <rdfs:label>Brand2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RYrPxlipBrBOTXyNBpCCVP -->
+
+    <owl:NamedIndividual rdf:about="http://webprotege.stanford.edu/RYrPxlipBrBOTXyNBpCCVP">
+        <rdf:type rdf:resource="http://webprotege.stanford.edu/RDnqY514Th8pdQlh6MPPQDS"/>
+        <rdfs:label>Brand3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminA"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB1"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB12"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB2"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB3"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB5"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB6"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB7"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminB9"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminC"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminD"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminD2"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminD3"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminE"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VitaminK"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CaneSyrup"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CornSyrup"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/HighFructoseCornSyrup"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/OrganicEvaporatedCaneJuiceInvertSyrup"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/BrownFlour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteFlour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WholemealFlour"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/AlphaTocopherolAcetate"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FolicAcid"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Niacin"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Niacinamide"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Palmitate"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PyridoxineHydrochloride"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Riboflavin"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SodiumAscorbate"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ThiaminMononitrate"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Tocopherols"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Cinnamon"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Ginger"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/VanillaBean"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Almond"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Cashew"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Hazelnut"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Macadamia"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Pecan"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Walnut"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateLiquor"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SemiSweetChocolateChips"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SweetChocolateCoating"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteChocolate"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CalciumCarbonate"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Iron"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ReducedIron"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Zinc"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Barley"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Millet"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Quinoa"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Rice"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Rye"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Triticale"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Wheat"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/BrownSugar"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/DehydratedCaneJuice"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FoodSyrup"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/InvertCaneSugar"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Molasses"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/OrganicEvaporatedCaneJuice"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WhiteSugar"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CanolaOil"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CottonSeedOil"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/HydrogenatedSoyBeanOil"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PalmKernelOil"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PalmOil"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SoyBeanOil"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SunflowerOil"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FruitFlake"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/MilletFlake"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/OatFlake"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlake"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Continent"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Country"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FoodStuff"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GroceryItem"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/NutritionalInformation"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Place"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Region"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/AmaranthFlour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ChiaFlour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GoldenFlaxFlour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/MilletFlour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/OatFlour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/QuinoaFlour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/RiceFlour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SoyFlour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WheatFlour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/WholeSorghumFlour"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Apple"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/BananaPuree"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Coconut"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Raisin"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/RaisinJuice"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ButterProduct"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Milk"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/MilkPowder"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Whey"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/AmmoniumBicarbonate"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/BakingSoda"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CerealGrain"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ChiaSeed"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/ChocolateProduct"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CocoaProduct"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/CreamOfTartre"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/DairyProduct"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Egg"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Extract"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FlakeProduct"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Flour"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Fructan"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FruitProduct"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/FudgeCoating"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Gelatin"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Gluten"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/GrainStarch"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Honey"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Lactose"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/MineralNutrient"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/NutProduct"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Oat"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/PlantOil"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/RaisinJuiceConcentrate"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Salt"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Semolina"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Soy"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SoyLecithin"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Spice"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/SugarProduct"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/TripotassiumPhosphate"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamer"/>
+            <rdf:Description rdf:about="http://protege.stanford.edu/ontologies/grocery-ontology/Vitamin"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

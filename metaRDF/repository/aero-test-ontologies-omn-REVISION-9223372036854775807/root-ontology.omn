@@ -1,0 +1,1235 @@
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+
+Ontology: <http://webprotege.stanford.edu/project/7eHifYVN8x430iKtj9j9td>
+
+
+AnnotationProperty: <http://www.w3.org/2004/02/skos/core#definition>
+
+    
+AnnotationProperty: rdfs:seeAlso
+
+    
+AnnotationProperty: rdfs:label
+
+    
+AnnotationProperty: rdfs:comment
+
+    
+Datatype: xsd:string
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+Datatype: xsd:integer
+
+    
+ObjectProperty: <http://webprotege.stanford.edu/Rds23T3Sh1z2g14Dmjt1xJ>
+
+    Annotations: 
+        rdfs:label "hasManufacturer"
+    
+    
+ObjectProperty: <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6>
+
+    Annotations: 
+        rdfs:label "hasOwner"
+    
+    
+ObjectProperty: <http://webprotege.stanford.edu/RBCiY6p2H1fJTVq8AWuTyLh>
+
+    Annotations: 
+        rdfs:label "hasEngine"
+    
+    
+ObjectProperty: <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl>
+
+    Annotations: 
+        rdfs:label "hasStatus"
+    
+    
+DataProperty: <http://webprotege.stanford.edu/RDd8qFgQFQf12vJPcHSp628>
+
+    Annotations: 
+        rdfs:label "hasMaxPaxCapacity"
+    
+    Domain: 
+        <http://webprotege.stanford.edu/R9kN9JwXvwPfDWgfGoODzCX>
+    
+    Range: 
+        xsd:integer
+    
+    Characteristics: 
+        Functional
+    
+    
+DataProperty: <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR>
+
+    Annotations: 
+        rdfs:label "hasSerialNumber"
+    
+    
+DataProperty: <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5>
+
+    Annotations: 
+        rdfs:label "hasRegistration"
+    
+    
+DataProperty: <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ>
+
+    Annotations: 
+        rdfs:label "hasEntryIntoService"
+    
+    
+Class: owl:Thing
+
+    
+Class: <http://webprotege.stanford.edu/R7vhg59QYHAwyclo4wJL4CP>
+
+    Annotations: 
+        rdfs:label "B707"
+    
+    SubClassOf: 
+        <http://webprotege.stanford.edu/R7jpIyfcT6PfZbnqdv2tCzF>
+    
+    
+Class: <http://webprotege.stanford.edu/R9kN9JwXvwPfDWgfGoODzCX>
+
+    Annotations: 
+        rdfs:label "Aircraft"
+    
+    SubClassOf: 
+        <http://webprotege.stanford.edu/RBIjikqmMy25uuF4BWCJv0q>
+    
+    
+Class: <http://webprotege.stanford.edu/RCCO2v5Ih2MNqSuEtr9Rcmg>
+
+    Annotations: 
+        rdfs:label "B737"
+    
+    SubClassOf: 
+        <http://webprotege.stanford.edu/R7jpIyfcT6PfZbnqdv2tCzF>
+    
+    
+Class: <http://webprotege.stanford.edu/R7jpIyfcT6PfZbnqdv2tCzF>
+
+    Annotations: 
+        rdfs:label "Boeing Aircraft",
+        rdfs:comment "Aircraft made by Boeing"
+    
+    SubClassOf: 
+        <http://webprotege.stanford.edu/R9kN9JwXvwPfDWgfGoODzCX>
+    
+    
+Class: <http://webprotege.stanford.edu/RWcHnS6Wab0oJkgcUjjgyn>
+
+    Annotations: 
+        rdfs:label "B767"
+    
+    SubClassOf: 
+        <http://webprotege.stanford.edu/R7jpIyfcT6PfZbnqdv2tCzF>
+    
+    
+Class: <http://webprotege.stanford.edu/RUocgeXSLPyQrvYBq71aDE>
+
+    Annotations: 
+        rdfs:label "B757"
+    
+    SubClassOf: 
+        <http://webprotege.stanford.edu/R7jpIyfcT6PfZbnqdv2tCzF>
+    
+    
+Class: <http://webprotege.stanford.edu/Rpk5YiETnnlEtaOFLWd8ua>
+
+    Annotations: 
+        rdfs:seeAlso "dbpedia:Boeing",
+        rdfs:label "AirplaneManufacturer"
+    
+    SubClassOf: 
+        <http://webprotege.stanford.edu/RCnGwihvRrZNKb3NrFS3q8c>
+    
+    
+Class: <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>
+
+    Annotations: 
+        <http://www.w3.org/2004/02/skos/core#definition> "This is the Boeing 747 aircraft"@en,
+        rdfs:seeAlso <http://wikipedia.org/wiki/Boeing_747>,
+        rdfs:label "B747",
+        rdfs:comment "favorite"@en,
+        rdfs:comment "favorite"@fr
+    
+    SubClassOf: 
+        <http://webprotege.stanford.edu/RBCiY6p2H1fJTVq8AWuTyLh> some <http://webprotege.stanford.edu/RCEGS3Tv0T5uJWR9MjpUWxy>,
+        <http://webprotege.stanford.edu/R7jpIyfcT6PfZbnqdv2tCzF>,
+        <http://webprotege.stanford.edu/Rds23T3Sh1z2g14Dmjt1xJ> value <http://webprotege.stanford.edu/RLbCnwN1sLC1EVkdyPwrvP>,
+        <http://webprotege.stanford.edu/RDd8qFgQFQf12vJPcHSp628> value 660
+    
+    
+Class: <http://webprotege.stanford.edu/R9th0DQOdEnltSNuyB5n6mV>
+
+    Annotations: 
+        rdfs:label "B787"
+    
+    SubClassOf: 
+        <http://webprotege.stanford.edu/R7jpIyfcT6PfZbnqdv2tCzF>
+    
+    
+Class: <http://webprotege.stanford.edu/RCnGwihvRrZNKb3NrFS3q8c>
+
+    Annotations: 
+        rdfs:label "Manufacturer"
+    
+    SubClassOf: 
+        owl:Thing
+    
+    
+Class: <http://webprotege.stanford.edu/RBIjikqmMy25uuF4BWCJv0q>
+
+    Annotations: 
+        rdfs:label "Vehicle"
+    
+    SubClassOf: 
+        owl:Thing
+    
+    
+Class: <http://webprotege.stanford.edu/RDJc1TNHYC21Soo3YHeDPeq>
+
+    Annotations: 
+        rdfs:label "B727"
+    
+    SubClassOf: 
+        <http://webprotege.stanford.edu/R7jpIyfcT6PfZbnqdv2tCzF>
+    
+    
+Class: <http://webprotege.stanford.edu/RCEGS3Tv0T5uJWR9MjpUWxy>
+
+    Annotations: 
+        rdfs:label "Engine"
+    
+    
+Individual: <http://webprotege.stanford.edu/R9MjIG9XFmaI5h6MkXCeCWR>
+
+    Annotations: 
+        rdfs:label "747-412BCF"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24061"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>
+    
+    
+Individual: <http://webprotege.stanford.edu/R9t83ThA7zt2ENSjWzVHUGV>
+
+    Annotations: 
+        rdfs:label "747-412"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24064"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24063"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24066"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24065"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24062"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RlANNn2zFCM83Hio7CHO42>
+
+    Annotations: 
+        rdfs:label "24107"
+    
+    Types: 
+        owl:Thing,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24107,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "TF-ATI"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RKijxbi5lrFtVrv6hadms7>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "07/05/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCN5q9t616wY7KZty1wkkoX>
+    
+    
+Individual: <http://webprotege.stanford.edu/R8ymWvQSKihIzEiiNkLmtYN>
+
+    Annotations: 
+        rdfs:label "24055"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24055,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "05/06/1990"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLM"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/R9BdIAvN4VHKEsQIs0Ga6Z3>
+
+    Annotations: 
+        rdfs:label "24057"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "09/10/1990"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24057,
+        owl:Thing,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLO"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RD0VNyqazzzZC1h4mu8PZzj>
+
+    Annotations: 
+        rdfs:label "747-436"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24051"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24058"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24047"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24052"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24056"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24050"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24057"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24055"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24048"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24053"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24049"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24054"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/R8A6NdNawUR9whZpUrpC2dq>
+
+    Annotations: 
+        rdfs:label "24160"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24160,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "08/11/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCN5q9t616wY7KZty1wkkoX>,
+        owl:Thing,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "VT-EPX"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RUJEIzoUL5OBMpMrOk6ZJs>
+    
+    
+Individual: <http://webprotege.stanford.edu/R3DWL8yTFUfeeeLsPBeExo>
+
+    Annotations: 
+        rdfs:label "747-236B"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24088"^^xsd:string
+    
+    Facts:  
+     <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR>  "24088"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RUJEIzoUL5OBMpMrOk6ZJs>
+
+    Annotations: 
+        rdfs:label "Air India"
+    
+    
+Individual: <http://webprotege.stanford.edu/RGbolkppJbca0ttGMo36Ps>
+
+    Annotations: 
+        rdfs:label "24194"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24194,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RnfkvpM8C39O0jgavl9kaQ>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "N749SA"^^xsd:string,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "21/08/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>
+    
+    
+Individual: <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>
+
+    Annotations: 
+        rdfs:label "British Airways"
+    
+    
+Individual: <http://webprotege.stanford.edu/RDxvyXfRcnNLSiDwDTy28vJ>
+
+    Annotations: 
+        rdfs:label "Transaero Airlines"
+    
+    
+Individual: <http://webprotege.stanford.edu/R9atCQcysey5EJaFBqWNHmR>
+
+    Annotations: 
+        rdfs:label "Air Cargo Germany"
+    
+    
+Individual: <http://webprotege.stanford.edu/RDv2Qp2fqkOqCwU0wlGgpuF>
+
+    Annotations: 
+        rdfs:label "Martinair Holland"
+    
+    
+Individual: <http://webprotege.stanford.edu/R9PzmQ2P8XTpgR0wawzfRvs>
+
+    Annotations: 
+        rdfs:label "24106"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "EC-IOO"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RDTR0pMPIIfLfiUlAzSTKDx>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "24/04/1988"^^xsd:string,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24106
+    
+    
+Individual: <http://webprotege.stanford.edu/R9qJ5S0Ag69FPAElNhEuhiT>
+
+    Annotations: 
+        rdfs:label "747-2B5F"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24195"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/R9Ccrnik6UB734hbL6vvqKw>
+
+    Annotations: 
+        rdfs:label "24048"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "09/02/1990"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLF"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24048,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/RB6bAYo2XgsXdtP5kk0ZAm6>
+
+    Annotations: 
+        rdfs:label "Air Atlanta Icelandic"
+    
+    
+Individual: <http://webprotege.stanford.edu/RCNRRnXgdRuYEQ3VnDhjjsY>
+
+    Annotations: 
+        rdfs:label "24071"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "N110TR"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24071,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "25/03/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCT6W9NmZG3tydhIriiaiO8>
+    
+    
+Individual: <http://webprotege.stanford.edu/RBSoPnF4rMa7c7lR0bPWzeo>
+
+    Annotations: 
+        rdfs:label "747-346SR"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24018"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24019"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/R8vjjyB8VMCDnxtPw8MQA8f>
+
+    Annotations: 
+        rdfs:label "Air France"
+    
+    
+Individual: <http://webprotege.stanford.edu/RBiDFvxdu4Vm96O7hLh3vos>
+
+    Annotations: 
+        rdfs:label "24053"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24053,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLK"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "04/05/1990"^^xsd:string,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/R7k6F7cBjoM40Olvvm1fIh3>
+
+    Annotations: 
+        rdfs:label "24067"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "N716SA"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RnfkvpM8C39O0jgavl9kaQ>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "02/03/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24067,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/RDYKuiimrSoyu7j40qCX7y3>
+
+    Annotations: 
+        rdfs:label "747-4B3"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24154"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24155"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RyR6XbBOqtsP7kdQO27l4j>
+
+    Annotations: 
+        rdfs:label "Max Air"
+    
+    
+Individual: <http://webprotege.stanford.edu/RCT6W9NmZG3tydhIriiaiO8>
+
+    Annotations: 
+        rdfs:label "Kalitta Air"
+    
+    
+Individual: <http://webprotege.stanford.edu/R9QfasHGyixg6eNNWtWPoPu>
+
+    Annotations: 
+        rdfs:label "747-346"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "23969"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24156"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>
+    
+    
+Individual: <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>
+
+    Annotations: 
+        rdfs:label "Active"
+    
+    
+Individual: <http://webprotege.stanford.edu/RCy9di6c0meWejDT4MuXNpE>
+
+    Annotations: 
+        rdfs:label "23999"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RBk4k1iLZKPTodaOzVjJ27t>,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "15/04/1989"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 23999,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "PH-BFA"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RBDj9WdbpDDzlCqzcKn6iIV>
+
+    Annotations: 
+        rdfs:label "24154"
+    
+    Types: 
+        owl:Thing,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "01/08/1989"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/R8vjjyB8VMCDnxtPw8MQA8f>,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCN5q9t616wY7KZty1wkkoX>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24154,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "F-GEXA"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/R7XRy4ZnLJdA4ldLIJohRWK>
+
+    Annotations: 
+        rdfs:label "24161"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "07/06/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "SU-GAL"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RDaDdEDXbdT7YFA9nNX9m1X>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24161,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>
+
+    Annotations: 
+        rdfs:label "Stored"
+    
+    
+Individual: <http://webprotege.stanford.edu/R8LBOUz8WLze65ALQ83xm7V>
+
+    Annotations: 
+        rdfs:label "24063"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24063,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "21/06/1989"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RDX5Dqa3YGTWBxNiD1VENYq>,
+        owl:Thing,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "PK-LHF"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/R7SfTJFuvpoJPUjqhrVCEn>
+
+    Annotations: 
+        rdfs:label "747-228B"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24067"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>
+    
+    
+Individual: <http://webprotege.stanford.edu/RDX5Dqa3YGTWBxNiD1VENYq>
+
+    Annotations: 
+        rdfs:label "Lion Airlines"
+    
+    
+Individual: <http://webprotege.stanford.edu/RC9rjsbXr3xjbX8XFUtErwS>
+
+    Annotations: 
+        rdfs:label "24047"
+    
+    Types: 
+        owl:Thing,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "02/10/1989"^^xsd:string,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLE"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24047
+    
+    
+Individual: <http://webprotege.stanford.edu/R7r935Bp1sKNQMMm39LwU0X>
+
+    Annotations: 
+        rdfs:label "24162"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24162,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "25/06/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "SU-GAM"^^xsd:string,
+        owl:Thing,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RDaDdEDXbdT7YFA9nNX9m1X>
+    
+    
+Individual: <http://webprotege.stanford.edu/RBROlcr4Tct5Yh7PcoQw5Is>
+
+    Annotations: 
+        rdfs:label "747-341"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24107"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24108"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24106"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RDaDdEDXbdT7YFA9nNX9m1X>
+
+    Annotations: 
+        rdfs:label "Egyptair"
+    
+    
+Individual: <http://webprotege.stanford.edu/RCzq1TvNGWMc44YlD0cCy9M>
+
+    Annotations: 
+        rdfs:label "24000"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RBk4k1iLZKPTodaOzVjJ27t>,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "23/05/1989"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24000,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "PH-BFB"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>
+    
+    
+Individual: <http://webprotege.stanford.edu/R79m0gsSxj6Fgj9PdItNCki>
+
+    Annotations: 
+        rdfs:label "23969"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "15/02/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "N768CK"^^xsd:string,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 23969,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCT6W9NmZG3tydhIriiaiO8>,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>
+    
+    
+Individual: <http://webprotege.stanford.edu/RB6pQILq31muEeDWMfNwdfZ>
+
+    Annotations: 
+        rdfs:label "24058"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24058,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLP"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "04/12/1990"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/R7gwLWMDLOXqDSXfDuBxohH>
+
+    Annotations: 
+        rdfs:label "24196"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24196,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "N708SA"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RnfkvpM8C39O0jgavl9kaQ>,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "16/11/1988"^^xsd:string,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/R8HulpP1HqOdh4PjsxnglkL>
+
+    Annotations: 
+        rdfs:label "24049"
+    
+    Types: 
+        owl:Thing,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24049,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "10/02/1990"^^xsd:string,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLG"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>
+    
+    
+Individual: <http://webprotege.stanford.edu/RBhOAfWCJuRDdAr5kMXO8r6>
+
+    Annotations: 
+        rdfs:label "747-2B5FSCD"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24196"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>
+    
+    
+Individual: <http://webprotege.stanford.edu/ROgCIYRmclbPDz83e0etV6>
+
+    Annotations: 
+        rdfs:label "24056"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24056,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "17/07/1990"^^xsd:string,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLN"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RnfkvpM8C39O0jgavl9kaQ>
+
+    Annotations: 
+        rdfs:label "Southern Air"
+    
+    
+Individual: <http://webprotege.stanford.edu/R9cmZFRlS3QkTSifHJgTRTA>
+
+    Annotations: 
+        rdfs:label "24138"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24138,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "19/06/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        owl:Thing,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "N490EV"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RDifApysQmrFGvtxrLKL3rh>
+    
+    
+Individual: <http://webprotege.stanford.edu/RKijxbi5lrFtVrv6hadms7>
+
+    Annotations: 
+        rdfs:label "Saudi Arabian Airlines"
+    
+    
+Individual: <http://webprotege.stanford.edu/R8DgAGBCtx4p7TFIy3wHKzR>
+
+    Annotations: 
+        rdfs:label "Air Pacific"
+    
+    
+Individual: <http://webprotege.stanford.edu/RCTLaK1lOmzl7RpkyLA1vhq>
+
+    Annotations: 
+        rdfs:label "23982"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "30/06/1989"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RBk4k1iLZKPTodaOzVjJ27t>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "PH-BFC"^^xsd:string,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 23982,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>
+    
+    
+Individual: <http://webprotege.stanford.edu/ROSrAhdoXlOfGGL63fLGxd>
+
+    Annotations: 
+        rdfs:label "747-228F"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24158"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>
+    
+    Facts:  
+     <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR>  "24158"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RnBVflCUktJLIAdhWRFWoU>
+
+    Annotations: 
+        rdfs:label "747-337"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24160"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24159"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RCtVd5XHXS6TU3ydIj6pmq>
+
+    Annotations: 
+        rdfs:label "24064"
+    
+    Types: 
+        owl:Thing,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/R8DgAGBCtx4p7TFIy3wHKzR>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "DQ-FJK"^^xsd:string,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "26/09/1989"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24064,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>
+    
+    
+Individual: <http://webprotege.stanford.edu/R6pG3d6TxkPPy8ta0PUfOk>
+
+    Annotations: 
+        rdfs:label "24088"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RB6bAYo2XgsXdtP5kk0ZAm6>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24088,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "TF-ATZ"^^xsd:string,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "13/02/1988"^^xsd:string,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/ROqhjl7fIOLh9YcjaHRqe0>
+
+    Annotations: 
+        rdfs:label "747-230F"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24138"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>
+    
+    
+Individual: <http://webprotege.stanford.edu/Rmx1Y9jy9hnKzQaVPCbuzI>
+
+    Annotations: 
+        rdfs:label "24062"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "06/02/1989"^^xsd:string,
+        owl:Thing,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "DQ-FJL"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24062,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/R8DgAGBCtx4p7TFIy3wHKzR>,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>
+    
+    
+Individual: <http://webprotege.stanford.edu/RTFj5qxvcyx4Zzuj2SKk53>
+
+    Annotations: 
+        rdfs:label "24156"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "04/10/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24156,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "VP-BGX"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RDxvyXfRcnNLSiDwDTy28vJ>,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>
+    
+    
+Individual: <http://webprotege.stanford.edu/RDzEWQyd83KrkuGueukf9E6>
+
+    Annotations: 
+        rdfs:label "24134"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24134,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "15/09/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "EP-ICD"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RxaKBzEdqHe57fgLzgPmTQ>,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/R8klgIzDOhL56KjypR485NE>
+
+    Annotations: 
+        rdfs:label "747-366"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24161"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24162"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>
+    
+    
+Individual: <http://webprotege.stanford.edu/R9JGu6COU5ThKWBpROLVcWH>
+
+    Annotations: 
+        rdfs:label "24052"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24052,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLJ"^^xsd:string,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "02/05/1990"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/R8u2dWiDSEbHu43DKUZeTTI>
+
+    Annotations: 
+        rdfs:label "24054"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24054,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "30/05/1990"^^xsd:string,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLL"^^xsd:string,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/RBMZSTHXW6K8QjHLPbHBtnP>
+
+    Annotations: 
+        rdfs:label "Cargo B Airlines"
+    
+    
+Individual: <http://webprotege.stanford.edu/R7RXmHhehkffToztuAMSLSn>
+
+    Annotations: 
+        rdfs:label "24159"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RUJEIzoUL5OBMpMrOk6ZJs>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "26/09/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "VT-EPW"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24159,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/R9tpzYllpuR328PNDbmwUbl>
+
+    Annotations: 
+        rdfs:label "747-21ACM"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24134"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>
+    
+    Facts:  
+     <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR>  "24134"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/R0teTvd8E2Sqhf3NdCedNb>
+
+    Annotations: 
+        rdfs:label "24108"
+    
+    Types: 
+        owl:Thing,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "TF-ATJ"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "18/05/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24108,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RKijxbi5lrFtVrv6hadms7>
+    
+    
+Individual: <http://webprotege.stanford.edu/R9Wc63HNWSXeL6NHNmwpU7R>
+
+    Annotations: 
+        rdfs:label "747-3B5F"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24194"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RBDLGV6O0EDoD11LuVybaEX>
+
+    Annotations: 
+        rdfs:label "24195"
+    
+    Types: 
+        owl:Thing,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "N704SA"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RnfkvpM8C39O0jgavl9kaQ>,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "15/10/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24195
+    
+    
+Individual: <http://webprotege.stanford.edu/RLbCnwN1sLC1EVkdyPwrvP>
+
+    Annotations: 
+        rdfs:label "Boeing"
+    
+    Types: 
+        <http://webprotege.stanford.edu/Rpk5YiETnnlEtaOFLWd8ua>
+    
+    
+Individual: <http://webprotege.stanford.edu/R7r69tGGSG0IpH59BpRYFL3>
+
+    Annotations: 
+        rdfs:label "24019"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "21/01/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RDxvyXfRcnNLSiDwDTy28vJ>,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24019,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "VP-BGW"^^xsd:string,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/RfArpE43fYnlGZNJbDhwZf>
+
+    Annotations: 
+        rdfs:label "24061"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "D-ACGD"^^xsd:string,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24061,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "15/03/1989"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/R9atCQcysey5EJaFBqWNHmR>
+    
+    
+Individual: <http://webprotege.stanford.edu/RsaCooADo4dciUCuYLDyB9>
+
+    Annotations: 
+        rdfs:label "24158"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RBMZSTHXW6K8QjHLPbHBtnP>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "11/09/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24158,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "OO-CBA"^^xsd:string,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCN5q9t616wY7KZty1wkkoX>
+    
+    
+Individual: <http://webprotege.stanford.edu/RBk4k1iLZKPTodaOzVjJ27t>
+
+    Annotations: 
+        rdfs:label "KLM"
+    
+    
+Individual: <http://webprotege.stanford.edu/RZnGIx6ZAKtg5kwV2FuObd>
+
+    Annotations: 
+        rdfs:label "24001"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "24/08/1989"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24001,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RBk4k1iLZKPTodaOzVjJ27t>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "PH-BFD"^^xsd:string,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/RClj3x7ldcVxPYLdgkoq3lX>
+
+    Annotations: 
+        rdfs:label "24018"
+    
+    Types: 
+        owl:Thing,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24018,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "5N-MBB"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RyR6XbBOqtsP7kdQO27l4j>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "21/01/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>
+    
+    
+Individual: <http://webprotege.stanford.edu/R7cDI9xobmr9AN6oXSoTtcL>
+
+    Annotations: 
+        rdfs:label "24065"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24065,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "PK-LHG"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RDX5Dqa3YGTWBxNiD1VENYq>,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "18/11/1989"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/R9ZxKehVXNCk5myU0zRD2AG>
+
+    Annotations: 
+        rdfs:label "24177"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "N792CK"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCT6W9NmZG3tydhIriiaiO8>,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "11/08/1988"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24177,
+        owl:Thing
+    
+    
+Individual: <http://webprotege.stanford.edu/R80lGkCz6rqhnfJiryiM25s>
+
+    Annotations: 
+        rdfs:label "24050"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLH"^^xsd:string,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "08/03/1990"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RCnrxdcjF4eVzVOSU3KEMLz>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24050,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>
+    
+    
+Individual: <http://webprotege.stanford.edu/RDTR0pMPIIfLfiUlAzSTKDx>
+
+    Annotations: 
+        rdfs:label "Pullmantur Air"
+    
+    
+Individual: <http://webprotege.stanford.edu/R9eRKyg4e9S29JBBcIZEWaB>
+
+    Annotations: 
+        rdfs:label "747-256B(SCD)"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24071"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>
+    
+    Facts:  
+     <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR>  "24071"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RklerhiXX1SaH5lBB0Aq5M>
+
+    Annotations: 
+        rdfs:label "747-406"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "23999"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24000"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24001"^^xsd:string,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "23982"^^xsd:string
+    
+    
+Individual: <http://webprotege.stanford.edu/RCg15M1wR8e9wWFCzAPISKh>
+
+    Annotations: 
+        rdfs:label "24155"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "28/06/1991"^^xsd:string,
+        owl:Thing,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/R8vjjyB8VMCDnxtPw8MQA8f>,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "F-GEXB"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24155
+    
+    
+Individual: <http://webprotege.stanford.edu/RI1pKlGqQ7chmvbVKE5EwP>
+
+    Annotations: 
+        rdfs:label "Airbus"
+    
+    Types: 
+        <http://webprotege.stanford.edu/Rpk5YiETnnlEtaOFLWd8ua>
+    
+    
+Individual: <http://webprotege.stanford.edu/RxaKBzEdqHe57fgLzgPmTQ>
+
+    Annotations: 
+        rdfs:label "Iran Air"
+    
+    
+Individual: <http://webprotege.stanford.edu/RDifApysQmrFGvtxrLKL3rh>
+
+    Annotations: 
+        rdfs:label "Evergreen Int"
+    
+    
+Individual: <http://webprotege.stanford.edu/RDXAyp6IlNqGVCKR5UeHe6C>
+
+    Annotations: 
+        rdfs:label "24051"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "G-BNLI"^^xsd:string,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "04/04/1990"^^xsd:string,
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RCnklgKzO2SOf66aMS2YyH>,
+        owl:Thing,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24051
+    
+    
+Individual: <http://webprotege.stanford.edu/R95oedFwS4Pibpdarp1ry8o>
+
+    Annotations: 
+        rdfs:label "24066"
+    
+    Types: 
+        <http://webprotege.stanford.edu/RCTZvF8N75PXNG5OCq3ZYN6> value <http://webprotege.stanford.edu/RDv2Qp2fqkOqCwU0wlGgpuF>,
+        owl:Thing,
+        <http://webprotege.stanford.edu/RnYCtygi2XI7tUqDTWFDA5> value "PH-MPS"^^xsd:string,
+        <http://webprotege.stanford.edu/R87YzuxsFBxdbiUr69GZ2QQ> value "11/05/1990"^^xsd:string,
+        <http://webprotege.stanford.edu/R8rqKdMznAF9ehrFG6oLZGl> value <http://webprotege.stanford.edu/RBbI35KBTjpl91qz6GHDgKW>,
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value 24066
+    
+    
+Individual: <http://webprotege.stanford.edu/RCN5q9t616wY7KZty1wkkoX>
+
+    Annotations: 
+        rdfs:label "Scrapped"
+    
+    
+Individual: <http://webprotege.stanford.edu/RwB3VxrvFe3ic1wB5fLNaG>
+
+    Annotations: 
+        rdfs:label "747-212F"
+    
+    Types: 
+        <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR> value "24177"^^xsd:string,
+        <http://webprotege.stanford.edu/RBfv1oxwVT9O2FB79Tfc4uc>
+    
+    Facts:  
+     <http://webprotege.stanford.edu/R8OSnqJGh6U4TJOPPHnLdlR>  "24177"^^xsd:string
+    
+    

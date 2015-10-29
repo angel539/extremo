@@ -1,0 +1,8 @@
+package metardf.core;
+
+public enum SearchType {
+	ONLY_LITERALS,
+	PARTIAL_LITERALS,
+	ONLY_LITERALS_AND_SYNONYMS,
+	PARTIAL_LITERALS_AND_SYNONYMS
+}

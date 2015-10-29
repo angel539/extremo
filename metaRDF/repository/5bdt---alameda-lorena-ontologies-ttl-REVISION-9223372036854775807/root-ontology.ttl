@@ -1,0 +1,397 @@
+@prefix : <http://webprotege.stanford.edu/project/DtVCb1gx6HExk6F482Lo6e#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://webprotege.stanford.edu/project/DtVCb1gx6HExk6F482Lo6e> .
+
+<http://webprotege.stanford.edu/project/DtVCb1gx6HExk6F482Lo6e> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://purl.org/dc/elements/1.1/description
+
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+
+###  http://webprotege.stanford.edu/RB3XZ33VF7r8klMbYC38yWi
+
+<http://webprotege.stanford.edu/RB3XZ33VF7r8klMbYC38yWi> rdf:type owl:AnnotationProperty ;
+                                                         
+                                                         rdfs:label "descricao" .
+
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
+
+<http://www.geneontology.org/formats/oboInOwl#hasExactSynonym> rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym
+
+<http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://webprotege.stanford.edu/R74l8jKaQ10TZE8Rlzuqvof
+
+<http://webprotege.stanford.edu/R74l8jKaQ10TZE8Rlzuqvof> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Túnel" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4> .
+
+
+
+###  http://webprotege.stanford.edu/R7lcHR04WhzCyyiOxGXBQDY
+
+<http://webprotege.stanford.edu/R7lcHR04WhzCyyiOxGXBQDY> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Posto de Serviços" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Combustível"^^xsd:string ,
+                                                                                                                          "Conveniencia"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/R860ZpXfoUsgfvuenim9Nc4
+
+<http://webprotege.stanford.edu/R860ZpXfoUsgfvuenim9Nc4> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Viaduto" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4> .
+
+
+
+###  http://webprotege.stanford.edu/R8WKfDYJOw6mRawWCLTHADd
+
+<http://webprotege.stanford.edu/R8WKfDYJOw6mRawWCLTHADd> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Estacionamento" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Garagem"^^xsd:string ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasExactSynonym> "Park"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/R8wlS3wqvOdycbjpL4umYuM
+
+<http://webprotege.stanford.edu/R8wlS3wqvOdycbjpL4umYuM> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Rua" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4> .
+
+
+
+###  http://webprotege.stanford.edu/R8xU3ol0saqWyzOhnBuHyqK
+
+<http://webprotege.stanford.edu/R8xU3ol0saqWyzOhnBuHyqK> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Edifício Residencial" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RDruh8dJujNw7QKivgOD7D1> .
+
+
+
+###  http://webprotege.stanford.edu/R9gM57SWMsnxsspMx1f2EQG
+
+<http://webprotege.stanford.edu/R9gM57SWMsnxsspMx1f2EQG> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Esquina" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4> .
+
+
+
+###  http://webprotege.stanford.edu/R9qNttAeCvSuDbYVJpGgFNu
+
+<http://webprotege.stanford.edu/R9qNttAeCvSuDbYVJpGgFNu> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Alameda" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4> .
+
+
+
+###  http://webprotege.stanford.edu/RB7nZurxwc4ZmAVMkvTWwo5
+
+<http://webprotege.stanford.edu/RB7nZurxwc4ZmAVMkvTWwo5> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Avenida" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4> ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasExactSynonym> "Av"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RBYoRd7Uxt6cf2UhzmDjase
+
+<http://webprotege.stanford.edu/RBYoRd7Uxt6cf2UhzmDjase> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Corredor de Ônibus" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4> .
+
+
+
+###  http://webprotege.stanford.edu/RBc1SXWKuLmehGeejC8ImSF
+
+<http://webprotege.stanford.edu/RBc1SXWKuLmehGeejC8ImSF> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Metrô" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Transporte"^^xsd:string ,
+                                                                                                                          "Trem"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RBoc5chkEU179HNKsbf65Gq
+
+<http://webprotege.stanford.edu/RBoc5chkEU179HNKsbf65Gq> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Teatro" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Auditório"^^xsd:string ,
+                                                                                                                          "Cultura"^^xsd:string ,
+                                                                                                                          "Show"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RBsXIynx4LixBI845Xag5KA
+
+<http://webprotege.stanford.edu/RBsXIynx4LixBI845Xag5KA> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Hospital" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Emergência"^^xsd:string ,
+                                                                                                                          "Saúde"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RCF1CiHtQR5AsEvmwNMwYiO
+
+<http://webprotege.stanford.edu/RCF1CiHtQR5AsEvmwNMwYiO> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Comercial" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Compra"^^xsd:string ,
+                                                                                                                          "Loja"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn
+
+<http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Pontos de Interesse" ;
+                                                         
+                                                         rdfs:subClassOf owl:Thing ;
+                                                         
+                                                         <http://purl.org/dc/elements/1.1/description> "pontos de serviços e utilidades públicas" .
+
+
+
+###  http://webprotege.stanford.edu/RCpoZPVJ0QFXdHd9RqkmDTQ
+
+<http://webprotege.stanford.edu/RCpoZPVJ0QFXdHd9RqkmDTQ> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Ponto de Táxi" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Transporte"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RCqwIEVIwfcAeGu7U8p75lg
+
+<http://webprotege.stanford.edu/RCqwIEVIwfcAeGu7U8p75lg> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Igreja" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Culto"^^xsd:string ,
+                                                                                                                          "Religião"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RDGBnf67cV47j5bTmCA27VJ
+
+<http://webprotege.stanford.edu/RDGBnf67cV47j5bTmCA27VJ> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Ponto de Ônibus" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Transporte"^^xsd:string ,
+                                                                                                                          "Transporte Público"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RDRZzWQv97l6oslbeatlIKl
+
+<http://webprotege.stanford.edu/RDRZzWQv97l6oslbeatlIKl> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Ciclovia" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4> .
+
+
+
+###  http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4
+
+<http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Tipos de Vias" ;
+                                                         
+                                                         rdfs:subClassOf owl:Thing ;
+                                                         
+                                                         <http://purl.org/dc/elements/1.1/description> "Meios de locomoção" .
+
+
+
+###  http://webprotege.stanford.edu/RDfCk72lvt6aNbb3jZrviv
+
+<http://webprotege.stanford.edu/RDfCk72lvt6aNbb3jZrviv> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Rotatória" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4> .
+
+
+
+###  http://webprotege.stanford.edu/RDp1KQu0kFYrA5vTEUXOFDD
+
+<http://webprotege.stanford.edu/RDp1KQu0kFYrA5vTEUXOFDD> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Rodovia" ;
+                                                         
+                                                         rdfs:subClassOf <http://webprotege.stanford.edu/RDTJ9ddR1OnuNPs6eSHIBW4> ;
+                                                         
+                                                         <http://www.geneontology.org/formats/oboInOwl#hasExactSynonym> "Rod"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RDruh8dJujNw7QKivgOD7D1
+
+<http://webprotege.stanford.edu/RDruh8dJujNw7QKivgOD7D1> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:label "Localidade" ;
+                                                         
+                                                         rdfs:subClassOf owl:Thing ;
+                                                         
+                                                         <http://purl.org/dc/elements/1.1/description> "construção" .
+
+
+
+###  http://webprotege.stanford.edu/RR7sKgRsbrwgDsjzon1cPX
+
+<http://webprotege.stanford.edu/RR7sKgRsbrwgDsjzon1cPX> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Escola" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                        
+                                                        <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Educação"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RX0KYL4zj7Y03d026TsItD
+
+<http://webprotege.stanford.edu/RX0KYL4zj7Y03d026TsItD> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Bicicletário" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                        
+                                                        <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Bicicleta"^^xsd:string ,
+                                                                                                                         "Transporte"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RX1zHUQVMIQaDjFBe7PjX3
+
+<http://webprotege.stanford.edu/RX1zHUQVMIQaDjFBe7PjX3> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Edifício Comercial" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/RDruh8dJujNw7QKivgOD7D1> ;
+                                                        
+                                                        <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Comércio"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RlWxgoTrv1PunsPkVwKFwQ
+
+<http://webprotege.stanford.edu/RlWxgoTrv1PunsPkVwKFwQ> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Casa" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/RDruh8dJujNw7QKivgOD7D1> ;
+                                                        
+                                                        <http://www.geneontology.org/formats/oboInOwl#hasExactSynonym> "Imóvel"^^xsd:string ,
+                                                                                                                       "Moradia"^^xsd:string ,
+                                                                                                                       "Residência"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RqXEKT7aqpfgrQMfcJ0i8u
+
+<http://webprotege.stanford.edu/RqXEKT7aqpfgrQMfcJ0i8u> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Crechê" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> ;
+                                                        
+                                                        <http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym> "Educação"^^xsd:string .
+
+
+
+###  http://webprotege.stanford.edu/RsK3LmqlLnGoQF2b69neSU
+
+<http://webprotege.stanford.edu/RsK3LmqlLnGoQF2b69neSU> rdf:type owl:Class ;
+                                                        
+                                                        rdfs:label "Parque" ;
+                                                        
+                                                        rdfs:subClassOf <http://webprotege.stanford.edu/RCYWdsg3Yutz21DSFm8HgIn> .
+
+
+
+
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+
