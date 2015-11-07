@@ -9,10 +9,13 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
+import metardf.model.semantics.Entity;
+import metardf.model.semantics.SemanticsFactory;
 
 public class EcoreUtils {
 	private Resource resource = null;
@@ -33,9 +36,6 @@ public class EcoreUtils {
 			EObject object = ecoreAll.next();
 			if(object instanceof EClass){
 				classes.add((EClass) object);
-				//System.out.print(((EClass) object).getName());
-				//EClass eclass = (EClass) object;
-				//System.out.println(eclass.getName());
 			}
 		}
 		
@@ -48,5 +48,9 @@ public class EcoreUtils {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void saveXMI(){
+		
 	}
 }

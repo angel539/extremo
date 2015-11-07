@@ -158,11 +158,12 @@
          </view>
       </perspectiveExtension>
    </extension>
-   <extension
-         point="org.eclipse.help.contexts">
-      <contexts
-            file="contexts.xml">
-      </contexts>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Semantics -->
+      <package
+            uri="platform:/resource/metaRDF/model/Semantics.ecore"
+            class="metardf.model.semantics.SemanticsPackage"
+            genModel="model/Semantics.genmodel"/>
    </extension>
 
 </plugin>

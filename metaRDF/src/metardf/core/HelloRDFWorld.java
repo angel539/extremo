@@ -9,20 +9,29 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import metardf.utils.EcoreUtils;
+import metardf.utils.Wordnet;
 
 public class HelloRDFWorld {
 	public static void main(String[] arguments){	
 		org.apache.log4j.Logger.getRootLogger().setLevel(org.apache.log4j.Level.OFF);
 		
 		EcoreUtils utils = new EcoreUtils();
-		utils.create(new File("/Users/angel/Desktop/workspace/metaRDF/model/Family.ecore"));
+		utils.create(new File("/Users/angel/git/metaRDF/metaRDF/model/Empty.ecore"));
 		List<EClass> classes = utils.getEClasses();
 		
-		SparqQLGenerator sparq = new SparqQLGenerator();
+		RDFAssistant sparq = new RDFAssistant();
 		
 		for(EClass clazz : classes){
-			List<Resource> candidates = sparq.getAttributes(clazz.getName());
-			
+			List<Resource> candidates = null;
+			//List<Resource> candidates = sparq.getProperties(clazz.getName());
+			Wordnet wordnet = new Wordnet();
+			List<List<String>> proposals = wordnet.getSynonymsProposal(clazz.getName());
+			for(List<String> proposal : proposals){
+				System.out.println(">>>");
+				for(String prop : proposal){
+					System.out.println(">>" + prop);
+				}
+			}
 			if(candidates!=null && candidates.size()>0){
 				for(Resource candidate : candidates){
 					EAttribute newattr = EcoreFactory.eINSTANCE.createEAttribute();
