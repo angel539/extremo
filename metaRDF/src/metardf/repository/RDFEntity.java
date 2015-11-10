@@ -1,4 +1,4 @@
-package metardf.core;
+package metardf.repository;
 
 public class RDFEntity {
 	String URI;

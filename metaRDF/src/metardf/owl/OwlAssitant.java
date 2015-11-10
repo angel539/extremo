@@ -1,4 +1,4 @@
-package metardf.core;
+package metardf.owl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,18 +31,14 @@ import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
 
-import metardf.model.semantics.Descriptor;
-import metardf.model.semantics.Entity;
-import metardf.model.semantics.Property;
-import metardf.model.semantics.SemanticDescription;
-import metardf.model.semantics.SemanticsFactory;
-import metardf.model.semantics.SemanticsPackage;
+import metardf.core.DataProperty;
+import metardf.core.IFormatAssistant;
+import metardf.core.ObjectProperty;
+import metardf.core.Property;
 
 public class OwlAssitant implements IFormatAssistant{
 	public IRI owl_iri = null;
 	public File owl_file = null;
-	public SemanticsFactory modelfactory = null;
-	public SemanticDescription model = null;
 	public String path = null;
 
 	OWLDataFactory factory = OWLManager.getOWLDataFactory();
@@ -95,11 +91,6 @@ public class OwlAssitant implements IFormatAssistant{
 	@Override
 	public void load(String path) {	
 		this.path = path;
-		
-		SemanticsPackage.eINSTANCE.eClass();
-		modelfactory = SemanticsFactory.eINSTANCE;
-		model = modelfactory.createSemanticDescription();
-		model.setURI(path);
 				
 		if((path.startsWith("http://"))||(path.startsWith("https://"))){
 			this.owl_iri = IRI.create(path);
@@ -123,7 +114,7 @@ public class OwlAssitant implements IFormatAssistant{
 		}
 	}
 
-	@Override
+	/*@Override
 	public List<Entity> getEntities() {
 		List<Entity> entities = new ArrayList<Entity>();
 		OWLOntologyManager m = create();
@@ -137,7 +128,7 @@ public class OwlAssitant implements IFormatAssistant{
 		
 		for(Descriptor descriptor : model.getDescriptors()) if(descriptor instanceof Entity) entities.add((Entity) descriptor);
 		return entities;
-	}
+	}*/
 
 	@Override
 	public void getProperties(Entity entity) {
@@ -249,7 +240,72 @@ public class OwlAssitant implements IFormatAssistant{
 	}
 
 	@Override
-	public boolean save() {
-		return SemanticsModelXMI.save(model);
+	public List<String> getClassesLike(String... names) {
+		List<String> classes = new ArrayList<String>();
+		OWLOntologyManager m = create();
+		if(ontology!=null){
+			for(OWLClass clazz : ontology.getClassesInSignature()){
+				for(String s : names){
+					if(clazz.toString().compareTo(s) == 0){
+						classes.add(clazz.toString());
+					}
+				}
+			}
+		}
+		
+		return classes;
+	}
+
+	@Override
+	public List<DataProperty> getDataProperties(String name, boolean supers, boolean equivs) {
+		List<DataProperty> properties = new ArrayList<DataProperty>();
+		
+		OWLReasonerConfiguration config = new SimpleConfiguration();
+		OWLReasoner reasoner = reasonerFactory.createReasoner(ontology, config);
+		for (OWLObjectPropertyExpression prop : ontology.getObjectPropertiesInSignature()) {
+            OWLClassExpression restriction = factory.getOWLObjectSomeValuesFrom(prop, factory.getOWLThing());
+            OWLClassExpression intersection = factory.getOWLObjectIntersectionOf(clazz, factory.getOWLObjectComplementOf(restriction));
+            boolean sat = !reasoner.isSatisfiable(intersection);
+            if (sat) {
+            	//properties.add(prop.toString());
+            }
+        }
+		return properties;
+	}
+
+	@Override
+	public List<ObjectProperty> getObjectProperties(String name, boolean supers, boolean equivs) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> getRelatedClasses(String name, boolean supers, boolean equivs) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> getSuper(String name, boolean direct) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> getSub(String entity, boolean direct) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ObjectProperty> getPath(String entityA, String entityB, boolean indirect) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ObjectProperty getInverseProperty(String cl, String property) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

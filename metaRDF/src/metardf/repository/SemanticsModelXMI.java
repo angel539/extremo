@@ -1,4 +1,4 @@
-package metardf.core;
+package metardf.repository;
 
 import java.io.IOException;
 import java.util.Collections;
