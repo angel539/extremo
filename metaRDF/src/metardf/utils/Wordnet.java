@@ -30,7 +30,7 @@ public class Wordnet{
 	   File f = new File("/Users/angel/Wordnet/dict");
 	   
 	   if(!f.exists()){
-		   Status status = new Status(IStatus.ERROR, "metabest", 0, "WordNet error", null);
+		   Status status = new Status(IStatus.ERROR, "metardf", 0, "WordNet error", null);
 		   ErrorDialog.openError(null, "WordNet error", "The WordNet location preference is not valid", status);
 	   }
 	   

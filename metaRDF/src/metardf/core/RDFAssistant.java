@@ -1,25 +1,14 @@
 package metardf.core;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-
-import org.apache.jena.query.QuerySolution;
-import org.apache.jena.query.ResultSet;
-import org.apache.jena.rdf.model.Literal;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
-
-import metardf.model.semantics.Descriptor;
-import metardf.model.semantics.Entity;
-import metardf.model.semantics.Property;
+import metardf.model.DataProperty;
+import metardf.model.ObjectProperty;
 
 public class RDFAssistant implements IFormatAssistant {
 	public RDFAssistant(){
 		super();	
 	}
-	
+	/*
 	@Override
 	public void load(String IRI) {
 		// TODO Auto-generated method stub
@@ -124,5 +113,66 @@ public class RDFAssistant implements IFormatAssistant {
 	public boolean save() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	*/
+
+	@Override
+	public void load(String path) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<String> getClassesLike(String... names) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<DataProperty> getDataProperties(String name, boolean supers, boolean equivs) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ObjectProperty> getObjectProperties(String name, boolean supers, boolean equivs) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> getSiblings(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> getRelatedClasses(String name, boolean supers, boolean equivs) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> getSuper(String name, boolean direct) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> getSub(String name, boolean direct) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> getPath(String entityA, String entityB, boolean indirect) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ObjectProperty getInverseProperty(String cl, String property) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
