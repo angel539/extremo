@@ -165,7 +165,7 @@ public class RDFAssistant implements IFormatAssistant {
 	}
 
 	@Override
-	public List<String> getPath(String entityA, String entityB, boolean indirect) {
+	public List<ObjectProperty> getPath(String entityA, String entityB) {
 		// TODO Auto-generated method stub
 		return null;
 	}

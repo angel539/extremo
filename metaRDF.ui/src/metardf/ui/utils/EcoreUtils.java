@@ -1,4 +1,4 @@
-package metardf.utils;
+package metardf.ui.utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
+
 
 public class EcoreUtils {
 	private Resource resource = null;

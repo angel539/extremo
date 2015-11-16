@@ -4,10 +4,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
-
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
 import org.semanticweb.owlapi.io.StreamDocumentTarget;
@@ -31,7 +34,7 @@ import metardf.model.Datatype;
 import metardf.model.ObjectProperty;
 import metardf.utils.Wordnet;
 
-public class OwlAssitant implements IFormatAssistant{
+public class OwlAssistant implements IFormatAssistant{
 	public IRI owl_iri = null;
 	public File owl_file = null;
 	public String path = null;
@@ -39,9 +42,11 @@ public class OwlAssitant implements IFormatAssistant{
 	OWLDataFactory factory = OWLManager.getOWLDataFactory();
 	OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
 	
+	
+	
 	OWLOntology ontology = null;
 
-	public OwlAssitant() {
+	public OwlAssistant() {
 		super();
 	}
 	
@@ -482,34 +487,6 @@ public class OwlAssitant implements IFormatAssistant{
 	}
 
 	@Override
-	public List<String> getPath(String classA, String classB, boolean indirect) {
-		List<String> path = new ArrayList<String>();
-		
-		if(classA.compareTo(classB) == 0) return path;
-		
-		IRI iriA = IRI.create(classA);
-		IRI iriB = IRI.create(classB);
-		
-		if((!ontology.containsClassInSignature(iriA))||(!ontology.containsClassInSignature(iriB))) return null;
-		
-		List<ObjectProperty> objectPropertiesA = getObjectProperties(classA, true, true);
-		if(!indirect){
-			//List<String> objectPropertiesA = getObjectProperties(classA, true, true);
-			HashSet<ObjectProperty> aux = new HashSet<ObjectProperty>(objectPropertiesA);
-			objectPropertiesA.clear();
-			objectPropertiesA.addAll(aux);
-			//for(ObjectProperty object : objectPropertiesA) if(object.compareTo(classB) == 0) path.add(object);
-			
-			return path;
-		}
-		else{
-			
-		}
-		
-		return path;
-	}
-
-	@Override
 	public ObjectProperty getInverseProperty(String cl, String property) {
 		// TODO Auto-generated method stub
 		return null;
@@ -528,5 +505,63 @@ public class OwlAssitant implements IFormatAssistant{
 		siblings.addAll(aux);
 		
 		return siblings;
+	}
+	
+	@Override
+	public List<ObjectProperty> getPath(String start, String finish) {
+		List<ObjectProperty> path = new LinkedList<ObjectProperty>();
+		
+		if(start.compareTo(finish) == 0) return path;
+		
+		IRI iriA = IRI.create(start);
+		IRI iriB = IRI.create(finish);
+		
+		if((!ontology.containsClassInSignature(iriA))||(!ontology.containsClassInSignature(iriB))) return null;
+		
+		List<ObjectProperty> objectPropertiesA = getObjectProperties(start, true, true);
+		
+		for(ObjectProperty property : objectPropertiesA){
+			if(property.getURI().compareTo(iriB.toString())==0){
+				path.clear();
+				path.add(property);
+				return path;
+			}
+		}
+		
+		Map<String, Boolean> visited = new HashMap<String, Boolean>();
+		Map<String, String> prev = new HashMap<String, String>();
+		
+	    Queue<String> q = new LinkedList<String>();
+	    String current = start;
+	    q.add(current);
+	    visited.put(current, true);
+	    
+	    while(!q.isEmpty()){
+	        current = q.remove();
+	        if (current.equals(finish)){
+	            break;
+	        }
+	        else{
+	            for(ObjectProperty node : getObjectProperties(current, true, true)){
+	            	for(String range : node.getRanges()){
+	            		if(!visited.containsKey(range)){
+	            			q.add(range);
+		                    visited.put(range, true);
+		                    prev.put(range, current);
+	            		}
+	            	}
+	            }
+	        }
+	    }
+	    if (!current.equals(finish)){
+	        System.out.println("can't reach destination");
+	    }
+	    
+	    //for(String node = finish; node != null; node = prev.get(node)) {
+	        //path.add(node);
+	    //}
+	    
+	    //path.reverse();
+		return path;
 	}
 }

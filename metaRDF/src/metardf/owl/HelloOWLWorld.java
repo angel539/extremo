@@ -5,7 +5,7 @@ import java.util.List;
 public class HelloOWLWorld {
 	public static void main(String[] arguments){
 		try{          
-            OwlAssitant assistant = new OwlAssitant();
+            OwlAssistant assistant = new OwlAssistant();
             assistant.load("http://purl.org/cerif/frapo/");
             //account IS DEFINED by the ontology
             //provider IS NOT defined by the ontology but is synonym
@@ -25,6 +25,7 @@ public class HelloOWLWorld {
             	System.out.println("data prop " + assistant.getDataProperties(result, false, false));
             	System.out.println("obj prop de supers " + assistant.getObjectProperties(result, true, false));
             	System.out.println("data prop de supers " + assistant.getDataProperties(result, true, false));
+            	System.out.println("path " + assistant.getPath("http://purl.org/cerif/frapo/Supplier", "http://purl.org/cerif/frapo/Funding"));
             	System.out.println("\n\n");
             }
             
@@ -35,30 +36,4 @@ public class HelloOWLWorld {
         	System.out.println("Params are needed");
         }
 	}
-	
-	/*public void walkRepository(String repository){
-		File master = new File(repository);
-		if(master.exists()){
-			File[] files = master.listFiles();
-			if(files == null) return;
-			
-			for(File file : files){
-				if(file.isDirectory()){
-					walkRepository(file.getAbsolutePath());
-				}
-				else{
-					String ext = FilenameUtils.getExtension(file.getAbsoluteFile().getAbsolutePath());
-					if(ext.compareTo("owl") == 0){
-						OwlAssitant owl = new OwlAssitant();
-						try {
-							owl.load(file.getAbsoluteFile().getAbsolutePath());
-							owl.showEntities();
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-		}
-	}*/
 }

@@ -16,8 +16,6 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.ErrorDialog;
-
 import edu.smu.tspell.wordnet.Synset;
 import edu.smu.tspell.wordnet.SynsetType;
 import edu.smu.tspell.wordnet.WordNetDatabase;
@@ -31,7 +29,7 @@ public class Wordnet{
 	   
 	   if(!f.exists()){
 		   Status status = new Status(IStatus.ERROR, "metardf", 0, "WordNet error", null);
-		   ErrorDialog.openError(null, "WordNet error", "The WordNet location preference is not valid", status);
+		   //ErrorDialog.openError(null, "WordNet error", "The WordNet location preference is not valid", status);
 	   }
 	   
 	   System.setProperty("wordnet.database.dir", "/Users/angel/Wordnet/dict");

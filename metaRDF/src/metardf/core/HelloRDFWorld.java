@@ -1,27 +1,16 @@
 package metardf.core;
-import java.io.File;
-import java.util.List;
-
-import org.apache.jena.rdf.model.Resource;
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.EcorePackage;
-
-import metardf.utils.EcoreUtils;
-import metardf.utils.Wordnet;
 
 public class HelloRDFWorld {
 	public static void main(String[] arguments){	
 		org.apache.log4j.Logger.getRootLogger().setLevel(org.apache.log4j.Level.OFF);
 		
-		EcoreUtils utils = new EcoreUtils();
-		utils.create(new File("/Users/angel/git/metaRDF/metaRDF/model/Empty.ecore"));
-		List<EClass> classes = utils.getEClasses();
+		//EcoreUtils utils = new EcoreUtils();
+		//utils.create(new File("/Users/angel/git/metaRDF/metaRDF/model/Empty.ecore"));
+		//List<EClass> classes = utils.getEClasses();
 		
-		RDFAssistant sparq = new RDFAssistant();
+		//RDFAssistant sparq = new RDFAssistant();
 		
-		for(EClass clazz : classes){
+		/*for(EClass clazz : classes){
 			List<Resource> candidates = null;
 			//List<Resource> candidates = sparq.getProperties(clazz.getName());
 			Wordnet wordnet = new Wordnet();
@@ -42,7 +31,7 @@ public class HelloRDFWorld {
 			}
 		}
 		
-		utils.save();
+		utils.save();*/
 	}
 }
 

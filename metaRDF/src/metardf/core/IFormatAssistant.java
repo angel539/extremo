@@ -14,6 +14,6 @@ public interface IFormatAssistant {
     public List<String> getRelatedClasses(String name, boolean supers, boolean equivs);
     public List<String> getSuper(String name, boolean direct);
     public List<String> getSub(String name, boolean direct);
-    public List<String> getPath(String entityA, String entityB, boolean indirect);
+    public List<ObjectProperty> getPath(String entityA, String entityB);
     public ObjectProperty getInverseProperty (String cl, String property);
 }
