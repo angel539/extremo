@@ -7,7 +7,8 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-Activator: metardf.Activator
-Require-Bundle: org.junit
+Require-Bundle: org.junit,
+ org.eclipse.m2e.core;bundle-version="1.6.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.log4j,
