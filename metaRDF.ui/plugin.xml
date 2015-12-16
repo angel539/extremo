@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="metaRDF.ui.actions" name="metaRDF.ui.actions" schema="schema/metaRDF.ui.actions.exsd"/>
 
    <extension
          point="org.eclipse.ui.views">
@@ -9,11 +10,18 @@
             id="metaRDF.ui">
       </category>
       <view
-            name="Entities"
-            icon="icons/sample.gif"
+            category="metaRDF.ui"
+            class="metardf.ui.views.RepositoryView"
+            icon="icons/site_element.gif"
+            id="metardf.ui.views.RepositoryView"
+            name="Repositories">
+      </view>
+      <view
             category="metaRDF.ui"
             class="metardf.ui.views.EntityView"
-            id="metardf.ui.views.EntityView">
+            icon="icons/hierarchy_co.gif"
+            id="metardf.ui.views.EntityView"
+            name="Entities">
       </view>
    </extension>
    <extension
@@ -27,12 +35,30 @@
                id="metardf.ui.views.EntityView">
          </view>
       </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="metardf.ui.views.RepositoryView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.ProblemView">
+         </view>
+      </perspectiveExtension>
    </extension>
    <extension
          point="org.eclipse.help.contexts">
       <contexts
             file="contexts.xml">
       </contexts>
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
    </extension>
 
 </plugin>

@@ -2,57 +2,62 @@ package metardf.ui.views;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.part.*;
-import org.eclipse.jface.viewers.*;
-import org.eclipse.jface.window.Window;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.jface.action.*;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.ui.*;
-import org.eclipse.swt.widgets.Menu;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
-import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.PlatformUI;
+//import org.eclipse.ui.part.DrillDownAdapter;
+import org.eclipse.ui.part.ViewPart;
 
-import metardf.owl.*;
-
-
-/**
- * This sample class demonstrates how to plug-in a new
- * workbench view. The view shows data obtained from the
- * model. The sample creates a dummy model on the fly,
- * but a real implementation would connect to the model
- * available either in this or another plug-in (e.g. the workspace).
- * The view is connected to the model using a content provider.
- * <p>
- * The view uses a label provider to define how model
- * objects should be presented in the view. Each
- * view can present the same model objects using
- * different labels and icons, if needed. Alternatively,
- * a single label provider can be shared between views
- * in order to ensure that objects of the same type are
- * presented in the same way everywhere.
- * <p>
- */
+import metaRDF.core.model.DataProperty;
+import metaRDF.core.model.ObjectProperty;
+import metaRDF.core.model.Property;
+import metaRDF.core.model.Repository;
+import metaRDF.core.model.Resource;
+import metaRDF.core.model.SemanticClass;
+import metaRDF.core.owl.OwlAssistant;
+import metaRDF.core.repository.MetaRDFRepositoryManager;
+import metardf.ui.Activator;
+import metardf.ui.extensions.ResourceViewAction;
 
 public class EntityView extends ViewPart {
-
-	/**
-	 * The ID of the view as specified by the extension.
-	 */
 	public static final String ID = "metardf.ui.views.EntityView";
-	
 	private List<String> entities = new ArrayList<String>();
 
 	private TreeViewer viewer;
-	private DrillDownAdapter drillDownAdapter;
-	private Action searchEntityAction;
-	private Action action2;
-	private Action doubleClickAction;
+
+	//private Action searchEntityAction;
+	private Action expandAction;
+	//private Action defineAction;
 	
 	private TreeParent invisibleRoot;
 	
@@ -60,9 +65,30 @@ public class EntityView extends ViewPart {
 		private String name;
 		private TreeParent parent;
 		
-		public TreeObject(String name) {
-			this.name = name;
+		public TreeObject(Object object) {
+			if(object instanceof DataProperty){
+				if(((DataProperty) object).isFromSuper()){
+					if(((DataProperty) object).getRange() == null) this.name = ((Property) object).getName() + " (super)";
+					else this.name = ((Property) object).getName() + " : " + ((DataProperty) object).getRange().toString() + " (super)";
+				}
+				else{
+					this.name = ((Property) object).getName();
+				}	
+			}else{
+				if(object instanceof ObjectProperty){
+					if(((ObjectProperty) object).isFromSuper()){
+						this.name = ((Property) object).getName() + " : " + ((ObjectProperty) object).getRanges() + " (super)";
+					}
+					else{
+						this.name = ((Property) object).getName() + " : " + ((ObjectProperty) object).getRanges();
+					}	
+				}
+				else{
+					this.name = object.toString();
+				}
+			}		
 		}
+		
 		public String getName() {
 			return name;
 		}
@@ -81,10 +107,10 @@ public class EntityView extends ViewPart {
 	}
 	
 	class TreeParent extends TreeObject {
-		private ArrayList children;
+		private ArrayList<TreeObject> children;
 		public TreeParent(String name) {
 			super(name);
-			children = new ArrayList();
+			children = new ArrayList<TreeObject>();
 		}
 		public void addChild(TreeObject child) {
 			children.add(child);
@@ -102,17 +128,90 @@ public class EntityView extends ViewPart {
 		}
 	}
 	
-	class EntityParent extends TreeParent{
-		public EntityParent(String name) {
+	class FolderParent extends TreeParent{
+		public FolderParent(String name) {
 			super(name);
+		}	
+	}
+	
+	class EntityParent extends TreeParent{
+		SemanticClass semanticclass;
+		
+		public SemanticClass getSemanticclass() {
+			return semanticclass;
+		}
+
+		public void setSemanticclass(SemanticClass semanticclass) {
+			this.semanticclass = semanticclass;
+		}
+
+		public EntityParent(SemanticClass semanticclass) {
+			super(semanticclass.getName());
+			this.semanticclass = semanticclass;
+		}
+		
+		public void drawSuperClasses(){
+			FolderParent supersChild = new FolderParent("supers"  + " (" + semanticclass.getSuperclasses().size() + ")");
+			
+			for(SemanticClass superClass : semanticclass.getSuperclasses()){
+				EntityParent entitySuper;
+				if((superClass.getLabel()==null)||(superClass.getLabel().compareTo("")==0)) entitySuper = new EntityParent(superClass);
+				else entitySuper = new EntityParent(superClass);
+				supersChild.addChild(entitySuper);
+			}
+			
+			this.addChild(supersChild);
+		}
+		public void drawSubclasses(){
+			FolderParent subsChild = new FolderParent("subs"  + " (" + semanticclass.getSubclasses().size() + ")");
+			
+			for(SemanticClass subClass : semanticclass.getSubclasses()){
+				EntityParent entitySuper;
+				if((subClass.getLabel()==null)||(subClass.getLabel().compareTo("")==0)) entitySuper = new EntityParent(subClass);
+				else entitySuper = new EntityParent(subClass);
+				subsChild.addChild(entitySuper);
+			}
+			
+			this.addChild(subsChild);
+		}
+		public void drawReferences(){
+			FolderParent referencesChild = new FolderParent("references" + " (" + semanticclass.getReferences().size() + ")");
+			
+			for(ObjectProperty reference : semanticclass.getReferences()){
+				String name = "";
+				
+				if(reference.isFromSuper()) name = reference.getName();
+				else name = reference.getName() + " (super)";
+				
+				PropertyParent entitySuper = new PropertyParent(name, reference.getURI(), reference.isFromSuper());
+				referencesChild.addChild(entitySuper);
+			}
+			
+			this.addChild(referencesChild);
+		}
+		public void drawProperties(){
+			FolderParent referencesChild = new FolderParent("attributes" + " (" + semanticclass.getProperties().size() + ")");
+			
+			for(DataProperty attribute : semanticclass.getProperties()){
+				TreeObject entitySuper = new TreeObject(attribute);
+				referencesChild.addChild(entitySuper);
+			}
+			
+			this.addChild(referencesChild);
 		}
 	}
 
-	class ViewContentProvider implements IStructuredContentProvider, 
-										   ITreeContentProvider {
-		//IR
-		//List<String> entities = new ArrayList<String>();
+	class PropertyParent extends TreeParent {
+		boolean isFromSuper = false;
 		
+		public PropertyParent(String name, String uri, boolean isFromSuper) {
+			super(name);
+			this.isFromSuper = isFromSuper;
+		}	
+	}
+	
+	class ViewContentProvider implements IStructuredContentProvider, 
+										   ITreeContentProvider {	
 		ViewContentProvider(){
 			super();
 		}
@@ -146,184 +245,235 @@ public class EntityView extends ViewPart {
 				return ((TreeParent)parent).hasChildren();
 			return false;
 		}
-/*
- * We will set up a dummy model to initialize tree heararchy.
- * In a real code, you will connect to a real model and
- * expose its hierarchy.
- */
 		private void initialize() {
-			//TreeParent root = new TreeParent("Entities");
-			
-			//root.addChild(p2);
-			/*for(String entity : entities){
-				TreeParent parent = new TreeParent(entity);
-				root.addChild(parent);
-			}*/
-			
-			//TreeObject object = new TreeObject(entity);
-			//TreeObject to1 = new TreeObject("Leaf 1");
-			//TreeObject to2 = new TreeObject("Leaf 2");
-			//TreeObject to3 = new TreeObject("Leaf 3");
-			
-			//p1.addChild(to1);
-			//p1.addChild(to2);
-			//p1.addChild(to3);
-			
-			//TreeObject to4 = new TreeObject("Leaf 4");
-			//TreeParent p2 = new TreeParent("Parent 2");
-			//p2.addChild(to4);
-			
-			//TreeParent root = new TreeParent("Root");
-			//root.addChild(p1);
-			//root.addChild(p2);
-			
 			invisibleRoot = new TreeParent("");
-			//invisibleRoot.addChild(root);
 		}
 	}
+	
 	class ViewLabelProvider extends LabelProvider {
-
 		public String getText(Object obj) {
 			return obj.toString();
 		}
 		public Image getImage(Object obj) {
 			String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
-			if (obj instanceof TreeParent)
-			   imageKey = ISharedImages.IMG_OBJ_FOLDER;
+			if(obj instanceof PropertyParent) return Activator.getImageDescriptor("icons/method.png").createImage();
+			if(obj instanceof EntityParent) return Activator.getImageDescriptor("icons/class_obj.png").createImage();
+			if(obj instanceof FolderParent) return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
+			if(obj instanceof TreeObject) return Activator.getImageDescriptor("icons/attribute.png").createImage();
+			
 			return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 		}
 	}
+	
 	class NameSorter extends ViewerSorter {
 	}
 
-	/**
-	 * The constructor.
-	 */
 	public EntityView() {
 	}
 
-	/**
-	 * This is a callback that will allow us
-	 * to create the viewer and initialize it.
-	 */
 	public void createPartControl(Composite parent) {
 		entities.addAll(Arrays.asList());
 		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		drillDownAdapter = new DrillDownAdapter(viewer);
-		
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
-		//viewer.setInput(entities);
-
-		// Create the help context id for the viewer's control
+		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "metaRDF.ui.viewer");
 		getSite().setSelectionProvider(viewer);
-		makeActions();
-		hookContextMenu();
-		hookDoubleClickAction();
-		contributeToActionBars();
+		invokeActions();
+		//hookContextMenu();
+		//hookDoubleClickAction();
+		//contributeToActionBars();
 	}
-
-	private void hookContextMenu() {
+	
+	/*private void hookContextMenu() {
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
-		menuMgr.setRemoveAllWhenShown(true);
-		menuMgr.addMenuListener(new IMenuListener() {
-			public void menuAboutToShow(IMenuManager manager) {
-				EntityView.this.fillContextMenu(manager);
-			}
-		});
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
-	}
+						menuMgr.setRemoveAllWhenShown(true);
+						menuMgr.addMenuListener(new IMenuListener() {
+							public void menuAboutToShow(IMenuManager manager) {
+								manager.add(action);
+							}
+						});
+						Menu menu = menuMgr.createContextMenu(viewer.getControl());
+						viewer.getControl().setMenu(menu);
+						getSite().registerContextMenu(menuMgr, viewer);
+	}*/
 
-	private void contributeToActionBars() {
+	/*private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
 		fillLocalPullDown(bars.getMenuManager());
 		fillLocalToolBar(bars.getToolBarManager());
-	}
+	}*/
 
-	private void fillLocalPullDown(IMenuManager manager) {
+	/*private void fillLocalPullDown(IMenuManager manager) {
 		manager.add(searchEntityAction);
-		manager.add(new Separator());
-		manager.add(action2);
 	}
 
 	private void fillContextMenu(IMenuManager manager) {
-		manager.add(searchEntityAction);
-		manager.add(action2);
-		manager.add(new Separator());
-		drillDownAdapter.addNavigationActions(manager);
-		// Other plug-ins can contribute there actions here
-		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+		manager.add(defineAction);
 	}
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(searchEntityAction);
-		manager.add(action2);
-		manager.add(new Separator());
-		drillDownAdapter.addNavigationActions(manager);
-	}
+	}*/
 
-	private void makeActions() {
-		searchEntityAction = new Action() {
-			public void run() {
-				OwlAssistant assistant = new OwlAssistant();
-				assistant.load("http://purl.org/cerif/frapo/");
+	private void invokeActions() {
+		IExtensionRegistry registry = Platform.getExtensionRegistry();
+		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.EXTENSIONS_ID);
+		
+		for(IConfigurationElement extension : extensions){
+			ResourceViewAction action;
+			try{
+				action = (ResourceViewAction) extension.createExecutableExtension("class");
+				action.setText(extension.getAttribute("name"));
+				action.setToolTipText(extension.getAttribute("description"));
+				action.setView(this);
 				
-				InputDialog inputDialog = new InputDialog(null, "Entity creation", "Enter a new entity", "", null);
-				if (inputDialog.open() == Window.OK){
-					String candidate = inputDialog.getValue();
+				String namespace = extension.getDeclaringExtension().getNamespaceIdentifier();
+				
+				ImageDescriptor descriptor = null;
+				while((descriptor == null) && (!namespace.isEmpty())){
+					descriptor = Activator.getImageDescriptor(namespace, extension.getAttribute("icon"));
 					
-					List<String> entities = assistant.getClassesLike(candidate);
-					if((entities == null) || (entities.size() < 1)) MessageDialog.openWarning(null, "Entity not found", "No entities were found matching the input " + candidate);
-						
-					for(String entity : entities){
-						TreeParent entityParent = new TreeParent(entity);
-						invisibleRoot.addChild(entityParent);
+					if(descriptor == null){
+						if(namespace.contains(".")){
+							namespace = namespace.substring(0, namespace.lastIndexOf("."));
+						}
+						else{
+							namespace = "";
+						}
 					}
-		
 				}
-				//entities.addAll(Arrays.asList("account", "provider", "bank", "funding"));
-				//for(String entity : entities){
-				//	TreeParent entityParent = new TreeParent(entity);
-				//	invisibleRoot.addChild(entityParent);
-				//}
 				
-				viewer.refresh();
-				//viewer.getContentProvider().
+				if(descriptor != null) action.setImageDescriptor(descriptor);
+				
+				if((action != null) && (extension.getAttribute("view")).equals("entities")){
+					IActionBars bars = getViewSite().getActionBars();
+					if(extension.getAttribute("position").equals("toolbar")){
+						bars.getToolBarManager().add(action);
+					}
+					if(extension.getAttribute("position").equals("menumanager")){
+						MenuManager menuMgr = new MenuManager("#PopupMenu");
+						menuMgr.setRemoveAllWhenShown(true);
+						menuMgr.addMenuListener(new IMenuListener() {
+							public void menuAboutToShow(IMenuManager manager) {
+								manager.add(action);
+							}
+						});
+						Menu menu = menuMgr.createContextMenu(viewer.getControl());
+						viewer.getControl().setMenu(menu);
+						getSite().registerContextMenu(menuMgr, viewer);
+					}	
+				}
 			}
-		};
-		
-		searchEntityAction.setText("Action 1");
-		searchEntityAction.setToolTipText("Action 1 tooltip");
-		searchEntityAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-			getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
-		
-		action2 = new Action() {
-			public void run() {
-				showMessage("Action 2 executed");
+			catch(CoreException e){
+				System.out.println("Creating action in view exception");
 			}
-		};
-		action2.setText("Action 2");
-		action2.setToolTipText("Action 2 tooltip");
-		action2.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-				getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
-		doubleClickAction = new Action() {
+		}
+		
+		/*
+		defineAction = new Action() {
 			public void run() {
 				ISelection selection = viewer.getSelection();
 				Object obj = ((IStructuredSelection)selection).getFirstElement();
-				showMessage("Double-click detected on "+obj.toString());
+				if(obj instanceof EntityParent){
+					if(!(((EntityParent) obj).getSemanticclass().getComment()==null) && (((EntityParent) obj).getSemanticclass().getComment().compareTo("")!=0)){
+						showMessage("Entity " + ((EntityParent)obj).getName() + " is described as " + ((EntityParent) obj).getSemanticclass().getComment());
+					}	
+				}
+			}
+		};
+		
+		defineAction.setText("Define entity");
+		defineAction.setImageDescriptor(Activator.getImageDescriptor("icons/details_view.gif"));*/
+		
+		expandAction = new Action() {
+			public void run() {
+				ISelection selection = viewer.getSelection();
+				Object obj = ((IStructuredSelection)selection).getFirstElement();
+				if(obj instanceof EntityParent){
+					if(!isOnTheTree((EntityParent) obj)){
+						expandEntity(((EntityParent) obj));
+						viewer.refresh();
+					}
+					else{
+						showMessage("Entity " + ((EntityParent)obj).getName() + " is already expanded on the list");
+					}
+				}
 			}
 		};
 	}
 
+	private boolean isOnTheTree(EntityParent obj){
+		boolean onTheTree = false;
+		Object element = obj;
+		
+		while((((TreeParent) element).getParent() != invisibleRoot) && (!onTheTree)){
+			for(TreeObject child : ((TreeParent) element).getParent().getChildren()){
+				if((child instanceof EntityParent) && (child!=obj)){
+					if(((EntityParent) child).getSemanticclass().getUri().compareTo(((EntityParent) obj).getSemanticclass().getUri())==0){
+						onTheTree = true;
+					}	
+				}
+			}
+			element = ((TreeParent) element).getParent();
+		}
+		
+		if(((TreeParent)element).getParent() == invisibleRoot){
+			for(TreeObject child : ((TreeParent) element).getParent().getChildren()){
+				if((child instanceof EntityParent) && (child!=obj)){
+					if(((EntityParent) child).getSemanticclass().getUri().compareTo(((EntityParent) obj).getSemanticclass().getUri())==0){
+						onTheTree = true;
+					}
+				}		
+			}
+		}
+		
+		return onTheTree;
+	}
+	
+	public void defineEntity(SemanticClass semanticclass){
+		EntityParent entityParent;
+		
+		if((semanticclass.getLabel()==null)||(semanticclass.getLabel().compareTo("")==0)) entityParent = new EntityParent(semanticclass);
+		else entityParent = new EntityParent(semanticclass);
+		
+		List<SemanticClass> superclasses = OwlAssistant.getInstance().getSuper(semanticclass.getUri(), false);
+		semanticclass.setSuperclasses(superclasses);
+		entityParent.drawSuperClasses();
+		
+		List<SemanticClass> subclasses = OwlAssistant.getInstance().getSub(semanticclass.getUri(), false);
+		semanticclass.setSubclasses(subclasses);
+		entityParent.drawSubclasses();
+		
+		List<ObjectProperty> references = OwlAssistant.getInstance().getObjectProperties(semanticclass.getUri(), true, true);
+		semanticclass.setReferences(references);
+		entityParent.drawReferences();
+		
+		List<DataProperty> properties = OwlAssistant.getInstance().getDataProperties(semanticclass.getUri(), true, true);
+		semanticclass.setProperties(properties);
+		entityParent.drawProperties();
+		
+		invisibleRoot.addChild(entityParent);
+		viewer.refresh();
+	}
+	
+	private void expandEntity(EntityParent entity){
+		entity.getSemanticclass().addProperties(OwlAssistant.getInstance().getDataProperties(entity.getSemanticclass().getUri(), true, true));
+		entity.drawProperties();
+		entity.getSemanticclass().addReferences(OwlAssistant.getInstance().getObjectProperties(entity.getSemanticclass().getUri(), true, true));
+		entity.drawReferences();
+		entity.getSemanticclass().addSuperclasses(OwlAssistant.getInstance().getSuper(entity.getSemanticclass().getUri(), false));
+		entity.drawSuperClasses();
+		entity.getSemanticclass().addSubclasses(OwlAssistant.getInstance().getSub(entity.getSemanticclass().getUri(), false));
+		entity.drawSubclasses();
+	}
+	
 	private void hookDoubleClickAction() {
 		viewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
-				doubleClickAction.run();
+				expandAction.run();
 			}
 		});
 	}
@@ -339,5 +489,13 @@ public class EntityView extends ViewPart {
 	 */
 	public void setFocus() {
 		viewer.getControl().setFocus();
+	}
+	
+	public TreeViewer getViewer() {
+		return viewer;
+	}
+
+	public void setViewer(TreeViewer viewer) {
+		this.viewer = viewer;
 	}
 }
