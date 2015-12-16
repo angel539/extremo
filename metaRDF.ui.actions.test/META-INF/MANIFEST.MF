@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: metaRDF.ui.actions.test;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: metardf.ui.actions.test.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ metaRDF.ui,
+ metaRDF.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Import-Package: metardf.ui.extensions
+Bundle-ClassPath: icons/,
+ .

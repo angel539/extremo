@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="metaRDF.ui.actions">
+      <action
+            class="metardf.ui.actions.test.SearchEntity"
+            icon="icons/search.png"
+            id="metaRDF.ui.actions.test.searchentity"
+            name="Search"
+            position="toolbar"
+            view="entities">
+      </action>
+   </extension>
+
+</plugin>
