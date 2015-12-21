@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.graphiti.ui.diagramTypes">
+		<diagramType
+			description="Orders diagram type"
+			id="orders.veditor.diagram.OrdersDiagramType"
+			name="Orders Diagram Type"
+			type="orders">
+		</diagramType>
+	</extension>
+	<extension point="org.eclipse.graphiti.ui.diagramTypeProviders">
+		<diagramTypeProvider
+			class="orders.veditor.diagram.OrdersDiagramTypeProvider"
+			description="This is my editor for the Graphiti tutorial"
+			id="orders.veditor.diagram.OrdersDiagramTypeProvider"
+			name="Orders Editor">
+			<diagramType id="orders.veditor.diagram.OrdersDiagramType" />
+		</diagramTypeProvider>
+	</extension>
+ <extension
+       point="metaRDF.ui.drop">
+    <editordrop
+          class="orders.veditor.dnd.OrderTransferDropTargetListener"
+          id="metaRDF.ui.drop.orders"
+          name="metaRDF.ui.drop.orders">
+    </editordrop>
+ </extension>
+</plugin>
