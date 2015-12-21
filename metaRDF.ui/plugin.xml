@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="metaRDF.ui.actions" name="metaRDF.ui.actions" schema="schema/metaRDF.ui.actions.exsd"/>
+   <extension-point id="metaRDF.ui.drop" name="metaRDF.ui.drop" schema="schema/metaRDF.ui.drop.exsd"/>
 
    <extension
          point="org.eclipse.ui.views">
@@ -11,14 +12,14 @@
       </category>
       <view
             category="metaRDF.ui"
-            class="metardf.ui.views.RepositoryView"
+            class="metardf.ui.views.repositories.RepositoryView"
             icon="icons/site_element.gif"
             id="metardf.ui.views.RepositoryView"
             name="Repositories">
       </view>
       <view
             category="metaRDF.ui"
-            class="metardf.ui.views.EntityView"
+            class="metardf.ui.views.entities.EntityView"
             icon="icons/hierarchy_co.gif"
             id="metardf.ui.views.EntityView"
             name="Entities">

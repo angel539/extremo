@@ -330,3 +330,4 @@ Export-Package: com.clarkparsia.owlapi.explanation,
  uk.ac.manchester.cs.owlapi.dlsyntax.parser,
  uk.ac.manchester.cs.owlapi.modularity
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: org.eclipse.swt.dnd

@@ -30,9 +30,9 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import metaRDF.core.rdf.IFormatAssistant;
 import metaRDF.core.repository.MetaRDFRepositoryManager;
-import metaRDF.core.model.DataProperty;
+import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.Datatype;
-import metaRDF.core.model.ObjectProperty;
+import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.SemanticClass;
 import metaRDF.core.wordnet.Wordnet;
 
@@ -50,7 +50,7 @@ public class OwlAssistant implements IFormatAssistant{
 		super();
 	}
 	
-	class DataOWL implements DataProperty{
+	class DataOWL implements IDataProperty{
 		String name;
 		String uri;
 		Datatype range;
@@ -98,7 +98,24 @@ public class OwlAssistant implements IFormatAssistant{
 			// TODO Auto-generated method stub
 			return description;
 		}
-		
+
+		@Override
+		public void setName(String name) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void setUri(String uri) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void setComment(String comment) {
+			// TODO Auto-generated method stub
+			
+		}		
 	}
 	
 	class SemanticOWL implements SemanticClass{
@@ -108,8 +125,8 @@ public class OwlAssistant implements IFormatAssistant{
 		String comment;
 		List<SemanticClass> superclasses;
 		List<SemanticClass> subclasses;
-		List<DataProperty> properties;
-		List<ObjectProperty> references;
+		List<IDataProperty> properties;
+		List<IObjectProperty> references;
 		
 		SemanticOWL(String name, String uri, String label, String description){
 			this.name = name;
@@ -119,7 +136,7 @@ public class OwlAssistant implements IFormatAssistant{
 		}
 		
 		@Override
-		public String getUri() {
+		public String getURI() {
 			// TODO Auto-generated method stub
 			return uri;
 		}
@@ -146,19 +163,19 @@ public class OwlAssistant implements IFormatAssistant{
 		}
 
 		@Override
-		public String getComment() {
+		public String getDescription() {
 			// TODO Auto-generated method stub
 			return comment;
 		}
 
 		@Override
-		public List<DataProperty> getProperties() {
+		public List<IDataProperty> getProperties() {
 			// TODO Auto-generated method stub
 			return properties;
 		}
 
 		@Override
-		public List<ObjectProperty> getReferences() {
+		public List<IObjectProperty> getReferences() {
 			// TODO Auto-generated method stub
 			return references;
 		}
@@ -176,24 +193,24 @@ public class OwlAssistant implements IFormatAssistant{
 		}
 		
 		@Override
-		public void setProperties(List<DataProperty> properties) {
+		public void setProperties(List<IDataProperty> properties) {
 			this.properties = properties;
 		}
 		
 		@Override
-		public void addProperties(List<DataProperty> properties) {
-			if (this.properties == null) this.properties = new ArrayList<DataProperty>();
+		public void addProperties(List<IDataProperty> properties) {
+			if (this.properties == null) this.properties = new ArrayList<IDataProperty>();
 			this.properties.addAll(properties);
 		}
 
 		@Override
-		public void setReferences(List<ObjectProperty> references) {
+		public void setReferences(List<IObjectProperty> references) {
 			this.references = references;
 		}
 
 		@Override
-		public void addReferences(List<ObjectProperty> references) {
-			if (this.references == null) this.references = new ArrayList<ObjectProperty>();
+		public void addReferences(List<IObjectProperty> references) {
+			if (this.references == null) this.references = new ArrayList<IObjectProperty>();
 			this.references.addAll(references);
 		}
 		
@@ -218,9 +235,29 @@ public class OwlAssistant implements IFormatAssistant{
 			if (this.subclasses == null) this.subclasses = new ArrayList<SemanticClass>();
 			this.subclasses.addAll(subclasses);
 		}
+
+		@Override
+		public void setUri(String uri) {
+			this.uri = uri;
+		}
+
+		@Override
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public void setLabel(String label) {
+			this.label = label;
+		}
+
+		@Override
+		public void setComment(String comment) {
+			this.comment = comment;
+		}
 	}
 	
-	class ObjectOWL implements ObjectProperty{
+	class ObjectOWL implements IObjectProperty{
 		String name;
 		String uri;
 		List<String> ranges;
@@ -265,6 +302,22 @@ public class OwlAssistant implements IFormatAssistant{
 		public String getDescription() {
 			// TODO Auto-generated method stub
 			return description;
+		}
+
+		@Override
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public void setUri(String uri) {
+			this.uri = uri;
+		}
+
+		@Override
+		public void setComment(String comment) {
+			// TODO Auto-generated method stub
+			
 		}
 	}
 	
@@ -597,10 +650,10 @@ public class OwlAssistant implements IFormatAssistant{
 	}*/
 	
 	@Override
-	public List<DataProperty> getDataProperties(String name, boolean supers, boolean equivs) {
+	public List<IDataProperty> getDataProperties(String name, boolean supers, boolean equivs) {
 		if((name == null) || name.compareTo("") == 0) return null;
 		
-		List<DataProperty> properties = new ArrayList<DataProperty>();
+		List<IDataProperty> properties = new ArrayList<IDataProperty>();
 		IRI iri = IRI.create(name);
 		
 		if((ontology!=null) && (ontology.containsClassInSignature(iri))){
@@ -645,22 +698,22 @@ public class OwlAssistant implements IFormatAssistant{
 		
 		if(supers){
 			List<SemanticClass> superclasses = getSuper(name, true);
-			for(SemanticClass superclass : superclasses) properties.addAll(getDataProperties(superclass.getUri(), supers, equivs));
+			for(SemanticClass superclass : superclasses) properties.addAll(getDataProperties(superclass.getURI(), supers, equivs));
 		}
 		
 		if(equivs){
 			List<SemanticClass> superclasses = equivs(name);
-			for(SemanticClass superclass : superclasses) properties.addAll(getDataProperties(superclass.getUri(), supers, equivs));
+			for(SemanticClass superclass : superclasses) properties.addAll(getDataProperties(superclass.getURI(), supers, equivs));
 		}
 		
 		return properties;
 	}
 	
 	@Override
-	public List<ObjectProperty> getObjectProperties(String name, boolean supers, boolean equivs) {
+	public List<IObjectProperty> getObjectProperties(String name, boolean supers, boolean equivs) {
 		if((name == null) || name.compareTo("") == 0) return null;
 		
-		List<ObjectProperty> properties = new ArrayList<ObjectProperty>();
+		List<IObjectProperty> properties = new ArrayList<IObjectProperty>();
 		IRI iri = IRI.create(name);
 		
 		if((ontology!=null) && (ontology.containsClassInSignature(iri))){
@@ -690,12 +743,12 @@ public class OwlAssistant implements IFormatAssistant{
 		
 		if(supers){
 			List<SemanticClass> superclasses = getSuper(name, true);
-			for(SemanticClass superclass : superclasses) properties.addAll(getObjectProperties(superclass.getUri(), supers, equivs));
+			for(SemanticClass superclass : superclasses) properties.addAll(getObjectProperties(superclass.getURI(), supers, equivs));
 		}
 		
 		if(equivs){
 			List<SemanticClass> superclasses = equivs(name);
-			for(SemanticClass superclass : superclasses) properties.addAll(getObjectProperties(superclass.getUri(), supers, equivs));
+			for(SemanticClass superclass : superclasses) properties.addAll(getObjectProperties(superclass.getURI(), supers, equivs));
 		}
 		
 		return properties;
@@ -843,7 +896,7 @@ public class OwlAssistant implements IFormatAssistant{
 	}
 
 	@Override
-	public ObjectProperty getInverseProperty(String cl, String property) {
+	public IObjectProperty getInverseProperty(String cl, String property) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -853,7 +906,7 @@ public class OwlAssistant implements IFormatAssistant{
 		List<SemanticClass> superclasses = getSuper(name, true);
 		List<SemanticClass> siblings = new ArrayList<SemanticClass>();
 		for(SemanticClass superclass : superclasses){
-			siblings.addAll(getSub(superclass.getUri(), true));
+			siblings.addAll(getSub(superclass.getURI(), true));
 		}
 		
 		HashSet<SemanticClass> aux = new HashSet<SemanticClass>(siblings);
@@ -864,8 +917,8 @@ public class OwlAssistant implements IFormatAssistant{
 	}
 	
 	@Override
-	public List<ObjectProperty> getPath(String start, String finish) {
-		List<ObjectProperty> path = new LinkedList<ObjectProperty>();
+	public List<IObjectProperty> getPath(String start, String finish) {
+		List<IObjectProperty> path = new LinkedList<IObjectProperty>();
 		
 		if(start.compareTo(finish) == 0) return path;
 		
@@ -874,9 +927,9 @@ public class OwlAssistant implements IFormatAssistant{
 		
 		if((!ontology.containsClassInSignature(iriA))||(!ontology.containsClassInSignature(iriB))) return null;
 		
-		List<ObjectProperty> objectPropertiesA = getObjectProperties(start, true, true);
+		List<IObjectProperty> objectPropertiesA = getObjectProperties(start, true, true);
 		
-		for(ObjectProperty property : objectPropertiesA){
+		for(IObjectProperty property : objectPropertiesA){
 			if(property.getURI().compareTo(iriB.toString())==0){
 				path.clear();
 				path.add(property);
@@ -898,7 +951,7 @@ public class OwlAssistant implements IFormatAssistant{
 	            break;
 	        }
 	        else{
-	            for(ObjectProperty node : getObjectProperties(current, true, true)){
+	            for(IObjectProperty node : getObjectProperties(current, true, true)){
 	            	for(String range : node.getRanges()){
 	            		if(!visited.containsKey(range)){
 	            			q.add(range);

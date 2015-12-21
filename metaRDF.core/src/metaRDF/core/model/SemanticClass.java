@@ -2,11 +2,9 @@ package metaRDF.core.model;
 
 import java.util.List;
 
-public interface SemanticClass {
-	String getUri();
-	String getName();
+public interface SemanticClass extends SemanticElement{
 	String getLabel();
-	String getComment();
+	void setLabel(String label);
 	
 	List<SemanticClass> getSuperclasses();
 	void setSuperclasses(List<SemanticClass> superclasses);
@@ -16,11 +14,11 @@ public interface SemanticClass {
 	void setSubclasses(List<SemanticClass> subclasses);
 	void addSubclasses(List<SemanticClass> subclasses);
 	
-	List<DataProperty> getProperties();
-	void setProperties(List<DataProperty> properties);
-	void addProperties(List<DataProperty> properties);
+	List<IDataProperty> getProperties();
+	void setProperties(List<IDataProperty> properties);
+	void addProperties(List<IDataProperty> properties);
 	
-	List<ObjectProperty> getReferences();
-	void setReferences(List<ObjectProperty> references);
-	void addReferences(List<ObjectProperty> references);
+	List<IObjectProperty> getReferences();
+	void setReferences(List<IObjectProperty> references);
+	void addReferences(List<IObjectProperty> references);
 }

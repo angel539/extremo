@@ -3,7 +3,7 @@ package metardf.ui.actions.test;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
-import metardf.ui.extensions.ResourceViewAction;
+import metardf.ui.dnd.ResourceViewAction;
 
 public class ExpandEntity extends ResourceViewAction {
 
@@ -13,7 +13,7 @@ public class ExpandEntity extends ResourceViewAction {
 
 	@Override
 	public void execute() {
-		ISelection selection = getViewer().getSelection();
+		/*ISelection selection = getViewer().getSelection();
 		Object obj = ((IStructuredSelection)selection).getFirstElement();
 		
 		
@@ -25,7 +25,7 @@ public class ExpandEntity extends ResourceViewAction {
 			else{
 				showMessage("Entity " + ((EntityParent)obj).getName() + " is already expanded on the list");
 			}
-		}
+		}*/
 	}
 
 }

@@ -1,8 +1,8 @@
 package metaRDF.core.rdf;
 
 import java.util.List;
-import metaRDF.core.model.DataProperty;
-import metaRDF.core.model.ObjectProperty;
+import metaRDF.core.model.IDataProperty;
+import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.SemanticClass;
 
 public class RDFAssistant implements IFormatAssistant {
@@ -124,25 +124,25 @@ public class RDFAssistant implements IFormatAssistant {
 	}
 
 	@Override
-	public List<DataProperty> getDataProperties(String name, boolean supers, boolean equivs) {
+	public List<IDataProperty> getDataProperties(String name, boolean supers, boolean equivs) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ObjectProperty> getObjectProperties(String name, boolean supers, boolean equivs) {
+	public List<IObjectProperty> getObjectProperties(String name, boolean supers, boolean equivs) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ObjectProperty> getPath(String entityA, String entityB) {
+	public List<IObjectProperty> getPath(String entityA, String entityB) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ObjectProperty getInverseProperty(String cl, String property) {
+	public IObjectProperty getInverseProperty(String cl, String property) {
 		// TODO Auto-generated method stub
 		return null;
 	}

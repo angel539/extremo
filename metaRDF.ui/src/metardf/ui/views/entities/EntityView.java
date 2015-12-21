@@ -1,110 +1,53 @@
-package metardf.ui.views;
+package metardf.ui.views.entities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
-import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
-import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-//import org.eclipse.ui.part.DrillDownAdapter;
 import org.eclipse.ui.part.ViewPart;
 
-import metaRDF.core.model.DataProperty;
-import metaRDF.core.model.ObjectProperty;
-import metaRDF.core.model.Property;
-import metaRDF.core.model.Repository;
-import metaRDF.core.model.Resource;
+import metaRDF.core.model.IDataProperty;
+import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.SemanticClass;
 import metaRDF.core.owl.OwlAssistant;
-import metaRDF.core.repository.MetaRDFRepositoryManager;
 import metardf.ui.Activator;
-import metardf.ui.extensions.ResourceViewAction;
+import metardf.ui.dnd.ResourceViewAction;
+import orders.veditor.dnd.OrderTransferDropTargetListener;
 
 public class EntityView extends ViewPart {
 	public static final String ID = "metardf.ui.views.EntityView";
 	private List<String> entities = new ArrayList<String>();
 
-	private TreeViewer viewer;
-
-	//private Action searchEntityAction;
+	private EntityTreeViewer viewer;
 	private Action expandAction;
-	//private Action defineAction;
 	
-	private TreeParent invisibleRoot;
-	
-	class TreeObject implements IAdaptable {
-		private String name;
-		private TreeParent parent;
-		
-		public TreeObject(Object object) {
-			if(object instanceof DataProperty){
-				if(((DataProperty) object).isFromSuper()){
-					if(((DataProperty) object).getRange() == null) this.name = ((Property) object).getName() + " (super)";
-					else this.name = ((Property) object).getName() + " : " + ((DataProperty) object).getRange().toString() + " (super)";
-				}
-				else{
-					this.name = ((Property) object).getName();
-				}	
-			}else{
-				if(object instanceof ObjectProperty){
-					if(((ObjectProperty) object).isFromSuper()){
-						this.name = ((Property) object).getName() + " : " + ((ObjectProperty) object).getRanges() + " (super)";
-					}
-					else{
-						this.name = ((Property) object).getName() + " : " + ((ObjectProperty) object).getRanges();
-					}	
-				}
-				else{
-					this.name = object.toString();
-				}
-			}		
-		}
-		
-		public String getName() {
-			return name;
-		}
-		public void setParent(TreeParent parent) {
-			this.parent = parent;
-		}
-		public TreeParent getParent() {
-			return parent;
-		}
-		public String toString() {
-			return getName();
-		}
-		public <T> T getAdapter(Class<T> key) {
-			return null;
-		}
-	}
+	private TreeParent invisibleRoot = new TreeParent("");
 	
 	class TreeParent extends TreeObject {
 		private ArrayList<TreeObject> children;
@@ -136,7 +79,7 @@ public class EntityView extends ViewPart {
 	
 	class EntityParent extends TreeParent{
 		SemanticClass semanticclass;
-		
+	
 		public SemanticClass getSemanticclass() {
 			return semanticclass;
 		}
@@ -177,7 +120,7 @@ public class EntityView extends ViewPart {
 		public void drawReferences(){
 			FolderParent referencesChild = new FolderParent("references" + " (" + semanticclass.getReferences().size() + ")");
 			
-			for(ObjectProperty reference : semanticclass.getReferences()){
+			for(IObjectProperty reference : semanticclass.getReferences()){
 				String name = "";
 				
 				if(reference.isFromSuper()) name = reference.getName();
@@ -192,7 +135,7 @@ public class EntityView extends ViewPart {
 		public void drawProperties(){
 			FolderParent referencesChild = new FolderParent("attributes" + " (" + semanticclass.getProperties().size() + ")");
 			
-			for(DataProperty attribute : semanticclass.getProperties()){
+			for(IDataProperty attribute : semanticclass.getProperties()){
 				TreeObject entitySuper = new TreeObject(attribute);
 				referencesChild.addChild(entitySuper);
 			}
@@ -210,61 +153,6 @@ public class EntityView extends ViewPart {
 		}	
 	}
 	
-	class ViewContentProvider implements IStructuredContentProvider, 
-										   ITreeContentProvider {	
-		ViewContentProvider(){
-			super();
-		}
-		
-		public void inputChanged(Viewer v, Object oldInput, Object newInput) {
-		}
-		
-		public void dispose() {
-		}
-		public Object[] getElements(Object parent) {
-			if (parent.equals(getViewSite())) {
-				if (invisibleRoot==null) initialize();
-				return getChildren(invisibleRoot);
-			}
-			return getChildren(parent);
-		}
-		public Object getParent(Object child) {
-			if (child instanceof TreeObject) {
-				return ((TreeObject)child).getParent();
-			}
-			return null;
-		}
-		public Object [] getChildren(Object parent) {
-			if (parent instanceof TreeParent) {
-				return ((TreeParent)parent).getChildren();
-			}
-			return new Object[0];
-		}
-		public boolean hasChildren(Object parent) {
-			if (parent instanceof TreeParent)
-				return ((TreeParent)parent).hasChildren();
-			return false;
-		}
-		private void initialize() {
-			invisibleRoot = new TreeParent("");
-		}
-	}
-	
-	class ViewLabelProvider extends LabelProvider {
-		public String getText(Object obj) {
-			return obj.toString();
-		}
-		public Image getImage(Object obj) {
-			String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
-			if(obj instanceof PropertyParent) return Activator.getImageDescriptor("icons/method.png").createImage();
-			if(obj instanceof EntityParent) return Activator.getImageDescriptor("icons/class_obj.png").createImage();
-			if(obj instanceof FolderParent) return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
-			if(obj instanceof TreeObject) return Activator.getImageDescriptor("icons/attribute.png").createImage();
-			
-			return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
-		}
-	}
-	
 	class NameSorter extends ViewerSorter {
 	}
 
@@ -273,15 +161,28 @@ public class EntityView extends ViewPart {
 
 	public void createPartControl(Composite parent) {
 		entities.addAll(Arrays.asList());
-		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		viewer.setContentProvider(new ViewContentProvider());
-		viewer.setLabelProvider(new ViewLabelProvider());
+		viewer = new EntityTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		viewer.setContentProvider(new EntityTreeViewContentProvider(invisibleRoot, getViewSite()));
+		viewer.setLabelProvider(new EntityTreeViewLabelProvider());
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
 		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "metaRDF.ui.viewer");
 		getSite().setSelectionProvider(viewer);
 		invokeActions();
+		
+		
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+		IEditorPart editor = window.getActivePage().getActiveEditor();
+		if (editor instanceof IDiagramContainerUI){
+				IDiagramContainerUI diagramEditor =  (IDiagramContainerUI) editor;
+				GraphicalViewer graphicalViewer = diagramEditor.getGraphicalViewer();
+				OrderTransferDropTargetListener droptransfer = new OrderTransferDropTargetListener(graphicalViewer);
+				graphicalViewer.addDropTargetListener(droptransfer);
+				System.out.println(graphicalViewer.toString());
+		 }
+		//expandAll();
 		//hookContextMenu();
 		//hookDoubleClickAction();
 		//contributeToActionBars();
@@ -412,7 +313,7 @@ public class EntityView extends ViewPart {
 		while((((TreeParent) element).getParent() != invisibleRoot) && (!onTheTree)){
 			for(TreeObject child : ((TreeParent) element).getParent().getChildren()){
 				if((child instanceof EntityParent) && (child!=obj)){
-					if(((EntityParent) child).getSemanticclass().getUri().compareTo(((EntityParent) obj).getSemanticclass().getUri())==0){
+					if(((EntityParent) child).getSemanticclass().getURI().compareTo(((EntityParent) obj).getSemanticclass().getURI())==0){
 						onTheTree = true;
 					}	
 				}
@@ -423,7 +324,7 @@ public class EntityView extends ViewPart {
 		if(((TreeParent)element).getParent() == invisibleRoot){
 			for(TreeObject child : ((TreeParent) element).getParent().getChildren()){
 				if((child instanceof EntityParent) && (child!=obj)){
-					if(((EntityParent) child).getSemanticclass().getUri().compareTo(((EntityParent) obj).getSemanticclass().getUri())==0){
+					if(((EntityParent) child).getSemanticclass().getURI().compareTo(((EntityParent) obj).getSemanticclass().getURI())==0){
 						onTheTree = true;
 					}
 				}		
@@ -439,19 +340,19 @@ public class EntityView extends ViewPart {
 		if((semanticclass.getLabel()==null)||(semanticclass.getLabel().compareTo("")==0)) entityParent = new EntityParent(semanticclass);
 		else entityParent = new EntityParent(semanticclass);
 		
-		List<SemanticClass> superclasses = OwlAssistant.getInstance().getSuper(semanticclass.getUri(), false);
+		List<SemanticClass> superclasses = OwlAssistant.getInstance().getSuper(semanticclass.getURI(), false);
 		semanticclass.setSuperclasses(superclasses);
 		entityParent.drawSuperClasses();
 		
-		List<SemanticClass> subclasses = OwlAssistant.getInstance().getSub(semanticclass.getUri(), false);
+		List<SemanticClass> subclasses = OwlAssistant.getInstance().getSub(semanticclass.getURI(), false);
 		semanticclass.setSubclasses(subclasses);
 		entityParent.drawSubclasses();
 		
-		List<ObjectProperty> references = OwlAssistant.getInstance().getObjectProperties(semanticclass.getUri(), true, true);
+		List<IObjectProperty> references = OwlAssistant.getInstance().getObjectProperties(semanticclass.getURI(), true, true);
 		semanticclass.setReferences(references);
 		entityParent.drawReferences();
 		
-		List<DataProperty> properties = OwlAssistant.getInstance().getDataProperties(semanticclass.getUri(), true, true);
+		List<IDataProperty> properties = OwlAssistant.getInstance().getDataProperties(semanticclass.getURI(), true, true);
 		semanticclass.setProperties(properties);
 		entityParent.drawProperties();
 		
@@ -460,13 +361,13 @@ public class EntityView extends ViewPart {
 	}
 	
 	private void expandEntity(EntityParent entity){
-		entity.getSemanticclass().addProperties(OwlAssistant.getInstance().getDataProperties(entity.getSemanticclass().getUri(), true, true));
+		entity.getSemanticclass().addProperties(OwlAssistant.getInstance().getDataProperties(entity.getSemanticclass().getURI(), true, true));
 		entity.drawProperties();
-		entity.getSemanticclass().addReferences(OwlAssistant.getInstance().getObjectProperties(entity.getSemanticclass().getUri(), true, true));
+		entity.getSemanticclass().addReferences(OwlAssistant.getInstance().getObjectProperties(entity.getSemanticclass().getURI(), true, true));
 		entity.drawReferences();
-		entity.getSemanticclass().addSuperclasses(OwlAssistant.getInstance().getSuper(entity.getSemanticclass().getUri(), false));
+		entity.getSemanticclass().addSuperclasses(OwlAssistant.getInstance().getSuper(entity.getSemanticclass().getURI(), false));
 		entity.drawSuperClasses();
-		entity.getSemanticclass().addSubclasses(OwlAssistant.getInstance().getSub(entity.getSemanticclass().getUri(), false));
+		entity.getSemanticclass().addSubclasses(OwlAssistant.getInstance().getSub(entity.getSemanticclass().getURI(), false));
 		entity.drawSubclasses();
 	}
 	
@@ -495,7 +396,7 @@ public class EntityView extends ViewPart {
 		return viewer;
 	}
 
-	public void setViewer(TreeViewer viewer) {
+	public void setViewer(EntityTreeViewer viewer) {
 		this.viewer = viewer;
 	}
 }

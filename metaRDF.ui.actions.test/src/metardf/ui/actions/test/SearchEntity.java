@@ -9,7 +9,7 @@ import metaRDF.core.model.Resource;
 import metaRDF.core.model.SemanticClass;
 import metaRDF.core.owl.OwlAssistant;
 import metaRDF.core.repository.MetaRDFRepositoryManager;
-import metardf.ui.extensions.ResourceViewAction;
+import metardf.ui.dnd.ResourceViewAction;
 
 public class SearchEntity extends ResourceViewAction {
 	public SearchEntity() {

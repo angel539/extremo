@@ -1,4 +1,4 @@
-package metardf.ui.views;
+package metardf.ui.views.repositories;
 
 import java.util.ArrayList;
 import org.eclipse.swt.widgets.Composite;

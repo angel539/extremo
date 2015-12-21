@@ -1,11 +1,11 @@
-package metardf.ui.extensions;
+package metardf.ui.dnd;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.ui.part.ViewPart;
 
 import metaRDF.core.model.SemanticClass;
-import metardf.ui.views.EntityView;
+import metardf.ui.views.entities.EntityView;
 
 public abstract class ResourceViewAction extends Action implements IResourceViewActionContribution{
 	protected ViewPart view = null;

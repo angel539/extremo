@@ -1,6 +1,5 @@
-package metardf.ui.extensions;
+package metardf.ui.dnd;
 
 public interface IResourceViewActionContribution {
-	//public void init();
 	public void execute();
 }

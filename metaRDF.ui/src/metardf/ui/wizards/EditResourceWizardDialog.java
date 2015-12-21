@@ -27,8 +27,8 @@ public class EditResourceWizardDialog extends Wizard {
 	@Override
 	public boolean performFinish() {
 		resource.setName(resourcePage.getResourceName());
-		resource.setDescription(resourcePage.getResourceDescription());
-		resource.setURI(resourcePage.getResourceUri());
+		resource.setComment(resourcePage.getResourceDescription());
+		resource.setUri(resourcePage.getResourceUri());
 		return true;
 	}
 }

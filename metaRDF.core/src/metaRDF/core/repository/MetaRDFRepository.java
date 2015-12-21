@@ -6,7 +6,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import metaRDF.core.model.ModelObject;
 import metaRDF.core.model.Repository;
 import metaRDF.core.model.Resource;
 import metaRDF.core.model.SemanticClass;
@@ -17,7 +16,7 @@ public class MetaRDFRepository implements Repository {
 	private String uri;
 	private List<Resource> resources;
 	
-	class SemanticResource extends ModelObject implements Resource{	
+	class SemanticResource implements Resource{	
 		private String name;
 		private String description;
 		private String uri;
@@ -109,16 +108,15 @@ public class MetaRDFRepository implements Repository {
 			//firePropertyChange("name", this.name, this.name = name);
 		}
 
+
 		@Override
-		public void setDescription(String description) {
-			this.description = description;
-			//firePropertyChange("description", this.description, this.description = description);
+		public void setUri(String uri) {
+			this.uri = uri;
 		}
 
 		@Override
-		public void setURI(String uri) {
-			this.uri = uri;
-			//firePropertyChange("uri", this.uri, this.uri = uri);
+		public void setComment(String comment) {
+			this.description = comment;
 		}
 	}
 	
