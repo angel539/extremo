@@ -21,5 +21,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  icons/
-Export-Package: metardf.ui.extensions,
+Export-Package: metardf.ui.dnd,
  metardf.ui.views.entities

@@ -1,4 +1,4 @@
-package metaRDF.core.repository;
+package metaRDF.core.model.impl;
 
 import java.io.File;
 import java.net.HttpURLConnection;
@@ -6,32 +6,32 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import metaRDF.core.model.Repository;
-import metaRDF.core.model.Resource;
-import metaRDF.core.model.SemanticClass;
+import metaRDF.core.model.IRepository;
+import metaRDF.core.model.IResource;
+import metaRDF.core.model.ISemanticClass;
 
-public class MetaRDFRepository implements Repository {
+public class Repository implements IRepository {
 	private String name;
 	private String description;
 	private String uri;
-	private List<Resource> resources;
+	private List<IResource> resources;
 	
-	class SemanticResource implements Resource{	
+	class SemanticResource implements IResource{	
 		private String name;
 		private String description;
 		private String uri;
-		private List<SemanticClass> classes;
+		private List<ISemanticClass> classes;
 		
 		SemanticResource(String name, String description, String uri){
 			super();
 			this.name = name;
 			this.description = description;
 			this.uri = uri;
-			this.classes = new ArrayList<SemanticClass>();
+			this.classes = new ArrayList<ISemanticClass>();
 		}
 
 		@Override
-		public List<SemanticClass> getClasses() {
+		public List<ISemanticClass> getClasses() {
 			return classes;
 		}
 
@@ -51,18 +51,18 @@ public class MetaRDFRepository implements Repository {
 		}
 
 		@Override
-		public void setClasses(List<SemanticClass> classes) {
+		public void setClasses(List<ISemanticClass> classes) {
 			this.classes = classes;
 			//firePropertyChange("classes", this.classes, this.classes = classes);
 		}
 
 		@Override
-		public void addClasses(List<SemanticClass> classes) {
+		public void addClasses(List<ISemanticClass> classes) {
 			this.classes.addAll(classes);
 		}
 
 		@Override
-		public void addClass(SemanticClass clazz) {
+		public void addClass(ISemanticClass clazz) {
 			this.classes.add(clazz);
 		}
 
@@ -120,12 +120,12 @@ public class MetaRDFRepository implements Repository {
 		}
 	}
 	
-	MetaRDFRepository(String name, String description, String uri){
+	Repository(String name, String description, String uri){
 		super();
 		this.name = name;
 		this.description = description;
 		this.uri = uri;
-		resources = new ArrayList<Resource>();
+		resources = new ArrayList<IResource>();
 	}
 	
 	@Override
@@ -162,28 +162,28 @@ public class MetaRDFRepository implements Repository {
 	}
 
 	@Override
-	public List<Resource> getResources() {
+	public List<IResource> getResources() {
 		return resources;
 	}
 
 	@Override
-	public void setResources(List<Resource> resources) {
+	public void setResources(List<IResource> resources) {
 		this.resources = resources;
 		//firePropertyChange("resources", this.resources, this.resources = resources);
 	}
 
 	@Override
-	public void addResources(List<Resource> resources) {
+	public void addResources(List<IResource> resources) {
 		this.resources.addAll(resources);
 	}
 
 	@Override
-	public void addResource(Resource resource) {
+	public void addResource(IResource resource) {
 		resources.add(resource);
 	}
 	
 	@Override
-	public Resource createResource(String name, String description, String uri){
+	public IResource createResource(String name, String description, String uri){
 		SemanticResource resource = new SemanticResource(name, description, uri);
 		resources.add(resource);
 		return resource;

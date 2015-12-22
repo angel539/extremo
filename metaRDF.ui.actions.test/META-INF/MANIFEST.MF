@@ -10,6 +10,5 @@ Require-Bundle: org.eclipse.ui,
  metaRDF.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Import-Package: metardf.ui.extensions
 Bundle-ClassPath: icons/,
  .

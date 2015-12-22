@@ -4,7 +4,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.ui.part.ViewPart;
 
-import metaRDF.core.model.SemanticClass;
+import metaRDF.core.model.ISemanticClass;
 import metardf.ui.views.entities.EntityView;
 
 public abstract class ResourceViewAction extends Action implements IResourceViewActionContribution{
@@ -23,7 +23,7 @@ public abstract class ResourceViewAction extends Action implements IResourceView
 		execute();
 	}
 	
-	protected void addEntity(SemanticClass entity){
+	protected void addEntity(ISemanticClass entity){
 		if(this.view instanceof EntityView) ((EntityView) this.view).defineEntity(entity);
 	}
 	

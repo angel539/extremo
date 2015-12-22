@@ -1,5 +1,5 @@
 package metaRDF.core.model;
 
-public interface IDataProperty extends Property{
+public interface IDataProperty extends IProperty{
 	Datatype getRange();
 }

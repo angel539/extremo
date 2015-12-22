@@ -4,20 +4,20 @@ import org.eclipse.core.runtime.IAdaptable;
 
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
-import metaRDF.core.model.Property;
-import metaRDF.core.model.SemanticElement;
+import metaRDF.core.model.IProperty;
+import metaRDF.core.model.ISemanticElement;
 import metardf.ui.views.entities.EntityView.TreeParent;
 
 public class TreeObject implements IAdaptable {
 	private String name;
 	private TreeParent parent;
-	private SemanticElement element;
+	private ISemanticElement element;
 	
-	public SemanticElement getElement() {
+	public ISemanticElement getElement() {
 		return element;
 	}
 
-	public void setElement(SemanticElement element) {
+	public void setElement(ISemanticElement element) {
 		this.element = element;
 	}
 
@@ -28,19 +28,19 @@ public class TreeObject implements IAdaptable {
 	public TreeObject(Object object) {
 		if(object instanceof IDataProperty){
 			if(((IDataProperty) object).isFromSuper()){
-				if(((IDataProperty) object).getRange() == null) this.name = ((Property) object).getName() + " (super)";
-				else this.name = ((Property) object).getName() + " : " + ((IDataProperty) object).getRange().toString() + " (super)";
+				if(((IDataProperty) object).getRange() == null) this.name = ((IProperty) object).getName() + " (super)";
+				else this.name = ((IProperty) object).getName() + " : " + ((IDataProperty) object).getRange().toString() + " (super)";
 			}
 			else{
-				this.name = ((Property) object).getName();
+				this.name = ((IProperty) object).getName();
 			}	
 		}else{
 			if(object instanceof IObjectProperty){
 				if(((IObjectProperty) object).isFromSuper()){
-					this.name = ((Property) object).getName() + " : " + ((IObjectProperty) object).getRanges() + " (super)";
+					this.name = ((IProperty) object).getName() + " : " + ((IObjectProperty) object).getRanges() + " (super)";
 				}
 				else{
-					this.name = ((Property) object).getName() + " : " + ((IObjectProperty) object).getRanges();
+					this.name = ((IProperty) object).getName() + " : " + ((IObjectProperty) object).getRanges();
 				}	
 			}
 			else{
@@ -48,7 +48,7 @@ public class TreeObject implements IAdaptable {
 			}
 		}
 		
-		if(object instanceof SemanticElement) this.element = (SemanticElement) object;
+		if(object instanceof ISemanticElement) this.element = (ISemanticElement) object;
 	}
 	
 	public String getName() {

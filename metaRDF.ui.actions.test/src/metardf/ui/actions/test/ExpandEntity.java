@@ -1,8 +1,5 @@
 package metardf.ui.actions.test;
 
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
-
 import metardf.ui.dnd.ResourceViewAction;
 
 public class ExpandEntity extends ResourceViewAction {

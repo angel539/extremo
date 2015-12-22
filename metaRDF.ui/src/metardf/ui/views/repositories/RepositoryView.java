@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.*;
 
-import metaRDF.core.model.Resource;
-import metaRDF.core.model.Repository;
-import metaRDF.core.repository.MetaRDFRepositoryManager;
+import metaRDF.core.model.IResource;
+import metaRDF.core.model.impl.RepositoryManager;
+import metaRDF.core.model.IRepository;
 import metardf.ui.Activator;
 import metardf.ui.wizards.EditResourceWizardDialog;
 import metardf.ui.wizards.NewRepositoryWizardDialog;
@@ -60,18 +60,18 @@ public class RepositoryView extends ViewPart {
 	}
 	
 	class ResourceObject extends TreeObject{
-		Resource resource;
+		IResource resource;
 
-		public ResourceObject(Resource resource) {
+		public ResourceObject(IResource resource) {
 			super(resource.getName() + " (" + resource.getURI() + ")");
 			this.resource = resource;
 		}
 		
-		public Resource getResource() {
+		public IResource getResource() {
 			return resource;
 		}
 
-		public void setResource(Resource resource) {
+		public void setResource(IResource resource) {
 			this.resource = resource;
 		}
 		
@@ -107,15 +107,15 @@ public class RepositoryView extends ViewPart {
 	}
 
 	class RepositoryParent extends TreeParent{
-		Repository repository;
+		IRepository repository;
 		
-		public RepositoryParent(Repository repository) {
+		public RepositoryParent(IRepository repository) {
 			super(repository.getName());
 			this.repository = repository;
 		}	
 		
 		public void drawResources(){		
-			for(Resource resource : repository.getResources()){
+			for(IResource resource : repository.getResources()){
 				ResourceObject object = new ResourceObject(resource);
 				if(!object.getResource().isAlive()) showMessage("Resource + " + object.getName() + " seems not to be at your disposal");
 				this.addChild(object);
@@ -127,18 +127,18 @@ public class RepositoryView extends ViewPart {
 				this.removeChild(child);
 			}
 			
-			for(Resource resource : repository.getResources()){
+			for(IResource resource : repository.getResources()){
 				ResourceObject object = new ResourceObject(resource);
 				if(!object.getResource().isAlive()) showMessage("Resource + " + object.getName() + " seems not to be at your disposal");
 				this.addChild(object);
 			}
 		}
 		
-		public Repository getRepository() {
+		public IRepository getRepository() {
 			return repository;
 		}
 
-		public void setRepository(Repository repository) {
+		public void setRepository(IRepository repository) {
 			this.repository = repository;
 		}
 	}
@@ -403,7 +403,7 @@ public class RepositoryView extends ViewPart {
 					}
 					//System.out.println("en repository " + MetaRDFRepositoryManager.getInstance());
 					
-					for(Repository repository : MetaRDFRepositoryManager.getInstance().getRepositories()){
+					for(IRepository repository : RepositoryManager.getInstance().getRepositories()){
 						RepositoryParent repositoryParent = new RepositoryParent(repository);
 						repositoryParent.drawResources();
 						invisibleRoot.addChild(repositoryParent);

@@ -1,6 +1,6 @@
 package metaRDF.core.model;
 
-public interface SemanticElement {
+public interface ISemanticElement {
 	String getName();
 	void setName(String name);
 	

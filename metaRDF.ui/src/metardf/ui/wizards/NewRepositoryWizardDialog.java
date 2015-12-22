@@ -1,8 +1,8 @@
 package metardf.ui.wizards;
 
 import org.eclipse.jface.wizard.Wizard;
-import metaRDF.core.model.Repository;
-import metaRDF.core.repository.MetaRDFRepositoryManager;
+import metaRDF.core.model.IRepository;
+import metaRDF.core.model.impl.RepositoryManager;
 
 public class NewRepositoryWizardDialog extends Wizard {
 	NewRepositoryWizardPage newRepositoryPage;
@@ -28,7 +28,7 @@ public class NewRepositoryWizardDialog extends Wizard {
 
 	@Override
 	public boolean performFinish() {
-		Repository repository = MetaRDFRepositoryManager.getInstance().addRepository(newRepositoryPage.getRepositoryName(), newRepositoryPage.getRepositoryDescription(), newRepositoryPage.getRepositoryUri());
+		IRepository repository = RepositoryManager.getInstance().addRepository(newRepositoryPage.getRepositoryName(), newRepositoryPage.getRepositoryDescription(), newRepositoryPage.getRepositoryUri());
 		repository.createResource(newResourcePage.getResourceName(), newResourcePage.getResourceDescription(), newResourcePage.getResourceUri());
 		return true;
 	}

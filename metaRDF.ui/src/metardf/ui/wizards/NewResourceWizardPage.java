@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import metaRDF.core.model.Resource;
+import metaRDF.core.model.IResource;
 import metardf.ui.Activator;
 
 public class NewResourceWizardPage extends WizardPage {
@@ -20,7 +20,7 @@ public class NewResourceWizardPage extends WizardPage {
 	private Text description;
 	private Text uri;
 	private Composite container;
-	private Resource resource = null;
+	private IResource resource = null;
 	
 	public NewResourceWizardPage(String pageName, String pageDescription) {
 		super(pageName);
@@ -29,7 +29,7 @@ public class NewResourceWizardPage extends WizardPage {
 		setImageDescriptor(Activator.getImageDescriptor("icons/entities.png"));
 	}
 	
-	public NewResourceWizardPage(String pageName, String pageDescription, Resource resource) {
+	public NewResourceWizardPage(String pageName, String pageDescription, IResource resource) {
 		super(pageName);
 		setTitle(pageName);
 		setDescription(pageDescription);

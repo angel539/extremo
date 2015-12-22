@@ -2,17 +2,17 @@ package metaRDF.core.model;
 
 import java.util.List;
 
-public interface SemanticClass extends SemanticElement{
+public interface ISemanticClass extends ISemanticElement{
 	String getLabel();
 	void setLabel(String label);
 	
-	List<SemanticClass> getSuperclasses();
-	void setSuperclasses(List<SemanticClass> superclasses);
-	void addSuperclasses(List<SemanticClass> superclasses);
+	List<ISemanticClass> getSuperclasses();
+	void setSuperclasses(List<ISemanticClass> superclasses);
+	void addSuperclasses(List<ISemanticClass> superclasses);
 	
-	List<SemanticClass> getSubclasses();
-	void setSubclasses(List<SemanticClass> subclasses);
-	void addSubclasses(List<SemanticClass> subclasses);
+	List<ISemanticClass> getSubclasses();
+	void setSubclasses(List<ISemanticClass> subclasses);
+	void addSubclasses(List<ISemanticClass> subclasses);
 	
 	List<IDataProperty> getProperties();
 	void setProperties(List<IDataProperty> properties);

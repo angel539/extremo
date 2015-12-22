@@ -9,8 +9,8 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
-import metaRDF.core.model.Repository;
-import metaRDF.core.repository.MetaRDFRepositoryManager;
+import metaRDF.core.model.IRepository;
+import metaRDF.core.model.impl.RepositoryManager;
 import metardf.ui.Activator;
 
 public class RepositoryListWizardPage extends WizardPage {
@@ -31,7 +31,7 @@ public class RepositoryListWizardPage extends WizardPage {
 	    container.setLayout(layout);
 	    layout.numColumns = 1;	    
 	    
-	    if((MetaRDFRepositoryManager.getInstance()!=null) && (MetaRDFRepositoryManager.getInstance().getRepositories() != null) && (MetaRDFRepositoryManager.getInstance().getRepositories().size() > 0)){
+	    if((RepositoryManager.getInstance()!=null) && (RepositoryManager.getInstance().getRepositories() != null) && (RepositoryManager.getInstance().getRepositories().size() > 0)){
 		    table = new Table(container, SWT.BORDER);
 		    
 		    TableColumn tc1 = new TableColumn(table, SWT.LEFT);
@@ -46,7 +46,7 @@ public class RepositoryListWizardPage extends WizardPage {
 		    tc3.setText("URI or path");
 		    tc3.setWidth(200);
 	    
-	    	for(Repository repository : MetaRDFRepositoryManager.getInstance().getRepositories()){
+	    	for(IRepository repository : RepositoryManager.getInstance().getRepositories()){
 	    		TableItem item = new TableItem(table, SWT.NONE);
 	    		item.setData(repository);
 		    	item.setText(new String[]{repository.getName(), repository.getDescription(), repository.getURI()});

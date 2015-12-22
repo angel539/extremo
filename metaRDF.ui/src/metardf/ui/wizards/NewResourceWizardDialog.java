@@ -2,13 +2,13 @@ package metardf.ui.wizards;
 
 import org.eclipse.jface.wizard.Wizard;
 
-import metaRDF.core.model.Repository;
+import metaRDF.core.model.IRepository;
 
 public class NewResourceWizardDialog extends Wizard {
 	NewResourceWizardPage resourcePage;
-	Repository repository;
+	IRepository repository;
 	
-	public NewResourceWizardDialog(Repository repository) {
+	public NewResourceWizardDialog(IRepository repository) {
 		super();
 		setNeedsProgressMonitor(true);
 		this.repository = repository;

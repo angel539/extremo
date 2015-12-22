@@ -5,16 +5,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.TransferData;
 
-import metardf.ui.views.entities.TreeObject;
+import metaRDF.core.model.impl.SemanticClass;
 
 public class ModelTransfer extends ByteArrayTransfer {
-	private static final String CLASS_TYPE = "EntityParent";
+	private static final String CLASS_TYPE = "SemanticClass";
 	private static final int CLASS_ID = registerType(CLASS_TYPE);
 	
 	private static ModelTransfer _instance = new ModelTransfer();
@@ -28,36 +25,20 @@ public class ModelTransfer extends ByteArrayTransfer {
 			System.out.println("_" + checkIfSemanticClass(object) + " ^ " + isSupportedType(transferData) + "  obj: " + object + " transfer: " + transferData);
 		}
 		
-		List<TreeObject> myTypes = new ArrayList<TreeObject>();
-		if(object instanceof TreeObject){
-			TreeObject newobject = new TreeObject(((EntityParent) object).getName());
-			myTypes.add(newobject);
-			//myTypes = (TreeObject[]) newobject;
-		}
-		
-		/*
-		 * List<SemanticElement> myTypes = new ArrayList<SemanticElement>();
-		if(object instanceof EntityParent){
-			TreeObject newobject = new TreeObject(((EntityParent) object).getName());
-			myTypes.add(newobject);
-			//myTypes = (TreeObject[]) newobject;
-		}
-		 */
-		
+		SemanticClass[] semanticClasses = (SemanticClass[]) object;
 		
 		try{
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
 			DataOutputStream writeOut = new DataOutputStream(out);
 			
-			for(TreeObject myType : myTypes){
-				byte[] buffer = myType.getName().getBytes();
-				writeOut.writeInt(buffer.length);
-				writeOut.write(buffer);
+			for(SemanticClass semanticClass : semanticClasses){
+				byte[] nameBuffer = semanticClass.getName().getBytes();
+				writeOut.writeInt(nameBuffer.length);
+				writeOut.write(nameBuffer);
 			}
 			
 			byte[] buffer = out.toByteArray();
 			writeOut.close();
-			
 			super.javaToNative(buffer, transferData);
 		}
 		catch (IOException e) { } 
@@ -68,48 +49,51 @@ public class ModelTransfer extends ByteArrayTransfer {
 			byte[] buffer = (byte[]) super.nativeToJava(transferData);
 			if (buffer == null) return null;
 			
-			TreeObject[] myData = new TreeObject[0];
+			SemanticClass[] semanticClass = new SemanticClass[0];
 			try {
 				ByteArrayInputStream in = new ByteArrayInputStream(buffer);
 				DataInputStream readIn = new DataInputStream(in);
 				
 				while (readIn.available() > 20) {
-					
+					SemanticClass data = new SemanticClass();
 					int size = readIn.readInt();
 					byte[] name = new byte[size];
 					readIn.read(name);
 					
-					TreeObject datum = new TreeObject(new String(name));
-					TreeObject[] newMyData = new TreeObject[myData.length + 1];
-					System .arraycopy(myData, 0, newMyData, 0, myData.length);
-					newMyData[myData.length] = datum;
-					myData = newMyData;
+					data.setName(new String(name));
+					
+					SemanticClass[] newSemanticClass = new SemanticClass[semanticClass.length + 1];
+					System .arraycopy(semanticClass, 0, newSemanticClass, 0, semanticClass.length);
+					newSemanticClass[semanticClass.length] = data;
+					semanticClass = newSemanticClass;
 				}
 				
 				readIn.close();
 			}
 			catch (IOException ex) {return null;}
 			
-			return myData;
+			return semanticClass;
 		}
 		
 		return null;
 	}
 	
 	private boolean checkIfSemanticClass(Object object) {
-		if((object == null) || !(object instanceof TreeObject[]) || (((TreeObject[]) object).length == 0)){
-			System.out.println("No pasa el check");
+		if((object == null) || !(object instanceof SemanticClass[]) || (((SemanticClass[]) object).length == 0)){
 			return false;
 		}
 		
-		TreeObject[] semanticClasses = (TreeObject[]) object;
+		SemanticClass[] semanticClasses = (SemanticClass[]) object;
 		for(int i = 0; i < semanticClasses.length; i++){
 			if((semanticClasses[i] == null) || (semanticClasses[i].getName() == null) || (semanticClasses[i].getName().length() == 0)){
-				System.out.println("No pasa el check 2");
 				return false;
 			}
 		}
 		return true;
+	}
+	
+	protected boolean validate(Object object){
+		return checkIfSemanticClass(object);
 	}
 	
 	@Override

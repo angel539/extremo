@@ -34,7 +34,7 @@ import org.eclipse.ui.part.ViewPart;
 
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
-import metaRDF.core.model.SemanticClass;
+import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.owl.OwlAssistant;
 import metardf.ui.Activator;
 import metardf.ui.dnd.ResourceViewAction;
@@ -78,17 +78,17 @@ public class EntityView extends ViewPart {
 	}
 	
 	class EntityParent extends TreeParent{
-		SemanticClass semanticclass;
+		ISemanticClass semanticclass;
 	
-		public SemanticClass getSemanticclass() {
+		public ISemanticClass getSemanticclass() {
 			return semanticclass;
 		}
 
-		public void setSemanticclass(SemanticClass semanticclass) {
+		public void setSemanticclass(ISemanticClass semanticclass) {
 			this.semanticclass = semanticclass;
 		}
 
-		public EntityParent(SemanticClass semanticclass) {
+		public EntityParent(ISemanticClass semanticclass) {
 			super(semanticclass.getName());
 			this.semanticclass = semanticclass;
 		}
@@ -96,7 +96,7 @@ public class EntityView extends ViewPart {
 		public void drawSuperClasses(){
 			FolderParent supersChild = new FolderParent("supers"  + " (" + semanticclass.getSuperclasses().size() + ")");
 			
-			for(SemanticClass superClass : semanticclass.getSuperclasses()){
+			for(ISemanticClass superClass : semanticclass.getSuperclasses()){
 				EntityParent entitySuper;
 				if((superClass.getLabel()==null)||(superClass.getLabel().compareTo("")==0)) entitySuper = new EntityParent(superClass);
 				else entitySuper = new EntityParent(superClass);
@@ -108,7 +108,7 @@ public class EntityView extends ViewPart {
 		public void drawSubclasses(){
 			FolderParent subsChild = new FolderParent("subs"  + " (" + semanticclass.getSubclasses().size() + ")");
 			
-			for(SemanticClass subClass : semanticclass.getSubclasses()){
+			for(ISemanticClass subClass : semanticclass.getSubclasses()){
 				EntityParent entitySuper;
 				if((subClass.getLabel()==null)||(subClass.getLabel().compareTo("")==0)) entitySuper = new EntityParent(subClass);
 				else entitySuper = new EntityParent(subClass);
@@ -334,17 +334,17 @@ public class EntityView extends ViewPart {
 		return onTheTree;
 	}
 	
-	public void defineEntity(SemanticClass semanticclass){
+	public void defineEntity(ISemanticClass semanticclass){
 		EntityParent entityParent;
 		
 		if((semanticclass.getLabel()==null)||(semanticclass.getLabel().compareTo("")==0)) entityParent = new EntityParent(semanticclass);
 		else entityParent = new EntityParent(semanticclass);
 		
-		List<SemanticClass> superclasses = OwlAssistant.getInstance().getSuper(semanticclass.getURI(), false);
+		List<ISemanticClass> superclasses = OwlAssistant.getInstance().getSuper(semanticclass.getURI(), false);
 		semanticclass.setSuperclasses(superclasses);
 		entityParent.drawSuperClasses();
 		
-		List<SemanticClass> subclasses = OwlAssistant.getInstance().getSub(semanticclass.getURI(), false);
+		List<ISemanticClass> subclasses = OwlAssistant.getInstance().getSub(semanticclass.getURI(), false);
 		semanticclass.setSubclasses(subclasses);
 		entityParent.drawSubclasses();
 		
