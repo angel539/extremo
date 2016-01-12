@@ -21,9 +21,9 @@
  <extension
        point="metaRDF.ui.drop">
     <editordrop
-          class="orders.veditor.dnd.OrderTransferDropTargetListener"
-          id="metaRDF.ui.drop.orders"
-          name="metaRDF.ui.drop.orders">
+          class="orders.veditor.dnd.OrdersEditorTransferDropTargetListener"
+          id="metardf.ui.drop.orders"
+          name="metardf.ui.drop.orders">
     </editordrop>
  </extension>
 </plugin>

@@ -7,6 +7,8 @@ import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 
+import metardf.ui.dnd.ModelTransfer;
+
 public class EntityTreeViewer extends TreeViewer {
 
 	public EntityTreeViewer(Composite parent) {
@@ -21,8 +23,8 @@ public class EntityTreeViewer extends TreeViewer {
 		super(parent, style);
 		
 		int operations = DND.DROP_COPY| DND.DROP_MOVE;
-		//Transfer[] transferTypes = new Transfer[]{ModelTransfer.getInstance()};
-		Transfer[] transferTypes = new Transfer[]{TextTransfer.getInstance()};
+		Transfer[] transferTypes = new Transfer[]{ModelTransfer.getInstance()};
+		//Transfer[] transferTypes = new Transfer[]{TextTransfer.getInstance()};
 		addDragSupport(operations, transferTypes, new EntityDragListener(this));
 	}
 }

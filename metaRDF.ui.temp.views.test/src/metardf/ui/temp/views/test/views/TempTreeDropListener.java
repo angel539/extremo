@@ -1,9 +1,8 @@
 package metardf.ui.temp.views.test.views;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
-import org.eclipse.swt.dnd.DropTargetEvent;
+//import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TransferData;
-
 
 public class TempTreeDropListener extends ViewerDropAdapter {
 	Viewer viewer;
@@ -16,6 +15,7 @@ public class TempTreeDropListener extends ViewerDropAdapter {
 	@Override
 	public boolean performDrop(Object data) {
 		System.out.println("drop: " + data.toString() + " " + data.getClass());
+		System.out.println("");
 		return true;
 	}
 

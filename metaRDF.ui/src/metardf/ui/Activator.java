@@ -14,6 +14,8 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 	public static final String PLUGIN_ID = "metaRDF.ui";
 	public static final String EXTENSIONS_ID = "metaRDF.ui.actions";
+	public static final String EDITOR_EXTENSIONS_ID = "metaRDF.ui.drop";
+	
 	private static Activator plugin;
 	
 	public Activator() {

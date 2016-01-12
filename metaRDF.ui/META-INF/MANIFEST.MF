@@ -15,8 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.swt,
  org.eclipse.gef;bundle-version="3.10.1",
  org.eclipse.graphiti.ui,
- org.eclipse.graphiti;bundle-version="0.12.1",
- orders.veditor
+ org.eclipse.graphiti;bundle-version="0.12.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,

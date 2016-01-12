@@ -41,10 +41,6 @@
             id="metaRDF.ui.temp.views.test.treedrop"
             name="metaRDF.ui.temp.views.test.treedrop">
       </viewdrop>
-      <editordrop
-            class="TestTransferDropTargetListener">
-      </editordrop>
-      <editordrop></editordrop>
    </extension>
 
 </plugin>

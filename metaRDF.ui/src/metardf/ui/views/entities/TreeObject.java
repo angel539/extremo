@@ -5,19 +5,21 @@ import org.eclipse.core.runtime.IAdaptable;
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.IProperty;
+import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 import metardf.ui.views.entities.EntityView.TreeParent;
 
 public class TreeObject implements IAdaptable {
 	private String name;
 	private TreeParent parent;
-	private ISemanticElement element;
 	
-	public ISemanticElement getElement() {
+	ISemanticElement element;
+	
+	public ISemanticElement getSemanticElement() {
 		return element;
 	}
 
-	public void setElement(ISemanticElement element) {
+	public void setSemanticElement(ISemanticElement element) {
 		this.element = element;
 	}
 

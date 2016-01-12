@@ -18,7 +18,7 @@ public class SearchEntity extends ResourceViewAction {
 	@Override
 	public void execute() {
 		if((RepositoryManager.getInstance()!=null) && (RepositoryManager.getInstance().getRepositories()!=null) && (RepositoryManager.getInstance().getRepositories().size() > 0)){
-			for(IRepository repository : RepositoryManager.getInstance().getRepositories()){
+			for(IRepository repository : RepositoryManager.getInstance().getRepositories()){    
 				for(IResource resource : repository.getResources()){
 					OwlAssistant.getInstance().load(resource.getURI());
 					

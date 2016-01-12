@@ -4,7 +4,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
-import org.eclipse.swt.dnd.TextTransfer;
+//import org.eclipse.swt.dnd.TextTransfer;
 
 import metardf.ui.dnd.ModelTransfer;
 
