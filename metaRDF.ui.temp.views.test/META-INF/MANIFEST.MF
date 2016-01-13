@@ -7,6 +7,7 @@ Bundle-Activator: metardf.ui.temp.views.test.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  metaRDF.ui;bundle-version="1.0.0",
- org.eclipse.gef
+ org.eclipse.gef,
+ metaRDF.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
