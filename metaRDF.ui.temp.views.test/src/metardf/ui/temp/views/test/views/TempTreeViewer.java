@@ -2,6 +2,10 @@ package metardf.ui.temp.views.test.views;
 
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DropTarget;
+import org.eclipse.swt.dnd.DropTargetAdapter;
+import org.eclipse.swt.dnd.DropTargetEvent;
+import org.eclipse.swt.dnd.TextTransfer;
 //import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
@@ -21,9 +25,20 @@ public class TempTreeViewer extends TreeViewer {
 	public TempTreeViewer(Composite parent, int style) {
 		super(parent, style);
 		
-		int operations = DND.DROP_COPY | DND.DROP_MOVE;
+		//int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		//Transfer[] transferTypes = new Transfer[]{TextTransfer.getInstance()};
-		Transfer[] transferTypes = new Transfer[]{ModelTransfer.getInstance()};
-	    addDropSupport(operations, transferTypes, new TempTreeViewerDropAdapter(this));
+		//Transfer[] transferTypes = new Transfer[]{ModelTransfer.getInstance()};
+	    //addDropSupport(operations, transferTypes, new TempTreeViewerDropAdapter(this));
+		// Create the drop target on the text field
+		DropTarget dt = new DropTarget(getTree().getShell(), DND.DROP_COPY);
+		dt.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
+		dt.addDropListener(new DropTargetAdapter() {
+			public void drop(DropTargetEvent event) {
+				// Set the text field's text to the text being dropped
+		         //text.setText((String)event.data);
+				
+				System.out.println(">>>> asdfadsfadsf");
+		      }
+		   });
 	}
 }

@@ -18,22 +18,24 @@ public class SearchEntity extends ResourceViewAction {
 	@Override
 	public void execute() {
 		if((RepositoryManager.getInstance()!=null) && (RepositoryManager.getInstance().getRepositories()!=null) && (RepositoryManager.getInstance().getRepositories().size() > 0)){
-			for(IRepository repository : RepositoryManager.getInstance().getRepositories()){    
-				for(IResource resource : repository.getResources()){
-					OwlAssistant.getInstance().load(resource.getURI());
-					
-					InputDialog inputDialog = new InputDialog(null, "Entity creation", "Enter a new entity", "", null);
-					if (inputDialog.open() == Window.OK){
-						String candidate = inputDialog.getValue();
-						
+			String candidate = null;
+			InputDialog inputDialog = new InputDialog(null, "Entity creation", "Enter a new entity", "", null);
+			if (inputDialog.open() == Window.OK){
+				candidate = inputDialog.getValue();
+			}
+			
+			if(candidate != null){
+				for(IRepository repository : RepositoryManager.getInstance().getRepositories()){    
+					for(IResource resource : repository.getResources()){
+						OwlAssistant.getInstance().load(resource.getURI());
 						List<ISemanticClass> entities = OwlAssistant.getInstance().getClassesLike(candidate);
 						if((entities == null) || (entities.size() < 1)) MessageDialog.openWarning(null, "Entity not found", "No entities were found matching the input " + candidate);
 							
 						for(ISemanticClass entity : entities){
 							addEntity(entity);
 						}
-					}
-				}		
+					}		
+				}
 			}
 		}
 	}

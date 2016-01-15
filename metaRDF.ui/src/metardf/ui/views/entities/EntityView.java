@@ -237,17 +237,16 @@ public class EntityView extends ViewPart {
 					try{
 						graphityDrop = (GraphityEditorTransferDropTargetListener) extension.createExecutableExtension("class");
 						
-						
 						/*DropTarget dt = new DropTarget(graphityDrop., DND.DROP_MOVE);
 						   dt.setTransfer(new Transfer[] {TextTransfer.getInstance()});
 						   dt.addDropListener(new DropTargetAdapter() {
 						      public void drop(DropTargetEvent event) {
-						         // Set the text field's text to the text being dropped
+						         //Set the text field's text to the text being dropped
 						         System.out.println("venga que tu puedes" + (String)event.data);
 						      }
 						   });*/
-						//graphicalViewer.addDropTargetListener(graphityDrop);
-						//System.out.println("------" + graphicalViewer.toString());
+						graphicalViewer.addDropTargetListener(graphityDrop);
+						System.out.println("------" + graphicalViewer.toString());
 					}
 					catch(CoreException e){
 						System.out.println("Creating action in editor exception");

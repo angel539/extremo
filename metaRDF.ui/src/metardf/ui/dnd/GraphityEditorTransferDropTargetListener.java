@@ -16,17 +16,13 @@ public abstract class GraphityEditorTransferDropTargetListener extends  Abstract
 	private CreateRequest request = null;
 	
 	public GraphityEditorTransferDropTargetListener(GraphicalViewer viewer) {
-		//super(viewer, ModelTransfer.getInstance());
 		super(viewer, ModelTransfer.getInstance());
 		setEnablementDeterminedByCommand(true);
-		//handleDragOver();
 	}
 	
 	public GraphityEditorTransferDropTargetListener(){
-		//super(viewer, ModelTransfer.getInstance());
-		super(viewer, TextTransfer.getInstance());
+		super(viewer, ModelTransfer.getInstance());
 		setEnablementDeterminedByCommand(true);
-		//handleDragOver();
 	}
 	
 	public EditPartViewer getViewer() {
@@ -39,38 +35,26 @@ public abstract class GraphityEditorTransferDropTargetListener extends  Abstract
 	
 	@Override
 	public void drop(DropTargetEvent event) {
-		System.out.println("hola soy un DROP. si se puede");
 		super.drop(event);
 	}
 	
 	@Override
 	protected void handleDrop() {
-		DropTargetEvent event = getCurrentEvent();
-		Object myData = event.data;
+		System.out.println("Paso por handle drop" + getCurrentEvent().data.getClass());
 		
-		if(myData != null){
-			System.out.println("hola!!" + getCurrentEvent().data);
-			
-			if(myData instanceof SemanticClass[]){
-				SemanticClass aux = ((SemanticClass[])getCurrentEvent().data)[0];
-				factory.setName(aux.getName());
-				factory.setUri(aux.getURI());
-				System.out.println("¿????");
-			}
-			else{
-				System.out.println("dice que no es instancia");
-			}
-			
-			System.out.println("manejando drop...");
-			super.handleDrop();
-		}
+		//String s = ((String)getCurrentEvent().data);
+		//System.out.println("Paso"+s);
+		//String separator = System.getProperty("file.separator"); 
+		//s = s.substring(s.lastIndexOf(separator) + 1); 
+		//factory.setName(s); 
+		super.handleDrop();
 	}
 
 	@Override
 	protected void updateTargetRequest() {
 		if(request != null){
 			request.setLocation(getDropLocation());
-			handleDrop();
+			//handleDrop();
 		}
 	}
 

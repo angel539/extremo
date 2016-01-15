@@ -11,6 +11,13 @@
             position="toolbar"
             view="entities">
       </action>
+      <action
+            class="metardf.ui.actions.test.TetsAction"
+            id="metaRDF.ui.actions.test.action1"
+            name="metaRDF.ui.actions.test.action1"
+            position="toolbar"
+            view="entities">
+      </action>
    </extension>
 
 </plugin>

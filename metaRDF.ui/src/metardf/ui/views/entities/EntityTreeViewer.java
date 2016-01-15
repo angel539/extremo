@@ -1,5 +1,7 @@
 package metardf.ui.views.entities;
 
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
@@ -31,32 +33,32 @@ public class EntityTreeViewer extends TreeViewer {
 	public EntityTreeViewer(Composite parent, int style) {
 		super(parent, style);
 		
-		int operations = DND.DROP_COPY| DND.DROP_MOVE;
-		//Transfer[] transferTypes = new Transfer[]{ModelTransfer.getInstance()};
-		Transfer[] transferTypes = new Transfer[]{ModelTransfer.getInstance()};
-		addDragSupport(operations, transferTypes, new EntityDragSourceListener(this));
+		/*
+		 * Para vistas
+		 */
+		/*
+		 * int operations = DND.DROP_COPY | DND.DROP_MOVE;
+		Transfer[] transferTypes = new Transfer[]{TextTransfer.getInstance()};
+		addDragSupport(operations, transferTypes,  new EntityDragSourceListener(this));
+		*/
 		
-		
-		/*DragSource dragSource = new DragSource(getTree(), DND.DROP_COPY);
-		dragSource.setTransfer(transferTypes);
-		dragSource.addDragListener(new DragSourceListener() {
-			@Override
-			public void dragStart(DragSourceEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void dragSetData(DragSourceEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void dragFinished(DragSourceEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-		});*/
+		/*
+		 * Para editor
+		 */
+		DragSource ds = new DragSource(getTree(), DND.DROP_COPY);
+		  ds.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
+		  ds.addDragListener(new DragSourceAdapter() {
+		     public void dragSetData(DragSourceEvent event) {
+		    	 IStructuredSelection selection = (IStructuredSelection) getSelection();
+		    	 if(selection.getFirstElement() instanceof IAdaptable){
+		 	    	IAdaptable data = (IAdaptable) selection.getFirstElement();	
+		 		    if (ModelTransfer.getInstance().isSupportedType(event.dataType)) {
+		 		    	event.data = data;
+		 		    }
+		 	    }
+		    	 
+		    	//event.data = getSelection();
+		     }
+		  });
 	}
 }
