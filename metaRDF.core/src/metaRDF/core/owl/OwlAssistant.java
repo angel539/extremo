@@ -26,9 +26,9 @@ import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-//import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import metaRDF.core.rdf.IFormatAssistant;
+import metaRDF.core.utils.PropertiesFile;
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.Datatype;
 import metaRDF.core.model.IObjectProperty;
@@ -70,13 +70,14 @@ public class OwlAssistant implements IFormatAssistant{
 	}
 
 	@Override
-	public void load(String path) {
+	public boolean load(String path) {
 		this.path = path;
 				
 		if((path.startsWith("http://"))||(path.startsWith("https://"))){
 			this.owl_iri = IRI.create(path);
 		}else{
 			this.owl_file = new File(path);
+			if(!this.owl_file.isFile()) return false;
 		}
 		
 		OWLOntologyManager m = create();
@@ -84,15 +85,18 @@ public class OwlAssistant implements IFormatAssistant{
 			try {
 				ontology = m.loadOntologyFromOntologyDocument(owl_iri);
 			} catch (OWLOntologyCreationException e) {
-				System.err.println("No connection");
+				return false;
 			}
 		}else{
 			try {
 				ontology = m.loadOntologyFromOntologyDocument(owl_file);
-			} catch (OWLOntologyCreationException e) {
-				System.err.println("File not found");
+			}
+			catch (OWLOntologyCreationException e) {
+				return false;
 			}
 		}
+		
+		return true;
 	}
 
 	@Override
@@ -101,7 +105,6 @@ public class OwlAssistant implements IFormatAssistant{
 		Map<String, List<String>> definitions = new HashMap<String, List<String>>();
 		
 		for(String name : names){
-			
 			String[] spplited = StringUtils.splitByWholeSeparator(name, null, 0);
 			String joinedCapitalize = "";
 			for(String s : spplited) joinedCapitalize = joinedCapitalize + WordUtils.capitalize(s);
@@ -110,24 +113,42 @@ public class OwlAssistant implements IFormatAssistant{
 
 			
 			for(String s : wordList){
-				Wordnet wordnet = new Wordnet();
-				List<String> wordnetProposals = null;
-				if(wordnet.isNoun(s)){
-					List<List<String>> synonymsByName = wordnet.getSynonymsProposal(s);
-					//conformando toda la lista de palabras a partir de los conjuntos de sinonimos
-					if(synonymsByName.size() > 0){
-						wordnetProposals = new ArrayList<String>();
-						for(List<String> partial : synonymsByName){
-							wordnetProposals.addAll(partial);
-						}
-					}	
+				String wordnetPath = PropertiesFile.getInstance().getWordnet();
+				if(wordnetPath == null){
+					List<String> aux = new ArrayList<String>();
+					aux.add(s);
+					definitions.put(s, aux);
 				}
+				else{
+					Wordnet wordnet = new Wordnet(wordnetPath);
+					List<String> wordnetProposals = null;
+					if(wordnet.isNoun(s)){
+						List<List<String>> synonymsByName = wordnet.getSynonymsProposal(s);
+						//conformando toda la lista de palabras a partir de los conjuntos de sinonimos
+						if(synonymsByName.size() > 0){
+							wordnetProposals = new ArrayList<String>();
+							for(List<String> partial : synonymsByName){
+								wordnetProposals.addAll(partial);
+							}
+						}	
+					}
+					
+					HashSet<String> aux = new HashSet<String>(wordnetProposals);
+					wordnetProposals.clear();
+					wordnetProposals.addAll(aux);
+					
+					definitions.put(s, wordnetProposals);
+				}	
 				
-				HashSet<String> aux = new HashSet<String>(wordnetProposals);
+				/*HashSet<String> aux = new HashSet<String>(wordnetProposals);
 				wordnetProposals.clear();
 				wordnetProposals.addAll(aux);
 				
 				definitions.put(s, wordnetProposals);
+				
+				List<String> aux = new ArrayList<String>();
+				aux.add(s);
+				definitions.put(s, aux);*/
 			}
 		}
 		

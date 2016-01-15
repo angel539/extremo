@@ -37,7 +37,7 @@
    <extension
          point="metaRDF.ui.drop">
       <viewdrop
-            class="metardf.ui.temp.views.test.views.TempTreeDropListener"
+            class="metardf.ui.temp.views.test.views.TempTreeViewerDropAdapter"
             id="metaRDF.ui.temp.views.test.treedrop"
             name="metaRDF.ui.temp.views.test.treedrop">
       </viewdrop>

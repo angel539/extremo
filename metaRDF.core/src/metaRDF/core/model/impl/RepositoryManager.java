@@ -51,4 +51,13 @@ public class RepositoryManager implements IRepositoryManager{
     public Object clone() throws CloneNotSupportedException {
     	throw new CloneNotSupportedException(); 
     }
+    
+    @Override
+    public String toString() {
+    	String managerString = "";
+    	for(IRepository repository : repositories){
+    		managerString = managerString + repository.toString() + "\n";	
+    	}
+    	return managerString;
+    }
 }

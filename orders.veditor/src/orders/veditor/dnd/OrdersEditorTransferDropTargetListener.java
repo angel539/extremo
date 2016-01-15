@@ -1,11 +1,15 @@
 package orders.veditor.dnd;
+import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
+import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
+import metaRDF.core.model.impl.SemanticClass;
 import metardf.ui.dnd.GraphityEditorTransferDropTargetListener;
 
 public class OrdersEditorTransferDropTargetListener extends GraphityEditorTransferDropTargetListener {
@@ -13,6 +17,12 @@ public class OrdersEditorTransferDropTargetListener extends GraphityEditorTransf
 	
 	public OrdersEditorTransferDropTargetListener() {
 		super();
+		setViewer(getGraphicalViewer());
+		getViewer().addDropTargetListener(this);
+	}
+	
+	public OrdersEditorTransferDropTargetListener(GraphicalViewer graphicalViewer) {
+		super(graphicalViewer);
 		setViewer(getGraphicalViewer());
 		getViewer().addDropTargetListener(this);
 	}
@@ -41,4 +51,26 @@ public class OrdersEditorTransferDropTargetListener extends GraphityEditorTransf
 	public void addElement() {
 		
 	}
+	
+	@Override
+	public void drop(DropTargetEvent event) {
+		System.out.println("hace drop una p vez" + event.data);
+		super.drop(event);
+	}
+	
+	@Override
+	public void dropAccept(DropTargetEvent event) {
+		System.out.println("hace drop una p vez en el accept" + event.data);
+		super.dropAccept(event);
+	}
+	/*@Override
+	protected void handleDrop() {
+		if(getCurrentEvent().data instanceof SemanticClass[]){
+			SemanticClass aux = ((SemanticClass[])getCurrentEvent().data)[0];
+			System.out.println("objeto nuevo... " + aux.getName() + "..." + aux.getURI());
+		}
+
+		System.out.println("---- la clase es: " + getCurrentEvent().data.getClass() + ">>> " + getCurrentEvent().data.toString());
+		super.handleDrop();
+	}*/
 }

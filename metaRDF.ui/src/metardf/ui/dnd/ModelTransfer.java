@@ -91,7 +91,7 @@ public class ModelTransfer extends ByteArrayTransfer {
 			byte[] buffer = (byte[]) super.nativeToJava(transferData);
 			if (buffer == null) return null;
 			
-			ISemanticElement[] semanticClass = new ISemanticElement[0];
+			Object[] semanticClass = new Object[0];
 			try {
 				ByteArrayInputStream in = new ByteArrayInputStream(buffer);
 				DataInputStream readIn = new DataInputStream(in);
@@ -108,12 +108,12 @@ public class ModelTransfer extends ByteArrayTransfer {
 					byte[] uri = new byte[sizeUri];
 					readIn.read(uri);
 					//data.setUri(new String(uri));
-					
-					ISemanticElement[] newSemanticClass = new ISemanticElement[semanticClass.length + 1];
-					System .arraycopy(semanticClass, 0, newSemanticClass, 0, semanticClass.length);
-					
+			
 					switch(type){
 						case 0:
+							SemanticClass[] newSemanticClass = new SemanticClass[semanticClass.length + 1];
+							System .arraycopy(semanticClass, 0, newSemanticClass, 0, semanticClass.length);
+							
 							System.out.println("voy a definir una semanticclass");
 							SemanticClass semanticclassdata = new SemanticClass(new String(name), new String(uri), null, null);
 							newSemanticClass[semanticClass.length] = semanticclassdata;
@@ -121,17 +121,23 @@ public class ModelTransfer extends ByteArrayTransfer {
 							break;
 						
 						case 1:
+							ObjectProperty[] newObjectProperty = new ObjectProperty[semanticClass.length + 1];
+							System .arraycopy(semanticClass, 0, newObjectProperty, 0, semanticClass.length);
+							
 							System.out.println("voy a definir una objectproperty");
 							ObjectProperty objectpropertydata = new ObjectProperty(new String(name), new String(uri), null, false, null);
-							newSemanticClass[semanticClass.length] = objectpropertydata;
-							semanticClass = newSemanticClass;
+							newObjectProperty[semanticClass.length] = objectpropertydata;
+							semanticClass = newObjectProperty;
 							break;
 						
 						case 2:
+							DataProperty[] newDataProperty = new DataProperty[semanticClass.length + 1];
+							System .arraycopy(semanticClass, 0, newDataProperty, 0, semanticClass.length);
+							
 							System.out.println("voy a definir una dataproperty");
 							DataProperty datapropertydata = new DataProperty(new String(name), new String(uri), null, false, null);
-							newSemanticClass[semanticClass.length] = datapropertydata;
-							semanticClass = newSemanticClass;
+							newDataProperty[semanticClass.length] = datapropertydata;
+							semanticClass = newDataProperty;
 							break;
 						default:
 							System.out.println("voy a definir un objeto X");

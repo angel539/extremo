@@ -11,6 +11,8 @@ import metardf.ui.Activator;
 import metardf.ui.wizards.EditResourceWizardDialog;
 import metardf.ui.wizards.NewRepositoryWizardDialog;
 import metardf.ui.wizards.NewResourceWizardDialog;
+import metardf.ui.wizards.importers.NewFileExportSupportWizardDialog;
+import metardf.ui.wizards.importers.NewFileImportSupportWizardDialog;
 
 import org.eclipse.jface.viewers.*;
 import org.eclipse.jface.window.Window;
@@ -31,6 +33,9 @@ public class RepositoryView extends ViewPart {
 	private Action createResource;
 	private Action doubleClickAction;
 	private TreeParent invisibleRoot;
+	
+	private Action importRepositories;
+	private Action exportRepositories;
 	
 	class TreeObject implements IAdaptable {
 		private String name;
@@ -143,60 +148,6 @@ public class RepositoryView extends ViewPart {
 		}
 	}
 	
-	/*class ViewContentProvider implements ITreeContentProvider {
-
-		@Override
-		public void dispose() {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public Object[] getElements(Object parent) {
-			if (parent.equals(getViewSite())) {
-				if (invisibleRoot==null){
-					initialize();
-				}
-				return getChildren(invisibleRoot);
-			}
-			return getChildren(parent);
-		}
-		public Object getParent(Object child) {
-			if (child instanceof TreeObject) {
-				return ((TreeObject)child).getParent();
-			}
-			if (child instanceof ResourceObject) {
-				return ((ResourceObject)child).getParent();
-			}
-			return null;
-		}
-		public Object [] getChildren(Object parent) {
-			if (parent instanceof TreeParent) {
-				return ((TreeParent)parent).getChildren();
-			}
-			if (parent instanceof RepositoryParent) {
-				return ((RepositoryParent)parent).getChildren();
-			}
-			return new Object[0];
-		}
-		public boolean hasChildren(Object parent) {
-			if (parent instanceof TreeParent)
-				return ((TreeParent)parent).hasChildren();
-			if (parent instanceof RepositoryParent)
-				return ((RepositoryParent)parent).hasChildren();
-			return false;
-		}
-		
-		private void initialize() {
-			invisibleRoot = new TreeParent("");
-		}
-	}*/
-	
 	class ViewContentProvider implements IStructuredContentProvider,  ITreeContentProvider {
 		public void inputChanged(Viewer v, Object oldInput, Object newInput) {
 		}
@@ -261,59 +212,6 @@ public class RepositoryView extends ViewPart {
 		}
 	}
 	
-	/*class TableLabelProvider implements ITableLabelProvider{
-
-		@Override
-		public void addListener(ILabelProviderListener listener) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void dispose() {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public boolean isLabelProperty(Object element, String property) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public void removeListener(ILabelProviderListener listener) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public Image getColumnImage(Object element, int columnIndex) {
-			switch (columnIndex){
-	            case 0:
-	            	if(element instanceof RepositoryParent) return Activator.getImageDescriptor("icons/folder-icon_16.png").createImage();
-	            	if(element instanceof ResourceObject) return Activator.getImageDescriptor("icons/3d_objects_16.png").createImage();
-	        }
-			return null;
-		}
-
-		@Override
-		public String getColumnText(Object element, int columnIndex) {
-			switch (columnIndex){
-	            case 0:
-	            	if(element instanceof RepositoryParent) return ((RepositoryParent) element).getRepository().getName();
-	            	if(element instanceof ResourceObject) return ((ResourceObject) element).getResource().getName();
-	            case 1:
-	            	if(element instanceof RepositoryParent) return ((RepositoryParent) element).getRepository().getDescription();
-	            	if(element instanceof ResourceObject) return ((ResourceObject) element).getResource().getDescription();
-	            case 2: 
-	            	if(element instanceof RepositoryParent) return ((RepositoryParent) element).getRepository().getURI();
-	            	if(element instanceof ResourceObject) return ((ResourceObject) element).getResource().getURI();
-			}
-			return null;
-		}
-	}*/
-	
 	class NameSorter extends ViewerSorter {
 	}
 
@@ -325,25 +223,8 @@ public class RepositoryView extends ViewPart {
 	 * to create the viewer and initialize it.
 	 */
 	public void createPartControl(Composite parent) {		
-		//invisibleRoot = new TreeParent("");
-		//Tree repositoryTree = new Tree(parent, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
-		//repositoryTree.setHeaderVisible(true);
 		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		/*viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		Tree repositoryTree = viewer.getTree();
-		repositoryTree.setHeaderVisible(true);
-		
-		TreeColumn nameColumn = new TreeColumn(repositoryTree, SWT.LEFT);
-		nameColumn.setText("Name");
-		nameColumn.setWidth(200);
-		TreeColumn descriptionColumn = new TreeColumn(repositoryTree, SWT.LEFT);
-		descriptionColumn.setText("Description");
-		descriptionColumn.setWidth(400);
-		TreeColumn pathColumn = new TreeColumn(repositoryTree, SWT.LEFT);
-		pathColumn.setText("Path");
-		pathColumn.setWidth(800);*/
-		
-		
+	
 		new DrillDownAdapter(viewer);
 		viewer.setContentProvider(new ViewContentProvider());
 		viewer.setLabelProvider(new ViewLabelProvider());
@@ -389,6 +270,8 @@ public class RepositoryView extends ViewPart {
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(addRepository);
+		manager.add(importRepositories);
+		manager.add(exportRepositories);
 	}
 
 	private void makeActions() {
@@ -418,6 +301,59 @@ public class RepositoryView extends ViewPart {
 		addRepository.setText("Add Repository");
 		addRepository.setToolTipText("");
 		addRepository.setImageDescriptor(Activator.getImageDescriptor("icons/newfolder_wiz.gif"));
+		
+		importRepositories = new Action() {
+			public void run() {
+				WizardDialog wizardDialog = new WizardDialog(null, new NewFileImportSupportWizardDialog());
+				if (wizardDialog.open() == Window.OK) {
+					if(invisibleRoot.hasChildren()){
+						for(TreeObject treeobject : invisibleRoot.getChildren()){
+							invisibleRoot.removeChild(treeobject);
+						}
+					}
+					//System.out.println("en repository " + MetaRDFRepositoryManager.getInstance());
+					
+					for(IRepository repository : RepositoryManager.getInstance().getRepositories()){
+						RepositoryParent repositoryParent = new RepositoryParent(repository);
+						repositoryParent.drawResources();
+						invisibleRoot.addChild(repositoryParent);
+					}
+					viewer.refresh();
+				}
+				else{
+				}
+			}
+		};
+		
+		importRepositories.setText("Import Repositories");
+		importRepositories.setToolTipText("");
+		importRepositories.setImageDescriptor(Activator.getImageDescriptor("icons/import_wiz.gif"));
+		
+		exportRepositories = new Action() {
+			public void run() {
+				WizardDialog wizardDialog = new WizardDialog(null, new NewFileExportSupportWizardDialog());
+				wizardDialog.open();
+				//if (wizardDialog.open() == Window.OK) {
+					/*if(invisibleRoot.hasChildren()){
+						for(TreeObject treeobject : invisibleRoot.getChildren()){
+							invisibleRoot.removeChild(treeobject);
+						}
+					}
+					//System.out.println("en repository " + MetaRDFRepositoryManager.getInstance());
+					
+					for(IRepository repository : RepositoryManager.getInstance().getRepositories()){
+						RepositoryParent repositoryParent = new RepositoryParent(repository);
+						repositoryParent.drawResources();
+						invisibleRoot.addChild(repositoryParent);
+					}
+					viewer.refresh();*/
+				//}
+			}
+		};
+		
+		exportRepositories.setText("Export Repositories");
+		exportRepositories.setToolTipText("");
+		exportRepositories.setImageDescriptor(Activator.getImageDescriptor("icons/export_wiz.gif"));
 		
 		createResource = new Action() {
 			public void run() {

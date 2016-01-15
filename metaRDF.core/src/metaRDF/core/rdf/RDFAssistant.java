@@ -118,9 +118,8 @@ public class RDFAssistant implements IFormatAssistant {
 	*/
 
 	@Override
-	public void load(String path) {
-		// TODO Auto-generated method stub
-		
+	public boolean load(String path) {
+		return true;	
 	}
 
 	@Override

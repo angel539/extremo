@@ -1,37 +1,33 @@
 package metardf.ui.dnd;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IExecutableExtension;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.Request;
-import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.dnd.AbstractTransferDropTargetListener;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gef.requests.CreationFactory;
 import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TextTransfer;
 
 import metaRDF.core.model.impl.SemanticClass;
 
-public abstract class GraphityEditorTransferDropTargetListener extends  AbstractTransferDropTargetListener implements IGraphityEditorContribution, IExecutableExtension{	
+public abstract class GraphityEditorTransferDropTargetListener extends  AbstractTransferDropTargetListener implements IGraphityEditorContribution{	
 	protected static EditPartViewer viewer = null;
+	private SemanticElementCreationFactory factory = new SemanticElementCreationFactory();
+	private CreateRequest request = null;
 	
 	public GraphityEditorTransferDropTargetListener(GraphicalViewer viewer) {
+		//super(viewer, ModelTransfer.getInstance());
 		super(viewer, ModelTransfer.getInstance());
-		//this.viewer = viewer;
 		setEnablementDeterminedByCommand(true);
+		//handleDragOver();
 	}
 	
 	public GraphityEditorTransferDropTargetListener(){
-		super(viewer, ModelTransfer.getInstance());
+		//super(viewer, ModelTransfer.getInstance());
+		super(viewer, TextTransfer.getInstance());
 		setEnablementDeterminedByCommand(true);
+		//handleDragOver();
 	}
-	
-	/*public void init(GraphicalViewer viewer){
-		this.viewer = viewer;
-		setViewer(viewer);
-	}*/
 	
 	public EditPartViewer getViewer() {
 		return viewer;
@@ -42,59 +38,68 @@ public abstract class GraphityEditorTransferDropTargetListener extends  Abstract
 	}
 	
 	@Override
+	public void drop(DropTargetEvent event) {
+		System.out.println("hola soy un DROP. si se puede");
+		super.drop(event);
+	}
+	
+	@Override
 	protected void handleDrop() {
-		super.handleDrop();
-		if (getCurrentEvent().detail == DND.DROP_MOVE) {
-			getCurrentEvent().detail = DND.DROP_COPY;
+		DropTargetEvent event = getCurrentEvent();
+		Object myData = event.data;
+		
+		if(myData != null){
+			System.out.println("hola!!" + getCurrentEvent().data);
+			
+			if(myData instanceof SemanticClass[]){
+				SemanticClass aux = ((SemanticClass[])getCurrentEvent().data)[0];
+				factory.setName(aux.getName());
+				factory.setUri(aux.getURI());
+				System.out.println("¿????");
+			}
+			else{
+				System.out.println("dice que no es instancia");
+			}
+			
+			System.out.println("manejando drop...");
+			super.handleDrop();
 		}
-		getViewer().getControl().setFocus();
-		System.out.print("Hola 1");
 	}
 
 	@Override
 	protected void updateTargetRequest() {
-		((CreateRequest) getTargetRequest()).setLocation(getDropLocation());
-		System.out.print("Hola 2");
+		if(request != null){
+			request.setLocation(getDropLocation());
+			handleDrop();
+		}
 	}
 
 	@Override
 	protected Request createTargetRequest() {
-		CreateRequest request = new CreateRequest();
-
-		request.setFactory(new MetaRDFCreationFactory());
-		request.setLocation(getDropLocation());
-		System.out.print("Hola 3");
+		if(request == null){
+			request = new CreateRequest();
+			request.setFactory(factory);
+			handleDragOver();
+		}
+		
 		return request;
 	}
 
 	@Override
 	protected void handleDragOver() {
-
+		getCurrentEvent().detail = DND.DROP_COPY;
 		super.handleDragOver();
-
-		Command command = getCommand();
-		if (command != null && command.canExecute())
-			getCurrentEvent().detail = DND.DROP_COPY;
-		System.out.print("Hola 4");
-	}
-
-	private class MetaRDFCreationFactory implements CreationFactory {
-		public MetaRDFCreationFactory() {
-		}
-
-		public Object getNewObject() {
-			System.out.print("Hola 5");
-			return new SemanticClass("Lo que sea...", "__", "", "");
-		}
-
-		public Object getObjectType() {
-			System.out.print("Hola 6");
-			return SemanticClass.class;
-		}
 	}
 	
 	@Override
-	public void setInitializationData(IConfigurationElement config, String propertyName, Object data)
-			throws CoreException {
+	public void dropAccept(DropTargetEvent event) {
+		// TODO Auto-generated method stub
+		super.dropAccept(event);
+	}
+	
+	@Override
+	public boolean isEnabled(DropTargetEvent event) {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }

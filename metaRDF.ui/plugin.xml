@@ -45,6 +45,20 @@
                relative="org.eclipse.ui.views.ProblemView">
          </view>
       </perspectiveExtension>
+      <perspectiveExtension
+            targetID="metardf.ui.perspective">
+         <view
+               id="metardf.ui.views.EntityView"
+               minimized="false"
+               relationship="bottom"
+               relative="metardf.ui.views.RepositoryView">
+         </view>
+         <view
+               id="metardf.ui.views.RepositoryView"
+               minimized="false"
+               relationship="bottom">
+         </view>
+      </perspectiveExtension>
    </extension>
    <extension
          point="org.eclipse.help.contexts">
@@ -56,10 +70,14 @@
       </contexts>
    </extension>
    <extension
-         point="org.eclipse.ui.newWizards">
-   </extension>
-   <extension
-         point="org.eclipse.ui.newWizards">
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="metardf.ui.perspective.Perspective"
+            fixed="true"
+            icon="icons/entities.png"
+            id="metardf.ui.perspective"
+            name="metaRDF">
+      </perspective>
    </extension>
 
 </plugin>

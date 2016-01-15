@@ -21,16 +21,22 @@ import edu.smu.tspell.wordnet.WordNetDatabase;
 public class Wordnet{
    private WordNetDatabase database = null;
 
-   public Wordnet(){
+   public Wordnet(String location){
 	   super();
-	   File f = new File("/Users/angel/Wordnet/dict");
+	   //File f = new File("/Users/angel/Wordnet/dict");
+	   //System.out.println(System.getProperty("user.dir")+"dict");
+	   //String wordnetLocation = "";
+	   
+	   File f = new File(location);
+	   //C:\Users\Usuario\Desktop
 	   
 	   if(!f.exists()){
 		   //Status status = new Status(IStatus.ERROR, "metardf", 0, "WordNet error", null);
 		   //ErrorDialog.openError(null, "WordNet error", "The WordNet location preference is not valid", status);
 	   }
 	   
-	   System.setProperty("wordnet.database.dir", "/Users/angel/Wordnet/dict");
+	   //System.setProperty("wordnet.database.dir", "/Users/angel/Wordnet/dict");
+	   System.setProperty("wordnet.database.dir", location);
 	   database = WordNetDatabase.getFileInstance();
    }
    

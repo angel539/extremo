@@ -14,6 +14,7 @@ import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -23,7 +24,15 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.jface.window.Window;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DropTarget;
+import org.eclipse.swt.dnd.DropTargetAdapter;
+import org.eclipse.swt.dnd.DropTargetEvent;
+import org.eclipse.swt.dnd.TextTransfer;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
@@ -35,11 +44,19 @@ import org.eclipse.ui.part.ViewPart;
 
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
+import metaRDF.core.model.IRepository;
 import metaRDF.core.model.ISemanticClass;
+import metaRDF.core.model.impl.RepositoryManager;
 import metaRDF.core.owl.OwlAssistant;
 import metardf.ui.Activator;
 import metardf.ui.dnd.GraphityEditorTransferDropTargetListener;
 import metardf.ui.dnd.ResourceViewAction;
+import metardf.ui.wizards.EditResourceWizardDialog;
+import metardf.ui.wizards.NewRepositoryWizardDialog;
+import metardf.ui.wizards.NewResourceWizardDialog;
+import metardf.ui.wizards.WordnetLocationWizardDialog;
+import metardf.ui.wizards.importers.NewFileExportSupportWizardDialog;
+import metardf.ui.wizards.importers.NewFileImportSupportWizardDialog;
 
 public class EntityView extends ViewPart {
 	public static final String ID = "metardf.ui.views.EntityView";
@@ -47,6 +64,7 @@ public class EntityView extends ViewPart {
 
 	private EntityTreeViewer viewer;
 	private Action expandAction;
+	private Action wordnetLocation;
 	
 	private TreeParent invisibleRoot = new TreeParent("");
 	
@@ -163,6 +181,8 @@ public class EntityView extends ViewPart {
 		
 		invokeActions();
 		invokeEditors();
+		makeActions();
+		contributeToActionBars();	
 	}
 	
 	/*private void hookContextMenu() {
@@ -178,11 +198,11 @@ public class EntityView extends ViewPart {
 						getSite().registerContextMenu(menuMgr, viewer);
 	}*/
 
-	/*private void contributeToActionBars() {
+	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
-		fillLocalPullDown(bars.getMenuManager());
+		//fillLocalPullDown(bars.getMenuManager());
 		fillLocalToolBar(bars.getToolBarManager());
-	}*/
+	}
 
 	/*private void fillLocalPullDown(IMenuManager manager) {
 		manager.add(searchEntityAction);
@@ -191,10 +211,10 @@ public class EntityView extends ViewPart {
 	private void fillContextMenu(IMenuManager manager) {
 		manager.add(defineAction);
 	}
-	
+	*/
 	private void fillLocalToolBar(IToolBarManager manager) {
-		manager.add(searchEntityAction);
-	}*/
+		manager.add(wordnetLocation);
+	}
 
 	private void invokeEditors(){
 		IWorkbench workbench = PlatformUI.getWorkbench();
@@ -217,6 +237,15 @@ public class EntityView extends ViewPart {
 					try{
 						graphityDrop = (GraphityEditorTransferDropTargetListener) extension.createExecutableExtension("class");
 						
+						
+						/*DropTarget dt = new DropTarget(graphityDrop., DND.DROP_MOVE);
+						   dt.setTransfer(new Transfer[] {TextTransfer.getInstance()});
+						   dt.addDropListener(new DropTargetAdapter() {
+						      public void drop(DropTargetEvent event) {
+						         // Set the text field's text to the text being dropped
+						         System.out.println("venga que tu puedes" + (String)event.data);
+						      }
+						   });*/
 						//graphicalViewer.addDropTargetListener(graphityDrop);
 						//System.out.println("------" + graphicalViewer.toString());
 					}
@@ -321,6 +350,20 @@ public class EntityView extends ViewPart {
 		};
 	}
 
+	private void makeActions() {		
+		wordnetLocation = new Action() {
+			public void run() {
+				WizardDialog wizardDialog = new WizardDialog(null, new WordnetLocationWizardDialog());
+				wizardDialog.open();
+			}
+		};
+		
+		wordnetLocation.setText("Wordnet Location");
+		wordnetLocation.setToolTipText("");
+		wordnetLocation.setImageDescriptor(Activator.getImageDescriptor("icons/wn.png"));
+	}
+
+	
 	private boolean isOnTheTree(EntityParent obj){
 		boolean onTheTree = false;
 		Object element = obj;

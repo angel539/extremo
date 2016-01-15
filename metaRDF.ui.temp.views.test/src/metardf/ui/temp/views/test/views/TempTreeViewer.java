@@ -24,6 +24,6 @@ public class TempTreeViewer extends TreeViewer {
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		//Transfer[] transferTypes = new Transfer[]{TextTransfer.getInstance()};
 		Transfer[] transferTypes = new Transfer[]{ModelTransfer.getInstance()};
-	    addDropSupport(operations, transferTypes, new TempTreeDropListener(this));
+	    addDropSupport(operations, transferTypes, new TempTreeViewerDropAdapter(this));
 	}
 }

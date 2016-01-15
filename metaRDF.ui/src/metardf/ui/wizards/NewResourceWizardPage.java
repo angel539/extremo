@@ -114,6 +114,7 @@ public class NewResourceWizardPage extends WizardPage {
 		        			setPageComplete(true);
 		        		}
 		        		else{
+		        			setPageComplete(false);
 		        			setDescription("The resource must be a file or a valid URL (starting with http...)");
 		        		}
 		        	}
