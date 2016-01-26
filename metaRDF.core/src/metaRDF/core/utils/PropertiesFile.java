@@ -7,9 +7,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
 
-import metaRDF.core.model.impl.RepositoryManager;
-import metaRDF.core.owl.OwlAssistant;
-
 public class PropertiesFile {
 	private static PropertiesFile INSTANCE = null;
 	
@@ -61,7 +58,7 @@ public class PropertiesFile {
 	
 		private static void createInstance() {
 		   	 if (INSTANCE == null) {
-		   		 synchronized(RepositoryManager.class) {
+		   		 synchronized(PropertiesFile.class) {
 		   			 if (INSTANCE == null) {
 		   				 INSTANCE = new PropertiesFile();
 		   			 }

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Owl
+Bundle-SymbolicName: metaRDF.core.owl;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: metardf.core.owl.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ metaRDF.core,
+ metaRDF.core.extensions;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/commons-io-2.4.jar,
+ lib/commons-lang3-3.4.jar,
+ .

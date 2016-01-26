@@ -4,7 +4,9 @@ import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IViewSite;
-import metardf.ui.views.entities.EntityView.TreeParent;
+
+import metardf.ui.views.entities.model.TreeObject;
+import metardf.ui.views.entities.model.TreeParent;
 
 public class EntityTreeViewContentProvider implements IStructuredContentProvider, ITreeContentProvider {	
 	private TreeParent invisibleRoot;

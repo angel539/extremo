@@ -1,7 +1,7 @@
 package metardf.ui.wizards;
 
 import org.eclipse.jface.wizard.Wizard;
-import metaRDF.core.model.IRepository;
+import metaRDF.core.model.impl.Repository;
 import metaRDF.core.model.impl.RepositoryManager;
 
 public class NewRepositoryWizardDialog extends Wizard {
@@ -27,9 +27,10 @@ public class NewRepositoryWizardDialog extends Wizard {
 	}
 
 	@Override
-	public boolean performFinish() {
-		IRepository repository = RepositoryManager.getInstance().addRepository(newRepositoryPage.getRepositoryName(), newRepositoryPage.getRepositoryDescription(), newRepositoryPage.getRepositoryUri());
-		repository.createResource(newResourcePage.getResourceName(), newResourcePage.getResourceDescription(), newResourcePage.getResourceUri());
+	public boolean performFinish() {		
+		Repository repository = RepositoryManager.getInstance().addRepository(newRepositoryPage.getRepositoryUri(), newRepositoryPage.getRepositoryName(), newRepositoryPage.getRepositoryDescription());
+		repository.createResource(newResourcePage.getResourceUri(), newResourcePage.getResourceName(), newResourcePage.getResourceDescription());
+		
 		return true;
 	}
 }

@@ -3,19 +3,12 @@ package metardf.ui.views.entities;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSource;
 import org.eclipse.swt.dnd.DragSourceAdapter;
 import org.eclipse.swt.dnd.DragSourceEvent;
-import org.eclipse.swt.dnd.DragSourceListener;
-import org.eclipse.swt.dnd.DropTarget;
-import org.eclipse.swt.dnd.DropTargetAdapter;
-import org.eclipse.swt.dnd.DropTargetEvent;
-import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 
 import metardf.ui.dnd.ModelTransfer;
@@ -46,8 +39,8 @@ public class EntityTreeViewer extends TreeViewer {
 		 * Para editor
 		 */
 		DragSource ds = new DragSource(getTree(), DND.DROP_COPY);
-		  ds.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
-		  ds.addDragListener(new DragSourceAdapter() {
+		ds.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
+		ds.addDragListener(new DragSourceAdapter() {
 		     public void dragSetData(DragSourceEvent event) {
 		    	 IStructuredSelection selection = (IStructuredSelection) getSelection();
 		    	 if(selection.getFirstElement() instanceof IAdaptable){

@@ -2,10 +2,7 @@ package metaRDF.core.model;
 
 import java.util.List;
 
-public interface ISemanticClass extends ISemanticElement{
-	String getLabel();
-	void setLabel(String label);
-	
+public interface ISemanticClass extends ISemanticElement{	
 	List<ISemanticClass> getSuperclasses();
 	void setSuperclasses(List<ISemanticClass> superclasses);
 	void addSuperclasses(List<ISemanticClass> superclasses);

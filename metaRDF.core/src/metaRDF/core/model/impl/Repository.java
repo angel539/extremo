@@ -7,12 +7,12 @@ import metaRDF.core.model.IRepository;
 import metaRDF.core.model.IResource;
 
 public class Repository implements IRepository {
+	private String uri;
 	private String name;
 	private String description;
-	private String uri;
 	private List<IResource> resources;
 	
-	public Repository(String name, String description, String uri){
+	public Repository(String uri, String name, String description){
 		super();
 		this.name = name;
 		this.description = description;
@@ -32,7 +32,6 @@ public class Repository implements IRepository {
 	@Override
 	public void setName(String name) {
 		this.name = name;
-		//firePropertyChange("name", this.name, this.name = name);
 	}
 
 	@Override
@@ -47,14 +46,13 @@ public class Repository implements IRepository {
 	}
 
 	@Override
-	public String getURI() {
+	public String getUri() {
 		return uri;
 	}
 
 	@Override
-	public void setURI(String uri) {
+	public void setUri(String uri) {
 		this.uri = uri;
-		//firePropertyChange("uri", this.uri, this.uri = uri);
 	}
 
 	@Override
@@ -78,19 +76,19 @@ public class Repository implements IRepository {
 		resources.add(resource);
 	}
 	
-	@Override
-	public IResource createResource(String name, String description, String uri){
-		SemanticResource resource = new SemanticResource(name, description, uri);
+	/*@Override
+	public IResource<?> createResource(T id, String name){
+		SemanticResource<T> resource = new SemanticResource<T>(id, name);
 		resources.add(resource);
 		return resource;
-	}
+	}*/
 	
 	@Override
 	public String toString() {
 		String repositoryString = "repository";
 		repositoryString = repositoryString + " @name=" + getName();
 		repositoryString = repositoryString + " @description=" + getDescription();
-		repositoryString = repositoryString + " @uri=" + getURI();
+		repositoryString = repositoryString + " @uri=" + getUri();
 		
 		String resourcesString = "\n";
 		for(IResource resource : resources){
@@ -98,6 +96,13 @@ public class Repository implements IRepository {
 		}
 		
 		return repositoryString + resourcesString;
+	}
+
+	@Override
+	public IResource createResource(String uri, String name, String description) {
+		SemanticResource resource = new SemanticResource(uri, name);
+		getResources().add(resource);
+		return resource;
 	}
 }
 

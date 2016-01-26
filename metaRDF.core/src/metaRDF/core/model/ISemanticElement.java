@@ -1,14 +1,14 @@
 package metaRDF.core.model;
 
-public interface ISemanticElement {
+public interface ISemanticElement{
 	String getName();
 	void setName(String name);
 	
-	String getURI();
-	void setUri(String uri);
+	Object getId();
+	void setId(Object id);
+	
+	String getIdToString();
 	
 	String getDescription();
-	void setComment(String comment);
-	
-	String toString();	
+	void setDescription(String comment);
 }

@@ -1,14 +1,9 @@
 package metaRDF.core.rdf;
 
-import java.util.List;
-import metaRDF.core.model.IDataProperty;
-import metaRDF.core.model.IObjectProperty;
-import metaRDF.core.model.ISemanticClass;
-
-public class RDFAssistant implements IFormatAssistant {
-	public RDFAssistant(){
+public class RDFAssistant{
+	/*public RDFAssistant(){
 		super();	
-	}
+	}*/
 	/*
 	@Override
 	public void load(String IRI) {
@@ -117,6 +112,7 @@ public class RDFAssistant implements IFormatAssistant {
 	}
 	*/
 
+	/*
 	@Override
 	public boolean load(String path) {
 		return true;	
@@ -174,5 +170,5 @@ public class RDFAssistant implements IFormatAssistant {
 	public List<ISemanticClass> getSub(String name, boolean direct) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 }

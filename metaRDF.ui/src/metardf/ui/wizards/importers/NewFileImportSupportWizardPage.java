@@ -41,7 +41,7 @@ public class NewFileImportSupportWizardPage extends WizardPage {
 	    		  FileDialog pathSelection = new FileDialog(getShell());
 	    		  String pathString = pathSelection.open();
 	    		  System.out.println(pathString);
-	    		  path.setText(pathString);
+	    		  if(pathString != null) path.setText(pathString);
 	    	  }
 	    	}); 
 

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Core
-Bundle-SymbolicName: metaRDF.core
+Bundle-SymbolicName: metaRDF.core;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: core.jar,
  lib/jaws-bin.jar,
@@ -131,7 +131,6 @@ Export-Package: com.clarkparsia.owlapi.explanation,
  lib,
  metaRDF.core.model,
  metaRDF.core.model.impl,
- metaRDF.core.owl,
  metaRDF.core.rdf,
  metaRDF.core.utils,
  metaRDF.core.wordnet,
@@ -332,3 +331,6 @@ Export-Package: com.clarkparsia.owlapi.explanation,
  uk.ac.manchester.cs.owlapi.modularity
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.swt.dnd
+Require-Bundle: org.eclipse.equinox.registry,
+ org.eclipse.swt,
+ org.eclipse.core.runtime;bundle-version="3.11.1"

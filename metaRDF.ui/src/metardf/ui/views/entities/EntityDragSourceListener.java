@@ -4,8 +4,6 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
-//import org.eclipse.swt.dnd.TextTransfer;
-import org.eclipse.swt.dnd.TextTransfer;
 
 import metardf.ui.dnd.ModelTransfer;
 
@@ -26,7 +24,10 @@ public class EntityDragSourceListener implements DragSourceListener {
 	    if(selection.getFirstElement() instanceof IAdaptable){
 	    	IAdaptable data = (IAdaptable) selection.getFirstElement();	
 		    if (ModelTransfer.getInstance().isSupportedType(event.dataType)) {
+		    	System.out.println("es un supported type en el drag..." + data.getClass());
 		    	event.data = data;
+		    }else{
+		    	System.out.println("no esta soportado..." + event.data + ":" + event.dataType.getClass());
 		    }
 	    }
 	}

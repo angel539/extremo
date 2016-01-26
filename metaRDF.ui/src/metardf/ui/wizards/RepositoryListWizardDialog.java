@@ -3,6 +3,7 @@ package metardf.ui.wizards;
 import org.eclipse.jface.wizard.Wizard;
 
 public class RepositoryListWizardDialog extends Wizard {
+	NewRepositoryWizardPage repositoryNewPage;
 	RepositoryListWizardPage resourcePage;
 	
 	public RepositoryListWizardDialog() {
@@ -16,6 +17,7 @@ public class RepositoryListWizardDialog extends Wizard {
 	}
 	
 	public void addPages(){	
+		repositoryNewPage = new NewRepositoryWizardPage("Repository", "...");
 		resourcePage = new RepositoryListWizardPage("Edit Resource", "Edit the resource properties");	
 		addPage(resourcePage);			
 	}

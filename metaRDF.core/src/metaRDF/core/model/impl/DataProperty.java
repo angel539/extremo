@@ -1,19 +1,20 @@
 package metaRDF.core.model.impl;
 
-import metaRDF.core.model.Datatype;
 import metaRDF.core.model.IDataProperty;
 
-public class DataProperty implements IDataProperty{
+public abstract class DataProperty implements IDataProperty{
 	String name;
-	String uri;
-	Datatype range;
+	String type;
+	
+
+	Object id;
 	boolean isFromSuper;
 	String description;
 	
-	public DataProperty(String name, String uri, Datatype type, boolean isFromSuper, String description){
+	public DataProperty(Object id, String name, String type, boolean isFromSuper, String description){
+		this.id = id;
 		this.name = name;
-		this.uri = uri;
-		this.range = type;
+		this.type = type;
 		this.isFromSuper = isFromSuper;
 		this.description = description;
 	}
@@ -25,20 +26,14 @@ public class DataProperty implements IDataProperty{
 	}
 
 	@Override
-	public String getURI() {
+	public Object getId() {
 		// TODO Auto-generated method stub
-		return uri;
-	}
-
-	@Override
-	public Datatype getRange() {
-		// TODO Auto-generated method stub
-		return range;
+		return id;
 	}
 	
 	@Override
 	public String toString() {
-		return "[" + name + ", " + uri + ", " + range + "]";
+		return "[" + name + ", " + id + "]";
 	}
 
 	@Override
@@ -54,19 +49,26 @@ public class DataProperty implements IDataProperty{
 
 	@Override
 	public void setName(String name) {
-		// TODO Auto-generated method stub
+		this.name = name;
 		
 	}
 
 	@Override
-	public void setUri(String uri) {
-		// TODO Auto-generated method stub
-		
+	public void setId(Object id) {
+		this.id = id;	
 	}
 
 	@Override
-	public void setComment(String comment) {
-		// TODO Auto-generated method stub
+	public void setDescription(String comment) {
+		this.description = comment;
 		
-	}		
+	}	
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 }

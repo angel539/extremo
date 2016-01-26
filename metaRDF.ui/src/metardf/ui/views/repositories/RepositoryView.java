@@ -1,16 +1,20 @@
 package metardf.ui.views.repositories;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.*;
 
 import metaRDF.core.model.IResource;
 import metaRDF.core.model.impl.RepositoryManager;
 import metaRDF.core.model.IRepository;
+import metaRDF.core.model.IRepositoryManager;
 import metardf.ui.Activator;
 import metardf.ui.wizards.EditResourceWizardDialog;
 import metardf.ui.wizards.NewRepositoryWizardDialog;
 import metardf.ui.wizards.NewResourceWizardDialog;
+import metardf.ui.wizards.ResourceListWizardDialog;
 import metardf.ui.wizards.importers.NewFileExportSupportWizardDialog;
 import metardf.ui.wizards.importers.NewFileImportSupportWizardDialog;
 
@@ -36,6 +40,7 @@ public class RepositoryView extends ViewPart {
 	
 	private Action importRepositories;
 	private Action exportRepositories;
+	private Action addFolder;
 	
 	class TreeObject implements IAdaptable {
 		private String name;
@@ -68,7 +73,7 @@ public class RepositoryView extends ViewPart {
 		IResource resource;
 
 		public ResourceObject(IResource resource) {
-			super(resource.getName() + " (" + resource.getURI() + ")");
+			super(resource.getName() + " (" + resource.getId() + ")");
 			this.resource = resource;
 		}
 		
@@ -85,7 +90,7 @@ public class RepositoryView extends ViewPart {
 		}
 		
 		public void changed(){
-			setName(resource.getName() + " (" + resource.getURI() + ")");
+			setName(resource.getName() + " (" + resource.getId() + ")");
 		}
 	}
 	
@@ -272,6 +277,7 @@ public class RepositoryView extends ViewPart {
 		manager.add(addRepository);
 		manager.add(importRepositories);
 		manager.add(exportRepositories);
+		manager.add(addFolder);
 	}
 
 	private void makeActions() {
@@ -285,13 +291,29 @@ public class RepositoryView extends ViewPart {
 						}
 					}
 					//System.out.println("en repository " + MetaRDFRepositoryManager.getInstance());
+					Class<? extends IRepositoryManager> c;
+					try {
+						c = Class.forName("metardf.core").asSubclass(IRepositoryManager.class);
+						IRepositoryManager repositoryManager = c.newInstance();
+						List<IRepository> repositories = repositoryManager.getRepositories();
+						
+						for(IRepository repository : repositories){
+							RepositoryParent repositoryParent = new RepositoryParent(repository);
+							repositoryParent.drawResources();
+							invisibleRoot.addChild(repositoryParent);
+						}
+						viewer.refresh();
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InstantiationException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}  
 					
-					for(IRepository repository : RepositoryManager.getInstance().getRepositories()){
-						RepositoryParent repositoryParent = new RepositoryParent(repository);
-						repositoryParent.drawResources();
-						invisibleRoot.addChild(repositoryParent);
-					}
-					viewer.refresh();
 				}
 				else{
 				}
@@ -311,14 +333,15 @@ public class RepositoryView extends ViewPart {
 							invisibleRoot.removeChild(treeobject);
 						}
 					}
-					//System.out.println("en repository " + MetaRDFRepositoryManager.getInstance());
 					
-					for(IRepository repository : RepositoryManager.getInstance().getRepositories()){
+					List<IRepository> repositories = RepositoryManager.getInstance().getRepositories();
+						
+					for(IRepository repository : repositories){
 						RepositoryParent repositoryParent = new RepositoryParent(repository);
 						repositoryParent.drawResources();
 						invisibleRoot.addChild(repositoryParent);
 					}
-					viewer.refresh();
+					viewer.refresh();	
 				}
 				else{
 				}
@@ -354,6 +377,34 @@ public class RepositoryView extends ViewPart {
 		exportRepositories.setText("Export Repositories");
 		exportRepositories.setToolTipText("");
 		exportRepositories.setImageDescriptor(Activator.getImageDescriptor("icons/export_wiz.gif"));
+		
+		addFolder = new Action() {
+			public void run() {
+				WizardDialog wizardDialog = new WizardDialog(null, new ResourceListWizardDialog());
+				if (wizardDialog.open() == Window.OK) {
+					if(invisibleRoot.hasChildren()){
+						for(TreeObject treeobject : invisibleRoot.getChildren()){
+							invisibleRoot.removeChild(treeobject);
+						}
+					}
+					
+					List<IRepository> repositories = RepositoryManager.getInstance().getRepositories();
+						
+					for(IRepository repository : repositories){
+						RepositoryParent repositoryParent = new RepositoryParent(repository);
+						repositoryParent.drawResources();
+						invisibleRoot.addChild(repositoryParent);
+					}
+					viewer.refresh();
+				}
+				else{
+				}
+			}
+		};
+		
+		addFolder.setText("Add Folder");
+		addFolder.setToolTipText("");
+		addFolder.setImageDescriptor(Activator.getImageDescriptor("icons/package.gif"));
 		
 		createResource = new Action() {
 			public void run() {

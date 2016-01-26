@@ -9,13 +9,13 @@ public interface IRepository {
 	String getDescription();
 	void setDescription(String description);
 	
-	String getURI();
-	void setURI(String uri);
+	String getUri();
+	void setUri(String uri);
 	
 	List<IResource> getResources();
 	void setResources(List<IResource> resources);
 	void addResources(List<IResource> resources);
 	void addResource(IResource resource);
-	IResource createResource(String name, String description, String uri);
-	
+	IResource createResource(String uri, String name, String description);
+	//void createResource(String resourceName, String resourceDescription, String resourceUri);
 }

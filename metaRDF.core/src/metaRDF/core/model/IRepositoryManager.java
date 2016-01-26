@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface IRepositoryManager{
 	List<IRepository> getRepositories();
-	IRepository addRepository(String name, String description, String uri);
+	void addRepository(IRepository repository);
+	IRepository addRepository(String uri, String name, String description);
 	void setRepositories(List<IRepository> repositories);
 }

@@ -8,5 +8,8 @@ public interface IResource extends ISemanticElement{
 	void addClasses(List<ISemanticClass> classes);
 	void addClass(ISemanticClass clazz);
 	
+	String getAssistant();
+	void setAssistant(String assistant);
+	
 	boolean isAlive();
 }

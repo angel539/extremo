@@ -4,9 +4,9 @@ import org.eclipse.jface.viewers.ViewerDropAdapter;
 //import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TransferData;
 
-import metaRDF.core.model.impl.DataProperty;
-import metaRDF.core.model.impl.ObjectProperty;
-import metaRDF.core.model.impl.SemanticClass;
+import metaRDF.core.model.IDataProperty;
+import metaRDF.core.model.IObjectProperty;
+import metaRDF.core.model.ISemanticClass;
 
 public class TempTreeViewerDropAdapter extends ViewerDropAdapter {
 	Viewer viewer;
@@ -19,19 +19,19 @@ public class TempTreeViewerDropAdapter extends ViewerDropAdapter {
 	@Override
 	public boolean performDrop(Object data) {
 		System.out.println("drop: " + data.toString() + " " + data.getClass());
-		if(data.getClass()==SemanticClass.class) {
+		if(data.getClass() == ISemanticClass.class) {
 			System.out.println("es instancia de SemanticClass");
 			return true;
 		}
-		if(data instanceof SemanticClass[]) {
+		if(data instanceof ISemanticClass[]) {
 			System.out.println("es instancia de SemanticClass");
 			return true;
 		}
-		if(data.getClass()==ObjectProperty.class) {
+		if(data.getClass()== IObjectProperty.class) {
 			System.out.println("es instancia de Objectproperty");
 			return true;
 		}
-		if(data.getClass()==DataProperty.class) {
+		if(data.getClass()== IDataProperty.class) {
 			System.out.println("es instancia de Dataproperty");
 			return true;
 		}

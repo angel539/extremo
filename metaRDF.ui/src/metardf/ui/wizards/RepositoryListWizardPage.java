@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
 import metaRDF.core.model.IRepository;
-import metaRDF.core.model.impl.RepositoryManager;
+import metaRDF.core.model.IRepositoryManager;
 import metardf.ui.Activator;
 
 public class RepositoryListWizardPage extends WizardPage {
@@ -31,29 +31,46 @@ public class RepositoryListWizardPage extends WizardPage {
 	    container.setLayout(layout);
 	    layout.numColumns = 1;	    
 	    
-	    if((RepositoryManager.getInstance()!=null) && (RepositoryManager.getInstance().getRepositories() != null) && (RepositoryManager.getInstance().getRepositories().size() > 0)){
-		    table = new Table(container, SWT.BORDER);
+	    Class<? extends IRepositoryManager> c;
+		try {
+			c = Class.forName("metardf.core").asSubclass(IRepositoryManager.class);
+			IRepositoryManager repositoryManager = c.newInstance();
+			if((repositoryManager!=null) && (repositoryManager.getRepositories() != null) && (repositoryManager.getRepositories().size() > 0)){
+			    table = new Table(container, SWT.BORDER);
+			    
+			    TableColumn tc1 = new TableColumn(table, SWT.LEFT);
+			    tc1.setText("Name");
+			    tc1.setWidth(100);
+			    
+			    TableColumn tc2 = new TableColumn(table, SWT.LEFT);
+			    tc2.setText("Description");
+			    tc2.setWidth(200);
+			    
+			    TableColumn tc3 = new TableColumn(table, SWT.LEFT);
+			    tc3.setText("URI or path");
+			    tc3.setWidth(200);
 		    
-		    TableColumn tc1 = new TableColumn(table, SWT.LEFT);
-		    tc1.setText("Name");
-		    tc1.setWidth(100);
-		    
-		    TableColumn tc2 = new TableColumn(table, SWT.LEFT);
-		    tc2.setText("Description");
-		    tc2.setWidth(200);
-		    
-		    TableColumn tc3 = new TableColumn(table, SWT.LEFT);
-		    tc3.setText("URI or path");
-		    tc3.setWidth(200);
+		    	for(IRepository repository : repositoryManager.getRepositories()){
+		    		TableItem item = new TableItem(table, SWT.NONE);
+		    		item.setData(repository);
+			    	item.setText(new String[]{repository.getName(), repository.getDescription(), repository.getUri()});
+		    	}
+		    	
+		    	table.setHeaderVisible(true);
+		    }
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
 	    
-	    	for(IRepository repository : RepositoryManager.getInstance().getRepositories()){
-	    		TableItem item = new TableItem(table, SWT.NONE);
-	    		item.setData(repository);
-		    	item.setText(new String[]{repository.getName(), repository.getDescription(), repository.getURI()});
-	    	}
-	    	
-	    	table.setHeaderVisible(true);
-	    }
+	    
+	    
 	    
 	    GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 	    if(table != null) table.setLayoutData(gd);

@@ -1,17 +1,15 @@
 package metardf.ui.wizards.importers;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.jface.wizard.Wizard;
 import metaRDF.core.model.IRepository;
-import metaRDF.core.model.impl.RepositoryManager;
+import metaRDF.core.model.IRepositoryManager;
 
 public class NewFileImportSupportWizardDialog extends Wizard {
 	NewFileImportSupportWizardPage newFileImportPage;
@@ -57,7 +55,27 @@ public class NewFileImportSupportWizardDialog extends Wizard {
 					else uri = line.substring(line.lastIndexOf(" @uri=") + " @uri=".length(), line.length());
 					
 					if(line.startsWith("repository")){
-						repository = RepositoryManager.getInstance().addRepository(name, description, uri);
+						
+						
+						Class<? extends IRepositoryManager> c;
+						try {
+							c = Class.forName("metardf.core").asSubclass(IRepositoryManager.class);
+							IRepositoryManager repositoryManager = c.newInstance();
+							
+							repository = repositoryManager.addRepository(name, description, uri);
+						} catch (ClassNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InstantiationException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}  
+						
+						
+						
 					}
 					if(line.startsWith("resource")){
 						if(repository != null) repository.createResource(name, description, uri);

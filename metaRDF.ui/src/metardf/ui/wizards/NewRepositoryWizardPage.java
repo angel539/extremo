@@ -79,7 +79,8 @@ public class NewRepositoryWizardPage extends WizardPage {
 	    	  public void widgetSelected(SelectionEvent e) {
 	    		  DirectoryDialog pathSelection = new DirectoryDialog(getShell());
 	    		  String pathString = pathSelection.open();
-	    		  System.out.println(pathString);
+	    		  //String pathString = pathSelection.getText();
+	    		  System.out.println("este es mi path string+++" + pathString);
 	    		  path.setText(pathString);
 	    	  }
 	    	}); 
@@ -117,6 +118,7 @@ public class NewRepositoryWizardPage extends WizardPage {
 	 }
 	
 	 public String getRepositoryUri() {
+		 System.out.println("y aqui cuando lo llamo... " + path.getText());
 		 return path.getText();
 	 }
 }

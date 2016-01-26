@@ -6,9 +6,10 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
 import metardf.ui.Activator;
-import metardf.ui.views.entities.EntityView.EntityParent;
-import metardf.ui.views.entities.EntityView.FolderParent;
-import metardf.ui.views.entities.EntityView.PropertyParent;
+import metardf.ui.views.entities.model.EntityParent;
+import metardf.ui.views.entities.model.FolderParent;
+import metardf.ui.views.entities.model.PropertyParent;
+import metardf.ui.views.entities.model.TreeObject;
 
 public class EntityTreeViewLabelProvider extends LabelProvider {
 	public String getText(Object obj) {

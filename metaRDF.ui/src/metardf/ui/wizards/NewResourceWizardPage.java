@@ -71,7 +71,8 @@ public class NewResourceWizardPage extends WizardPage {
 	    
 	    description = new Text(container, SWT.BORDER | SWT.SINGLE);
 	    if(resource != null){
-	    	description.setText(resource.getDescription());
+	    	if(description != null) description.setText(resource.getDescription());
+	    	else description.setText("");
 	    }else{
 	    	description.setText("");
 	    }
@@ -93,7 +94,7 @@ public class NewResourceWizardPage extends WizardPage {
 
 	    uri = new Text(container, SWT.BORDER | SWT.SINGLE);
 	    if(resource != null){
-	    	uri.setText(resource.getURI());
+	    	uri.setText(resource.getIdToString());
 	    }else{
 	    	uri.setText("");
 	    }

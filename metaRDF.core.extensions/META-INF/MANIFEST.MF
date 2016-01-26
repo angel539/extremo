@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Extensions
+Bundle-SymbolicName: metaRDF.core.extensions;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: metardf.core.extensions.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ metaRDF.core,
+ org.apache.commons.lang3
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: metardf.core.extensions

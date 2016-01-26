@@ -17,41 +17,6 @@
    </license>
 
    <plugin
-         id="org.eclipse.ocl.pivot.uml"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.completeocl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.jdt.launching.macosx.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.debug.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.jdt"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.team.core.source"
          download-size="0"
          install-size="0"
@@ -94,13 +59,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.standard.schemas"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ocl.ecore.edit"
          download-size="0"
          install-size="0"
@@ -109,13 +67,6 @@
 
    <plugin
          id="org.eclipse.pde.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.ecoretools.design.properties.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -171,13 +122,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.mwe2.language"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.xtext.xtext.ui"
          download-size="0"
          install-size="0"
@@ -192,21 +136,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.apache.batik.transcoder"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe2.launch"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -290,21 +220,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.pivot.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.epp.mpc.help.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.pivot.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -395,28 +311,7 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.wst.common.project.facet.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="javax.servlet"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.base.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtend.ide.common"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -472,21 +367,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.gef4.common.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ui.workbench.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.debug"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -500,21 +381,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.validation.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.importer.rose.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.library.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -542,13 +409,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.sse.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.sirius.common"
          download-size="0"
          install-size="0"
@@ -570,42 +430,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.emf.validation.validity.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe2.launch.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.e4.ui.bindings.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe2.lib.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.common.uriresolver"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.completeocl.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -626,20 +451,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtext.common.types.shared"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.emf.validation.validity"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.xtext.ui.junit.source"
          download-size="0"
          install-size="0"
@@ -648,13 +459,6 @@
 
    <plugin
          id="org.eclipse.equinox.console"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.essentialocl"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -682,20 +486,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.oclinecore"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe2.language.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.jface.databinding.source"
          download-size="0"
          install-size="0"
@@ -710,21 +500,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.validity.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.databinding.edit.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.impactanalyzer"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -794,13 +570,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.oclinecore"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.sat4j.core"
          download-size="0"
          install-size="0"
@@ -836,13 +605,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.impactanalyzer.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ecf.provider.filetransfer.httpclient4.source"
          download-size="0"
          install-size="0"
@@ -850,28 +612,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtext.common.types.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.markup"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.uml2.uml.profile.standard"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.common.frameworks"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -955,35 +696,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.m2e.model.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.oclinecore.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.common.frameworks.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.gmf.runtime.notation.providers"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="com.google.guava.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1027,13 +740,6 @@
 
    <plugin
          id="org.eclipse.sirius.ext.jface"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.base.ui.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1089,13 +795,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.essentialocl.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.frameworkadmin.equinox.source"
          download-size="0"
          install-size="0"
@@ -1125,13 +824,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.m2e.core.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.oomph.p2"
          download-size="0"
          install-size="0"
@@ -1147,13 +839,6 @@
 
    <plugin
          id="org.eclipse.e4.ui.workbench3.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtend"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1217,13 +902,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend2.lib.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.sat4j.pb"
          download-size="0"
          install-size="0"
@@ -1252,13 +930,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend.lib.macro"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.sirius.eef.adapters"
          download-size="0"
          install-size="0"
@@ -1280,35 +951,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.dtd.ui.infopop"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.antlr.runtime.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ecf.provider.filetransfer.httpclient4.ssl.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.common.emf"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtend.core.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1330,13 +973,6 @@
 
    <plugin
          id="org.eclipse.equinox.p2.artifact.repository"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtend.m2e"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1365,13 +1001,6 @@
 
    <plugin
          id="org.eclipse.jdt.core.manipulation"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.markup.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1434,13 +1063,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.oclinecore.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.jetty.io"
          download-size="0"
          install-size="0"
@@ -1455,20 +1077,6 @@
          unpack="false"/>
 
    <plugin
-         id="ch.qos.logback.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.eventmanager"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.swt.cocoa.macosx.x86_64.source"
          download-size="0"
          install-size="0"
@@ -1477,13 +1085,6 @@
 
    <plugin
          id="org.eclipse.equinox.p2.transport.ecf.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.oclinecore.ui.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1595,13 +1196,6 @@
          unpack="false"/>
 
    <plugin
-         id="com.google.inject"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.update.configurator.source"
          download-size="0"
          install-size="0"
@@ -1651,13 +1245,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtext.common.types"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ocl.ecore.source"
          download-size="0"
          install-size="0"
@@ -1700,13 +1287,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.oclstdlib"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.graphiti.tools.newprojectwizard"
          download-size="0"
          install-size="0"
@@ -1722,13 +1302,6 @@
 
    <plugin
          id="org.eclipse.jdt.junit.runtime.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtext.activities"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1756,13 +1329,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.codegen.ecore.xtext.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.w3c.dom.events"
          download-size="0"
          install-size="0"
@@ -1782,20 +1348,6 @@
          install-size="0"
          version="0.0.0"
          fragment="true"/>
-
-   <plugin
-         id="org.eclipse.emf.ecore.xcore.lib"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtext.common.types.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.mapping.source"
@@ -1833,13 +1385,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.ecore.xcore.edit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.oomph.setup.ui.questionnaire"
          download-size="0"
          install-size="0"
@@ -1854,21 +1399,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.oclstdlib.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.gmf.runtime.emf.ui.properties"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1896,13 +1427,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.debug.vm.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.mapping.ecore.editor"
          download-size="0"
          install-size="0"
@@ -1918,13 +1442,6 @@
 
    <plugin
          id="org.eclipse.mylyn.commons.notifications.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.essentialocl.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -1980,13 +1497,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.codegen.ecore.xtext"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.help.base.source"
          download-size="0"
          install-size="0"
@@ -2008,32 +1518,11 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.impactanalyzer.util.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtext.builder.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.security.macosx"
          download-size="0"
          install-size="0"
          version="0.0.0"
          fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.debug.vm"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
          unpack="false"/>
 
    <plugin
@@ -2079,13 +1568,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.oclstdlib.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.help.ui.source"
          download-size="0"
          install-size="0"
@@ -2094,13 +1576,6 @@
 
    <plugin
          id="org.eclipse.e4.ui.css.swt.theme"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.standalone"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -2177,35 +1652,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.sse.doc.user"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.oomph.p2.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ui.cocoa.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.workspace.cli"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -2226,13 +1673,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.xml.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="javax.inject"
          download-size="0"
          install-size="0"
@@ -2247,21 +1687,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.dtd.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ocl.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.codegen.asm5"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -2283,13 +1709,6 @@
 
    <plugin
          id="org.eclipse.core.commands.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe.core"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -2444,20 +1863,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.classic"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtext.common.types.edit.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.codegen.ui"
          download-size="0"
          install-size="0"
@@ -2466,13 +1871,6 @@
 
    <plugin
          id="org.eclipse.pde.launching"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtend.ide"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -2519,19 +1917,6 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-   <plugin
-         id="org.eclipse.equinox.launcher.cocoa.macosx.x86_64"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"/>
-
-   <plugin
-         id="org.eclipse.m2e.maven.runtime"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
 
    <plugin
          id="org.eclipse.jdt.apt.pluggable.core.source"
@@ -2611,13 +1996,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.ecore.xcore.importer.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.oomph.util"
          download-size="0"
          install-size="0"
@@ -2674,27 +2052,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtext.builder"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.emf.validation.validity.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.lifecyclemapping.defaults"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ui.externaltools.source"
          download-size="0"
          install-size="0"
@@ -2745,13 +2102,6 @@
 
    <plugin
          id="org.eclipse.emf.common.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.pivot"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -2821,27 +2171,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.oclstdlib.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.completeocl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.codegen"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ui.externaltools"
          download-size="0"
          install-size="0"
@@ -2891,25 +2220,10 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.xsdeditor.doc.user"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.graphiti.examples.filesystem.mm.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ch.qos.logback.slf4j"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
          unpack="false"/>
 
    <plugin
@@ -2920,21 +2234,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend.doc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.launcher.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.oclstdlib"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -2962,13 +2262,6 @@
 
    <plugin
          id="org.eclipse.emf.validation.ui.ide"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.dtdeditor.doc.user"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -3045,13 +2338,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.completeocl.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.p2.repository"
          download-size="0"
          install-size="0"
@@ -3080,27 +2366,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.codegen.asm3"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.editor.xml"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.unified.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.oomph.workingsets.editor"
          download-size="0"
          install-size="0"
@@ -3115,13 +2380,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.interpreter.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.jdt.debug.ui"
          download-size="0"
          install-size="0"
@@ -3130,13 +2388,6 @@
 
    <plugin
          id="org.w3c.css.sac.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.essentialocl.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -3185,13 +2436,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend2.lib"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ecf.identity.source"
          download-size="0"
          install-size="0"
@@ -3213,13 +2457,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.sse.ui.infopop"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ecf.filetransfer.source"
          download-size="0"
          install-size="0"
@@ -3228,13 +2465,6 @@
 
    <plugin
          id="org.eclipse.xtext.xbase.junit"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.completeocl.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -3263,33 +2493,10 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.mwe2.runtime"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.codegen.ecore.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.core.filesystem.macosx"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtext.common.types.shared.jdt38"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
          unpack="false"/>
 
    <plugin
@@ -3301,13 +2508,6 @@
 
    <plugin
          id="org.eclipse.core.databinding.property"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.unified"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -3336,13 +2536,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.essentialocl.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="lpg.runtime.java.source"
          download-size="0"
          install-size="0"
@@ -3351,13 +2544,6 @@
 
    <plugin
          id="org.eclipse.emf.converter"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.oclstdlib.ui.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -3441,20 +2627,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtext.builder.standalone"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtext.builder.standalone.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.objectweb.asm.tree.source"
          download-size="0"
          install-size="0"
@@ -3463,13 +2635,6 @@
 
    <plugin
          id="org.eclipse.ui.workbench.texteditor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtext.activities.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -3560,13 +2725,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.base.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.oomph.resources.edit"
          download-size="0"
          install-size="0"
@@ -3575,20 +2733,6 @@
 
    <plugin
          id="org.eclipse.acceleo.query"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.standalone.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.common.modulecore"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -3638,13 +2782,6 @@
 
    <plugin
          id="org.apache.batik.pdf"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.debug.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -3714,13 +2851,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.eventmanager.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.p2.artifact.repository.source"
          download-size="0"
          install-size="0"
@@ -3729,13 +2859,6 @@
 
    <plugin
          id="org.eclipse.osgi.services"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtend.lib.macro.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -3791,13 +2914,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.markup.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.apache.commons.logging"
          download-size="0"
          install-size="0"
@@ -3806,13 +2922,6 @@
 
    <plugin
          id="org.eclipse.emf.cheatsheets.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="com.google.inject.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -3854,13 +2963,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.xsd.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.xtext.source"
          download-size="0"
          install-size="0"
@@ -3889,13 +2991,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.m2e.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.jdt.ui"
          download-size="0"
          install-size="0"
@@ -3904,20 +2999,6 @@
 
    <plugin
          id="org.eclipse.ltk.ui.refactoring.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.base"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe2.lib"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -3988,13 +3069,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.markup.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ui.intro.universal.source"
          download-size="0"
          install-size="0"
@@ -4009,13 +3083,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.xmleditor.doc.user"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.gmf.runtime.gef.ui"
          download-size="0"
          install-size="0"
@@ -4023,28 +3090,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.m2e.scm"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.ecore.xcore.edit.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.jetty.continuation"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe2.language.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -4079,13 +3125,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend.standalone"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ui.themes"
          download-size="0"
          install-size="0"
@@ -4106,13 +3145,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtext"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.sirius.ext.emf.ui"
          download-size="0"
          install-size="0"
@@ -4126,28 +3158,7 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.wst.common.emfworkbench.integration"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.base.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.team.cvs.ssh2.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.ecore.xcore.lib.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -4169,13 +3180,6 @@
 
    <plugin
          id="org.eclipse.emf.edit.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.xsd.core"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -4225,13 +3229,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.base"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.oomph.predicates"
          download-size="0"
          install-size="0"
@@ -4267,13 +3264,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.internet.cache"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.sirius.ext.gef"
          download-size="0"
          install-size="0"
@@ -4281,35 +3271,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.interpreter"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtend.typesystem.emf"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.tukaani.xz.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.logback.configuration"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.pivot"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -4345,13 +3307,6 @@
 
    <plugin
          id="org.objectweb.asm.tree"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.pivot.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -4400,26 +3355,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.markup.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.maven.runtime.slf4j.simple"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.impactanalyzer.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.apache.batik.util"
          download-size="0"
          install-size="0"
@@ -4455,13 +3390,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.server.discovery"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="javax.inject.source"
          download-size="0"
          install-size="0"
@@ -4490,13 +3418,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.ecore.xcore.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.e4.core.di.annotations.source"
          download-size="0"
          install-size="0"
@@ -4505,13 +3426,6 @@
 
    <plugin
          id="org.eclipse.equinox.p2.jarprocessor.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.commons.lang.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -4567,21 +3481,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.console"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.p2.ui.sdk.scheduler.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.common.core"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -4596,27 +3496,6 @@
 
    <plugin
          id="org.eclipse.sirius.diagram.ui.ext"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.domain"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.profiles.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.core"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -4645,20 +3524,6 @@
 
    <plugin
          id="org.eclipse.graphiti.doc.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.console.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.ecoretools.design.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -4756,20 +3621,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.ecoretools.tabbedproperties.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.gmf.runtime.common.core"
          download-size="0"
          install-size="0"
@@ -4806,13 +3657,6 @@
 
    <plugin
          id="org.slf4j.api"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.debug.vm.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -4868,13 +3712,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.debug.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.p2.publisher"
          download-size="0"
          install-size="0"
@@ -4924,20 +3761,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.base.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.codegen.asm5.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.jdt.debug.ui.source"
          download-size="0"
          install-size="0"
@@ -4959,13 +3782,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.xml.ui.infopop"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.launcher"
          download-size="0"
          install-size="0"
@@ -4981,13 +3797,6 @@
 
    <plugin
          id="org.eclipse.ui.editors.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.jdt.launching.macosx"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -5050,20 +3859,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.essentialocl.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.completeocl.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ocl"
          download-size="0"
          install-size="0"
@@ -5085,31 +3880,11 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend.ide.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.pivot.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ecf.ssl.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-   <plugin
-         id="org.eclipse.epp.package.dsl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
 
    <plugin
          id="org.eclipse.oomph.setup.ui"
@@ -5127,13 +3902,6 @@
 
    <plugin
          id="org.eclipse.jdt.apt.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.ecore.xcore.exporter.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -5168,37 +3936,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.completeocl.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="com.google.inject.multibindings"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.logback.appender"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.importer.java"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.oclinecore.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -5213,20 +3951,6 @@
 
    <plugin
          id="org.w3c.dom.smil.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.validation"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.classic.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -5318,13 +4042,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.oclinecore.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.databinding.source"
          download-size="0"
          install-size="0"
@@ -5333,13 +4050,6 @@
 
    <plugin
          id="org.apache.commons.lang"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe2.language.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -5367,21 +4077,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.m2e.refactoring"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.core.expressions"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.gef4.common"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -5395,21 +4091,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.codegen.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.pde.build.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.commons.cli"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -5441,14 +4123,6 @@
          download-size="0"
          install-size="0"
          version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.jdt.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
          unpack="false"/>
 
    <plugin
@@ -5494,13 +4168,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.ecore.xcore.exporter"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.apache.batik.xml"
          download-size="0"
          install-size="0"
@@ -5522,13 +4189,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.codegen.ecore.xtext.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.gmf.runtime.diagram.ui"
          download-size="0"
          install-size="0"
@@ -5543,21 +4203,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend.ide.common.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.sirius.common.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtend.examples"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -5612,13 +4258,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.jem.util"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ui.cheatsheets"
          download-size="0"
          install-size="0"
@@ -5633,21 +4272,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend.lib"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.validation.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -5676,13 +4301,6 @@
 
    <plugin
          id="org.eclipse.help.webapp"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.ecoretools.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -5773,20 +4391,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.jdt.launching.ui.macosx.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.impactanalyzer.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.oomph.base.edit"
          download-size="0"
          install-size="0"
@@ -5815,21 +4419,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend.lib.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.ecoretools.properties"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.essentialocl.ui.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -5933,13 +4523,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.oclinecore.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.ecf.provider.filetransfer.ssl.source"
          download-size="0"
          install-size="0"
@@ -5948,20 +4531,6 @@
 
    <plugin
          id="org.eclipse.emf.converter.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.common.modulecore.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.common.snippets"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -6028,14 +4597,6 @@
          download-size="0"
          install-size="0"
          version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ui.cocoa"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
          unpack="false"/>
 
    <plugin
@@ -6129,13 +4690,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.mwe2.launch.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.jdt.ui.source"
          download-size="0"
          install-size="0"
@@ -6164,13 +4718,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.common.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.gmf.runtime.draw2d.ui.render"
          download-size="0"
          install-size="0"
@@ -6192,26 +4739,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.m2e.maven.indexer"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
          id="org.apache.jasper.glassfish"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.archetype.common"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.eclipse.emf.ecore.xcore.importer"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -6226,13 +4754,6 @@
 
    <plugin
          id="org.w3c.dom.svg.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.library"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -6280,28 +4801,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.validity"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.p2.engine.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.ecore.xcore.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.markup.ui.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -6322,28 +4822,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.gef4.common.doc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.e4.ui.workbench.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.ecore.xcore.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.domain.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -6448,21 +4927,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.xml.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.xtext.util.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe2.launch.ui.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -6490,20 +4955,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.pivot.uml.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe.utils"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.ecore"
          download-size="0"
          install-size="0"
@@ -6512,13 +4963,6 @@
 
    <plugin
          id="org.eclipse.xtext.ui.codetemplates"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.xtext.completeocl.ui.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -6539,28 +4983,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.server.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.e4.ui.di.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.debug.vm.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ch.qos.logback.classic"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -6623,13 +5046,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.base.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.epp.mpc.ui"
          download-size="0"
          install-size="0"
@@ -6665,21 +5081,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.markup.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.oomph.setup.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.ecore.xcore"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -6734,13 +5136,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.xtext.oclstdlib.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.jdt.junit.core"
          download-size="0"
          install-size="0"
@@ -6748,21 +5143,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.dtd.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.cheatsheets"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.m2e.profiles.core"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -6784,13 +5165,6 @@
 
    <plugin
          id="org.eclipse.core.jobs.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtext.common.types.shared.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -6832,13 +5206,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend.standalone.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.e4.ui.dialogs.source"
          download-size="0"
          install-size="0"
@@ -6867,13 +5234,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.oclstdlib.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.p2.ui.source"
          download-size="0"
          install-size="0"
@@ -6882,13 +5242,6 @@
 
    <plugin
          id="org.eclipse.equinox.app.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.codegen.ecore.xtext.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -7050,27 +5403,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.apache.log4j.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe2.runtime.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.jdt.launching.ui.macosx"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="com.ibm.icu.source"
          download-size="0"
          install-size="0"
@@ -7086,13 +5418,6 @@
 
    <plugin
          id="org.eclipse.xtext.generator"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.xtext.markup"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -7134,28 +5459,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.codegen.asm3.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtext.common.types.shared.jdt38.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.e4.core.di.extensions"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xpand"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -7169,28 +5473,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.wst.common.infopop"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.xtext.ecore.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.validation.infopop"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.sse.core"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -7218,13 +5501,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ocl.examples.xtext.essentialocl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.equinox.p2.metadata.repository"
          download-size="0"
          install-size="0"
@@ -7246,21 +5522,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.m2e.launching"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.graphiti.examples.common.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.emf.validation.validity.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -7330,13 +5592,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.m2e.discovery"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.jdt.core.source"
          download-size="0"
          install-size="0"
@@ -7352,13 +5607,6 @@
 
    <plugin
          id="org.eclipse.gmf.runtime.common.ui.services.action"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.ocl.examples.impactanalyzer.util"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -7479,13 +5727,6 @@
 
    <plugin
          id="org.eclipse.uml2.common"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.wst.common.environment"
          download-size="0"
          install-size="0"
          version="0.0.0"

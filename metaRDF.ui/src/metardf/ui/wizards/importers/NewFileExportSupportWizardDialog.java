@@ -9,8 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.jface.wizard.Wizard;
-import metaRDF.core.model.IRepository;
-import metaRDF.core.model.impl.RepositoryManager;
+import metaRDF.core.model.IRepositoryManager;
 
 public class NewFileExportSupportWizardDialog extends Wizard {
 	NewFileExportSupportWizardPage newFileExportPage;
@@ -41,13 +40,27 @@ public class NewFileExportSupportWizardDialog extends Wizard {
 				aux = "/";
 			}
 			
-			List<String> lines = Arrays.asList(RepositoryManager.getInstance().toString());
+			
+			Class<? extends IRepositoryManager> c = Class.forName("metardf.core").asSubclass(IRepositoryManager.class);
+			IRepositoryManager repositoryManager = c.newInstance();
+			
+			List<String> lines = Arrays.asList(repositoryManager.toString());
+			//List<String> lines = Arrays.asList(RepositoryManager.getInstance().toString());
 			
 			//IRepository repository = RepositoryManager.getInstance().getRepositories();
 			//repository.createResource(newResourcePage.getResourceName(), newResourcePage.getResourceDescription(), newResourcePage.getResourceUri());
 			Path file = Paths.get(newFileExportPage.getFolder() + aux + newFileExportPage.getFileName());
 			Files.write(file, lines, Charset.forName("UTF-8"));
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

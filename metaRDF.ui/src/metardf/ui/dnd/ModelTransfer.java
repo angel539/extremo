@@ -5,18 +5,21 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.TransferData;
 
+import metaRDF.core.model.IDataProperty;
+import metaRDF.core.model.IObjectProperty;
+import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
-import metaRDF.core.model.impl.DataProperty;
-import metaRDF.core.model.impl.ObjectProperty;
-import metaRDF.core.model.impl.SemanticClass;
-import metardf.ui.views.entities.TreeObject;
+import metardf.core.ecore.assistant.model.EcoreDataProperty;
+import metardf.core.ecore.assistant.model.EcoreObjectProperty;
+import metardf.core.ecore.assistant.model.EcoreSemanticClass;
+import metardf.ui.views.entities.model.TreeObject;
 
 public class ModelTransfer extends ByteArrayTransfer {
 	private static final String SEMANTIC_CLASS_TYPE = "SemanticClass";
-	
 	private static final int SEMANTIC_CLASS_ID = registerType(SEMANTIC_CLASS_TYPE);
 	
 	private static ModelTransfer _instance = new ModelTransfer();
@@ -27,54 +30,35 @@ public class ModelTransfer extends ByteArrayTransfer {
 
 	public void javaToNative(Object object, TransferData transferData) {
 		if (!checkIfSemanticElement(((TreeObject) object).getSemanticElement()) || (isDefinedSupportedType(transferData)!=-1)){
-			System.out.println("_" + checkIfSemanticElement(((TreeObject) object).getSemanticElement()) + " ^ " + isSupportedType(transferData) + "  obj: " + object + " transfer: " + transferData + " ..." + transferData.type);
-		
 			ISemanticElement semanticClass = ((TreeObject) object).getSemanticElement();
-		
+			
 			try{
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
 				DataOutputStream writeOut = new DataOutputStream(out);
 				
-				/*for(SemanticClass semanticClass : semanticClasses){
-					byte[] nameBuffer = semanticClass.getName().getBytes();
-					writeOut.writeInt(nameBuffer.length);
-					writeOut.write(nameBuffer);
-				}*/
 				
-				if(semanticClass instanceof SemanticClass){
+				if(semanticClass instanceof ISemanticClass){
 					writeOut.writeInt(0); //if semanticclass
 					
 					byte[] nameBuffer = semanticClass.getName().getBytes();
 					writeOut.writeInt(nameBuffer.length);
 					writeOut.write(nameBuffer);
-					
-					byte[] uriBuffer = semanticClass.getURI().getBytes();
-					writeOut.writeInt(uriBuffer.length);
-					writeOut.write(uriBuffer);
 				}
 				
-				if(semanticClass instanceof ObjectProperty){
+				if(semanticClass instanceof IObjectProperty){
 					writeOut.writeInt(1);
 					
 					byte[] nameBuffer = semanticClass.getName().getBytes();
 					writeOut.writeInt(nameBuffer.length);
 					writeOut.write(nameBuffer);
-					
-					byte[] uriBuffer = semanticClass.getURI().getBytes();
-					writeOut.writeInt(uriBuffer.length);
-					writeOut.write(uriBuffer);
 				}
 				
-				if(semanticClass instanceof DataProperty){
+				if(semanticClass instanceof IDataProperty){
 					writeOut.writeInt(2);
 					
 					byte[] nameBuffer = semanticClass.getName().getBytes();
 					writeOut.writeInt(nameBuffer.length);
 					writeOut.write(nameBuffer);
-					
-					byte[] uriBuffer = semanticClass.getURI().getBytes();
-					writeOut.writeInt(uriBuffer.length);
-					writeOut.write(uriBuffer);
 				}
 				
 				
@@ -102,45 +86,36 @@ public class ModelTransfer extends ByteArrayTransfer {
 					int sizeName = readIn.readInt();
 					byte[] name = new byte[sizeName];
 					readIn.read(name);
-					//data.setName(new String(name));
-					
-					int sizeUri = readIn.readInt();
-					byte[] uri = new byte[sizeUri];
-					readIn.read(uri);
-					//data.setUri(new String(uri));
 			
 					switch(type){
 						case 0:
-							SemanticClass[] newSemanticClass = new SemanticClass[semanticClass.length + 1];
+							ISemanticClass[] newSemanticClass = new ISemanticClass[semanticClass.length + 1];
 							System .arraycopy(semanticClass, 0, newSemanticClass, 0, semanticClass.length);
 							
-							System.out.println("voy a definir una semanticclass");
-							SemanticClass semanticclassdata = new SemanticClass(new String(name), new String(uri), null, null);
+							EcoreSemanticClass semanticclassdata = new EcoreSemanticClass(null, new String(name), "");
 							newSemanticClass[semanticClass.length] = semanticclassdata;
 							semanticClass = newSemanticClass;
 							break;
 						
 						case 1:
-							ObjectProperty[] newObjectProperty = new ObjectProperty[semanticClass.length + 1];
+							IObjectProperty[] newObjectProperty = new IObjectProperty[semanticClass.length + 1];
 							System .arraycopy(semanticClass, 0, newObjectProperty, 0, semanticClass.length);
 							
-							System.out.println("voy a definir una objectproperty");
-							ObjectProperty objectpropertydata = new ObjectProperty(new String(name), new String(uri), null, false, null);
+							EcoreObjectProperty objectpropertydata = new EcoreObjectProperty(null, null, new String(name), false, null);
 							newObjectProperty[semanticClass.length] = objectpropertydata;
 							semanticClass = newObjectProperty;
 							break;
 						
 						case 2:
-							DataProperty[] newDataProperty = new DataProperty[semanticClass.length + 1];
+							IDataProperty[] newDataProperty = new IDataProperty[semanticClass.length + 1];
 							System .arraycopy(semanticClass, 0, newDataProperty, 0, semanticClass.length);
 							
-							System.out.println("voy a definir una dataproperty");
-							DataProperty datapropertydata = new DataProperty(new String(name), new String(uri), null, false, null);
+							EcoreDataProperty datapropertydata = new EcoreDataProperty(null, new String(name), null, false, null);
 							newDataProperty[semanticClass.length] = datapropertydata;
 							semanticClass = newDataProperty;
 							break;
+							
 						default:
-							System.out.println("voy a definir un objeto X");
 							break;
 					}	
 				}
@@ -191,5 +166,4 @@ public class ModelTransfer extends ByteArrayTransfer {
 		}
 		return -1;
 	}
-	
 }

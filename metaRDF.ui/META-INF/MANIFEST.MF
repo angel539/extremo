@@ -15,10 +15,13 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.swt,
  org.eclipse.gef;bundle-version="3.10.1",
  org.eclipse.graphiti.ui,
- org.eclipse.graphiti;bundle-version="0.12.1"
+ org.eclipse.graphiti;bundle-version="0.12.1",
+ metaRDF.core.extensions,
+ metaRDF.core.ecore
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  icons/
 Export-Package: metardf.ui.dnd,
- metardf.ui.views.entities
+ metardf.ui.views.entities,
+ metardf.ui.views.entities.model

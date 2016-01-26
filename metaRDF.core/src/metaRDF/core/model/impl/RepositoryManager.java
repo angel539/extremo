@@ -15,8 +15,8 @@ public class RepositoryManager implements IRepositoryManager{
 		this.repositories = new ArrayList<IRepository>();
 	}
 	
-	public Repository addRepository(String name, String description, String uri){
-		Repository semanticRepository = new Repository(name, description, uri);
+	public Repository addRepository(String id, String name, String description){
+		Repository semanticRepository = new Repository(id, name, description);
 		repositories.add(semanticRepository);
 		return semanticRepository;
 	}
@@ -60,4 +60,10 @@ public class RepositoryManager implements IRepositoryManager{
     	}
     	return managerString;
     }
+
+	@Override
+	public void addRepository(IRepository repository) {
+		if(this.repositories == null) this.repositories = new ArrayList<IRepository>();
+		this.repositories.add(repository);
+	}
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="metardf.core.extensions.assistant">
+      <assistant
+            class="metardf.core.ecore.assistant.EcoreAssistant"
+            extensions="ecore"
+            id="metardf.core.ecore.assistant"
+            name="Ecore">
+      </assistant>
+   </extension>
+
+</plugin>

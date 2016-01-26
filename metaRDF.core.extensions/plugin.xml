@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="metardf.core.extensions.assistant" name="metardf.core.extensions.assistant" schema="schema/metardf.core.extensions.assistant.exsd"/>
+
+</plugin>
