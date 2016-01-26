@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/metaRDF.feature_1.0.0.201601131040.jar" id="metaRDF.feature" version="1.0.0.201601131040">
-      <category name="Recommender"/>
-   </feature>
-   <category-def name="Recommender" label="Recommender"/>
-</site>
