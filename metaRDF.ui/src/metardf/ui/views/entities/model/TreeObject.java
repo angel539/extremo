@@ -26,6 +26,8 @@ public class TreeObject implements IAdaptable {
 	}
 	
 	public TreeObject(Object object) {
+		//System.out.println("reconoce que es... " + object.getClass());
+		
 		if(object instanceof ISemanticElement){
 			this.name = this.name + ((ISemanticElement) object).getName();
 		}

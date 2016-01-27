@@ -36,13 +36,16 @@ public class ModelTransfer extends ByteArrayTransfer {
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
 				DataOutputStream writeOut = new DataOutputStream(out);
 				
-				
 				if(semanticClass instanceof ISemanticClass){
 					writeOut.writeInt(0); //if semanticclass
 					
 					byte[] nameBuffer = semanticClass.getName().getBytes();
 					writeOut.writeInt(nameBuffer.length);
 					writeOut.write(nameBuffer);
+					
+					/*byte[] idStringBuffer = semanticClass.getIdToString().getBytes();
+					writeOut.writeInt(idStringBuffer.length);
+					writeOut.write(idStringBuffer);*/
 				}
 				
 				if(semanticClass instanceof IObjectProperty){
@@ -51,6 +54,10 @@ public class ModelTransfer extends ByteArrayTransfer {
 					byte[] nameBuffer = semanticClass.getName().getBytes();
 					writeOut.writeInt(nameBuffer.length);
 					writeOut.write(nameBuffer);
+					
+					/*byte[] idStringBuffer = semanticClass.getIdToString().getBytes();
+					writeOut.writeInt(idStringBuffer.length);
+					writeOut.write(idStringBuffer);*/
 				}
 				
 				if(semanticClass instanceof IDataProperty){
@@ -59,11 +66,14 @@ public class ModelTransfer extends ByteArrayTransfer {
 					byte[] nameBuffer = semanticClass.getName().getBytes();
 					writeOut.writeInt(nameBuffer.length);
 					writeOut.write(nameBuffer);
+					
+					/*byte[] idStringBuffer = semanticClass.getIdToString().getBytes();
+					writeOut.writeInt(idStringBuffer.length);
+					writeOut.write(idStringBuffer);*/
 				}
 				
-				
 				byte[] buffer = out.toByteArray();
-				writeOut.close();
+				writeOut.close();	
 				super.javaToNative(buffer, transferData);
 			}
 			catch (IOException e) { };
@@ -75,23 +85,26 @@ public class ModelTransfer extends ByteArrayTransfer {
 			byte[] buffer = (byte[]) super.nativeToJava(transferData);
 			if (buffer == null) return null;
 			
-			Object[] semanticClass = new Object[0];
+			ISemanticElement[] semanticClass = new ISemanticElement[0];
 			try {
 				ByteArrayInputStream in = new ByteArrayInputStream(buffer);
 				DataInputStream readIn = new DataInputStream(in);
 				
-				while (readIn.available() > 20) {
+				while (readIn.available() > 0) {
 					int type = readIn.readInt();
 					
 					int sizeName = readIn.readInt();
 					byte[] name = new byte[sizeName];
 					readIn.read(name);
-			
+					
+					/*int sizeIdString = readIn.readInt();
+					byte[] idString = new byte[sizeIdString];
+					readIn.read(idString);*/
+					
 					switch(type){
 						case 0:
 							ISemanticClass[] newSemanticClass = new ISemanticClass[semanticClass.length + 1];
 							System .arraycopy(semanticClass, 0, newSemanticClass, 0, semanticClass.length);
-							
 							EcoreSemanticClass semanticclassdata = new EcoreSemanticClass(null, new String(name), "");
 							newSemanticClass[semanticClass.length] = semanticclassdata;
 							semanticClass = newSemanticClass;
@@ -100,8 +113,7 @@ public class ModelTransfer extends ByteArrayTransfer {
 						case 1:
 							IObjectProperty[] newObjectProperty = new IObjectProperty[semanticClass.length + 1];
 							System .arraycopy(semanticClass, 0, newObjectProperty, 0, semanticClass.length);
-							
-							EcoreObjectProperty objectpropertydata = new EcoreObjectProperty(null, null, new String(name), false, null);
+							EcoreObjectProperty objectpropertydata = new EcoreObjectProperty(null, null, new String(name), false, "");
 							newObjectProperty[semanticClass.length] = objectpropertydata;
 							semanticClass = newObjectProperty;
 							break;
@@ -109,8 +121,7 @@ public class ModelTransfer extends ByteArrayTransfer {
 						case 2:
 							IDataProperty[] newDataProperty = new IDataProperty[semanticClass.length + 1];
 							System .arraycopy(semanticClass, 0, newDataProperty, 0, semanticClass.length);
-							
-							EcoreDataProperty datapropertydata = new EcoreDataProperty(null, new String(name), null, false, null);
+							EcoreDataProperty datapropertydata = new EcoreDataProperty(null, new String(name), null, false, "");
 							newDataProperty[semanticClass.length] = datapropertydata;
 							semanticClass = newDataProperty;
 							break;

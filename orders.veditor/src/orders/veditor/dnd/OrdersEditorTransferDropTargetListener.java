@@ -65,26 +65,12 @@ public class OrdersEditorTransferDropTargetListener extends GraphityEditorTransf
 	
 	@Override
 	protected void handleDrop() {
+		System.out.println(getCurrentEvent().data.getClass());
+		
 		if(getCurrentEvent().data instanceof ISemanticClass[]){
 			System.out.println("soy un semanticclass ..." + ((ISemanticClass[])getCurrentEvent().data)[0].getName());
 		}
-		if(getCurrentEvent().data instanceof ISemanticClass){
-			System.out.println("soy un unico semanticclass ..." + ((ISemanticClass)getCurrentEvent().data).getName());
-		}
-		
-		if(getCurrentEvent().data instanceof IObjectProperty[]){
-			System.out.println("soy un OBJECT ..." + ((IObjectProperty[])getCurrentEvent().data)[0].getName());
-		}
-		if(getCurrentEvent().data instanceof IObjectProperty){
-			System.out.println("soy un unico OBJECT ..." + ((IObjectProperty)getCurrentEvent().data).getName());
-		}
-		
-		if(getCurrentEvent().data instanceof IDataProperty[]){
-			System.out.println("soy un data    ..." + ((IDataProperty[])getCurrentEvent().data)[0].getName());
-		}
-		if(getCurrentEvent().data instanceof IDataProperty){
-			System.out.println("soy un unico data    ..." + ((IDataProperty)getCurrentEvent().data).getName());
-		}
+	
 		super.handleDrop();
 	}
 }
