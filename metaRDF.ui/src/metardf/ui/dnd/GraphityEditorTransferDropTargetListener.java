@@ -5,7 +5,9 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.dnd.AbstractTransferDropTargetListener;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DropTarget;
 import org.eclipse.swt.dnd.DropTargetEvent;
+import org.eclipse.swt.graphics.Point;
 
 public abstract class GraphityEditorTransferDropTargetListener extends  AbstractTransferDropTargetListener implements IGraphityEditorContribution{	
 	private static EditPartViewer viewer = null;
@@ -72,5 +74,15 @@ public abstract class GraphityEditorTransferDropTargetListener extends  Abstract
 	@Override
 	public boolean isEnabled(DropTargetEvent event) {
 		return true;
+	}
+	
+
+	public Point getControl(){
+		DropTargetEvent event = getCurrentEvent();
+		DropTarget w = (DropTarget)event.widget;
+		int x = getCurrentEvent().x;
+		int y = getCurrentEvent().y;
+		final Point point = w.getControl().toControl(x, y);
+		return point;
 	}
 }

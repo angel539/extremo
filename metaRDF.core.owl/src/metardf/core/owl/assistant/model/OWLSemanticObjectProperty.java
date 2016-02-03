@@ -8,6 +8,10 @@ import metaRDF.core.model.impl.ObjectProperty;
 public class OWLSemanticObjectProperty extends ObjectProperty{
 	String id;
 	
+	public OWLSemanticObjectProperty(){
+		super();
+	}
+	
 	public OWLSemanticObjectProperty(String id, String range, String name, boolean isFromSuper, String description) {
 		super(id, range, name, isFromSuper, description);
 		this.id = id;
@@ -21,12 +25,14 @@ public class OWLSemanticObjectProperty extends ObjectProperty{
 	
 	@Override
 	public String toString() {
-		return "[" + getName() + ", " + getId() + ", " + ranges.toString() + "]";
+		String myString = "[" + getName();
+		if(getId() != null) myString = myString + ", " + getId();
+		if(ranges != null) myString = myString + ", " + ranges.toString();
+		return myString + "]";
 	}
 
 	@Override
 	public String getIdToString() {
-		// TODO Auto-generated method stub
 		return this.id;
 	}
 
@@ -52,6 +58,11 @@ public class OWLSemanticObjectProperty extends ObjectProperty{
 	public void setRangeAsSemanticClass(ISemanticClass rangeSemanticClass) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void setIdToString(String idString) {
+		this.id = idString;
 	}
 
 }

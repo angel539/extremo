@@ -12,9 +12,9 @@
             view="entities">
       </action>
       <action
-            class="metardf.ui.actions.test.SearchEntity"
+            class="metardf.ui.actions.test.ExpandEntity"
             icon="icons/details_view.gif"
-            id="metaRDF.ui.actions.test.searchentity"
+            id="metaRDF.ui.actions.test.expandentity"
             name="Expand Entity"
             position="menumanager"
             view="entities">

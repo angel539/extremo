@@ -8,6 +8,11 @@ import metaRDF.core.model.impl.ObjectProperty;
 public class EcoreObjectProperty extends ObjectProperty{
 	EReference id = null;
 	EClass range = null;
+	String idString = null;
+	
+	public EcoreObjectProperty(){
+		super();
+	}
 	
 	public EcoreObjectProperty(EReference id, EClass range, String name, boolean isFromSuper, String description) {
 		super(id, range, name, isFromSuper, description);
@@ -17,8 +22,8 @@ public class EcoreObjectProperty extends ObjectProperty{
 
 	@Override
 	public String getIdToString() {
-		// TODO Auto-generated method stub
-		return id.getName();
+		idString = id.getName();
+		return idString;
 	}
 
 	@Override
@@ -40,6 +45,12 @@ public class EcoreObjectProperty extends ObjectProperty{
 	@Override
 	public void setRangeAsSemanticClass(ISemanticClass rangeSemanticClass) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setIdToString(String idString) {
+		this.idString = idString;
 		
 	}
 }

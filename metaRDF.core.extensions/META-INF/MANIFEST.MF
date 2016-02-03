@@ -7,7 +7,11 @@ Bundle-Activator: metardf.core.extensions.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  metaRDF.core,
- org.apache.commons.lang3
+ org.apache.commons.lang3,
+ org.eclipse.equinox.registry
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: metardf.core.extensions
+Export-Package: metardf.core.extensions,
+ metardf.core.extensions.utils
+Bundle-ClassPath: lib/reflections-0.9.9-RC1.jar,
+ .

@@ -38,9 +38,6 @@ public class ResourceListWizardDialog extends Wizard {
 	@Override
 	public IWizardPage getNextPage(IWizardPage page) {
 		if(page == repositoryPage){
-			
-			//System.out.println("mi repository uri---" + repositoryPage.getRepositoryUri());
-			
 			resourcePage = new ResourceListWizardPage("Resource List", "Resources list", repositoryPage.getRepositoryUri());
 			addPage(resourcePage);
 			return resourcePage;

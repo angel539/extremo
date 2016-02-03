@@ -8,6 +8,10 @@ import metaRDF.core.model.impl.SemanticClass;
 public class OWLSemanticClass extends SemanticClass{
 	String label;
 	
+	public OWLSemanticClass(){
+		super();
+	}
+	
 	public String getLabel() {
 		String clean = label.toString().replace('_', ' ').replace('.', ' ');
 		String[] spplited = StringUtils.splitByWholeSeparator(clean, null, 0);
@@ -28,7 +32,11 @@ public class OWLSemanticClass extends SemanticClass{
 
 	@Override
 	public String getIdToString() {
-		// TODO Auto-generated method stub
 		return this.label;
+	}
+
+	@Override
+	public void setIdToString(String idString) {
+		this.label = idString;
 	}
 }

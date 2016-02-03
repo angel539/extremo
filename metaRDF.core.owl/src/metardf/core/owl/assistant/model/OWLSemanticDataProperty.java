@@ -7,6 +7,10 @@ public class OWLSemanticDataProperty extends DataProperty{
 	Datatype range;
 	String id;
 	
+	public OWLSemanticDataProperty(){
+		super();
+	}
+	
 	public OWLSemanticDataProperty(String id, String name, String type, boolean isFromSuper, String description) {
 		super(id, name, type, isFromSuper, description);
 		this.id = id;
@@ -29,5 +33,10 @@ public class OWLSemanticDataProperty extends DataProperty{
 	public String getIdToString() {
 		// TODO Auto-generated method stub
 		return this.id;
+	}
+
+	@Override
+	public void setIdToString(String idString) {
+		this.id = idString;
 	}		
 }

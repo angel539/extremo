@@ -30,7 +30,10 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 import metaRDF.core.model.Datatype;
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
+import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
+import metaRDF.core.model.ISemanticElement;
+import metaRDF.core.model.impl.SemanticResource;
 import metaRDF.core.utils.LangUtils;
 import metardf.core.extensions.FormatAssistant;
 import metardf.core.extensions.IFormatAssistant;
@@ -63,8 +66,8 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 	}
 
 	@Override
-	public boolean load(String path) {
-		this.path = path;
+	public boolean load(SemanticResource resource) {
+		this.path = (String) resource.getId();
 				
 		if((path.startsWith("http://"))||(path.startsWith("https://"))){
 			this.owl_iri = IRI.create(path);
@@ -684,6 +687,16 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 		}
 		return null;
 		
+	}
+
+	@Override
+	public List<Class<? extends ISemanticElement>> getRegisteredTypes() {
+		List<Class<? extends ISemanticElement>> types = new ArrayList<Class<? extends ISemanticElement>>();
+		types.add(OWLSemanticClass.class);
+		types.add(OWLSemanticDataProperty.class);
+		types.add(OWLSemanticObjectProperty.class);
+
+		return types;
 	}
 
 }

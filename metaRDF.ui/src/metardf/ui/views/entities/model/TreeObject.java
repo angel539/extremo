@@ -1,17 +1,18 @@
 package metardf.ui.views.entities.model;
-
 import org.eclipse.core.runtime.IAdaptable;
 
-import metaRDF.core.model.IDataProperty;
-import metaRDF.core.model.IObjectProperty;
-import metaRDF.core.model.IProperty;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 
 public class TreeObject implements IAdaptable {
-	private String name = "";
+	protected String name = "";
 	private TreeParent parent;
-	ISemanticElement element;
+	
+	public TreeObject(String name){
+		this.name = name;
+	}
+	
+	private ISemanticElement element;
 	
 	public ISemanticElement getSemanticElement() {
 		return element;
@@ -20,40 +21,20 @@ public class TreeObject implements IAdaptable {
 	public void setSemanticElement(ISemanticElement element) {
 		this.element = element;
 	}
-
-	public TreeObject(String name){
-		this.name = name;
-	}
 	
-	public TreeObject(Object object) {
-		//System.out.println("reconoce que es... " + object.getClass());
-		
-		if(object instanceof ISemanticElement){
-			this.name = this.name + ((ISemanticElement) object).getName();
+	public TreeObject(Object element){
+		if(element instanceof ISemanticElement){
+			this.name = this.name + ((ISemanticElement) element).getName();
 		}
 		
-		if(object instanceof ISemanticClass){
-			if(((ISemanticClass) object).getProperties()!=null) this.name = this.name + " [attr:" + ((ISemanticClass) object).getProperties().size() + "]";
-			if(((ISemanticClass) object).getReferences()!=null) this.name = this.name + " [ref:" + ((ISemanticClass) object).getReferences().size() + "]";		
-			if(((ISemanticClass) object).getSuperclasses()!=null) this.name = this.name + " [supers:" + ((ISemanticClass) object).getSuperclasses().size() + "]";		
-			if(((ISemanticClass) object).getSubclasses()!=null) this.name = this.name + " [subs:" + ((ISemanticClass) object).getSubclasses().size() + "]";		
+		if(element instanceof ISemanticClass){
+			if(((ISemanticClass) element).getProperties()!=null) this.name = this.name + " [attr:" + ((ISemanticClass) element).getProperties().size() + "]";
+			if(((ISemanticClass) element).getReferences()!=null) this.name = this.name + " [ref:" + ((ISemanticClass) element).getReferences().size() + "]";		
+			if(((ISemanticClass) element).getSuperclasses()!=null) this.name = this.name + " [supers:" + ((ISemanticClass) element).getSuperclasses().size() + "]";		
+			if(((ISemanticClass) element).getSubclasses()!=null) this.name = this.name + " [subs:" + ((ISemanticClass) element).getSubclasses().size() + "]";		
+			
+			this.element = (ISemanticElement) element;
 		}
-		
-		if(object instanceof IObjectProperty){
-			this.name = this.name + " : " + ((IObjectProperty) object).getRangeAsSemanticClass().getName();
-		}
-		
-		if(object instanceof IDataProperty){
-			this.name = this.name + " : " + ((IDataProperty) object).getType();
-		}
-		
-		if((object instanceof IProperty) && (((IProperty) object).isFromSuper())){
-			this.name = this.name + " (super)";
-		}
-		
-		if(object instanceof ISemanticClass) this.element = (ISemanticClass) object;
-		if(object instanceof IObjectProperty) this.element = (IObjectProperty) object;
-		if(object instanceof IDataProperty) this.element = (IDataProperty) object;
 	}
 	
 	public String getName() {
@@ -62,13 +43,13 @@ public class TreeObject implements IAdaptable {
 	public void setParent(TreeParent parent) {
 		this.parent = parent;
 	}
+	
 	public TreeParent getParent() {
 		return parent;
 	}
 	public String toString() {
 		return getName();
 	}
-	
 	public <T> T getAdapter(Class<T> key) {
 		return null;
 	}

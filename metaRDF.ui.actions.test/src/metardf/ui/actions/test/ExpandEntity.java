@@ -1,17 +1,21 @@
 package metardf.ui.actions.test;
+import java.util.List;
 
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
-import metaRDF.core.model.ISemanticClass;
+import metaRDF.core.model.IRepository;
+import metaRDF.core.model.IResource;
+import metaRDF.core.model.impl.RepositoryManager;
+import metaRDF.core.model.impl.SemanticResource;
 import metardf.core.extensions.AssistantFactory;
+import metardf.core.extensions.FormatAssistant;
 import metardf.core.extensions.IFormatAssistant;
-import metardf.ui.dnd.ResourceViewAction;
 import metardf.ui.views.entities.model.EntityParent;
 import metardf.ui.views.entities.model.TreeObject;
 import metardf.ui.views.entities.model.TreeParent;
 
-public class ExpandEntity extends ResourceViewAction {
+public class ExpandEntity extends SearchEntity{
 	public ExpandEntity() {
 	}
 
@@ -22,7 +26,24 @@ public class ExpandEntity extends ResourceViewAction {
 		
 		if(obj instanceof EntityParent){
 			if(!isOnTheTree((EntityParent) obj)){
-				expandEntity(((EntityParent) obj));
+				RepositoryManager repositoryManager = RepositoryManager.getInstance();
+				List<IFormatAssistant> assistances = AssistantFactory.getInstance().getAssistances();
+				//searching
+				for(IRepository repository : repositoryManager.getRepositories()){    
+					for(IResource resource : repository.getResources()){
+						if(resource instanceof SemanticResource){			
+							for(IFormatAssistant assistant : assistances){
+								if(((FormatAssistant)assistant).getNameExtension().compareTo(resource.getAssistant())==0){
+									if((resource instanceof SemanticResource) && (assistant.load((SemanticResource) resource))){	
+										defineEntity(assistant, ((EntityParent) obj).getSemanticElement());
+									}
+								}
+							}
+						}	
+					}		
+				}
+				
+				drawEntityParentContent((EntityParent) obj);
 				getViewer().refresh();
 			}
 			else{
@@ -57,19 +78,5 @@ public class ExpandEntity extends ResourceViewAction {
 		}
 		
 		return onTheTree;
-	}
-	
-	private void expandEntity(EntityParent entity){
-		for(IFormatAssistant assistant : AssistantFactory.getInstance().getAssistances()){			
-			((ISemanticClass) entity.getSemanticElement()).addProperties(assistant.getDataProperties(entity.getSemanticElement().getId(), true, true));
-			entity.drawProperties();
-			((ISemanticClass) entity.getSemanticElement()).addReferences(assistant.getObjectProperties(entity.getSemanticElement().getId(), true, true));
-			entity.drawReferences();
-			((ISemanticClass) entity.getSemanticElement()).addSuperclasses(assistant.getSuper(entity.getSemanticElement().getId(), false));
-			entity.drawSuperClasses();
-			((ISemanticClass) entity.getSemanticElement()).addSubclasses(assistant.getSub(entity.getSemanticElement().getId(), false));
-			entity.drawSubclasses();
-		}
-		
 	}
 }

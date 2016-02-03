@@ -9,6 +9,10 @@ public abstract class ObjectProperty implements IObjectProperty{
 	String description;
 	Object range;
 	
+	public ObjectProperty(){
+		
+	}
+	
 	public ObjectProperty(Object id, Object range, String name, boolean isFromSuper, String description){
 		this.name = name;
 		this.id = id;
@@ -29,7 +33,8 @@ public abstract class ObjectProperty implements IObjectProperty{
 	
 	@Override
 	public String toString() {
-		return "[" + name + ", " + id.toString() + "]";
+		if(id == null) return "[" + name + "]";
+		else return "[" + name + ", " + id.toString() + "]";
 	}
 
 	@Override

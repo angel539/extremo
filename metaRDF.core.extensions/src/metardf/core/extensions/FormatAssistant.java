@@ -57,6 +57,5 @@ public class FormatAssistant{
 	public void addExtension(String extension) {
 		if(this.extensions == null) extensions = new ArrayList<String>();
 		extensions.add(extension);
-		//this.extensions = extensions;
 	}
 }

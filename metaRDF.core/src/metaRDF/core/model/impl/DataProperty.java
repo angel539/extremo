@@ -11,6 +11,10 @@ public abstract class DataProperty implements IDataProperty{
 	boolean isFromSuper;
 	String description;
 	
+	public DataProperty(){
+		
+	}
+	
 	public DataProperty(Object id, String name, String type, boolean isFromSuper, String description){
 		this.id = id;
 		this.name = name;

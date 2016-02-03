@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -33,14 +34,23 @@ public class ResourceListWizardPage extends WizardPage {
 		container = new Composite(parent, SWT.NONE);
 	    GridLayout layout = new GridLayout();
 	    container.setLayout(layout);
-	    layout.numColumns = 1;	    
+	    //layout.numColumns = 1;
 	    
-		table = new Table(container, SWT.MULTI | SWT.BORDER | SWT.FULL_SELECTION);
+	    final ScrolledComposite composite = new ScrolledComposite(container, SWT.MULTI | SWT.V_SCROLL);
+	    composite.setLayout(layout);
+	    composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+	    
+		table = new Table(composite, SWT.FULL_SELECTION | SWT.MULTI);
+		composite.setContent(table);
+	    composite.setExpandHorizontal(true);
+	    composite.setExpandVertical(true);
+	    //composite.setAlwaysShowScrollBars(true);
+	    composite.setMinSize(table.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+	    
 		
 		TableColumn tc1 = new TableColumn(table, SWT.LEFT);
 	    tc1.setText("Name");
 	    tc1.setWidth(150);
-	    
 	    
 	    TableColumn tc2 = new TableColumn(table, SWT.LEFT);
 	    tc2.setText("Path");
@@ -68,8 +78,8 @@ public class ResourceListWizardPage extends WizardPage {
 	    table.setTouchEnabled(true);
     	table.setHeaderVisible(true);
 	    
-	    GridData gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
-	    if(table != null) table.setLayoutData(gd);
+	    //GridData gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
+	    //if(table != null) table.setLayoutData(gd);
 	    setControl(container);
 	    setPageComplete(true);
 	}

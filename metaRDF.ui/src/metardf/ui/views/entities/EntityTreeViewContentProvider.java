@@ -26,7 +26,6 @@ public class EntityTreeViewContentProvider implements IStructuredContentProvider
 	
 	public Object[] getElements(Object parent) {
 		if (parent.equals(iViewSite)) {
-			//if (invisibleRoot==null) initialize();
 			return getChildren(invisibleRoot);
 		}
 		

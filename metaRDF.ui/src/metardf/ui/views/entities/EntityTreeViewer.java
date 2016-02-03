@@ -14,13 +14,42 @@ import org.eclipse.swt.widgets.Tree;
 import metardf.ui.dnd.ModelTransfer;
 
 public class EntityTreeViewer extends TreeViewer {
-
 	public EntityTreeViewer(Composite parent) {
 		super(parent);
+		
+		DragSource ds = new DragSource(getTree(), DND.DROP_COPY);
+		ds.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
+		ds.addDragListener(new DragSourceAdapter() {
+		     public void dragSetData(DragSourceEvent event) {
+		    	 IStructuredSelection selection = (IStructuredSelection) getSelection();
+		    	 if(selection.getFirstElement() instanceof IAdaptable){
+		 	    	IAdaptable data = (IAdaptable) selection.getFirstElement();	
+		 		    if (ModelTransfer.getInstance().isSupportedType(event.dataType)) {
+		 		    	event.data = data;
+		 		    }
+		 	    }
+		    	//event.data = getSelection();
+		     }
+		  });
 	}
 
 	public EntityTreeViewer(Tree tree) {
 		super(tree);
+		
+		DragSource ds = new DragSource(getTree(), DND.DROP_COPY);
+		ds.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
+		ds.addDragListener(new DragSourceAdapter() {
+		     public void dragSetData(DragSourceEvent event) {
+		    	 IStructuredSelection selection = (IStructuredSelection) getSelection();
+		    	 if(selection.getFirstElement() instanceof IAdaptable){
+		 	    	IAdaptable data = (IAdaptable) selection.getFirstElement();	
+		 		    if (ModelTransfer.getInstance().isSupportedType(event.dataType)) {
+		 		    	event.data = data;
+		 		    }
+		 	    }
+		    	//event.data = getSelection();
+		     }
+		  });
 	}
 
 	public EntityTreeViewer(Composite parent, int style) {
@@ -49,7 +78,6 @@ public class EntityTreeViewer extends TreeViewer {
 		 		    	event.data = data;
 		 		    }
 		 	    }
-		    	 
 		    	//event.data = getSelection();
 		     }
 		  });

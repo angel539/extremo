@@ -6,6 +6,12 @@ import metaRDF.core.model.impl.DataProperty;
 
 public class EcoreDataProperty extends DataProperty{
 	EAttribute id = null;
+	String idString = null;
+	
+	public EcoreDataProperty(){
+		super();
+	}
+	
 	public EcoreDataProperty(EAttribute id, String name, String type, boolean isFromSuper, String description) {
 		super(id, name, type, isFromSuper, description);
 		this.id = id;
@@ -18,6 +24,12 @@ public class EcoreDataProperty extends DataProperty{
 
 	@Override
 	public String getIdToString() {
-		return id.getName();
+		idString = id.getName();
+		return idString;
+	}
+
+	@Override
+	public void setIdToString(String idString) {
+		this.idString = idString;
 	}	
 }

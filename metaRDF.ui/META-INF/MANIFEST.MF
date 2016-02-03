@@ -24,4 +24,5 @@ Bundle-ClassPath: .,
  icons/
 Export-Package: metardf.ui.dnd,
  metardf.ui.views.entities,
- metardf.ui.views.entities.model
+ metardf.ui.views.entities.model,
+ metardf.ui.views.repositories

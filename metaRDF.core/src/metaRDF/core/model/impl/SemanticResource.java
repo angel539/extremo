@@ -11,14 +11,16 @@ public class SemanticResource implements IResource{
 	private String name;
 	private String description;
 	private String assistant;
+	private boolean isAlive = true;
 	private List<ISemanticClass> classes;
-	
+
 	public SemanticResource(Object id, String name){
 		super();
 		this.name = name;
 		this.id = id;
 		this.classes = new ArrayList<ISemanticClass>();
 	}
+
 
 	@Override
 	public List<ISemanticClass> getClasses() {
@@ -47,7 +49,7 @@ public class SemanticResource implements IResource{
 
 	@Override
 	public boolean isAlive() {
-		return true;
+		return this.isAlive;
 	}
 
 	@Override
@@ -95,5 +97,16 @@ public class SemanticResource implements IResource{
 
 	public void setAssistant(String assistant) {
 		this.assistant = assistant;
+	}
+
+
+	@Override
+	public void setIdToString(String idString) {
+	}
+
+
+	@Override
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
 	}
 }

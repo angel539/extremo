@@ -25,11 +25,6 @@ public abstract class ResourceViewAction extends Action implements IResourceView
 	public final void run(){
 		execute();
 	}
-	
-	protected void addEntity(IFormatAssistant assistant, ISemanticClass entity){
-		if(this.view instanceof EntityView) ((EntityView) this.view).defineEntity(assistant, entity);
-	}
-	
 	/*protected void addEntitySet(IFormatAssistant assistant, List<ISemanticClass> entities){
 		if(this.view instanceof EntityView) ((EntityView) this.view).defineEntitySet(assistant, entities);
 	}*/

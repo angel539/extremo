@@ -7,6 +7,8 @@ import java.util.Map.Entry;
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.ISemanticClass;
+import metaRDF.core.model.ISemanticElement;
+import metaRDF.core.model.impl.SemanticResource;
 import metaRDF.core.utils.LangUtils;
 import metardf.core.ecore.assistant.model.EcoreDataProperty;
 import metardf.core.ecore.assistant.model.EcoreObjectProperty;
@@ -27,22 +29,19 @@ import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 
 public class EcoreAssistant extends FormatAssistant implements IFormatAssistant {
 	File ecore;
+	SemanticResource semanticResource = null;
 	TreeIterator<EObject> ecoreAll;
-	//String path;
 	
 	@Override
-	public boolean load(String path) {
-		ecore = new File(path);
-		
+	public boolean load(SemanticResource semanticResource) {
+		this.semanticResource = semanticResource;
+		ecore = new File((String) semanticResource.getId());
 		if(ecore.isDirectory()){
-			//System.out.println("es un directorio");
 			return false;
 		}
 		if(!ecore.exists()){
-			//System.out.println("no existe");
 			return false;
 		}
-		//System.out.println("it can " + ecore.getAbsolutePath());
 		return true;
 	}
 
@@ -52,15 +51,20 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 		List<ISemanticClass> classes = new ArrayList<ISemanticClass>();
 		
 		if(ecore != null && ecore.exists()){
-			ResourceSet resourceSet = new ResourceSetImpl(); 
-			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl()); 			//EcorePackage ecorePackage = EcorePackage.eINSTANCE;		
-			URI fileURI = URI.createFileURI(ecore.getAbsolutePath());
-			resource = resourceSet.getResource(fileURI, true);
-			resourceSet.getAllContents().next();
-			ecoreAll = resource.getAllContents();
+			try{
+				ResourceSet resourceSet = new ResourceSetImpl(); 
+				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl()); 			//EcorePackage ecorePackage = EcorePackage.eINSTANCE;		
+				URI fileURI = URI.createFileURI(ecore.getAbsolutePath());
+				resource = resourceSet.getResource(fileURI, true);
+				resourceSet.getAllContents().next();
+				ecoreAll = resource.getAllContents();
+			}catch(Exception e){
+				semanticResource.setAlive(false);
+			}
+			
 		}
 		
-		if(ecoreAll != null){
+		if((ecoreAll != null)&&(semanticResource.isAlive())){
 			Map<String, List<String>> definitions = LangUtils.getSynomins(names);
 			
 			List<String> words = new ArrayList<String>();
@@ -93,12 +97,14 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 		if(parent instanceof EClass){
 			List<IDataProperty> properties = new ArrayList<IDataProperty>();
 			
-			for(EAttribute attr : ((EClass) parent).getEAllAttributes()){
-				properties.add((IDataProperty) new EcoreDataProperty(attr, attr.getName(), attr.getEType().getName(), false, ""));
+			for(EAttribute attr : ((EClass) parent).getEAttributes()){
+				properties.add((IDataProperty) new EcoreDataProperty(attr, attr.getName(), attr.getEType().getName(), false, attr.getName()));
 			}
 			
 			if(supers){
-				for(EClass superclass : ((EClass) parent).getEAllSuperTypes()) properties.addAll(getDataProperties(superclass, supers, equivs));
+				for(EClass superclass : ((EClass) parent).getEAllSuperTypes()){
+					properties.addAll(getDataProperties(superclass, true, equivs));
+				}
 			}
 			return properties;
 		}
@@ -107,30 +113,33 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	}
 
 	@Override
-	public List<IObjectProperty> getObjectProperties(Object name, boolean supers, boolean equivs) {
-		if(name instanceof EClass){
+	public List<IObjectProperty> getObjectProperties(Object parent, boolean supers, boolean equivs) {
+		if(parent instanceof EClass){
 			List<IObjectProperty> properties = new ArrayList<IObjectProperty>();
-			for(EReference reference : ((EClass) name).getEReferences()){
+			
+			for(EReference reference : ((EClass) parent).getEReferences()){
 				EcoreObjectProperty property = new EcoreObjectProperty(reference, reference.getEReferenceType(), reference.getName(), false, null);
 				properties.add((IObjectProperty) property);
 			}
+			
+			if(supers){
+				for(EClass superclass : ((EClass) parent).getEAllSuperTypes()){
+					properties.addAll(getObjectProperties(superclass, true, equivs));
+				}
+			}
 			return properties;
 		}
-		else{
-			//System.out.println("dice que no es instancia de eclass" + name.getClass());
-		}
+	
 		return null;
 	}
 
 	@Override
 	public List<ISemanticClass> getSiblings(Object name) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<ISemanticClass> getRelatedClasses(Object name, boolean supers, boolean equivs) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -140,7 +149,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			List<ISemanticClass> superclasses = new ArrayList<ISemanticClass>();
 			
 			for(EClass superclass : ((EClass) name).getESuperTypes()){
-				EcoreSemanticClass semanticClass = new EcoreSemanticClass(superclass, null, null);
+				EcoreSemanticClass semanticClass = new EcoreSemanticClass(superclass, superclass.getName(), superclass.getName());
 				superclasses.add((ISemanticClass) semanticClass);
 			}
 			
@@ -173,7 +182,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			List<ISemanticClass> subclasses = new ArrayList<ISemanticClass>();
 			
 			for(EClass subclass : candidates){
-				EcoreSemanticClass semanticClass = new EcoreSemanticClass(subclass, null, null);
+				EcoreSemanticClass semanticClass = new EcoreSemanticClass(subclass, subclass.getName(), subclass.getName());
 				subclasses.add((ISemanticClass) semanticClass);
 			}
 			
@@ -185,13 +194,20 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 
 	@Override
 	public List<IObjectProperty> getPath(Object entityA, Object entityB) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public IObjectProperty getInverseProperty(Object cl, Object property) {
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Class<? extends ISemanticElement>> getRegisteredTypes() {
+		List<Class<? extends ISemanticElement>> types = new ArrayList<Class<? extends ISemanticElement>>();
+		types.add(EcoreSemanticClass.class);
+		types.add(EcoreObjectProperty.class);
+		types.add(EcoreDataProperty.class);
+		return types;
 	}
 }

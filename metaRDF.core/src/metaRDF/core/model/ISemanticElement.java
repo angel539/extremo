@@ -8,7 +8,8 @@ public interface ISemanticElement{
 	void setId(Object id);
 	
 	String getIdToString();
-	
+	void setIdToString(String idString);
 	String getDescription();
+	
 	void setDescription(String comment);
 }
