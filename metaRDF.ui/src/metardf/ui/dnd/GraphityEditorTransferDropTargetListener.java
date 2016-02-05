@@ -77,7 +77,7 @@ public abstract class GraphityEditorTransferDropTargetListener extends  Abstract
 	}
 	
 
-	public Point getControl(){
+	public Point getControlPoint(){
 		DropTargetEvent event = getCurrentEvent();
 		DropTarget w = (DropTarget)event.widget;
 		int x = getCurrentEvent().x;

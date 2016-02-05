@@ -30,7 +30,6 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 import metaRDF.core.model.Datatype;
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
-import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 import metaRDF.core.model.impl.SemanticResource;
@@ -386,12 +385,12 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 									if(property.asOWLDatatype().isFloat()) datatype = Datatype.real;
 									if(property.asOWLDatatype().isInteger()) datatype = Datatype.integer;
 									//if(property.asOWLDatatype().is) datatype = Datatype.bool;
-									properties.add(new OWLSemanticDataProperty(property.getIRI().getShortForm(), property.getIRI().toString(), datatype.name(), supers, null));
+									properties.add(new OWLSemanticDataProperty(property.getIRI().getShortForm(), property.getIRI().toString(), datatype.name(), supers, property.getIRI().getShortForm()));
 								}
 								
 								if(property.isOWLDataProperty()){
 									//property.asOWLDataProperty().GET
-									properties.add(new OWLSemanticDataProperty(property.getIRI().getShortForm(), property.getIRI().toString(), property.asOWLDataProperty().getIRI().toString(), supers, null));
+									properties.add(new OWLSemanticDataProperty(property.getIRI().getShortForm(), property.getIRI().toString(), property.asOWLDataProperty().getIRI().toString(), supers, property.getIRI().getShortForm()));
 								}	
 							}
 						}
@@ -440,7 +439,7 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 									rangeURIs.add(range.asOWLClass().getIRI().toString());
 								}
 							}		
-							properties.add(new OWLSemanticObjectProperty(property.getIRI().getShortForm(), null, property.getIRI().toString(), supers, null));
+							properties.add(new OWLSemanticObjectProperty(property.getIRI().getShortForm(), null, property.getIRI().toString(), supers, property.getIRI().getShortForm()));
 						}
 					}
 				}

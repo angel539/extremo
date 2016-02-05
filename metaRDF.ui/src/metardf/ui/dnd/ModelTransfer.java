@@ -17,7 +17,7 @@ import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 import metardf.core.extensions.AssistantFactory;
-import metardf.ui.views.entities.model.EntityParent;
+import metardf.ui.views.entities.model.TreeObject;
 
 public class ModelTransfer extends ByteArrayTransfer {
 	private static final String SEMANTIC_CLASS_TYPE = "SemanticClass";
@@ -29,73 +29,74 @@ public class ModelTransfer extends ByteArrayTransfer {
 		return _instance;
 	}
 
-	public void javaToNative(Object object, TransferData transferData) {
-		if (!checkIfSemanticElement(((EntityParent) object).getSemanticElement()) || (isDefinedSupportedType(transferData)!=-1)){
-			ISemanticElement semanticClass = ((EntityParent) object).getSemanticElement();
-			//System.out.println("la clase del model transfer..." + ((EntityParent) object).getSemanticElement().getClass());
-			
-			try{
-				ByteArrayOutputStream out = new ByteArrayOutputStream();
-				DataOutputStream writeOut = new DataOutputStream(out);
-				
-				byte[] classInfoBuffer = ((EntityParent) object).getSemanticElement().getClass().getName().getBytes();
-				writeOut.writeInt(classInfoBuffer.length);
-				writeOut.write(classInfoBuffer);
-				
-				if(semanticClass instanceof ISemanticClass){
-					writeOut.writeInt(0); //if semanticclass
+	public void javaToNative(Object semanticElements, TransferData transferData) {
+		if(semanticElements != null){
+			if (!checkIfSemanticElement(semanticElements) || (isDefinedSupportedType(transferData)!=-1)){
+				try{
+					ByteArrayOutputStream out = new ByteArrayOutputStream();
+					DataOutputStream writeOut = new DataOutputStream(out);
 					
-					byte[] nameBuffer = ((ISemanticClass) semanticClass).getName().getBytes();
-					writeOut.writeInt(nameBuffer.length);
-					writeOut.write(nameBuffer);
+					for(ISemanticElement semanticElement : (ISemanticElement[]) semanticElements){
+						byte[] classInfoBuffer = semanticElement.getClass().getName().getBytes();
+						writeOut.writeInt(classInfoBuffer.length);
+						writeOut.write(classInfoBuffer);
+						
+						if(semanticElement instanceof ISemanticClass){
+							writeOut.writeInt(0); //if semanticclass
+							
+							byte[] nameBuffer = ((ISemanticClass) semanticElement).getName().getBytes();
+							writeOut.writeInt(nameBuffer.length);
+							writeOut.write(nameBuffer);
+							
+							byte[] idToStringBuffer = ((ISemanticClass) semanticElement).getIdToString().getBytes();
+							writeOut.writeInt(idToStringBuffer.length);
+							writeOut.write(idToStringBuffer);
+							
+							byte[] descriptionBuffer = ((ISemanticClass) semanticElement).getDescription().getBytes();
+							writeOut.writeInt(descriptionBuffer.length);
+							writeOut.write(descriptionBuffer);
+						}
+						
+						if(semanticElement instanceof IObjectProperty){
+							writeOut.writeInt(1);
+							byte[] nameBuffer = ((IObjectProperty) semanticElement).getName().getBytes();
+							writeOut.writeInt(nameBuffer.length);
+							writeOut.write(nameBuffer);
+							
+							byte[] idToStringBuffer = ((IObjectProperty) semanticElement).getIdToString().getBytes();
+							writeOut.writeInt(idToStringBuffer.length);
+							writeOut.write(idToStringBuffer);
+							
+							byte[] descriptionBuffer = ((IObjectProperty) semanticElement).getDescription().getBytes();
+							writeOut.writeInt(descriptionBuffer.length);
+							writeOut.write(descriptionBuffer);
+						}
+						
+						if(semanticElement instanceof IDataProperty){
+							writeOut.writeInt(2);
+							byte[] nameBuffer = ((IDataProperty) semanticElement).getName().getBytes();
+							writeOut.writeInt(nameBuffer.length);
+							writeOut.write(nameBuffer);
+							
+							byte[] idToStringBuffer = ((IDataProperty) semanticElement).getIdToString().getBytes();
+							writeOut.writeInt(idToStringBuffer.length);
+							writeOut.write(idToStringBuffer);
+							
+							byte[] descriptionBuffer = ((IDataProperty) semanticElement).getDescription().getBytes();
+							writeOut.writeInt(descriptionBuffer.length);
+							writeOut.write(descriptionBuffer);
+						}						
+					}
 					
-					byte[] idToStringBuffer = ((ISemanticClass) semanticClass).getIdToString().getBytes();
-					writeOut.writeInt(idToStringBuffer.length);
-					writeOut.write(idToStringBuffer);
+					byte[] buffer = out.toByteArray();
+					writeOut.close();	
+					super.javaToNative(buffer, transferData);
 					
-					byte[] descriptionBuffer = ((ISemanticClass) semanticClass).getDescription().getBytes();
-					writeOut.writeInt(descriptionBuffer.length);
-					writeOut.write(descriptionBuffer);
 				}
-				
-				if(semanticClass instanceof IObjectProperty){
-					writeOut.writeInt(1);
-					byte[] nameBuffer = ((IObjectProperty) semanticClass).getName().getBytes();
-					writeOut.writeInt(nameBuffer.length);
-					writeOut.write(nameBuffer);
-					
-					byte[] idToStringBuffer = ((IObjectProperty) semanticClass).getIdToString().getBytes();
-					writeOut.writeInt(idToStringBuffer.length);
-					writeOut.write(idToStringBuffer);
-					
-					byte[] descriptionBuffer = ((IObjectProperty) semanticClass).getDescription().getBytes();
-					writeOut.writeInt(descriptionBuffer.length);
-					writeOut.write(descriptionBuffer);
-				}
-				
-				if(semanticClass instanceof IDataProperty){
-					writeOut.writeInt(2);
-					
-					byte[] nameBuffer = ((IDataProperty) semanticClass).getName().getBytes();
-					writeOut.writeInt(nameBuffer.length);
-					writeOut.write(nameBuffer);
-					
-					byte[] idToStringBuffer = ((IDataProperty) semanticClass).getIdToString().getBytes();
-					writeOut.writeInt(idToStringBuffer.length);
-					writeOut.write(idToStringBuffer);
-					
-					byte[] descriptionBuffer = ((IDataProperty) semanticClass).getDescription().getBytes();
-					writeOut.writeInt(descriptionBuffer.length);
-					writeOut.write(descriptionBuffer);
-				}
-				
-				byte[] buffer = out.toByteArray();
-				writeOut.close();	
-				super.javaToNative(buffer, transferData);
+				catch (IOException e) { } catch (IllegalArgumentException e) {
+					e.printStackTrace();
+				};
 			}
-			catch (IOException e) { } catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			};
 		}
 	}
 
@@ -104,17 +105,18 @@ public class ModelTransfer extends ByteArrayTransfer {
 			byte[] buffer = (byte[]) super.nativeToJava(transferData);
 			if (buffer == null) return null;
 			
-			ISemanticElement[] semanticClass = new ISemanticElement[0];
+			ISemanticElement[] semanticElement = new ISemanticElement[0];
+			
 			try {
 				ByteArrayInputStream in = new ByteArrayInputStream(buffer);
 				DataInputStream readIn = new DataInputStream(in);
 				
 				if(readIn.available() > 0){					
-					int sizeClassName = readIn.readInt();
-					byte[] className = new byte[sizeClassName];
-					readIn.read(className);
-					
 					while (readIn.available() > 0) {
+						int sizeClassName = readIn.readInt();
+						byte[] className = new byte[sizeClassName];
+						readIn.read(className);
+						
 						int type = readIn.readInt();
 						
 						int sizeName = readIn.readInt();
@@ -129,61 +131,50 @@ public class ModelTransfer extends ByteArrayTransfer {
 						byte[] idDescription = new byte[sizeDescription];
 						readIn.read(idDescription);
 						
-						/*int sizeIdString = readIn.readInt();
-						byte[] idString = new byte[sizeIdString];
-						readIn.read(idString);*/
-						
 						switch(type){
 							case 0:
-								ISemanticClass[] newSemanticClass = new ISemanticClass[semanticClass.length + 1];
-								System .arraycopy(semanticClass, 0, newSemanticClass, 0, semanticClass.length);
+								ISemanticClass[] newSemanticClass = new ISemanticClass[semanticElement.length + 1];
+								System .arraycopy(semanticElement, 0, newSemanticClass, 0, semanticElement.length);
 								
-								//Class<? extends ISemanticClass> semanticClazz = Class.forName(new String(className)).asSubclass(ISemanticClass.class);
-								//ISemanticClass semanticObject = (ISemanticClass) semanticClazz.newInstance();
 								Object semanticObject = loadReflectiveClassFromExternalBundle(new String(className));
 								if(semanticObject instanceof ISemanticClass){
 									((ISemanticClass) semanticObject).setName(new String(name));
 									((ISemanticClass) semanticObject).setIdToString(new String(idToString));
 									((ISemanticClass) semanticObject).setDescription(new String(idDescription));
 									
-									newSemanticClass[semanticClass.length] = (ISemanticClass) semanticObject;
-									semanticClass = newSemanticClass;
+									newSemanticClass[semanticElement.length] = (ISemanticClass) semanticObject;
+									semanticElement = newSemanticClass;
 								}
 								break;
 							
 							case 1:
-								IObjectProperty[] newObjectProperty = new IObjectProperty[semanticClass.length + 1];
-								System .arraycopy(semanticClass, 0, newObjectProperty, 0, semanticClass.length);
+								IObjectProperty[] newObjectProperty = new IObjectProperty[semanticElement.length + 1];
+								System .arraycopy(semanticElement, 0, newObjectProperty, 0, semanticElement.length);
 								
-								//Class<? extends IObjectProperty> objectClazz = Class.forName(new String(className)).asSubclass(IObjectProperty.class);
-								//IObjectProperty objectObject = (IObjectProperty) objectClazz.newInstance();
 								Object objectObject = loadReflectiveClassFromExternalBundle(new String(className));
 								if(objectObject instanceof IObjectProperty){
 									((IObjectProperty) objectObject).setName(new String(name));
 									((IObjectProperty) objectObject).setIdToString(new String(idToString));
 									((IObjectProperty) objectObject).setDescription(new String(idDescription));
 									
-									newObjectProperty[semanticClass.length] = (IObjectProperty) objectObject;
-									semanticClass = newObjectProperty;
+									newObjectProperty[semanticElement.length] = (IObjectProperty) objectObject;
+									semanticElement = newObjectProperty;
 								}
 								
 								break;
 							
 							case 2:
-								IDataProperty[] newDataProperty = new IDataProperty[semanticClass.length + 1];
-								System .arraycopy(semanticClass, 0, newDataProperty, 0, semanticClass.length);
-								
-								//Class<? extends IDataProperty> dataClazz = Class.forName(new String(className)).asSubclass(IDataProperty.class);
-								//IDataProperty dataObject = (IDataProperty) dataClazz.newInstance();
+								IDataProperty[] newDataProperty = new IDataProperty[semanticElement.length + 1];
+								System .arraycopy(semanticElement, 0, newDataProperty, 0, semanticElement.length);
 								
 								Object dataObject = loadReflectiveClassFromExternalBundle(new String(className));
-								if(dataObject instanceof IObjectProperty){
+								if(dataObject instanceof IDataProperty){
 									((IDataProperty) dataObject).setName(new String(name));
 									((IDataProperty) dataObject).setIdToString(new String(idToString));
 									((IDataProperty) dataObject).setDescription(new String(idDescription));
 									
-									newDataProperty[semanticClass.length] = (IDataProperty) dataObject;
-									semanticClass = newDataProperty;
+									newDataProperty[semanticElement.length] = (IDataProperty) dataObject;
+									semanticElement = newDataProperty;
 								}
 								
 								break;
@@ -199,16 +190,13 @@ public class ModelTransfer extends ByteArrayTransfer {
 				return null;
 			}
 			
-			return semanticClass;
+			return semanticElement;
 		}
 		
 		return null;
 	}
 	
-	private Object loadReflectiveClassFromExternalBundle(String name){
-		//Set<Class<? extends ISemanticElement>> classes = ReflectiveUtils.getAllSemanticClassInstances();
-		//List<Object> classes = new ArrayList<Object>();
-		
+	private Object loadReflectiveClassFromExternalBundle(String name){		
 		Map<Bundle, List<Class<? extends ISemanticElement>>> registeredTypes = AssistantFactory.getInstance().getRegisteredTypes();
 		for (Map.Entry<Bundle, List<Class<? extends ISemanticElement>>> entry : registeredTypes.entrySet()){
 			Bundle bundle = entry.getKey();

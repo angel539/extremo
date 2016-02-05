@@ -10,6 +10,9 @@ import metaRDF.core.model.IResource;
 import metaRDF.core.model.impl.RepositoryManager;
 import metaRDF.core.model.IRepository;
 import metaRDF.core.model.IRepositoryManager;
+import metardf.core.extensions.AssistantFactory;
+import metardf.core.extensions.IFormatAssistant;
+import metardf.core.extensions.FormatAssistant;
 import metardf.ui.Activator;
 import metardf.ui.wizards.EditResourceWizardDialog;
 import metardf.ui.wizards.NewRepositoryWizardDialog;
@@ -19,6 +22,7 @@ import metardf.ui.wizards.importers.NewFileExportSupportWizardDialog;
 import metardf.ui.wizards.importers.NewFileImportSupportWizardDialog;
 
 import org.eclipse.jface.viewers.*;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.graphics.Image;
@@ -41,6 +45,58 @@ public class RepositoryView extends ViewPart {
 	private Action importRepositories;
 	private Action exportRepositories;
 	private Action addFolder;
+	
+	class AssistantEditingSupport extends EditingSupport {
+		private TreeViewer viewer;
+		private ComboBoxViewerCellEditor editor;
+		  
+		public AssistantEditingSupport(TreeViewer viewer) {
+			super(viewer);
+			this.viewer = viewer;
+			
+			this.editor = new ComboBoxViewerCellEditor(viewer.getTree());
+			this.editor.setContentProvider(new ArrayContentProvider());
+			this.editor.setLabelProvider(new ViewLabelProvider());
+			List<String> strings = new ArrayList<String>();
+			for(IFormatAssistant assistant : AssistantFactory.getInstance().getAssistances()){
+				String name = ((FormatAssistant)assistant).getNameExtension();
+				strings.add(name);
+			}
+			
+			//System.out.println("element del get " + element);
+			//System.out.println("mis assistant" + strings);
+			this.editor.setInput(strings.toArray());
+		}
+
+		@Override
+		protected CellEditor getCellEditor(Object element) {
+			//this.editor.setContentProvider();
+			
+			/*
+			this.editor.setValue(strings.toArray()*/
+			return editor;
+		}
+
+		@Override
+		protected boolean canEdit(Object element) {
+			return true;
+		}
+
+		@Override
+		protected Object getValue(Object element) {
+			if(element instanceof ResourceObject){
+				return ((ResourceObject) element).getName();
+			}
+			return null;
+		}
+
+		@Override
+		protected void setValue(Object element, Object value) {
+			//System.out.println("yo por aqui paso..." + element + "_" + value);
+			((ResourceObject) element).getResource().setAssistant(String.valueOf(value));
+		    viewer.update(element, null);
+		}
+	}
 	
 	class TreeObject implements IAdaptable {
 		private String name;
@@ -73,7 +129,7 @@ public class RepositoryView extends ViewPart {
 		IResource resource;
 
 		public ResourceObject(IResource resource) {
-			super(resource.getName() + " (" + resource.getId() + ")");
+			super(resource.getName());
 			this.resource = resource;
 		}
 		
@@ -90,7 +146,7 @@ public class RepositoryView extends ViewPart {
 		}
 		
 		public void changed(){
-			setName(resource.getName() + " (" + resource.getId() + ")");
+			setName(resource.getName());
 		}
 	}
 	
@@ -202,6 +258,30 @@ public class RepositoryView extends ViewPart {
 		public String getText(Object obj) {
 			return obj.toString();
 		}
+	}
+
+	class ColumnOneViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
+		@Override
+		public StyledString getStyledText(Object element) {
+			if (element instanceof RepositoryParent) {
+				RepositoryParent repositoryNode = (RepositoryParent) element;
+				StyledString styledString = new StyledString(repositoryNode.getName());
+				
+				if (repositoryNode.getChildren() != null) {
+					styledString.append(" (" + repositoryNode.getChildren().length + ") ", StyledString.COUNTER_STYLER);
+				}
+				return styledString;
+			}
+			
+			if (element instanceof ResourceObject) {
+				StyledString styledString = new StyledString(((ResourceObject) element).getName());
+				return styledString;
+			}
+			
+			return null;
+		}
+		
+		@Override
 		public Image getImage(Object obj) {
 			String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
 			
@@ -214,6 +294,38 @@ public class RepositoryView extends ViewPart {
         	}
         	
 			return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
+		}
+	}
+	
+	class ColumnTwoViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
+		@Override
+		public StyledString getStyledText(Object element) {
+			if (element instanceof ResourceObject) {
+				ResourceObject resourceObject = (ResourceObject) element;
+				if(resourceObject.getResource().getAssistant() != null) return new StyledString(resourceObject.getResource().getAssistant());
+				else new StyledString("");
+			}
+			
+			return new StyledString("");
+		}
+	}
+	
+	class ColumnThreeViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
+		@Override
+		public StyledString getStyledText(Object element) {
+			if (element instanceof RepositoryParent) {
+				RepositoryParent repositoryNode = (RepositoryParent) element;
+				StyledString styledString = new StyledString(repositoryNode.getRepository().getUri());
+				return styledString;
+			}
+			
+			if (element instanceof ResourceObject) {
+				ResourceObject resourceObject = (ResourceObject) element;
+				StyledString styledString = new StyledString(resourceObject.getResource().getIdToString());
+				return styledString;
+			}
+			
+			return null;
 		}
 	}
 	
@@ -232,12 +344,45 @@ public class RepositoryView extends ViewPart {
 	
 		new DrillDownAdapter(viewer);
 		viewer.setContentProvider(new ViewContentProvider());
-		viewer.setLabelProvider(new ViewLabelProvider());
-		
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
 		
+		/**/
+		viewer.getTree().setHeaderVisible(true);
+		
+		TreeViewerColumn nameColumn = new TreeViewerColumn(viewer, SWT.NONE);
+		nameColumn.getColumn().setText("Name");
+		nameColumn.getColumn().setWidth(300);
+		nameColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnOneViewLabelProvider()));
+		
+		TreeViewerColumn assistedByColumn = new TreeViewerColumn(viewer, SWT.NONE);
+		assistedByColumn.getColumn().setText("Assistant");
+		assistedByColumn.getColumn().setWidth(100);
+		assistedByColumn.getColumn().setAlignment(SWT.LEFT);
+		assistedByColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnTwoViewLabelProvider()));
+		assistedByColumn.setEditingSupport(new AssistantEditingSupport(viewer));
+		
+		TreeViewerColumn uriColumn = new TreeViewerColumn(viewer, SWT.NONE);
+		uriColumn.getColumn().setText("Uri");
+		uriColumn.getColumn().setWidth(400);
+		uriColumn.getColumn().setAlignment(SWT.LEFT);
+		uriColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnThreeViewLabelProvider()));
+		
+		/*viewer.setComparator(new ViewerComparator() {
+			  public int compare(Viewer viewer, Object e1, Object e2) {
+			    Todo t1 = (Todo) e1;
+			    Todo t2 = (Todo) e2;
+			    return t1.getDueDate().compareTo(t2.getDueDate());
+			  };
+			});*/
 
+		//TreeViewerColumn fileSizeColumn = new TreeViewerColumn(viewer, SWT.NONE);
+		//fileSizeColumn.getColumn().setText("Size");
+		//fileSizeColumn.getColumn().setWidth(100);
+		//fileSizeColumn.getColumn().setAlignment(SWT.RIGHT);
+		//fileSizeColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new FileSizeLabelProvider()));
+		/**/
+		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "metaRDF.ui.viewer");
 		getSite().setSelectionProvider(viewer);
 		makeActions();
@@ -356,21 +501,6 @@ public class RepositoryView extends ViewPart {
 			public void run() {
 				WizardDialog wizardDialog = new WizardDialog(null, new NewFileExportSupportWizardDialog());
 				wizardDialog.open();
-				//if (wizardDialog.open() == Window.OK) {
-					/*if(invisibleRoot.hasChildren()){
-						for(TreeObject treeobject : invisibleRoot.getChildren()){
-							invisibleRoot.removeChild(treeobject);
-						}
-					}
-					//System.out.println("en repository " + MetaRDFRepositoryManager.getInstance());
-					
-					for(IRepository repository : RepositoryManager.getInstance().getRepositories()){
-						RepositoryParent repositoryParent = new RepositoryParent(repository);
-						repositoryParent.drawResources();
-						invisibleRoot.addChild(repositoryParent);
-					}
-					viewer.refresh();*/
-				//}
 			}
 		};
 		

@@ -118,7 +118,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			List<IObjectProperty> properties = new ArrayList<IObjectProperty>();
 			
 			for(EReference reference : ((EClass) parent).getEReferences()){
-				EcoreObjectProperty property = new EcoreObjectProperty(reference, reference.getEReferenceType(), reference.getName(), false, null);
+				EcoreObjectProperty property = new EcoreObjectProperty(reference, reference.getEReferenceType(), reference.getName(), false, reference.getName());
 				properties.add((IObjectProperty) property);
 			}
 			

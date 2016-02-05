@@ -71,7 +71,7 @@ public class AssistantFactory {
 								((FormatAssistant)assistant).addExtension(s);
 							}
 							
-							((FormatAssistant)assistant).setNameExtension(extension.getAttribute("extensions"));
+							//((FormatAssistant)assistant).setNameExtension(extension.getAttribute("extensions"));
 							this.assistants.add(assistant);
 						}
 					}

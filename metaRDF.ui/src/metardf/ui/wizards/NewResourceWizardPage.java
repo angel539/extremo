@@ -70,12 +70,13 @@ public class NewResourceWizardPage extends WizardPage {
 	    descriptionLabel.setText("Description");
 	    
 	    description = new Text(container, SWT.BORDER | SWT.SINGLE);
-	    if(resource != null){
-	    	if(description != null) description.setText(resource.getDescription());
-	    	else description.setText("");
+	    
+	    if((resource != null) && (resource.getDescription() != null)){
+	    	 description.setText(resource.getDescription());
 	    }else{
 	    	description.setText("");
 	    }
+	    
 	    description.addKeyListener(new KeyListener() {
 		      @Override
 		      public void keyPressed(KeyEvent e) {

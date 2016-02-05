@@ -2,23 +2,14 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="metaRDF.ui.actions">
-      <action
-            class="metardf.ui.actions.test.SearchEntity"
-            icon="icons/search.png"
-            id="metaRDF.ui.actions.test.searchentity"
-            name="Search"
-            position="toolbar"
+         point="metaRDF.ui.views.filters">
+      <filter
+            class="metardf.ui.actions.test.ShowEntitiesWithAttr"
+            icon="icons/filter_properties.gif"
+            id="metaRDF.ui.views.filters"
+            name="Show entities with attributes"
             view="entities">
-      </action>
-      <action
-            class="metardf.ui.actions.test.ExpandEntity"
-            icon="icons/details_view.gif"
-            id="metaRDF.ui.actions.test.expandentity"
-            name="Expand Entity"
-            position="menumanager"
-            view="entities">
-      </action>
+      </filter>
    </extension>
 
 </plugin>

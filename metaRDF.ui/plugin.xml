@@ -3,6 +3,7 @@
 <plugin>
    <extension-point id="metaRDF.ui.actions" name="metaRDF.ui.actions" schema="schema/metaRDF.ui.actions.exsd"/>
    <extension-point id="metaRDF.ui.drop" name="metaRDF.ui.drop" schema="schema/metaRDF.ui.drop.exsd"/>
+   <extension-point id="metaRDF.ui.views.filters" name="metaRDF.ui.views.filters" schema="schema/metaRDF.ui.views.filters.exsd"/>
 
    <extension
          point="org.eclipse.ui.views">

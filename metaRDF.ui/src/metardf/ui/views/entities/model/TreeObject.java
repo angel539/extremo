@@ -1,6 +1,9 @@
 package metardf.ui.views.entities.model;
 import org.eclipse.core.runtime.IAdaptable;
 
+import metaRDF.core.model.IDataProperty;
+import metaRDF.core.model.IObjectProperty;
+import metaRDF.core.model.IProperty;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 
@@ -25,6 +28,7 @@ public class TreeObject implements IAdaptable {
 	public TreeObject(Object element){
 		if(element instanceof ISemanticElement){
 			this.name = this.name + ((ISemanticElement) element).getName();
+			this.element = (ISemanticElement) element;
 		}
 		
 		if(element instanceof ISemanticClass){
@@ -32,9 +36,19 @@ public class TreeObject implements IAdaptable {
 			if(((ISemanticClass) element).getReferences()!=null) this.name = this.name + " [ref:" + ((ISemanticClass) element).getReferences().size() + "]";		
 			if(((ISemanticClass) element).getSuperclasses()!=null) this.name = this.name + " [supers:" + ((ISemanticClass) element).getSuperclasses().size() + "]";		
 			if(((ISemanticClass) element).getSubclasses()!=null) this.name = this.name + " [subs:" + ((ISemanticClass) element).getSubclasses().size() + "]";		
-			
-			this.element = (ISemanticElement) element;
 		}
+		
+		if(element instanceof IDataProperty){
+			this.name = this.name + " : " + ((IDataProperty) element).getType();
+		}
+		
+		if(element instanceof IObjectProperty){
+			this.name = this.name + " : " + ((IObjectProperty) element).getRangeAsSemanticClass().getName();
+		}
+		
+		/*if((element instanceof IProperty) && (((IProperty) element).isFromSuper())){
+			this.name = this.name + " (super)";
+		}*/
 	}
 	
 	public String getName() {

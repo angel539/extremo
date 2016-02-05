@@ -88,7 +88,7 @@ public class SemanticResource implements IResource{
 
 	@Override
 	public String getIdToString() {
-		return id.toString();
+		return getId().toString();
 	}
 
 	public String getAssistant() {
