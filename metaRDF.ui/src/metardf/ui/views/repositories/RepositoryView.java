@@ -2,7 +2,6 @@ package metardf.ui.views.repositories;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.*;
 
@@ -36,7 +35,7 @@ import org.eclipse.core.runtime.IAdaptable;
 public class RepositoryView extends ViewPart {
 	public static final String ID = "metardf.ui.views.RepositoryView";
 
-	private TreeViewer viewer;
+	private CheckboxTreeViewer viewer;
 	private Action addRepository;
 	private Action createResource;
 	private Action doubleClickAction;
@@ -63,17 +62,11 @@ public class RepositoryView extends ViewPart {
 				strings.add(name);
 			}
 			
-			//System.out.println("element del get " + element);
-			//System.out.println("mis assistant" + strings);
 			this.editor.setInput(strings.toArray());
 		}
 
 		@Override
 		protected CellEditor getCellEditor(Object element) {
-			//this.editor.setContentProvider();
-			
-			/*
-			this.editor.setValue(strings.toArray()*/
 			return editor;
 		}
 
@@ -92,9 +85,17 @@ public class RepositoryView extends ViewPart {
 
 		@Override
 		protected void setValue(Object element, Object value) {
-			//System.out.println("yo por aqui paso..." + element + "_" + value);
-			((ResourceObject) element).getResource().setAssistant(String.valueOf(value));
-		    viewer.update(element, null);
+			if(element instanceof ResourceObject){
+				((ResourceObject) element).getResource().setAssistant(String.valueOf(value));
+			    viewer.update(element, null);
+			}
+			
+			if(element instanceof RepositoryParent){
+				for(IResource resource : ((RepositoryParent) element).getRepository().getResources()){
+					resource.setAssistant(String.valueOf(value));
+				}
+			    viewer.update(element, null);
+			}
 		}
 	}
 	
@@ -340,10 +341,11 @@ public class RepositoryView extends ViewPart {
 	 * to create the viewer and initialize it.
 	 */
 	public void createPartControl(Composite parent) {		
-		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		viewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 	
+		ViewContentProvider provider = new ViewContentProvider();
 		new DrillDownAdapter(viewer);
-		viewer.setContentProvider(new ViewContentProvider());
+		viewer.setContentProvider(provider);
 		viewer.setSorter(new NameSorter());
 		viewer.setInput(getViewSite());
 		
@@ -368,20 +370,31 @@ public class RepositoryView extends ViewPart {
 		uriColumn.getColumn().setAlignment(SWT.LEFT);
 		uriColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnThreeViewLabelProvider()));
 		
-		/*viewer.setComparator(new ViewerComparator() {
-			  public int compare(Viewer viewer, Object e1, Object e2) {
-			    Todo t1 = (Todo) e1;
-			    Todo t2 = (Todo) e2;
-			    return t1.getDueDate().compareTo(t2.getDueDate());
-			  };
-			});*/
-
-		//TreeViewerColumn fileSizeColumn = new TreeViewerColumn(viewer, SWT.NONE);
-		//fileSizeColumn.getColumn().setText("Size");
-		//fileSizeColumn.getColumn().setWidth(100);
-		//fileSizeColumn.getColumn().setAlignment(SWT.RIGHT);
-		//fileSizeColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new FileSizeLabelProvider()));
-		/**/
+		//final Map<TreeObject, Boolean> checks = new HashMap<>();
+		viewer.addCheckStateListener(new ICheckStateListener() {
+	        @Override
+	        public void checkStateChanged(CheckStateChangedEvent event) {
+	        	if(event.getElement() instanceof ResourceObject){
+					((ResourceObject) event.getElement()).getResource().setActive(event.getChecked());
+					viewer.update(event.getElement(), null);
+	        	}
+				
+				if(event.getElement() instanceof RepositoryParent){
+		            for (Object child : provider.getChildren(event.getElement())) {
+		            	viewer.setChecked(child, event.getChecked());
+		            }
+					
+					for(IResource resource : ((RepositoryParent) event.getElement()).getRepository().getResources()){
+						resource.setActive(event.getChecked());
+					}
+					
+				    viewer.update(event.getElement(), null);
+				    
+				    //System.out.println("por el checked RepositoryParent..." + event.getElement() + event.getChecked());
+				}
+	        	//System.out.println("por el checked..." + event.getElement() + event.getChecked());
+	        }
+	    });
 		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "metaRDF.ui.viewer");
 		getSite().setSelectionProvider(viewer);

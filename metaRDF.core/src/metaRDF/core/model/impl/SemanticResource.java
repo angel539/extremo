@@ -12,6 +12,7 @@ public class SemanticResource implements IResource{
 	private String description;
 	private String assistant;
 	private boolean isAlive = true;
+	private boolean isActive = false;
 	private List<ISemanticClass> classes;
 
 	public SemanticResource(Object id, String name){
@@ -108,5 +109,17 @@ public class SemanticResource implements IResource{
 	@Override
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
+	}
+
+
+	@Override
+	public boolean isActive() {
+		return this.isActive;
+	}
+
+
+	@Override
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 }

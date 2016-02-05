@@ -12,4 +12,7 @@ public interface IResource extends ISemanticElement{
 	void setAssistant(String assistant);
 	boolean isAlive();
 	void setAlive(boolean isAlive);
+	
+	boolean isActive();
+	void setActive(boolean isActive);
 }

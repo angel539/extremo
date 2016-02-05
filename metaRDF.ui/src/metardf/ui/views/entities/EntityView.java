@@ -161,9 +161,7 @@ public class EntityView extends ViewPart {
 		hookDoubleClickAction();
 		contributeToActionBars();	
 	}
-
 	
-
 	private void defaultFilteringActions() {
 		filterShowAll = new Action() {
 			public void run() {
@@ -303,8 +301,6 @@ public class EntityView extends ViewPart {
 			}
 		 }
 	}
-	
-	
 	
 	private void invokeActions() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
@@ -448,7 +444,7 @@ public class EntityView extends ViewPart {
 		//searching
 		for(IRepository repository : repositoryManager.getRepositories()){    
 			for(IResource resource : repository.getResources()){
-				if(resource instanceof SemanticResource){			
+				if((resource instanceof SemanticResource) && (resource.isActive())){			
 					for(IFormatAssistant assistant : assistances){
 						if((resource.isAlive()) && (resource.getAssistant() != null)){
 							if(((FormatAssistant)assistant).getNameExtension().compareTo(resource.getAssistant())==0){
