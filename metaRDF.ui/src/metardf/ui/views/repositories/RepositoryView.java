@@ -2,17 +2,57 @@ package metardf.ui.views.repositories;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.part.*;
 
-import metaRDF.core.model.IResource;
-import metaRDF.core.model.impl.RepositoryManager;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.CellEditor;
+import org.eclipse.jface.viewers.CheckStateChangedEvent;
+import org.eclipse.jface.viewers.CheckboxTreeViewer;
+import org.eclipse.jface.viewers.ComboBoxViewerCellEditor;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.EditingSupport;
+import org.eclipse.jface.viewers.ICheckStateListener;
+import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.StyledString;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.TreeViewerColumn;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.jface.window.Window;
+import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.DrillDownAdapter;
+import org.eclipse.ui.part.ViewPart;
+
 import metaRDF.core.model.IRepository;
 import metaRDF.core.model.IRepositoryManager;
+import metaRDF.core.model.IResource;
+import metaRDF.core.model.impl.RepositoryManager;
 import metardf.core.extensions.AssistantFactory;
-import metardf.core.extensions.IFormatAssistant;
 import metardf.core.extensions.FormatAssistant;
+import metardf.core.extensions.IFormatAssistant;
 import metardf.ui.Activator;
+import metardf.ui.views.repositories.model.RepositoryParent;
+import metardf.ui.views.repositories.model.ResourceObject;
+import metardf.ui.views.repositories.model.TreeObject;
+import metardf.ui.views.repositories.model.TreeParent;
 import metardf.ui.wizards.EditResourceWizardDialog;
 import metardf.ui.wizards.NewRepositoryWizardDialog;
 import metardf.ui.wizards.NewResourceWizardDialog;
@@ -20,22 +60,10 @@ import metardf.ui.wizards.ResourceListWizardDialog;
 import metardf.ui.wizards.importers.NewFileExportSupportWizardDialog;
 import metardf.ui.wizards.importers.NewFileImportSupportWizardDialog;
 
-import org.eclipse.jface.viewers.*;
-import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
-import org.eclipse.jface.window.Window;
-import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.jface.action.*;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.ui.*;
-import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.SWT;
-import org.eclipse.core.runtime.IAdaptable;
-
 public class RepositoryView extends ViewPart {
 	public static final String ID = "metardf.ui.views.RepositoryView";
 
-	private CheckboxTreeViewer viewer;
+	private static CheckboxTreeViewer viewer;
 	private Action addRepository;
 	private Action createResource;
 	private Action doubleClickAction;
@@ -96,117 +124,6 @@ public class RepositoryView extends ViewPart {
 				}
 			    viewer.update(element, null);
 			}
-		}
-	}
-	
-	class TreeObject implements IAdaptable {
-		private String name;
-		private TreeParent parent;
-		
-		public TreeObject(String name) {
-			this.name = name;
-		}
-		public String getName() {
-			return name;
-		}
-		public void setName(String name) {
-			this.name = name;
-		}
-		public void setParent(TreeParent parent) {
-			this.parent = parent;
-		}
-		public TreeParent getParent() {
-			return parent;
-		}
-		public String toString() {
-			return getName();
-		}
-		public <T> T getAdapter(Class<T> key) {
-			return null;
-		}
-	}
-	
-	class ResourceObject extends TreeObject{
-		IResource resource;
-
-		public ResourceObject(IResource resource) {
-			super(resource.getName());
-			this.resource = resource;
-		}
-		
-		public IResource getResource() {
-			return resource;
-		}
-
-		public void setResource(IResource resource) {
-			this.resource = resource;
-		}
-		
-		public boolean isAlive(){
-			return this.resource.isAlive();
-		}
-		
-		public void changed(){
-			setName(resource.getName());
-		}
-	}
-	
-	class TreeParent extends TreeObject {
-		private ArrayList<TreeObject> children;
-		public TreeParent(String name) {
-			super(name);
-			children = new ArrayList<TreeObject>();
-		}
-		public void addChild(TreeObject child) {
-			children.add(child);
-			child.setParent(this);
-		}
-		public void removeChild(TreeObject child) {
-			children.remove(child);
-			child.setParent(null);
-		}
-		public TreeObject [] getChildren() {
-			return (TreeObject [])children.toArray(new TreeObject[children.size()]);
-		}
-		public boolean hasChildren() {
-			return children.size()>0;
-		}
-	}
-
-	class RepositoryParent extends TreeParent{
-		IRepository repository;
-		
-		public RepositoryParent(IRepository repository) {
-			super(repository.getName());
-			this.repository = repository;
-		}	
-		
-		public void drawResources(){		
-			for(IResource resource : repository.getResources()){
-				ResourceObject object = new ResourceObject(resource);
-				if(!object.getResource().isAlive()) showMessage("Resource + " + object.getName() + " seems not to be at your disposal");
-				this.addChild(object);
-			}
-		}
-		
-		public void redrawResources(){
-			for(TreeObject child : this.getChildren()){
-				this.removeChild(child);
-			}
-			
-			for(IResource resource : repository.getResources()){
-				ResourceObject object = new ResourceObject(resource);
-				if(!object.getResource().isAlive()) showMessage("Resource + " + object.getName() + " seems not to be at your disposal");
-				this.addChild(object);
-			}
-		}
-		
-		public IRepository getRepository() {
-			return repository;
-		}
-
-		public void setRepository(IRepository repository) {
-			this.repository = repository;
 		}
 	}
 	
@@ -592,10 +509,7 @@ public class RepositoryView extends ViewPart {
 		});
 	}
 	
-	private void showMessage(String message) {
-		MessageDialog.openInformation(
-			viewer.getControl().getShell(), "Repositories", message);
-	}
+	
 
 	public void setFocus() {
 		viewer.getControl().setFocus();

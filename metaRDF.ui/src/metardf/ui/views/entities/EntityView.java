@@ -3,6 +3,9 @@ package metardf.ui.views.entities;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -15,9 +18,9 @@ import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
@@ -43,6 +46,9 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.ui.views.properties.IPropertySheetPage;
+import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
@@ -51,6 +57,7 @@ import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 import metaRDF.core.model.impl.RepositoryManager;
+import metaRDF.core.model.impl.Search;
 import metaRDF.core.model.impl.SemanticResource;
 import metardf.core.extensions.AssistantFactory;
 import metardf.core.extensions.FormatAssistant;
@@ -61,17 +68,14 @@ import metardf.ui.dnd.ModelTransfer;
 import metardf.ui.dnd.ResourceViewAction;
 import metardf.ui.views.entities.filters.EntityFilter;
 import metardf.ui.views.entities.filters.ShowAllFilter;
-import metardf.ui.views.entities.model.AttrFolderParent;
-import metardf.ui.views.entities.model.DataPropertyObject;
 import metardf.ui.views.entities.model.EntityParent;
-import metardf.ui.views.entities.model.FolderParent;
-import metardf.ui.views.entities.model.PropertyParent;
+import metardf.ui.views.entities.model.EntityParentGroup;
 import metardf.ui.views.entities.model.SearchParent;
 import metardf.ui.views.entities.model.TreeObject;
 import metardf.ui.views.entities.model.TreeParent;
-import metardf.ui.wizards.WordnetLocationWizardDialog;
+import metardf.ui.wizards.SearchEntityWizardDialog;
 
-public class EntityView extends ViewPart {
+public class EntityView extends ViewPart implements ITabbedPropertySheetPageContributor{
 	public static final String ID = "metardf.ui.views.EntityView";
 	private List<String> entities = new ArrayList<String>();
 
@@ -79,10 +83,8 @@ public class EntityView extends ViewPart {
 	private Action searchAction;
 	private Action expandAction;
 	
-	private Action wordnetLocation;
 	private Action filterEntities;
 	private Action filterShowAll;
-	//private Action filterEntitiesWithAttrs;
 	
 	private static TreeParent invisibleRoot = new TreeParent("");
 	
@@ -90,33 +92,32 @@ public class EntityView extends ViewPart {
 		return invisibleRoot;
 	}
 
-	public void setRoot(TreeParent root) {
-		this.invisibleRoot = root;
-	}
-
 	class NameSorter extends ViewerSorter {
+		
 	}
 
 	public EntityView() {
 	}
 
 	public void createPartControl(Composite parent) {
-		
 		entities.addAll(Arrays.asList());
 		
 		PatternFilter filter = new PatternFilter();
 		FilteredTree tree = new FilteredTree(parent, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL, filter, true);
 		
-		//viewer = new EntityTreeViewer(tree);
 		viewer = tree.getViewer();
-		//viewer = new EntityTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		viewer.setContentProvider(new EntityTreeViewContentProvider(invisibleRoot, getViewSite()));
-		viewer.setLabelProvider(new EntityTreeViewLabelProvider());
-		viewer.setSorter(new NameSorter());
+		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new EntityTreeViewLabelProvider()));
+		//viewer.setSorter(new NameSorter());
+		
+		
+		
 		viewer.setInput(getViewSite());
 		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "metaRDF.ui.viewer");
+		
+		//permite a la view mandar informacion a la vista de propiedades
 		getSite().setSelectionProvider(viewer);
 		
 		DragSource ds = new DragSource(viewer.getTree(), DND.DROP_COPY);
@@ -132,25 +133,8 @@ public class EntityView extends ViewPart {
 		    		 }
 		    	 }
 		    	 
-		    	 if(!theyAreMixed(data)){
-		    		 event.data = data;
-		    	 }
-		    	 
+		    	 event.data = data;
 		     }
-
-			private boolean theyAreMixed(ISemanticElement[] data) {
-				if(data.length > 0){
-					Object firstData = data[0];
-					for(int i=0; i<data.length; i++){
-						if(!data[i].getClass().equals(firstData.getClass())){
-							return true;
-						}
-					}
-				}
-				else return true;
-				
-				return false;
-			}
 		  });
 		
 		defaultFilteringActions();
@@ -159,7 +143,10 @@ public class EntityView extends ViewPart {
 		invokeEditors();
 		makeActions();
 		hookDoubleClickAction();
-		contributeToActionBars();	
+		contributeToActionBars();
+		
+		EntityViewViewerComparator comparator = new EntityViewViewerComparator();
+		viewer.setComparator(comparator);
 	}
 	
 	private void defaultFilteringActions() {
@@ -257,13 +244,12 @@ public class EntityView extends ViewPart {
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(searchAction);
-		manager.add(wordnetLocation);
+		//manager.add(wordnetLocation);
 	}
 
 	private void fillLocalPullDown(IMenuManager manager) {
 		manager.add(filterShowAll);
 		manager.add(filterEntities);
-		//manager.add(filterEntitiesWithAttrs);
 	}
 	
 	private void hookDoubleClickAction() {
@@ -358,18 +344,7 @@ public class EntityView extends ViewPart {
 		}
 	}
 
-	private void makeActions() {		
-		wordnetLocation = new Action() {
-			public void run() {
-				WizardDialog wizardDialog = new WizardDialog(null, new WordnetLocationWizardDialog());
-				wizardDialog.open();
-			}
-		};
-		
-		wordnetLocation.setText("Wordnet Location");
-		wordnetLocation.setToolTipText("");
-		wordnetLocation.setImageDescriptor(Activator.getImageDescriptor("icons/wn.png"));
-		
+	private void makeActions() {				
 		searchAction = new Action(){
 			public void run(){
 				executeSearchAction();
@@ -397,10 +372,6 @@ public class EntityView extends ViewPart {
 		return viewer;
 	}
 
-	public void setViewer(EntityTreeViewer viewer) {
-		this.viewer = viewer;
-	}
-
 	public static TreeParent getInvisibleRoot() {
 		return invisibleRoot;
 	}
@@ -409,34 +380,88 @@ public class EntityView extends ViewPart {
 		RepositoryManager repositoryManager = RepositoryManager.getInstance();
 		
 		if((repositoryManager!=null) && (repositoryManager.getRepositories()!=null) && (repositoryManager.getRepositories().size() > 0)){
-			String candidate = null;
+			Search searchOptions = new Search();
 			
-			InputDialog inputDialog = new InputDialog(null, "Search", "Enter a list of words", "", null);
-			if (inputDialog.open() == Window.OK){
-				candidate = inputDialog.getValue();
+			WizardDialog wizardDialog = new WizardDialog(null, new SearchEntityWizardDialog(searchOptions));
+			if (wizardDialog.open() == Window.OK) {
+				if(searchOptions != null) searchAndRefreshView(searchOptions);
 			}
-			
-			if(candidate != null) searchAndRefreshView(candidate);
 		}  
 	}
 	
-	public static boolean searchAndRefreshView(String candidate){
-		SearchParent search = createSearchParent(candidate);
+	private static boolean searchAndRefreshView(Search searchOptions){
+		SearchParent searchParent = createSearchParent(searchOptions.getSearchField(), searchOptions);
+		List<ISemanticClass> searchResults = searchInAssistances(searchOptions);
 		
-		List<ISemanticClass> searchResults = searchInAssistances(candidate);
-		for(ISemanticClass entity : searchResults){
-			EntityParent parent = new EntityParent(entity);
-			drawEntityParentContent(parent);
-			search.addChild(parent);
+		/*
+		 * for(ISemanticElement entity : searchResults){
+			if(entity instanceof ISemanticClass){
+				EntityParent parent = new EntityParent((ISemanticClass) entity);
+				EntityTreeViewDrawingProvider.drawEntityParentContent(parent);
+				searchParent.addChild(parent);
+			}	
+		}*/
+		
+		//solucion agrupada
+		Map<String, List<ISemanticClass>> semanticElementsGrouped = groupSemanticClasses(searchResults);
+		
+		for(Entry<String, List<ISemanticClass>> entrySemanticElementsGrouped : semanticElementsGrouped.entrySet()){
+			/*List<IDataProperty> attrs = new ArrayList<IDataProperty>();
+			
+			for(ISemanticClass semanticClass : entrySemanticElementsGrouped.getValue()){
+				attrs.addAll(semanticClass.getProperties());
+			}*/
+			
+			//Map<String, List<IDataProperty>> dataPropertiesGrouped = attrs.stream().collect(Collectors.groupingBy(w -> w.getName()));
+			if(entrySemanticElementsGrouped.getValue().size()>1){
+				EntityParentGroup parent = new EntityParentGroup(entrySemanticElementsGrouped.getKey(), entrySemanticElementsGrouped.getValue());
+				
+				for(ISemanticClass semanticClass : entrySemanticElementsGrouped.getValue()){
+					EntityParent semanticClassParent = new EntityParent((ISemanticClass) semanticClass);
+					EntityTreeViewDrawingProvider.drawEntityParentContent(semanticClassParent);
+					parent.addChild(semanticClassParent);
+				}
+				
+				searchParent.addChild(parent);
+			}
+			if(entrySemanticElementsGrouped.getValue().size()==1){
+				EntityParent parent = new EntityParent((ISemanticClass) entrySemanticElementsGrouped.getValue().get(0));
+				EntityTreeViewDrawingProvider.drawEntityParentContent(parent);
+				searchParent.addChild(parent);
+			}
 		}
 		
-		getInvisibleRoot().addChild(search);
+		getInvisibleRoot().addChild(searchParent);
 		getViewer().refresh();
 		
 		return true;
 	}
 	
-	private static List<ISemanticClass> searchInAssistances(String candidate) {
+	public static boolean searchAndRefreshView(String candidate){
+		Search search = new Search();
+		search.setSearchField(candidate);
+		return searchAndRefreshView(search);
+	}
+	
+	private static List<ISemanticClass> searchInAssistances(Search search) {
+		RepositoryManager repositoryManager = RepositoryManager.getInstance();
+		AssistantFactory.getInstance().getAssistances();
+		return AssistantFactory.getInstance().search(repositoryManager, search);
+	}
+	
+	private static Map<String, List<ISemanticClass>> groupSemanticClasses(List<ISemanticClass> semanticElements){ 
+		return semanticElements.stream().collect(Collectors.groupingBy(w -> w.getName()));
+	}
+	
+	private static Map<String, List<IDataProperty>> groupDataProperties(List<IDataProperty> dataproperties){ 
+		return dataproperties.stream().collect(Collectors.groupingBy(w -> w.getName()));
+	}
+	
+	private static Map<String, List<IObjectProperty>> groupObjectProperties(List<IObjectProperty> dataproperties){ 
+		return dataproperties.stream().collect(Collectors.groupingBy(w -> w.getName()));
+	}
+	
+	/*private static List<ISemanticClass> searchInAssistances(String candidate) {
 		List<ISemanticClass> searchResults = new ArrayList<ISemanticClass>();
 		
 		RepositoryManager repositoryManager = RepositoryManager.getInstance();
@@ -451,7 +476,7 @@ public class EntityView extends ViewPart {
 								if((resource != null) && (resource instanceof SemanticResource) && (assistant.load((SemanticResource) resource))){	
 									List<ISemanticClass> entities = assistant.getClassesLike(candidate);
 									for(ISemanticClass entity : entities){
-										defineEntity(assistant, entity);
+										AssistantFactory.defineEntity(assistant, entity);
 										searchResults.add(entity);
 									}
 								}
@@ -463,117 +488,11 @@ public class EntityView extends ViewPart {
 		}
 		
 		return searchResults;
-	}
+	}*/
 
-	private static SearchParent createSearchParent(String search) {
-		SearchParent searchParent = new SearchParent(search);
+	private static SearchParent createSearchParent(String search, Search searchParameters) {
+		SearchParent searchParent = new SearchParent(search, searchParameters);
 		return searchParent;
-	}
-	
-	private static void defineEntity(IFormatAssistant assistant, ISemanticElement entity){
-		if(entity instanceof ISemanticClass){
-			List<ISemanticClass> superclasses = assistant.getSuper(entity.getId(), false);
-			((ISemanticClass) entity).setSuperclasses(superclasses);
-			List<ISemanticClass> subclasses = assistant.getSub(entity.getId(), false);
-			((ISemanticClass) entity).setSubclasses(subclasses);
-			List<IObjectProperty> references = assistant.getObjectProperties(entity.getId(), true, true);
-			((ISemanticClass) entity).setReferences(references);
-			List<IDataProperty> properties = assistant.getDataProperties(entity.getId(), true, true);
-			((ISemanticClass) entity).setProperties(properties);
-		}
-	}
-	
-	private static void drawEntityParentContent(EntityParent entityParent) {
-		drawSuperClasses(entityParent);
-		drawSubclasses(entityParent);
-		drawReferences(entityParent);
-		drawProperties(entityParent);
-	}
-	
-	private static void drawSuperClasses(EntityParent parent){
-		int superClassesCount = 0;
-		
-		if(parent.getSemanticElement() instanceof ISemanticClass){
-			superClassesCount = superClassesCount + ((ISemanticClass) parent.getSemanticElement()).getSuperclasses().size();
-		}
-		if(superClassesCount > 0){
-			FolderParent supersChild = new FolderParent("supers"  + " (" + superClassesCount + ")");
-			
-			if(parent.getSemanticElement() instanceof ISemanticClass){
-				for(ISemanticClass superClass : ((ISemanticClass) parent.getSemanticElement()).getSuperclasses()){
-					EntityParent entitySuperClass = new EntityParent(superClass);
-					supersChild.addChild(entitySuperClass);
-				}
-			}
-			
-			parent.addChild(supersChild);
-		}
-	}
-	
-	private static void drawSubclasses(EntityParent parent){
-		int subClassesCount = 0;
-
-		if(parent.getSemanticElement() instanceof ISemanticClass){
-			subClassesCount = subClassesCount + ((ISemanticClass) parent.getSemanticElement()).getSubclasses().size();
-		}
-		if(subClassesCount > 0){
-			FolderParent subsChild = new FolderParent("subs"  + " (" + subClassesCount + ")");
-			
-			if(parent.getSemanticElement() instanceof ISemanticClass){
-				for(ISemanticClass subClass : ((ISemanticClass) parent.getSemanticElement()).getSubclasses()){
-					EntityParent entitySubClass = new EntityParent(subClass);
-					subsChild.addChild(entitySubClass);
-				}
-			}
-			
-			parent.addChild(subsChild);
-		}
-		
-	}
-	
-	private static void drawReferences(EntityParent parent){
-		int referencesCount = 0;
-		
-		if(parent.getSemanticElement() instanceof ISemanticClass){
-			referencesCount = referencesCount + ((ISemanticClass) parent.getSemanticElement()).getReferences().size();
-		}
-		if(referencesCount > 0 ){
-			FolderParent referencesChild = new FolderParent("references" + " (" + referencesCount + ")");
-			
-			if(parent.getSemanticElement() instanceof ISemanticClass){
-		
-				for(IObjectProperty reference : ((ISemanticClass) parent.getSemanticElement()).getReferences()){
-					PropertyParent entitySuper = new PropertyParent(reference);
-					referencesChild.addChild(entitySuper);
-					
-					EntityParent entityReference = new EntityParent(reference.getRangeAsSemanticClass());
-					entitySuper.addChild(entityReference);
-				}
-			}
-			
-			parent.addChild(referencesChild);
-		}
-		
-	}
-	
-	private static void drawProperties(EntityParent parent){
-		int propertiesCount = 0;
-		
-		if(parent.getSemanticElement() instanceof ISemanticClass){
-			propertiesCount = propertiesCount + ((ISemanticClass) parent.getSemanticElement()).getProperties().size();
-		}
-		if(propertiesCount > 0){
-			AttrFolderParent referencesChild = new AttrFolderParent("attributes" + " (" + propertiesCount + ")");
-			
-			if(parent.getSemanticElement() instanceof ISemanticClass){
-				for(IDataProperty attribute : ((ISemanticClass) parent.getSemanticElement()).getProperties()){
-					DataPropertyObject entitySuper = new DataPropertyObject(attribute);
-					referencesChild.addChild(entitySuper);
-				}
-			}
-			
-			parent.addChild(referencesChild);
-		}
 	}
 	
 	private void executeExpandAction() {
@@ -592,7 +511,7 @@ public class EntityView extends ViewPart {
 								if((resource.isAlive()) && (resource.getAssistant() != null)){
 									if(((FormatAssistant)assistant).getNameExtension().compareTo(resource.getAssistant())==0){
 										if((resource instanceof SemanticResource) && (assistant.load((SemanticResource) resource))){	
-											defineEntity(assistant, ((EntityParent) obj).getSemanticElement());
+											AssistantFactory.completeSemanticClassProperties(assistant, ((EntityParent) obj).getSemanticElement());
 										}
 									}
 								}
@@ -601,7 +520,7 @@ public class EntityView extends ViewPart {
 					}		
 				}
 				
-				drawEntityParentContent((EntityParent) obj);
+				EntityTreeViewDrawingProvider.drawEntityParentContent((EntityParent) obj);
 				getViewer().refresh();
 			}
 			else{
@@ -643,5 +562,17 @@ public class EntityView extends ViewPart {
 		}
 		
 		return onTheTree;
+	}
+
+	@Override
+	public String getContributorId() {
+		return getSite().getId();
+	}
+	
+	@Override
+	public Object getAdapter(Class adapter) {
+		if (adapter == IPropertySheetPage.class)
+            return new TabbedPropertySheetPage(this);
+        return super.getAdapter(adapter);
 	}
 }

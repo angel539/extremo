@@ -6,10 +6,17 @@ import org.apache.commons.lang3.text.WordUtils;
 import metaRDF.core.model.impl.SemanticClass;
 
 public class OWLSemanticClass extends SemanticClass{
+	String id;
 	String label;
+	int weight;
 	
 	public OWLSemanticClass(){
 		super();
+	}
+	
+	public OWLSemanticClass(String id, String name, String description){
+		super(id, name, description);
+		this.id = id;
 	}
 	
 	public String getLabel() {
@@ -38,5 +45,16 @@ public class OWLSemanticClass extends SemanticClass{
 	@Override
 	public void setIdToString(String idString) {
 		this.label = idString;
+	}
+
+	@Override
+	public int getWeight() {
+		// TODO Auto-generated method stub
+		return this.weight;
+	}
+
+	@Override
+	public void setWeight(int weight) {
+		this.weight = weight;
 	}
 }

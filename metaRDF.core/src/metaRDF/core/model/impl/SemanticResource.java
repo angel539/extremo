@@ -122,4 +122,15 @@ public class SemanticResource implements IResource{
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
+
+
+	@Override
+	public int getWeight() {
+		return 0;
+	}
+
+
+	@Override
+	public void setWeight(int weight) {
+	}
 }

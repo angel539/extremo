@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="metaRDF.ui.zest.category"
+            class="metardf.ui.zest.views.GraphView"
+            icon="icons/keygroups_obj.gif"
+            id="metardf.ui.zest.view.ZestView"
+            name="mm"
+            restorable="true">
+      </view>
+      <category
+            id="metaRDF.ui.zest.category"
+            name="metaRDF.ui.zest.category">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="metardf.ui.perspective">
+         <view
+               id="metardf.ui.zest.view.ZestView"
+               minimized="false"
+               relationship="right"
+               relative="metardf.ui.views.EntityView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+
+</plugin>

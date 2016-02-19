@@ -17,7 +17,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LexicalInflector {
-
     private static final class RuleAndReplacement {
         private final String rule;
 

@@ -2,6 +2,8 @@ package metardf.ui.views.entities.model;
 
 import java.util.ArrayList;
 
+import org.eclipse.ui.views.properties.IPropertySource;
+
 public class TreeParent extends TreeObject {
 	private ArrayList<TreeObject> children;
 

@@ -2,7 +2,7 @@ package metaRDF.core.model;
 
 import java.util.List;
 
-public interface ISemanticClass extends ISemanticElement{	
+public interface ISemanticClass extends ISemanticElement, Comparable<ISemanticClass>{	
 	List<ISemanticClass> getSuperclasses();
 	void setSuperclasses(List<ISemanticClass> superclasses);
 	void addSuperclasses(List<ISemanticClass> superclasses);
@@ -18,4 +18,7 @@ public interface ISemanticClass extends ISemanticElement{
 	List<IObjectProperty> getReferences();
 	void setReferences(List<IObjectProperty> references);
 	void addReferences(List<IObjectProperty> references);
+	
+	IResource getResourceFrom();
+	void setResourceFrom(IResource resource);
 }

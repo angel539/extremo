@@ -9,10 +9,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.Set;
-import java.util.Map.Entry;
-
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
@@ -33,7 +32,6 @@ import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 import metaRDF.core.model.impl.SemanticResource;
-import metaRDF.core.utils.LangUtils;
 import metardf.core.extensions.FormatAssistant;
 import metardf.core.extensions.IFormatAssistant;
 import metardf.core.owl.assistant.model.OWLSemanticClass;
@@ -50,19 +48,18 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 	
 	private OWLOntologyManager create(){
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		//m.addIRIMapper(new AutoIRIMapper(new File("materializedOntologies"), true));
 		return manager;
 	}
 	
-	public void createOntology() throws OWLOntologyCreationException{
+	/*private void createOntology() throws OWLOntologyCreationException{
 		OWLOntologyManager m = create();
 		ontology = m.createOntology(owl_iri);
 	}
 	
-	public void createOntologyFromFile() throws OWLOntologyCreationException{
+	private void createOntologyFromFile() throws OWLOntologyCreationException{
 		OWLOntologyManager m = create();
 		ontology = m.createOntology(owl_iri);
-	}
+	}*/
 
 	@Override
 	public boolean load(SemanticResource resource) {
@@ -95,204 +92,17 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 	}
 
 	@Override
+	public List<ISemanticClass> getAllClasses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public List<ISemanticClass> getClassesLike(String... names) {
 		List<ISemanticClass> classes = new ArrayList<ISemanticClass>();
-		//Map<String, List<String>> definitions = new HashMap<String, List<String>>();		
-		/*boolean forget = false;
-		//Entry<Palabra, Lista de sinonimos>
 		
-		for (Entry<String, List<String>> definition : definitions.entrySet()){
-			if(definition.getValue() == null) forget = true;
-		}*/
-		
-		//if(!forget){
-			//para el mapa hay que buscar una palabra en cada una de las entradas...
-			
-			//List<int> limits = new ArrayList<int>();
-		if(ontology!=null){
-			Map<String, List<String>> definitions = LangUtils.getSynomins(names);
-			/*for(String name : names){
-				definitions.put(name, LangUtils.getSynonims(name));
-			}*/
-			
-			int positions[] = new int[definitions.size()];
-			
-			int pos = 0;
-			for (Entry<String, List<String>> definition : definitions.entrySet()){
-				positions[pos] = definition.getValue().size() - 1;
-				pos++;
-			}
-			
-			//System.out.println(Arrays.toString(positions));
-			
-			int positionEvaluated[] = new int[positions.length];
-			for(int i = 0; i < positionEvaluated.length; i++) positionEvaluated[i] = 0;
-			
-			
-			boolean moreCombinations = true;
-			boolean[] pointers = new boolean[positionEvaluated.length];
-			for(int i = 0; i < pointers.length; i++){
-				pointers[i] = false;
-			}
-			
-			pointers[pointers.length-1] = true;
-			
-			while(moreCombinations){
-				// mientras que positions [3, 2, 4, 1] -> positionEvaluated [0, 0, 0, 0]
-				String[] searchCombination = new String[definitions.size()];
-				
-				int j = 0;
-				for (Entry<String, List<String>> definition : definitions.entrySet()){
-					searchCombination[j] = definition.getValue().get(positionEvaluated[j]);
-					j++;
-				}
-				
-				//searchcombination done... change position evaluated
-				
-				//for (Entry<String, List<String>> definition : definitions.entrySet()){
-				for(OWLClass clazz : ontology.getClassesInSignature()){
-					String description = "";
-					String label = "";
-					
-					for (OWLAnnotation annotation : clazz.getAnnotations(ontology, factory.getRDFSComment())) {
-						if (annotation.getValue() instanceof OWLLiteral) {
-							OWLLiteral val = (OWLLiteral) annotation.getValue();
-							description = val.getLiteral();
-						}
-					}
-					
-					boolean labeled = false;
-					for (OWLAnnotation annotation : clazz.getAnnotations(ontology, factory.getRDFSLabel())) {
-						if (annotation.getValue() instanceof OWLLiteral) {
-							OWLLiteral val = (OWLLiteral) annotation.getValue();
-							label = val.getLiteral();
-							
-							boolean contained = true;
-							for(int i = 0; i < searchCombination.length; i++){
-								//esto está mal. no es por cada entry sino en combinacion	
-								if(!val.toString().contains(searchCombination[i])){
-									contained = false;
-								}
-								
-								if(contained){
-									classes.add(new OWLSemanticClass());
-									labeled = true;
-								}else{
-									label = val.getLiteral();
-								}
-							}
-							
-							
-							/*boolean[] contained = new boolean[searchCombination.length];
-							for(int i = 0; i < contained.length; i++) contained[i] = false;
-							
-							for(int i = 0; i < searchCombination.length; i++){
-								//esto está mal. no es por cada entry sino en combinacion	
-								if(val.toString().contains(searchCombination[i])){
-									contained[i] = true;
-									labeled = true;		
-								}
-							}
-							
-							boolean match = true;
-							for(int i = 0; i < contained.length; i++){
-								if(!contained[i]){
-									match = false;
-									break;
-								}
-							}*/
-							
-							//if(match) classes.add(new SemanticOWL(clazz.getIRI().getShortForm(), clazz.getIRI().toString(), label, description));
-							/*for(String entry : searchCombination){
-								//esto está mal. no es por cada entry sino en combinacion
-								if(val.toString().contains(entry.toLowerCase())){
-									contained
-									classes.add(new SemanticOWL(clazz.getIRI().getShortForm(), clazz.getIRI().toString(), val.getLiteral(), description));
-									labeled = true;		
-								}else{
-									label = val.getLiteral();
-								}
-							}*/
-						}
-					}
-					
-					if(!labeled){
-						boolean contained = true;
-						for(int i = 0; i < searchCombination.length; i++){
-							//esto está mal. no es por cada entry sino en combinacion	
-							if(!clazz.getIRI().getShortForm().toLowerCase().contains(searchCombination[i].toLowerCase())){
-								contained = false;
-							}
-						}
-						
-						if(contained) classes.add(new OWLSemanticClass());
-					}
-				}
-				
-				// mientras que positions [3, 2, 4, 1] -> positionEvaluated [0, 0, 0, 0] /*3, 0, 0, 0*/
-				// 0000, 0001, 0002, 0003, 0010, 0011, ...
-				
-				boolean[] tmpNoMoreCombination = new boolean[positions.length];
-				for(int i = 0; i < tmpNoMoreCombination.length; i++) tmpNoMoreCombination[i] = false;
-				
-				for(int i = 0; i < positions.length; i++){
-					if(positions[i] == positionEvaluated[i]) tmpNoMoreCombination[i] = true;
-				}
-				
-				// si son todas true se acabó.
-				moreCombinations = false;
-				
-				for(int i = 0; i < tmpNoMoreCombination.length; i++){
-					if(!tmpNoMoreCombination[i]){
-						moreCombinations = true;
-						break;
-					}
-				}
-				
-				if(moreCombinations){
-					// actualizar positionEvaluated:
-					// pointers apunta a los elementos que tienen que ir variando...
-					int firstPositionTrue = pointers.length - 1;
-					int lastPositionTrue = pointers.length - 1;
-					int currentPositionTrue = pointers.length - 1;
-					
-					for(int i = 0; i < pointers.length; i++){
-						if(pointers[i]){
-							firstPositionTrue = i;
-							break;
-						}
-					}
-					
-					// mientras que positions [3, 2, 4, 1] -> positionEvaluated [0, 0, 0, 0] /*3, 0, 0, 0*/
-					// 0000, 0001, 0002, 0003, 0010, 0011, ...
-					
-					for(int i = positionEvaluated.length-1; i >= 0; i--){
-						if(pointers[i]){
-							if(positionEvaluated[i] >= positions[i]){
-								positionEvaluated[i] = 0;
-								if((i>0) && (i < firstPositionTrue)){
-									pointers[i-1] = true;
-									currentPositionTrue = i;
-									firstPositionTrue = i-1;
-								}
-							}
-							else{
-								if((i >= currentPositionTrue) && (i <= lastPositionTrue)){
-									positionEvaluated[i] = positionEvaluated[i] + 1;
-								}
-								break;
-							}	
-						}else{
-							break;
-						}
-					}
-					
-					//System.out.println(Arrays.toString(positions) + " " + Arrays.toString(positionEvaluated));
-				}	
-			}	
-			//}
-			
-			/*for (String entry : wordnetProposals){
+		if(ontology!=null){			
+			for (String entry : names){
 				for(OWLClass clazz : ontology.getClassesInSignature()){
 					String description = "";
 					String label = "";
@@ -309,7 +119,7 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 						if (annotation.getValue() instanceof OWLLiteral) {
 							OWLLiteral val = (OWLLiteral) annotation.getValue();
 							if(val.toString().contains(entry.toLowerCase())){
-								classes.add(new SemanticOWL(clazz.getIRI().getShortForm(), clazz.getIRI().toString(), val.getLiteral(), description));
+								classes.add(new OWLSemanticClass(clazz.getIRI().getShortForm(), clazz.getIRI().toString(), description));
 								labeled = true;
 							}else{
 								label = val.getLiteral();
@@ -318,21 +128,53 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 					}
 					
 					if((!labeled) && (clazz.getIRI().getShortForm().toLowerCase().compareTo(entry.toLowerCase()) == 0)){
-						classes.add(new SemanticOWL(clazz.getIRI().getShortForm(), clazz.getIRI().toString(), label, description));	
+						classes.add(new OWLSemanticClass(clazz.getIRI().getShortForm(), clazz.getIRI().toString(), description));	
 					}
 				}
-			}*/			
+			}		
 		}
-		//}else{
-			//return null;
-		//}
-		
-		/*HashSet<SemanticClass> aux = new HashSet<SemanticClass>(classes);
-		classes.clear();
-		classes.addAll(aux);*/
-		
 		return classes;
 	}
+	
+	@Override
+	public List<ISemanticClass> getClassesLike(Map<String, Integer> namesByRelevance) {
+		List<ISemanticClass> classes = new ArrayList<ISemanticClass>();
+		
+		if(ontology!=null){			
+			for (Entry<String, Integer> entry : namesByRelevance.entrySet()){
+				for(OWLClass clazz : ontology.getClassesInSignature()){
+					String description = "";
+					String label = "";
+					
+					for (OWLAnnotation annotation : clazz.getAnnotations(ontology, factory.getRDFSComment())) {
+						if (annotation.getValue() instanceof OWLLiteral) {
+							OWLLiteral val = (OWLLiteral) annotation.getValue();
+							description = val.getLiteral();
+						}
+					}
+					
+					boolean labeled = false;
+					for (OWLAnnotation annotation : clazz.getAnnotations(ontology, factory.getRDFSLabel())) {
+						if (annotation.getValue() instanceof OWLLiteral) {
+							OWLLiteral val = (OWLLiteral) annotation.getValue();
+							if(val.toString().contains(entry.getKey().toLowerCase())){
+								classes.add(new OWLSemanticClass(clazz.getIRI().getShortForm(), clazz.getIRI().toString(), description));
+								labeled = true;
+							}else{
+								label = val.getLiteral();
+							}
+						}
+					}
+					
+					if((!labeled) && (clazz.getIRI().getShortForm().toLowerCase().compareTo(entry.getKey().toLowerCase()) == 0)){
+						classes.add(new OWLSemanticClass(clazz.getIRI().getShortForm(), clazz.getIRI().toString(), description));	
+					}
+				}
+			}		
+		}
+		return classes;
+	}
+	
 	
 	public String getShortName(String uri){
 		IRI iri = IRI.create(uri);
@@ -698,4 +540,5 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 		return types;
 	}
 
+	
 }

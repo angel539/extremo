@@ -11,32 +11,52 @@
 package metaRDF.core.wordnet;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.ErrorDialog;
+import org.osgi.framework.Bundle;
 
 import edu.smu.tspell.wordnet.Synset;
 import edu.smu.tspell.wordnet.SynsetType;
 import edu.smu.tspell.wordnet.WordNetDatabase;
+import edu.smu.tspell.wordnet.WordSense;
+import metaRDF.core.utils.Tuple;
 
 public class Wordnet{
+	public static final String PLUGIN_ID = "metaRDF.core";
    private WordNetDatabase database = null;
-
-   public Wordnet(String location){
+   private static Wordnet INSTANCE = null;
+   private static String LOCATION = "dict";
+   
+   public Wordnet(){
 	   super();
-	   //File f = new File("/Users/angel/Wordnet/dict");
-	   //System.out.println(System.getProperty("user.dir")+"dict");
-	   //String wordnetLocation = "";
 	   
-	   File f = new File(location);
-	   //C:\Users\Usuario\Desktop
+	   Bundle bundle = Platform.getBundle(PLUGIN_ID);
+	   URL fileURL = bundle.getEntry("dict");
+	   File file = null;
 	   
-	   if(!f.exists()){
-		   //Status status = new Status(IStatus.ERROR, "metardf", 0, "WordNet error", null);
-		   //ErrorDialog.openError(null, "WordNet error", "The WordNet location preference is not valid", status);
+	   try {
+	       file = new File(FileLocator.resolve(fileURL).toURI());
+	   } catch (URISyntaxException e1) {
+	       e1.printStackTrace();
+	   } catch (IOException e1) {
+	       e1.printStackTrace();
 	   }
+	  
 	   
-	   //System.setProperty("wordnet.database.dir", "/Users/angel/Wordnet/dict");
-	   System.setProperty("wordnet.database.dir", location);
+	   System.setProperty("wordnet.database.dir", file.getAbsolutePath());
 	   database = WordNetDatabase.getFileInstance();
    }
    
@@ -60,21 +80,62 @@ public class Wordnet{
 	   return definitions;
    }
    
-   public List<List<String>> getSynonymsProposal(String concept){
-	   List<List<String>> synonyms = new ArrayList<List<String>>();
+   public Map<String, Tuple<String[], String[]>> getSynonymsProposal(String concept){
+	   Map<String, Tuple<String[], String[]>> synonyms = new HashMap<String, Tuple<String[], String[]>>();
+	   
 	   Synset[] synsets = database.getSynsets(concept);
 	   
-	   if(synsets.length > 0){
-		   for (int i = 0; i < synsets.length; i++){
-			   List<String> wordforms = new ArrayList<String>();
-			   String[] words = synsets[i].getWordForms();
-			   for (int j = 0; j < words.length; j++){
-				   wordforms.add(words[j]);
-			   }
-			   synonyms.add(wordforms);
+	   for(Synset synset : synsets){
+		   int tagCount = 0;
+		   
+		   try{
+			   tagCount = synset.getTagCount(concept);
+		   }catch(edu.smu.tspell.wordnet.WordNetException e){
+			   tagCount = synset.getTagCount(synset.getWordForms()[0]);
 		   }
-	   }else return null;
+		   
+		   Tuple<String[], String[]> wordformsAndExamples = new Tuple<String[], String[]>(synset.getWordForms(), synset.getUsageExamples(), tagCount);
+		   synonyms.put(synset.getDefinition(), wordformsAndExamples);
+		   //System.out.println("tag counts for " + concept + ">><" + tagCount + ":::" + concept);
+	   }
+	   
 	   return synonyms;
+   }
+   
+   public List<String> getExamples(String concept){
+	   List<String> examples = new ArrayList<String>();
+	   
+	   Synset[] synsets = database.getSynsets(concept);
+	   for(Synset synset : synsets){
+		   for(String s : synset.getUsageExamples()) examples.add(s);
+	   }
+	   
+	   return examples;
+   }
+   
+
+   
+   public List<String> getMeanings(String concept){
+	   List<String> meanings = new ArrayList<String>();
+	   
+	   Synset[] synsets = database.getSynsets(concept);
+	   for(Synset synset : synsets){
+		   meanings.add(synset.getDefinition());
+	   }
+	   
+	   return meanings;
+   }
+   
+   public List<String> getDerivation(String concept1, String concept2){
+	   List<String> derivation = new ArrayList<String>();
+	   
+	   Synset[] synsets = database.getSynsets(concept1);
+	   for(Synset synset : synsets){
+		   for(WordSense wordsense : synset.getDerivationallyRelatedForms(concept2))
+			   derivation.add(wordsense.getWordForm());
+	   }
+	   
+	   return derivation;
    }
    
    public List<String> getSynonymsByDefition(String concept, String definition){
@@ -93,19 +154,6 @@ public class Wordnet{
 	   }else return null;
 	   return synonyms;
 	   }
-   
-   public boolean areSynonyms(String concept1, String concept2){
-	   if(this.getSynonymsProposal(concept1) == null) return false;
-
-	   for(List<String> meanings : this.getSynonymsProposal(concept1))
-		   for(String word : meanings)
-			   if(word.equalsIgnoreCase(concept2)){
-				   //System.out.println(concept1 + " and " + concept2 + " are synonyms");
-				   return true;
-			   }
-	   
-	   return false;
-   }
    
    public boolean isNoun(String word){
 	   for(Synset s : database.getSynsets(word))
@@ -133,4 +181,32 @@ public class Wordnet{
 	   
 	   return false;
    }
+   
+   private static void createInstance() {
+	   	 if (INSTANCE == null) {
+	   		 synchronized(Wordnet.class) {
+	   			 if (INSTANCE == null) {
+
+	   				 
+	   				 INSTANCE = new Wordnet();
+	   			 }
+	   		 }
+	     }
+	}
+
+	public static Wordnet getInstance() {
+	    if (INSTANCE == null){
+	    	createInstance();
+	    }
+	    return INSTANCE;
+	}
+	
+	public Object clone() throws CloneNotSupportedException {
+		throw new CloneNotSupportedException(); 
+	}
+	
+	public static void main(String [] args){
+		List<String> results = Wordnet.getInstance().getMeanings("bank");
+		for(int i = 0; i < results.size(); i++) System.out.println("--" + i + "____" + results.get(i));
+	}
 }

@@ -1,11 +1,15 @@
 package metaRDF.core.model.impl;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
+import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
+
+import org.apache.commons.lang3.StringUtils;
 
 public abstract class SemanticClass implements ISemanticClass{
 	Object id;
@@ -15,6 +19,9 @@ public abstract class SemanticClass implements ISemanticClass{
 	List<ISemanticClass> subclasses;
 	List<IDataProperty> properties;
 	List<IObjectProperty> references;
+	IResource resourceFrom;
+	
+	int weight = 0;
 	
 	public SemanticClass(Object id, String name, String description){
 		this.name = name;
@@ -121,5 +128,35 @@ public abstract class SemanticClass implements ISemanticClass{
 	public void addReferences(List<IObjectProperty> references) {
 		if(this.references == null) this.references = new ArrayList<IObjectProperty>();
 		this.references.addAll(references);
+	}
+	
+	@Override
+	public void setResourceFrom(IResource resourceFrom) {
+		this.resourceFrom = resourceFrom;
+	}
+	
+	@Override
+	public IResource getResourceFrom() {
+		return this.resourceFrom;
+	}
+	
+	@Override
+	public int getWeight() {
+		return this.weight;
+	}
+
+	@Override
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+	
+	@Override
+    public int compareTo(ISemanticClass o) {
+        return Comparators.WEIGHT.compare(this, o);
+    }
+	
+	public static class Comparators {
+	    public static final Comparator<ISemanticClass> NAME = (ISemanticClass o1, ISemanticClass o2) -> o1.getName().compareToIgnoreCase(o2.getName());
+	    public static final Comparator<ISemanticClass> WEIGHT = (ISemanticClass o1, ISemanticClass o2) -> Integer.compare(o1.getWeight(), o2.getWeight());  
 	}
 }

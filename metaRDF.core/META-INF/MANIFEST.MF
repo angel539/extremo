@@ -25,7 +25,9 @@ Bundle-ClassPath: core.jar,
  lib/javax.inject-1.jar,
  lib/owlapi-osgidistribution-3.5.4.jar,
  lib/trove4j-3.0.3.jar,
- lib/commons-lang3-3.4.jar
+ lib/commons-lang3-3.4.jar,
+ lib/commons-collections4-4.1.jar,
+ dict/
 Export-Package: com.clarkparsia.owlapi.explanation,
  com.clarkparsia.owlapi.explanation.io,
  com.clarkparsia.owlapi.explanation.util,
@@ -132,6 +134,7 @@ Export-Package: com.clarkparsia.owlapi.explanation,
  metaRDF.core.model,
  metaRDF.core.model.impl,
  metaRDF.core.rdf,
+ metaRDF.core.search,
  metaRDF.core.utils,
  metaRDF.core.wordnet,
  org.aopalliance.aop,
@@ -333,4 +336,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.eclipse.swt.dnd
 Require-Bundle: org.eclipse.equinox.registry,
  org.eclipse.swt,
- org.eclipse.core.runtime;bundle-version="3.11.1"
+ org.eclipse.core.runtime;bundle-version="3.11.1",
+ org.eclipse.jface,
+ org.apache.commons.lang3
+Bundle-ActivationPolicy: lazy

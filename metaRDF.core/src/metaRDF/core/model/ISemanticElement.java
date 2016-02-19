@@ -12,4 +12,7 @@ public interface ISemanticElement{
 	String getDescription();
 	
 	void setDescription(String comment);
+	
+	int getWeight();
+	void setWeight(int weight);
 }

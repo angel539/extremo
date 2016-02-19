@@ -17,21 +17,31 @@ import org.eclipse.core.runtime.spi.RegistryContributor;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
+import metaRDF.core.model.IDataProperty;
+import metaRDF.core.model.IObjectProperty;
+import metaRDF.core.model.IRepository;
+import metaRDF.core.model.IResource;
+import metaRDF.core.model.ISearch;
+import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
+import metaRDF.core.model.impl.RepositoryManager;
+import metaRDF.core.model.impl.Search;
+import metaRDF.core.model.impl.SemanticResource;
 
 public class AssistantFactory {
 	private List<IFormatAssistant> assistants = null;
+	private List<ISearch> searches = null;
+	
 	private static AssistantFactory INSTANCE = null;
 	
 	public static final String ASSISTANT_EXTENSIONS_ID = "metardf.core.extensions.assistant";
-	//List<Class<? extends ISemanticElement>> registeredTypes = null;
 	Map<Bundle, List<Class<? extends ISemanticElement>>> registeredTypes = null;
 
 	public List<IFormatAssistant> getAssistances(){
 		if (this.assistants == null) {
 			this.assistants = new ArrayList<IFormatAssistant>();
+			this.searches = new ArrayList<ISearch>();
 			this.registeredTypes = new HashMap<Bundle, List<Class<? extends ISemanticElement>>>();
-			//this.registeredTypes = new ArrayList<Class<? extends ISemanticElement>>();
 		}
 		
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
@@ -71,13 +81,10 @@ public class AssistantFactory {
 								((FormatAssistant)assistant).addExtension(s);
 							}
 							
-							//((FormatAssistant)assistant).setNameExtension(extension.getAttribute("extensions"));
 							this.assistants.add(assistant);
 						}
 					}
 					catch(CoreException e){
-						//System.out.println(e.getMessage() + "Exception Creating assistant in meta.core");
-						//e.printStackTrace();
 					}
 				}
 			}		
@@ -146,5 +153,78 @@ public class AssistantFactory {
 	
 	public void setRegisteredTypes(Map<Bundle, List<Class<? extends ISemanticElement>>> registeredTypes) {
 		this.registeredTypes = registeredTypes;
+	}
+	
+	public List<ISearch> getSearches() {
+		return searches;
+	}
+
+	public void setSearches(List<ISearch> searches) {
+		this.searches = searches;
+	}
+	
+	private void addSearch(ISearch search){
+		if(this.searches == null) this.searches = new ArrayList<ISearch>();
+		this.searches.add(search);
+	}
+
+	public static void completeSemanticClassProperties(IFormatAssistant assistant, ISemanticElement entity){
+		if(entity instanceof ISemanticClass){
+			List<ISemanticClass> superclasses = assistant.getSuper(entity.getId(), false);
+			((ISemanticClass) entity).setSuperclasses(superclasses);
+			List<ISemanticClass> subclasses = assistant.getSub(entity.getId(), false);
+			((ISemanticClass) entity).setSubclasses(subclasses);
+			List<IObjectProperty> references = assistant.getObjectProperties(entity.getId(), true, true);
+			((ISemanticClass) entity).setReferences(references);
+			List<IDataProperty> properties = assistant.getDataProperties(entity.getId(), true, true);
+			((ISemanticClass) entity).setProperties(properties);
+		}
+	}
+	
+	public static void completeSemanticClassProperties(IFormatAssistant assistant, ISemanticElement entity, ISearch search){
+		if(entity instanceof ISemanticClass){
+			List<ISemanticClass> superclasses = assistant.getSuper(entity.getId(), false);
+			((ISemanticClass) entity).setSuperclasses(superclasses);
+			List<ISemanticClass> subclasses = assistant.getSub(entity.getId(), false);
+			((ISemanticClass) entity).setSubclasses(subclasses);
+			List<IObjectProperty> references = assistant.getObjectProperties(entity.getId(), search.isFromSupers(), search.isFromEquivs());
+			((ISemanticClass) entity).setReferences(references);
+			List<IDataProperty> properties = assistant.getDataProperties(entity.getId(), search.isFromSupers(), search.isFromEquivs());
+			((ISemanticClass) entity).setProperties(properties);
+		}
+	}
+
+	
+	public List<ISemanticClass> search(RepositoryManager repositoryManager, Search search) {
+		addSearch(search);	
+		search.expand();
+		
+		Map<String, Integer> searchList = search.getOrderSearchesListByWeight();
+		List<ISemanticClass> semanticClasses = new ArrayList<ISemanticClass>();
+		
+		for(IRepository repository : repositoryManager.getRepositories()){
+			for(IResource resource : repository.getResources()){
+				if((resource instanceof SemanticResource) && (resource.isActive())){
+					search.getResourcesSearched().add(resource);
+					
+					for(IFormatAssistant assistant : assistants){
+						if((resource.isAlive()) && (resource.getAssistant() != null)){
+							if(((FormatAssistant)assistant).getNameExtension().compareTo(resource.getAssistant())==0){
+								if((resource != null) && (resource instanceof SemanticResource) && (assistant.load((SemanticResource) resource))){	
+									List<ISemanticClass> entities = assistant.getClassesLike(searchList);
+									
+									for(ISemanticClass entity : entities){
+										AssistantFactory.completeSemanticClassProperties(assistant, entity, search);
+										semanticClasses.add(entity);
+									}
+								}
+							}
+						}
+					}
+				}	
+			}		
+		}
+		
+		return semanticClasses;
 	}
 }

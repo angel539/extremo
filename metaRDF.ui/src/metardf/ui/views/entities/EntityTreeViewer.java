@@ -28,7 +28,6 @@ public class EntityTreeViewer extends TreeViewer {
 		 		    	event.data = data;
 		 		    }
 		 	    }
-		    	//event.data = getSelection();
 		     }
 		  });
 	}
@@ -47,7 +46,6 @@ public class EntityTreeViewer extends TreeViewer {
 		 		    	event.data = data;
 		 		    }
 		 	    }
-		    	//event.data = getSelection();
 		     }
 		  });
 	}

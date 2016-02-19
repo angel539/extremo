@@ -5,7 +5,6 @@ import org.eclipse.emf.ecore.EClass;
 import metaRDF.core.model.impl.SemanticClass;
 
 public class EcoreSemanticClass extends SemanticClass{
-	//private static final long serialVersionUID = 1L;
 	EClass id = null;
 	String idString = null;
 	

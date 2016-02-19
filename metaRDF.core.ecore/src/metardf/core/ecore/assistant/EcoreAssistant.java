@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.ISemanticClass;
@@ -46,7 +47,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	}
 
 	@Override
-	public List<ISemanticClass> getClassesLike(String... names) {
+	public List<ISemanticClass> getAllClasses() {
 		Resource resource = null;
 		List<ISemanticClass> classes = new ArrayList<ISemanticClass>();
 		
@@ -65,24 +66,122 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 		}
 		
 		if((ecoreAll != null)&&(semanticResource.isAlive())){
-			Map<String, List<String>> definitions = LangUtils.getSynomins(names);
-			
-			List<String> words = new ArrayList<String>();
-			
-			for (Entry<String, List<String>> definition : definitions.entrySet()){
-				words.addAll(definition.getValue());
-			}
-			
-			words = LangUtils.cleanRepeated(words);
-			
 			while(ecoreAll.hasNext()){
 				EObject obj = ecoreAll.next();
 				
-				for(String word : words){
-					if(obj instanceof EClass){
+				if((obj != null) && (obj instanceof EClass)){
+					EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+					classes.add((ISemanticClass) semanticClass);
+				}
+			}
+		}
+		
+		return classes;
+	}
+	
+	
+	@Override
+	public List<ISemanticClass> getClassesLike(String... names) {
+		Resource resource = null;
+		List<ISemanticClass> classes = new ArrayList<ISemanticClass>();
+		
+		//System.out.println("en el asistente..." + names);
+		
+		if(ecore != null && ecore.exists()){
+			try{
+				ResourceSet resourceSet = new ResourceSetImpl(); 
+				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl()); 			//EcorePackage ecorePackage = EcorePackage.eINSTANCE;		
+				URI fileURI = URI.createFileURI(ecore.getAbsolutePath());
+				resource = resourceSet.getResource(fileURI, true);
+				resourceSet.getAllContents().next();
+				ecoreAll = resource.getAllContents();
+			}catch(Exception e){
+				semanticResource.setAlive(false);
+			}
+			
+		}
+		
+		if((ecoreAll != null)&&(semanticResource.isAlive())){
+			iterator:
+			while(ecoreAll.hasNext()){
+				EObject obj = ecoreAll.next();
+				if(obj instanceof EClass){
+					for(String word : names){
 						if(((EClass) obj).getName().compareTo(word) == 0){
 							EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+							semanticClass.setResourceFrom(semanticResource);
 							classes.add((ISemanticClass) semanticClass);
+							continue iterator;
+						}
+						
+						List<String> wordInNameClass = LangUtils.cleanAndSeparateWords(((EClass) obj).getName());
+						for(String wordInName : wordInNameClass){
+							if(LangUtils.haveTheSameStem(wordInName, word)){
+								EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+								semanticClass.setResourceFrom(semanticResource);
+								classes.add((ISemanticClass) semanticClass);
+								continue iterator;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return classes;
+	}
+	
+	@Override
+	public List<ISemanticClass> getClassesLike(Map<String, Integer> namesByRelevance) {
+		Resource resource = null;
+		List<ISemanticClass> classes = new ArrayList<ISemanticClass>();
+		
+		if(ecore != null && ecore.exists()){
+			try{
+				ResourceSet resourceSet = new ResourceSetImpl(); 
+				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl()); 			//EcorePackage ecorePackage = EcorePackage.eINSTANCE;		
+				URI fileURI = URI.createFileURI(ecore.getAbsolutePath());
+				resource = resourceSet.getResource(fileURI, true);
+				resourceSet.getAllContents().next();
+				ecoreAll = resource.getAllContents();
+			}catch(Exception e){
+				semanticResource.setAlive(false);
+			}
+			
+		}
+		
+		if((ecoreAll != null)&&(semanticResource.isAlive())){
+			iterator:
+			while(ecoreAll.hasNext()){
+				EObject obj = ecoreAll.next();
+				if(obj instanceof EClass){
+					for(Entry<String, Integer> word : namesByRelevance.entrySet()){
+						if(((EClass) obj).getName().compareTo(word.getKey()) == 0){
+							EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+							semanticClass.setWeight(word.getValue() + 500);
+							semanticClass.setResourceFrom(semanticResource);
+							classes.add((ISemanticClass) semanticClass);
+							continue iterator;
+						}
+						
+						List<String> wordInNameClass = LangUtils.cleanAndSeparateWords(((EClass) obj).getName());
+						for(String wordInName : wordInNameClass){
+							
+							if(wordInName.compareTo(word.getKey()) == 0){
+								EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+								semanticClass.setWeight(word.getValue() + 300);
+								semanticClass.setResourceFrom(semanticResource);
+								classes.add((ISemanticClass) semanticClass);
+								continue iterator;
+							}else{
+								if(LangUtils.haveTheSameStem(wordInName, word.getKey())){
+									EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+									semanticClass.setWeight(word.getValue() + 100);
+									semanticClass.setResourceFrom(semanticResource);
+									classes.add((ISemanticClass) semanticClass);
+									continue iterator;
+								}
+							}
 						}
 					}
 				}

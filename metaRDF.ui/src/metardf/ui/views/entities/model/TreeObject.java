@@ -1,9 +1,10 @@
 package metardf.ui.views.entities.model;
+import java.util.List;
+
 import org.eclipse.core.runtime.IAdaptable;
 
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
-import metaRDF.core.model.IProperty;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 
@@ -31,12 +32,12 @@ public class TreeObject implements IAdaptable {
 			this.element = (ISemanticElement) element;
 		}
 		
-		if(element instanceof ISemanticClass){
+		/*if(element instanceof ISemanticClass){
 			if(((ISemanticClass) element).getProperties()!=null) this.name = this.name + " [attr:" + ((ISemanticClass) element).getProperties().size() + "]";
 			if(((ISemanticClass) element).getReferences()!=null) this.name = this.name + " [ref:" + ((ISemanticClass) element).getReferences().size() + "]";		
 			if(((ISemanticClass) element).getSuperclasses()!=null) this.name = this.name + " [supers:" + ((ISemanticClass) element).getSuperclasses().size() + "]";		
 			if(((ISemanticClass) element).getSubclasses()!=null) this.name = this.name + " [subs:" + ((ISemanticClass) element).getSubclasses().size() + "]";		
-		}
+		}*/
 		
 		if(element instanceof IDataProperty){
 			this.name = this.name + " : " + ((IDataProperty) element).getType();
@@ -45,15 +46,16 @@ public class TreeObject implements IAdaptable {
 		if(element instanceof IObjectProperty){
 			this.name = this.name + " : " + ((IObjectProperty) element).getRangeAsSemanticClass().getName();
 		}
-		
-		/*if((element instanceof IProperty) && (((IProperty) element).isFromSuper())){
-			this.name = this.name + " (super)";
-		}*/
 	}
 	
 	public String getName() {
 		return name;
 	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	
 	public void setParent(TreeParent parent) {
 		this.parent = parent;
 	}

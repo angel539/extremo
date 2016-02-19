@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,6 @@ import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 import metardf.core.extensions.AssistantFactory;
-import metardf.ui.views.entities.model.TreeObject;
 
 public class ModelTransfer extends ByteArrayTransfer {
 	private static final String SEMANTIC_CLASS_TYPE = "SemanticClass";
@@ -105,7 +105,8 @@ public class ModelTransfer extends ByteArrayTransfer {
 			byte[] buffer = (byte[]) super.nativeToJava(transferData);
 			if (buffer == null) return null;
 			
-			ISemanticElement[] semanticElement = new ISemanticElement[0];
+			//ISemanticElement[] semanticElement = new ISemanticElement[0];
+			List<ISemanticElement> semanticElement = new ArrayList<ISemanticElement>();
 			
 			try {
 				ByteArrayInputStream in = new ByteArrayInputStream(buffer);
@@ -133,8 +134,8 @@ public class ModelTransfer extends ByteArrayTransfer {
 						
 						switch(type){
 							case 0:
-								ISemanticClass[] newSemanticClass = new ISemanticClass[semanticElement.length + 1];
-								System .arraycopy(semanticElement, 0, newSemanticClass, 0, semanticElement.length);
+								//ISemanticElement[] newSemanticClass = new ISemanticClass[semanticElement.length + 1];
+								//System .arraycopy(semanticElement, 0, newSemanticClass, 0, semanticElement.length);
 								
 								Object semanticObject = loadReflectiveClassFromExternalBundle(new String(className));
 								if(semanticObject instanceof ISemanticClass){
@@ -142,14 +143,15 @@ public class ModelTransfer extends ByteArrayTransfer {
 									((ISemanticClass) semanticObject).setIdToString(new String(idToString));
 									((ISemanticClass) semanticObject).setDescription(new String(idDescription));
 									
-									newSemanticClass[semanticElement.length] = (ISemanticClass) semanticObject;
-									semanticElement = newSemanticClass;
+									semanticElement.add((ISemanticClass)semanticObject);
+									//newSemanticClass[semanticElement.length] = (ISemanticClass) semanticObject;
+									//semanticElement = newSemanticClass;
 								}
 								break;
 							
 							case 1:
-								IObjectProperty[] newObjectProperty = new IObjectProperty[semanticElement.length + 1];
-								System .arraycopy(semanticElement, 0, newObjectProperty, 0, semanticElement.length);
+								//ISemanticElement[] newObjectProperty = new IObjectProperty[semanticElement.length + 1];
+								//System .arraycopy(semanticElement, 0, newObjectProperty, 0, semanticElement.length);
 								
 								Object objectObject = loadReflectiveClassFromExternalBundle(new String(className));
 								if(objectObject instanceof IObjectProperty){
@@ -157,15 +159,18 @@ public class ModelTransfer extends ByteArrayTransfer {
 									((IObjectProperty) objectObject).setIdToString(new String(idToString));
 									((IObjectProperty) objectObject).setDescription(new String(idDescription));
 									
-									newObjectProperty[semanticElement.length] = (IObjectProperty) objectObject;
-									semanticElement = newObjectProperty;
+									
+									semanticElement.add((IObjectProperty)objectObject);
+									
+									//newObjectProperty[semanticElement.length] = (IObjectProperty) objectObject;
+									//semanticElement = newObjectProperty;
 								}
 								
 								break;
 							
 							case 2:
-								IDataProperty[] newDataProperty = new IDataProperty[semanticElement.length + 1];
-								System .arraycopy(semanticElement, 0, newDataProperty, 0, semanticElement.length);
+								//ISemanticElement[] newDataProperty = new IDataProperty[semanticElement.length + 1];
+								//System .arraycopy(semanticElement, 0, newDataProperty, 0, semanticElement.length);
 								
 								Object dataObject = loadReflectiveClassFromExternalBundle(new String(className));
 								if(dataObject instanceof IDataProperty){
@@ -173,8 +178,9 @@ public class ModelTransfer extends ByteArrayTransfer {
 									((IDataProperty) dataObject).setIdToString(new String(idToString));
 									((IDataProperty) dataObject).setDescription(new String(idDescription));
 									
-									newDataProperty[semanticElement.length] = (IDataProperty) dataObject;
-									semanticElement = newDataProperty;
+									semanticElement.add((IDataProperty)dataObject);
+									//newDataProperty[semanticElement.length] = (IDataProperty) dataObject;
+									//semanticElement = newDataProperty;
 								}
 								
 								break;
@@ -190,7 +196,7 @@ public class ModelTransfer extends ByteArrayTransfer {
 				return null;
 			}
 			
-			return semanticElement;
+			return semanticElement.toArray(new ISemanticElement[semanticElement.size()]);
 		}
 		
 		return null;
@@ -207,7 +213,6 @@ public class ModelTransfer extends ByteArrayTransfer {
 					try {
 						classBundle = bundle.loadClass(semanticElement.getName());
 						if (classBundle!=null){
-							//classes.add();
 							return classBundle.newInstance();
 						}
 					} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {

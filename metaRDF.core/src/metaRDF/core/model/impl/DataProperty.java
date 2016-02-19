@@ -1,15 +1,16 @@
 package metaRDF.core.model.impl;
 
+import java.util.Comparator;
 import metaRDF.core.model.IDataProperty;
 
 public abstract class DataProperty implements IDataProperty{
 	String name;
 	String type;
-	
-
 	Object id;
 	boolean isFromSuper;
 	String description;
+	
+	int weight = 0;
 	
 	public DataProperty(){
 		
@@ -74,5 +75,25 @@ public abstract class DataProperty implements IDataProperty{
 
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	@Override
+	public int getWeight() {
+		return this.weight;
+	}
+
+	@Override
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+	
+	@Override
+    public int compareTo(IDataProperty o) {
+        return Comparators.WEIGHT.compare(this, o);
+    }
+	
+	public static class Comparators {
+	    public static final Comparator<IDataProperty> NAME = (IDataProperty o1, IDataProperty o2) -> o1.getName().compareTo(o2.getName());
+	    public static final Comparator<IDataProperty> WEIGHT = (IDataProperty o1, IDataProperty o2) -> Integer.compare(o1.getWeight(), o2.getWeight());  
 	}
 }

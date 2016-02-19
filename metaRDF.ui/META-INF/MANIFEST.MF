@@ -17,7 +17,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.graphiti.ui,
  org.eclipse.graphiti;bundle-version="0.12.1",
  metaRDF.core.extensions,
- metaRDF.core.ecore
+ metaRDF.core.ecore,
+ org.eclipse.ui.workbench,
+ org.eclipse.ui.views.properties.tabbed;bundle-version="3.6.100",
+ org.eclipse.ui.views
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
@@ -25,4 +28,5 @@ Bundle-ClassPath: .,
 Export-Package: metardf.ui.dnd,
  metardf.ui.views.entities,
  metardf.ui.views.entities.model,
- metardf.ui.views.repositories
+ metardf.ui.views.repositories,
+ metardf.ui.views.repositories.model
