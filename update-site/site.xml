@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/metaRDF.feature_1.0.13.201602081548.jar" id="metaRDF.feature" version="1.0.13.201602081548" patch="true">
+   <feature url="features/metaRDF.feature_1.0.14.201602191642.jar" id="metaRDF.feature" version="1.0.14.201602191642" patch="true">
       <category name="Recommenders"/>
    </feature>
    <category-def name="Recommenders" label="Recommenders"/>
