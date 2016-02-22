@@ -21,25 +21,25 @@
 
 .pl-c1      /* constant, markup.raw, meta.diff.header, meta.module-reference, meta.property-name, support, support.constant, support.variable, variable.other.constant */,
 .pl-s .pl-v /* string variable */ {
-  color: #0086b3;
+  color: #0099cd;
 }
 
 .pl-e  /* entity */,
 .pl-en /* entity.name */ {
-  color: #795da3;
+  color: #9774cb;
 }
 
 .pl-s .pl-s1 /* string source */,
 .pl-smi      /* storage.modifier.import, storage.modifier.package, storage.type.java, variable.other, variable.parameter.function */ {
-  color: #333;
+  color: #ddd;
 }
 
 .pl-ent /* entity.name.tag */ {
-  color: #63a35c;
+  color: #7bcc72;
 }
 
 .pl-k /* keyword, storage, storage.type */ {
-  color: #a71d5d;
+  color: #cc2372;
 }
 
 .pl-pds              /* punctuation.definition.string, string.regexp.character-class */,
@@ -49,49 +49,49 @@
 .pl-sr .pl-cce       /* string.regexp constant.character.escape */,
 .pl-sr .pl-sra       /* string.regexp string.regexp.arbitrary-repitition */,
 .pl-sr .pl-sre       /* string.regexp source.ruby.embedded */ {
-  color: #183691;
+  color: #3c66e2;
 }
 
 .pl-v /* variable */ {
-  color: #ed6a43;
+  color: #fb8764;
 }
 
 .pl-id /* invalid.deprecated */ {
-  color: #b52a1d;
+  color: #e63525;
 }
 
 .pl-ii /* invalid.illegal */ {
-  background-color: #b52a1d;
+  background-color: #e63525;
   color: #f8f8f8;
 }
 
 .pl-sr .pl-cce /* string.regexp constant.character.escape */ {
-  color: #63a35c;
+  color: #7bcc72;
   font-weight: bold;
 }
 
 .pl-ml /* markup.list */ {
-  color: #693a17;
+  color: #c26b2b;
 }
 
 .pl-mh        /* markup.heading */,
 .pl-mh .pl-en /* markup.heading entity.name */,
 .pl-ms        /* meta.separator */ {
-  color: #1d3e81;
+  color: #264ec5;
   font-weight: bold;
 }
 
 .pl-mq /* markup.quote */ {
-  color: #008080;
+  color: #00acac;
 }
 
 .pl-mi /* markup.italic */ {
-  color: #333;
+  color: #ddd;
   font-style: italic;
 }
 
 .pl-mb /* markup.bold */ {
-  color: #333;
+  color: #ddd;
   font-weight: bold;
 }
 
@@ -106,11 +106,11 @@
 }
 
 .pl-mdr /* meta.diff.range */ {
-  color: #795da3;
+  color: #9774cb;
   font-weight: bold;
 }
 
 .pl-mo /* meta.output */ {
-  color: #1d3e81;
+  color: #264ec5;
 }
 
