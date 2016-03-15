@@ -163,7 +163,7 @@
 				Meta-models play a pivotal role in Model-Driven Engineering (MDE). They are used to create domain-specific models, and to create model management operations like model transformations or code generators. However, meta-modelling is currently mostly a manual activity, which does not profit from existing knowledge.
 				</p>
 				<p>
-				In order to facilitate the meta-modelling task, in this paper we present an extensible recommendation system for meta-modelling. This recommendation system permits the provision of heterogeneous data description sources (like Ontologies, XML Schemas, Data-Bases schemas and meta-models), and enables their uniform querying. Different kinds of queries are supported, and improved through synonym search. The results of queries are prioritized trhough sense disambiguation, and can be visualized graphically.
+				In order to facilitate the meta-modelling task, in this paper we present an extensible recommendation system for meta-modelling. This recommendation system permits the provision of heterogeneous data description sources (like <a href="https://www.w3.org/standards/semanticweb/ontology" target="_blank">Ontologies</a>, <a href="https://www.w3.org/XML/Schema" target="_blank">XML Schemas</a>, <a href="https://www.w3.org/1999/07/20-XML-DB-Mapping" target="_blank">Data-Bases schemas</a> and <a href="http://www.omg.org/mof/" target="_blank">meta-models</a>), and enables their uniform querying. Different kinds of queries are supported, and improved through synonym search. The results of queries are prioritized trhough sense disambiguation, and can be visualized graphically.
 				</p>
 				<p>
 				The recommender architecture has been designed to be independent of the meta-modelling technology used. As a proof of concept, we show its integration within DSL-tao, a pattern-based meta-modelling tool. The usefulness of the system is illustrated with a running example in the process modelling domain.
@@ -171,8 +171,98 @@
             </div>
 			
 			<div class="email-content-body">
-                 <a href="images/class_diagram.png" target="_blank"><img alt="Class Diagram" width="500" src="images/class_diagram.png"></a>
+				<h4>Class diagram</h4>
+				<div class="pure-g">
+					<div class="pure-u-3-5">
+						<div class="l-box">
+							<a href="images/class_diagram.png" target="_blank"><img alt="Class Diagram" class="pure-img" src="images/class_diagram.png"></a>
+						</div>
+					</div>
+
+					<div class="pure-u-2-5">
+						<div class="l-box">
+						<a href="images/gallery/4.jpg" target="_blank"><img alt="Format Assistant" class="pure-img" src="images/gallery/4.jpg"></a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="email-content-header pure-g">
+                <div class="pure-u-1-2">
+					<h2 class="email-content-title">Defining your own format assistant</h2>
+                </div>
+
+                <div class="email-content-controls pure-u-1-2">
+                    <!--<button class="secondary-button pure-button">Reply</button>
+                    <button class="secondary-button pure-button">Forward</button>-->
+                    <button class="secondary-button pure-button">Move to</button>
+                </div>
             </div>
+
+            <div class="email-content-body">
+				<p><code>Eclipse</code> > <code>New</code> > <code>Other</code> > <code>Plugin project</code> > ... > <code>Finish</code></p>
+				<p>In <code>MANIFEST.MF</code> insert a Dependency to <code>metaRDF.core.extensions</code> and <code>metaRDF.core</code>. Both will give you access to the core classes to implement.</p>
+				<p>Add an extension to <code>metardf.core.extensions.assistant</code> and then a new Assistant. Define a familiar <code>name</code> (these will be used later to show a pointer from file resources and assistant), a <code>class name</code>, and file extensions this assistant will be applied.</p>
+				<p>A new all-methods-empty class was created implementing the <code>IFormatAssistant</code> class. This class needs to parse your format to our class structure (shown in the class diagram above).</p>
+				<div class="pure-g">
+					<div class="pure-u-1-3">
+						<div class="l-box">
+							<h4>Extension adding</h4>
+							<a href="images/gallery/1.png" target="_blank"><img class="pure-img" src="images/gallery/1.png"/></a>
+						</div>
+					</div>
+
+					<div class="pure-u-1-3">
+						<div class="l-box">
+							<h4>Assistant definition</h4>
+							<a href="images/gallery/2.png" target="_blank"><img class="pure-img" src="images/gallery/2.png"/></a>
+						</div>
+					</div>
+
+					<div class="pure-u-1-3">
+						<div class="l-box">
+							<h4>Class implementation</h4>
+							<a href="images/gallery/3.png" target="_blank"><img class="pure-img" src="images/gallery/3.png"/></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="email-content-header pure-g">
+                <div class="pure-u-1-2">
+					<h2 class="email-content-title">Extending the core model</h2>
+                </div>
+
+                <div class="email-content-controls pure-u-1-2">
+                    <!--<button class="secondary-button pure-button">Reply</button>
+                    <button class="secondary-button pure-button">Forward</button>-->
+                    <button class="secondary-button pure-button">Move to</button>
+                </div>
+            </div>
+
+            <div class="email-content-body">
+				<div class="pure-g">
+					<div class="pure-u-2-3">
+						<div class="l-box">
+							<p>Create a new <code>package</code> in your plugin and call it something like "... .model". There will be the place where we will extend the core classes of the plugin. The classes to be overwritten are:</p>
+							<p>
+								<ul>
+									<li><code>metardf.core.model.impl.SemanticClass</code>
+									<li><code>metardf.core.model.impl.ObjectProperty</code>
+									<li><code>metardf.core.model.impl.DataProperty</code>
+								</ul>
+							</p>
+							<p>In order to allow <code>metaRDF</code> to know the core classes have been extended they must be registered through the <code>getRegisteredTypes()</code> method in the assistant</p>
+							
+						</div>
+					</div>
+					
+					<div class="pure-u-1-3">
+						<div class="l-box">
+							<a href="images/gallery/5.png" target="_blank"><img class="pure-img" src="images/gallery/5.png"/></a>
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 </div>
