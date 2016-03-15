@@ -50,14 +50,13 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import metaRDF.core.model.IDataProperty;
-import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.IRepository;
 import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 import metaRDF.core.model.impl.RepositoryManager;
 import metaRDF.core.model.impl.Search;
+import metaRDF.core.model.impl.SemanticClass;
 import metaRDF.core.model.impl.SemanticResource;
 import metardf.core.extensions.AssistantFactory;
 import metardf.core.extensions.FormatAssistant;
@@ -68,12 +67,15 @@ import metardf.ui.dnd.ModelTransfer;
 import metardf.ui.dnd.ResourceViewAction;
 import metardf.ui.views.entities.filters.EntityFilter;
 import metardf.ui.views.entities.filters.ShowAllFilter;
+import metardf.ui.views.entities.model.DataPropertyObject;
 import metardf.ui.views.entities.model.EntityParent;
 import metardf.ui.views.entities.model.EntityParentGroup;
+import metardf.ui.views.entities.model.PropertyParent;
 import metardf.ui.views.entities.model.SearchParent;
 import metardf.ui.views.entities.model.TreeObject;
 import metardf.ui.views.entities.model.TreeParent;
 import metardf.ui.wizards.SearchEntityWizardDialog;
+import metardf.ui.wizards.semanticselector.EntityGroupSelectorWizardDialog;
 
 public class EntityView extends ViewPart implements ITabbedPropertySheetPageContributor{
 	public static final String ID = "metardf.ui.views.EntityView";
@@ -110,9 +112,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		viewer.setContentProvider(new EntityTreeViewContentProvider(invisibleRoot, getViewSite()));
 		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new EntityTreeViewLabelProvider()));
 		//viewer.setSorter(new NameSorter());
-		
-		
-		
+	
 		viewer.setInput(getViewSite());
 		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "metaRDF.ui.viewer");
@@ -123,8 +123,24 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		DragSource ds = new DragSource(viewer.getTree(), DND.DROP_COPY);
 		ds.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
 		ds.addDragListener(new DragSourceAdapter() {
+				class DragSemanticClass extends SemanticClass{
+					String idToString;
+					
+					@Override
+					public String getIdToString() {
+						// TODO Auto-generated method stub
+						return this.idToString;
+					}
+
+					@Override
+					public void setIdToString(String idString) {
+						this.idToString = idString;
+					}
+					
+				}
+			
 		     public void dragSetData(DragSourceEvent event) {
-		    	 IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
+		    	 /*IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
 		    	 ISemanticElement[] data = new ISemanticElement[selection.size()];
 		    	 
 		    	 for(int i=0; i<selection.size(); i++){
@@ -133,7 +149,41 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		    		 }
 		    	 }
 		    	 
+		    	 event.data = data;*/
+		    	 
+		    	 IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
+		    	 ISemanticElement[] data = new ISemanticElement[selection.size()];
+		    	 
+		    	 for(int i=0; i<selection.size(); i++){
+		    		 if(selection.toArray()[i] instanceof EntityParent){
+		    			 data[i] = ((EntityParent) selection.toArray()[i]).getSemanticElement();
+		    		 }
+		    		 
+		    		 if(selection.toArray()[i] instanceof DataPropertyObject){
+		    			 data[i] = ((DataPropertyObject) selection.toArray()[i]).getSemanticElement();
+		    		 }
+		    		 
+		    		 if(selection.toArray()[i] instanceof PropertyParent){
+		    			 data[i] = ((PropertyParent) selection.toArray()[i]).getSemanticElement();
+		    		 }
+		    		 
+		    		 if(selection.toArray()[i] instanceof EntityParentGroup){
+		    			 //List<ISemanticClass> semanticClasses = ((EntityParentGroup) selection.toArray()[i]).getSemanticClasses();
+		    			 DragSemanticClass dragSemanticClass = new DragSemanticClass();
+		    			 dragSemanticClass.setName(((EntityParentGroup) selection.toArray()[i]).getName());
+		    			 
+		    			 WizardDialog wizardDialog = new WizardDialog(null, new EntityGroupSelectorWizardDialog((EntityParentGroup) selection.toArray()[i], dragSemanticClass));
+				    	 if (wizardDialog.open() == Window.OK) {
+				    		 //if(searchOptions != null) searchAndRefreshView(searchOptions);
+				    	 }
+		    		 }
+		    	 }
+		    	 
 		    	 event.data = data;
+		    	 /*WizardDialog wizardDialog = new WizardDialog(null, new SearchEntityWizardDialog(searchOptions));
+		    	 if (wizardDialog.open() == Window.OK) {
+		    		 if(searchOptions != null) searchAndRefreshView(searchOptions);
+		    	 }*/
 		     }
 		  });
 		
@@ -453,13 +503,13 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		return semanticElements.stream().collect(Collectors.groupingBy(w -> w.getName()));
 	}
 	
-	private static Map<String, List<IDataProperty>> groupDataProperties(List<IDataProperty> dataproperties){ 
+	/*private static Map<String, List<IDataProperty>> groupDataProperties(List<IDataProperty> dataproperties){ 
 		return dataproperties.stream().collect(Collectors.groupingBy(w -> w.getName()));
-	}
+	}*/
 	
-	private static Map<String, List<IObjectProperty>> groupObjectProperties(List<IObjectProperty> dataproperties){ 
+	/*private static Map<String, List<IObjectProperty>> groupObjectProperties(List<IObjectProperty> dataproperties){ 
 		return dataproperties.stream().collect(Collectors.groupingBy(w -> w.getName()));
-	}
+	}*/
 	
 	/*private static List<ISemanticClass> searchInAssistances(String candidate) {
 		List<ISemanticClass> searchResults = new ArrayList<ISemanticClass>();
@@ -569,8 +619,9 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		return getSite().getId();
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public Object getAdapter(Class adapter) {
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		if (adapter == IPropertySheetPage.class)
             return new TabbedPropertySheetPage(this);
         return super.getAdapter(adapter);

@@ -28,6 +28,7 @@ public abstract class GraphityEditorTransferDropTargetListener extends  Abstract
 		return viewer;
 	}
 
+	@SuppressWarnings("static-access")
 	public void setViewer(EditPartViewer viewer) {
 		this.viewer = viewer;
 	}

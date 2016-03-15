@@ -2,7 +2,6 @@ package metardf.ui.views.entities;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
-import org.eclipse.swt.SWT;
 
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;

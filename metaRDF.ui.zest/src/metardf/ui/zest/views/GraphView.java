@@ -27,9 +27,6 @@ import org.eclipse.zest.core.viewers.GraphViewer;
 import org.eclipse.zest.core.viewers.IZoomableWorkbenchPart;
 import org.eclipse.zest.core.viewers.ZoomContributionViewItem;
 import org.eclipse.zest.core.widgets.Graph;
-import org.eclipse.zest.core.widgets.GraphConnection;
-import org.eclipse.zest.core.widgets.GraphNode;
-import org.eclipse.zest.core.widgets.ZestStyles;
 import org.eclipse.zest.layouts.LayoutStyles;
 import org.eclipse.zest.layouts.algorithms.GridLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.RadialLayoutAlgorithm;
@@ -40,11 +37,11 @@ import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.impl.SemanticResource;
-import metardf.ui.views.repositories.model.ResourceObject;
 import metardf.core.extensions.AssistantFactory;
-import metardf.core.extensions.IFormatAssistant;
 import metardf.core.extensions.FormatAssistant;
+import metardf.core.extensions.IFormatAssistant;
 import metardf.ui.views.repositories.RepositoryView;
+import metardf.ui.views.repositories.model.ResourceObject;
 import metardf.ui.zest.Activator;
 
 public class GraphView extends ViewPart implements IZoomableWorkbenchPart{
@@ -58,8 +55,8 @@ public class GraphView extends ViewPart implements IZoomableWorkbenchPart{
 	private GraphViewer viewer;
 	private Graph graph;
 
-	private int compositeStyle = ZestStyles.CONNECTIONS_DIRECTED;
-	private int inheritanceStyle = ZestStyles.CONNECTIONS_DOT;
+	//private int compositeStyle = ZestStyles.CONNECTIONS_DIRECTED;
+	//private int inheritanceStyle = ZestStyles.CONNECTIONS_DOT;
 
 	public GraphView() {
 	}
@@ -80,7 +77,6 @@ public class GraphView extends ViewPart implements IZoomableWorkbenchPart{
 								monitor.worked(10);
 							
 								Thread.sleep(2000);
-								
 								
 								//algoritmo de recuperacion de todos los elementos
 								
@@ -212,34 +208,34 @@ public class GraphView extends ViewPart implements IZoomableWorkbenchPart{
 		manager.add(gridLayoutAction);
 	}
 	
-	private GraphNode drawGraphNode(String name){
+	/*private GraphNode drawGraphNode(String name){
 		return new GraphNode(getGraph(), SWT.NONE, name);
-	}
+	}*/
 	
-	private GraphConnection drawGraphCompositionConnection(GraphNode init, GraphNode finall){
+	/*private GraphConnection drawGraphCompositionConnection(GraphNode init, GraphNode finall){
 		return new GraphConnection(getGraph(), compositeStyle,
 		        init, finall);
 		
-		/*
+		
 		graphConnection.changeLineColor(parent.getDisplay().getSystemColor(SWT.COLOR_GREEN));
 	    // Also set a text
 	    graphConnection.setText("This is a text");
 	    graphConnection.setHighlightColor(parent.getDisplay().getSystemColor(SWT.COLOR_RED));
 	    graphConnection.setLineWidth(3);
-		 */
-	}
+		 
+	}*/
 	
-	private GraphConnection drawGraphInheritanceConnection(GraphNode init, GraphNode finall){
+	/*private GraphConnection drawGraphInheritanceConnection(GraphNode init, GraphNode finall){
 		return new GraphConnection(getGraph(), inheritanceStyle,
 		        init, finall);
-		/*
+		
 		graphConnection.changeLineColor(parent.getDisplay().getSystemColor(SWT.COLOR_GREEN));
 	    // Also set a text
 	    graphConnection.setText("This is a text");
 	    graphConnection.setHighlightColor(parent.getDisplay().getSystemColor(SWT.COLOR_RED));
 	    graphConnection.setLineWidth(3);
-		 */
-	}
+		 
+	}*/
 	
 	private void makeActions() {		
 		springLayoutAction = new Action() {

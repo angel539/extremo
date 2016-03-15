@@ -9,8 +9,6 @@ import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
 
-import org.apache.commons.lang3.StringUtils;
-
 public abstract class SemanticClass implements ISemanticClass{
 	Object id;
 	String name;
@@ -27,6 +25,12 @@ public abstract class SemanticClass implements ISemanticClass{
 		this.name = name;
 		this.id = id;
 		this.comment = description;
+	}
+	
+	public SemanticClass(Object id, String name){
+		this.name = name;
+		this.id = id;
+		this.comment = "";
 	}
 	
 	public SemanticClass() {

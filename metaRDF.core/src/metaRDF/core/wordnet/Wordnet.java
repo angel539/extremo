@@ -12,7 +12,6 @@ package metaRDF.core.wordnet;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,11 +20,8 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.ErrorDialog;
 import org.osgi.framework.Bundle;
 
 import edu.smu.tspell.wordnet.Synset;
@@ -38,26 +34,35 @@ public class Wordnet{
 	public static final String PLUGIN_ID = "metaRDF.core";
    private WordNetDatabase database = null;
    private static Wordnet INSTANCE = null;
-   private static String LOCATION = "dict";
+   //private static String LOCATION = "dict";
    
    public Wordnet(){
 	   super();
 	   
-	   Bundle bundle = Platform.getBundle(PLUGIN_ID);
-	   URL fileURL = bundle.getEntry("dict");
-	   File file = null;
+	   //Bundle bundle = Platform.getBundle(PLUGIN_ID);
+	   //URL fileURL = bundle.getEntry("dict");
+	   //File file = null;
+	   String wordnet_location = getPathDict();
+	   //File file = new File(wordnet_location);
 	   
-	   try {
-	       file = new File(FileLocator.resolve(fileURL).toURI());
-	   } catch (URISyntaxException e1) {
-	       e1.printStackTrace();
-	   } catch (IOException e1) {
-	       e1.printStackTrace();
-	   }
-	  
-	   
-	   System.setProperty("wordnet.database.dir", file.getAbsolutePath());
+	   System.setProperty("wordnet.database.dir", wordnet_location);
 	   database = WordNetDatabase.getFileInstance();
+   }
+   
+   private static String getPathDict(){
+	   Bundle plugin = Platform.getBundle(PLUGIN_ID);
+	   IPath relativeIPath = new Path("dict" + File.separator);	
+	   
+	   URL fileInPlugin = FileLocator.find(plugin, relativeIPath, null);
+	   URL srcUrl;
+		try {
+			srcUrl = FileLocator.toFileURL(fileInPlugin);
+			File src = new File(srcUrl.getPath());	
+			return src.getPath();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
    }
    
    public WordNetDatabase getDatabase() {

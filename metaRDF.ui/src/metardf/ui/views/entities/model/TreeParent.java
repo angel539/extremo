@@ -1,8 +1,7 @@
 package metardf.ui.views.entities.model;
 
 import java.util.ArrayList;
-
-import org.eclipse.ui.views.properties.IPropertySource;
+import java.util.List;
 
 public class TreeParent extends TreeObject {
 	private ArrayList<TreeObject> children;
@@ -21,6 +20,13 @@ public class TreeParent extends TreeObject {
 		children.add(child);
 		child.setParent(this);
 	}
+	
+	public void addChildrenProperties(List<DataPropertyObject> list) {
+		children.addAll(list);
+		list.forEach(c -> c.setParent(this));
+		//child.setParent(this);
+	}
+	
 	public void removeChild(TreeObject child) {
 		children.remove(child);
 		child.setParent(null);

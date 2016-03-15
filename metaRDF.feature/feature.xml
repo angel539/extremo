@@ -2,7 +2,7 @@
 <feature
       id="metaRDF.feature"
       label="metaRDF"
-      version="1.0.13.qualifier">
+      version="1.0.19.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -71,6 +71,13 @@
 
    <plugin
          id="metaRDF.ui.actions.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="metaRDF.ui.zest"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -34,7 +34,6 @@ public class EcoreObjectProperty extends ObjectProperty{
 	@Override
 	public ISemanticClass getRangeAsSemanticClass() {
 		return new EcoreSemanticClass((EClass) getRange(), ((EClass) getRange()).getName(), ((EClass) getRange()).getName());
-		//classes.add((ISemanticClass) semanticClass);
 	}
 
 	@Override

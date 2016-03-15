@@ -1,9 +1,9 @@
 package metardf.ui.views.entities;
 
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StyledString;
-import org.eclipse.jface.viewers.TreeSelection;
-import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
@@ -16,8 +16,6 @@ import metardf.ui.views.entities.model.EntityParentGroup;
 import metardf.ui.views.entities.model.FolderParent;
 import metardf.ui.views.entities.model.PropertyParent;
 import metardf.ui.views.entities.model.SearchParent;
-
-import org.eclipse.jface.viewers.IStructuredSelection;
 
 public class EntityTreeViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
 	public Image getImage(Object obj) {

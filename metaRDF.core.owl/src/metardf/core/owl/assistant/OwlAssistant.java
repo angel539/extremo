@@ -105,7 +105,7 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 			for (String entry : names){
 				for(OWLClass clazz : ontology.getClassesInSignature()){
 					String description = "";
-					String label = "";
+					// = "";
 					
 					for (OWLAnnotation annotation : clazz.getAnnotations(ontology, factory.getRDFSComment())) {
 						if (annotation.getValue() instanceof OWLLiteral) {
@@ -121,9 +121,9 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 							if(val.toString().contains(entry.toLowerCase())){
 								classes.add(new OWLSemanticClass(clazz.getIRI().getShortForm(), clazz.getIRI().toString(), description));
 								labeled = true;
-							}else{
-								label = val.getLiteral();
-							}
+							}/*else{
+								String label = val.getLiteral();
+							}*/
 						}
 					}
 					
@@ -144,7 +144,7 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 			for (Entry<String, Integer> entry : namesByRelevance.entrySet()){
 				for(OWLClass clazz : ontology.getClassesInSignature()){
 					String description = "";
-					String label = "";
+					//String label = "";
 					
 					for (OWLAnnotation annotation : clazz.getAnnotations(ontology, factory.getRDFSComment())) {
 						if (annotation.getValue() instanceof OWLLiteral) {
@@ -160,9 +160,9 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 							if(val.toString().contains(entry.getKey().toLowerCase())){
 								classes.add(new OWLSemanticClass(clazz.getIRI().getShortForm(), clazz.getIRI().toString(), description));
 								labeled = true;
-							}else{
+							}/*else{
 								label = val.getLiteral();
-							}
+							}*/
 						}
 					}
 					
@@ -324,20 +324,20 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 				//Collection<OWLClassExpression> superclasses = Searcher.sup(ontology.getSubClassAxiomsForSubClass(clazz));
 				for(OWLClassExpression superclass : superclasses){
 					if(!superclass.isAnonymous()){
-						String description = "";
-						String label = "";
+						//String description = "";
+						//String label = "";
 						
 						for (OWLAnnotation annotation : superclass.asOWLClass().getAnnotations(ontology, factory.getRDFSComment())) {
 							if (annotation.getValue() instanceof OWLLiteral) {
-								OWLLiteral val = (OWLLiteral) annotation.getValue();
-								description = val.toString();
+								//OWLLiteral val = (OWLLiteral) annotation.getValue();
+								//description = val.toString();
 							}
 						}
 
 						for (OWLAnnotation annotation : superclass.asOWLClass().getAnnotations(ontology, factory.getRDFSLabel())) {
 							if (annotation.getValue() instanceof OWLLiteral) {
-								OWLLiteral val = (OWLLiteral) annotation.getValue();
-								label = val.getLiteral();
+								//OWLLiteral val = (OWLLiteral) annotation.getValue();
+								//label = val.getLiteral();
 							}
 						}
 						
@@ -372,20 +372,20 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 			//Collection<OWLClassExpression> equivalents = EntitySearcher.getEquivalentClasses(clazz, ontology);
 			for(OWLClassExpression equivalent : equivalents){
 				if(!equivalent.isAnonymous()){
-					String description = "";
-					String label = "";
+					//String description = "";
+					//String label = "";
 					
 					for (OWLAnnotation annotation : equivalent.asOWLClass().getAnnotations(ontology, factory.getRDFSComment())) {
 						if (annotation.getValue() instanceof OWLLiteral) {
-							OWLLiteral val = (OWLLiteral) annotation.getValue();
-							description = val.toString();
+							//OWLLiteral val = (OWLLiteral) annotation.getValue();
+							//String description = val.toString();
 						}
 					}
 
 					for (OWLAnnotation annotation : equivalent.asOWLClass().getAnnotations(ontology, factory.getRDFSLabel())) {
 						if (annotation.getValue() instanceof OWLLiteral) {
-							OWLLiteral val = (OWLLiteral) annotation.getValue();
-							label = val.getLiteral();
+							//OWLLiteral val = (OWLLiteral) annotation.getValue();
+							//String label = val.getLiteral();
 						}
 					}
 					
@@ -419,20 +419,20 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 				
 				
 				if(!subclass.isAnonymous()){
-					String description = "";
-					String label = "";
+					//String description = "";
+					//String label = "";
 					
 					for (OWLAnnotation annotation : subclass.asOWLClass().getAnnotations(ontology, factory.getRDFSComment())) {
 						if (annotation.getValue() instanceof OWLLiteral) {
-							OWLLiteral val = (OWLLiteral) annotation.getValue();
-							description = val.toString();
+							//OWLLiteral val = (OWLLiteral) annotation.getValue();
+							//description = val.toString();
 						}
 					}
 
 					for (OWLAnnotation annotation : subclass.asOWLClass().getAnnotations(ontology, factory.getRDFSLabel())) {
 						if (annotation.getValue() instanceof OWLLiteral) {
-							OWLLiteral val = (OWLLiteral) annotation.getValue();
-							label = val.getLiteral();
+							//OWLLiteral val = (OWLLiteral) annotation.getValue();
+							//label = val.getLiteral();
 						}
 					}
 					

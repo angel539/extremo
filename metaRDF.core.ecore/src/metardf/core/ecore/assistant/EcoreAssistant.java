@@ -197,7 +197,12 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			List<IDataProperty> properties = new ArrayList<IDataProperty>();
 			
 			for(EAttribute attr : ((EClass) parent).getEAttributes()){
-				properties.add((IDataProperty) new EcoreDataProperty(attr, attr.getName(), attr.getEType().getName(), false, attr.getName()));
+				try{
+					properties.add((IDataProperty) new EcoreDataProperty(attr, attr.getName(), attr.getEType().getName(), false, attr.getName()));
+				}
+				catch(Exception e){
+					System.out.println("can't form a attribute" + attr.getName());
+				}
 			}
 			
 			if(supers){

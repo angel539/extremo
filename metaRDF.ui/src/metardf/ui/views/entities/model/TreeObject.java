@@ -1,11 +1,8 @@
 package metardf.ui.views.entities.model;
-import java.util.List;
-
 import org.eclipse.core.runtime.IAdaptable;
 
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
-import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 
 public class TreeObject implements IAdaptable {

@@ -24,6 +24,7 @@ public abstract class ResourceViewAction extends Action implements IResourceView
 		execute();
 	}
 	
+	@SuppressWarnings("static-access")
 	protected TreeViewer getViewer(){
 		return ((EntityView) this.view).getViewer();
 	}

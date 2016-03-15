@@ -368,7 +368,7 @@ public class RepositoryView extends ViewPart {
 					//System.out.println("en repository " + MetaRDFRepositoryManager.getInstance());
 					Class<? extends IRepositoryManager> c;
 					try {
-						c = Class.forName("metardf.core").asSubclass(IRepositoryManager.class);
+						c = Class.forName("metaRDF.core").asSubclass(IRepositoryManager.class);
 						IRepositoryManager repositoryManager = c.newInstance();
 						List<IRepository> repositories = repositoryManager.getRepositories();
 						
@@ -388,7 +388,6 @@ public class RepositoryView extends ViewPart {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}  
-					
 				}
 				else{
 				}
