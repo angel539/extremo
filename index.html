@@ -251,8 +251,16 @@
 									<li><code>metardf.core.model.impl.DataProperty</code>
 								</ul>
 							</p>
-							<p>In order to allow <code>metaRDF</code> to know the core classes have been extended they must be registered through the <code>getRegisteredTypes()</code> method in the assistant</p>
-							
+							<p>In order to give <code>metaRDF</code> information about the core classes have been extended they must be registered through the <code>getRegisteredTypes()</code> method in the assistant</p>							
+							</br>
+							<p>With the implementation 3 assistants are given to cover three of the main data entities format representation:
+								<ul>
+									<li>OWL
+									<li>RDF
+									<li>Ecore
+								</ul>
+								all of them implements the method <code>getClassesLike(Map<String, Integer> namesByRelevance)</code> which receives a map composed by the string suggested in the search and a weight of relevance. The weights are preset by the tool but they can be overwritten in this point.
+							</p>
 						</div>
 					</div>
 					
