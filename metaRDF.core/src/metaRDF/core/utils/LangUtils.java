@@ -9,16 +9,6 @@ import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 
 public class LangUtils {
-	/*public static Map<String, List<String>> getSynomins(String... words){
-		Map<String, List<String>> definitions = new HashMap<String, List<String>>();
-		
-		for(String word : words){
-			definitions.put(word, getSynonims(word));
-		}
-		
-		return definitions;
-	}*/
-	
 	public static List<String> cleanRepeated(List<String> dirtyList){
 		Set<String> hs = new HashSet<>();
 		hs.addAll(dirtyList);
@@ -27,17 +17,6 @@ public class LangUtils {
 		
 		return dirtyList;
 	}
-	
-	/*public static String[] deleteSeparatorsAndCamelCase(String word){
-		String[] spplitedByCommas = StringUtils.splitByWholeSeparator(word, ",", 0);
-		String[]
-		StringUtils.splitByCharacterTypeCamelCase(joinedCapitalize);
-		String[] spplited = StringUtils.splitByWholeSeparator(word, null, 0);
-		String joinedCapitalize = "";
-		for(String s : spplited) joinedCapitalize = joinedCapitalize + WordUtils.capitalize(s);
-		
-		return 
-	}*/
 	
 	public static List<String> cleanAndSeparateWords(String dirty){
 		List<String> cleaned = new ArrayList<String>();

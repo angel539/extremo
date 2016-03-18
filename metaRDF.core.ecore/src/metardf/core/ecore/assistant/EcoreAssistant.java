@@ -85,8 +85,6 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 		Resource resource = null;
 		List<ISemanticClass> classes = new ArrayList<ISemanticClass>();
 		
-		//System.out.println("en el asistente..." + names);
-		
 		if(ecore != null && ecore.exists()){
 			try{
 				ResourceSet resourceSet = new ResourceSetImpl(); 

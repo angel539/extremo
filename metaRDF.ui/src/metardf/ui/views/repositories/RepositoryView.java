@@ -287,7 +287,6 @@ public class RepositoryView extends ViewPart {
 		uriColumn.getColumn().setAlignment(SWT.LEFT);
 		uriColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnThreeViewLabelProvider()));
 		
-		//final Map<TreeObject, Boolean> checks = new HashMap<>();
 		viewer.addCheckStateListener(new ICheckStateListener() {
 	        @Override
 	        public void checkStateChanged(CheckStateChangedEvent event) {
@@ -306,10 +305,7 @@ public class RepositoryView extends ViewPart {
 					}
 					
 				    viewer.update(event.getElement(), null);
-				    
-				    //System.out.println("por el checked RepositoryParent..." + event.getElement() + event.getChecked());
 				}
-	        	//System.out.println("por el checked..." + event.getElement() + event.getChecked());
 	        }
 	    });
 		
@@ -365,29 +361,15 @@ public class RepositoryView extends ViewPart {
 							invisibleRoot.removeChild(treeobject);
 						}
 					}
-					//System.out.println("en repository " + MetaRDFRepositoryManager.getInstance());
-					Class<? extends IRepositoryManager> c;
-					try {
-						c = Class.forName("metaRDF.core").asSubclass(IRepositoryManager.class);
-						IRepositoryManager repositoryManager = c.newInstance();
-						List<IRepository> repositories = repositoryManager.getRepositories();
-						
-						for(IRepository repository : repositories){
-							RepositoryParent repositoryParent = new RepositoryParent(repository);
-							repositoryParent.drawResources();
-							invisibleRoot.addChild(repositoryParent);
-						}
-						viewer.refresh();
-					} catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InstantiationException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}  
+					
+					List<IRepository> repositories = RepositoryManager.getInstance().getRepositories();
+					
+					for(IRepository repository : repositories){
+						RepositoryParent repositoryParent = new RepositoryParent(repository);
+						repositoryParent.drawResources();
+						invisibleRoot.addChild(repositoryParent);
+					}
+					viewer.refresh();
 				}
 				else{
 				}

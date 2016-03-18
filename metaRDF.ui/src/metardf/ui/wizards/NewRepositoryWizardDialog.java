@@ -1,8 +1,16 @@
 package metardf.ui.wizards;
 
+import java.io.File;
+
+import org.apache.commons.io.FilenameUtils;
 import org.eclipse.jface.wizard.Wizard;
+
+import metaRDF.core.model.IResource;
 import metaRDF.core.model.impl.Repository;
 import metaRDF.core.model.impl.RepositoryManager;
+import metardf.core.extensions.AssistantFactory;
+import metardf.core.extensions.FormatAssistant;
+import metardf.core.extensions.IFormatAssistant;
 
 public class NewRepositoryWizardDialog extends Wizard {
 	NewRepositoryWizardPage newRepositoryPage;
@@ -29,8 +37,20 @@ public class NewRepositoryWizardDialog extends Wizard {
 	@Override
 	public boolean performFinish() {		
 		Repository repository = RepositoryManager.getInstance().addRepository(newRepositoryPage.getRepositoryUri(), newRepositoryPage.getRepositoryName(), newRepositoryPage.getRepositoryDescription());
-		repository.createResource(newResourcePage.getResourceUri(), newResourcePage.getResourceName(), newResourcePage.getResourceDescription());
 		
+		IResource resource = repository.createResource(newResourcePage.getResourceUri(), newResourcePage.getResourceName(), newResourcePage.getResourceDescription());
+		
+		String extensionFile = FilenameUtils.getExtension(newResourcePage.getResourceUri());
+		
+		loop: 
+		for(IFormatAssistant assistant : AssistantFactory.getInstance().getAssistances()){
+			for(String ext : ((FormatAssistant) assistant).getExtensions()){
+				if(extensionFile.compareTo(ext) == 0){
+					resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
+					break loop;
+				}
+			}
+		}
 		return true;
 	}
 }
