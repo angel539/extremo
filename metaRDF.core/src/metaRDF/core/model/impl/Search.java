@@ -1,16 +1,31 @@
 package metaRDF.core.model.impl;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.PriorityQueue;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
+import org.apache.commons.math3.distribution.UniformIntegerDistribution;
+
+import com.google.common.collect.Lists;
 
 import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISearch;
@@ -28,6 +43,19 @@ public class Search implements ISearch {
 	boolean onlyDirectSuperclasses;
 	boolean onlyDirectSubclasses;
 	boolean entitiesCompacted;
+	
+	private int relevanceR1;
+	private int relevanceR2;
+	private int relevanceR3;
+	private int relevanceR4;
+	private int relevanceR5;
+	
+	private int maxWeight;
+	private ProbabilisticDistribution distribution = ProbabilisticDistribution.UNIFORM;
+	
+	private int[] weights;
+
+	private int variance;
 	
 	TreeNode<String> searchTree;
 	/*
@@ -159,14 +187,12 @@ public class Search implements ISearch {
 	}
 	
 	private void expandLanguageTree(){
-		//ejemplo: busqueda: process, Task, DataFlow, flow --> [process; Task; DataFlow; data flow; flow]
 		String[] root = StringUtils.splitByWholeSeparator(this.searchField, ",", 0);
 		
 		this.searchTree = new TreeNode<String>();
-		this.searchTree.setData(root); // le asigno al arbol la busqueda completa... compone el nodo root
-		this.searchTree.setKind(0); // el peso para llegar aqui es 0. sin esfuerzo
+		this.searchTree.setData(root);
+		this.searchTree.setKind(0);
 		
-		// para cada uno de los datos insertados creamos un hijo...
 		for(String dataR : root){
 			TreeNode<String> dataRChild = new TreeNode<String>();
 			String[] dataRSeparated = StringUtils.splitByCharacterTypeCamelCase(dataR);
@@ -188,7 +214,6 @@ public class Search implements ISearch {
 					atomicWordNode.setKind(2);
 					dataRChild.getChildren().add(atomicWordNode);
 					
-					// a partir de aqui construimos la busqueda de wordnet	
 					Map<String, Tuple<String[], String[]>> wordnetSynsetMap = Wordnet.getInstance().getSynonymsProposal(s);
 					
 					for(Entry<String, Tuple<String[], String[]>> entry : wordnetSynsetMap.entrySet()){
@@ -208,7 +233,6 @@ public class Search implements ISearch {
 			else{
 				if(dataRChild.getData().length > 0){
 					dataRChild.setKind(2);
-					// a partir de aqui construimos la busqueda de wordnet	
 					Map<String, Tuple<String[], String[]>> wordnetSynsetMap = Wordnet.getInstance().getSynonymsProposal(dataRChild.getData()[0]);
 					
 					for(Entry<String, Tuple<String[], String[]>> entry : wordnetSynsetMap.entrySet()){
@@ -223,20 +247,12 @@ public class Search implements ISearch {
 					}
 				}
 				else{
-					dataRChild.setKind(-1); // parseado como nodo erroneo
+					dataRChild.setKind(-1);
 				}
-				// a partir de aqui construimos la busqueda de wordnet
 			}
-			
-			//this.searchTree.setKind(1);
+
 			this.searchTree.getChildren().add(dataRChild);
 		}
-		//ahora tengo un arbol donde:
-		//root -> data: process, Task, DataFlow, data flow, flow
-		//root -> children: process; Task; Data, Flow; data, flow; flow
-		
-		//toca podar el arbol en ramas que evaluen lo mismo.
-		//...
 	}
 	
 	/*private synchronized void cleanList(){
@@ -271,7 +287,6 @@ public class Search implements ISearch {
 	}
 	
 	private void cleanRepeatedBranch(TreeNode<String> parent, TreeNode<String> child) {
-		//if((parent == null) || (child == null)) return;
 		if((child.getKind() == 1) || (child.getKind() == 2)){
 			for(TreeNode<String> sibling : parent.getChildren()){
 				if(!sibling.equals(child)){
@@ -296,40 +311,27 @@ public class Search implements ISearch {
     private synchronized void cleanSynsetsWithNoSense() {
     	for(TreeNode<String> child : this.searchTree.getChildren()) 
     		cleanSynsetsWithNoSense(this.searchTree, child);
-    	
-    	//markMaxPointsAsNoValid(this.searchTree, 0);
 	}
     
-    /*private void markMaxPointsAsNoValid(TreeNode<String> root, int minLimit) {
-    	if(root == null) return;
-    	
-    	for(TreeNode<String> child : root.getChildren()) markMaxPointsAsNoValid(child, minLimit);
-    	
-    	if((root.getKind() == 3) && (root.getPoints() <= minLimit)){
-    		root.setValid(false);
-    	}
-	}*/
 
 	private void cleanSynsetsWithNoSense(TreeNode<String> parent, TreeNode<String> child){
    	 	if((child == null) || (!child.isValid())) return;
    	 	
-   	 	if(child.getKind() == 2){ // it has
+   	 	if(child.getKind() == 2){
 	   	 	for(TreeNode<String> sibling : parent.getChildren()){
 				if((!sibling.equals(child)) && (sibling.getKind() == 2)){
 					for(String data : sibling.getData()){
-						// cojo el valor del data de mis hermanos y lo comparo con la lista de sinonimos de mis significados (hijos)
-						// comparar tios con sobrinos.
-						
+
 						for(TreeNode<String> grandchild : child.getChildren()){
 							String[] synsets = grandchild.getData();
 							if(synsets != null){
 								for(String synset : synsets){
 									if(StringUtils.containsIgnoreCase(synset, data)){
-										grandchild.addPoints(40);
+										grandchild.addPoints(weights[0]);
 									}
 									
 									if(!Wordnet.getInstance().getDerivation(synset, data).isEmpty()){
-										grandchild.addPoints(30);
+										grandchild.addPoints(weights[1]);
 									}
 								}
 							}
@@ -339,7 +341,7 @@ public class Search implements ISearch {
 								String[] sppliteds = StringUtils.split(definition, " ");
 								for(String spplited : sppliteds){
 									if(StringUtils.containsOnly(StringUtils.capitalize(StringUtils.deleteWhitespace(spplited)), data)){
-										grandchild.addPoints(20);
+										grandchild.addPoints(weights[2]);
 									}
 								}
 							}
@@ -350,7 +352,7 @@ public class Search implements ISearch {
 									String[] sppliteds = StringUtils.split(example, " ");
 									for(String spplited : sppliteds){
 										if(StringUtils.containsOnly(StringUtils.capitalize(StringUtils.deleteWhitespace(spplited)), data)){
-											grandchild.addPoints(15);
+											grandchild.addPoints(weights[3]);
 										}
 									}
 								}
@@ -364,11 +366,11 @@ public class Search implements ISearch {
 								if(synsets != null){
 									for(String synset : synsets){
 										if(StringUtils.containsIgnoreCase(synset, data)){
-											grandchild.addPoints(30);
+											grandchild.addPoints(weights[0]*(variance/100));
 										}
 										
 										if(!Wordnet.getInstance().getDerivation(synset, data).isEmpty()){
-											grandchild.addPoints(20);
+											grandchild.addPoints(weights[1]*(variance/100));
 										}
 									}
 								}
@@ -378,7 +380,7 @@ public class Search implements ISearch {
 									String[] sppliteds = StringUtils.split(definition, " ");
 									for(String spplited : sppliteds){
 										if(StringUtils.containsOnly(StringUtils.capitalize(StringUtils.deleteWhitespace(spplited)), data)){
-											grandchild.addPoints(10);
+											grandchild.addPoints(weights[2]*(variance/100));
 										}
 									}
 								}
@@ -389,7 +391,7 @@ public class Search implements ISearch {
 										String[] sppliteds = StringUtils.split(example, " ");
 										for(String spplited : sppliteds){
 											if(StringUtils.containsOnly(StringUtils.capitalize(StringUtils.deleteWhitespace(spplited)), data)){
-												grandchild.addPoints(5);
+												grandchild.addPoints(weights[3]*(variance/100));
 											}
 										}
 									}
@@ -406,18 +408,17 @@ public class Search implements ISearch {
 
 	public void expand(){
 		expandLanguageTree();
-		//cleanList();
 		cleanRepeatedBranch();
 		cleanSynsetsWithNoSense();
 	}
 	
 	public synchronized Map<String, Integer> getOrderSearchesListByWeight() {
-		Map<String, Integer> searches = new HashMap<String, Integer>();
+		Map<String, Integer> searches = new TreeMap<String, Integer>();
 		
 		for(TreeNode<String> child : this.searchTree.getChildren()){
 			for(String data : child.getData()){
 		    	if(!isOnTheList(searches, data)){
-		    		searches.put(data, 1000);
+		    		searches.put(data, maxWeight*10);
 		    	}
 		    }
 		}
@@ -433,17 +434,12 @@ public class Search implements ISearch {
 		    	}
 		    }
 		}
-		/*Set<String> hs = new HashSet<>();
-		hs.addAll(searches);
-		searches.clear();
-		searches.addAll(hs);*/
 		
 		return searches;
 	}
 	
 	private boolean isOnTheList(Map<String, Integer> searches, String data) {
 		for(Entry<String, Integer> s : searches.entrySet()){
-			//if(s.compareTo(data) == 0) return true;
 			if(StringUtils.capitalize(s.getKey()).compareTo(StringUtils.capitalize(data)) == 0) return true;
 		}
 		return false;
@@ -454,15 +450,8 @@ public class Search implements ISearch {
 		PriorityQueue<TreeNode<String>> queue = new PriorityQueue<TreeNode<String>>(comparator);
 		
 		if(root == null) return queue;
-		if(!root.isValid()) return queue; // devolver la lista vacia
-		//List<TreeNode<String>> searches = new ArrayList<TreeNode<String>>();
-		/*
-		 * kind = 0: busqueda general
-		 * kind = 1: busqueda particular.
-		 * kind = 2: palabra suelta para buscar en wordnet.
-		 * kind = 3: synset de wordnet.
-		 */
-		if(root.getKind() == 3){ // es un synset con puntos.
+		if(!root.isValid()) return queue;
+		if(root.getKind() == 3){
 			if((root.getCountWordnet() > 0) || (root.getPoints() > 0)){
 				queue.add(root); 
 			}
@@ -500,34 +489,137 @@ public class Search implements ISearch {
 		List<String[]> searches = new ArrayList<String[]>();
 		return searches;
 	}
-    /*private int height(TreeNode<String> node) {
-        int height = -1;
-        if (node != null) {
-            Queue<TreeNode<String>> thisLevel = new LinkedList<TreeNode<String>>(),
-                            nextLevel = new LinkedList<TreeNode<String>>();
-            thisLevel.add(node);
-            
-            while (null != (node = thisLevel.poll())) {
-            	for(TreeNode<String> child : node.getChildren()){
-            		if(child != null) nextLevel.add(child);
-            	}
-            	
-                if (thisLevel.isEmpty()) {
-                    height++;
-                    Queue<TreeNode<String>> swapTemp = thisLevel;
-                    thisLevel = nextLevel;
-                    nextLevel = swapTemp;
-                }
-            }
-        }
-        return height;
-    }*/
+	
+	private void calculateWeights() {
+		weights = new int[4];
+		weights[0] = (relevanceR1 * maxWeight)/10;
+		weights[1] = (relevanceR2 * maxWeight)/10;
+		weights[2] = (relevanceR3 * maxWeight)/10;
+		weights[3] = (relevanceR4 * maxWeight)/10;
+		//weights[4] = (relevanceR5 * maxWeight)/10;
+		
+		/*if(distribution == ProbabilisticDistribution.UNIFORM){
+			UniformIntegerDistribution uniformIntegerDistribution = new UniformIntegerDistribution(0, maxWeight);
+			weights = uniformIntegerDistribution.sample(5);
+		}
+		if(distribution == ProbabilisticDistribution.ENUMERATED){
+			EnumeratedIntegerDistribution enumeratedIntegerDistribution = new EnumeratedIntegerDistribution();
+		}*/
+	}
 	
 	public static void main(String [] args){
-		Search search = new Search("class, instance, reference, association, type, object, feature, concept, relation, relationship", false, false);
-		search.expand();
-		Map<String, Integer> toSearch = search.getOrderSearchesListByWeight();
+		Search search = new Search("process, activity, task", false, false);
 		
-		for(Entry<String, Integer> miniList : toSearch.entrySet()) System.out.println(miniList.getValue() + "...." + miniList.getKey());
+		search.setMaxWeight(100);
+		search.setRelevanceR1(10);
+		search.setRelevanceR2(5);
+		search.setRelevanceR3(7);
+		search.setRelevanceR4(10);
+		search.setRelevanceR5(50);
+		
+		
+		search.calculateWeights();
+		search.expand();
+		
+		Map<String, Integer> toSearch = search.getOrderSearchesListByWeight();
+		Map<String, Integer> map = sortByValues(toSearch); 
+		
+		List<String> lines = new ArrayList<String>();
+		lines.add("Weights " + Arrays.toString(search.getWeights()));
+		for(Entry<String, Integer> entry : map.entrySet()){
+			lines.add("[" + entry.getValue() + "]		" + entry.getKey());
+		}
+		
+		List<String> reverseLines = Lists.reverse(lines);
+		
+		Path file = Paths.get(search.getDistribution() + ".txt");
+		try {
+			Files.write(file, reverseLines, Charset.forName("UTF-8"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	private static HashMap<String, Integer> sortByValues(Map<String, Integer> toSearch) { 
+	       List list = new LinkedList(toSearch.entrySet());
+	       
+	       Collections.sort(list, new Comparator() {
+	            public int compare(Object o1, Object o2) {
+	               return ((Comparable) ((Map.Entry) (o1)).getValue())
+	                  .compareTo(((Map.Entry) (o2)).getValue());
+	            }
+	       });
+
+	       HashMap sortedHashMap = new LinkedHashMap();
+	       for (Iterator it = list.iterator(); it.hasNext();) {
+	              Map.Entry entry = (Map.Entry) it.next();
+	              sortedHashMap.put(entry.getKey(), entry.getValue());
+	       } 
+	       return sortedHashMap;
+	}
+	
+	public int[] getWeights() {
+		return weights;
+	}
+
+	public void setWeights(int[] weights) {
+		this.weights = weights;
+	}
+	
+	public int getRelevanceR1() {
+		return relevanceR1;
+	}
+
+	public void setRelevanceR1(int relevanceR1) {
+		this.relevanceR1 = relevanceR1;
+	}
+
+	public int getRelevanceR2() {
+		return relevanceR2;
+	}
+
+	public void setRelevanceR2(int relevanceR2) {
+		this.relevanceR2 = relevanceR2;
+	}
+
+	public int getRelevanceR3() {
+		return relevanceR3;
+	}
+
+	public void setRelevanceR3(int relevanceR3) {
+		this.relevanceR3 = relevanceR3;
+	}
+
+	public int getRelevanceR4() {
+		return relevanceR4;
+	}
+
+	public void setRelevanceR4(int relevanceR4) {
+		this.relevanceR4 = relevanceR4;
+	}
+
+	public int getRelevanceR5() {
+		return relevanceR5;
+	}
+
+	public void setRelevanceR5(int relevanceR5) {
+		this.relevanceR5 = relevanceR5;
+	}
+
+	public int getMaxWeight() {
+		return maxWeight;
+	}
+
+	public void setMaxWeight(int maxWeight) {
+		this.maxWeight = maxWeight;
+	}
+
+	public ProbabilisticDistribution getDistribution() {
+		return distribution;
+	}
+
+	public void setDistribution(ProbabilisticDistribution distribution) {
+		this.distribution = distribution;
 	}
 }

@@ -1,0 +1,34 @@
+[1000]		Task
+[1000]		Process
+[1000]		Activity
+[340]		procedure
+[310]		job
+[310]		chore
+[270]		body process
+[270]		bodily process
+[270]		bodily function
+[210]		summons
+[170]		natural process
+[170]		natural action
+[140]		treat
+[140]		physical process
+[140]		outgrowth
+[140]		appendage
+[70]		work on
+[70]		work
+[70]		unconscious process
+[70]		swear out
+[70]		sue
+[70]		serve
+[70]		march
+[70]		litigate
+[70]		action
+[0]		undertaking
+[0]		project
+[0]		operation
+[0]		mental process
+[0]		labor
+[0]		cognitive process
+[0]		cognitive operation
+[0]		activeness
+Weights [100, 50, 70, 100]

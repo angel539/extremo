@@ -8,7 +8,7 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            name="metardf"
+            name="Extremo"
             id="metaRDF.ui">
       </category>
       <view
@@ -24,6 +24,14 @@
             icon="icons/hierarchy_co.gif"
             id="metardf.ui.views.EntityView"
             name="Entities">
+      </view>
+      <view
+            category="metaRDF.ui"
+            class="metardf.ui.views.searchtree.SearchTreeView"
+            icon="icons/searchtree.png"
+            id="metardf.ui.views.SearchTree"
+            name="Search Tree"
+            restorable="true">
       </view>
    </extension>
    <extension
@@ -163,6 +171,37 @@
                tab="metardf.ui.views.properties.RepositoryTab">
          </propertySection>
       </propertySections>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="metardf.ui.preferences.page.RuleWeightPreferencePage"
+            id="metaRDF.ui.preferences.page"
+            name="Extremo">
+      </page>
+   </extension>
+   <extension
+         point="metardf.core.extensions.preferences.settings">
+      <preferencessettings
+            class="metardf.ui.preferences.page.settings.AllTheSamePreferencePointSettings"
+            id="metardf.core.extensions.preferences.settings.allthesame"
+            name="All the Same">
+      </preferencessettings>
+      <preferencessettings
+            class="metardf.ui.preferences.page.settings.DefinitionsPreferencePointSettings"
+            id="metardf.core.extensions.preferences.settings.definitions"
+            name="Give preference to the defitions">
+      </preferencessettings>
+      <preferencessettings
+            class="metardf.ui.preferences.page.settings.SynonymsSharingPreferencePointSettings"
+            id="metardf.core.extensions.preferences.settings.synonymssharing"
+            name="Synonyms sharing between senses">
+      </preferencessettings>
+      <preferencessettings
+            class="metardf.ui.preferences.page.settings.UsagesPreferencePointSettings"
+            id="metardf.core.extensions.preferences.settings.usages"
+            name="Give preference to the usages">
+      </preferencessettings>
    </extension>
 
 </plugin>

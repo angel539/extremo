@@ -14,7 +14,6 @@ import metardf.ui.views.entities.model.EntityParentGroup;
 
 public class EntityGroupSelectorDNDWizardPage extends WizardPage{	
 	EntityParentGroup entityParentGroup;
-	//Composite container;
 	
 	Composite containerArea;
 	Composite containerDownArea;

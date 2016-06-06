@@ -29,7 +29,7 @@ public class ResourceListWizardDialog extends Wizard {
 	}
 	
 	public void addPages(){	
-		repositoryPage = new NewRepositoryWizardPage("Repository", "...");
+		repositoryPage = new NewRepositoryWizardPage("Repository", "Charge a list of semantic resources from a folder");
 		resourcePage = new ResourceListWizardPage("Edit Resource", "Edit the resource properties", null);	
 		addPage(repositoryPage);
 		addPage(resourcePage);
@@ -50,7 +50,6 @@ public class ResourceListWizardDialog extends Wizard {
 		Repository repository = RepositoryManager.getInstance().addRepository(repositoryPage.getRepositoryUri(), repositoryPage.getRepositoryName(), repositoryPage.getRepositoryDescription());
 		for(TableItem item : resourcePage.getTable().getSelection()){
 			IResource resource = repository.createResource(((File)item.getData()).getAbsolutePath(), ((File)item.getData()).getName(), ((File)item.getData()).getParent());
-			//System.out.println("y la seleccion es ... " + resourcePage.getComboSelection());
 			String extensionFile = FilenameUtils.getExtension(((File)item.getData()).getAbsolutePath());
 			
 			loop: 

@@ -19,7 +19,7 @@ public class SearchEntityWizardDialog extends Wizard {
 	}
 	
 	public void addPages(){	
-		searchPage = new SearchEntityWizardPage("Search Entity", "Searching...");	
+		searchPage = new SearchEntityWizardPage("Search Entity", "Enter some words. The system will find you the best semantic classes hold in your repositories.");	
 		addPage(searchPage);			
 	}
 

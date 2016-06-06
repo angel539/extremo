@@ -46,8 +46,6 @@ public abstract class SemanticClass implements ISemanticClass{
 		return name;
 	}
 
-
-
 	@Override
 	public String getDescription() {
 		return comment;

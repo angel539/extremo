@@ -41,7 +41,7 @@ public class TreeObject implements IAdaptable {
 		}
 		
 		if(element instanceof IObjectProperty){
-			this.name = this.name + " : " + ((IObjectProperty) element).getRangeAsSemanticClass().getName();
+			this.name = this.name + " : " + ((IObjectProperty) element).getRange().getName();
 		}
 	}
 	

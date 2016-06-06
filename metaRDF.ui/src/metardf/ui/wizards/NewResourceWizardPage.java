@@ -95,7 +95,7 @@ public class NewResourceWizardPage extends WizardPage {
 
 	    uri = new Text(container, SWT.BORDER | SWT.SINGLE);
 	    if(resource != null){
-	    	uri.setText(resource.getIdToString());
+	    	uri.setText((String)resource.getId());
 	    }else{
 	    	uri.setText("");
 	    }

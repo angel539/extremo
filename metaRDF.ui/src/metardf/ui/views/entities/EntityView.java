@@ -49,11 +49,11 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
 import metaRDF.core.model.IRepository;
 import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
+import metaRDF.core.model.impl.ProbabilisticDistribution;
 import metaRDF.core.model.impl.RepositoryManager;
 import metaRDF.core.model.impl.Search;
 import metaRDF.core.model.impl.SemanticClass;
@@ -111,13 +111,11 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		viewer = tree.getViewer();
 		viewer.setContentProvider(new EntityTreeViewContentProvider(invisibleRoot, getViewSite()));
 		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new EntityTreeViewLabelProvider()));
-		//viewer.setSorter(new NameSorter());
 	
 		viewer.setInput(getViewSite());
 		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "metaRDF.ui.viewer");
 		
-		//permite a la view mandar informacion a la vista de propiedades
 		getSite().setSelectionProvider(viewer);
 		
 		DragSource ds = new DragSource(viewer.getTree(), DND.DROP_COPY);
@@ -127,30 +125,12 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 					String idToString;
 					
 					@Override
-					public String getIdToString() {
-						// TODO Auto-generated method stub
+					public String getId() {
 						return this.idToString;
-					}
-
-					@Override
-					public void setIdToString(String idString) {
-						this.idToString = idString;
-					}
-					
+					}				
 				}
 			
 		     public void dragSetData(DragSourceEvent event) {
-		    	 /*IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
-		    	 ISemanticElement[] data = new ISemanticElement[selection.size()];
-		    	 
-		    	 for(int i=0; i<selection.size(); i++){
-		    		 if(selection.toArray()[i] instanceof TreeObject){
-		    			 data[i] = ((TreeObject) selection.toArray()[i]).getSemanticElement();
-		    		 }
-		    	 }
-		    	 
-		    	 event.data = data;*/
-		    	 
 		    	 IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
 		    	 ISemanticElement[] data = new ISemanticElement[selection.size()];
 		    	 
@@ -168,22 +148,16 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		    		 }
 		    		 
 		    		 if(selection.toArray()[i] instanceof EntityParentGroup){
-		    			 //List<ISemanticClass> semanticClasses = ((EntityParentGroup) selection.toArray()[i]).getSemanticClasses();
 		    			 DragSemanticClass dragSemanticClass = new DragSemanticClass();
 		    			 dragSemanticClass.setName(((EntityParentGroup) selection.toArray()[i]).getName());
 		    			 
 		    			 WizardDialog wizardDialog = new WizardDialog(null, new EntityGroupSelectorWizardDialog((EntityParentGroup) selection.toArray()[i], dragSemanticClass));
 				    	 if (wizardDialog.open() == Window.OK) {
-				    		 //if(searchOptions != null) searchAndRefreshView(searchOptions);
 				    	 }
 		    		 }
 		    	 }
 		    	 
 		    	 event.data = data;
-		    	 /*WizardDialog wizardDialog = new WizardDialog(null, new SearchEntityWizardDialog(searchOptions));
-		    	 if (wizardDialog.open() == Window.OK) {
-		    		 if(searchOptions != null) searchAndRefreshView(searchOptions);
-		    	 }*/
 		     }
 		  });
 		
@@ -223,18 +197,6 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		filterEntities.setText("Show main entities only");
 		filterEntities.setToolTipText("");
 		filterEntities.setImageDescriptor(Activator.getImageDescriptor("icons/filter_top_level.gif"));
-		
-		/*filterEntitiesWithAttrs = new Action() {
-			public void run() {
-				ViewerFilter[] filters = {new EntityWithAttrsFilter()};
-				viewer.setFilters(filters);
-				viewer.refresh();
-			}
-		};
-		
-		filterEntitiesWithAttrs.setText("Show entities with attrs");
-		filterEntitiesWithAttrs.setToolTipText("");
-		filterEntitiesWithAttrs.setImageDescriptor(Activator.getImageDescriptor("icons/filter_properties.gif"));*/
 	}
 	
 	private void invokeFilters() {
@@ -294,7 +256,6 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(searchAction);
-		//manager.add(wordnetLocation);
 	}
 
 	private void fillLocalPullDown(IMenuManager manager) {
@@ -324,14 +285,12 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 			
 			for(IConfigurationElement extension : extensions){
 				if(extension.getName().compareTo("editordrop") == 0){
-					//System.out.println("hemos llegado a la extension..." + extension.getAttribute("class"));
 					GraphityEditorTransferDropTargetListener graphityDrop;
 					try{
 						graphityDrop = (GraphityEditorTransferDropTargetListener) extension.createExecutableExtension("class");
 						graphicalViewer.addDropTargetListener(graphityDrop);
 					}
 					catch(CoreException e){
-						//System.out.println("Creating action in editor exception");
 					}
 				}	
 			}
@@ -401,7 +360,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 			}
 		};
 		searchAction.setText("Search");
-		searchAction.setToolTipText("");
+		searchAction.setToolTipText("Open the search action wizard");
 		searchAction.setImageDescriptor(Activator.getImageDescriptor("icons/search.png"));
 		
 		expandAction = new Action(){
@@ -432,6 +391,13 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		if((repositoryManager!=null) && (repositoryManager.getRepositories()!=null) && (repositoryManager.getRepositories().size() > 0)){
 			Search searchOptions = new Search();
 			
+			searchOptions.setRelevanceR1(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R1"));
+			searchOptions.setRelevanceR2(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R2"));
+			searchOptions.setRelevanceR3(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R3"));
+			searchOptions.setRelevanceR4(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R4"));
+			searchOptions.setRelevanceR5(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R5"));
+			searchOptions.setMaxWeight(Activator.getDefault().getPreferenceStore().getInt("MAX_WEIGHT"));
+			
 			WizardDialog wizardDialog = new WizardDialog(null, new SearchEntityWizardDialog(searchOptions));
 			if (wizardDialog.open() == Window.OK) {
 				if(searchOptions != null) searchAndRefreshView(searchOptions);
@@ -441,18 +407,8 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 	
 	private static boolean searchAndRefreshView(Search searchOptions){
 		SearchParent searchParent = createSearchParent(searchOptions.getSearchField(), searchOptions);
+		
 		List<ISemanticClass> searchResults = searchInAssistances(searchOptions);
-		
-		/*
-		 * for(ISemanticElement entity : searchResults){
-			if(entity instanceof ISemanticClass){
-				EntityParent parent = new EntityParent((ISemanticClass) entity);
-				EntityTreeViewDrawingProvider.drawEntityParentContent(parent);
-				searchParent.addChild(parent);
-			}	
-		}*/
-		
-		//solucion agrupada
 		Map<String, List<ISemanticClass>> semanticElementsGrouped = groupSemanticClasses(searchResults);
 		
 		for(Entry<String, List<ISemanticClass>> entrySemanticElementsGrouped : semanticElementsGrouped.entrySet()){
@@ -502,43 +458,6 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 	private static Map<String, List<ISemanticClass>> groupSemanticClasses(List<ISemanticClass> semanticElements){ 
 		return semanticElements.stream().collect(Collectors.groupingBy(w -> w.getName()));
 	}
-	
-	/*private static Map<String, List<IDataProperty>> groupDataProperties(List<IDataProperty> dataproperties){ 
-		return dataproperties.stream().collect(Collectors.groupingBy(w -> w.getName()));
-	}*/
-	
-	/*private static Map<String, List<IObjectProperty>> groupObjectProperties(List<IObjectProperty> dataproperties){ 
-		return dataproperties.stream().collect(Collectors.groupingBy(w -> w.getName()));
-	}*/
-	
-	/*private static List<ISemanticClass> searchInAssistances(String candidate) {
-		List<ISemanticClass> searchResults = new ArrayList<ISemanticClass>();
-		
-		RepositoryManager repositoryManager = RepositoryManager.getInstance();
-		List<IFormatAssistant> assistances = AssistantFactory.getInstance().getAssistances();
-		//searching
-		for(IRepository repository : repositoryManager.getRepositories()){    
-			for(IResource resource : repository.getResources()){
-				if((resource instanceof SemanticResource) && (resource.isActive())){			
-					for(IFormatAssistant assistant : assistances){
-						if((resource.isAlive()) && (resource.getAssistant() != null)){
-							if(((FormatAssistant)assistant).getNameExtension().compareTo(resource.getAssistant())==0){
-								if((resource != null) && (resource instanceof SemanticResource) && (assistant.load((SemanticResource) resource))){	
-									List<ISemanticClass> entities = assistant.getClassesLike(candidate);
-									for(ISemanticClass entity : entities){
-										AssistantFactory.defineEntity(assistant, entity);
-										searchResults.add(entity);
-									}
-								}
-							}
-						}
-					}
-				}	
-			}		
-		}
-		
-		return searchResults;
-	}*/
 
 	private static SearchParent createSearchParent(String search, Search searchParameters) {
 		SearchParent searchParent = new SearchParent(search, searchParameters);
@@ -553,7 +472,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 			if(!isOnTheTree((EntityParent) obj)){
 				RepositoryManager repositoryManager = RepositoryManager.getInstance();
 				List<IFormatAssistant> assistances = AssistantFactory.getInstance().getAssistances();
-				//searching
+				
 				for(IRepository repository : repositoryManager.getRepositories()){    
 					for(IResource resource : repository.getResources()){
 						if(resource instanceof SemanticResource){			
@@ -561,7 +480,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 								if((resource.isAlive()) && (resource.getAssistant() != null)){
 									if(((FormatAssistant)assistant).getNameExtension().compareTo(resource.getAssistant())==0){
 										if((resource instanceof SemanticResource) && (assistant.load((SemanticResource) resource))){	
-											AssistantFactory.completeSemanticClassProperties(assistant, ((EntityParent) obj).getSemanticElement());
+											AssistantFactory.completeSemanticClassProperties(assistant, (ISemanticClass)((EntityParent) obj).getSemanticElement());
 										}
 									}
 								}
@@ -593,9 +512,6 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		while((((TreeParent) element).getParent() != getRoot()) && (!onTheTree)){
 			for(TreeObject child : ((TreeParent) element).getParent().getChildren()){
 				if((child instanceof EntityParent) && (child!=obj)){
-					if(((EntityParent) child).getSemanticElement().getIdToString().compareTo(((EntityParent) obj).getSemanticElement().getIdToString())==0){
-						onTheTree = true;
-					}	
 				}
 			}
 			element = ((TreeParent) element).getParent();

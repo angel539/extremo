@@ -27,7 +27,8 @@ Bundle-ClassPath: core.jar,
  lib/trove4j-3.0.3.jar,
  lib/commons-lang3-3.4.jar,
  lib/commons-collections4-4.1.jar,
- dict/
+ dict/,
+ lib/commons-math3-3.6.1.jar
 Export-Package: com.clarkparsia.owlapi.explanation,
  com.clarkparsia.owlapi.explanation.io,
  com.clarkparsia.owlapi.explanation.util,

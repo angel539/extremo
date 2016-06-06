@@ -87,10 +87,10 @@ public class SemanticResource implements IResource{
 		this.description = description;
 	}
 
-	@Override
+	/*@Override
 	public String getIdToString() {
 		return getId().toString();
-	}
+	}*/
 
 	public String getAssistant() {
 		return assistant;
@@ -101,9 +101,9 @@ public class SemanticResource implements IResource{
 	}
 
 
-	@Override
+	/*@Override
 	public void setIdToString(String idString) {
-	}
+	}*/
 
 
 	@Override

@@ -239,7 +239,7 @@ public class RepositoryView extends ViewPart {
 			
 			if (element instanceof ResourceObject) {
 				ResourceObject resourceObject = (ResourceObject) element;
-				StyledString styledString = new StyledString(resourceObject.getResource().getIdToString());
+				StyledString styledString = new StyledString((String)resourceObject.getResource().getId());
 				return styledString;
 			}
 			

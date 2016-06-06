@@ -39,13 +39,10 @@ public class Wordnet{
    public Wordnet(){
 	   super();
 	   
-	   //Bundle bundle = Platform.getBundle(PLUGIN_ID);
-	   //URL fileURL = bundle.getEntry("dict");
-	   //File file = null;
-	   String wordnet_location = getPathDict();
-	   //File file = new File(wordnet_location);
+	   //String wordnet_location = getPathDict();
+	   //System.setProperty("wordnet.database.dir", wordnet_location);
+	   System.setProperty("wordnet.database.dir", "/Users/angel/Desktop/workspace-miso/metaRDF.core/dict");
 	   
-	   System.setProperty("wordnet.database.dir", wordnet_location);
 	   database = WordNetDatabase.getFileInstance();
    }
    

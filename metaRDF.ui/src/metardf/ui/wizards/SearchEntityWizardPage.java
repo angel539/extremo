@@ -28,7 +28,7 @@ public class SearchEntityWizardPage extends WizardPage {
 		super(pageName);
 		setTitle(pageName);
 		setDescription(pageDescription);
-		setImageDescriptor(Activator.getImageDescriptor("icons/find.png"));
+		setImageDescriptor(Activator.getImageDescriptor("icons/searchBig.png"));
 	}
 
 	@Override

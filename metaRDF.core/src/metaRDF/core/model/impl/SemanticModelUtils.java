@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import metaRDF.core.model.IDataProperty;
-import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 
@@ -53,10 +52,10 @@ public class SemanticModelUtils {
 		return element1.getName().equals(element2.getName());
 	}
 	
-	public boolean compareObjectPropertiesPointer(IObjectProperty property1, IObjectProperty property2){
+	/*public boolean compareObjectPropertiesPointer(IObjectProperty property1, IObjectProperty property2){
 		return property1.getRangeAsSemanticClass().getName().
 				equals(property2.getRangeAsSemanticClass().getName());
-	}
+	}*/
 	
 	public boolean compareDataPropertyType(IDataProperty dataProperty1, IDataProperty dataProperty2){
 		return dataProperty1.getType().equals(dataProperty2.getType());

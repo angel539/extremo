@@ -46,7 +46,7 @@ public class SemanticElementPropertySource implements IPropertySource {
 		
 		if(semanticElement instanceof ISemanticClass){
 			stringRepositoryName = ((ISemanticClass) semanticElement).getResourceFrom().getName();
-			stringRepositoryUri = ((ISemanticClass) semanticElement).getResourceFrom().getIdToString();
+			stringRepositoryUri = (String)((ISemanticClass) semanticElement).getResourceFrom().getId();
 		}
 	}
 	

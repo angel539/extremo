@@ -1,7 +1,5 @@
 package metardf.ui.wizards;
 
-import java.io.File;
-
 import org.apache.commons.io.FilenameUtils;
 import org.eclipse.jface.wizard.Wizard;
 

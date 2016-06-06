@@ -40,20 +40,22 @@ public class EntityTreeViewDrawingProvider {
 	public static void drawSubclasses(EntityParent parent){
 		int subClassesCount = 0;
 
-		if(parent.getSemanticElement() instanceof ISemanticClass){
-			subClassesCount = subClassesCount + ((ISemanticClass) parent.getSemanticElement()).getSubclasses().size();
-		}
-		if(subClassesCount > 0){
-			FolderParent subsChild = new FolderParent("subs");
-			
+		if(parent != null && parent.getSemanticElement() != null){
 			if(parent.getSemanticElement() instanceof ISemanticClass){
-				for(ISemanticClass subClass : ((ISemanticClass) parent.getSemanticElement()).getSubclasses()){
-					EntityParent entitySubClass = new EntityParent(subClass);
-					subsChild.addChild(entitySubClass);
-				}
+				subClassesCount = subClassesCount + ((ISemanticClass) parent.getSemanticElement()).getSubclasses().size();
 			}
-			
-			parent.addChild(subsChild);
+			if(subClassesCount > 0){
+				FolderParent subsChild = new FolderParent("subs");
+				
+				if(parent.getSemanticElement() instanceof ISemanticClass){
+					for(ISemanticClass subClass : ((ISemanticClass) parent.getSemanticElement()).getSubclasses()){
+						EntityParent entitySubClass = new EntityParent(subClass);
+						subsChild.addChild(entitySubClass);
+					}
+				}
+				
+				parent.addChild(subsChild);
+			}
 		}
 		
 	}
@@ -61,24 +63,23 @@ public class EntityTreeViewDrawingProvider {
 	public static void drawReferences(EntityParent parent){
 		int referencesCount = 0;
 		
-		if(parent.getSemanticElement() instanceof ISemanticClass){
-			referencesCount = referencesCount + ((ISemanticClass) parent.getSemanticElement()).getReferences().size();
-		}
-		if(referencesCount > 0 ){
-			FolderParent referencesChild = new FolderParent("references");
-			
+		if(parent != null && parent.getSemanticElement() != null){
 			if(parent.getSemanticElement() instanceof ISemanticClass){
-		
-				for(IObjectProperty reference : ((ISemanticClass) parent.getSemanticElement()).getReferences()){
-					PropertyParent entitySuper = new PropertyParent(reference);
-					referencesChild.addChild(entitySuper);
-					
-					EntityParent entityReference = new EntityParent(reference.getRangeAsSemanticClass());
-					entitySuper.addChild(entityReference);
-				}
+				referencesCount = referencesCount + ((ISemanticClass) parent.getSemanticElement()).getReferences().size();
 			}
+			if(referencesCount > 0 ){
+				FolderParent referencesChild = new FolderParent("references");
+				
+				if(parent.getSemanticElement() instanceof ISemanticClass){
 			
-			parent.addChild(referencesChild);
+					for(IObjectProperty reference : ((ISemanticClass) parent.getSemanticElement()).getReferences()){
+						PropertyParent entitySuper = new PropertyParent(reference);
+						referencesChild.addChild(entitySuper);
+					}
+				}
+				
+				parent.addChild(referencesChild);
+			}
 		}
 		
 	}
@@ -86,20 +87,22 @@ public class EntityTreeViewDrawingProvider {
 	private static void drawProperties(EntityParent parent){
 		int propertiesCount = 0;
 		
-		if(parent.getSemanticElement() instanceof ISemanticClass){
-			propertiesCount = propertiesCount + ((ISemanticClass) parent.getSemanticElement()).getProperties().size();
-		}
-		if(propertiesCount > 0){
-			AttrFolderParent referencesChild = new AttrFolderParent("attributes");
-			
+		if(parent != null && parent.getSemanticElement() != null){
 			if(parent.getSemanticElement() instanceof ISemanticClass){
-				for(IDataProperty attribute : ((ISemanticClass) parent.getSemanticElement()).getProperties()){
-					DataPropertyObject entitySuper = new DataPropertyObject(attribute);
-					referencesChild.addChild(entitySuper);
-				}
+				propertiesCount = propertiesCount + ((ISemanticClass) parent.getSemanticElement()).getProperties().size();
 			}
-			
-			parent.addChild(referencesChild);
+			if(propertiesCount > 0){
+				AttrFolderParent referencesChild = new AttrFolderParent("attributes");
+				
+				if(parent.getSemanticElement() instanceof ISemanticClass){
+					for(IDataProperty attribute : ((ISemanticClass) parent.getSemanticElement()).getProperties()){
+						DataPropertyObject entitySuper = new DataPropertyObject(attribute);
+						referencesChild.addChild(entitySuper);
+					}
+				}
+				
+				parent.addChild(referencesChild);
+			}
 		}
 	}
 }

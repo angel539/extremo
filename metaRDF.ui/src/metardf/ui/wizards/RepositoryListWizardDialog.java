@@ -17,8 +17,8 @@ public class RepositoryListWizardDialog extends Wizard {
 	}
 	
 	public void addPages(){	
-		repositoryNewPage = new NewRepositoryWizardPage("Repository", "...");
-		resourcePage = new RepositoryListWizardPage("Edit Resource", "Edit the resource properties");	
+		repositoryNewPage = new NewRepositoryWizardPage("Repository folder", "Charge a folder with semantic resources");
+		resourcePage = new RepositoryListWizardPage("Edit Resource", "Edit the resource properties");
 		addPage(resourcePage);			
 	}
 

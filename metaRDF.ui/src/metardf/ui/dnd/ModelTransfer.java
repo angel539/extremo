@@ -48,7 +48,7 @@ public class ModelTransfer extends ByteArrayTransfer {
 							writeOut.writeInt(nameBuffer.length);
 							writeOut.write(nameBuffer);
 							
-							byte[] idToStringBuffer = ((ISemanticClass) semanticElement).getIdToString().getBytes();
+							byte[] idToStringBuffer = ((String) ((ISemanticClass) semanticElement).getId()).getBytes();
 							writeOut.writeInt(idToStringBuffer.length);
 							writeOut.write(idToStringBuffer);
 							
@@ -63,7 +63,7 @@ public class ModelTransfer extends ByteArrayTransfer {
 							writeOut.writeInt(nameBuffer.length);
 							writeOut.write(nameBuffer);
 							
-							byte[] idToStringBuffer = ((IObjectProperty) semanticElement).getIdToString().getBytes();
+							byte[] idToStringBuffer = ((String) ((IObjectProperty) semanticElement).getId()).getBytes();
 							writeOut.writeInt(idToStringBuffer.length);
 							writeOut.write(idToStringBuffer);
 							
@@ -78,7 +78,7 @@ public class ModelTransfer extends ByteArrayTransfer {
 							writeOut.writeInt(nameBuffer.length);
 							writeOut.write(nameBuffer);
 							
-							byte[] idToStringBuffer = ((IDataProperty) semanticElement).getIdToString().getBytes();
+							byte[] idToStringBuffer = ((String) ((IDataProperty) semanticElement).getId()).getBytes();
 							writeOut.writeInt(idToStringBuffer.length);
 							writeOut.write(idToStringBuffer);
 							
@@ -140,7 +140,7 @@ public class ModelTransfer extends ByteArrayTransfer {
 								Object semanticObject = loadReflectiveClassFromExternalBundle(new String(className));
 								if(semanticObject instanceof ISemanticClass){
 									((ISemanticClass) semanticObject).setName(new String(name));
-									((ISemanticClass) semanticObject).setIdToString(new String(idToString));
+									((ISemanticClass) semanticObject).setId(new String(idToString));
 									((ISemanticClass) semanticObject).setDescription(new String(idDescription));
 									
 									semanticElement.add((ISemanticClass)semanticObject);
@@ -156,7 +156,7 @@ public class ModelTransfer extends ByteArrayTransfer {
 								Object objectObject = loadReflectiveClassFromExternalBundle(new String(className));
 								if(objectObject instanceof IObjectProperty){
 									((IObjectProperty) objectObject).setName(new String(name));
-									((IObjectProperty) objectObject).setIdToString(new String(idToString));
+									((IObjectProperty) objectObject).setId(new String(idToString));
 									((IObjectProperty) objectObject).setDescription(new String(idDescription));
 									
 									
@@ -175,7 +175,7 @@ public class ModelTransfer extends ByteArrayTransfer {
 								Object dataObject = loadReflectiveClassFromExternalBundle(new String(className));
 								if(dataObject instanceof IDataProperty){
 									((IDataProperty) dataObject).setName(new String(name));
-									((IDataProperty) dataObject).setIdToString(new String(idToString));
+									((IDataProperty) dataObject).setId(new String(idToString));
 									((IDataProperty) dataObject).setDescription(new String(idDescription));
 									
 									semanticElement.add((IDataProperty)dataObject);
