@@ -1,0 +1,51 @@
+import metardf.ui.dnd.GraphicalViewer;
+import metardf.ui.dnd.GraphityEditorTransferDropTargetListener;
+
+public class JesusitoTargetListener extends GraphityEditorTransferDropTargetListener {
+
+	public JesusitoTargetListener() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void validate() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void addElement() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setGraphicalViewer(GraphicalViewer viewer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public GraphicalViewer getGraphicalViewer() {
+		
+		return null;
+	}
+
+	@Override
+	public void setGraphicalViewer(org.eclipse.gef.GraphicalViewer viewer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public org.eclipse.gef.GraphicalViewer getGraphicalViewer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	protected void handleDrop() {
+		super.handleDrop();
+	}
+
+}
