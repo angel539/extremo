@@ -48,10 +48,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.part.ViewPart;
-import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
 import metaRDF.core.model.IRepository;
 import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
@@ -68,8 +65,6 @@ import metardf.ui.dnd.GraphityEditorTransferDropTargetListener;
 
 import metardf.ui.extensions.ExtremoViewPartAction;
 
-import metardf.ui.views.entities.filters.EntityFilter;
-import metardf.ui.views.entities.filters.ShowAllFilter;
 import metardf.ui.views.entities.model.EntityParent;
 import metardf.ui.views.entities.model.EntityParentGroup;
 import metardf.ui.views.entities.model.SearchParent;
@@ -94,8 +89,6 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 	
 	private Action searchAction;
 	private Action expandAction;
-	private Action filterEntities;
-	private Action filterShowAll;
 	
 	private static TreeParent invisibleRoot = new TreeParent("");
 	
@@ -204,7 +197,6 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 		     }
 		  });*/
 		
-		defaultFilteringActions();
 		invokeActions();
 		invokeFilters();
 		invokeEditors();
@@ -214,32 +206,6 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 		
 		EntityViewViewerComparator comparator = new EntityViewViewerComparator();
 		viewer.setComparator(comparator);
-	}
-	
-	private void defaultFilteringActions() {
-		filterShowAll = new Action() {
-			public void run() {
-				ViewerFilter[] filters = {new ShowAllFilter()};
-				viewer.setFilters(filters);
-				viewer.refresh();
-			}
-		};
-		
-		filterShowAll.setText("Show all");
-		filterShowAll.setToolTipText("");
-		filterShowAll.setImageDescriptor(Activator.getImageDescriptor("icons/alpha_mode.gif"));
-		
-		filterEntities = new Action() {
-			public void run() {
-				ViewerFilter[] filters = {new EntityFilter()};
-				viewer.setFilters(filters);
-				viewer.refresh();
-			}
-		};
-		
-		filterEntities.setText("Show main entities only");
-		filterEntities.setToolTipText("");
-		filterEntities.setImageDescriptor(Activator.getImageDescriptor("icons/filter_top_level.gif"));
 	}
 	
 	private void invokeFilters() {
@@ -293,17 +259,11 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 	
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
-		fillLocalPullDown(bars.getMenuManager());
 		fillLocalToolBar(bars.getToolBarManager());
 	}
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(searchAction);
-	}
-
-	private void fillLocalPullDown(IMenuManager manager) {
-		manager.add(filterShowAll);
-		manager.add(filterEntities);
 	}
 	
 	private void hookDoubleClickAction() {
