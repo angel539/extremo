@@ -17,13 +17,15 @@ public interface IFormatAssistant {
     public List<ISemanticClass> getAllClasses();
     public List<ISemanticClass> getClassesLike(String... names);
     public List<ISemanticClass> getClassesLike(Map<String, Integer> namesByRelevance);
-    public List<IDataProperty> getDataProperties(Object parent, boolean supers, boolean equivs);
-    public List<IObjectProperty> getObjectProperties(Object parent, boolean supers, boolean equivs);
-    public List<ISemanticClass> getSiblings(Object parent);
-    public List<ISemanticClass> getRelatedClasses(Object parent, boolean supers, boolean equivs);
-    public List<ISemanticClass> getSuper(Object parent, boolean direct);
-    public List<ISemanticClass> getSub(Object parent, boolean direct);
-    public List<IObjectProperty> getPath(Object entityA, Object entityB);
-    public IObjectProperty getInverseProperty (Object parent, Object property);
+    public List<IDataProperty> getDataProperties(ISemanticClass parent, boolean supers, boolean equivs);
+    public List<IObjectProperty> getObjectProperties(ISemanticClass parent, boolean supers, boolean equivs);
+    public List<ISemanticClass> getSiblings(ISemanticClass parent);
+    public List<ISemanticClass> getRelatedClasses(ISemanticClass parent, boolean supers, boolean equivs);
+    public List<ISemanticClass> getSuper(ISemanticClass parent, boolean direct);
+    public List<ISemanticClass> getSub(ISemanticClass parent, boolean direct);
+    public List<IObjectProperty> getPath(ISemanticClass entityA, ISemanticClass entityB);
+    public IObjectProperty getInverseProperty (ISemanticClass parent, IObjectProperty property);
     public List<Class<? extends ISemanticElement>> getRegisteredTypes();
+    
+    //public ISemanticClass asSemanticClass(Object entity);
 }

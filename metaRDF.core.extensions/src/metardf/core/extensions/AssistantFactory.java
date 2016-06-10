@@ -168,30 +168,26 @@ public class AssistantFactory {
 		this.searches.add(search);
 	}
 
-	public static void completeSemanticClassProperties(IFormatAssistant assistant, ISemanticElement entity){
-		if(entity instanceof ISemanticClass){
-			List<ISemanticClass> superclasses = assistant.getSuper(entity.getId(), false);
-			((ISemanticClass) entity).setSuperclasses(superclasses);
-			List<ISemanticClass> subclasses = assistant.getSub(entity.getId(), false);
-			((ISemanticClass) entity).setSubclasses(subclasses);
-			List<IObjectProperty> references = assistant.getObjectProperties(entity.getId(), true, true);
-			((ISemanticClass) entity).setReferences(references);
-			List<IDataProperty> properties = assistant.getDataProperties(entity.getId(), true, true);
-			((ISemanticClass) entity).setProperties(properties);
-		}
+	public static void completeSemanticClassProperties(IFormatAssistant assistant, ISemanticClass entity){
+		List<ISemanticClass> superclasses = assistant.getSuper(entity, false);
+		((ISemanticClass) entity).setSuperclasses(superclasses);
+		List<ISemanticClass> subclasses = assistant.getSub(entity, false);
+		((ISemanticClass) entity).setSubclasses(subclasses);
+		List<IObjectProperty> references = assistant.getObjectProperties(entity, true, true);
+		((ISemanticClass) entity).setReferences(references);
+		List<IDataProperty> properties = assistant.getDataProperties(entity, true, true);
+		((ISemanticClass) entity).setProperties(properties);
 	}
 	
-	public static void completeSemanticClassProperties(IFormatAssistant assistant, ISemanticElement entity, ISearch search){
-		if(entity instanceof ISemanticClass){
-			List<ISemanticClass> superclasses = assistant.getSuper(entity.getId(), false);
-			((ISemanticClass) entity).setSuperclasses(superclasses);
-			List<ISemanticClass> subclasses = assistant.getSub(entity.getId(), false);
-			((ISemanticClass) entity).setSubclasses(subclasses);
-			List<IObjectProperty> references = assistant.getObjectProperties(entity.getId(), search.isFromSupers(), search.isFromEquivs());
-			((ISemanticClass) entity).setReferences(references);
-			List<IDataProperty> properties = assistant.getDataProperties(entity.getId(), search.isFromSupers(), search.isFromEquivs());
-			((ISemanticClass) entity).setProperties(properties);
-		}
+	public static void completeSemanticClassProperties(IFormatAssistant assistant, ISemanticClass entity, ISearch search){
+		List<ISemanticClass> superclasses = assistant.getSuper(entity, false);
+		((ISemanticClass) entity).setSuperclasses(superclasses);
+		List<ISemanticClass> subclasses = assistant.getSub(entity, false);
+		((ISemanticClass) entity).setSubclasses(subclasses);
+		List<IObjectProperty> references = assistant.getObjectProperties(entity, search.isFromSupers(), search.isFromEquivs());
+		((ISemanticClass) entity).setReferences(references);
+		List<IDataProperty> properties = assistant.getDataProperties(entity, search.isFromSupers(), search.isFromEquivs());
+		((ISemanticClass) entity).setProperties(properties);
 	}
 
 	

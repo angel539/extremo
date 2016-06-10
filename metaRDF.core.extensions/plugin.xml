@@ -2,5 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="metardf.core.extensions.assistant" name="metardf.core.extensions.assistant" schema="schema/metardf.core.extensions.assistant.exsd"/>
+   <extension-point id="metardf.core.extensions.preferences.settings" name="metardf.core.extensions.preferences.settings" schema="schema/metardf.core.extensions.preferences.settings.exsd"/>
 
 </plugin>

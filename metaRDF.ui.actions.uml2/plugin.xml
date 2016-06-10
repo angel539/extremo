@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="extremo.ui.extensions.actions">
+      <action
+            class="metardf.ui.actions.uml2.action.CreateClass"
+            icon="icons/geometry.png"
+            id="metaRDF.ui.actions.uml2.action.CreateClass"
+            name="CreateUMLClass"
+            position="menumanager"
+            view="entities">
+      </action>
+   </extension>
+
+</plugin>
