@@ -5,8 +5,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
 
-import metardf.ui.dnd.ModelTransfer;
-
 public class EntityDragSourceListener implements DragSourceListener {
 	private final EntityTreeViewer viewer;
 	
@@ -23,9 +21,9 @@ public class EntityDragSourceListener implements DragSourceListener {
 	    IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
 	    if(selection.getFirstElement() instanceof IAdaptable){
 	    	IAdaptable data = (IAdaptable) selection.getFirstElement();	
-		    if (ModelTransfer.getInstance().isSupportedType(event.dataType)) {
+		    //if (ExtremoModelTransfer.getInstance().isSupportedType(event.dataType)) {
 		    	event.data = data;
-		    }
+		    //}
 	    }
 	}
 

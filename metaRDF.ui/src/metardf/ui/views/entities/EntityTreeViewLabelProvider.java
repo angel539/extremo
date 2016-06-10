@@ -38,7 +38,6 @@ public class EntityTreeViewLabelProvider extends LabelProvider implements IStyle
 	public StyledString getStyledText(Object element) {
 		if(element instanceof IStructuredSelection) element = ((IStructuredSelection) element).getFirstElement();
 		
-		//System.out.println("??" + element.getClass());
 		if (element instanceof FolderParent) {
 			FolderParent repositoryNode = (FolderParent) element;
 			StyledString styledString = new StyledString(repositoryNode.getName());
@@ -60,7 +59,6 @@ public class EntityTreeViewLabelProvider extends LabelProvider implements IStyle
 		}
 		
 		if (element instanceof SearchParent) {
-			//System.out.println("reconoce que es searchparent");
 			SearchParent repositoryNode = (SearchParent) element;
 			StyledString styledString = new StyledString(repositoryNode.getName());
 			
@@ -71,7 +69,6 @@ public class EntityTreeViewLabelProvider extends LabelProvider implements IStyle
 		}
 		
 		if (element instanceof EntityParentGroup) {
-			//System.out.println("reconoce que es searchparent");
 			EntityParentGroup repositoryNode = (EntityParentGroup) element;
 			StyledString styledString = new StyledString(repositoryNode.getName());
 			

@@ -7,6 +7,8 @@ import org.eclipse.ui.views.properties.IPropertySource;
 import metaRDF.core.model.ISemanticClass;
 
 public class EntityParentGroup extends TreeParent{
+	private static final long serialVersionUID = -1795561332548997268L;
+	
 	private List<ISemanticClass> semanticClasses;
 
 	public List<ISemanticClass> getSemanticClasses() {

@@ -9,10 +9,12 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.presentation.EcoreEditor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
+import org.eclipse.jface.viewers.Viewer;
 
 public class EcoreUtils {
 	private Resource resource = null;
@@ -35,6 +37,10 @@ public class EcoreUtils {
 				classes.add((EClass) object);
 			}
 		}
+		
+		//EcoreEditor editor = new EcoreEditor();
+		//Viewer viewer = editor.getViewer();
+		//viewer.
 		
 		return classes;
 	}

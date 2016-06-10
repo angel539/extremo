@@ -11,8 +11,11 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+
 import org.eclipse.gef.GraphicalViewer;
+
 import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
+
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -27,17 +30,16 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSource;
-import org.eclipse.swt.dnd.DragSourceAdapter;
-import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
+
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
@@ -49,42 +51,49 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+
 import metaRDF.core.model.IRepository;
 import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
-import metaRDF.core.model.ISemanticElement;
-import metaRDF.core.model.impl.ProbabilisticDistribution;
 import metaRDF.core.model.impl.RepositoryManager;
 import metaRDF.core.model.impl.Search;
-import metaRDF.core.model.impl.SemanticClass;
 import metaRDF.core.model.impl.SemanticResource;
 import metardf.core.extensions.AssistantFactory;
 import metardf.core.extensions.FormatAssistant;
 import metardf.core.extensions.IFormatAssistant;
+
 import metardf.ui.Activator;
+import metardf.ui.dnd.ExtremoModelTransfer;
 import metardf.ui.dnd.GraphityEditorTransferDropTargetListener;
-import metardf.ui.dnd.ModelTransfer;
-import metardf.ui.dnd.ResourceViewAction;
+
+import metardf.ui.extensions.ExtremoViewPartAction;
+
 import metardf.ui.views.entities.filters.EntityFilter;
 import metardf.ui.views.entities.filters.ShowAllFilter;
-import metardf.ui.views.entities.model.DataPropertyObject;
 import metardf.ui.views.entities.model.EntityParent;
 import metardf.ui.views.entities.model.EntityParentGroup;
-import metardf.ui.views.entities.model.PropertyParent;
 import metardf.ui.views.entities.model.SearchParent;
 import metardf.ui.views.entities.model.TreeObject;
 import metardf.ui.views.entities.model.TreeParent;
 import metardf.ui.wizards.SearchEntityWizardDialog;
-import metardf.ui.wizards.semanticselector.EntityGroupSelectorWizardDialog;
 
-public class EntityView extends ViewPart implements ITabbedPropertySheetPageContributor{
+public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPageContributor{
 	public static final String ID = "metardf.ui.views.EntityView";
+	
 	private List<String> entities = new ArrayList<String>();
 
 	private static TreeViewer viewer;
+	
+	public static TreeViewer getViewer() {
+		return viewer;
+	}
+	
+	public static void setViewer(TreeViewer viewer) {
+		EntityViewPart.viewer = viewer;
+	}
+	
 	private Action searchAction;
 	private Action expandAction;
-	
 	private Action filterEntities;
 	private Action filterShowAll;
 	
@@ -94,12 +103,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		return invisibleRoot;
 	}
 
-	class NameSorter extends ViewerSorter {
-		
-	}
-
-	public EntityView() {
-	}
+	public EntityViewPart() {}
 
 	public void createPartControl(Composite parent) {
 		entities.addAll(Arrays.asList());
@@ -111,15 +115,54 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		viewer = tree.getViewer();
 		viewer.setContentProvider(new EntityTreeViewContentProvider(invisibleRoot, getViewSite()));
 		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new EntityTreeViewLabelProvider()));
-	
 		viewer.setInput(getViewSite());
 		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "metaRDF.ui.viewer");
 		
 		getSite().setSelectionProvider(viewer);
 		
-		DragSource ds = new DragSource(viewer.getTree(), DND.DROP_COPY);
-		ds.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
+		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
+		Transfer[] transfers = new Transfer[]{ExtremoModelTransfer.getTransfer()};
+		
+		DragSource source = new DragSource(viewer.getTree(), dndOperations);
+		source.setTransfer(transfers);
+		EntityDragListener listener = new EntityDragListener(viewer);
+		source.addDragListener(listener);
+		
+		/*source.addDragListener(new DragSourceAdapter() {
+			public void dragSetData(DragSourceEvent event) {
+				IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
+				
+				System.out.println("my selection is..." + selection);
+				
+				if (LocalSelectionTransfer.getTransfer().isSupportedType(event.dataType)) {
+					event.data = selection;
+				}
+				ISemanticElement[] data = new ISemanticElement[selection.size()];
+				
+				for(int i=0; i<selection.size(); i++){
+					if(selection.toArray()[i] instanceof EntityParent){
+						data[i] = ((EntityParent) selection.toArray()[i]).getSemanticElement();
+					}
+					
+					if(selection.toArray()[i] instanceof DataPropertyObject){
+						data[i] = ((DataPropertyObject) selection.toArray()[i]).getSemanticElement();
+					}
+					
+					if(selection.toArray()[i] instanceof PropertyParent){
+						data[i] = ((PropertyParent) selection.toArray()[i]).getSemanticElement();
+					}
+				}
+				
+				event.data = data;
+			}
+		});*/
+		
+		//viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
+		/*viewer.addDragSupport(dndOperations, transfers, new EntityDragListener(viewer));
+		
+		DragSource ds = new DragSource(viewer.getTree(), dndOperations);
+		ds.setTransfer(transfers);
 		ds.addDragListener(new DragSourceAdapter() {
 				class DragSemanticClass extends SemanticClass{
 					String idToString;
@@ -159,7 +202,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		    	 
 		    	 event.data = data;
 		     }
-		  });
+		  });*/
 		
 		defaultFilteringActions();
 		invokeActions();
@@ -299,16 +342,17 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 	
 	private void invokeActions() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
-		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.EXTENSIONS_ID);
+		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.ACTION_EXTENSIONS_ID);
 		
 		for(IConfigurationElement extension : extensions){
 			if(extension.getName().compareTo("action")==0){
-				ResourceViewAction action;
+				ExtremoViewPartAction action;
 				try{
-					action = (ResourceViewAction) extension.createExecutableExtension("class");
+					action = (ExtremoViewPartAction) extension.createExecutableExtension("class");
 					action.setText(extension.getAttribute("name"));
 					action.setToolTipText(extension.getAttribute("description"));
-					action.setView(this);
+					action.setEditorID(extension.getAttribute("editorId"));
+					action.setViewer(viewer);
 					
 					String namespace = extension.getDeclaringExtension().getNamespaceIdentifier();
 					
@@ -344,7 +388,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 							Menu menu = menuMgr.createContextMenu(viewer.getControl());
 							viewer.getControl().setMenu(menu);
 							getSite().registerContextMenu(menuMgr, viewer);
-						}	
+						}
 					}
 				}
 				catch(CoreException e){
@@ -375,10 +419,6 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 	
 	public void setFocus() {
 		viewer.getControl().setFocus();
-	}
-	
-	public static TreeViewer getViewer() {
-		return viewer;
 	}
 
 	public static TreeParent getInvisibleRoot() {
@@ -412,13 +452,6 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		Map<String, List<ISemanticClass>> semanticElementsGrouped = groupSemanticClasses(searchResults);
 		
 		for(Entry<String, List<ISemanticClass>> entrySemanticElementsGrouped : semanticElementsGrouped.entrySet()){
-			/*List<IDataProperty> attrs = new ArrayList<IDataProperty>();
-			
-			for(ISemanticClass semanticClass : entrySemanticElementsGrouped.getValue()){
-				attrs.addAll(semanticClass.getProperties());
-			}*/
-			
-			//Map<String, List<IDataProperty>> dataPropertiesGrouped = attrs.stream().collect(Collectors.groupingBy(w -> w.getName()));
 			if(entrySemanticElementsGrouped.getValue().size()>1){
 				EntityParentGroup parent = new EntityParentGroup(entrySemanticElementsGrouped.getKey(), entrySemanticElementsGrouped.getValue());
 				
@@ -430,7 +463,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 				
 				searchParent.addChild(parent);
 			}
-			if(entrySemanticElementsGrouped.getValue().size()==1){
+			if(entrySemanticElementsGrouped.getValue().size() == 1){
 				EntityParent parent = new EntityParent((ISemanticClass) entrySemanticElementsGrouped.getValue().get(0));
 				EntityTreeViewDrawingProvider.drawEntityParentContent(parent);
 				searchParent.addChild(parent);
@@ -438,7 +471,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		}
 		
 		getInvisibleRoot().addChild(searchParent);
-		getViewer().refresh();
+		viewer.refresh();
 		
 		return true;
 	}
@@ -465,7 +498,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 	}
 	
 	private void executeExpandAction() {
-		ISelection selection = getViewer().getSelection();
+		ISelection selection = viewer.getSelection();
 		Object obj = ((IStructuredSelection)selection).getFirstElement();
 		
 		if(obj instanceof EntityParent){
@@ -490,7 +523,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 				}
 				
 				EntityTreeViewDrawingProvider.drawEntityParentContent((EntityParent) obj);
-				getViewer().refresh();
+				viewer.refresh();
 			}
 			else{
 				showMessage("Entity " + ((EntityParent)obj).getName() + " is already expanded on the list");
@@ -500,7 +533,7 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 
 	private void showMessage(String message) {
 		MessageDialog.openInformation(
-			getViewer().getControl().getShell(),
+			viewer.getControl().getShell(),
 			"Entities",
 			message);
 	}
@@ -529,17 +562,18 @@ public class EntityView extends ViewPart implements ITabbedPropertySheetPageCont
 		
 		return onTheTree;
 	}
-
-	@Override
-	public String getContributorId() {
-		return getSite().getId();
-	}
 	
-	@SuppressWarnings("unchecked")
+	/*@SuppressWarnings("unchecked")
 	@Override
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		if (adapter == IPropertySheetPage.class)
             return new TabbedPropertySheetPage(this);
         return super.getAdapter(adapter);
+	}*/
+	
+
+	@Override
+	public String getContributorId() {
+		return null;
 	}
 }

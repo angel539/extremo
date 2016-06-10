@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TreeParent extends TreeObject {
+	private static final long serialVersionUID = 1517461293760864607L;
+	
 	private ArrayList<TreeObject> children;
 
 	public TreeParent(Object object) {

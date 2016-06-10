@@ -1,53 +1,44 @@
 package metardf.ui.views.entities;
 
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.dnd.DND;
-import org.eclipse.swt.dnd.DragSource;
-import org.eclipse.swt.dnd.DragSourceAdapter;
-import org.eclipse.swt.dnd.DragSourceEvent;
-import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
-
-import metardf.ui.dnd.ModelTransfer;
 
 public class EntityTreeViewer extends TreeViewer {
 	public EntityTreeViewer(Composite parent) {
 		super(parent);
 		
-		DragSource ds = new DragSource(getTree(), DND.DROP_COPY);
-		ds.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
+		/*DragSource ds = new DragSource(getTree(), DND.DROP_COPY);
+		ds.setTransfer(new Transfer[] {ExtremoModelTransfer.getInstance()});
 		ds.addDragListener(new DragSourceAdapter() {
 		     public void dragSetData(DragSourceEvent event) {
 		    	 IStructuredSelection selection = (IStructuredSelection) getSelection();
 		    	 if(selection.getFirstElement() instanceof IAdaptable){
 		 	    	IAdaptable data = (IAdaptable) selection.getFirstElement();	
-		 		    if (ModelTransfer.getInstance().isSupportedType(event.dataType)) {
+		 		    if (ExtremoModelTransfer.getInstance().isSupportedType(event.dataType)) {
 		 		    	event.data = data;
 		 		    }
 		 	    }
 		     }
-		  });
+		  });*/
 	}
 
 	public EntityTreeViewer(Tree tree) {
 		super(tree);
 		
-		DragSource ds = new DragSource(getTree(), DND.DROP_COPY);
-		ds.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
+		/*DragSource ds = new DragSource(getTree(), DND.DROP_COPY);
+		ds.setTransfer(new Transfer[] {ExtremoModelTransfer.getInstance()});
 		ds.addDragListener(new DragSourceAdapter() {
 		     public void dragSetData(DragSourceEvent event) {
 		    	 IStructuredSelection selection = (IStructuredSelection) getSelection();
 		    	 if(selection.getFirstElement() instanceof IAdaptable){
 		 	    	IAdaptable data = (IAdaptable) selection.getFirstElement();	
-		 		    if (ModelTransfer.getInstance().isSupportedType(event.dataType)) {
+		 		    if (ExtremoModelTransfer.getInstance().isSupportedType(event.dataType)) {
 		 		    	event.data = data;
 		 		    }
 		 	    }
 		     }
-		  });
+		  });*/
 	}
 
 	public EntityTreeViewer(Composite parent, int style) {
@@ -65,19 +56,19 @@ public class EntityTreeViewer extends TreeViewer {
 		/*
 		 * Para editor
 		 */
-		DragSource ds = new DragSource(getTree(), DND.DROP_COPY);
-		ds.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
+		/*DragSource ds = new DragSource(getTree(), DND.DROP_COPY);
+		ds.setTransfer(new Transfer[] {ExtremoModelTransfer.getInstance()});
 		ds.addDragListener(new DragSourceAdapter() {
 		     public void dragSetData(DragSourceEvent event) {
 		    	 IStructuredSelection selection = (IStructuredSelection) getSelection();
 		    	 if(selection.getFirstElement() instanceof IAdaptable){
 		 	    	IAdaptable data = (IAdaptable) selection.getFirstElement();	
-		 		    if (ModelTransfer.getInstance().isSupportedType(event.dataType)) {
+		 		    if (ExtremoModelTransfer.getInstance().isSupportedType(event.dataType)) {
 		 		    	event.data = data;
 		 		    }
 		 	    }
-		    	//event.data = getSelection();
+		    	event.data = getSelection();
 		     }
-		  });
+		  });*/
 	}
 }

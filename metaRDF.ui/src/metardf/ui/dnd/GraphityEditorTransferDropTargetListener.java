@@ -15,12 +15,12 @@ public abstract class GraphityEditorTransferDropTargetListener extends  Abstract
 	private CreateRequest request = null;
 	
 	public GraphityEditorTransferDropTargetListener(GraphicalViewer viewer) {
-		super(viewer, ModelTransfer.getInstance());
+		super(viewer, ExtremoModelTransfer.getTransfer());
 		setEnablementDeterminedByCommand(true);
 	}
 	
 	public GraphityEditorTransferDropTargetListener(){
-		super(viewer, ModelTransfer.getInstance());
+		super(viewer, ExtremoModelTransfer.getTransfer());
 		setEnablementDeterminedByCommand(true);
 	}
 	

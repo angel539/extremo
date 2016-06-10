@@ -60,7 +60,7 @@ import metardf.ui.wizards.ResourceListWizardDialog;
 import metardf.ui.wizards.importers.NewFileExportSupportWizardDialog;
 import metardf.ui.wizards.importers.NewFileImportSupportWizardDialog;
 
-public class RepositoryView extends ViewPart {
+public class RepositoryViewPart extends ViewPart {
 	public static final String ID = "metardf.ui.views.RepositoryView";
 
 	private static CheckboxTreeViewer viewer;
@@ -250,7 +250,7 @@ public class RepositoryView extends ViewPart {
 	class NameSorter extends ViewerSorter {
 	}
 
-	public RepositoryView() {
+	public RepositoryViewPart() {
 	}
 
 	/**
@@ -322,7 +322,7 @@ public class RepositoryView extends ViewPart {
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager manager) {
-				RepositoryView.this.fillContextMenu(manager);
+				RepositoryViewPart.this.fillContextMenu(manager);
 			}
 		});
 		Menu menu = menuMgr.createContextMenu(viewer.getControl());

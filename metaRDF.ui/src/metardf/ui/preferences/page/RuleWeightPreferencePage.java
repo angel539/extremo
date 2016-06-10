@@ -1,13 +1,7 @@
 package metardf.ui.preferences.page;
 
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IContributor;
@@ -24,11 +18,6 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
-import org.reflections.Reflections;
-
-import metardf.core.extensions.AssistantFactory;
-import metardf.core.extensions.FormatAssistant;
-import metardf.core.extensions.IFormatAssistant;
 import metardf.core.extensions.preferences.IPointSettings;
 import metardf.ui.Activator;
 

@@ -45,12 +45,12 @@ public class SearchTreeView extends ViewPart {
 	class ColumnOneViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
 		@Override
 		public StyledString getStyledText(Object element) {
-			if (element instanceof RepositoryParent) {
-				RepositoryParent repositoryNode = (RepositoryParent) element;
-				StyledString styledString = new StyledString(repositoryNode.getName());
+			if (element instanceof SearchingParent) {
+				SearchingParent searchingNode = (SearchingParent) element;
+				StyledString styledString = new StyledString(searchingNode.getName());
 				
-				if (repositoryNode.getChildren() != null) {
-					styledString.append(" (" + repositoryNode.getChildren().length + ") ", StyledString.COUNTER_STYLER);
+				if (searchingNode.getChildren() != null) {
+					styledString.append(" (" + searchingNode.getChildren().length + ") ", StyledString.COUNTER_STYLER);
 				}
 				return styledString;
 			}

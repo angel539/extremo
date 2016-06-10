@@ -3,6 +3,7 @@ package metardf.ui.views.entities.model;
 import metaRDF.core.model.impl.Search;
 
 public class SearchParent extends TreeParent{
+	private static final long serialVersionUID = 2855575125618775861L;
 	private Search searchParameters = null;
 	
 	public SearchParent(String name, Search searchParameters) {

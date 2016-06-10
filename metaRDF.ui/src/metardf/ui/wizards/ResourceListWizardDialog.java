@@ -38,7 +38,7 @@ public class ResourceListWizardDialog extends Wizard {
 	@Override
 	public IWizardPage getNextPage(IWizardPage page) {
 		if(page == repositoryPage){
-			resourcePage = new ResourceListWizardPage("Resource List", "Resources list", repositoryPage.getRepositoryUri());
+			resourcePage = new ResourceListWizardPage("Resources List", "Select the resources you want to import", repositoryPage.getRepositoryUri());
 			addPage(resourcePage);
 			return resourcePage;
 		}

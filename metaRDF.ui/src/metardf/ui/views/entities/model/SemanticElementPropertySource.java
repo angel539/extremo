@@ -26,7 +26,6 @@ public class SemanticElementPropertySource implements IPropertySource {
 		  {PROPERTY_DESCRIPTION, new TextPropertyDescriptor(PROPERTY_DESCRIPTION,"Description")},
 		  {PROPERTY_REPOSITORY_NAME, new TextPropertyDescriptor(PROPERTY_REPOSITORY_NAME,"RepositoryName")},
 		  {PROPERTY_REPOSITORY_URI, new TextPropertyDescriptor(PROPERTY_REPOSITORY_URI,"RepositoryUri")}
-		  //, ...
 		};
 	
 	public SemanticElementPropertySource(TreeObject entityParent) {
@@ -67,7 +66,6 @@ public class SemanticElementPropertySource implements IPropertySource {
 			descriptor.setCategory("Basic");
 		}
 				
-		// Return it.
 		return propertyDescriptors;
 	}
 

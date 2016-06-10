@@ -1,11 +1,16 @@
 package metardf.ui.views.entities.model;
+import java.io.Serializable;
+
 import org.eclipse.core.runtime.IAdaptable;
 
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
+import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 
-public class TreeObject implements IAdaptable {
+public class TreeObject implements IAdaptable, Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	protected String name = "";
 	private TreeParent parent;
 	
@@ -29,12 +34,12 @@ public class TreeObject implements IAdaptable {
 			this.element = (ISemanticElement) element;
 		}
 		
-		/*if(element instanceof ISemanticClass){
+		if(element instanceof ISemanticClass){
 			if(((ISemanticClass) element).getProperties()!=null) this.name = this.name + " [attr:" + ((ISemanticClass) element).getProperties().size() + "]";
 			if(((ISemanticClass) element).getReferences()!=null) this.name = this.name + " [ref:" + ((ISemanticClass) element).getReferences().size() + "]";		
 			if(((ISemanticClass) element).getSuperclasses()!=null) this.name = this.name + " [supers:" + ((ISemanticClass) element).getSuperclasses().size() + "]";		
 			if(((ISemanticClass) element).getSubclasses()!=null) this.name = this.name + " [subs:" + ((ISemanticClass) element).getSubclasses().size() + "]";		
-		}*/
+		}
 		
 		if(element instanceof IDataProperty){
 			this.name = this.name + " : " + ((IDataProperty) element).getType();

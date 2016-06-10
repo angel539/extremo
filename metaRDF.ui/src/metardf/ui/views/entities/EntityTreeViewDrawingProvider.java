@@ -20,20 +20,22 @@ public class EntityTreeViewDrawingProvider {
 	public static void drawSuperClasses(EntityParent parent){
 		int superClassesCount = 0;
 		
-		if(parent.getSemanticElement() instanceof ISemanticClass){
-			superClassesCount = superClassesCount + ((ISemanticClass) parent.getSemanticElement()).getSuperclasses().size();
-		}
-		if(superClassesCount > 0){
-			FolderParent supersChild = new FolderParent("supers");
-			
-			if(parent.getSemanticElement() instanceof ISemanticClass){
-				for(ISemanticClass superClass : ((ISemanticClass) parent.getSemanticElement()).getSuperclasses()){
-					EntityParent entitySuperClass = new EntityParent(superClass);
-					supersChild.addChild(entitySuperClass);
-				}
+		if(parent != null && parent.getSemanticElement() != null){
+			if(parent.getSemanticElement() instanceof ISemanticClass && ((ISemanticClass) parent.getSemanticElement()).getSuperclasses() != null){
+				superClassesCount = superClassesCount + ((ISemanticClass) parent.getSemanticElement()).getSuperclasses().size();
 			}
-			
-			parent.addChild(supersChild);
+			if(superClassesCount > 0){
+				FolderParent supersChild = new FolderParent("supers");
+				
+				if(parent.getSemanticElement() instanceof ISemanticClass){
+					for(ISemanticClass superClass : ((ISemanticClass) parent.getSemanticElement()).getSuperclasses()){
+						EntityParent entitySuperClass = new EntityParent(superClass);
+						supersChild.addChild(entitySuperClass);
+					}
+				}
+				
+				parent.addChild(supersChild);
+			}
 		}
 	}
 	
@@ -41,7 +43,7 @@ public class EntityTreeViewDrawingProvider {
 		int subClassesCount = 0;
 
 		if(parent != null && parent.getSemanticElement() != null){
-			if(parent.getSemanticElement() instanceof ISemanticClass){
+			if(parent.getSemanticElement() instanceof ISemanticClass && ((ISemanticClass) parent.getSemanticElement()).getSubclasses() != null){
 				subClassesCount = subClassesCount + ((ISemanticClass) parent.getSemanticElement()).getSubclasses().size();
 			}
 			if(subClassesCount > 0){
@@ -64,7 +66,7 @@ public class EntityTreeViewDrawingProvider {
 		int referencesCount = 0;
 		
 		if(parent != null && parent.getSemanticElement() != null){
-			if(parent.getSemanticElement() instanceof ISemanticClass){
+			if(parent.getSemanticElement() instanceof ISemanticClass && ((ISemanticClass) parent.getSemanticElement()).getReferences() != null){
 				referencesCount = referencesCount + ((ISemanticClass) parent.getSemanticElement()).getReferences().size();
 			}
 			if(referencesCount > 0 ){
@@ -88,7 +90,7 @@ public class EntityTreeViewDrawingProvider {
 		int propertiesCount = 0;
 		
 		if(parent != null && parent.getSemanticElement() != null){
-			if(parent.getSemanticElement() instanceof ISemanticClass){
+			if(parent.getSemanticElement() instanceof ISemanticClass && ((ISemanticClass) parent.getSemanticElement()).getProperties() != null){
 				propertiesCount = propertiesCount + ((ISemanticClass) parent.getSemanticElement()).getProperties().size();
 			}
 			if(propertiesCount > 0){

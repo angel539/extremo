@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="metaRDF.ui.actions" name="metaRDF.ui.actions" schema="schema/metaRDF.ui.actions.exsd"/>
-   <extension-point id="metaRDF.ui.drop" name="metaRDF.ui.drop" schema="schema/metaRDF.ui.drop.exsd"/>
-   <extension-point id="metaRDF.ui.views.filters" name="metaRDF.ui.views.filters" schema="schema/metaRDF.ui.views.filters.exsd"/>
+   <extension-point id="extremo.ui.extensions.actions" name="extremo.ui.extensions.actions" schema="schema/extremo.ui.extensions.actions.exsd"/>
+   <extension-point id="extremo.ui.extensions.drop" name="extremo.ui.extensions.drop" schema="schema/extremo.ui.extensions.drop.exsd"/>
+   <extension-point id="extremo.ui.extensions.filters" name="extremo.ui.extensions.filters" schema="schema/extremo.ui.extensions.filters.exsd"/>
 
    <extension
          point="org.eclipse.ui.views">
@@ -13,14 +13,14 @@
       </category>
       <view
             category="metaRDF.ui"
-            class="metardf.ui.views.repositories.RepositoryView"
+            class="metardf.ui.views.repositories.RepositoryViewPart"
             icon="icons/site_element.gif"
             id="metardf.ui.views.RepositoryView"
             name="Repositories">
       </view>
       <view
             category="metaRDF.ui"
-            class="metardf.ui.views.entities.EntityView"
+            class="metardf.ui.views.entities.EntityViewPart"
             icon="icons/hierarchy_co.gif"
             id="metardf.ui.views.EntityView"
             name="Entities">
@@ -77,40 +77,6 @@
       <contexts
             file="contexts.xml">
       </contexts>
-   </extension>
-   <extension
-         point="org.eclipse.ui.perspectives">
-      <perspective
-            class="metardf.ui.perspective.Perspective"
-            fixed="true"
-            icon="icons/det_pane_right.gif"
-            id="metardf.ui.perspective"
-            name="metaRDF">
-      </perspective>
-   </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="metardf.ui.perspective">
-         <view
-               id="org.eclipse.ui.navigator.ProjectExplorer"
-               minimized="false"
-               relationship="left"
-               relative="org.eclipse.ui.editorss">
-         </view>
-         <view
-               id="metardf.ui.views.RepositoryView"
-               minimized="false"
-               relationship="bottom"
-               relative="org.eclipse.ui.editorss">
-         </view>
-         <view
-               id="metardf.ui.views.EntityView"
-               minimized="false"
-               relationship="bottom"
-               relative="org.eclipse.ui.editorss">
-         </view>
-      </perspectiveExtension>
    </extension>
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">

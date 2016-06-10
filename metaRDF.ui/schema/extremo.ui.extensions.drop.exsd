@@ -3,7 +3,7 @@
 <schema targetNamespace="metaRDF.ui" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="metaRDF.ui" id="metaRDF.ui.actions" name="metaRDF.ui.actions"/>
+         <meta.schema plugin="metaRDF.ui" id="extremo.ui.extensions.drop" name="extremo.ui.extensions.drop"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]
@@ -18,7 +18,8 @@
       </annotation>
       <complexType>
          <choice minOccurs="1" maxOccurs="unbounded">
-            <element ref="action"/>
+            <element ref="editordrop"/>
+            <element ref="viewdrop"/>
          </choice>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,26 +48,16 @@
       </complexType>
    </element>
 
-   <element name="action">
+   <element name="viewdrop">
       <complexType>
-         <attribute name="id" type="string" use="required">
-            <annotation>
-               <documentation>
-                  
-               </documentation>
-               <appinfo>
-                  <meta.attribute kind="identifier"/>
-               </appinfo>
-            </annotation>
-         </attribute>
-         <attribute name="name" type="string" use="required">
+         <attribute name="id" type="string">
             <annotation>
                <documentation>
                   
                </documentation>
             </annotation>
          </attribute>
-         <attribute name="description" type="string">
+         <attribute name="name" type="string">
             <annotation>
                <documentation>
                   
@@ -79,49 +70,38 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="metardf.ui.extensions.ResourceViewAction:"/>
+                  <meta.attribute kind="java" basedOn="org.eclipse.jface.viewers.ViewerDropAdapter:"/>
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="icon" type="string">
+      </complexType>
+   </element>
+
+   <element name="editordrop">
+      <complexType>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="resource"/>
+                  <meta.attribute kind="java" basedOn="metardf.ui.dnd.GraphityEditorTransferDropTargetListener:"/>
                </appinfo>
             </annotation>
-         </attribute>
-         <attribute name="view" use="required">
-            <annotation>
-               <documentation>
-                  
-               </documentation>
-            </annotation>
-            <simpleType>
-               <restriction base="string">
-                  <enumeration value="entities">
-                  </enumeration>
-                  <enumeration value="repositories">
-                  </enumeration>
-               </restriction>
-            </simpleType>
-         </attribute>
-         <attribute name="position" use="required">
-            <annotation>
-               <documentation>
-                  
-               </documentation>
-            </annotation>
-            <simpleType>
-               <restriction base="string">
-                  <enumeration value="toolbar">
-                  </enumeration>
-                  <enumeration value="menumanager">
-                  </enumeration>
-               </restriction>
-            </simpleType>
          </attribute>
       </complexType>
    </element>
