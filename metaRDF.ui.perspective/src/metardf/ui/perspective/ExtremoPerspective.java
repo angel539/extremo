@@ -7,6 +7,8 @@ import org.eclipse.ui.IPerspectiveFactory;
 import metardf.ui.views.entities.EntityViewPart;
 import metardf.ui.views.repositories.RepositoryViewPart;
 import metardf.ui.views.searchtree.SearchTreeView;
+import metardf.ui.zest.views.inheritance.InheritanceGraphViewPart;
+import metardf.ui.zest.views.relations.RelationshipGraphViewPart;
 
 public class ExtremoPerspective implements IPerspectiveFactory {
 
@@ -25,6 +27,9 @@ public class ExtremoPerspective implements IPerspectiveFactory {
 		layout.addShowViewShortcut(RepositoryViewPart.ID);
 		layout.addShowViewShortcut(EntityViewPart.ID);
 		layout.addShowViewShortcut(SearchTreeView.ID);
+		
+		layout.addShowViewShortcut(InheritanceGraphViewPart.ID);
+		layout.addShowViewShortcut(RelationshipGraphViewPart.ID);
 	}
 	
 	private void defineLayout(IPageLayout layout) {
@@ -38,5 +43,9 @@ public class ExtremoPerspective implements IPerspectiveFactory {
 		bottom.addView(RepositoryViewPart.ID);
 		bottom.addView(EntityViewPart.ID);
 		bottom.addView(SearchTreeView.ID);
+		
+		IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, (float) 0.70, editorArea);
+		right.addView(InheritanceGraphViewPart.ID);
+		right.addView(RelationshipGraphViewPart.ID);
 	}
 }

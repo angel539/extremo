@@ -17,14 +17,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.PriorityQueue;
-import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
-
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
-import org.apache.commons.math3.distribution.UniformIntegerDistribution;
-
 import com.google.common.collect.Lists;
 
 import metaRDF.core.model.IResource;
@@ -34,6 +28,7 @@ import metaRDF.core.utils.Tuple;
 import metaRDF.core.wordnet.Wordnet;
 
 public class Search implements ISearch {
+	private static final long serialVersionUID = 6601600129626661060L;
 	String searchField = "";
 	String description = "";
 	
@@ -316,6 +311,8 @@ public class Search implements ISearch {
 
 	private void cleanSynsetsWithNoSense(TreeNode<String> parent, TreeNode<String> child){
    	 	if((child == null) || (!child.isValid())) return;
+   	 	
+   	 	calculateWeights();
    	 	
    	 	if(child.getKind() == 2){
 	   	 	for(TreeNode<String> sibling : parent.getChildren()){

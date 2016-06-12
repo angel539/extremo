@@ -7,24 +7,8 @@ import metaRDF.core.model.impl.SemanticClass;
 public class RDFDataSemanticClass extends SemanticClass {
 	Resource id;
 	
-	public RDFDataSemanticClass(Resource id, String name, String description){
+	public RDFDataSemanticClass(Resource id, String name, String description, boolean isExplored){
 		super(id, name, description);
 		this.id = id;
-	}
-	
-	@Override
-	public String getIdToString() {
-		// TODO Auto-generated method stub
-		return id.getURI();
-	}
-
-	@Override
-	public void setIdToString(String idString) {
-		
-	}
-
-	@Override
-	public String toString() {
-		return getIdToString();
 	}
 }

@@ -7,6 +7,10 @@ import metaRDF.core.model.IRepository;
 import metaRDF.core.model.IResource;
 
 public class Repository implements IRepository {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 444489921780095988L;
 	private String uri;
 	private String name;
 	private String description;

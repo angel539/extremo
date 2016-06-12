@@ -49,8 +49,8 @@ import metardf.core.extensions.AssistantFactory;
 import metardf.core.extensions.FormatAssistant;
 import metardf.core.extensions.IFormatAssistant;
 import metardf.ui.Activator;
-import metardf.ui.views.repositories.model.RepositoryParent;
-import metardf.ui.views.repositories.model.ResourceObject;
+import metardf.ui.views.repositories.model.RepositoryTreeParent;
+import metardf.ui.views.repositories.model.ResourceTreeObject;
 import metardf.ui.views.repositories.model.TreeObject;
 import metardf.ui.views.repositories.model.TreeParent;
 import metardf.ui.wizards.EditResourceWizardDialog;
@@ -105,21 +105,21 @@ public class RepositoryViewPart extends ViewPart {
 
 		@Override
 		protected Object getValue(Object element) {
-			if(element instanceof ResourceObject){
-				return ((ResourceObject) element).getName();
+			if(element instanceof ResourceTreeObject){
+				return ((ResourceTreeObject) element).getName();
 			}
 			return null;
 		}
 
 		@Override
 		protected void setValue(Object element, Object value) {
-			if(element instanceof ResourceObject){
-				((ResourceObject) element).getResource().setAssistant(String.valueOf(value));
+			if(element instanceof ResourceTreeObject){
+				((ResourceTreeObject) element).getResource().setAssistant(String.valueOf(value));
 			    viewer.update(element, null);
 			}
 			
-			if(element instanceof RepositoryParent){
-				for(IResource resource : ((RepositoryParent) element).getRepository().getResources()){
+			if(element instanceof RepositoryTreeParent){
+				for(IResource resource : ((RepositoryTreeParent) element).getRepository().getResources()){
 					resource.setAssistant(String.valueOf(value));
 				}
 			    viewer.update(element, null);
@@ -145,8 +145,8 @@ public class RepositoryViewPart extends ViewPart {
 			if (child instanceof TreeObject) {
 				return ((TreeObject)child).getParent();
 			}
-			if (child instanceof ResourceObject) {
-				return ((ResourceObject)child).getParent();
+			if (child instanceof ResourceTreeObject) {
+				return ((ResourceTreeObject)child).getParent();
 			}
 			return null;
 		}
@@ -154,16 +154,16 @@ public class RepositoryViewPart extends ViewPart {
 			if (parent instanceof TreeParent) {
 				return ((TreeParent)parent).getChildren();
 			}
-			if (parent instanceof RepositoryParent) {
-				return ((RepositoryParent)parent).getChildren();
+			if (parent instanceof RepositoryTreeParent) {
+				return ((RepositoryTreeParent)parent).getChildren();
 			}
 			return new Object[0];
 		}
 		public boolean hasChildren(Object parent) {
 			if (parent instanceof TreeParent)
 				return ((TreeParent)parent).hasChildren();
-			if (parent instanceof RepositoryParent)
-				return ((RepositoryParent)parent).hasChildren();
+			if (parent instanceof RepositoryTreeParent)
+				return ((RepositoryTreeParent)parent).hasChildren();
 			return false;
 		}
 		
@@ -181,8 +181,8 @@ public class RepositoryViewPart extends ViewPart {
 	class ColumnOneViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
 		@Override
 		public StyledString getStyledText(Object element) {
-			if (element instanceof RepositoryParent) {
-				RepositoryParent repositoryNode = (RepositoryParent) element;
+			if (element instanceof RepositoryTreeParent) {
+				RepositoryTreeParent repositoryNode = (RepositoryTreeParent) element;
 				StyledString styledString = new StyledString(repositoryNode.getName());
 				
 				if (repositoryNode.getChildren() != null) {
@@ -191,8 +191,8 @@ public class RepositoryViewPart extends ViewPart {
 				return styledString;
 			}
 			
-			if (element instanceof ResourceObject) {
-				StyledString styledString = new StyledString(((ResourceObject) element).getName());
+			if (element instanceof ResourceTreeObject) {
+				StyledString styledString = new StyledString(((ResourceTreeObject) element).getName());
 				return styledString;
 			}
 			
@@ -203,9 +203,9 @@ public class RepositoryViewPart extends ViewPart {
 		public Image getImage(Object obj) {
 			String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
 			
-			if(obj instanceof RepositoryParent) return Activator.getImageDescriptor("icons/folder-icon_16.png").createImage();
-        	if(obj instanceof ResourceObject){
-        		if(((ResourceObject) obj).isAlive()) return Activator.getImageDescriptor("icons/3d_objects_16.png").createImage();
+			if(obj instanceof RepositoryTreeParent) return Activator.getImageDescriptor("icons/folder-icon_16.png").createImage();
+        	if(obj instanceof ResourceTreeObject){
+        		if(((ResourceTreeObject) obj).isAlive()) return Activator.getImageDescriptor("icons/3d_objects_16.png").createImage();
         		else{
         			return Activator.getImageDescriptor("icons/3d_objects_off_16.png").createImage();
         		}
@@ -218,8 +218,8 @@ public class RepositoryViewPart extends ViewPart {
 	class ColumnTwoViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
 		@Override
 		public StyledString getStyledText(Object element) {
-			if (element instanceof ResourceObject) {
-				ResourceObject resourceObject = (ResourceObject) element;
+			if (element instanceof ResourceTreeObject) {
+				ResourceTreeObject resourceObject = (ResourceTreeObject) element;
 				if(resourceObject.getResource().getAssistant() != null) return new StyledString(resourceObject.getResource().getAssistant());
 				else new StyledString("");
 			}
@@ -231,14 +231,14 @@ public class RepositoryViewPart extends ViewPart {
 	class ColumnThreeViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
 		@Override
 		public StyledString getStyledText(Object element) {
-			if (element instanceof RepositoryParent) {
-				RepositoryParent repositoryNode = (RepositoryParent) element;
+			if (element instanceof RepositoryTreeParent) {
+				RepositoryTreeParent repositoryNode = (RepositoryTreeParent) element;
 				StyledString styledString = new StyledString(repositoryNode.getRepository().getUri());
 				return styledString;
 			}
 			
-			if (element instanceof ResourceObject) {
-				ResourceObject resourceObject = (ResourceObject) element;
+			if (element instanceof ResourceTreeObject) {
+				ResourceTreeObject resourceObject = (ResourceTreeObject) element;
 				StyledString styledString = new StyledString((String)resourceObject.getResource().getId());
 				return styledString;
 			}
@@ -290,17 +290,17 @@ public class RepositoryViewPart extends ViewPart {
 		viewer.addCheckStateListener(new ICheckStateListener() {
 	        @Override
 	        public void checkStateChanged(CheckStateChangedEvent event) {
-	        	if(event.getElement() instanceof ResourceObject){
-					((ResourceObject) event.getElement()).getResource().setActive(event.getChecked());
+	        	if(event.getElement() instanceof ResourceTreeObject){
+					((ResourceTreeObject) event.getElement()).getResource().setActive(event.getChecked());
 					viewer.update(event.getElement(), null);
 	        	}
 				
-				if(event.getElement() instanceof RepositoryParent){
+				if(event.getElement() instanceof RepositoryTreeParent){
 		            for (Object child : provider.getChildren(event.getElement())) {
 		            	viewer.setChecked(child, event.getChecked());
 		            }
 					
-					for(IResource resource : ((RepositoryParent) event.getElement()).getRepository().getResources()){
+					for(IResource resource : ((RepositoryTreeParent) event.getElement()).getRepository().getResources()){
 						resource.setActive(event.getChecked());
 					}
 					
@@ -365,7 +365,7 @@ public class RepositoryViewPart extends ViewPart {
 					List<IRepository> repositories = RepositoryManager.getInstance().getRepositories();
 					
 					for(IRepository repository : repositories){
-						RepositoryParent repositoryParent = new RepositoryParent(repository);
+						RepositoryTreeParent repositoryParent = new RepositoryTreeParent(repository);
 						repositoryParent.drawResources();
 						invisibleRoot.addChild(repositoryParent);
 					}
@@ -393,7 +393,7 @@ public class RepositoryViewPart extends ViewPart {
 					List<IRepository> repositories = RepositoryManager.getInstance().getRepositories();
 						
 					for(IRepository repository : repositories){
-						RepositoryParent repositoryParent = new RepositoryParent(repository);
+						RepositoryTreeParent repositoryParent = new RepositoryTreeParent(repository);
 						repositoryParent.drawResources();
 						invisibleRoot.addChild(repositoryParent);
 					}
@@ -432,7 +432,7 @@ public class RepositoryViewPart extends ViewPart {
 					List<IRepository> repositories = RepositoryManager.getInstance().getRepositories();
 						
 					for(IRepository repository : repositories){
-						RepositoryParent repositoryParent = new RepositoryParent(repository);
+						RepositoryTreeParent repositoryParent = new RepositoryTreeParent(repository);
 						repositoryParent.drawResources();
 						invisibleRoot.addChild(repositoryParent);
 					}
@@ -452,10 +452,10 @@ public class RepositoryViewPart extends ViewPart {
 				ISelection selection = viewer.getSelection();
 				
 				for(Object obj : ((IStructuredSelection)selection).toArray()){
-					if(obj instanceof RepositoryParent){
-						WizardDialog wizardDialog = new WizardDialog(null, new NewResourceWizardDialog(((RepositoryParent) obj).getRepository()));
+					if(obj instanceof RepositoryTreeParent){
+						WizardDialog wizardDialog = new WizardDialog(null, new NewResourceWizardDialog(((RepositoryTreeParent) obj).getRepository()));
 						if (wizardDialog.open() == Window.OK) {
-							((RepositoryParent) obj).redrawResources();
+							((RepositoryTreeParent) obj).redrawResources();
 							viewer.refresh();
 						}
 					}
@@ -471,10 +471,10 @@ public class RepositoryViewPart extends ViewPart {
 				ISelection selection = viewer.getSelection();
 				Object obj = ((IStructuredSelection)selection).getFirstElement();
 				
-				if(obj instanceof ResourceObject){
-					WizardDialog wizardDialog = new WizardDialog(null, new EditResourceWizardDialog(((ResourceObject) obj).getResource()));
+				if(obj instanceof ResourceTreeObject){
+					WizardDialog wizardDialog = new WizardDialog(null, new EditResourceWizardDialog(((ResourceTreeObject) obj).getResource()));
 					if (wizardDialog.open() == Window.OK) {
-						((ResourceObject) obj).changed();
+						((ResourceTreeObject) obj).changed();
 						viewer.refresh();
 					}
 				}

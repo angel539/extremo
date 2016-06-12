@@ -9,7 +9,7 @@ import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 
-import metardf.ui.dnd.ModelTransfer;
+import metardf.ui.dnd.ExtremoModelTransfer;
 
 public class TempTreeViewer extends TreeViewer {
 	public TempTreeViewer(Composite parent) {
@@ -28,15 +28,13 @@ public class TempTreeViewer extends TreeViewer {
 		//Transfer[] transferTypes = new Transfer[]{ModelTransfer.getInstance()};
 	    //addDropSupport(operations, transferTypes, new TempTreeViewerDropAdapter(this));
 		// Create the drop target on the text field
-		DropTarget dt = new DropTarget(getTree().getShell(), DND.DROP_COPY);
+		/*DropTarget dt = new DropTarget(getTree().getShell(), DND.DROP_COPY);
 		dt.setTransfer(new Transfer[] {ModelTransfer.getInstance()});
 		dt.addDropListener(new DropTargetAdapter() {
 			public void drop(DropTargetEvent event) {
-				// Set the text field's text to the text being dropped
-		         //text.setText((String)event.data);
 				
 				System.out.println(">>>> asdfadsfadsf");
 		      }
-		   });
+		   });*/
 	}
 }

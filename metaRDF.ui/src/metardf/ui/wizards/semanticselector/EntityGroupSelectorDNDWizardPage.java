@@ -10,10 +10,10 @@ import org.eclipse.swt.widgets.Composite;
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
 import metardf.ui.Activator;
-import metardf.ui.views.entities.model.EntityParentGroup;
+import metardf.ui.views.entities.model.SemanticClassGroupTreeParent;
 
 public class EntityGroupSelectorDNDWizardPage extends WizardPage{	
-	EntityParentGroup entityParentGroup;
+	SemanticClassGroupTreeParent entityParentGroup;
 	
 	Composite containerArea;
 	Composite containerDownArea;
@@ -63,7 +63,7 @@ public class EntityGroupSelectorDNDWizardPage extends WizardPage{
 		}*/
 	}
 	
-	protected EntityGroupSelectorDNDWizardPage(String pageName, String pageDescription, EntityParentGroup entityParentGroup) {
+	protected EntityGroupSelectorDNDWizardPage(String pageName, String pageDescription, SemanticClassGroupTreeParent entityParentGroup) {
 		super(pageName);
 		setTitle(pageName);
 		setDescription(pageDescription);

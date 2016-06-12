@@ -23,7 +23,7 @@ public class TreeParent extends TreeObject {
 		child.setParent(this);
 	}
 	
-	public void addChildrenProperties(List<DataPropertyObject> list) {
+	public void addChildrenProperties(List<DataPropertyTreeObject> list) {
 		children.addAll(list);
 		list.forEach(c -> c.setParent(this));
 		//child.setParent(this);

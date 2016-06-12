@@ -16,6 +16,24 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface,
  metaRDF.ui,
  metaRDF.core,
- metaRDF.core.extensions;bundle-version="1.0.0"
+ metaRDF.core.extensions;bundle-version="1.0.0",
+ org.eclipse.gef4.mvc,
+ org.eclipse.gef4.common,
+ org.eclipse.gef4.mvc.fx,
+ org.eclipse.gef4.layout,
+ com.google.inject;bundle-version="3.0.0",
+ org.eclipse.gef4.fx;bundle-version="0.2.0",
+ org.eclipse.gef4.graph;bundle-version="0.2.0",
+ org.eclipse.gef4.zest.fx;bundle-version="0.2.0",
+ org.eclipse.gef4.zest.fx.ui;bundle-version="0.2.0",
+ org.eclipse.e4.ui.workbench.swt;bundle-version="0.13.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: icons/,
+ .
+Import-Package: com.google.common.reflect,
+ org.eclipse.gef4.fx.ui.canvas,
+ org.eclipse.gef4.fx.ui.controls,
+ org.eclipse.gef4.fx.ui.gestures
+Export-Package: metardf.ui.zest.views.inheritance,
+ metardf.ui.zest.views.relations

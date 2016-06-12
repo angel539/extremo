@@ -16,11 +16,11 @@ import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import metardf.ui.views.entities.model.EntityParent;
+import metardf.ui.views.entities.model.SemanticClassTreeParent;
 import metardf.ui.views.entities.model.SemanticElementPropertySource;
 
 public class RepositoryUriSection extends AbstractPropertySection {
-	EntityParent entityParent = null;
+	SemanticClassTreeParent entityParent = null;
 	private Text nameText;
 	
 	private ModifyListener listener = new ModifyListener() {
@@ -64,8 +64,8 @@ public class RepositoryUriSection extends AbstractPropertySection {
         	input = ((IStructuredSelection) selection).getFirstElement();
         }
         
-        if((input != null) && (input instanceof EntityParent)){
-        	this.entityParent = (EntityParent) input;
+        if((input != null) && (input instanceof SemanticClassTreeParent)){
+        	this.entityParent = (SemanticClassTreeParent) input;
         }
     }
 

@@ -5,11 +5,15 @@ import java.util.Comparator;
 import metaRDF.core.model.IObjectProperty;
 
 public abstract class ObjectProperty implements IObjectProperty{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5945550032249918420L;
 	String name;
-	Object id;
+	transient Object id;
 	boolean isFromSuper;
 	String description;
-	Object range;
+	transient Object range;
 	
 	private int weight = 0;
 	

@@ -65,9 +65,9 @@ import metardf.ui.dnd.GraphityEditorTransferDropTargetListener;
 
 import metardf.ui.extensions.ExtremoViewPartAction;
 
-import metardf.ui.views.entities.model.EntityParent;
-import metardf.ui.views.entities.model.EntityParentGroup;
-import metardf.ui.views.entities.model.SearchParent;
+import metardf.ui.views.entities.model.SemanticClassTreeParent;
+import metardf.ui.views.entities.model.SemanticClassGroupTreeParent;
+import metardf.ui.views.entities.model.SearchTreeParent;
 import metardf.ui.views.entities.model.TreeObject;
 import metardf.ui.views.entities.model.TreeParent;
 import metardf.ui.wizards.SearchEntityWizardDialog;
@@ -303,7 +303,7 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 	private void invokeActions() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.ACTION_EXTENSIONS_ID);
-		
+		//registry.get
 		for(IConfigurationElement extension : extensions){
 			if(extension.getName().compareTo("action")==0){
 				ExtremoViewPartAction action;
@@ -340,6 +340,7 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 						if(extension.getAttribute("position").equals("menumanager")){
 							MenuManager menuMgr = new MenuManager("#PopupMenu");
 							menuMgr.setRemoveAllWhenShown(true);
+							
 							menuMgr.addMenuListener(new IMenuListener() {
 								public void menuAboutToShow(IMenuManager manager) {
 									manager.add(action);
@@ -406,17 +407,17 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 	}
 	
 	private static boolean searchAndRefreshView(Search searchOptions){
-		SearchParent searchParent = createSearchParent(searchOptions.getSearchField(), searchOptions);
+		SearchTreeParent searchParent = createSearchParent(searchOptions.getSearchField(), searchOptions);
 		
 		List<ISemanticClass> searchResults = searchInAssistances(searchOptions);
 		Map<String, List<ISemanticClass>> semanticElementsGrouped = groupSemanticClasses(searchResults);
 		
 		for(Entry<String, List<ISemanticClass>> entrySemanticElementsGrouped : semanticElementsGrouped.entrySet()){
 			if(entrySemanticElementsGrouped.getValue().size()>1){
-				EntityParentGroup parent = new EntityParentGroup(entrySemanticElementsGrouped.getKey(), entrySemanticElementsGrouped.getValue());
+				SemanticClassGroupTreeParent parent = new SemanticClassGroupTreeParent(entrySemanticElementsGrouped.getKey(), entrySemanticElementsGrouped.getValue());
 				
 				for(ISemanticClass semanticClass : entrySemanticElementsGrouped.getValue()){
-					EntityParent semanticClassParent = new EntityParent((ISemanticClass) semanticClass);
+					SemanticClassTreeParent semanticClassParent = new SemanticClassTreeParent((ISemanticClass) semanticClass);
 					EntityTreeViewDrawingProvider.drawEntityParentContent(semanticClassParent);
 					parent.addChild(semanticClassParent);
 				}
@@ -424,7 +425,7 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 				searchParent.addChild(parent);
 			}
 			if(entrySemanticElementsGrouped.getValue().size() == 1){
-				EntityParent parent = new EntityParent((ISemanticClass) entrySemanticElementsGrouped.getValue().get(0));
+				SemanticClassTreeParent parent = new SemanticClassTreeParent((ISemanticClass) entrySemanticElementsGrouped.getValue().get(0));
 				EntityTreeViewDrawingProvider.drawEntityParentContent(parent);
 				searchParent.addChild(parent);
 			}
@@ -452,8 +453,8 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 		return semanticElements.stream().collect(Collectors.groupingBy(w -> w.getName()));
 	}
 
-	private static SearchParent createSearchParent(String search, Search searchParameters) {
-		SearchParent searchParent = new SearchParent(search, searchParameters);
+	private static SearchTreeParent createSearchParent(String search, Search searchParameters) {
+		SearchTreeParent searchParent = new SearchTreeParent(search, searchParameters);
 		return searchParent;
 	}
 	
@@ -461,8 +462,8 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 		ISelection selection = viewer.getSelection();
 		Object obj = ((IStructuredSelection)selection).getFirstElement();
 		
-		if(obj instanceof EntityParent){
-			if(!isOnTheTree((EntityParent) obj)){
+		if(obj instanceof SemanticClassTreeParent){
+			if(!isOnTheTree((SemanticClassTreeParent) obj)){
 				RepositoryManager repositoryManager = RepositoryManager.getInstance();
 				List<IFormatAssistant> assistances = AssistantFactory.getInstance().getAssistances();
 				
@@ -473,7 +474,7 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 								if((resource.isAlive()) && (resource.getAssistant() != null)){
 									if(((FormatAssistant)assistant).getNameExtension().compareTo(resource.getAssistant())==0){
 										if((resource instanceof SemanticResource) && (assistant.load((SemanticResource) resource))){	
-											AssistantFactory.completeSemanticClassProperties(assistant, (ISemanticClass)((EntityParent) obj).getSemanticElement());
+											AssistantFactory.completeSemanticClassProperties(assistant, (ISemanticClass)((SemanticClassTreeParent) obj).getSemanticElement());
 										}
 									}
 								}
@@ -482,11 +483,11 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 					}		
 				}
 				
-				EntityTreeViewDrawingProvider.drawEntityParentContent((EntityParent) obj);
+				EntityTreeViewDrawingProvider.drawEntityParentContent((SemanticClassTreeParent) obj);
 				viewer.refresh();
 			}
 			else{
-				showMessage("Entity " + ((EntityParent)obj).getName() + " is already expanded on the list");
+				showMessage("Entity " + ((SemanticClassTreeParent)obj).getName() + " is already expanded on the list");
 			}
 		}
 	}
@@ -498,13 +499,13 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 			message);
 	}
 	
-	private boolean isOnTheTree(EntityParent obj){
+	private boolean isOnTheTree(SemanticClassTreeParent obj){
 		boolean onTheTree = false;
 		Object element = obj;
 		
 		while((((TreeParent) element).getParent() != getRoot()) && (!onTheTree)){
 			for(TreeObject child : ((TreeParent) element).getParent().getChildren()){
-				if((child instanceof EntityParent) && (child!=obj)){
+				if((child instanceof SemanticClassTreeParent) && (child!=obj)){
 				}
 			}
 			element = ((TreeParent) element).getParent();
@@ -512,8 +513,8 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 		
 		if(((TreeParent)element).getParent() == getRoot()){
 			for(TreeObject child : ((TreeParent) element).getParent().getChildren()){
-				if((child instanceof EntityParent) && (child!=obj)){
-					if(((String) ((EntityParent) child).getSemanticElement().getId()).compareTo((String) ((EntityParent) obj).getSemanticElement().getId())==0){
+				if((child instanceof SemanticClassTreeParent) && (child!=obj)){
+					if(((String) ((SemanticClassTreeParent) child).getSemanticElement().getId()).compareTo((String) ((SemanticClassTreeParent) obj).getSemanticElement().getId())==0){
 						onTheTree = true;
 					}
 				}		

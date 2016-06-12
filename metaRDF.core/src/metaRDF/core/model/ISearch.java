@@ -1,9 +1,10 @@
 package metaRDF.core.model;
 
+import java.io.Serializable;
 import java.util.List;
 import metaRDF.core.search.TreeNode;
 
-public interface ISearch {
+public interface ISearch extends Serializable{
 	TreeNode<String> getSearchTree();
 	void setSearchTree(TreeNode<String> searchTree);
 	

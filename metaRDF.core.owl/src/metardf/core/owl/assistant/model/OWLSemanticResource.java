@@ -5,19 +5,23 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import metaRDF.core.model.impl.SemanticResource;
 
-public class OWLSemanticResource extends SemanticResource{	
+public class OWLSemanticResource extends SemanticResource{
+	String url;
+	
 	protected OWLSemanticResource(String id, String name) {
 		super(id, name);
+		this.url = id;
 	}
 
 	@Override
 	public boolean isAlive() {
-		if(getIdToString().startsWith("file:")){
-			File file = new File(getIdToString());
+		
+		if(url.startsWith("file:")){
+			File file = new File(url);
 			return file.exists();
 		}else{
 			try {
-				HttpURLConnection con = (HttpURLConnection) new URL(getIdToString()).openConnection();
+				HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
 				
 				boolean redirect = false;
 				

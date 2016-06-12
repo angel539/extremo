@@ -38,9 +38,10 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 	@Override
 	public boolean load(SemanticResource semanticResource) {
 		this.semanticResource = semanticResource;
-		if(semanticResource != null && semanticResource.getIdToString() != null){
-			Model modelTmp = FileManager.get().loadModel(semanticResource.getIdToString());
+		if(semanticResource != null && semanticResource.getId() != null){
+			String path = (String) semanticResource.getId();
 			
+			Model modelTmp = FileManager.get().loadModel(path);
 			model = ModelFactory.createRDFSModel(modelTmp);
 			ValidityReport validity = model.validate();
 			
@@ -48,10 +49,6 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 			    return true;
 			} else {
 				return false;
-			    /*System.out.println("Conflicts");
-			    for (Iterator i = validity.getReports(); i.hasNext(); ) {
-			        System.out.println(" - " + i.next());
-			    }*/
 			}
 		}
 		return false;
@@ -85,7 +82,10 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 				Statement statement = iterator.nextStatement();
 				Resource subject = statement.getSubject();
 				//lines.add(iterator.nextStatement().toString());
-				RDFDataSemanticClass semanticClass = new RDFDataSemanticClass(subject, subject.getLocalName(), subject.getURI());
+				
+				String name = subject.getLocalName();
+				String description = subject.getURI();
+				RDFDataSemanticClass semanticClass = new RDFDataSemanticClass(subject, name, description, true);
 				allSemanticClasses.add(semanticClass);
 				
 				//System.out.println(iterator.nextStatement());
@@ -130,16 +130,15 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 					
 					Statement statement = iterator.nextStatement();
 					Resource subject = statement.getSubject();
-					RDFDataSemanticClass semanticClass = new RDFDataSemanticClass(subject, subject.getLocalName(), subject.getURI());
+					
+					String nameString = subject.getLocalName();
+					String description = subject.getURI();
+					RDFDataSemanticClass semanticClass = new RDFDataSemanticClass(subject, nameString, description, true);
 					semanticClasses.add(semanticClass);
 				}
 			}	
 		}
 		return semanticClasses;
-		
-		//TRANQUILO, TRABAJA QUE LO ESTAS HACIENDO BIEN. DEBES AHORA COGER Y LIMPIAR
-		// LA BUSQUEDA RDF COPIANDO LO QUE HACES EN ECORE.
-		// QUEDAN DIAS DUROS. PERO LO VAS A CONSEGUIR :)
 	}
 
 	@Override
@@ -148,8 +147,6 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 		
 		if(model != null){
 			for(Entry<String, Integer> name : namesByRelevance.entrySet()){
-				// max weight iterator selector
-				
 				StmtIterator iteratorExactMatch = model.listStatements(
 		        		new SimpleSelector(null, null, (RDFNode) null) {
 		                    @Override
@@ -165,7 +162,11 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 				while(iteratorExactMatch.hasNext()){					
 					Statement statement = iteratorExactMatch.nextStatement();
 					Resource subject = statement.getSubject();
-					RDFDataSemanticClass semanticClass = new RDFDataSemanticClass(subject, subject.getLocalName(), subject.getURI());
+					
+					String nameString = subject.getLocalName();
+					String description = subject.getURI();
+					
+					RDFDataSemanticClass semanticClass = new RDFDataSemanticClass(subject, nameString, description, true);
 					semanticClass.setWeight(name.getValue() + 500);
 					semanticClass.setResourceFrom(semanticResource);
 					semanticClasses.add(semanticClass);
@@ -191,7 +192,11 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 				while(iteratorNearMatch.hasNext()){					
 					Statement statement = iteratorNearMatch.nextStatement();
 					Resource subject = statement.getSubject();
-					RDFDataSemanticClass semanticClass = new RDFDataSemanticClass(subject, subject.getLocalName(), subject.getURI());
+					
+					String nameString = subject.getLocalName();
+					String description = subject.getURI();
+					
+					RDFDataSemanticClass semanticClass = new RDFDataSemanticClass(subject, nameString, description, true);
 					semanticClass.setWeight(name.getValue() + 100);
 					semanticClass.setResourceFrom(semanticResource);
 					semanticClasses.add(semanticClass);
@@ -202,49 +207,49 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 	}
 
 	@Override
-	public List<IDataProperty> getDataProperties(Object parent, boolean supers, boolean equivs) {
+	public List<IDataProperty> getDataProperties(ISemanticClass parent, boolean supers, boolean equivs) {
 		List<IDataProperty> properties = new ArrayList<IDataProperty>();
 		return properties;
 	}
 
 	@Override
-	public List<IObjectProperty> getObjectProperties(Object parent, boolean supers, boolean equivs) {
+	public List<IObjectProperty> getObjectProperties(ISemanticClass parent, boolean supers, boolean equivs) {
 		List<IObjectProperty> properties = new ArrayList<IObjectProperty>();
 		return properties;
 	}
 
 	@Override
-	public List<ISemanticClass> getSiblings(Object parent) {
+	public List<ISemanticClass> getSiblings(ISemanticClass parent) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ISemanticClass> getRelatedClasses(Object parent, boolean supers, boolean equivs) {
+	public List<ISemanticClass> getRelatedClasses(ISemanticClass parent, boolean supers, boolean equivs) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ISemanticClass> getSuper(Object parent, boolean direct) {
+	public List<ISemanticClass> getSuper(ISemanticClass parent, boolean direct) {
 		List<ISemanticClass> supers = new ArrayList<ISemanticClass>();
 		return supers;
 	}
 
 	@Override
-	public List<ISemanticClass> getSub(Object parent, boolean direct) {
+	public List<ISemanticClass> getSub(ISemanticClass parent, boolean direct) {
 		List<ISemanticClass> subs = new ArrayList<ISemanticClass>();
 		return subs;
 	}
 
 	@Override
-	public List<IObjectProperty> getPath(Object entityA, Object entityB) {
+	public List<IObjectProperty> getPath(ISemanticClass entityA, ISemanticClass entityB) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IObjectProperty getInverseProperty(Object parent, Object property) {
+	public IObjectProperty getInverseProperty(ISemanticClass parent, IObjectProperty property) {
 		// TODO Auto-generated method stub
 		return null;
 	}

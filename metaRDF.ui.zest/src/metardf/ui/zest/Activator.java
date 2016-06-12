@@ -1,7 +1,14 @@
 package metardf.ui.zest;
 
+import java.net.URL;
+
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -12,6 +19,7 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "metaRDF.ui.zest"; //$NON-NLS-1$
 
+	public static final String FILTER_EXTENSIONS_ID = "metaRDF.ui.zest.filters";
 	// The shared instance
 	private static Activator plugin;
 	
@@ -57,5 +65,19 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+	}
+	
+	public static ImageDescriptor getImageDescriptor(String pluginID, String path){
+		if(pluginID != null && path != null){
+			Bundle bundle = Platform.getBundle(pluginID);
+			if(bundle == null) return null;
+			
+			IPath ipath  = new Path(path);
+			URL url = FileLocator.find(bundle, ipath, null);
+			ImageDescriptor descriptor = ImageDescriptor.createFromURL(url);
+			return descriptor;
+		}
+		
+		return null;
 	}
 }

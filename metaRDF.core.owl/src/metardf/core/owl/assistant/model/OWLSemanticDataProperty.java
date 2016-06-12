@@ -27,16 +27,5 @@ public class OWLSemanticDataProperty extends DataProperty{
 	@Override
 	public String toString() {
 		return "[" + getName() + ", " + getId() + ", " + range + "]";
-	}
-
-	@Override
-	public String getIdToString() {
-		// TODO Auto-generated method stub
-		return this.id;
-	}
-
-	@Override
-	public void setIdToString(String idString) {
-		this.id = idString;
-	}		
+	}	
 }

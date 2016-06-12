@@ -32,29 +32,35 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	File ecore;
 	SemanticResource semanticResource = null;
 	TreeIterator<EObject> ecoreAll;
+	List<ISemanticClass> model = null;
 	
 	@Override
 	public boolean load(SemanticResource semanticResource) {
 		this.semanticResource = semanticResource;
+		
 		ecore = new File((String) semanticResource.getId());
+		
 		if(ecore.isDirectory()){
 			return false;
 		}
+		
 		if(!ecore.exists()){
 			return false;
 		}
+		
 		return true;
 	}
 
 	@Override
 	public List<ISemanticClass> getAllClasses() {
 		Resource resource = null;
+		
 		List<ISemanticClass> classes = new ArrayList<ISemanticClass>();
 		
 		if(ecore != null && ecore.exists()){
 			try{
 				ResourceSet resourceSet = new ResourceSetImpl(); 
-				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl()); 			//EcorePackage ecorePackage = EcorePackage.eINSTANCE;		
+				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());		
 				URI fileURI = URI.createFileURI(ecore.getAbsolutePath());
 				resource = resourceSet.getResource(fileURI, true);
 				resourceSet.getAllContents().next();
@@ -62,7 +68,6 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			}catch(Exception e){
 				semanticResource.setAlive(false);
 			}
-			
 		}
 		
 		if((ecoreAll != null)&&(semanticResource.isAlive())){
@@ -70,12 +75,15 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 				EObject obj = ecoreAll.next();
 				
 				if((obj != null) && (obj instanceof EClass)){
-					EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+					String name = ((EClass) obj).getName();
+					String description = ((EClass) obj).getName() + " " + ((EClass) obj).getEAnnotations().toString();
+					EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
 					classes.add((ISemanticClass) semanticClass);
 				}
 			}
 		}
 		
+		this.model = classes;
 		return classes;
 	}
 	
@@ -106,7 +114,9 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 				if(obj instanceof EClass){
 					for(String word : names){
 						if(((EClass) obj).getName().compareTo(word) == 0){
-							EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+							String name = ((EClass) obj).getName();
+							String description = ((EClass) obj).getEAnnotations().toString();
+							EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
 							semanticClass.setResourceFrom(semanticResource);
 							classes.add((ISemanticClass) semanticClass);
 							continue iterator;
@@ -115,7 +125,9 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 						List<String> wordInNameClass = LangUtils.cleanAndSeparateWords(((EClass) obj).getName());
 						for(String wordInName : wordInNameClass){
 							if(LangUtils.haveTheSameStem(wordInName, word)){
-								EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+								String name = ((EClass) obj).getName();
+								String description = ((EClass) obj).getEAnnotations().toString();
+								EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
 								semanticClass.setResourceFrom(semanticResource);
 								classes.add((ISemanticClass) semanticClass);
 								continue iterator;
@@ -145,7 +157,6 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			}catch(Exception e){
 				semanticResource.setAlive(false);
 			}
-			
 		}
 		
 		if((ecoreAll != null)&&(semanticResource.isAlive())){
@@ -155,7 +166,9 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 				if(obj instanceof EClass){
 					for(Entry<String, Integer> word : namesByRelevance.entrySet()){
 						if(((EClass) obj).getName().compareTo(word.getKey()) == 0){
-							EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+							String name = ((EClass) obj).getName();
+							String description = ((EClass) obj).getEAnnotations().toString();
+							EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
 							semanticClass.setWeight(word.getValue() + 500);
 							semanticClass.setResourceFrom(semanticResource);
 							classes.add((ISemanticClass) semanticClass);
@@ -166,14 +179,18 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 						for(String wordInName : wordInNameClass){
 							
 							if(wordInName.compareTo(word.getKey()) == 0){
-								EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+								String name = ((EClass) obj).getName();
+								String description = ((EClass) obj).getEAnnotations().toString();
+								EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
 								semanticClass.setWeight(word.getValue() + 300);
 								semanticClass.setResourceFrom(semanticResource);
 								classes.add((ISemanticClass) semanticClass);
 								continue iterator;
 							}else{
 								if(LangUtils.haveTheSameStem(wordInName, word.getKey())){
-									EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, ((EClass) obj).getName(), ((EClass) obj).getName());
+									String name = ((EClass) obj).getName();
+									String description = ((EClass) obj).getEAnnotations().toString();
+									EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
 									semanticClass.setWeight(word.getValue() + 100);
 									semanticClass.setResourceFrom(semanticResource);
 									classes.add((ISemanticClass) semanticClass);
@@ -190,24 +207,20 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	}
 	
 	@Override
-	public List<IDataProperty> getDataProperties(Object parent, boolean supers, boolean equivs) {
-		if(parent instanceof EClass){
+	public List<IDataProperty> getDataProperties(ISemanticClass parent, boolean supers, boolean equivs) {
+		if(parent.getId() != null && parent.getId() instanceof EClass){
+			EClass eClass = (EClass) parent.getId(); 
 			List<IDataProperty> properties = new ArrayList<IDataProperty>();
 			
-			for(EAttribute attr : ((EClass) parent).getEAttributes()){
+			for(EAttribute attr : eClass.getEAttributes()){
 				try{
-					properties.add((IDataProperty) new EcoreDataProperty(attr, attr.getName(), attr.getEType().getName(), false, attr.getName()));
+					properties.add((IDataProperty) new EcoreDataProperty((EAttribute) attr, attr.getName(), attr.getEType().getName(), false, attr.getName()));
 				}
 				catch(Exception e){
 					System.out.println("can't form a attribute" + attr.getName());
 				}
 			}
 			
-			if(supers){
-				for(EClass superclass : ((EClass) parent).getEAllSuperTypes()){
-					properties.addAll(getDataProperties(superclass, true, equivs));
-				}
-			}
 			return properties;
 		}
 		
@@ -215,54 +228,65 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	}
 
 	@Override
-	public List<IObjectProperty> getObjectProperties(Object parent, boolean supers, boolean equivs) {
-		if(parent instanceof EClass){
-			List<IObjectProperty> properties = new ArrayList<IObjectProperty>();
+	public List<IObjectProperty> getObjectProperties(ISemanticClass parent, boolean supers, boolean equivs) {
+		List<IObjectProperty> properties = new ArrayList<IObjectProperty>();
+		
+		if(parent.getId() != null && parent.getId() instanceof EClass){
+			EClass eClass = (EClass) parent.getId();
 			
-			for(EReference reference : ((EClass) parent).getEReferences()){
-				EcoreObjectProperty property = new EcoreObjectProperty(reference, reference.getEReferenceType(), reference.getName(), false, reference.getName());
-				properties.add((IObjectProperty) property);
-			}
-			
-			if(supers){
-				for(EClass superclass : ((EClass) parent).getEAllSuperTypes()){
-					properties.addAll(getObjectProperties(superclass, true, equivs));
+			for(EReference reference : eClass.getEReferences()){
+				if(!reference.isContainment() && reference.getEOpposite() != null && reference.getEOpposite().isContainment()) continue;
+				classes:
+					
+				for(ISemanticClass range : model){
+					if(range.getName().equals(reference.getEReferenceType().getName())){
+						EcoreObjectProperty property = new EcoreObjectProperty((EReference) reference, range, reference.getName(), false, reference.getName());
+						properties.add((IObjectProperty) property);
+						break classes;
+					}
 				}
 			}
-			return properties;
 		}
-	
+		
+		return properties;
+	}
+
+	@Override
+	public List<ISemanticClass> getSiblings(ISemanticClass name) {
 		return null;
 	}
 
 	@Override
-	public List<ISemanticClass> getSiblings(Object name) {
+	public List<ISemanticClass> getRelatedClasses(ISemanticClass name, boolean supers, boolean equivs) {
 		return null;
 	}
 
 	@Override
-	public List<ISemanticClass> getRelatedClasses(Object name, boolean supers, boolean equivs) {
-		return null;
-	}
-
-	@Override
-	public List<ISemanticClass> getSuper(Object name, boolean direct) {
-		if(name instanceof EClass){
-			List<ISemanticClass> superclasses = new ArrayList<ISemanticClass>();
+	public List<ISemanticClass> getSuper(ISemanticClass parent, boolean direct) {
+		List<ISemanticClass> superclasses = new ArrayList<ISemanticClass>();
+		
+		if(parent.getId() != null && parent.getId() instanceof EClass){
+			EClass eClass = (EClass) parent.getId();
 			
-			for(EClass superclass : ((EClass) name).getESuperTypes()){
-				EcoreSemanticClass semanticClass = new EcoreSemanticClass(superclass, superclass.getName(), superclass.getName());
-				superclasses.add((ISemanticClass) semanticClass);
+			for(EClass superclass : eClass.getESuperTypes()){
+				if(model != null){
+					for(ISemanticClass range : model){
+						if(range.getName().equals(superclass.getName())){
+							superclasses.add(range);
+						}
+					}
+				}
 			}
-			
-			return superclasses;
 		}
-		return null;
+		
+		return superclasses;
 	}
 
 	@Override
-	public List<ISemanticClass> getSub(Object parent, boolean direct) {
-		if(parent instanceof EClass){
+	public List<ISemanticClass> getSub(ISemanticClass parent, boolean direct) {
+		if(parent.getId() != null && parent.getId() instanceof EClass){
+			EClass eClass = (EClass) parent.getId();
+			
 			List<EClass> candidates = new ArrayList<EClass>();
 			
 			while(ecoreAll.hasNext()){
@@ -274,7 +298,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 					else superclasses = ((EClass) obj).getEAllSuperTypes();
 					
 					for(EClass superclass : superclasses){
-						if(superclass.equals(parent)){
+						if(superclass.equals(eClass)){
 							candidates.add((EClass)obj);
 						}
 					}
@@ -284,7 +308,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			List<ISemanticClass> subclasses = new ArrayList<ISemanticClass>();
 			
 			for(EClass subclass : candidates){
-				EcoreSemanticClass semanticClass = new EcoreSemanticClass(subclass, subclass.getName(), subclass.getName());
+				EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) subclass, subclass.getName(), subclass.getName(), true);
 				subclasses.add((ISemanticClass) semanticClass);
 			}
 			
@@ -295,12 +319,12 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	}
 
 	@Override
-	public List<IObjectProperty> getPath(Object entityA, Object entityB) {
+	public List<IObjectProperty> getPath(ISemanticClass entityA, ISemanticClass entityB) {
 		return null;
 	}
 
 	@Override
-	public IObjectProperty getInverseProperty(Object cl, Object property) {
+	public IObjectProperty getInverseProperty(ISemanticClass cl, IObjectProperty property) {
 		return null;
 	}
 

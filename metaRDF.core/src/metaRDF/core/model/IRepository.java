@@ -1,8 +1,9 @@
 package metaRDF.core.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface IRepository {
+public interface IRepository extends Serializable{
 	String getName();
 	void setName(String name);
 	
@@ -17,5 +18,4 @@ public interface IRepository {
 	void addResources(List<IResource> resources);
 	void addResource(IResource resource);
 	IResource createResource(String uri, String name, String description);
-	//void createResource(String resourceName, String resourceDescription, String resourceUri);
 }

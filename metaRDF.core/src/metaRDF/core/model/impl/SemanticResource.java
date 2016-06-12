@@ -7,6 +7,10 @@ import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
 
 public class SemanticResource implements IResource{	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3120117592592991837L;
 	private Object id;
 	private String name;
 	private String description;

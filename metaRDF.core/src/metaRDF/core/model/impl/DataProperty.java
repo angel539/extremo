@@ -4,11 +4,12 @@ import java.util.Comparator;
 import metaRDF.core.model.IDataProperty;
 
 public abstract class DataProperty implements IDataProperty{
-	String name;
-	String type;
-	Object id;
-	boolean isFromSuper;
-	String description;
+	private static final long serialVersionUID = 8927412833375562619L;
+	protected String name;
+	protected String type;
+	protected transient Object id;
+	protected boolean isFromSuper;
+	protected String description;
 	
 	int weight = 0;
 	
@@ -26,13 +27,11 @@ public abstract class DataProperty implements IDataProperty{
 	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
 	@Override
 	public Object getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 	

@@ -5,8 +5,8 @@ import org.eclipse.jface.viewers.ViewerComparator;
 
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
-import metardf.ui.views.entities.model.EntityParent;
-import metardf.ui.views.entities.model.EntityParentGroup;
+import metardf.ui.views.entities.model.SemanticClassTreeParent;
+import metardf.ui.views.entities.model.SemanticClassGroupTreeParent;
 
 public class EntityViewViewerComparator extends ViewerComparator{
 	@Override
@@ -14,22 +14,22 @@ public class EntityViewViewerComparator extends ViewerComparator{
 		int weight1 = 0;
 		int weight2 = 0;
 		
-		if(element1 instanceof EntityParent){
-			ISemanticElement semanticElement1 = ((EntityParent) element1).getSemanticElement();
+		if(element1 instanceof SemanticClassTreeParent){
+			ISemanticElement semanticElement1 = ((SemanticClassTreeParent) element1).getSemanticElement();
 			if(semanticElement1 instanceof ISemanticClass)
 				weight1 = ((ISemanticClass) semanticElement1).getWeight();	
 		}
 		
-		if(element1 instanceof EntityParentGroup){
-			weight1 = ((EntityParentGroup) element1).getMax_weight();	
+		if(element1 instanceof SemanticClassGroupTreeParent){
+			weight1 = ((SemanticClassGroupTreeParent) element1).getMax_weight();	
 		}
 		
-		if(element2 instanceof EntityParentGroup){
-			weight2 = ((EntityParentGroup) element2).getMax_weight();	
+		if(element2 instanceof SemanticClassGroupTreeParent){
+			weight2 = ((SemanticClassGroupTreeParent) element2).getMax_weight();	
 		}
 		
-		if(element2 instanceof EntityParent){
-			ISemanticElement semanticElement2 = ((EntityParent) element2).getSemanticElement();
+		if(element2 instanceof SemanticClassTreeParent){
+			ISemanticElement semanticElement2 = ((SemanticClassTreeParent) element2).getSemanticElement();
 			if(semanticElement2 instanceof ISemanticClass)
 				weight2 = ((ISemanticClass) semanticElement2).getWeight();	
 		}

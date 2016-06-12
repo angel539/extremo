@@ -3,21 +3,21 @@ package metardf.ui.views.entities;
 import metaRDF.core.model.IDataProperty;
 import metaRDF.core.model.IObjectProperty;
 import metaRDF.core.model.ISemanticClass;
-import metardf.ui.views.entities.model.AttrFolderParent;
-import metardf.ui.views.entities.model.DataPropertyObject;
-import metardf.ui.views.entities.model.EntityParent;
-import metardf.ui.views.entities.model.FolderParent;
-import metardf.ui.views.entities.model.PropertyParent;
+import metardf.ui.views.entities.model.AttributeFolderTreeParent;
+import metardf.ui.views.entities.model.DataPropertyTreeObject;
+import metardf.ui.views.entities.model.SemanticClassTreeParent;
+import metardf.ui.views.entities.model.FolderTreeParent;
+import metardf.ui.views.entities.model.ObjectPropertyTreeParent;
 
 public class EntityTreeViewDrawingProvider {
-	public static void drawEntityParentContent(EntityParent entityParent) {
+	public static void drawEntityParentContent(SemanticClassTreeParent entityParent) {
 		drawSuperClasses(entityParent);
 		drawSubclasses(entityParent);
 		drawReferences(entityParent);
 		drawProperties(entityParent);
 	}
 	
-	public static void drawSuperClasses(EntityParent parent){
+	public static void drawSuperClasses(SemanticClassTreeParent parent){
 		int superClassesCount = 0;
 		
 		if(parent != null && parent.getSemanticElement() != null){
@@ -25,11 +25,11 @@ public class EntityTreeViewDrawingProvider {
 				superClassesCount = superClassesCount + ((ISemanticClass) parent.getSemanticElement()).getSuperclasses().size();
 			}
 			if(superClassesCount > 0){
-				FolderParent supersChild = new FolderParent("supers");
+				FolderTreeParent supersChild = new FolderTreeParent("supers");
 				
 				if(parent.getSemanticElement() instanceof ISemanticClass){
 					for(ISemanticClass superClass : ((ISemanticClass) parent.getSemanticElement()).getSuperclasses()){
-						EntityParent entitySuperClass = new EntityParent(superClass);
+						SemanticClassTreeParent entitySuperClass = new SemanticClassTreeParent(superClass);
 						supersChild.addChild(entitySuperClass);
 					}
 				}
@@ -39,7 +39,7 @@ public class EntityTreeViewDrawingProvider {
 		}
 	}
 	
-	public static void drawSubclasses(EntityParent parent){
+	public static void drawSubclasses(SemanticClassTreeParent parent){
 		int subClassesCount = 0;
 
 		if(parent != null && parent.getSemanticElement() != null){
@@ -47,11 +47,11 @@ public class EntityTreeViewDrawingProvider {
 				subClassesCount = subClassesCount + ((ISemanticClass) parent.getSemanticElement()).getSubclasses().size();
 			}
 			if(subClassesCount > 0){
-				FolderParent subsChild = new FolderParent("subs");
+				FolderTreeParent subsChild = new FolderTreeParent("subs");
 				
 				if(parent.getSemanticElement() instanceof ISemanticClass){
 					for(ISemanticClass subClass : ((ISemanticClass) parent.getSemanticElement()).getSubclasses()){
-						EntityParent entitySubClass = new EntityParent(subClass);
+						SemanticClassTreeParent entitySubClass = new SemanticClassTreeParent(subClass);
 						subsChild.addChild(entitySubClass);
 					}
 				}
@@ -62,7 +62,7 @@ public class EntityTreeViewDrawingProvider {
 		
 	}
 	
-	public static void drawReferences(EntityParent parent){
+	public static void drawReferences(SemanticClassTreeParent parent){
 		int referencesCount = 0;
 		
 		if(parent != null && parent.getSemanticElement() != null){
@@ -70,12 +70,12 @@ public class EntityTreeViewDrawingProvider {
 				referencesCount = referencesCount + ((ISemanticClass) parent.getSemanticElement()).getReferences().size();
 			}
 			if(referencesCount > 0 ){
-				FolderParent referencesChild = new FolderParent("references");
+				FolderTreeParent referencesChild = new FolderTreeParent("references");
 				
 				if(parent.getSemanticElement() instanceof ISemanticClass){
 			
 					for(IObjectProperty reference : ((ISemanticClass) parent.getSemanticElement()).getReferences()){
-						PropertyParent entitySuper = new PropertyParent(reference);
+						ObjectPropertyTreeParent entitySuper = new ObjectPropertyTreeParent(reference);
 						referencesChild.addChild(entitySuper);
 					}
 				}
@@ -86,7 +86,7 @@ public class EntityTreeViewDrawingProvider {
 		
 	}
 	
-	private static void drawProperties(EntityParent parent){
+	private static void drawProperties(SemanticClassTreeParent parent){
 		int propertiesCount = 0;
 		
 		if(parent != null && parent.getSemanticElement() != null){
@@ -94,11 +94,11 @@ public class EntityTreeViewDrawingProvider {
 				propertiesCount = propertiesCount + ((ISemanticClass) parent.getSemanticElement()).getProperties().size();
 			}
 			if(propertiesCount > 0){
-				AttrFolderParent referencesChild = new AttrFolderParent("attributes");
+				AttributeFolderTreeParent referencesChild = new AttributeFolderTreeParent("attributes");
 				
 				if(parent.getSemanticElement() instanceof ISemanticClass){
 					for(IDataProperty attribute : ((ISemanticClass) parent.getSemanticElement()).getProperties()){
-						DataPropertyObject entitySuper = new DataPropertyObject(attribute);
+						DataPropertyTreeObject entitySuper = new DataPropertyTreeObject(attribute);
 						referencesChild.addChild(entitySuper);
 					}
 				}

@@ -5,26 +5,11 @@ import org.eclipse.emf.ecore.EClass;
 import metaRDF.core.model.impl.SemanticClass;
 
 public class EcoreSemanticClass extends SemanticClass{
-	EClass id = null;
-	String idString = null;
+	private static final long serialVersionUID = 60635544113911255L;
+	private transient EClass id = null;
 	
-	public EcoreSemanticClass(){
-		
-	}
-	
-	public EcoreSemanticClass(EClass id, String name, String description){
-		super(id, name, description);
-		this.id = id;
-	}
-
-	@Override
-	public String getIdToString() {
-		this.idString = id.getName();
-		return this.idString;
-	}
-
-	@Override
-	public void setIdToString(String idString) {
-		this.idString = idString;
+	public EcoreSemanticClass(EClass obj, String name, String description, boolean isExplored){
+		super(obj, name, description);
+		this.id = obj;
 	}
 }

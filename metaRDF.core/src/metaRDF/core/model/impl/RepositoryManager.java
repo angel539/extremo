@@ -7,6 +7,10 @@ import metaRDF.core.model.IRepository;
 import metaRDF.core.model.IRepositoryManager;
 
 public class RepositoryManager implements IRepositoryManager{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9001070073707776398L;
 	private static RepositoryManager INSTANCE = null;
 	private List<IRepository> repositories;
 	

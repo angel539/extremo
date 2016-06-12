@@ -26,12 +26,12 @@ import org.eclipse.ui.part.DrillDownAdapter;
 import org.eclipse.ui.part.ViewPart;
 
 import metardf.ui.Activator;
-import metardf.ui.views.repositories.model.RepositoryParent;
-import metardf.ui.views.repositories.model.ResourceObject;
+import metardf.ui.views.repositories.model.RepositoryTreeParent;
+import metardf.ui.views.repositories.model.ResourceTreeObject;
 import metardf.ui.views.repositories.model.TreeObject;
 import metardf.ui.views.repositories.model.TreeParent;
-import metardf.ui.views.searchtree.model.SearchingParent;
-import metardf.ui.views.searchtree.model.WordParent;
+import metardf.ui.views.searchtree.model.SearchTreeParent;
+import metardf.ui.views.searchtree.model.TermTreeParent;
 
 public class SearchTreeView extends ViewPart {
 	public static final String ID = "metardf.ui.views.SearchTree";
@@ -45,8 +45,8 @@ public class SearchTreeView extends ViewPart {
 	class ColumnOneViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
 		@Override
 		public StyledString getStyledText(Object element) {
-			if (element instanceof SearchingParent) {
-				SearchingParent searchingNode = (SearchingParent) element;
+			if (element instanceof SearchTreeParent) {
+				SearchTreeParent searchingNode = (SearchTreeParent) element;
 				StyledString styledString = new StyledString(searchingNode.getName());
 				
 				if (searchingNode.getChildren() != null) {
@@ -55,8 +55,8 @@ public class SearchTreeView extends ViewPart {
 				return styledString;
 			}
 			
-			if (element instanceof ResourceObject) {
-				StyledString styledString = new StyledString(((ResourceObject) element).getName());
+			if (element instanceof ResourceTreeObject) {
+				StyledString styledString = new StyledString(((ResourceTreeObject) element).getName());
 				return styledString;
 			}
 			
@@ -67,7 +67,7 @@ public class SearchTreeView extends ViewPart {
 		public Image getImage(Object obj) {
 			String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
 			
-			if(obj instanceof SearchingParent) return Activator.getImageDescriptor("icons/close_pane.png").createImage();
+			if(obj instanceof SearchTreeParent) return Activator.getImageDescriptor("icons/close_pane.png").createImage();
 			return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 		}
 	}
@@ -91,8 +91,8 @@ public class SearchTreeView extends ViewPart {
 			if (child instanceof TreeObject) {
 				return ((TreeObject)child).getParent();
 			}
-			if (child instanceof ResourceObject) {
-				return ((ResourceObject)child).getParent();
+			if (child instanceof ResourceTreeObject) {
+				return ((ResourceTreeObject)child).getParent();
 			}
 			return null;
 		}
@@ -100,16 +100,16 @@ public class SearchTreeView extends ViewPart {
 			if (parent instanceof TreeParent) {
 				return ((TreeParent)parent).getChildren();
 			}
-			if (parent instanceof RepositoryParent) {
-				return ((RepositoryParent)parent).getChildren();
+			if (parent instanceof RepositoryTreeParent) {
+				return ((RepositoryTreeParent)parent).getChildren();
 			}
 			return new Object[0];
 		}
 		public boolean hasChildren(Object parent) {
 			if (parent instanceof TreeParent)
 				return ((TreeParent)parent).hasChildren();
-			if (parent instanceof RepositoryParent)
-				return ((RepositoryParent)parent).hasChildren();
+			if (parent instanceof RepositoryTreeParent)
+				return ((RepositoryTreeParent)parent).hasChildren();
 			return false;
 		}
 		

@@ -3,14 +3,14 @@ package metardf.ui.wizards.semanticselector;
 import org.eclipse.jface.wizard.Wizard;
 
 import metaRDF.core.model.ISemanticClass;
-import metardf.ui.views.entities.model.EntityParentGroup;
+import metardf.ui.views.entities.model.SemanticClassGroupTreeParent;
 
 public class EntityGroupSelectorWizardDialog extends Wizard {
 	EntityGroupSelectorDNDWizardPage selectorPage;
-	EntityParentGroup entityParentGroup;
+	SemanticClassGroupTreeParent entityParentGroup;
 	ISemanticClass newSemanticClass;
 	
-	public EntityGroupSelectorWizardDialog(EntityParentGroup entityParentGroup, ISemanticClass semanticClass) {
+	public EntityGroupSelectorWizardDialog(SemanticClassGroupTreeParent entityParentGroup, ISemanticClass semanticClass) {
 		super();
 		setNeedsProgressMonitor(true);
 		this.entityParentGroup = entityParentGroup;

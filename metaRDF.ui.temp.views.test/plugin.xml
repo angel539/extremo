@@ -4,16 +4,12 @@
 
    <extension
          point="org.eclipse.ui.views">
-      <category
-            name="Temporal Category"
-            id="metaRDF.ui.temp.views.test">
-      </category>
       <view
-            name="Temporal View"
-            icon="icons/sample.gif"
-            category="metaRDF.ui.temp.views.test"
-            class="metardf.ui.temp.views.test.views.TempView"
-            id="metardf.ui.temp.views.test.views.TempView">
+            name="Extremo Drop Integration Test"
+            icon="icons/thin_test_tube.png"
+            category="metaRDF.ui"
+            class="metardf.ui.temp.views.test.views.DropIntegrationTestView"
+            id="metardf.ui.temp.views.test.views.DropIntegrationTestView">
       </view>
    </extension>
    <extension
@@ -37,7 +33,7 @@
    <extension
          point="metaRDF.ui.drop">
       <viewdrop
-            class="metardf.ui.temp.views.test.views.TempTreeViewerDropAdapter"
+            class="metardf.ui.temp.views.test.views.DropIntegrationTreeViewerDropAdapter"
             id="metaRDF.ui.temp.views.test.treedrop"
             name="metaRDF.ui.temp.views.test.treedrop">
       </viewdrop>

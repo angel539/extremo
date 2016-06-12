@@ -5,8 +5,8 @@ import org.eclipse.emf.ecore.EAttribute;
 import metaRDF.core.model.impl.DataProperty;
 
 public class EcoreDataProperty extends DataProperty{
-	EAttribute id = null;
-	String idString = null;
+	private static final long serialVersionUID = -683290629760597196L;
+	private transient EAttribute id = null;
 	
 	public EcoreDataProperty(){
 		super();
@@ -20,16 +20,5 @@ public class EcoreDataProperty extends DataProperty{
 	@Override
 	public String toString() {
 		return "[" + getName() + ", " + getId() + "]";
-	}
-
-	@Override
-	public String getIdToString() {
-		idString = id.getName();
-		return idString;
-	}
-
-	@Override
-	public void setIdToString(String idString) {
-		this.idString = idString;
 	}	
 }

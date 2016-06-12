@@ -10,12 +10,13 @@ public class OWLSemanticClass extends SemanticClass{
 	String label;
 	int weight;
 	
-	public OWLSemanticClass(){
-		super();
+	public OWLSemanticClass(String id, String name, String description, boolean isExplored){
+		super(id, name, description);
+		this.id = id;
 	}
 	
-	public OWLSemanticClass(String id, String name, String description){
-		super(id, name, description);
+	public OWLSemanticClass(String id, String name, boolean isExplored){
+		super(id, name);
 		this.id = id;
 	}
 	
@@ -35,16 +36,6 @@ public class OWLSemanticClass extends SemanticClass{
 	
 	public void setLabel(String label){
 		this.label = label;
-	}
-
-	@Override
-	public String getIdToString() {
-		return this.label;
-	}
-
-	@Override
-	public void setIdToString(String idString) {
-		this.label = idString;
 	}
 
 	@Override

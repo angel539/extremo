@@ -10,7 +10,11 @@ import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
 
 public abstract class SemanticClass implements ISemanticClass{
-	Object id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8965778401052191840L;
+	transient Object id;
 	String name;
 	String comment;
 	List<ISemanticClass> superclasses;

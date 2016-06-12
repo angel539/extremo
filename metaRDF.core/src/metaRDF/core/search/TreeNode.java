@@ -1,9 +1,14 @@
 package metaRDF.core.search;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TreeNode<T>{
+public class TreeNode<T> implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 875018598998638169L;
 	T[] data;
 	int kind;
 	String definition = null;

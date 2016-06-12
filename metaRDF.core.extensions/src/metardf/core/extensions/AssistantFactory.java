@@ -35,6 +35,7 @@ public class AssistantFactory {
 	private static AssistantFactory INSTANCE = null;
 	
 	public static final String ASSISTANT_EXTENSIONS_ID = "metardf.core.extensions.assistant";
+	
 	Map<Bundle, List<Class<? extends ISemanticElement>>> registeredTypes = null;
 
 	public List<IFormatAssistant> getAssistances(){
@@ -207,6 +208,7 @@ public class AssistantFactory {
 						if((resource.isAlive()) && (resource.getAssistant() != null)){
 							if(((FormatAssistant)assistant).getNameExtension().compareTo(resource.getAssistant())==0){
 								if((resource != null) && (resource instanceof SemanticResource) && (assistant.load((SemanticResource) resource))){	
+									assistant.getAllClasses();
 									List<ISemanticClass> entities = assistant.getClassesLike(searchList);
 									
 									for(ISemanticClass entity : entities){

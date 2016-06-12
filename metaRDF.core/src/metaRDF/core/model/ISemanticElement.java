@@ -1,14 +1,13 @@
 package metaRDF.core.model;
 
-public interface ISemanticElement{
+import java.io.Serializable;
+
+public interface ISemanticElement extends Serializable{
 	String getName();
 	void setName(String name);
 	
 	Object getId();
 	void setId(Object id);
-	
-	//String getIdToString();
-	//void setIdToString(String idString);
 	String getDescription();
 	
 	void setDescription(String comment);

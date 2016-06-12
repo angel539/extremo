@@ -9,27 +9,27 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
 import metardf.ui.Activator;
-import metardf.ui.views.entities.model.AttrFolderParent;
-import metardf.ui.views.entities.model.DataPropertyObject;
-import metardf.ui.views.entities.model.EntityParent;
-import metardf.ui.views.entities.model.EntityParentGroup;
-import metardf.ui.views.entities.model.FolderParent;
-import metardf.ui.views.entities.model.PropertyParent;
-import metardf.ui.views.entities.model.SearchParent;
+import metardf.ui.views.entities.model.AttributeFolderTreeParent;
+import metardf.ui.views.entities.model.DataPropertyTreeObject;
+import metardf.ui.views.entities.model.SemanticClassTreeParent;
+import metardf.ui.views.entities.model.SemanticClassGroupTreeParent;
+import metardf.ui.views.entities.model.FolderTreeParent;
+import metardf.ui.views.entities.model.ObjectPropertyTreeParent;
+import metardf.ui.views.entities.model.SearchTreeParent;
 
 public class EntityTreeViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
 	public Image getImage(Object obj) {
 		if(obj instanceof IStructuredSelection) obj = ((IStructuredSelection) obj).getFirstElement();
 		
 		String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
-		if(obj instanceof SearchParent) return Activator.getImageDescriptor("icons/searchm_obj.gif").createImage();
-		if(obj instanceof SearchParent) return Activator.getImageDescriptor("icons/stepbystep_co.gif").createImage();
-		if(obj instanceof PropertyParent) return Activator.getImageDescriptor("icons/method.png").createImage();
-		if(obj instanceof EntityParent) return Activator.getImageDescriptor("icons/class_obj.png").createImage();
-		if(obj instanceof EntityParentGroup) return Activator.getImageDescriptor("icons/class_set.gif").createImage();
-		if(obj instanceof FolderParent) return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
-		if(obj instanceof AttrFolderParent) return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
-		if(obj instanceof DataPropertyObject) return Activator.getImageDescriptor("icons/attribute.png").createImage();
+		if(obj instanceof SearchTreeParent) return Activator.getImageDescriptor("icons/searchm_obj.gif").createImage();
+		if(obj instanceof SearchTreeParent) return Activator.getImageDescriptor("icons/stepbystep_co.gif").createImage();
+		if(obj instanceof ObjectPropertyTreeParent) return Activator.getImageDescriptor("icons/method.png").createImage();
+		if(obj instanceof SemanticClassTreeParent) return Activator.getImageDescriptor("icons/class_obj.png").createImage();
+		if(obj instanceof SemanticClassGroupTreeParent) return Activator.getImageDescriptor("icons/class_set.gif").createImage();
+		if(obj instanceof FolderTreeParent) return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
+		if(obj instanceof AttributeFolderTreeParent) return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
+		if(obj instanceof DataPropertyTreeObject) return Activator.getImageDescriptor("icons/attribute.png").createImage();
 		
 		return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 	}
@@ -38,8 +38,8 @@ public class EntityTreeViewLabelProvider extends LabelProvider implements IStyle
 	public StyledString getStyledText(Object element) {
 		if(element instanceof IStructuredSelection) element = ((IStructuredSelection) element).getFirstElement();
 		
-		if (element instanceof FolderParent) {
-			FolderParent repositoryNode = (FolderParent) element;
+		if (element instanceof FolderTreeParent) {
+			FolderTreeParent repositoryNode = (FolderTreeParent) element;
 			StyledString styledString = new StyledString(repositoryNode.getName());
 			
 			if (repositoryNode.getChildren() != null) {
@@ -48,8 +48,8 @@ public class EntityTreeViewLabelProvider extends LabelProvider implements IStyle
 			return styledString;
 		}
 		
-		if (element instanceof AttrFolderParent) {
-			AttrFolderParent repositoryNode = (AttrFolderParent) element;
+		if (element instanceof AttributeFolderTreeParent) {
+			AttributeFolderTreeParent repositoryNode = (AttributeFolderTreeParent) element;
 			StyledString styledString = new StyledString(repositoryNode.getName());
 			
 			if (repositoryNode.getChildren() != null) {
@@ -58,8 +58,8 @@ public class EntityTreeViewLabelProvider extends LabelProvider implements IStyle
 			return styledString;
 		}
 		
-		if (element instanceof SearchParent) {
-			SearchParent repositoryNode = (SearchParent) element;
+		if (element instanceof SearchTreeParent) {
+			SearchTreeParent repositoryNode = (SearchTreeParent) element;
 			StyledString styledString = new StyledString(repositoryNode.getName());
 			
 			if (repositoryNode.getChildren() != null) {
@@ -68,8 +68,8 @@ public class EntityTreeViewLabelProvider extends LabelProvider implements IStyle
 			return styledString;
 		}
 		
-		if (element instanceof EntityParentGroup) {
-			EntityParentGroup repositoryNode = (EntityParentGroup) element;
+		if (element instanceof SemanticClassGroupTreeParent) {
+			SemanticClassGroupTreeParent repositoryNode = (SemanticClassGroupTreeParent) element;
 			StyledString styledString = new StyledString(repositoryNode.getName());
 			
 			if (repositoryNode.getChildren() != null) {
@@ -79,19 +79,19 @@ public class EntityTreeViewLabelProvider extends LabelProvider implements IStyle
 			return styledString;
 		}
 		
-		if (element instanceof EntityParent) {
-			StyledString styledString = new StyledString(((EntityParent) element).getName());
-			styledString.append(" (" + ((EntityParent) element).getSemanticElement().getWeight() + " points) ", StyledString.DECORATIONS_STYLER);
+		if (element instanceof SemanticClassTreeParent) {
+			StyledString styledString = new StyledString(((SemanticClassTreeParent) element).getName());
+			styledString.append(" (" + ((SemanticClassTreeParent) element).getSemanticElement().getWeight() + " points) ", StyledString.DECORATIONS_STYLER);
 			return styledString;
 		}
 		
-		if (element instanceof DataPropertyObject) {
-			StyledString styledString = new StyledString(((DataPropertyObject) element).getName());
+		if (element instanceof DataPropertyTreeObject) {
+			StyledString styledString = new StyledString(((DataPropertyTreeObject) element).getName());
 			return styledString;
 		}
 		
-		if (element instanceof PropertyParent) {
-			StyledString styledString = new StyledString(((PropertyParent) element).getName());
+		if (element instanceof ObjectPropertyTreeParent) {
+			StyledString styledString = new StyledString(((ObjectPropertyTreeParent) element).getName());
 			return styledString;
 		}
 		
