@@ -36,20 +36,6 @@
 	            </div>
 	        </div>
 
-	        <div class="email-item email-item-unread pure-g">
-	            <div class="pure-u">
-	                <img class="email-avatar" alt="Eclipse avatar" height="64" width="64" src="images/eclipse.png">
-	            </div>
-
-	            <div class="pure-u-3-4">
-	                <h5 class="email-name">Eclipse</h5>
-	                <h4 class="email-subject">Update site</h4>
-	                <p class="email-desc">
-	                    <a href="http://angel539.github.io/extremo/update-site">Get an installable version for Eclipse IDE (right click and copy).</a>
-	                </p>
-	            </div>
-	        </div>
-
 			<div class="email-item email-item-unread pure-g">
 	            <div class="pure-u">
 	                <img class="email-avatar" alt="Eclipse avatar" height="64" width="64" src="images/assistant.png">
@@ -59,7 +45,7 @@
 	                <h5 class="email-name">Tool Support I</h5>
 	                <h4 class="email-subject">Extending the tool</h4>
 	                <p class="email-desc">
-	                    <a href="#plugin">Give support to a new format</a>
+	                    <a href="#plugin">Give support to a new format assistant</a>
 	                </p>
 	            </div>
 	        </div>
@@ -73,7 +59,7 @@
 	                <h5 class="email-name">Tool support II</h5>
 	                <h4 class="email-subject">Modelling assistant</h4>
 	                <p class="email-desc">
-	                    <a href="#plugin">Use the semantic elements in a modelling tool</a>
+	                    <a href="#modelling">Use the semantic elements in a modelling tool</a>
 	                </p>
 	            </div>
 	        </div>
@@ -106,6 +92,20 @@
 	                </p>
 	            </div>
 	        </div>-->
+
+			<div class="email-item email-item-unread pure-g">
+	            <div class="pure-u">
+	                <img class="email-avatar" alt="Eclipse avatar" height="64" width="64" src="images/eclipse.png">
+	            </div>
+
+	            <div class="pure-u-3-4">
+	                <h5 class="email-name">Download the tool</h5>
+	                <h4 class="email-subject">Update site for Eclipse</h4>
+	                <p class="email-desc">
+	                    <a href="http://angel539.github.io/extremo/update-site">Get an installable version for Eclipse IDE (right click and copy URL).</a>
+	                </p>
+	            </div>
+	        </div>
 
 	        <div class="email-item email-item-unread pure-g">
 	            <div class="pure-u">
@@ -224,7 +224,7 @@
 				
 				<div class="email-content-header pure-g">
 	                <div id="plugin" class="pure-u-1-2">
-						<h2 class="email-content-title">Extending the tool</h2>
+						<h2 class="email-content-title">Tool Support I: Extending the tool</h2>
 	                </div>
 
 	                <div class="email-content-controls pure-u-1-2">
@@ -250,14 +250,14 @@
 				
 				<div class="email-content-header pure-g">
 	                <div class="pure-u-1-2">
-						<h3 class="email-content-title">#1_ Defining your own format assistant</h3>
+						<h4 class="email-content-title">#1_ Defining a new format assistant</h4>
 	                </div>
 	            </div>
 
 	            <div class="email-content-body">
 					<p><code>Eclipse</code> > <code>New</code> > <code>Other</code> > <code>Plugin project</code> > ... > <code>Finish</code></p>
-					<p>In <code>MANIFEST.MF</code> insert a Dependency to <code>metaRDF.core.extensions</code> and <code>metaRDF.core</code>. Both will give you access to the core classes to implement.</p>
-					<p>Add an extension to <code>metardf.core.extensions.assistant</code> and then a new Assistant. Define a familiar <code>name</code> (this will be used later to show a pointer from file resources and assistant by the UI), a <code>class name</code>, and file extensions this assistant will be applied to.</p>
+					<p>In the <code>MANIFEST</code> insert a Dependency to <code>metaRDF.core.extensions</code> and to <code>metaRDF.core</code>. Both dependencies give access to the core classes of Extremo.</p>
+					<p>Add an extension to <code>metardf.core.extensions.assistant</code> and then a new Assistant. Give the assistant a <code>name</code>, a <code>class implementation</code>, and list the file extensions the assistant will be applied to.</p>
 					<p>A new all-methods-empty class should be created implementing the <code>IFormatAssistant</code> class. This class needs to parse your format to our class structure (shown in the class diagram above).</p>
 					<div class="pure-g">
 						<div class="pure-u-1-3">
@@ -285,7 +285,7 @@
 				
 				<div class="email-content-header pure-g">
 	                <div class="pure-u-1-2">
-						<h3 class="email-content-title">#2_ Extending the core model</h3>
+						<h4 class="email-content-title">#2_ Extending the core model</h4>
 	                </div>
 	            </div>
 
@@ -293,7 +293,7 @@
 					<div class="pure-g">
 						<div class="pure-u-2-3">
 							<div class="l-box">
-								<p>Create a new <code>package</code> in your plugin and call it something like "... .model". There will be the place where we will extend the core classes of the plugin. The classes to be overwritten are:</p>
+								<p>Create a new <code>package</code> in your plugin and call it "assistant_package.model". There, extend the core classes of the plugin. The classes to be overwritten are:</p>
 								<p>
 									<ul>
 										<li><code>metardf.core.model.impl.SemanticClass</code>
@@ -301,15 +301,15 @@
 										<li><code>metardf.core.model.impl.DataProperty</code>
 									</ul>
 								</p>
-								<p>In order to give <code>metaRDF</code> information about the core classes that have been extended they must be registered through the <code>getRegisteredTypes()</code> method in the assistant</p>							
+								<p>Then, register the classes through the <code>getRegisteredTypes()</code> method in the assistant</p>							
 								</br>
-								<p>With the implementation 3 assistants are given to cover three of the main data entities in format representation:
+								<p>With Extremo we provide 3 assistants to cover three of the main data entities in format representation:
 									<ul>
 										<li>OWL
 										<li>RDF
 										<li>Ecore
 									</ul>
-									all of them implement the method <code>getClassesLike(Map<String, Integer> namesByRelevance)</code> which receives a map composed by the strings suggested in the search and a weight value representing certain relevance to order the words. The weights are preset by the tool but they can be overwritten in this point calling the method <code>setWeight(...)</code> in your extended version of <code>SemanticClass</code>.
+									all of them implement the method <code>getClassesLike(Map<String, Integer> namesByRelevance)</code> which receives a map composed by the strings suggested in the search and a weight value representing certain relevance to order the words. The weights are preset by the tool but they can be overwritten in the Extremo preference page.
 								</p>
 							</div>
 						</div>
@@ -322,6 +322,50 @@
 					</div>
 				</div>
 				
+				<div class="email-content-header pure-g">
+	                <div id="modelling" class="pure-u-1-2">
+						<h2 class="email-content-title">Tool Support II: Modelling assistant</h2>
+	                </div>
+
+	                <div class="email-content-controls pure-u-1-2">
+	                    <button class="secondary-button pure-button">Move to top</button>
+	                </div>
+	            </div>
+
+	            <div class="email-content-body">
+					<div class="pure-g">
+						<div class="pure-u-2-3">
+							<div class="l-box">
+								<table class="pure-table">
+								    <thead>
+								        <tr>
+								            <th>#</th>
+								            <th>Make</th>
+								            <th>Model</th>
+								            <th>Year</th>
+								        </tr>
+								    </thead>
+
+								    <tbody>
+								        <tr class="pure-table-odd">
+								            <td>1</td>
+								            <td>Honda</td>
+								            <td>Accord</td>
+								            <td>2009</td>
+								        </tr>
+								    </tbody>
+								</table>
+							</div>
+						</div>
+						
+						<div class="pure-u-1-3">
+							<div class="l-box">
+								<a href="images/gallery/5.png" target="_blank"><img class="pure-img" src="images/gallery/5.png"/></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="email-content-header pure-g">
 	                <div id="example" class="pure-u-1-2">
 						<h2 class="email-content-title">Running example</h2>
