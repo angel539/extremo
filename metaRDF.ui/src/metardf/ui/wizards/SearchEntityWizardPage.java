@@ -2,8 +2,11 @@ package metardf.ui.wizards;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -14,8 +17,18 @@ import org.eclipse.swt.widgets.Text;
 import metardf.ui.Activator;
 
 public class SearchEntityWizardPage extends WizardPage {
-	private Text search;
+	private CCombo comboSearchType; 
+	
+	private Label nameSourceLabel;
+	private Label nameTargetLabel;
+	private Text sourceSearch;
+	private Text targetSearch;
+	
+	
+	private Label supersLabelCheck;
 	private Button superscheck;
+	
+	private Label equivsLabelCheck;
 	private Button equivscheck;
 	
 	private Button onlyDirectSuperclasses;
@@ -38,33 +51,95 @@ public class SearchEntityWizardPage extends WizardPage {
 	    container.setLayout(layout);
 	    layout.numColumns = 2;
 	    
-	    Label nameLabel = new Label(container, SWT.NONE);
-	    nameLabel.setText("Search");
+	    Label typeLabel = new Label(container, SWT.NONE);
+	    typeLabel.setText("Search Type");
 	    
-	    search = new Text(container, SWT.BORDER | SWT.SINGLE);
-	    search.setText("");
-	    search.addKeyListener(new KeyListener() {
+	    comboSearchType = new CCombo(container, SWT.NONE);
+	    comboSearchType.setText("Select search type");
+	    comboSearchType.add("Simple search");
+	    comboSearchType.add("Path search");
+	    
+	    comboSearchType.addSelectionListener(new SelectionAdapter() {
+	    	public void widgetSelected(SelectionEvent e) {
+	    		if (comboSearchType.getText().equals("Simple search")) {
+	    			nameSourceLabel.setText("Search");
+	    			
+	    			nameTargetLabel.setEnabled(false);
+	    			targetSearch.setEnabled(false);
+	    			
+	    			supersLabelCheck.setEnabled(true);
+    				superscheck.setEnabled(true);
+    				
+    				equivsLabelCheck.setEnabled(true);
+    				equivscheck.setEnabled(true);
+	    		}
+	    		else{
+	    			if(comboSearchType.getText().equals("Path search")){
+	    				nameSourceLabel.setText("From");
+	    				nameTargetLabel.setText("To");
+	    				
+	    				nameTargetLabel.setEnabled(true);
+	    				targetSearch.setEnabled(true);
+	    				
+	    				supersLabelCheck.setEnabled(false);
+	    				superscheck.setSelection(false);
+	    				superscheck.setEnabled(false);
+	    				
+	    				equivsLabelCheck.setEnabled(false);
+	    				equivscheck.setSelection(false);
+	    				equivscheck.setEnabled(false);
+	    			}
+	    		}
+	    	}
+	    });
+	    
+	    nameSourceLabel = new Label(container, SWT.NONE);
+	    nameSourceLabel.setText("Search");
+	    
+	    sourceSearch = new Text(container, SWT.BORDER | SWT.SINGLE);
+	    sourceSearch.setText("");
+	    sourceSearch.addKeyListener(new KeyListener() {
 		      @Override
 		      public void keyPressed(KeyEvent e) {
 		      }
 	
 		      @Override
 		      public void keyReleased(KeyEvent e) {
-		    	  if ((!search.getText().isEmpty())) {
+		    	  if ((!sourceSearch.getText().isEmpty())) {
 			          setPageComplete(true);
 			        }
 		      }
 	    });
 	    
 	    GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-	    search.setLayoutData(gd);
+	    sourceSearch.setLayoutData(gd);
 	    
-	    Label supersLabelCheck = new Label(container, SWT.NONE);
+	    nameTargetLabel = new Label(container, SWT.NONE);
+	    nameTargetLabel.setText("To");
+	    
+	    targetSearch = new Text(container, SWT.BORDER | SWT.SINGLE);
+	    targetSearch.setText("");
+	    targetSearch.addKeyListener(new KeyListener() {
+		      @Override
+		      public void keyPressed(KeyEvent e) {
+		      }
+	
+		      @Override
+		      public void keyReleased(KeyEvent e) {
+		    	  if ((!targetSearch.getText().isEmpty())) {
+			          setPageComplete(true);
+			        }
+		      }
+	    });
+	    
+	    targetSearch.setLayoutData(gd);
+	    
+	    supersLabelCheck = new Label(container, SWT.NONE);
 	    supersLabelCheck.setText("Get properties from supers");
 	    superscheck = new Button(container, SWT.CHECK);
 	    superscheck.setSelection(true);
 	    
-	    Label equivsLabelCheck = new Label(container, SWT.NONE);
+	    equivsLabelCheck = new Label(container, SWT.NONE);
 	    equivsLabelCheck.setText("Get properties from equivalents");
 	    equivscheck = new Button(container, SWT.CHECK);
 	    equivscheck.setSelection(true);
@@ -80,7 +155,7 @@ public class SearchEntityWizardPage extends WizardPage {
 	    onlyDirectSubclasses.setSelection(true);
 	    
 	    Label showEntitiesCompactedLabelCheck = new Label(container, SWT.NONE);
-	    showEntitiesCompactedLabelCheck.setText("Entities Compacted");
+	    showEntitiesCompactedLabelCheck.setText("Show entities only");
 	    showEntitiesCompacted = new Button(container, SWT.CHECK);
 	    showEntitiesCompacted.setSelection(true);
 	    
@@ -88,8 +163,12 @@ public class SearchEntityWizardPage extends WizardPage {
 	    setPageComplete(false);
 	}
 	
-	public String getSearchField() {
-		 return search.getText();
+	public String getSourceSearchField() {
+		 return sourceSearch.getText();
+	}
+	
+	public String getTargetSearchField() {
+		 return targetSearch.getText();
 	}
 	
 	public boolean isSupersSearch(){

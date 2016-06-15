@@ -138,36 +138,4 @@
          </propertySection>
       </propertySections>
    </extension>
-   <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            class="metardf.ui.preferences.page.RuleWeightPreferencePage"
-            id="metaRDF.ui.preferences.page"
-            name="Extremo">
-      </page>
-   </extension>
-   <extension
-         point="metardf.core.extensions.preferences.settings">
-      <preferencessettings
-            class="metardf.ui.preferences.page.settings.AllTheSamePreferencePointSettings"
-            id="metardf.core.extensions.preferences.settings.allthesame"
-            name="All the Same">
-      </preferencessettings>
-      <preferencessettings
-            class="metardf.ui.preferences.page.settings.DefinitionsPreferencePointSettings"
-            id="metardf.core.extensions.preferences.settings.definitions"
-            name="Give preference to the defitions">
-      </preferencessettings>
-      <preferencessettings
-            class="metardf.ui.preferences.page.settings.SynonymsSharingPreferencePointSettings"
-            id="metardf.core.extensions.preferences.settings.synonymssharing"
-            name="Synonyms sharing between senses">
-      </preferencessettings>
-      <preferencessettings
-            class="metardf.ui.preferences.page.settings.UsagesPreferencePointSettings"
-            id="metardf.core.extensions.preferences.settings.usages"
-            name="Give preference to the usages">
-      </preferencessettings>
-   </extension>
-
 </plugin>

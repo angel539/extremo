@@ -1,4 +1,4 @@
-package metaRDF.core.model.impl;
+package metaRDF.core.utils;
 
 import java.util.ArrayList;
 import java.util.HashSet;

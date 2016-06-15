@@ -1,4 +1,4 @@
-package metardf.ui.dnd;
+package metardf.ui;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

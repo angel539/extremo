@@ -3,7 +3,6 @@ package metardf.ui.actions.uml2.action;
 import java.io.IOException;
 
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -18,9 +17,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.uml2.uml.Model;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
+//import org.eclipse.emf.ecore.resource.
 
+import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 import metardf.ui.extensions.ExtremoViewPartAction;
 import metardf.ui.utils.Messages;
@@ -46,7 +46,7 @@ public class CreateClass extends ExtremoViewPartAction {
 					TreeObject treeObject = (TreeObject) object;
 					ISemanticElement semanticElement = treeObject.getSemanticElement();
 					
-					if(semanticElement != null){
+					if(semanticElement != null && semanticElement instanceof ISemanticClass){
 						IEditorInput editorInput = editorPart == null ? null : editorPart.getEditorInput();
 						
 						IPath path = editorInput instanceof FileEditorInput 
@@ -85,12 +85,6 @@ public class CreateClass extends ExtremoViewPartAction {
 		}
 	}
 	
-	protected static Model createModel(String name) {
-		Model model = UMLFactory.eINSTANCE.createModel();
-		model.setName(name);
-		return model;
-	}
-	
 	protected static org.eclipse.uml2.uml.Class createClass(
 			org.eclipse.uml2.uml.Package package_, String name,
 			boolean isAbstract) {
@@ -101,6 +95,15 @@ public class CreateClass extends ExtremoViewPartAction {
 		return class_;
 	}
 	
+	protected static void saveResource(Resource resource) {
+		try {
+			resource.save(null);
+		} catch (IOException ioe) {
+			System.err.println(ioe.getMessage());
+		}
+	}
+}
+/*
 	protected static void save(org.eclipse.uml2.uml.Package package_, URI uri) {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		UMLResourcesUtil.init(resourceSet);
@@ -115,11 +118,9 @@ public class CreateClass extends ExtremoViewPartAction {
 		}
 	}
 	
-	protected static void saveResource(Resource resource) {
-		try {
-			resource.save(null);
-		} catch (IOException ioe) {
-			System.err.println(ioe.getMessage());
-		}
+	protected static Model createModel(String name) {
+		Model model = UMLFactory.eINSTANCE.createModel();
+		model.setName(name);
+		return model;
 	}
-}
+*/

@@ -6,6 +6,7 @@ import java.net.URL;
 import metaRDF.core.model.impl.SemanticResource;
 
 public class OWLSemanticResource extends SemanticResource{
+	private static final long serialVersionUID = -5141662662905009005L;
 	String url;
 	
 	protected OWLSemanticResource(String id, String name) {
@@ -15,7 +16,6 @@ public class OWLSemanticResource extends SemanticResource{
 
 	@Override
 	public boolean isAlive() {
-		
 		if(url.startsWith("file:")){
 			File file = new File(url);
 			return file.exists();

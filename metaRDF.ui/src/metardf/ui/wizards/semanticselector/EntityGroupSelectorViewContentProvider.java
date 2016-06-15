@@ -51,8 +51,4 @@ public class EntityGroupSelectorViewContentProvider implements IStructuredConten
 			return ((TreeParent)parent).hasChildren();
 		return false;
 	}
-	
-	/*private void initialize() {
-		invisibleRoot = new TreeParent("");
-	}*/
 }

@@ -15,8 +15,9 @@
             view="entities">
       </action>
       <action
-            class="metaRDF.ui.actions.uml2.action.CreateAttribute"
-            icon="icons/geometry.png"
+            class="metardf.ui.actions.uml2.action.CreateAttribute"
+            editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+            icon="icons/sort_down.png"
             id="metaRDF.ui.actions.uml2.action.CreateAttribute"
             name="CreateUMLAttribute"
             position="menumanager"

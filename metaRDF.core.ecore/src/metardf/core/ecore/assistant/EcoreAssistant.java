@@ -77,7 +77,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 				if((obj != null) && (obj instanceof EClass)){
 					String name = ((EClass) obj).getName();
 					String description = ((EClass) obj).getName() + " " + ((EClass) obj).getEAnnotations().toString();
-					EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
+					EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description);
 					classes.add((ISemanticClass) semanticClass);
 				}
 			}
@@ -88,7 +88,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	}
 	
 	
-	@Override
+	/*@Override
 	public List<ISemanticClass> getClassesLike(String... names) {
 		Resource resource = null;
 		List<ISemanticClass> classes = new ArrayList<ISemanticClass>();
@@ -96,7 +96,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 		if(ecore != null && ecore.exists()){
 			try{
 				ResourceSet resourceSet = new ResourceSetImpl(); 
-				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl()); 			//EcorePackage ecorePackage = EcorePackage.eINSTANCE;		
+				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
+				EcorePackage ecorePackage = EcorePackage.eINSTANCE;		
 				URI fileURI = URI.createFileURI(ecore.getAbsolutePath());
 				resource = resourceSet.getResource(fileURI, true);
 				resourceSet.getAllContents().next();
@@ -116,7 +117,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 						if(((EClass) obj).getName().compareTo(word) == 0){
 							String name = ((EClass) obj).getName();
 							String description = ((EClass) obj).getEAnnotations().toString();
-							EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
+							EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description);
 							semanticClass.setResourceFrom(semanticResource);
 							classes.add((ISemanticClass) semanticClass);
 							continue iterator;
@@ -127,7 +128,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 							if(LangUtils.haveTheSameStem(wordInName, word)){
 								String name = ((EClass) obj).getName();
 								String description = ((EClass) obj).getEAnnotations().toString();
-								EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
+								EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description);
 								semanticClass.setResourceFrom(semanticResource);
 								classes.add((ISemanticClass) semanticClass);
 								continue iterator;
@@ -139,7 +140,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 		}
 		
 		return classes;
-	}
+	}*/
 	
 	@Override
 	public List<ISemanticClass> getClassesLike(Map<String, Integer> namesByRelevance) {
@@ -149,7 +150,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 		if(ecore != null && ecore.exists()){
 			try{
 				ResourceSet resourceSet = new ResourceSetImpl(); 
-				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl()); 			//EcorePackage ecorePackage = EcorePackage.eINSTANCE;		
+				resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
+				//EcorePackage ecorePackage = EcorePackage.eINSTANCE;		
 				URI fileURI = URI.createFileURI(ecore.getAbsolutePath());
 				resource = resourceSet.getResource(fileURI, true);
 				resourceSet.getAllContents().next();
@@ -168,8 +170,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 						if(((EClass) obj).getName().compareTo(word.getKey()) == 0){
 							String name = ((EClass) obj).getName();
 							String description = ((EClass) obj).getEAnnotations().toString();
-							EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
-							semanticClass.setWeight(word.getValue() + 500);
+							EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description);
+							//semanticClass.setWeight(word.getValue() + 500);
 							semanticClass.setResourceFrom(semanticResource);
 							classes.add((ISemanticClass) semanticClass);
 							continue iterator;
@@ -181,8 +183,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 							if(wordInName.compareTo(word.getKey()) == 0){
 								String name = ((EClass) obj).getName();
 								String description = ((EClass) obj).getEAnnotations().toString();
-								EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
-								semanticClass.setWeight(word.getValue() + 300);
+								EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description);
+								//semanticClass.setWeight(word.getValue() + 300);
 								semanticClass.setResourceFrom(semanticResource);
 								classes.add((ISemanticClass) semanticClass);
 								continue iterator;
@@ -190,8 +192,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 								if(LangUtils.haveTheSameStem(wordInName, word.getKey())){
 									String name = ((EClass) obj).getName();
 									String description = ((EClass) obj).getEAnnotations().toString();
-									EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description, true);
-									semanticClass.setWeight(word.getValue() + 100);
+									EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description);
+									//semanticClass.setWeight(word.getValue() + 100);
 									semanticClass.setResourceFrom(semanticResource);
 									classes.add((ISemanticClass) semanticClass);
 									continue iterator;
@@ -308,7 +310,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			List<ISemanticClass> subclasses = new ArrayList<ISemanticClass>();
 			
 			for(EClass subclass : candidates){
-				EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) subclass, subclass.getName(), subclass.getName(), true);
+				EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) subclass, subclass.getName(), subclass.getName());
 				subclasses.add((ISemanticClass) semanticClass);
 			}
 			

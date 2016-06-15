@@ -10,6 +10,7 @@ import org.osgi.framework.Bundle;
 
 import metaRDF.core.model.ISemanticElement;
 import metardf.core.extensions.AssistantFactory;
+import metardf.ui.Serializer;
 
 public class ExtremoModelTransfer extends ByteArrayTransfer {
 	private static final String TYPE_NAME = "extremo-model-transfer-format";
@@ -22,7 +23,6 @@ public class ExtremoModelTransfer extends ByteArrayTransfer {
 	}
 	
 	protected ExtremoModelTransfer(){
-		//super();
 	}
 	
 	@Override

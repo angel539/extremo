@@ -7,7 +7,7 @@ import metaRDF.core.model.impl.ObjectProperty;
 public class EcoreObjectProperty extends ObjectProperty{
 	private static final long serialVersionUID = -487348587126061637L;
 	private transient EReference id = null;
-	ISemanticClass range = null;
+	private ISemanticClass range = null;
 	
 	public EcoreObjectProperty(){
 		super();
@@ -15,7 +15,7 @@ public class EcoreObjectProperty extends ObjectProperty{
 	
 	public EcoreObjectProperty(EReference id, ISemanticClass range, String name, boolean isFromSuper, String description) {
 		super(id, range, name, isFromSuper, description);
-		this.id = id;
+		this.setId(id);
 		this.range = range;
 	}
 
@@ -27,5 +27,13 @@ public class EcoreObjectProperty extends ObjectProperty{
 	@Override
 	public void setRange(ISemanticClass range) {
 		this.range = range;
+	}
+
+	public EReference getId() {
+		return id;
+	}
+
+	public void setId(EReference id) {
+		this.id = id;
 	}
 }

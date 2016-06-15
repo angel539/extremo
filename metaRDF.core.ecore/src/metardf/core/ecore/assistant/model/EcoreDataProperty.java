@@ -14,11 +14,19 @@ public class EcoreDataProperty extends DataProperty{
 	
 	public EcoreDataProperty(EAttribute id, String name, String type, boolean isFromSuper, String description) {
 		super(id, name, type, isFromSuper, description);
-		this.id = id;
+		this.setId(id);
 	}
 
 	@Override
 	public String toString() {
 		return "[" + getName() + ", " + getId() + "]";
+	}
+
+	public EAttribute getId() {
+		return id;
+	}
+
+	public void setId(EAttribute id) {
+		this.id = id;
 	}	
 }

@@ -1,9 +1,7 @@
 package metardf.ui.dnd;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalViewer;
-import org.eclipse.gef.Request;
 import org.eclipse.gef.dnd.AbstractTransferDropTargetListener;
-import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTarget;
 import org.eclipse.swt.dnd.DropTargetEvent;
@@ -11,8 +9,6 @@ import org.eclipse.swt.graphics.Point;
 
 public abstract class GraphityEditorTransferDropTargetListener extends  AbstractTransferDropTargetListener implements IGraphityEditorContribution{	
 	private static EditPartViewer viewer = null;
-	private SemanticElementCreationFactory factory = new SemanticElementCreationFactory();
-	private CreateRequest request = null;
 	
 	public GraphityEditorTransferDropTargetListener(GraphicalViewer viewer) {
 		super(viewer, ExtremoModelTransfer.getTransfer());
@@ -27,11 +23,6 @@ public abstract class GraphityEditorTransferDropTargetListener extends  Abstract
 	public EditPartViewer getViewer() {
 		return viewer;
 	}
-
-	@SuppressWarnings("static-access")
-	public void setViewer(EditPartViewer viewer) {
-		this.viewer = viewer;
-	}
 	
 	@Override
 	public void drop(DropTargetEvent event) {
@@ -41,24 +32,6 @@ public abstract class GraphityEditorTransferDropTargetListener extends  Abstract
 	@Override
 	protected void handleDrop() {
 		super.handleDrop();
-	}
-
-	@Override
-	protected void updateTargetRequest() {
-		if(request != null){
-			request.setLocation(getDropLocation());
-		}
-	}
-
-	@Override
-	protected Request createTargetRequest() {
-		if(request == null){
-			request = new CreateRequest();
-			request.setFactory(factory);
-			handleDragOver();
-		}
-		
-		return request;
 	}
 
 	@Override

@@ -25,8 +25,8 @@ import metaRDF.core.model.ISearch;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.ISemanticElement;
 import metaRDF.core.model.impl.RepositoryManager;
-import metaRDF.core.model.impl.Search;
 import metaRDF.core.model.impl.SemanticResource;
+import metaRDF.core.utils.Search;
 
 public class AssistantFactory {
 	private List<IFormatAssistant> assistants = null;
@@ -34,7 +34,7 @@ public class AssistantFactory {
 	
 	private static AssistantFactory INSTANCE = null;
 	
-	public static final String ASSISTANT_EXTENSIONS_ID = "metardf.core.extensions.assistant";
+	public static final String ASSISTANT_EXTENSIONS_ID = "extremo.core.extensions.assistant";
 	
 	Map<Bundle, List<Class<? extends ISemanticElement>>> registeredTypes = null;
 

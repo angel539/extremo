@@ -1,6 +1,6 @@
 package metardf.ui.views.entities.model;
 
-import metaRDF.core.model.impl.Search;
+import metaRDF.core.utils.Search;
 
 public class SearchTreeParent extends TreeParent{
 	private static final long serialVersionUID = 2855575125618775861L;

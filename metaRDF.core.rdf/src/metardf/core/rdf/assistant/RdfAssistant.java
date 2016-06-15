@@ -32,8 +32,7 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 	InfModel model = null;
 	SemanticResource semanticResource = null;
 	
-	public RdfAssistant() {
-	}
+	public RdfAssistant() {}
 
 	@Override
 	public boolean load(SemanticResource semanticResource) {
@@ -67,40 +66,20 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 	                }
 	            );
 			
-			//List<String> lines = new ArrayList<String>();
-			
 			while(iterator.hasNext()){
-				/*Resource subject = iterator.nextStatement().getSubject();
-				//Property predicate = iterator.nextStatement().getPredicate();
-				RDFNode object = iterator.nextStatement().getObject();
-				
-				String s = "";
-				if(subject != null) s = s + "subject: " + subject.toString();
-				//if(predicate != null) s = s + "predicate: " + predicate.toString();
-				if(object!= null) s = s + "_object: " + object.toString();
-				System.out.println(s);*/
 				Statement statement = iterator.nextStatement();
 				Resource subject = statement.getSubject();
-				//lines.add(iterator.nextStatement().toString());
-				
+
 				String name = subject.getLocalName();
 				String description = subject.getURI();
 				RDFDataSemanticClass semanticClass = new RDFDataSemanticClass(subject, name, description, true);
 				allSemanticClasses.add(semanticClass);
-				
-				//System.out.println(iterator.nextStatement());
 			}
-			
-			/*Path file = Paths.get("the-file-name.txt");
-			try {
-				Files.write(file, lines, Charset.forName("UTF-8"));
-			} catch (IOException e) {
-			}*/
 		}
 		return allSemanticClasses;
 	}
 
-	@Override
+	/*@Override
 	public List<ISemanticClass> getClassesLike(String... names) {
 		List<ISemanticClass> semanticClasses = new ArrayList<ISemanticClass>();
 		
@@ -123,11 +102,7 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 		                }
 		            );
 				
-				while(iterator.hasNext()){
-					/*RDFDataSemanticClass semanticClass = new RDFDataSemanticClass(, ((EClass) obj).getName(), ((EClass) obj).getName());
-					semanticClass.setResourceFrom(semanticResource);
-					classes.add((ISemanticClass) semanticClass);*/
-					
+				while(iterator.hasNext()){					
 					Statement statement = iterator.nextStatement();
 					Resource subject = statement.getSubject();
 					
@@ -139,7 +114,7 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 			}	
 		}
 		return semanticClasses;
-	}
+	}*/
 
 	@Override
 	public List<ISemanticClass> getClassesLike(Map<String, Integer> namesByRelevance) {
@@ -220,13 +195,11 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 
 	@Override
 	public List<ISemanticClass> getSiblings(ISemanticClass parent) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<ISemanticClass> getRelatedClasses(ISemanticClass parent, boolean supers, boolean equivs) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -244,13 +217,11 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 
 	@Override
 	public List<IObjectProperty> getPath(ISemanticClass entityA, ISemanticClass entityB) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public IObjectProperty getInverseProperty(ISemanticClass parent, IObjectProperty property) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -268,8 +239,8 @@ public class RdfAssistant extends FormatAssistant implements IFormatAssistant {
 		boolean loaded = assistant.load(new SemanticResource("http://www.oegov.us/democracy/us/federal/agency/owl/us1dhs", "US1DHS"));
 		
 		if(loaded){
-			List<ISemanticClass> classes = assistant.getClassesLike("agency");
-			System.out.println(classes.toString());
+			//List<ISemanticClass> classes = assistant.getClassesLike("agency");
+			//System.out.println(classes.toString());
 		}
 	}
 }

@@ -15,7 +15,7 @@ public interface IFormatAssistant {
 	
     public boolean load(SemanticResource semanticResource);
     public List<ISemanticClass> getAllClasses();
-    public List<ISemanticClass> getClassesLike(String... names);
+    //public List<ISemanticClass> getClassesLike(String... names);
     public List<ISemanticClass> getClassesLike(Map<String, Integer> namesByRelevance);
     public List<IDataProperty> getDataProperties(ISemanticClass parent, boolean supers, boolean equivs);
     public List<IObjectProperty> getObjectProperties(ISemanticClass parent, boolean supers, boolean equivs);
@@ -26,6 +26,4 @@ public interface IFormatAssistant {
     public List<IObjectProperty> getPath(ISemanticClass entityA, ISemanticClass entityB);
     public IObjectProperty getInverseProperty (ISemanticClass parent, IObjectProperty property);
     public List<Class<? extends ISemanticElement>> getRegisteredTypes();
-    
-    //public ISemanticClass asSemanticClass(Object entity);
 }

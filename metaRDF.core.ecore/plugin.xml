@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="metardf.core.extensions.assistant">
+         point="extremo.core.extensions.assistant">
       <assistant
             class="metardf.core.ecore.assistant.EcoreAssistant"
             extensions="ecore"

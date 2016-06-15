@@ -6,6 +6,7 @@ import org.apache.commons.lang3.text.WordUtils;
 import metaRDF.core.model.impl.SemanticClass;
 
 public class OWLSemanticClass extends SemanticClass{
+	private static final long serialVersionUID = -6726466279345750289L;
 	String id;
 	String label;
 	int weight;

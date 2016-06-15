@@ -1,17 +1,17 @@
-package metardf.ui.preferences.page.settings;
+package metardf.ui.preferences.page;
 
 import metardf.core.extensions.preferences.IPointSettings;
 
-public class DefinitionsPreferencePointSettings implements IPointSettings {
-	public static String NAME = "Give preference to the defitions";
+public class SynonymsSharingPreferencePointSettings implements IPointSettings {
+	public static String NAME = "Synonyms sharing between senses";
 	
 	public static int RELEVANCE_OF_SYNONYMS = 10; // hasta 10
-	public static int RELEVANCE_OF_PATHS = 5; // hasta 10
-	public static int RELEVANCE_OF_DEFINITIONS = 10; // hasta 10
+	public static int RELEVANCE_OF_PATHS = 10; // hasta 10
+	public static int RELEVANCE_OF_DEFINITIONS = 5; // hasta 10
 	public static int RELEVANCE_OF_USAGES = 5; // hasta 10
-	public static int RELEVANCE_OF_INFORMATION_SHARING = 50; // hasta 100
+	public static int RELEVANCE_OF_INFORMATION_SHARING = 100; // hasta 100
 	
-	public static int MAX_WEIGHT = 500;
+	public static int MAX_WEIGHT = 50;
 	
 	
 	@Override

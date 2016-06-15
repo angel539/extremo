@@ -4,6 +4,7 @@ import metaRDF.core.model.Datatype;
 import metaRDF.core.model.impl.DataProperty;
 
 public class OWLSemanticDataProperty extends DataProperty{
+	private static final long serialVersionUID = -1488836797584026526L;
 	Datatype range;
 	String id;
 	

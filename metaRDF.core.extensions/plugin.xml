@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="metardf.core.extensions.assistant" name="metardf.core.extensions.assistant" schema="schema/metardf.core.extensions.assistant.exsd"/>
-   <extension-point id="metardf.core.extensions.preferences.settings" name="metardf.core.extensions.preferences.settings" schema="schema/metardf.core.extensions.preferences.settings.exsd"/>
+   <extension-point id="extremo.core.extensions.assistant" name="extremo.core.extensions.assistant" schema="schema/extremo.core.extensions.assistant.exsd"/>
+   <extension-point id="extremo.core.extensions.weights" name="extremo.core.extensions.weights" schema="schema/extremo.core.extensions.weights.exsd"/>
 
 </plugin>

@@ -73,13 +73,8 @@ public class EntityGroupSelectorDNDWizardPage extends WizardPage{
 
 	@Override
 	public void createControl(Composite parent) {
-		//container = new Composite(parent, SWT.NONE);
 		containerArea = new Composite(parent, SWT.NONE);
 	    
-		
-		//FillLayout container = new FillLayout(SWT.HORIZONTAL);
-		//container.marginHeight = 0;
-		//container.marginWidth = 0;
 		GridLayout layout = new GridLayout(SWT.HORIZONTAL, false);
 		layout.numColumns = 2;
 		layout.makeColumnsEqualWidth = true;
@@ -93,14 +88,6 @@ public class EntityGroupSelectorDNDWizardPage extends WizardPage{
 	    
 	    dragReferencesView = new DragPropertiesView(containerArea);
 	    dropReferencesView = new DropPropertiesView(containerArea);
-	    /*FillLayout containerBottom = new FillLayout(SWT.HORIZONTAL);
-		containerBottom.marginHeight = 5;
-		containerBottom.marginWidth = 0;
-		containerArea.setLayout(container);*/
-		
-	    
-	    //dragReferencesView = new DragPropertiesView(containerArea);
-	    //dropReferencesView = new DropPropertiesView(containerArea);
 	    
 	    containerArea.moveAbove(null);
 		setControl(containerArea);

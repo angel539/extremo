@@ -1,4 +1,4 @@
-package metaRDF.core.model.impl;
+package metaRDF.core.utils;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -24,7 +24,6 @@ import com.google.common.collect.Lists;
 import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISearch;
 import metaRDF.core.search.TreeNode;
-import metaRDF.core.utils.Tuple;
 import metaRDF.core.wordnet.Wordnet;
 
 public class Search implements ISearch {
@@ -46,7 +45,7 @@ public class Search implements ISearch {
 	private int relevanceR5;
 	
 	private int maxWeight;
-	private ProbabilisticDistribution distribution = ProbabilisticDistribution.UNIFORM;
+	//private ProbabilisticDistribution distribution = ProbabilisticDistribution.UNIFORM;
 	
 	private int[] weights;
 
@@ -489,32 +488,21 @@ public class Search implements ISearch {
 	
 	private void calculateWeights() {
 		weights = new int[4];
-		weights[0] = (relevanceR1 * maxWeight)/10;
-		weights[1] = (relevanceR2 * maxWeight)/10;
-		weights[2] = (relevanceR3 * maxWeight)/10;
-		weights[3] = (relevanceR4 * maxWeight)/10;
-		//weights[4] = (relevanceR5 * maxWeight)/10;
-		
-		/*if(distribution == ProbabilisticDistribution.UNIFORM){
-			UniformIntegerDistribution uniformIntegerDistribution = new UniformIntegerDistribution(0, maxWeight);
-			weights = uniformIntegerDistribution.sample(5);
-		}
-		if(distribution == ProbabilisticDistribution.ENUMERATED){
-			EnumeratedIntegerDistribution enumeratedIntegerDistribution = new EnumeratedIntegerDistribution();
-		}*/
+		weights[0] = (relevanceR1 * maxWeight) / 10;
+		weights[1] = (relevanceR2 * maxWeight) / 10;
+		weights[2] = (relevanceR3 * maxWeight) / 10;
+		weights[3] = (relevanceR4 * maxWeight) / 10;
 	}
 	
 	public static void main(String [] args){
 		Search search = new Search("process, activity, task", false, false);
 		
 		search.setMaxWeight(100);
-		search.setRelevanceR1(10);
-		search.setRelevanceR2(5);
-		search.setRelevanceR3(7);
-		search.setRelevanceR4(10);
-		search.setRelevanceR5(50);
-		
-		
+		search.setRelevanceR1(8);
+		search.setRelevanceR2(2);
+		search.setRelevanceR3(10);
+		search.setRelevanceR4(2);
+		search.setRelevanceR5(10);
 		search.calculateWeights();
 		search.expand();
 		
@@ -529,7 +517,7 @@ public class Search implements ISearch {
 		
 		List<String> reverseLines = Lists.reverse(lines);
 		
-		Path file = Paths.get(search.getDistribution() + ".txt");
+		Path file = Paths.get("sample.txt");
 		try {
 			Files.write(file, reverseLines, Charset.forName("UTF-8"));
 		} catch (IOException e) {
@@ -612,11 +600,11 @@ public class Search implements ISearch {
 		this.maxWeight = maxWeight;
 	}
 
-	public ProbabilisticDistribution getDistribution() {
+	/*public ProbabilisticDistribution getDistribution() {
 		return distribution;
 	}
 
 	public void setDistribution(ProbabilisticDistribution distribution) {
 		this.distribution = distribution;
-	}
+	}*/
 }

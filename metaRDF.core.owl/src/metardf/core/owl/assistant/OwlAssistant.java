@@ -83,11 +83,10 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 
 	@Override
 	public List<ISemanticClass> getAllClasses() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	@Override
+	/*@Override
 	public List<ISemanticClass> getClassesLike(String... names) {
 		List<ISemanticClass> classes = new ArrayList<ISemanticClass>();
 		
@@ -95,8 +94,7 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 			for (String entry : names){
 				for(OWLClass clazz : ontology.getClassesInSignature()){
 					String description = "";
-					// = "";
-					
+
 					for (OWLAnnotation annotation : clazz.getAnnotations(ontology, factory.getRDFSComment())) {
 						if (annotation.getValue() instanceof OWLLiteral) {
 							OWLLiteral val = (OWLLiteral) annotation.getValue();
@@ -128,7 +126,7 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 			}		
 		}
 		return classes;
-	}
+	}*/
 	
 	@Override
 	public List<ISemanticClass> getClassesLike(Map<String, Integer> namesByRelevance) {
@@ -138,7 +136,6 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 			for (Entry<String, Integer> entry : namesByRelevance.entrySet()){
 				for(OWLClass clazz : ontology.getClassesInSignature()){
 					String description = "";
-					//String label = "";
 					
 					for (OWLAnnotation annotation : clazz.getAnnotations(ontology, factory.getRDFSComment())) {
 						if (annotation.getValue() instanceof OWLLiteral) {
@@ -226,16 +223,6 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 			else{
 				return null;
 			}
-			
-			/*if(supers){
-				List<ISemanticClass> superclasses = getSuper(parent, true);
-				for(ISemanticClass superclass : superclasses) properties.addAll(getDataProperties(superclass.getId(), supers, equivs));
-			}
-			
-			if(equivs){
-				List<ISemanticClass> superclasses = equivs((String) parent.getId());
-				for(ISemanticClass superclass : superclasses) properties.addAll(getDataProperties(superclass.getId(), supers, equivs));
-			}*/
 			
 			return properties;
 		}
@@ -327,7 +314,7 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 		
 	}
 
-	private List<ISemanticClass> equivs(String parent){
+	/*private List<ISemanticClass> equivs(String parent){
 		if((parent == null) || parent.compareTo("") == 0) return null;
 		
 		List<ISemanticClass> equivs = new ArrayList<ISemanticClass>();
@@ -352,7 +339,7 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 		}
 		
 		return equivs;
-	}
+	}*/
 	
 	@Override
 	public List<ISemanticClass> getSub(ISemanticClass parent, boolean direct) {
@@ -363,19 +350,14 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 		if(ontology.containsClassInSignature(iri)){
 			OWLClass clazz = factory.getOWLClass(iri);
 			Set<OWLClassExpression> subclasses = clazz.getSubClasses(ontology);
-			//Collection<OWLClassExpression> subclasses = Searcher.sub(ontology.getSubClassAxiomsForSuperClass(clazz));
+			
 			for(OWLClassExpression subclass : subclasses){
-				
-				
 				if(!subclass.isAnonymous()){
 					String id = subclass.asOWLClass().getIRI().getShortForm();
 					String name = subclass.asOWLClass().getIRI().toString();
 					
 					OWLSemanticClass semanticClass = new OWLSemanticClass(id, name, false);
 					subs.add(semanticClass);
-					//if(!direct){
-					//	subs.addAll(getSub(subclass.asOWLClass().getIRI().toString(), direct));
-					//}
 				}	
 			}
 			
@@ -389,17 +371,12 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 
 	@Override
 	public IObjectProperty getInverseProperty(ISemanticClass cl, IObjectProperty property) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<ISemanticClass> getSiblings(ISemanticClass name) {
-		List<ISemanticClass> superclasses = getSuper(name, true);
 		List<ISemanticClass> siblings = new ArrayList<ISemanticClass>();
-		/*for(ISemanticClass superclass : superclasses){
-			siblings.addAll(getSub(superclass.getId(), true));
-		}*/
 		
 		HashSet<ISemanticClass> aux = new HashSet<ISemanticClass>(siblings);
 		siblings.clear();
@@ -431,7 +408,7 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 			}
 			
 			Map<String, Boolean> visited = new HashMap<String, Boolean>();
-			Map<String, String> prev = new HashMap<String, String>();
+			//Map<String, String> prev = new HashMap<String, String>();
 			
 		    Queue<String> q = new LinkedList<String>();
 		    String current = (String) start.getId();
@@ -444,15 +421,6 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 		            break;
 		        }
 		        else{
-		            /*for(IObjectProperty node : getObjectProperties(current.getId(), true, true)){
-		            	for(String range : ((OWLSemanticObjectProperty)node).getRanges()){
-		            		if(!visited.containsKey(range)){
-		            			q.add(range);
-			                    visited.put(range, true);
-			                    prev.put(range, current);
-		            		}
-		            	}
-		            }*/
 		        }
 		    }
 		    if (!current.equals(finish)){

@@ -53,8 +53,8 @@ import metaRDF.core.model.IRepository;
 import metaRDF.core.model.IResource;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.impl.RepositoryManager;
-import metaRDF.core.model.impl.Search;
 import metaRDF.core.model.impl.SemanticResource;
+import metaRDF.core.utils.Search;
 import metardf.core.extensions.AssistantFactory;
 import metardf.core.extensions.FormatAssistant;
 import metardf.core.extensions.IFormatAssistant;
@@ -303,7 +303,7 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 	private void invokeActions() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.ACTION_EXTENSIONS_ID);
-		//registry.get
+		
 		for(IConfigurationElement extension : extensions){
 			if(extension.getName().compareTo("action")==0){
 				ExtremoViewPartAction action;

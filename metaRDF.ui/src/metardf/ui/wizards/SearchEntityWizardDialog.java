@@ -1,7 +1,8 @@
 package metardf.ui.wizards;
 
 import org.eclipse.jface.wizard.Wizard;
-import metaRDF.core.model.impl.Search;
+
+import metaRDF.core.utils.Search;
 
 public class SearchEntityWizardDialog extends Wizard {
 	SearchEntityWizardPage searchPage;
@@ -25,7 +26,7 @@ public class SearchEntityWizardDialog extends Wizard {
 
 	@Override
 	public boolean performFinish() {
-		search.setSearchField(searchPage.getSearchField());
+		search.setSearchField(searchPage.getSourceSearchField());
 		search.setIsFromSupers(searchPage.isSupersSearch());
 		search.setIsFromEquivs(searchPage.isEquivsSearch());
 		

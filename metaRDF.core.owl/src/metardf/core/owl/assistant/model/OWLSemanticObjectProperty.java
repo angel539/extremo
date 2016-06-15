@@ -6,6 +6,7 @@ import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.impl.ObjectProperty;
 
 public class OWLSemanticObjectProperty extends ObjectProperty{
+	private static final long serialVersionUID = 7814711282647051747L;
 	String id;
 	OWLSemanticClass range;
 	

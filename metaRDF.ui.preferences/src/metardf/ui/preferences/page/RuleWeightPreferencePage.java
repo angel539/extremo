@@ -19,9 +19,11 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 import metardf.core.extensions.preferences.IPointSettings;
-import metardf.ui.Activator;
+import metardf.ui.preferences.Activator;
 
 public class RuleWeightPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+	public static final String PREFERENCES_SETTINGS_EXTENSIONS_ID = "extremo.core.extensions.weights";
+	
 	private ScaleFieldEditor rangeRule1;
 	private ScaleFieldEditor rangeRule2;
 	private ScaleFieldEditor rangeRule3;
@@ -29,8 +31,6 @@ public class RuleWeightPreferencePage extends FieldEditorPreferencePage implemen
 	private ScaleFieldEditor rangeRule5;
 	private ComboFieldEditor presetsFieldEditor;
 	private IntegerFieldEditor maxWeight;
-	
-	public static final String PREFERENCES_SETTINGS_EXTENSIONS_ID = "metardf.core.extensions.preferences.settings";
 	
 	IConfigurationElement[] extensions;
 	Map<String, IPointSettings> relevanceValues;
@@ -119,7 +119,6 @@ public class RuleWeightPreferencePage extends FieldEditorPreferencePage implemen
 		addField(rangeRule4);
 		
 		rangeRule5 = new ScaleFieldEditor("RELEVANCE_R5", "Synonyms sharing between searching terms", getFieldEditorParent(), 0, 100, 1, 1);
-		//rangeRule5.getScaleControl().
 		addField(rangeRule5);
 		
 		maxWeight = new IntegerFieldEditor("MAX_WEIGHT", "Maximum weight", getFieldEditorParent());
@@ -141,7 +140,6 @@ public class RuleWeightPreferencePage extends FieldEditorPreferencePage implemen
 					maxWeight.setEnabled(true, getFieldEditorParent());
 				}
 				else{
-					//rangeRule1.setEnabled(false, getFieldEditorParent());
 					rangeRule1.getScaleControl().setEnabled(false);
 					rangeRule2.getScaleControl().setEnabled(false);
 					rangeRule3.getScaleControl().setEnabled(false);
