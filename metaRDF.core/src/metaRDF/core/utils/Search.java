@@ -45,13 +45,14 @@ public class Search implements ISearch {
 	private int relevanceR5;
 	
 	private int maxWeight;
-	//private ProbabilisticDistribution distribution = ProbabilisticDistribution.UNIFORM;
-	
 	private int[] weights;
-
 	private int variance;
 	
+	private String name;
+	private String strategyApplied;
+	
 	TreeNode<String> searchTree;
+	
 	/*
 	 * kind = 0: busqueda general
 	 * kind = 1: busqueda particular.
@@ -486,7 +487,7 @@ public class Search implements ISearch {
 		return searches;
 	}
 	
-	private void calculateWeights() {
+	public void calculateWeights() {
 		weights = new int[4];
 		weights[0] = (relevanceR1 * maxWeight) / 10;
 		weights[1] = (relevanceR2 * maxWeight) / 10;
@@ -598,6 +599,26 @@ public class Search implements ISearch {
 
 	public void setMaxWeight(int maxWeight) {
 		this.maxWeight = maxWeight;
+	}
+
+	@Override
+	public String getName() {
+		return this.name;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@Override
+	public String getStrategyApplied() {
+		return this.strategyApplied;
+	}
+
+	@Override
+	public void setStrategyApplied(String strategyApplied) {
+		this.strategyApplied = strategyApplied;
 	}
 
 	/*public ProbabilisticDistribution getDistribution() {

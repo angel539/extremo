@@ -31,9 +31,8 @@ import metaRDF.core.utils.Search;
 public class AssistantFactory {
 	private List<IFormatAssistant> assistants = null;
 	private List<ISearch> searches = null;
-	
+	private ISearch lastSearch = null;
 	private static AssistantFactory INSTANCE = null;
-	
 	public static final String ASSISTANT_EXTENSIONS_ID = "extremo.core.extensions.assistant";
 	
 	Map<Bundle, List<Class<? extends ISemanticElement>>> registeredTypes = null;
@@ -193,7 +192,6 @@ public class AssistantFactory {
 
 	
 	public List<ISemanticClass> search(RepositoryManager repositoryManager, Search search) {
-		addSearch(search);	
 		search.expand();
 		
 		Map<String, Integer> searchList = search.getOrderSearchesListByWeight();
@@ -223,6 +221,16 @@ public class AssistantFactory {
 			}		
 		}
 		
+		lastSearch = search;
+		addSearch(search);
 		return semanticClasses;
+	}
+
+	public ISearch getLastSearch() {
+		return lastSearch;
+	}
+
+	public void setLastSearch(ISearch lastSearch) {
+		this.lastSearch = lastSearch;
 	}
 }

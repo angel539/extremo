@@ -171,7 +171,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 							String name = ((EClass) obj).getName();
 							String description = ((EClass) obj).getEAnnotations().toString();
 							EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description);
-							//semanticClass.setWeight(word.getValue() + 500);
+							semanticClass.setWeight(word.getValue() + 500);
 							semanticClass.setResourceFrom(semanticResource);
 							classes.add((ISemanticClass) semanticClass);
 							continue iterator;
@@ -184,7 +184,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 								String name = ((EClass) obj).getName();
 								String description = ((EClass) obj).getEAnnotations().toString();
 								EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description);
-								//semanticClass.setWeight(word.getValue() + 300);
+								semanticClass.setWeight(word.getValue() + 300);
 								semanticClass.setResourceFrom(semanticResource);
 								classes.add((ISemanticClass) semanticClass);
 								continue iterator;
@@ -193,7 +193,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 									String name = ((EClass) obj).getName();
 									String description = ((EClass) obj).getEAnnotations().toString();
 									EcoreSemanticClass semanticClass = new EcoreSemanticClass((EClass) obj, name, description);
-									//semanticClass.setWeight(word.getValue() + 100);
+									semanticClass.setWeight(word.getValue() +100);
 									semanticClass.setResourceFrom(semanticResource);
 									classes.add((ISemanticClass) semanticClass);
 									continue iterator;

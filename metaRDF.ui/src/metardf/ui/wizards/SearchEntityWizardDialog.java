@@ -26,6 +26,7 @@ public class SearchEntityWizardDialog extends Wizard {
 
 	@Override
 	public boolean performFinish() {
+		search.setName(searchPage.getSourceSearchField());
 		search.setSearchField(searchPage.getSourceSearchField());
 		search.setIsFromSupers(searchPage.isSupersSearch());
 		search.setIsFromEquivs(searchPage.isEquivsSearch());

@@ -14,5 +14,3 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore.xmi
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: icons/,
- .

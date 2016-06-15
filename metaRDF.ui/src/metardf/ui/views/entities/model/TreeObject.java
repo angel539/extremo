@@ -34,7 +34,7 @@ public class TreeObject implements IAdaptable, Serializable{
 			this.element = (ISemanticElement) element;
 		}
 		
-		if(element instanceof ISemanticClass){
+		/*if(element instanceof ISemanticClass){
 			if(((ISemanticClass) element).getProperties()!=null) this.name = this.name + " [attr:" + ((ISemanticClass) element).getProperties().size() + "]";
 			if(((ISemanticClass) element).getReferences()!=null) this.name = this.name + " [ref:" + ((ISemanticClass) element).getReferences().size() + "]";		
 			if(((ISemanticClass) element).getSuperclasses()!=null) this.name = this.name + " [supers:" + ((ISemanticClass) element).getSuperclasses().size() + "]";		
@@ -47,7 +47,7 @@ public class TreeObject implements IAdaptable, Serializable{
 		
 		if(element instanceof IObjectProperty){
 			this.name = this.name + " : " + ((IObjectProperty) element).getRange().getName();
-		}
+		}*/
 	}
 	
 	public String getName() {

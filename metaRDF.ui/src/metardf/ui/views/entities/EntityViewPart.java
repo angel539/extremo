@@ -42,6 +42,7 @@ import org.eclipse.swt.widgets.Menu;
 
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
@@ -51,6 +52,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import metaRDF.core.model.IRepository;
 import metaRDF.core.model.IResource;
+import metaRDF.core.model.ISearch;
 import metaRDF.core.model.ISemanticClass;
 import metaRDF.core.model.impl.RepositoryManager;
 import metaRDF.core.model.impl.SemanticResource;
@@ -70,6 +72,7 @@ import metardf.ui.views.entities.model.SemanticClassGroupTreeParent;
 import metardf.ui.views.entities.model.SearchTreeParent;
 import metardf.ui.views.entities.model.TreeObject;
 import metardf.ui.views.entities.model.TreeParent;
+import metardf.ui.views.searchtree.SearchTreeView;
 import metardf.ui.wizards.SearchEntityWizardDialog;
 
 public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPageContributor{
@@ -392,12 +395,14 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 		if((repositoryManager!=null) && (repositoryManager.getRepositories()!=null) && (repositoryManager.getRepositories().size() > 0)){
 			Search searchOptions = new Search();
 			
+			searchOptions.setStrategyApplied(Activator.getDefault().getPreferenceStore().getString("PRESETS"));
 			searchOptions.setRelevanceR1(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R1"));
 			searchOptions.setRelevanceR2(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R2"));
 			searchOptions.setRelevanceR3(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R3"));
 			searchOptions.setRelevanceR4(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R4"));
 			searchOptions.setRelevanceR5(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R5"));
 			searchOptions.setMaxWeight(Activator.getDefault().getPreferenceStore().getInt("MAX_WEIGHT"));
+			//searchOptions.calculateWeights();
 			
 			WizardDialog wizardDialog = new WizardDialog(null, new SearchEntityWizardDialog(searchOptions));
 			if (wizardDialog.open() == Window.OK) {
@@ -410,6 +415,7 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 		SearchTreeParent searchParent = createSearchParent(searchOptions.getSearchField(), searchOptions);
 		
 		List<ISemanticClass> searchResults = searchInAssistances(searchOptions);
+		
 		Map<String, List<ISemanticClass>> semanticElementsGrouped = groupSemanticClasses(searchResults);
 		
 		for(Entry<String, List<ISemanticClass>> entrySemanticElementsGrouped : semanticElementsGrouped.entrySet()){
@@ -432,9 +438,25 @@ public class EntityViewPart extends ViewPart implements ITabbedPropertySheetPage
 		}
 		
 		getInvisibleRoot().addChild(searchParent);
+		
 		viewer.refresh();
+		refreshSearchesView();
 		
 		return true;
+	}
+	
+	private static void refreshSearchesView(){
+		ISearch lastSearch = AssistantFactory.getInstance().getLastSearch();
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IViewPart part = workbench.getActiveWorkbenchWindow().getActivePage()
+			    .findView(SearchTreeView.ID);
+			if (part instanceof SearchTreeView) {
+				SearchTreeView view = (SearchTreeView) part;
+				view.refresh(lastSearch);
+			}
+
+		//ISearch lastSearch = AssistantFactory.getInstance().getLastSearch();
+		//SearchTreeView.getInstance().getInstance().refresh(lastSearch);
 	}
 	
 	public static boolean searchAndRefreshView(String candidate){
