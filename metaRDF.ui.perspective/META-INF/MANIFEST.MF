@@ -10,3 +10,5 @@ Require-Bundle: org.eclipse.ui,
  metaRDF.ui.zest;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: icons/,
+ .

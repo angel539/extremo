@@ -39,9 +39,9 @@ public class Wordnet{
    public Wordnet(){
 	   super();
 	   
-	   //String wordnet_location = getPathDict();
-	   //System.setProperty("wordnet.database.dir", wordnet_location);
-	   System.setProperty("wordnet.database.dir", "/Users/angel/Desktop/workspace-miso/metaRDF.core/dict");
+	   String wordnet_location = getPathDict();
+	   System.setProperty("wordnet.database.dir", wordnet_location);
+	   //System.setProperty("wordnet.database.dir", "/Users/angel/Desktop/workspace-miso/metaRDF.core/dict");
 	   
 	   database = WordNetDatabase.getFileInstance();
    }
