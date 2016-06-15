@@ -2,7 +2,7 @@
 <feature
       id="metaRDF.feature"
       label="extremo"
-      version="1.0.20.qualifier">
+      version="1.0.21.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -81,6 +81,13 @@
          unpack="false"/>
 
    <plugin
+         id="metaRDF.ui.actions.ecore"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="metaRDF.ui.actions.test"
          download-size="0"
          install-size="0"
@@ -88,7 +95,35 @@
          unpack="false"/>
 
    <plugin
+         id="metaRDF.ui.actions.uml2"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="metaRDF.ui.perspective"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="metaRDF.ui.preferences"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="metaRDF.ui.temp.views.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="metaRDF.ui.views.filters"
          download-size="0"
          install-size="0"
          version="0.0.0"
