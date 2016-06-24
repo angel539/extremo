@@ -351,14 +351,14 @@
 					<div class="pure-g">
 						<div class="pure-u-1-2">
 							<div class="l-box">
-								<h4>Drag & Drop integration</h4>
+								<h4>Actions integration</h4>
 								<a href="images/gallery/1.png" target="_blank"><img class="pure-img" src="images/integration/integration1.png"/></a>
 							</div>
 						</div>
 
 						<div class="pure-u-1-2">
 							<div class="l-box">
-								<h4>Actions integration</h4>
+								<h4>Drag & Drop integration</h4>
 								<a href="images/gallery/2.png" target="_blank"><img class="pure-img" src="images/integration/integration2.png"/></a>
 							</div>
 						</div>
@@ -367,15 +367,19 @@
 					<div class="pure-g">
 						<div class="pure-u-1-2">
 							<div class="l-box">
-								<p><b>extremo.ui.extensions.drop</b></p>
-								<a href="images/gallery/1.png" target="_blank"><img class="pure-img" src="images/integration/integration1.png"/></a>
+								<p><code>extremo.ui.extensions.actions</code></p>
+								<p>
+									Illustrated with the UML2 Tree Editor, Extremo has an extension point to add actions to the view of entities. Then, the Editor Part will receive the selected elements. To transform the semantic classes into elements of the model the extension point needs to implement the method <code>execute(IEditorPart editorPart, ISelection selection)</code> and create new elements into the model.
+								</p>
 							</div>
 						</div>
 
 						<div class="pure-u-1-2">
 							<div class="l-box">
-								<p><b>extremo.ui.extensions.actions</b></p>
-								<a href="images/gallery/2.png" target="_blank"><img class="pure-img" src="images/integration/integration2.png"/></a>
+								<p><code>extremo.ui.extensions.drop</code></p>
+								<p>
+									Illustrated with an example of integrating Extremo in DSL-tao (a tool developed by our group). Extremo counts with an extension point to add a drop support to a Graphical Editor (based on GEF) inside Eclipse. The class that implements the extension point will receive a class with a <code>handledrop(...)</code> method that receives the list of semantic elements dragged to the editor.
+								</p>
 							</div>
 						</div>
 					</div>
