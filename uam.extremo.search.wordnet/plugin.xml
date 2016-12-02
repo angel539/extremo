@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="extremo.core.extensions.search">
+      <search
+            class="uam.extremo.search.wordnet.WordnetSearch"
+            id="uam.extremo.search.wordnet.search"
+            name="Wordnet Search">
+         <option
+               id="searchfield"
+               name="Search"
+               type="String">
+         </option>
+         <option
+               id="equivalents"
+               name="From equivalents"
+               type="Boolean">
+         </option>
+         <option
+               id="supers"
+               name="From supers"
+               type="Boolean">
+         </option>
+
+      </search>
+      <search
+            class="uam.extremo.search.wordnet.WordnetSearchPath"
+            id="uam.extremo.search.wordnet.searchpath"
+            name="Wordnet Search Path">
+         <option
+               id="fromfield"
+               name="From"
+               type="String">
+         </option>
+         <option
+               id="tofield"
+               name="To"
+               type="String">
+         </option>
+      </search>
+   </extension>
+
+</plugin>

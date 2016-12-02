@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="extremo.core.extensions.assistant">
+      <assistant
+            class="uam.extremo.assistant.ecore.EcoreAssistant"
+            extensions="ecore"
+            id="extremo.core.ecore.assistant"
+            name="Ecore">
+      </assistant>
+   </extension>
+
+</plugin>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="extremo.core.extensions.assistant" name="extremo.core.extensions.assistant" schema="schema/extremo.core.extensions.assistant.exsd"/>
+   <extension-point id="extremo.core.preferences.weights" name="extremo.core.preferences.weights" schema="schema/extremo.core.preferences.weights.exsd"/>
+   <extension-point id="extremo.core.extensions.search" name="extremo.core.extensions.search" schema="schema/extremo.core.extensions.search.exsd"/>
+
+</plugin>

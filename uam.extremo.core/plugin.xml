@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Extremo -->
+      <package
+            uri="http://www.core.extremo/SemanticManager"
+            class="semanticmanager.SemanticmanagerPackage"
+            genModel="model/Extremo.genmodel"/>
+   </extension>
+
+</plugin>

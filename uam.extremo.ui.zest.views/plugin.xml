@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="extremo.ui.views"
+            class="uam.extremo.ui.zest.views.inheritance.InheritanceGraphViewPart"
+            icon="icons/parent_guardian.png"
+            id="uam.extremo.ui.zest.views.InheritanceGraphViewPart"
+            name="Superclasses"
+            restorable="true">
+      </view>
+      <view
+            category="extremo.ui.views"
+            class="uam.extremo.ui.zest.views.relations.RelationshipGraphViewPart"
+            icon="icons/change_theme.png"
+            id="uam.extremo.ui.zest.views.RelationGraphViewPart"
+            name="References"
+            restorable="true">
+      </view>
+   </extension>
+
+
+</plugin>
