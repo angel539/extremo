@@ -42,11 +42,6 @@ public class SemanticNodeModelTransfer extends ByteArrayTransfer {
 		return object;
     }
 	
-    /*private boolean isInvalidNativeType(Object result) {
-        return !(result instanceof byte[])
-                || !TYPE_NAME.equals(new String((byte[]) result));
-    }*/
-	
 	private boolean checkIfNamedElement(Object object) {
 		if((object == null) || !(object instanceof NamedElement[]) || (((NamedElement[]) object).length == 0)){
 			return false;

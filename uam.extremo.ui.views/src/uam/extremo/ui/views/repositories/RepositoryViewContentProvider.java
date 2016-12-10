@@ -1,7 +1,5 @@
 package uam.extremo.ui.views.repositories;
 
-import java.util.Arrays;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
@@ -43,11 +41,9 @@ public class RepositoryViewContentProvider implements IStructuredContentProvider
 	}
 	
 	public Object [] getChildren(Object parent) {
-		
 		if (parent instanceof EObject) {
 			Object[] containmentAll = ArrayUtils.addAll(((EObject)parent).eContents().toArray(), ((EObject)parent).eCrossReferences().toArray());
 			return containmentAll;
-			//return ((EObject)parent).eContents().toArray();
 		}
 		return new Object[0];
 	}

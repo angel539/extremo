@@ -17,14 +17,6 @@
       </view>
       <view
             category="extremo.ui.views"
-            class="uam.extremo.ui.views.entities.EntityViewPart"
-            icon="icons/hierarchy_co.gif"
-            id="uam.extremo.ui.views.EntityView"
-            name="Semantic Nodes"
-            restorable="true">
-      </view>
-      <view
-            category="extremo.ui.views"
             class="uam.extremo.ui.views.searchtree.SearchTreeViewPart"
             icon="icons/searchtree.png"
             id="uam.extremo.ui.views.SearchTree"
@@ -35,33 +27,14 @@
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
-            targetID="org.eclipse.jdt.ui.JavaPerspective">
-         <view
-               ratio="0.5"
-               relative="org.eclipse.ui.views.ProblemView"
-               relationship="right"
-               id="metardf.ui.views.EntityView">
-         </view>
-      </perspectiveExtension>
-      <perspectiveExtension
-            targetID="org.eclipse.jdt.ui.JavaPerspective">
-         <view
-               id="metardf.ui.views.RepositoryView"
-               ratio="0.5"
-               relationship="right"
-               relative="org.eclipse.ui.views.ProblemView">
-         </view>
-      </perspectiveExtension>
-      <perspectiveExtension
             targetID="extremo.ui.perspective.extremo">
          <view
-               id="uam.extremo.ui.views.EntityView"
+               id="uam.extremo.ui.views.RepositoryView"
                minimized="false"
-               relationship="bottom"
-               relative="uam.extremo.ui.views.RepositoryView">
+               relationship="bottom">
          </view>
          <view
-               id="uam.extremo.ui.views.RepositoryView"
+               id="uam.extremo.ui.views.SearchTree"
                minimized="false"
                relationship="bottom">
          </view>
@@ -146,6 +119,19 @@
                icon="icons/search.png"
                style="push">
          </command>
+         <separator
+               name="uam.extremo.ui.views.separator1">
+         </separator>
+         <command
+               commandId="uam.extremo.ui.views.exploreConnections"
+               icon="icons/explore16.png"
+               style="push">
+         </command>
+         <command
+               commandId="uam.extremo.ui.views.goToParent"
+               icon="icons/up16.png"
+               style="push">
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -164,5 +150,22 @@
             id="uam.extremo.ui.views.searchsemanticNodes"
             name="Search Semantic Nodes">
       </command>
+      <command
+            defaultHandler="uam.extremo.ui.views.repositories.actions.ExploreConnectionsHandler"
+            id="uam.extremo.ui.views.exploreConnections"
+            name="Explore">
+      </command>
+      <command
+            defaultHandler="uam.extremo.ui.views.repositories.actions.GoToParentConnectionsHandler"
+            id="uam.extremo.ui.views.goToParent"
+            name="Go To Parent">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="uam.extremo.ui.views.RepositoryView">
+         <propertyCategory></propertyCategory>
+      </propertyContributor>
    </extension>
 </plugin>

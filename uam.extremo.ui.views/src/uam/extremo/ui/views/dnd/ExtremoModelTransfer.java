@@ -1,15 +1,9 @@
 package uam.extremo.ui.views.dnd;
 
-import java.util.List;
-import java.util.Map;
-
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.TransferData;
-import org.osgi.framework.Bundle;
-
 import semanticmanager.NamedElement;
-import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.views.Serializer;
 
 public class ExtremoModelTransfer extends ByteArrayTransfer {

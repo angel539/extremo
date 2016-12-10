@@ -24,6 +24,7 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getWeight <em>Weight</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getId <em>Id</em>}</li>
+ *   <li>{@link semanticmanager.impl.NamedElementImpl#isDrawn <em>Drawn</em>}</li>
  * </ul>
  *
  * @generated
@@ -108,6 +109,26 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 	 * @ordered
 	 */
 	protected Object id = ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDrawn() <em>Drawn</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDrawn()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DRAWN_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDrawn() <em>Drawn</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDrawn()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean drawn = DRAWN_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,6 +238,27 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isDrawn() {
+		return drawn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDrawn(boolean newDrawn) {
+		boolean oldDrawn = drawn;
+		drawn = newDrawn;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.NAMED_ELEMENT__DRAWN, oldDrawn, drawn));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -228,6 +270,8 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 				return getWeight();
 			case SemanticmanagerPackage.NAMED_ELEMENT__ID:
 				return getId();
+			case SemanticmanagerPackage.NAMED_ELEMENT__DRAWN:
+				return isDrawn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -251,6 +295,9 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 				return;
 			case SemanticmanagerPackage.NAMED_ELEMENT__ID:
 				setId(newValue);
+				return;
+			case SemanticmanagerPackage.NAMED_ELEMENT__DRAWN:
+				setDrawn((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -276,6 +323,9 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 			case SemanticmanagerPackage.NAMED_ELEMENT__ID:
 				setId(ID_EDEFAULT);
 				return;
+			case SemanticmanagerPackage.NAMED_ELEMENT__DRAWN:
+				setDrawn(DRAWN_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -296,6 +346,8 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 				return weight != WEIGHT_EDEFAULT;
 			case SemanticmanagerPackage.NAMED_ELEMENT__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case SemanticmanagerPackage.NAMED_ELEMENT__DRAWN:
+				return drawn != DRAWN_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -318,6 +370,8 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 		result.append(weight);
 		result.append(", id: ");
 		result.append(id);
+		result.append(", drawn: ");
+		result.append(drawn);
 		result.append(')');
 		return result.toString();
 	}

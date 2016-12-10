@@ -37,7 +37,7 @@ public class NewRepositoryWizardDialog extends Wizard {
 		String resourceName = newResourcePage.getResourceName();
 		String resourceDescription = newResourcePage.getResourceDescription();
 		String resourceUri = newResourcePage.getResourceUri();
-		AssistantFactory.getInstance().createResource(repository, resourceName, resourceDescription, resourceUri);
+		//AssistantFactory.getInstance().createResource(repository, resourceName, resourceDescription, resourceUri);
 		
 		return true;
 	}

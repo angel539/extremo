@@ -68,51 +68,6 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 		return true;
 	}
 	
-	/*@Override
-	public void toSemanticNode(Map<String, Integer> namesByRelevance) {
-		if((ecoreAll != null)&&(semanticResource.isAlive())){
-			iterator:
-			while(ecoreAll.hasNext()){
-				EObject obj = ecoreAll.next();
-				if(obj instanceof EClass){
-					for(Entry<String, Integer> word : namesByRelevance.entrySet()){
-						if(((EClass) obj).getName().compareTo(word.getKey()) == 0){
-							String name = ((EClass) obj).getName();
-							String description = ((EClass) obj).getEAnnotations().toString();
-							
-							SemanticNode semanticNode = createSemanticNode(obj, name, description, word.getValue(), false, null);
-							addSemanticNodeToResource(semanticResource, semanticNode);
-							continue iterator;
-						}
-						
-						List<String> wordInNameClass = LangUtils.cleanAndSeparateWords(((EClass) obj).getName());
-						for(String wordInName : wordInNameClass){
-							
-							if(wordInName.compareTo(word.getKey()) == 0){
-								String name = ((EClass) obj).getName();
-								String description = ((EClass) obj).getEAnnotations().toString();
-								
-								SemanticNode semanticNode = createSemanticNode(obj, name, description, word.getValue(), false, null);
-								addSemanticNodeToResource(semanticResource, semanticNode);
-								continue iterator;
-							}else{
-								if(LangUtils.haveTheSameStem(wordInName, word.getKey())){
-									String name = ((EClass) obj).getName();
-									String description = ((EClass) obj).getEAnnotations().toString();
-									
-									
-									SemanticNode semanticNode = createSemanticNode(obj, name, description, word.getValue(), false, null);
-									addSemanticNodeToResource(semanticResource, semanticNode);
-									continue iterator;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}*/
-	
 	@Override
 	public void toDataProperty(SemanticNode parent) {
 		if(parent.getId() != null && parent.getId() instanceof EClass){

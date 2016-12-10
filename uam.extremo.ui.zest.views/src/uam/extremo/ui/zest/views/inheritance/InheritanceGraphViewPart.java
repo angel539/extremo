@@ -1,16 +1,21 @@
 package uam.extremo.ui.zest.views.inheritance;
 
-import java.util.List;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
@@ -18,6 +23,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.zest.core.viewers.AbstractZoomableViewer;
 import org.eclipse.zest.core.viewers.GraphViewer;
@@ -30,8 +36,11 @@ import org.eclipse.zest.layouts.algorithms.RadialLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.SpringLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 
-import semanticmanager.SemanticNode;
-import uam.extremo.ui.zest.views.*;
+import semanticmanager.NamedElement;
+import semanticmanager.RepositoryManager;
+import uam.extremo.extensions.AssistantFactory;
+import uam.extremo.ui.zest.views.Activator;
+import uam.extremo.ui.zest.views.GraphViewPartFilter;
 
 public class InheritanceGraphViewPart extends ViewPart implements IZoomableWorkbenchPart{
 	public static final String ID = "uam.extremo.ui.zest.views.InheritanceGraphViewPart";
@@ -43,94 +52,94 @@ public class InheritanceGraphViewPart extends ViewPart implements IZoomableWorkb
 	
 	private GraphViewer viewer;
 	private Graph graph;
-
-	/*ISelectionListener listener = new ISelectionListener() {
-		public void selectionChanged(IWorkbenchPart part, ISelection sel) {
-			if((sel != null) && (sel instanceof IStructuredSelection) && (((IStructuredSelection)sel).size() > 0)){
-				if(part instanceof RepositoryViewPart){
-					Job job = new Job("Graph"){
-						@Override
-						protected IStatus run(IProgressMonitor monitor) {					
-							List<SemanticNode> input = new ArrayList<SemanticNode>();
-							
-							try {
-								IStructuredSelection selection = (IStructuredSelection) sel;
-								int max_time = selection.size() * 10;
-								monitor.beginTask("Draw Graph Dependencies", max_time);
-								monitor.worked(10);
-							
-								Thread.sleep(2000);
-								
-								List<Resource> resources = new ArrayList<Resource>();
-								
-								for(int i=0; i<selection.size(); i++){
-									if(selection.toArray()[i] instanceof ResourceTreeObject){
-										resources.add(((ResourceTreeObject) selection.toArray()[i]).getResource());
-									}
-								}
-								
-								for(Resource resource : resources){
-									for(IFormatAssistant assistant : AssistantFactory.getInstance().getAssistances()){
-										if(resource.getAssistant().compareTo(((FormatAssistant)assistant).getNameExtension()) == 0){
-											assistant.load((Resource) resource);
-											
-											List<SemanticNode> classesInResource = assistant.getAllClasses();	
-											for(SemanticNode classInResource : classesInResource){
-												List<SemanticNode> superclasses = new ArrayList<SemanticNode>();
-												superclasses = assistant.getSuper(classInResource, true);
-												classInResource.getSupers().addAll(superclasses);
-											}
-											
-											if(classesInResource != null) resource.getNodes().addAll((classesInResource));
-										}
-									}
-								}
-								
-								for(Resource resource : resources) input.addAll(resource.getNodes());
-								
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-
-							syncWithUI(input);
-							
-							return Status.OK_STATUS;
-						}
-						
-					};
-					
-					job.setUser(true);
-			  		job.schedule();
-				}
-			}	
-	  	}
-    };*/
-  
- 	private void syncWithUI(List<SemanticNode> input) {
- 		Display.getDefault().asyncExec(new Runnable() {
- 			public void run() {
- 				viewer.setInput(input);
- 				MessageDialog.openInformation(getSite().getShell(), "Draw Graph Inheritance Dependencies", "Dependencies calculated");
- 			}
- 		});
- 	}
- 	
-    @Override
-    public void dispose() {
-    	// getSite().getPage().removeSelectionListener(listener);
-    }
 		
 	@Override
 	public void createPartControl(Composite parent) {
 		viewer = new GraphViewer(parent, SWT.BORDER);
-		viewer.setContentProvider(new InheritanceGraphViewPartNodeContentProvider());
+		
+		InheritanceGraphViewPartNodeContentProvider provider = new InheritanceGraphViewPartNodeContentProvider();
+		viewer.setContentProvider(provider);
 	    viewer.setLabelProvider(new InheritanceGraphPartViewLabelProvider());
+	    viewer.setInput(getViewSite());
+	    
+	    GraphViewPartFilter filter = new GraphViewPartFilter();
+		ViewerFilter[] filters = {filter};
+		viewer.setFilters(filters);
+		
+		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "extremo.ui.viewer");
+		
+		//connection with properties view
+		getSite().setSelectionProvider(viewer);
+		getViewSite().setSelectionProvider(viewer);
 	    
 	    setLayoutManager(3);
 	    makeActions();
 	    hookContextMenu();
 	    contributeToActionBars();
 	    invokeFilters();
+	    
+	    fillToolBar();
+	    
+	    EContentAdapter adapter = new EContentAdapter() {
+            public void notifyChanged(Notification notification) {
+           		 super.notifyChanged(notification);
+           		 refresh();
+            }
+    	};
+    	
+    	AssistantFactory.getInstance().getRepositoryManager().eAdapters().add(adapter);
+	}
+	
+	public void refresh() {
+		Job job = new Job("Refreshing Inheritance Graph View") {
+            @Override
+            protected IStatus run(IProgressMonitor monitor) {
+                doLongThing();
+                syncWithUi();
+                return Status.OK_STATUS;
+            }
+	    };
+	    job.setUser(true);
+	    job.schedule();
+	}
+	
+	private void syncWithUi() {
+        try {
+        	Thread.sleep(1000);
+        } catch (InterruptedException e) {
+                e.printStackTrace();
+        }
+	}
+
+	private void doLongThing() {
+		Display.getDefault().asyncExec(new Runnable() {
+            public void run() {
+            	NamedElement drawnElement = AssistantFactory.getInstance().getDrawnElement();
+            	
+            	if(drawnElement != null){
+            		viewer.setInput(drawnElement);
+            	}
+            	
+            	/*RepositoryManager repositoryManager = AssistantFactory.getInstance().getRepositoryManager();
+            	
+            	TreeIterator<EObject> iterator = repositoryManager.eAllContents();
+        		EObject input = null;
+            	
+        		iteratorLoop:
+        		while(iterator.hasNext()){
+        			EObject eobject = iterator.next();
+        			
+        			if(eobject instanceof NamedElement && ((NamedElement) eobject).isDrawn()){
+        				input = eobject;
+        				break iteratorLoop;
+        			}
+        		}
+        		
+        		if(input != null){
+        			viewer.setInput(input);
+        		}*/
+            }
+		});
 	}
 
 	private void invokeFilters() {
@@ -295,5 +304,11 @@ public class InheritanceGraphViewPart extends ViewPart implements IZoomableWorkb
 	@Override
 	public AbstractZoomableViewer getZoomableViewer() {
 		return viewer;
+	}
+	
+	private void fillToolBar() {
+        ZoomContributionViewItem toolbarZoomContributionViewItem = new ZoomContributionViewItem(this);
+        IActionBars bars = getViewSite().getActionBars();
+        bars.getMenuManager().add(toolbarZoomContributionViewItem);
 	}
 }

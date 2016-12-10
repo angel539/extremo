@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.emf.ecore.util.InternalEList;
+import semanticmanager.DataProperty;
+import semanticmanager.ObjectProperty;
 import semanticmanager.Resource;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchResult;
@@ -196,6 +198,24 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void addDataPropertyToSemanticGroup(SemanticGroup semanticGroup, DataProperty dataProperty) {
+		semanticGroup.getNodes().add(dataProperty);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void addObjectPropertyToSemanticGroup(SemanticGroup semanticGroup, ObjectProperty objectProperty) {
+		semanticGroup.getNodes().add(objectProperty);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -345,6 +365,12 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 				return createSemanticGroup((String)arguments.get(0), (String)arguments.get(1));
 			case SemanticmanagerPackage.SEARCH_RESULT___ADD_SEMANTIC_NODE_TO_SEMANTIC_GROUP__SEMANTICGROUP_SEMANTICNODE:
 				addSemanticNodeToSemanticGroup((SemanticGroup)arguments.get(0), (SemanticNode)arguments.get(1));
+				return null;
+			case SemanticmanagerPackage.SEARCH_RESULT___ADD_DATA_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_DATAPROPERTY:
+				addDataPropertyToSemanticGroup((SemanticGroup)arguments.get(0), (DataProperty)arguments.get(1));
+				return null;
+			case SemanticmanagerPackage.SEARCH_RESULT___ADD_OBJECT_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_OBJECTPROPERTY:
+				addObjectPropertyToSemanticGroup((SemanticGroup)arguments.get(0), (ObjectProperty)arguments.get(1));
 				return null;
 		}
 		return super.eInvoke(operationID, arguments);

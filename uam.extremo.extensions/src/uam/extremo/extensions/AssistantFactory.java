@@ -15,7 +15,9 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.spi.RegistryContributor;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -26,6 +28,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
+import semanticmanager.NamedElement;
 import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
 import semanticmanager.Resource;
@@ -50,6 +53,8 @@ public class AssistantFactory {
 	private static RepositoryManager repositoryManager;
 	private static List<IFormatAssistant> assistants = null;
 	//private static List<SearchConfiguration> searches = null;
+	
+	private static NamedElement drawnElement = null;
 
 	public List<IFormatAssistant> getAssistances(){
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
@@ -203,50 +208,31 @@ public class AssistantFactory {
 		}
 	}
 	
-	public void search(SearchResult search) {
-		/*search.expand();
+	public void putAllNamedElementToNotDrawable(){
+		TreeIterator<EObject> iterator = repositoryManager.eAllContents();
 		
-		Map<String, Integer> searchList = (Map<String, Integer>) search.getOrderSearchesListByWeight();
-		
-		for(Repository repository : repositoryManager.getRepositories()){
-			for(Resource resource : repository.getResources()){
-				if(resource.isActive()){
-					SemanticGroup semanticGroup = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
-					semanticGroup.setName(resource.getName());
-					semanticGroup.setDescription(resource.getDescription());
-					
-					iterator:
-					for(SemanticNode semanticNode : resource.getNodes()){
-						for(Entry<String, Integer> word : searchList.entrySet()){
-							if(semanticNode.getName().compareTo(word.getKey()) == 0){
-								semanticGroup.getNodes().add(semanticNode);
-								continue iterator;
-							}
-							
-							List<String> wordInNameClass = LangUtils.cleanAndSeparateWords(semanticNode.getName());
-							for(String wordInName : wordInNameClass){	
-								if(wordInName.compareTo(word.getKey()) == 0){
-									semanticGroup.getNodes().add(semanticNode);
-									continue iterator;
-								}
-								else{
-									if(LangUtils.haveTheSameStem(wordInName, word.getKey())){
-										semanticGroup.getNodes().add(semanticNode);
-										continue iterator;
-									}
-								}
-							}
-						}
-					}
-					
-					search.getResults().add(semanticGroup);
-				}	
+		while(iterator.hasNext()){
+			EObject eobject = iterator.next();
+			
+			if(eobject instanceof NamedElement){
+				((NamedElement) eobject).setDrawn(false);
 			}
 		}
-		
-		
-		repositoryManager.getSearches().add(search);*/
-		
+	}
+	
+	public void putAllNamedElementToNotDrawable(NamedElement element){
+		element.setDrawn(false);
+	}
+	
+	public NamedElement getDrawnElement() {
+		return drawnElement;
+	}
+
+	public void setDrawnElement(NamedElement drawnElement) {
+		AssistantFactory.drawnElement = drawnElement;
+	}
+	
+	public void search(SearchResult search) {
 		search.getConfiguration().resolveOptions(search.getValues());
 		search.getConfiguration().search(search);
 	}
@@ -268,14 +254,13 @@ public class AssistantFactory {
 		return repository;
 	}
 	
-	public Resource createResource(Repository repository, String name, String description, String uri){
+	public Resource createResourceDescriptor(Repository repository, String name, String description, String uri){
 		Resource resource = SemanticmanagerFactory.eINSTANCE.createResource();
 		resource.setName(name);
 		resource.setDescription(description);
 		resource.setUri(uri);
 		
 		String extensionFile = FilenameUtils.getExtension(uri);
-		
 		loop: 
 		for(IFormatAssistant assistant : AssistantFactory.getInstance().getAssistances()){
 			for(String ext : ((FormatAssistant) assistant).getExtensions()){
@@ -299,6 +284,39 @@ public class AssistantFactory {
 		}
 		
 		repository.getResources().add(resource);
+		return resource;
+	}
+	
+	public Resource createResource(Resource descriptor, String name, String description, String uri){
+		Resource resource = SemanticmanagerFactory.eINSTANCE.createResource();
+		resource.setName(name);
+		resource.setDescription(description);
+		resource.setUri(uri);
+		
+		String extensionFile = FilenameUtils.getExtension(uri);
+		loop: 
+		for(IFormatAssistant assistant : AssistantFactory.getInstance().getAssistances()){
+			for(String ext : ((FormatAssistant) assistant).getExtensions()){
+				if(extensionFile.compareTo(ext) == 0){
+					resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
+					resource.setAlive(assistant.load(resource));
+					
+					boolean loaded = assistant.load((Resource) resource);
+					
+					if(loaded){
+						for(SemanticNode node : resource.getNodes()){
+							assistant.toDataProperty(node);
+							assistant.toObjectProperty(node);
+							assistant.toSuper(node);
+							assistant.toSub(node);
+						}
+					}
+					break loop;
+				}
+			}
+		}
+		
+		descriptor.getDescribes().add(resource);
 		return resource;
 	}
 	

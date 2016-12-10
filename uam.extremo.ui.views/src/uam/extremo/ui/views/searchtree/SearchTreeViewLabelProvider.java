@@ -51,7 +51,7 @@ public class SearchTreeViewLabelProvider extends LabelProvider implements IStyle
 			SearchResult searchResult = (SearchResult) element;
 			StyledString styledString = new StyledString("");
 			styledString.append("(" + searchResult.getResources().size() + ") resources applied", StyledString.COUNTER_STYLER);
-			styledString.append("(" + searchResult.getResults().size() + ") groups resolved", StyledString.COUNTER_STYLER);
+			styledString.append(" -> (" + searchResult.getResults().size() + ") groups resolved", StyledString.COUNTER_STYLER);
 			return styledString;
 		}
 		
@@ -63,47 +63,10 @@ public class SearchTreeViewLabelProvider extends LabelProvider implements IStyle
 		
 		if (element instanceof SearchOption) {
 			SearchOption searchOption = (SearchOption) element;
-			StyledString styledString = new StyledString(searchOption.getType().getLiteral() + " " + searchOption.getName());
+			StyledString styledString = new StyledString(searchOption.getType().getLiteral());
+			styledString.append(" " + searchOption.getName(), StyledString.COUNTER_STYLER);
 			return styledString;
 		}
-		
-		/*if (element instanceof TreeNode) {
-			TreeNode treeNode = (TreeNode) element;
-			if(treeNode.getKind() == 0){
-				StyledString styledString = new StyledString(treeNode.getData().toString());
-				styledString.append(" (" + treeNode.getChildren().size() + ") ", StyledString.QUALIFIER_STYLER);
-				return styledString;
-			}
-			if(treeNode.getKind() == 1){
-				StyledString styledString = new StyledString(treeNode.getData().toString());
-				styledString.append(" (" + treeNode.getChildren().size() + ") ", StyledString.QUALIFIER_STYLER);
-				return styledString;
-			}
-			if(treeNode.getKind() == 2){
-				StyledString styledString = new StyledString(treeNode.getData().toString());
-				styledString.append(" (" + treeNode.getChildren().size() + ") ", StyledString.QUALIFIER_STYLER);
-				return styledString;
-			}
-			if(treeNode.getKind() == 3){
-				StyledString styledString = new StyledString(treeNode.getData().toString());
-				return styledString;
-			}
-		}*/
-		
-		/*if (element instanceof Repository) {
-			Repository repositoryNode = (Repository) element;
-			StyledString styledString = new StyledString(repositoryNode.getName());
-			
-			if (repositoryNode.getResources() != null) {
-				styledString.append(" (" + repositoryNode.getResources().size() + ") ", StyledString.COUNTER_STYLER);
-			}
-			return styledString;
-		}
-		
-		if (element instanceof Resource) {
-			StyledString styledString = new StyledString(((Resource) element).getName());
-			return styledString;
-		}*/
 		
 		if(element instanceof SemanticGroup){
 			SemanticGroup semanticGroup = (SemanticGroup) element;

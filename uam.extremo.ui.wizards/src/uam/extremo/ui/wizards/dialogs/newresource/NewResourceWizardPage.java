@@ -4,13 +4,16 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import semanticmanager.Resource;
 import uam.extremo.ui.wizards.Activator;
 
 public class NewResourceWizardPage extends WizardPage {
@@ -71,36 +74,32 @@ public class NewResourceWizardPage extends WizardPage {
 		      }
 	    });
 	    
-	    Label uriLabel = new Label(container, SWT.NONE);
-	    uriLabel.setText("URI");
+	    Button folderDialog = new Button(container, SWT.PUSH);
+	    folderDialog.setText("Path or IRI");
+	    folderDialog.addSelectionListener(new SelectionAdapter() {
+	    	  @Override
+	    	  public void widgetSelected(SelectionEvent e) {
+	    		  FileDialog pathSelection = new FileDialog(getShell());
+	    		  String pathString = pathSelection.open();
+	    		  uri.setText(pathString);
+	    	  }
+	    	}); 
+
 
 	    uri = new Text(container, SWT.BORDER | SWT.SINGLE);
 	    uri.setText("");
-	    
-	    /*uri.addKeyListener(new KeyListener() {
+	    uri.addKeyListener(new KeyListener() {
 		      @Override
 		      public void keyPressed(KeyEvent e) {
 		      }
 	
 		      @Override
 		      public void keyReleased(KeyEvent e) {
-		        if (!uri.getText().isEmpty()) {
-		        	if((uri.getText().startsWith("http://"))||(uri.getText().startsWith("https://"))){
-		        		setPageComplete(true);
-		        	}
-		        	else{
-		        		File file = new File(uri.getText());
-		        		if(file.canRead() && file.isFile()){
-		        			setPageComplete(true);
-		        		}
-		        		else{
-		        			setPageComplete(false);
-		        			setDescription("The resource must be a file or a valid URL (starting with http...)");
-		        		}
-		        	}
-		        }
+		    	  if ((!uri.getText().isEmpty())) {
+			          setPageComplete(true);
+			        }
 		      }
-	    });*/
+	    });
 	    
 	    GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 	    name.setLayoutData(gd);

@@ -69,22 +69,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int REPOSITORY_MANAGER = 0;
 
 	/**
-	 * The feature id for the '<em><b>Searches</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY_MANAGER__SEARCHES = 0;
-
-	/**
 	 * The feature id for the '<em><b>Repositories</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY_MANAGER__REPOSITORIES = 1;
+	int REPOSITORY_MANAGER__REPOSITORIES = 0;
 
 	/**
 	 * The feature id for the '<em><b>Configurations</b></em>' containment reference list.
@@ -93,7 +84,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY_MANAGER__CONFIGURATIONS = 2;
+	int REPOSITORY_MANAGER__CONFIGURATIONS = 1;
 
 	/**
 	 * The number of structural features of the '<em>Repository Manager</em>' class.
@@ -102,7 +93,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY_MANAGER_FEATURE_COUNT = 3;
+	int REPOSITORY_MANAGER_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Repository Manager</em>' class.
@@ -114,259 +105,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	int REPOSITORY_MANAGER_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link semanticmanager.impl.SearchImpl <em>Search</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see semanticmanager.impl.SearchImpl
-	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearch()
-	 * @generated
-	 */
-	int SEARCH = 1;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__NAME = 0;
-
-	/**
-	 * The feature id for the '<em><b>Equivalents</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__EQUIVALENTS = 1;
-
-	/**
-	 * The feature id for the '<em><b>All Properties</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__ALL_PROPERTIES = 2;
-
-	/**
-	 * The feature id for the '<em><b>Only Direct Subclasses</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__ONLY_DIRECT_SUBCLASSES = 3;
-
-	/**
-	 * The feature id for the '<em><b>Searchtree</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__SEARCHTREE = 4;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__RESOURCES = 5;
-
-	/**
-	 * The feature id for the '<em><b>Results</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__RESULTS = 6;
-
-	/**
-	 * The feature id for the '<em><b>Relevance R1</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__RELEVANCE_R1 = 7;
-
-	/**
-	 * The feature id for the '<em><b>Relevance R2</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__RELEVANCE_R2 = 8;
-
-	/**
-	 * The feature id for the '<em><b>Relevance R3</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__RELEVANCE_R3 = 9;
-
-	/**
-	 * The feature id for the '<em><b>Relevance R4</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__RELEVANCE_R4 = 10;
-
-	/**
-	 * The feature id for the '<em><b>Relevance R5</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__RELEVANCE_R5 = 11;
-
-	/**
-	 * The feature id for the '<em><b>Max Weight</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__MAX_WEIGHT = 12;
-
-	/**
-	 * The feature id for the '<em><b>Strategy Applied</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__STRATEGY_APPLIED = 13;
-
-	/**
-	 * The feature id for the '<em><b>Search Field</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__SEARCH_FIELD = 14;
-
-	/**
-	 * The feature id for the '<em><b>Only Direct Superclasses</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__ONLY_DIRECT_SUPERCLASSES = 15;
-
-	/**
-	 * The feature id for the '<em><b>Variance</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__VARIANCE = 16;
-
-	/**
-	 * The feature id for the '<em><b>Search Field Target</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__SEARCH_FIELD_TARGET = 17;
-
-	/**
-	 * The feature id for the '<em><b>W1</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__W1 = 18;
-
-	/**
-	 * The feature id for the '<em><b>W2</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__W2 = 19;
-
-	/**
-	 * The feature id for the '<em><b>W3</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__W3 = 20;
-
-	/**
-	 * The feature id for the '<em><b>W4</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__W4 = 21;
-
-	/**
-	 * The feature id for the '<em><b>Search Mode</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH__SEARCH_MODE = 22;
-
-	/**
-	 * The number of structural features of the '<em>Search</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH_FEATURE_COUNT = 23;
-
-	/**
-	 * The operation id for the '<em>Get Order Searches List By Weight</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH___GET_ORDER_SEARCHES_LIST_BY_WEIGHT = 0;
-
-	/**
-	 * The operation id for the '<em>Expand</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH___EXPAND = 1;
-
-	/**
-	 * The number of operations of the '<em>Search</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH_OPERATION_COUNT = 2;
-
-	/**
 	 * The meta object id for the '{@link semanticmanager.impl.RepositoryImpl <em>Repository</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -374,7 +112,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getRepository()
 	 * @generated
 	 */
-	int REPOSITORY = 2;
+	int REPOSITORY = 1;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.ResourceImpl <em>Resource</em>}' class.
@@ -384,7 +122,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getResource()
 	 * @generated
 	 */
-	int RESOURCE = 3;
+	int RESOURCE = 2;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -394,7 +132,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getNamedElement()
 	 * @generated
 	 */
-	int NAMED_ELEMENT = 5;
+	int NAMED_ELEMENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -433,13 +171,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int NAMED_ELEMENT__ID = 3;
 
 	/**
+	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__DRAWN = 4;
+
+	/**
 	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_FEATURE_COUNT = 4;
+	int NAMED_ELEMENT_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Named Element</em>' class.
@@ -485,6 +232,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int REPOSITORY__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY__DRAWN = NAMED_ELEMENT__DRAWN;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -550,6 +306,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	int RESOURCE__ID = NAMED_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__DRAWN = NAMED_ELEMENT__DRAWN;
+
+	/**
 	 * The feature id for the '<em><b>Active</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -595,13 +360,40 @@ public interface SemanticmanagerPackage extends EPackage {
 	int RESOURCE__URI = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Descriptor</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__DESCRIPTOR = NAMED_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Describes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__DESCRIBES = NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Repository From</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__REPOSITORY_FROM = NAMED_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int RESOURCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of operations of the '<em>Resource</em>' class.
@@ -620,7 +412,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSemanticNode()
 	 * @generated
 	 */
-	int SEMANTIC_NODE = 4;
+	int SEMANTIC_NODE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -657,6 +449,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEMANTIC_NODE__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_NODE__DRAWN = NAMED_ELEMENT__DRAWN;
 
 	/**
 	 * The feature id for the '<em><b>Supers</b></em>' reference list.
@@ -738,7 +539,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getProperty()
 	 * @generated
 	 */
-	int PROPERTY = 6;
+	int PROPERTY = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -775,6 +576,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROPERTY__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__DRAWN = NAMED_ELEMENT__DRAWN;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -820,7 +630,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getObjectProperty()
 	 * @generated
 	 */
-	int OBJECT_PROPERTY = 7;
+	int OBJECT_PROPERTY = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -857,6 +667,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECT_PROPERTY__ID = PROPERTY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY__DRAWN = PROPERTY__DRAWN;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -911,7 +730,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getDataProperty()
 	 * @generated
 	 */
-	int DATA_PROPERTY = 8;
+	int DATA_PROPERTY = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -948,6 +767,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_PROPERTY__ID = PROPERTY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROPERTY__DRAWN = PROPERTY__DRAWN;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -995,106 +823,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	int DATA_PROPERTY_OPERATION_COUNT = PROPERTY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link semanticmanager.impl.TreeNodeImpl <em>Tree Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see semanticmanager.impl.TreeNodeImpl
-	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getTreeNode()
-	 * @generated
-	 */
-	int TREE_NODE = 9;
-
-	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE__CHILDREN = 0;
-
-	/**
-	 * The feature id for the '<em><b>Definition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE__DEFINITION = 1;
-
-	/**
-	 * The feature id for the '<em><b>Usages</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE__USAGES = 2;
-
-	/**
-	 * The feature id for the '<em><b>Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE__KIND = 3;
-
-	/**
-	 * The feature id for the '<em><b>Valid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE__VALID = 4;
-
-	/**
-	 * The feature id for the '<em><b>Points</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE__POINTS = 5;
-
-	/**
-	 * The feature id for the '<em><b>Count Wordnet</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE__COUNT_WORDNET = 6;
-
-	/**
-	 * The feature id for the '<em><b>Data</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE__DATA = 7;
-
-	/**
-	 * The number of structural features of the '<em>Tree Node</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE_FEATURE_COUNT = 8;
-
-	/**
-	 * The number of operations of the '<em>Tree Node</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TREE_NODE_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link semanticmanager.impl.SemanticGroupImpl <em>Semantic Group</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1102,7 +830,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSemanticGroup()
 	 * @generated
 	 */
-	int SEMANTIC_GROUP = 10;
+	int SEMANTIC_GROUP = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1141,6 +869,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEMANTIC_GROUP__ID = NAMED_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_GROUP__DRAWN = NAMED_ELEMENT__DRAWN;
+
+	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1175,7 +912,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchConfiguration()
 	 * @generated
 	 */
-	int SEARCH_CONFIGURATION = 11;
+	int SEARCH_CONFIGURATION = 9;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1266,7 +1003,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchOption()
 	 * @generated
 	 */
-	int SEARCH_OPTION = 12;
+	int SEARCH_OPTION = 10;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1321,7 +1058,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResult()
 	 * @generated
 	 */
-	int SEARCH_RESULT = 13;
+	int SEARCH_RESULT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Values</b></em>' containment reference list.
@@ -1387,13 +1124,31 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT___ADD_SEMANTIC_NODE_TO_SEMANTIC_GROUP__SEMANTICGROUP_SEMANTICNODE = 1;
 
 	/**
+	 * The operation id for the '<em>Add Data Property To Semantic Group</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT___ADD_DATA_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_DATAPROPERTY = 2;
+
+	/**
+	 * The operation id for the '<em>Add Object Property To Semantic Group</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT___ADD_OBJECT_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_OBJECTPROPERTY = 3;
+
+	/**
 	 * The number of operations of the '<em>Search Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPERATION_COUNT = 2;
+	int SEARCH_RESULT_OPERATION_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.SearchResultOptionValueImpl <em>Search Result Option Value</em>}' class.
@@ -1403,7 +1158,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResultOptionValue()
 	 * @generated
 	 */
-	int SEARCH_RESULT_OPTION_VALUE = 14;
+	int SEARCH_RESULT_OPTION_VALUE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Option</b></em>' reference.
@@ -1449,7 +1204,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getType()
 	 * @generated
 	 */
-	int TYPE = 15;
+	int TYPE = 13;
 
 
 	/**
@@ -1461,17 +1216,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRepositoryManager();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link semanticmanager.RepositoryManager#getSearches <em>Searches</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Searches</em>'.
-	 * @see semanticmanager.RepositoryManager#getSearches()
-	 * @see #getRepositoryManager()
-	 * @generated
-	 */
-	EReference getRepositoryManager_Searches();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link semanticmanager.RepositoryManager#getRepositories <em>Repositories</em>}'.
@@ -1494,289 +1238,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRepositoryManager_Configurations();
-
-	/**
-	 * Returns the meta object for class '{@link semanticmanager.Search <em>Search</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Search</em>'.
-	 * @see semanticmanager.Search
-	 * @generated
-	 */
-	EClass getSearch();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see semanticmanager.Search#getName()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#isEquivalents <em>Equivalents</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Equivalents</em>'.
-	 * @see semanticmanager.Search#isEquivalents()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_Equivalents();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#isAllProperties <em>All Properties</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>All Properties</em>'.
-	 * @see semanticmanager.Search#isAllProperties()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_AllProperties();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#isOnlyDirectSubclasses <em>Only Direct Subclasses</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Only Direct Subclasses</em>'.
-	 * @see semanticmanager.Search#isOnlyDirectSubclasses()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_OnlyDirectSubclasses();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link semanticmanager.Search#getSearchtree <em>Searchtree</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Searchtree</em>'.
-	 * @see semanticmanager.Search#getSearchtree()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EReference getSearch_Searchtree();
-
-	/**
-	 * Returns the meta object for the reference list '{@link semanticmanager.Search#getResources <em>Resources</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Resources</em>'.
-	 * @see semanticmanager.Search#getResources()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EReference getSearch_Resources();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link semanticmanager.Search#getResults <em>Results</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Results</em>'.
-	 * @see semanticmanager.Search#getResults()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EReference getSearch_Results();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getRelevanceR1 <em>Relevance R1</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Relevance R1</em>'.
-	 * @see semanticmanager.Search#getRelevanceR1()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_RelevanceR1();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getRelevanceR2 <em>Relevance R2</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Relevance R2</em>'.
-	 * @see semanticmanager.Search#getRelevanceR2()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_RelevanceR2();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getRelevanceR3 <em>Relevance R3</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Relevance R3</em>'.
-	 * @see semanticmanager.Search#getRelevanceR3()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_RelevanceR3();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getRelevanceR4 <em>Relevance R4</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Relevance R4</em>'.
-	 * @see semanticmanager.Search#getRelevanceR4()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_RelevanceR4();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getRelevanceR5 <em>Relevance R5</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Relevance R5</em>'.
-	 * @see semanticmanager.Search#getRelevanceR5()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_RelevanceR5();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getMaxWeight <em>Max Weight</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Max Weight</em>'.
-	 * @see semanticmanager.Search#getMaxWeight()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_MaxWeight();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getStrategyApplied <em>Strategy Applied</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Strategy Applied</em>'.
-	 * @see semanticmanager.Search#getStrategyApplied()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_StrategyApplied();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getSearchField <em>Search Field</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Search Field</em>'.
-	 * @see semanticmanager.Search#getSearchField()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_SearchField();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#isOnlyDirectSuperclasses <em>Only Direct Superclasses</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Only Direct Superclasses</em>'.
-	 * @see semanticmanager.Search#isOnlyDirectSuperclasses()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_OnlyDirectSuperclasses();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getVariance <em>Variance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variance</em>'.
-	 * @see semanticmanager.Search#getVariance()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_Variance();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getSearchFieldTarget <em>Search Field Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Search Field Target</em>'.
-	 * @see semanticmanager.Search#getSearchFieldTarget()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_SearchFieldTarget();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getW1 <em>W1</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>W1</em>'.
-	 * @see semanticmanager.Search#getW1()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_W1();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getW2 <em>W2</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>W2</em>'.
-	 * @see semanticmanager.Search#getW2()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_W2();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getW3 <em>W3</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>W3</em>'.
-	 * @see semanticmanager.Search#getW3()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_W3();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getW4 <em>W4</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>W4</em>'.
-	 * @see semanticmanager.Search#getW4()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_W4();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Search#getSearchMode <em>Search Mode</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Search Mode</em>'.
-	 * @see semanticmanager.Search#getSearchMode()
-	 * @see #getSearch()
-	 * @generated
-	 */
-	EAttribute getSearch_SearchMode();
-
-	/**
-	 * Returns the meta object for the '{@link semanticmanager.Search#getOrderSearchesListByWeight() <em>Get Order Searches List By Weight</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Order Searches List By Weight</em>' operation.
-	 * @see semanticmanager.Search#getOrderSearchesListByWeight()
-	 * @generated
-	 */
-	EOperation getSearch__GetOrderSearchesListByWeight();
-
-	/**
-	 * Returns the meta object for the '{@link semanticmanager.Search#expand() <em>Expand</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Expand</em>' operation.
-	 * @see semanticmanager.Search#expand()
-	 * @generated
-	 */
-	EOperation getSearch__Expand();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.Repository <em>Repository</em>}'.
@@ -1863,6 +1324,39 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResource_Uri();
+
+	/**
+	 * Returns the meta object for the container reference '{@link semanticmanager.Resource#getDescriptor <em>Descriptor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Descriptor</em>'.
+	 * @see semanticmanager.Resource#getDescriptor()
+	 * @see #getResource()
+	 * @generated
+	 */
+	EReference getResource_Descriptor();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link semanticmanager.Resource#getDescribes <em>Describes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Describes</em>'.
+	 * @see semanticmanager.Resource#getDescribes()
+	 * @see #getResource()
+	 * @generated
+	 */
+	EReference getResource_Describes();
+
+	/**
+	 * Returns the meta object for the container reference '{@link semanticmanager.Resource#getRepositoryFrom <em>Repository From</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Repository From</em>'.
+	 * @see semanticmanager.Resource#getRepositoryFrom()
+	 * @see #getResource()
+	 * @generated
+	 */
+	EReference getResource_RepositoryFrom();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.SemanticNode <em>Semantic Node</em>}'.
@@ -1995,6 +1489,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	EAttribute getNamedElement_Id();
 
 	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.NamedElement#isDrawn <em>Drawn</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Drawn</em>'.
+	 * @see semanticmanager.NamedElement#isDrawn()
+	 * @see #getNamedElement()
+	 * @generated
+	 */
+	EAttribute getNamedElement_Drawn();
+
+	/**
 	 * Returns the meta object for class '{@link semanticmanager.Property <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2067,104 +1572,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataProperty_Type();
-
-	/**
-	 * Returns the meta object for class '{@link semanticmanager.TreeNode <em>Tree Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Tree Node</em>'.
-	 * @see semanticmanager.TreeNode
-	 * @generated
-	 */
-	EClass getTreeNode();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link semanticmanager.TreeNode#getChildren <em>Children</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Children</em>'.
-	 * @see semanticmanager.TreeNode#getChildren()
-	 * @see #getTreeNode()
-	 * @generated
-	 */
-	EReference getTreeNode_Children();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.TreeNode#getDefinition <em>Definition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Definition</em>'.
-	 * @see semanticmanager.TreeNode#getDefinition()
-	 * @see #getTreeNode()
-	 * @generated
-	 */
-	EAttribute getTreeNode_Definition();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link semanticmanager.TreeNode#getUsages <em>Usages</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Usages</em>'.
-	 * @see semanticmanager.TreeNode#getUsages()
-	 * @see #getTreeNode()
-	 * @generated
-	 */
-	EAttribute getTreeNode_Usages();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.TreeNode#getKind <em>Kind</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Kind</em>'.
-	 * @see semanticmanager.TreeNode#getKind()
-	 * @see #getTreeNode()
-	 * @generated
-	 */
-	EAttribute getTreeNode_Kind();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.TreeNode#isValid <em>Valid</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Valid</em>'.
-	 * @see semanticmanager.TreeNode#isValid()
-	 * @see #getTreeNode()
-	 * @generated
-	 */
-	EAttribute getTreeNode_Valid();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.TreeNode#getPoints <em>Points</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Points</em>'.
-	 * @see semanticmanager.TreeNode#getPoints()
-	 * @see #getTreeNode()
-	 * @generated
-	 */
-	EAttribute getTreeNode_Points();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.TreeNode#getCountWordnet <em>Count Wordnet</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Count Wordnet</em>'.
-	 * @see semanticmanager.TreeNode#getCountWordnet()
-	 * @see #getTreeNode()
-	 * @generated
-	 */
-	EAttribute getTreeNode_CountWordnet();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link semanticmanager.TreeNode#getData <em>Data</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Data</em>'.
-	 * @see semanticmanager.TreeNode#getData()
-	 * @see #getTreeNode()
-	 * @generated
-	 */
-	EAttribute getTreeNode_Data();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.SemanticGroup <em>Semantic Group</em>}'.
@@ -2389,6 +1796,26 @@ public interface SemanticmanagerPackage extends EPackage {
 	EOperation getSearchResult__AddSemanticNodeToSemanticGroup__SemanticGroup_SemanticNode();
 
 	/**
+	 * Returns the meta object for the '{@link semanticmanager.SearchResult#addDataPropertyToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.DataProperty) <em>Add Data Property To Semantic Group</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Data Property To Semantic Group</em>' operation.
+	 * @see semanticmanager.SearchResult#addDataPropertyToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.DataProperty)
+	 * @generated
+	 */
+	EOperation getSearchResult__AddDataPropertyToSemanticGroup__SemanticGroup_DataProperty();
+
+	/**
+	 * Returns the meta object for the '{@link semanticmanager.SearchResult#addObjectPropertyToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.ObjectProperty) <em>Add Object Property To Semantic Group</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Object Property To Semantic Group</em>' operation.
+	 * @see semanticmanager.SearchResult#addObjectPropertyToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.ObjectProperty)
+	 * @generated
+	 */
+	EOperation getSearchResult__AddObjectPropertyToSemanticGroup__SemanticGroup_ObjectProperty();
+
+	/**
 	 * Returns the meta object for class '{@link semanticmanager.SearchResultOptionValue <em>Search Result Option Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2464,14 +1891,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		EClass REPOSITORY_MANAGER = eINSTANCE.getRepositoryManager();
 
 		/**
-		 * The meta object literal for the '<em><b>Searches</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference REPOSITORY_MANAGER__SEARCHES = eINSTANCE.getRepositoryManager_Searches();
-
-		/**
 		 * The meta object literal for the '<em><b>Repositories</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2486,216 +1905,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REPOSITORY_MANAGER__CONFIGURATIONS = eINSTANCE.getRepositoryManager_Configurations();
-
-		/**
-		 * The meta object literal for the '{@link semanticmanager.impl.SearchImpl <em>Search</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see semanticmanager.impl.SearchImpl
-		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearch()
-		 * @generated
-		 */
-		EClass SEARCH = eINSTANCE.getSearch();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__NAME = eINSTANCE.getSearch_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Equivalents</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__EQUIVALENTS = eINSTANCE.getSearch_Equivalents();
-
-		/**
-		 * The meta object literal for the '<em><b>All Properties</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__ALL_PROPERTIES = eINSTANCE.getSearch_AllProperties();
-
-		/**
-		 * The meta object literal for the '<em><b>Only Direct Subclasses</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__ONLY_DIRECT_SUBCLASSES = eINSTANCE.getSearch_OnlyDirectSubclasses();
-
-		/**
-		 * The meta object literal for the '<em><b>Searchtree</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SEARCH__SEARCHTREE = eINSTANCE.getSearch_Searchtree();
-
-		/**
-		 * The meta object literal for the '<em><b>Resources</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SEARCH__RESOURCES = eINSTANCE.getSearch_Resources();
-
-		/**
-		 * The meta object literal for the '<em><b>Results</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SEARCH__RESULTS = eINSTANCE.getSearch_Results();
-
-		/**
-		 * The meta object literal for the '<em><b>Relevance R1</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__RELEVANCE_R1 = eINSTANCE.getSearch_RelevanceR1();
-
-		/**
-		 * The meta object literal for the '<em><b>Relevance R2</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__RELEVANCE_R2 = eINSTANCE.getSearch_RelevanceR2();
-
-		/**
-		 * The meta object literal for the '<em><b>Relevance R3</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__RELEVANCE_R3 = eINSTANCE.getSearch_RelevanceR3();
-
-		/**
-		 * The meta object literal for the '<em><b>Relevance R4</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__RELEVANCE_R4 = eINSTANCE.getSearch_RelevanceR4();
-
-		/**
-		 * The meta object literal for the '<em><b>Relevance R5</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__RELEVANCE_R5 = eINSTANCE.getSearch_RelevanceR5();
-
-		/**
-		 * The meta object literal for the '<em><b>Max Weight</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__MAX_WEIGHT = eINSTANCE.getSearch_MaxWeight();
-
-		/**
-		 * The meta object literal for the '<em><b>Strategy Applied</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__STRATEGY_APPLIED = eINSTANCE.getSearch_StrategyApplied();
-
-		/**
-		 * The meta object literal for the '<em><b>Search Field</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__SEARCH_FIELD = eINSTANCE.getSearch_SearchField();
-
-		/**
-		 * The meta object literal for the '<em><b>Only Direct Superclasses</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__ONLY_DIRECT_SUPERCLASSES = eINSTANCE.getSearch_OnlyDirectSuperclasses();
-
-		/**
-		 * The meta object literal for the '<em><b>Variance</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__VARIANCE = eINSTANCE.getSearch_Variance();
-
-		/**
-		 * The meta object literal for the '<em><b>Search Field Target</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__SEARCH_FIELD_TARGET = eINSTANCE.getSearch_SearchFieldTarget();
-
-		/**
-		 * The meta object literal for the '<em><b>W1</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__W1 = eINSTANCE.getSearch_W1();
-
-		/**
-		 * The meta object literal for the '<em><b>W2</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__W2 = eINSTANCE.getSearch_W2();
-
-		/**
-		 * The meta object literal for the '<em><b>W3</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__W3 = eINSTANCE.getSearch_W3();
-
-		/**
-		 * The meta object literal for the '<em><b>W4</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__W4 = eINSTANCE.getSearch_W4();
-
-		/**
-		 * The meta object literal for the '<em><b>Search Mode</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH__SEARCH_MODE = eINSTANCE.getSearch_SearchMode();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Order Searches List By Weight</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SEARCH___GET_ORDER_SEARCHES_LIST_BY_WEIGHT = eINSTANCE.getSearch__GetOrderSearchesListByWeight();
-
-		/**
-		 * The meta object literal for the '<em><b>Expand</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SEARCH___EXPAND = eINSTANCE.getSearch__Expand();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.RepositoryImpl <em>Repository</em>}' class.
@@ -2764,6 +1973,30 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESOURCE__URI = eINSTANCE.getResource_Uri();
+
+		/**
+		 * The meta object literal for the '<em><b>Descriptor</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE__DESCRIPTOR = eINSTANCE.getResource_Descriptor();
+
+		/**
+		 * The meta object literal for the '<em><b>Describes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE__DESCRIBES = eINSTANCE.getResource_Describes();
+
+		/**
+		 * The meta object literal for the '<em><b>Repository From</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE__REPOSITORY_FROM = eINSTANCE.getResource_RepositoryFrom();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SemanticNodeImpl <em>Semantic Node</em>}' class.
@@ -2866,6 +2099,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EAttribute NAMED_ELEMENT__ID = eINSTANCE.getNamedElement_Id();
 
 		/**
+		 * The meta object literal for the '<em><b>Drawn</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NAMED_ELEMENT__DRAWN = eINSTANCE.getNamedElement_Drawn();
+
+		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.PropertyImpl <em>Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2926,80 +2167,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_PROPERTY__TYPE = eINSTANCE.getDataProperty_Type();
-
-		/**
-		 * The meta object literal for the '{@link semanticmanager.impl.TreeNodeImpl <em>Tree Node</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see semanticmanager.impl.TreeNodeImpl
-		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getTreeNode()
-		 * @generated
-		 */
-		EClass TREE_NODE = eINSTANCE.getTreeNode();
-
-		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TREE_NODE__CHILDREN = eINSTANCE.getTreeNode_Children();
-
-		/**
-		 * The meta object literal for the '<em><b>Definition</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TREE_NODE__DEFINITION = eINSTANCE.getTreeNode_Definition();
-
-		/**
-		 * The meta object literal for the '<em><b>Usages</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TREE_NODE__USAGES = eINSTANCE.getTreeNode_Usages();
-
-		/**
-		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TREE_NODE__KIND = eINSTANCE.getTreeNode_Kind();
-
-		/**
-		 * The meta object literal for the '<em><b>Valid</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TREE_NODE__VALID = eINSTANCE.getTreeNode_Valid();
-
-		/**
-		 * The meta object literal for the '<em><b>Points</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TREE_NODE__POINTS = eINSTANCE.getTreeNode_Points();
-
-		/**
-		 * The meta object literal for the '<em><b>Count Wordnet</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TREE_NODE__COUNT_WORDNET = eINSTANCE.getTreeNode_CountWordnet();
-
-		/**
-		 * The meta object literal for the '<em><b>Data</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TREE_NODE__DATA = eINSTANCE.getTreeNode_Data();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SemanticGroupImpl <em>Semantic Group</em>}' class.
@@ -3176,6 +2343,22 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SEARCH_RESULT___ADD_SEMANTIC_NODE_TO_SEMANTIC_GROUP__SEMANTICGROUP_SEMANTICNODE = eINSTANCE.getSearchResult__AddSemanticNodeToSemanticGroup__SemanticGroup_SemanticNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Data Property To Semantic Group</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SEARCH_RESULT___ADD_DATA_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_DATAPROPERTY = eINSTANCE.getSearchResult__AddDataPropertyToSemanticGroup__SemanticGroup_DataProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Object Property To Semantic Group</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SEARCH_RESULT___ADD_OBJECT_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_OBJECTPROPERTY = eINSTANCE.getSearchResult__AddObjectPropertyToSemanticGroup__SemanticGroup_ObjectProperty();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SearchResultOptionValueImpl <em>Search Result Option Value</em>}' class.

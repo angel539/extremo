@@ -9,8 +9,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import semanticmanager.NamedElement;
 import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
 import semanticmanager.SemanticmanagerPackage;
 
 /**
@@ -35,7 +35,7 @@ public class SemanticGroupImpl extends NamedElementImpl implements SemanticGroup
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<SemanticNode> nodes;
+	protected EList<NamedElement> nodes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,9 +61,9 @@ public class SemanticGroupImpl extends NamedElementImpl implements SemanticGroup
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<SemanticNode> getNodes() {
+	public EList<NamedElement> getNodes() {
 		if (nodes == null) {
-			nodes = new EObjectResolvingEList<SemanticNode>(SemanticNode.class, this, SemanticmanagerPackage.SEMANTIC_GROUP__NODES);
+			nodes = new EObjectResolvingEList<NamedElement>(NamedElement.class, this, SemanticmanagerPackage.SEMANTIC_GROUP__NODES);
 		}
 		return nodes;
 	}
@@ -93,7 +93,7 @@ public class SemanticGroupImpl extends NamedElementImpl implements SemanticGroup
 		switch (featureID) {
 			case SemanticmanagerPackage.SEMANTIC_GROUP__NODES:
 				getNodes().clear();
-				getNodes().addAll((Collection<? extends SemanticNode>)newValue);
+				getNodes().addAll((Collection<? extends NamedElement>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="uam.extremo.core.feature"
+      label="Feature"
+      version="2.0.2.qualifier">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <url>
+      <update label="extremo at Github" url="http://angel539.github.io/extremo/update-site"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="uam.extremo.extensions" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf" version="2.6.0" match="greaterOrEqual"/>
+      <import plugin="uam.extremo.core" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.12.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.apache.commons.lang3"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.apache.commons.lang3" version="3.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="uam.extremo.ui.views" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="uam.extremo.ui.zest.views" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.views.properties.tabbed"/>
+      <import plugin="org.eclipse.graphiti.ui"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.e4.core.di" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.registry"/>
+      <import plugin="org.eclipse.swt"/>
+      <import plugin="org.eclipse.gef" version="3.10.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.graphiti" version="0.12.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="org.eclipse.ui.views.properties.tabbed" version="3.6.100" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.emf.ecore.editor" version="2.11.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.emf.common.ui"/>
+      <import plugin="uam.extremo.ui.views.extensions" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.jobs"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.apache.commons.io"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.zest.core" version="1.5.201" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.zest.layouts" version="1.1.200" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gef4.mvc"/>
+      <import plugin="org.eclipse.gef4.common"/>
+      <import plugin="org.eclipse.gef4.mvc.fx"/>
+      <import plugin="org.eclipse.gef4.layout"/>
+      <import plugin="com.google.inject" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gef4.fx" version="0.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gef4.graph" version="0.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gef4.zest.fx" version="0.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gef4.zest.fx.ui" version="0.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.e4.ui.workbench.swt" version="0.13.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.draw2d"/>
+   </requires>
+
+   <plugin
+         id="uam.extremo.assistant.ecore"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uam.extremo.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uam.extremo.core.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uam.extremo.extensions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uam.extremo.search.wordnet"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uam.extremo.ui.menu"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uam.extremo.ui.perspective"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uam.extremo.ui.preferences"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uam.extremo.ui.views"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uam.extremo.ui.views.extensions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uam.extremo.ui.wizards"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="uam.extremo.ui.zest.views"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

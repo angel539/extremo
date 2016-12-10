@@ -11,8 +11,6 @@ import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.Type;
 
 public interface IFormatAssistant {
-	//static List<IFormatAssistant> INSTANCES = new ArrayList<IFormatAssistant>();
-	
     public boolean load(semanticmanager.Resource semanticResource);
     public void toDataProperty(SemanticNode parent);
     public void toObjectProperty(SemanticNode parent);
@@ -27,13 +25,14 @@ public interface IFormatAssistant {
     public List<ObjectProperty> getPath(SemanticNode entityA, SemanticNode entityB);
     public ObjectProperty getInverseProperty (SemanticNode parent, ObjectProperty property);
     
-    default Resource createResource(String uri, String name, String description, boolean active, boolean alive) {
+    default Resource createResource(String uri, String name, String description, boolean active, boolean alive, Resource descriptor) {
     	Resource resource = SemanticmanagerFactory.eINSTANCE.createResource();
     	resource.setUri(uri);
     	resource.setName(name);
     	resource.setDescription(description);
     	resource.setActive(active);
     	resource.setAlive(alive);
+    	resource.setDescriptor(descriptor);
         return resource;
     }
     
@@ -45,7 +44,6 @@ public interface IFormatAssistant {
     	semanticNode.setWeight(1);
     	semanticNode.setInstanceOf(isInstanceOf);
     	semanticNode.setInstanceOfNode(instanceOf);
-    	
         return semanticNode;
     }
     

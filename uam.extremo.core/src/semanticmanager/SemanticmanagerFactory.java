@@ -31,15 +31,6 @@ public interface SemanticmanagerFactory extends EFactory {
 	RepositoryManager createRepositoryManager();
 
 	/**
-	 * Returns a new object of class '<em>Search</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Search</em>'.
-	 * @generated
-	 */
-	Search createSearch();
-
-	/**
 	 * Returns a new object of class '<em>Repository</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,15 +74,6 @@ public interface SemanticmanagerFactory extends EFactory {
 	 * @generated
 	 */
 	DataProperty createDataProperty();
-
-	/**
-	 * Returns a new object of class '<em>Tree Node</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Tree Node</em>'.
-	 * @generated
-	 */
-	TreeNode createTreeNode();
 
 	/**
 	 * Returns a new object of class '<em>Semantic Group</em>'.

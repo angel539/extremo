@@ -72,10 +72,6 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 				return createRepositoryManagerAdapter();
 			}
 			@Override
-			public Adapter caseSearch(Search object) {
-				return createSearchAdapter();
-			}
-			@Override
 			public Adapter caseRepository(Repository object) {
 				return createRepositoryAdapter();
 			}
@@ -102,10 +98,6 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDataProperty(DataProperty object) {
 				return createDataPropertyAdapter();
-			}
-			@Override
-			public Adapter caseTreeNode(TreeNode object) {
-				return createTreeNodeAdapter();
 			}
 			@Override
 			public Adapter caseSemanticGroup(SemanticGroup object) {
@@ -158,20 +150,6 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRepositoryManagerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link semanticmanager.Search <em>Search</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see semanticmanager.Search
-	 * @generated
-	 */
-	public Adapter createSearchAdapter() {
 		return null;
 	}
 
@@ -270,20 +248,6 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDataPropertyAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link semanticmanager.TreeNode <em>Tree Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see semanticmanager.TreeNode
-	 * @generated
-	 */
-	public Adapter createTreeNodeAdapter() {
 		return null;
 	}
 

@@ -9,7 +9,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
@@ -65,9 +65,24 @@ public class RepositoryImpl extends NamedElementImpl implements Repository {
 	 */
 	public EList<Resource> getResources() {
 		if (resources == null) {
-			resources = new EObjectContainmentEList<Resource>(Resource.class, this, SemanticmanagerPackage.REPOSITORY__RESOURCES);
+			resources = new EObjectContainmentWithInverseEList<Resource>(Resource.class, this, SemanticmanagerPackage.REPOSITORY__RESOURCES, SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM);
 		}
 		return resources;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SemanticmanagerPackage.REPOSITORY__RESOURCES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getResources()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

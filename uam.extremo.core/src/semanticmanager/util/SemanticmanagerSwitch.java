@@ -72,12 +72,6 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SemanticmanagerPackage.SEARCH: {
-				Search search = (Search)theEObject;
-				T result = caseSearch(search);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case SemanticmanagerPackage.REPOSITORY: {
 				Repository repository = (Repository)theEObject;
 				T result = caseRepository(repository);
@@ -128,12 +122,6 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SemanticmanagerPackage.TREE_NODE: {
-				TreeNode treeNode = (TreeNode)theEObject;
-				T result = caseTreeNode(treeNode);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case SemanticmanagerPackage.SEMANTIC_GROUP: {
 				SemanticGroup semanticGroup = (SemanticGroup)theEObject;
 				T result = caseSemanticGroup(semanticGroup);
@@ -181,21 +169,6 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRepositoryManager(RepositoryManager object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Search</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Search</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSearch(Search object) {
 		return null;
 	}
 
@@ -301,21 +274,6 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDataProperty(DataProperty object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Tree Node</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Tree Node</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTreeNode(TreeNode object) {
 		return null;
 	}
 

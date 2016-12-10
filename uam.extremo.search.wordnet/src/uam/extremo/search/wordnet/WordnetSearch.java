@@ -41,50 +41,6 @@ public class WordnetSearch extends SearchConfigurationImpl{
 	private int maxWeight;
 	private int variance;
 	
-	/*public void search(RepositoryManager repositoryManager, Search options) {
-		options.expand();
-		
-		Map<String, Integer> searchList = (Map<String, Integer>) options.getOrderSearchesListByWeight();
-		
-		for(Repository repository : repositoryManager.getRepositories()){
-			for(Resource resource : repository.getResources()){
-				if(resource.isActive()){
-					SemanticGroup semanticGroup = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
-					semanticGroup.setName(resource.getName());
-					semanticGroup.setDescription(resource.getDescription());
-					
-					iterator:
-					for(SemanticNode semanticNode : resource.getNodes()){
-						for(Entry<String, Integer> word : searchList.entrySet()){
-							if(semanticNode.getName().compareTo(word.getKey()) == 0){
-								semanticGroup.getNodes().add(semanticNode);
-								continue iterator;
-							}
-							
-							List<String> wordInNameClass = LangUtils.cleanAndSeparateWords(semanticNode.getName());
-							for(String wordInName : wordInNameClass){	
-								if(wordInName.compareTo(word.getKey()) == 0){
-									semanticGroup.getNodes().add(semanticNode);
-									continue iterator;
-								}
-								else{
-									if(LangUtils.haveTheSameStem(wordInName, word.getKey())){
-										semanticGroup.getNodes().add(semanticNode);
-										continue iterator;
-									}
-								}
-							}
-						}
-					}
-					
-					options.getResults().add(semanticGroup);
-				}	
-			}
-		}
-		
-		repositoryManager.getSearches().add(options);
-	}*/
-	
 	@Override
 	public void resolveOptions(EList<SearchResultOptionValue> values) {
 		for(SearchResultOptionValue value : values){
@@ -202,7 +158,7 @@ public class WordnetSearch extends SearchConfigurationImpl{
 			else{
 				if(dataRChild.getData().length > 0){
 					dataRChild.setKind(2);
-					//System.out.println("el parametro es... " + dataRChild.getData()[0]);
+					
 					Map<String, Tuple<String[], String[]>> wordnetSynsetMap = Wordnet.getInstance().getSynonymsProposal(dataRChild.getData()[0]);
 					
 					for(Entry<String, Tuple<String[], String[]>> entry : wordnetSynsetMap.entrySet()){

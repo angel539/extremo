@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link semanticmanager.RepositoryManager#getSearches <em>Searches</em>}</li>
  *   <li>{@link semanticmanager.RepositoryManager#getRepositories <em>Repositories</em>}</li>
  *   <li>{@link semanticmanager.RepositoryManager#getConfigurations <em>Configurations</em>}</li>
  * </ul>
@@ -25,22 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface RepositoryManager extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Searches</b></em>' containment reference list.
-	 * The list contents are of type {@link semanticmanager.Search}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Searches</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Searches</em>' containment reference list.
-	 * @see semanticmanager.SemanticmanagerPackage#getRepositoryManager_Searches()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Search> getSearches();
-
 	/**
 	 * Returns the value of the '<em><b>Repositories</b></em>' containment reference list.
 	 * The list contents are of type {@link semanticmanager.Repository}.

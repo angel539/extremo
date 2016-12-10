@@ -12,26 +12,15 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import semanticmanager.Repository;
 import semanticmanager.Resource;
-import semanticmanager.Search;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticmanagerFactory;
 import uam.extremo.extensions.AssistantFactory;
-import uam.extremo.ui.views.Activator;
 import uam.extremo.ui.wizards.dialogs.searchnew.SearchWizardDialog;
 
 public class SearchSemanticNodesHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		AssistantFactory.getInstance().putAllResourceToNotActive();
-		
-		/*Search searchOptions = SemanticmanagerFactory.eINSTANCE.createSearch();
-		searchOptions.setStrategyApplied(Activator.getDefault().getPreferenceStore().getString("PRESETS"));
-		searchOptions.setRelevanceR1(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R1"));
-		searchOptions.setRelevanceR2(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R2"));
-		searchOptions.setRelevanceR3(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R3"));
-		searchOptions.setRelevanceR4(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R4"));
-		searchOptions.setRelevanceR5(Activator.getDefault().getPreferenceStore().getInt("RELEVANCE_R5"));
-		searchOptions.setMaxWeight(Activator.getDefault().getPreferenceStore().getInt("MAX_WEIGHT"));*/
 		
 		SearchResult searchResult = SemanticmanagerFactory.eINSTANCE.createSearchResult();
 		
@@ -41,10 +30,20 @@ public class SearchSemanticNodesHandler extends AbstractHandler {
 			
 			for (Iterator<Object> iterator = strucSelection.iterator(); iterator.hasNext();) {
 				Object element = iterator.next();
+				
 				if(element instanceof Repository){
 					Repository repository = (Repository) element;
 					
 					for(Resource resource : repository.getResources()){
+						resource.setActive(true);
+						searchResult.getResources().add(resource);
+					}
+				}
+				
+				if(element instanceof Resource){
+					Resource resource = (Resource) element;
+					
+					if(!searchResult.getResources().contains(resource)){
 						resource.setActive(true);
 						searchResult.getResources().add(resource);
 					}
@@ -68,10 +67,4 @@ public class SearchSemanticNodesHandler extends AbstractHandler {
 		AssistantFactory.getInstance().search(search);
 		return true;
 	}
-	
-	/*public static boolean searchAndRefreshView(String candidate){
-		Search search = SemanticmanagerFactory.eINSTANCE.createSearch();
-		search.setSearchField(candidate);
-		return search(search);
-	}*/
 }

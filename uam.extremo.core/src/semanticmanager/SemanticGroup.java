@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
 public interface SemanticGroup extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Nodes</b></em>' reference list.
-	 * The list contents are of type {@link semanticmanager.SemanticNode}.
+	 * The list contents are of type {@link semanticmanager.NamedElement}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Nodes</em>' reference list isn't clear,
@@ -35,6 +35,6 @@ public interface SemanticGroup extends NamedElement {
 	 * @model
 	 * @generated
 	 */
-	EList<SemanticNode> getNodes();
+	EList<NamedElement> getNodes();
 
 } // SemanticGroup

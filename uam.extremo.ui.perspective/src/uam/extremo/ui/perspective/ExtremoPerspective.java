@@ -4,11 +4,10 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
-import uam.extremo.ui.views.entities.EntityViewPart;
 import uam.extremo.ui.views.repositories.RepositoryViewPart;
 import uam.extremo.ui.views.searchtree.SearchTreeViewPart;
 import uam.extremo.ui.zest.views.inheritance.InheritanceGraphViewPart;
-import uam.extremo.ui.zest.views.relations.RelationshipGraphViewPart;
+//import uam.extremo.ui.zest.views.relations.RelationshipGraphViewPart;
 
 public class ExtremoPerspective implements IPerspectiveFactory {
 
@@ -24,11 +23,10 @@ public class ExtremoPerspective implements IPerspectiveFactory {
 		layout.addShowViewShortcut(IPageLayout.ID_PROJECT_EXPLORER);
 		layout.addShowViewShortcut(IPageLayout.ID_PROP_SHEET);
 		layout.addShowViewShortcut(RepositoryViewPart.ID);
-		layout.addShowViewShortcut(EntityViewPart.ID);
 		layout.addShowViewShortcut(SearchTreeViewPart.ID);
 		
 		layout.addShowViewShortcut(InheritanceGraphViewPart.ID);
-		layout.addShowViewShortcut(RelationshipGraphViewPart.ID);
+		//layout.addShowViewShortcut(RelationshipGraphViewPart.ID);
 	}
 	
 	private void defineLayout(IPageLayout layout) {
@@ -40,11 +38,10 @@ public class ExtremoPerspective implements IPerspectiveFactory {
 		IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, (float) 0.70, editorArea);
 		bottom.addView(IPageLayout.ID_PROP_SHEET);
 		bottom.addView(RepositoryViewPart.ID);
-		bottom.addView(EntityViewPart.ID);
 		bottom.addView(SearchTreeViewPart.ID);
 		
 		IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, (float) 0.70, editorArea);
 		right.addView(InheritanceGraphViewPart.ID);
-		right.addView(RelationshipGraphViewPart.ID);
+		//right.addView(RelationshipGraphViewPart.ID);
 	}
 }

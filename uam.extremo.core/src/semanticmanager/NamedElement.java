@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link semanticmanager.NamedElement#getDescription <em>Description</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getWeight <em>Weight</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getId <em>Id</em>}</li>
+ *   <li>{@link semanticmanager.NamedElement#isDrawn <em>Drawn</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getNamedElement()
@@ -127,5 +128,31 @@ public interface NamedElement extends EObject {
 	 * @generated
 	 */
 	void setId(Object value);
+
+	/**
+	 * Returns the value of the '<em><b>Drawn</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Drawn</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Drawn</em>' attribute.
+	 * @see #setDrawn(boolean)
+	 * @see semanticmanager.SemanticmanagerPackage#getNamedElement_Drawn()
+	 * @model
+	 * @generated
+	 */
+	boolean isDrawn();
+
+	/**
+	 * Sets the value of the '{@link semanticmanager.NamedElement#isDrawn <em>Drawn</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Drawn</em>' attribute.
+	 * @see #isDrawn()
+	 * @generated
+	 */
+	void setDrawn(boolean value);
 
 } // NamedElement

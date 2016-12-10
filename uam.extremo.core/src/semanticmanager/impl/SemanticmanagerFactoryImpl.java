@@ -58,13 +58,11 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SemanticmanagerPackage.REPOSITORY_MANAGER: return createRepositoryManager();
-			case SemanticmanagerPackage.SEARCH: return createSearch();
 			case SemanticmanagerPackage.REPOSITORY: return createRepository();
 			case SemanticmanagerPackage.RESOURCE: return createResource();
 			case SemanticmanagerPackage.SEMANTIC_NODE: return createSemanticNode();
 			case SemanticmanagerPackage.OBJECT_PROPERTY: return createObjectProperty();
 			case SemanticmanagerPackage.DATA_PROPERTY: return createDataProperty();
-			case SemanticmanagerPackage.TREE_NODE: return createTreeNode();
 			case SemanticmanagerPackage.SEMANTIC_GROUP: return createSemanticGroup();
 			case SemanticmanagerPackage.SEARCH_OPTION: return createSearchOption();
 			case SemanticmanagerPackage.SEARCH_RESULT: return createSearchResult();
@@ -119,16 +117,6 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Search createSearch() {
-		SearchImpl search = new SearchImpl();
-		return search;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Repository createRepository() {
 		RepositoryImpl repository = new RepositoryImpl();
 		return repository;
@@ -172,16 +160,6 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	public DataProperty createDataProperty() {
 		DataPropertyImpl dataProperty = new DataPropertyImpl();
 		return dataProperty;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TreeNode createTreeNode() {
-		TreeNodeImpl treeNode = new TreeNodeImpl();
-		return treeNode;
 	}
 
 	/**

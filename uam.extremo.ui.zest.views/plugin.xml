@@ -6,19 +6,28 @@
       <view
             category="extremo.ui.views"
             class="uam.extremo.ui.zest.views.inheritance.InheritanceGraphViewPart"
-            icon="icons/parent_guardian.png"
+            icon="icons/explore16.png"
             id="uam.extremo.ui.zest.views.InheritanceGraphViewPart"
-            name="Superclasses"
+            name="Connection Explorer"
             restorable="true">
       </view>
-      <view
-            category="extremo.ui.views"
-            class="uam.extremo.ui.zest.views.relations.RelationshipGraphViewPart"
-            icon="icons/change_theme.png"
-            id="uam.extremo.ui.zest.views.RelationGraphViewPart"
-            name="References"
-            restorable="true">
-      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:uam.extremo.ui.zest.views.InheritanceGraphViewPart">
+         <command
+               commandId="uam.extremo.ui.views.exploreConnections"
+               icon="icons/explore16.png"
+               style="push">
+         </command>
+         <command
+               commandId="uam.extremo.ui.views.goToParent"
+               icon="icons/up16.png"
+               style="push">
+         </command>
+      </menuContribution>
    </extension>
 
 

@@ -12,7 +12,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import semanticmanager.Repository;
 import semanticmanager.Resource;
 import semanticmanager.SemanticNode;
 import semanticmanager.SemanticmanagerPackage;
@@ -30,6 +32,9 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.ResourceImpl#getAssistant <em>Assistant</em>}</li>
  *   <li>{@link semanticmanager.impl.ResourceImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link semanticmanager.impl.ResourceImpl#getUri <em>Uri</em>}</li>
+ *   <li>{@link semanticmanager.impl.ResourceImpl#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link semanticmanager.impl.ResourceImpl#getDescribes <em>Describes</em>}</li>
+ *   <li>{@link semanticmanager.impl.ResourceImpl#getRepositoryFrom <em>Repository From</em>}</li>
  * </ul>
  *
  * @generated
@@ -124,6 +129,16 @@ public class ResourceImpl extends NamedElementImpl implements Resource {
 	 * @ordered
 	 */
 	protected String uri = URI_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getDescribes() <em>Describes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescribes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Resource> describes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -245,12 +260,116 @@ public class ResourceImpl extends NamedElementImpl implements Resource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Resource getDescriptor() {
+		if (eContainerFeatureID() != SemanticmanagerPackage.RESOURCE__DESCRIPTOR) return null;
+		return (Resource)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDescriptor(Resource newDescriptor, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newDescriptor, SemanticmanagerPackage.RESOURCE__DESCRIPTOR, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDescriptor(Resource newDescriptor) {
+		if (newDescriptor != eInternalContainer() || (eContainerFeatureID() != SemanticmanagerPackage.RESOURCE__DESCRIPTOR && newDescriptor != null)) {
+			if (EcoreUtil.isAncestor(this, newDescriptor))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newDescriptor != null)
+				msgs = ((InternalEObject)newDescriptor).eInverseAdd(this, SemanticmanagerPackage.RESOURCE__DESCRIBES, Resource.class, msgs);
+			msgs = basicSetDescriptor(newDescriptor, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.RESOURCE__DESCRIPTOR, newDescriptor, newDescriptor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Resource> getDescribes() {
+		if (describes == null) {
+			describes = new EObjectContainmentWithInverseEList<Resource>(Resource.class, this, SemanticmanagerPackage.RESOURCE__DESCRIBES, SemanticmanagerPackage.RESOURCE__DESCRIPTOR);
+		}
+		return describes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Repository getRepositoryFrom() {
+		if (eContainerFeatureID() != SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM) return null;
+		return (Repository)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRepositoryFrom(Repository newRepositoryFrom, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newRepositoryFrom, SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRepositoryFrom(Repository newRepositoryFrom) {
+		if (newRepositoryFrom != eInternalContainer() || (eContainerFeatureID() != SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM && newRepositoryFrom != null)) {
+			if (EcoreUtil.isAncestor(this, newRepositoryFrom))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newRepositoryFrom != null)
+				msgs = ((InternalEObject)newRepositoryFrom).eInverseAdd(this, SemanticmanagerPackage.REPOSITORY__RESOURCES, Repository.class, msgs);
+			msgs = basicSetRepositoryFrom(newRepositoryFrom, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM, newRepositoryFrom, newRepositoryFrom));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case SemanticmanagerPackage.RESOURCE__NODES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getNodes()).basicAdd(otherEnd, msgs);
+			case SemanticmanagerPackage.RESOURCE__DESCRIPTOR:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetDescriptor((Resource)otherEnd, msgs);
+			case SemanticmanagerPackage.RESOURCE__DESCRIBES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDescribes()).basicAdd(otherEnd, msgs);
+			case SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetRepositoryFrom((Repository)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -265,8 +384,30 @@ public class ResourceImpl extends NamedElementImpl implements Resource {
 		switch (featureID) {
 			case SemanticmanagerPackage.RESOURCE__NODES:
 				return ((InternalEList<?>)getNodes()).basicRemove(otherEnd, msgs);
+			case SemanticmanagerPackage.RESOURCE__DESCRIPTOR:
+				return basicSetDescriptor(null, msgs);
+			case SemanticmanagerPackage.RESOURCE__DESCRIBES:
+				return ((InternalEList<?>)getDescribes()).basicRemove(otherEnd, msgs);
+			case SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM:
+				return basicSetRepositoryFrom(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case SemanticmanagerPackage.RESOURCE__DESCRIPTOR:
+				return eInternalContainer().eInverseRemove(this, SemanticmanagerPackage.RESOURCE__DESCRIBES, Resource.class, msgs);
+			case SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM:
+				return eInternalContainer().eInverseRemove(this, SemanticmanagerPackage.REPOSITORY__RESOURCES, Repository.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -287,6 +428,12 @@ public class ResourceImpl extends NamedElementImpl implements Resource {
 				return getNodes();
 			case SemanticmanagerPackage.RESOURCE__URI:
 				return getUri();
+			case SemanticmanagerPackage.RESOURCE__DESCRIPTOR:
+				return getDescriptor();
+			case SemanticmanagerPackage.RESOURCE__DESCRIBES:
+				return getDescribes();
+			case SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM:
+				return getRepositoryFrom();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -316,6 +463,16 @@ public class ResourceImpl extends NamedElementImpl implements Resource {
 			case SemanticmanagerPackage.RESOURCE__URI:
 				setUri((String)newValue);
 				return;
+			case SemanticmanagerPackage.RESOURCE__DESCRIPTOR:
+				setDescriptor((Resource)newValue);
+				return;
+			case SemanticmanagerPackage.RESOURCE__DESCRIBES:
+				getDescribes().clear();
+				getDescribes().addAll((Collection<? extends Resource>)newValue);
+				return;
+			case SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM:
+				setRepositoryFrom((Repository)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -343,6 +500,15 @@ public class ResourceImpl extends NamedElementImpl implements Resource {
 			case SemanticmanagerPackage.RESOURCE__URI:
 				setUri(URI_EDEFAULT);
 				return;
+			case SemanticmanagerPackage.RESOURCE__DESCRIPTOR:
+				setDescriptor((Resource)null);
+				return;
+			case SemanticmanagerPackage.RESOURCE__DESCRIBES:
+				getDescribes().clear();
+				return;
+			case SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM:
+				setRepositoryFrom((Repository)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -365,6 +531,12 @@ public class ResourceImpl extends NamedElementImpl implements Resource {
 				return nodes != null && !nodes.isEmpty();
 			case SemanticmanagerPackage.RESOURCE__URI:
 				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
+			case SemanticmanagerPackage.RESOURCE__DESCRIPTOR:
+				return getDescriptor() != null;
+			case SemanticmanagerPackage.RESOURCE__DESCRIBES:
+				return describes != null && !describes.isEmpty();
+			case SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM:
+				return getRepositoryFrom() != null;
 		}
 		return super.eIsSet(featureID);
 	}

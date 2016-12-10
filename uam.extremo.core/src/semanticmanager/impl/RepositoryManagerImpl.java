@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
-import semanticmanager.Search;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SemanticmanagerPackage;
 
@@ -28,7 +27,6 @@ import semanticmanager.SemanticmanagerPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link semanticmanager.impl.RepositoryManagerImpl#getSearches <em>Searches</em>}</li>
  *   <li>{@link semanticmanager.impl.RepositoryManagerImpl#getRepositories <em>Repositories</em>}</li>
  *   <li>{@link semanticmanager.impl.RepositoryManagerImpl#getConfigurations <em>Configurations</em>}</li>
  * </ul>
@@ -36,16 +34,6 @@ import semanticmanager.SemanticmanagerPackage;
  * @generated
  */
 public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implements RepositoryManager {
-	/**
-	 * The cached value of the '{@link #getSearches() <em>Searches</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSearches()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Search> searches;
-
 	/**
 	 * The cached value of the '{@link #getRepositories() <em>Repositories</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -90,18 +78,6 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Search> getSearches() {
-		if (searches == null) {
-			searches = new EObjectContainmentEList<Search>(Search.class, this, SemanticmanagerPackage.REPOSITORY_MANAGER__SEARCHES);
-		}
-		return searches;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Repository> getRepositories() {
 		if (repositories == null) {
 			repositories = new EObjectContainmentEList<Repository>(Repository.class, this, SemanticmanagerPackage.REPOSITORY_MANAGER__REPOSITORIES);
@@ -129,8 +105,6 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case SemanticmanagerPackage.REPOSITORY_MANAGER__SEARCHES:
-				return ((InternalEList<?>)getSearches()).basicRemove(otherEnd, msgs);
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__REPOSITORIES:
 				return ((InternalEList<?>)getRepositories()).basicRemove(otherEnd, msgs);
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__CONFIGURATIONS:
@@ -147,8 +121,6 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SemanticmanagerPackage.REPOSITORY_MANAGER__SEARCHES:
-				return getSearches();
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__REPOSITORIES:
 				return getRepositories();
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__CONFIGURATIONS:
@@ -166,10 +138,6 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SemanticmanagerPackage.REPOSITORY_MANAGER__SEARCHES:
-				getSearches().clear();
-				getSearches().addAll((Collection<? extends Search>)newValue);
-				return;
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__REPOSITORIES:
 				getRepositories().clear();
 				getRepositories().addAll((Collection<? extends Repository>)newValue);
@@ -190,9 +158,6 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SemanticmanagerPackage.REPOSITORY_MANAGER__SEARCHES:
-				getSearches().clear();
-				return;
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__REPOSITORIES:
 				getRepositories().clear();
 				return;
@@ -211,8 +176,6 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SemanticmanagerPackage.REPOSITORY_MANAGER__SEARCHES:
-				return searches != null && !searches.isEmpty();
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__REPOSITORIES:
 				return repositories != null && !repositories.isEmpty();
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__CONFIGURATIONS:
