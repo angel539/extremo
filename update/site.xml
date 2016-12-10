@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/uam.extremo.core.feature_2.0.1.201612101235.jar" id="uam.extremo.core.feature" version="2.0.1.201612101235" patch="true">
+      <category name="Extremo"/>
+   </feature>
+   <category-def name="Extremo" label="Extremo"/>
+</site>
