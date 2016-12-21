@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<semanticmanager:RepositoryManager
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:semanticmanager="http://www.core.extremo/SemanticManager"
+    xsi:schemaLocation="http://www.core.extremo/SemanticManager Extremo.ecore">
+  <repositories
+      name="repository1"
+      description="">
+    <resources
+        name="resource11"/>
+  </repositories>
+  <repositories
+      name="repository2">
+    <resources
+        name="resource21"
+        describes="//@repositories.1/@resources.1">
+      <nodes
+          name="node211"
+          describes="//@repositories.1/@resources.1/@nodes.0 //@repositories.1/@resources.1/@nodes.1"/>
+    </resources>
+    <resources
+        name="resource22"
+        descriptor="//@repositories.1/@resources.0">
+      <nodes
+          name="node221"
+          descriptor="//@repositories.1/@resources.0/@nodes.0"/>
+      <nodes
+          name="node222"
+          description=""
+          descriptor="//@repositories.1/@resources.0/@nodes.0"
+          supers="//@repositories.1/@resources.1/@nodes.1"
+          subs="//@repositories.1/@resources.1/@nodes.1"/>
+    </resources>
+  </repositories>
+</semanticmanager:RepositoryManager>

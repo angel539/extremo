@@ -3,16 +3,11 @@ package uam.extremo.extensions;
 import java.util.ArrayList;
 import java.util.List;
 
-import semanticmanager.Resource;
-import semanticmanager.SemanticmanagerFactory;
-
 public class FormatAssistant{
 	private static FormatAssistant INSTANCE = null;
 	private String id = null;
 	private String nameExtension = null;
 	private List<String> extensions = null;
-	
-	//private String wordnetLocation = null;
 	
 	private static void createInstance() {
 	   	 if (INSTANCE == null) {

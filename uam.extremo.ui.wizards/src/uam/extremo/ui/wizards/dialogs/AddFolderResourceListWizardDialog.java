@@ -76,7 +76,7 @@ public class AddFolderResourceListWizardDialog extends Wizard {
 					String resourceName = ((File)item.getData()).getName();
 					String resourceDescription = ((File)item.getData()).getName();
 					String resourceUri = ((File)item.getData()).getAbsolutePath();
-					AssistantFactory.getInstance().createResource(descriptor, resourceName, resourceDescription, resourceUri);
+					AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri);
 				}
 			}
 		}

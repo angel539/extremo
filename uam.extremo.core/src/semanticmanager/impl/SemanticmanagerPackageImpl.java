@@ -298,26 +298,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getResource_Descriptor() {
-		return (EReference)resourceEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getResource_Describes() {
-		return (EReference)resourceEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getResource_RepositoryFrom() {
-		return (EReference)resourceEClass.getEStructuralFeatures().get(7);
+		return (EReference)resourceEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -361,26 +343,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSemanticNode_InstanceOf() {
-		return (EAttribute)semanticNodeEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSemanticNode_InstanceOfNode() {
-		return (EReference)semanticNodeEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getSemanticNode_ResourceFrom() {
-		return (EReference)semanticNodeEClass.getEStructuralFeatures().get(5);
+		return (EReference)semanticNodeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -442,6 +406,24 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getNamedElement_Descriptor() {
+		return (EReference)namedElementEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNamedElement_Describes() {
+		return (EReference)namedElementEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProperty() {
 		return propertyEClass;
 	}
@@ -451,17 +433,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProperty_Value() {
-		return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getProperty_SemanticNodeFrom() {
-		return (EReference)propertyEClass.getEStructuralFeatures().get(1);
+		return (EReference)propertyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -487,6 +460,24 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getObjectProperty_LowerBound() {
+		return (EAttribute)objectPropertyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getObjectProperty_UpperBound() {
+		return (EAttribute)objectPropertyEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDataProperty() {
 		return dataPropertyEClass;
 	}
@@ -498,6 +489,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 */
 	public EAttribute getDataProperty_Type() {
 		return (EAttribute)dataPropertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataProperty_Value() {
+		return (EAttribute)dataPropertyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -784,16 +784,12 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEAttribute(resourceEClass, RESOURCE__ASSISTANT);
 		createEReference(resourceEClass, RESOURCE__NODES);
 		createEAttribute(resourceEClass, RESOURCE__URI);
-		createEReference(resourceEClass, RESOURCE__DESCRIPTOR);
-		createEReference(resourceEClass, RESOURCE__DESCRIBES);
 		createEReference(resourceEClass, RESOURCE__REPOSITORY_FROM);
 
 		semanticNodeEClass = createEClass(SEMANTIC_NODE);
 		createEReference(semanticNodeEClass, SEMANTIC_NODE__SUPERS);
 		createEReference(semanticNodeEClass, SEMANTIC_NODE__SUBS);
 		createEReference(semanticNodeEClass, SEMANTIC_NODE__PROPERTIES);
-		createEAttribute(semanticNodeEClass, SEMANTIC_NODE__INSTANCE_OF);
-		createEReference(semanticNodeEClass, SEMANTIC_NODE__INSTANCE_OF_NODE);
 		createEReference(semanticNodeEClass, SEMANTIC_NODE__RESOURCE_FROM);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
@@ -802,16 +798,20 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__WEIGHT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__ID);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__DRAWN);
+		createEReference(namedElementEClass, NAMED_ELEMENT__DESCRIPTOR);
+		createEReference(namedElementEClass, NAMED_ELEMENT__DESCRIBES);
 
 		propertyEClass = createEClass(PROPERTY);
-		createEAttribute(propertyEClass, PROPERTY__VALUE);
 		createEReference(propertyEClass, PROPERTY__SEMANTIC_NODE_FROM);
 
 		objectPropertyEClass = createEClass(OBJECT_PROPERTY);
 		createEReference(objectPropertyEClass, OBJECT_PROPERTY__RANGE);
+		createEAttribute(objectPropertyEClass, OBJECT_PROPERTY__LOWER_BOUND);
+		createEAttribute(objectPropertyEClass, OBJECT_PROPERTY__UPPER_BOUND);
 
 		dataPropertyEClass = createEClass(DATA_PROPERTY);
 		createEAttribute(dataPropertyEClass, DATA_PROPERTY__TYPE);
+		createEAttribute(dataPropertyEClass, DATA_PROPERTY__VALUE);
 
 		semanticGroupEClass = createEClass(SEMANTIC_GROUP);
 		createEReference(semanticGroupEClass, SEMANTIC_GROUP__NODES);
@@ -898,16 +898,12 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEAttribute(getResource_Assistant(), ecorePackage.getEString(), "assistant", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_Nodes(), this.getSemanticNode(), this.getSemanticNode_ResourceFrom(), "nodes", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResource_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResource_Descriptor(), this.getResource(), this.getResource_Describes(), "descriptor", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResource_Describes(), this.getResource(), this.getResource_Descriptor(), "describes", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_RepositoryFrom(), this.getRepository(), this.getRepository_Resources(), "repositoryFrom", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(semanticNodeEClass, SemanticNode.class, "SemanticNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSemanticNode_Supers(), this.getSemanticNode(), null, "supers", null, 0, -1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSemanticNode_Subs(), this.getSemanticNode(), null, "subs", null, 0, -1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSemanticNode_Supers(), this.getSemanticNode(), this.getSemanticNode_Subs(), "supers", null, 0, -1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSemanticNode_Subs(), this.getSemanticNode(), this.getSemanticNode_Supers(), "subs", null, 0, -1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemanticNode_Properties(), this.getProperty(), this.getProperty_SemanticNodeFrom(), "properties", null, 0, -1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSemanticNode_InstanceOf(), ecorePackage.getEBoolean(), "instanceOf", null, 0, 1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSemanticNode_InstanceOfNode(), this.getSemanticNode(), null, "instanceOfNode", null, 0, 1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemanticNode_ResourceFrom(), this.getResource(), this.getResource_Nodes(), "resourceFrom", null, 0, 1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -916,16 +912,20 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEAttribute(getNamedElement_Weight(), ecorePackage.getEInt(), "weight", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNamedElement_Id(), ecorePackage.getEJavaObject(), "id", null, 0, 1, NamedElement.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNamedElement_Drawn(), ecorePackage.getEBoolean(), "drawn", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNamedElement_Descriptor(), this.getNamedElement(), this.getNamedElement_Describes(), "descriptor", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNamedElement_Describes(), this.getNamedElement(), this.getNamedElement_Descriptor(), "describes", null, 0, -1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyEClass, Property.class, "Property", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProperty_Value(), ecorePackage.getEString(), "value", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProperty_SemanticNodeFrom(), this.getSemanticNode(), this.getSemanticNode_Properties(), "semanticNodeFrom", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(objectPropertyEClass, ObjectProperty.class, "ObjectProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getObjectProperty_Range(), this.getSemanticNode(), null, "range", null, 0, 1, ObjectProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getObjectProperty_LowerBound(), ecorePackage.getEInt(), "lowerBound", null, 0, 1, ObjectProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getObjectProperty_UpperBound(), ecorePackage.getEInt(), "upperBound", null, 0, 1, ObjectProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataPropertyEClass, DataProperty.class, "DataProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataProperty_Type(), this.getType(), "type", null, 0, 1, DataProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataProperty_Value(), ecorePackage.getEString(), "value", null, 0, 1, DataProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(semanticGroupEClass, SemanticGroup.class, "SemanticGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSemanticGroup_Nodes(), this.getNamedElement(), null, "nodes", null, 0, -1, SemanticGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -985,6 +985,9 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		addEEnumLiteral(typeEEnum, Type.BOOLEAN);
 		addEEnumLiteral(typeEEnum, Type.FLOAT);
 		addEEnumLiteral(typeEEnum, Type.DOUBLE);
+		addEEnumLiteral(typeEEnum, Type.SEMANTIC_NODE);
+		addEEnumLiteral(typeEEnum, Type.DATA_PROPERTY);
+		addEEnumLiteral(typeEEnum, Type.OBJECT_PROPERTY);
 
 		// Create resource
 		createResource(eNS_URI);

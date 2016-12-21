@@ -46,6 +46,7 @@ public class DataPropertyItemProvider extends PropertyItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addTypePropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -64,6 +65,28 @@ public class DataPropertyItemProvider extends PropertyItemProvider {
 				 getString("_UI_DataProperty_type_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_DataProperty_type_feature", "_UI_DataProperty_type"),
 				 SemanticmanagerPackage.Literals.DATA_PROPERTY__TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataProperty_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataProperty_value_feature", "_UI_DataProperty_type"),
+				 SemanticmanagerPackage.Literals.DATA_PROPERTY__VALUE,
 				 true,
 				 false,
 				 false,
@@ -111,6 +134,7 @@ public class DataPropertyItemProvider extends PropertyItemProvider {
 
 		switch (notification.getFeatureID(DataProperty.class)) {
 			case SemanticmanagerPackage.DATA_PROPERTY__TYPE:
+			case SemanticmanagerPackage.DATA_PROPERTY__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

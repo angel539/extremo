@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -34,8 +34,6 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getSupers <em>Supers</em>}</li>
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getSubs <em>Subs</em>}</li>
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link semanticmanager.impl.SemanticNodeImpl#isInstanceOf <em>Instance Of</em>}</li>
- *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getInstanceOfNode <em>Instance Of Node</em>}</li>
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getResourceFrom <em>Resource From</em>}</li>
  * </ul>
  *
@@ -73,36 +71,6 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 	protected EList<Property> properties;
 
 	/**
-	 * The default value of the '{@link #isInstanceOf() <em>Instance Of</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isInstanceOf()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean INSTANCE_OF_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isInstanceOf() <em>Instance Of</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isInstanceOf()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean instanceOf = INSTANCE_OF_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getInstanceOfNode() <em>Instance Of Node</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInstanceOfNode()
-	 * @generated
-	 * @ordered
-	 */
-	protected SemanticNode instanceOfNode;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -128,7 +96,7 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 	 */
 	public EList<SemanticNode> getSupers() {
 		if (supers == null) {
-			supers = new EObjectResolvingEList<SemanticNode>(SemanticNode.class, this, SemanticmanagerPackage.SEMANTIC_NODE__SUPERS);
+			supers = new EObjectWithInverseResolvingEList.ManyInverse<SemanticNode>(SemanticNode.class, this, SemanticmanagerPackage.SEMANTIC_NODE__SUPERS, SemanticmanagerPackage.SEMANTIC_NODE__SUBS);
 		}
 		return supers;
 	}
@@ -140,7 +108,7 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 	 */
 	public EList<SemanticNode> getSubs() {
 		if (subs == null) {
-			subs = new EObjectResolvingEList<SemanticNode>(SemanticNode.class, this, SemanticmanagerPackage.SEMANTIC_NODE__SUBS);
+			subs = new EObjectWithInverseResolvingEList.ManyInverse<SemanticNode>(SemanticNode.class, this, SemanticmanagerPackage.SEMANTIC_NODE__SUBS, SemanticmanagerPackage.SEMANTIC_NODE__SUPERS);
 		}
 		return subs;
 	}
@@ -155,65 +123,6 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 			properties = new EObjectContainmentWithInverseEList<Property>(Property.class, this, SemanticmanagerPackage.SEMANTIC_NODE__PROPERTIES, SemanticmanagerPackage.PROPERTY__SEMANTIC_NODE_FROM);
 		}
 		return properties;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isInstanceOf() {
-		return instanceOf;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInstanceOf(boolean newInstanceOf) {
-		boolean oldInstanceOf = instanceOf;
-		instanceOf = newInstanceOf;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF, oldInstanceOf, instanceOf));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SemanticNode getInstanceOfNode() {
-		if (instanceOfNode != null && instanceOfNode.eIsProxy()) {
-			InternalEObject oldInstanceOfNode = (InternalEObject)instanceOfNode;
-			instanceOfNode = (SemanticNode)eResolveProxy(oldInstanceOfNode);
-			if (instanceOfNode != oldInstanceOfNode) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF_NODE, oldInstanceOfNode, instanceOfNode));
-			}
-		}
-		return instanceOfNode;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SemanticNode basicGetInstanceOfNode() {
-		return instanceOfNode;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInstanceOfNode(SemanticNode newInstanceOfNode) {
-		SemanticNode oldInstanceOfNode = instanceOfNode;
-		instanceOfNode = newInstanceOfNode;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF_NODE, oldInstanceOfNode, instanceOfNode));
 	}
 
 	/**
@@ -266,6 +175,10 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case SemanticmanagerPackage.SEMANTIC_NODE__SUPERS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSupers()).basicAdd(otherEnd, msgs);
+			case SemanticmanagerPackage.SEMANTIC_NODE__SUBS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSubs()).basicAdd(otherEnd, msgs);
 			case SemanticmanagerPackage.SEMANTIC_NODE__PROPERTIES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getProperties()).basicAdd(otherEnd, msgs);
 			case SemanticmanagerPackage.SEMANTIC_NODE__RESOURCE_FROM:
@@ -284,6 +197,10 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case SemanticmanagerPackage.SEMANTIC_NODE__SUPERS:
+				return ((InternalEList<?>)getSupers()).basicRemove(otherEnd, msgs);
+			case SemanticmanagerPackage.SEMANTIC_NODE__SUBS:
+				return ((InternalEList<?>)getSubs()).basicRemove(otherEnd, msgs);
 			case SemanticmanagerPackage.SEMANTIC_NODE__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 			case SemanticmanagerPackage.SEMANTIC_NODE__RESOURCE_FROM:
@@ -320,11 +237,6 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 				return getSubs();
 			case SemanticmanagerPackage.SEMANTIC_NODE__PROPERTIES:
 				return getProperties();
-			case SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF:
-				return isInstanceOf();
-			case SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF_NODE:
-				if (resolve) return getInstanceOfNode();
-				return basicGetInstanceOfNode();
 			case SemanticmanagerPackage.SEMANTIC_NODE__RESOURCE_FROM:
 				return getResourceFrom();
 		}
@@ -352,12 +264,6 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends Property>)newValue);
 				return;
-			case SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF:
-				setInstanceOf((Boolean)newValue);
-				return;
-			case SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF_NODE:
-				setInstanceOfNode((SemanticNode)newValue);
-				return;
 			case SemanticmanagerPackage.SEMANTIC_NODE__RESOURCE_FROM:
 				setResourceFrom((Resource)newValue);
 				return;
@@ -382,12 +288,6 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 			case SemanticmanagerPackage.SEMANTIC_NODE__PROPERTIES:
 				getProperties().clear();
 				return;
-			case SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF:
-				setInstanceOf(INSTANCE_OF_EDEFAULT);
-				return;
-			case SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF_NODE:
-				setInstanceOfNode((SemanticNode)null);
-				return;
 			case SemanticmanagerPackage.SEMANTIC_NODE__RESOURCE_FROM:
 				setResourceFrom((Resource)null);
 				return;
@@ -409,30 +309,10 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 				return subs != null && !subs.isEmpty();
 			case SemanticmanagerPackage.SEMANTIC_NODE__PROPERTIES:
 				return properties != null && !properties.isEmpty();
-			case SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF:
-				return instanceOf != INSTANCE_OF_EDEFAULT;
-			case SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF_NODE:
-				return instanceOfNode != null;
 			case SemanticmanagerPackage.SEMANTIC_NODE__RESOURCE_FROM:
 				return getResourceFrom() != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (instanceOf: ");
-		result.append(instanceOf);
-		result.append(')');
-		return result.toString();
 	}
 
 } //SemanticNodeImpl

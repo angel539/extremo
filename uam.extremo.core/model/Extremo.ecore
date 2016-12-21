@@ -19,21 +19,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
         eType="#//SemanticNode" containment="true" eOpposite="#//SemanticNode/resourceFrom"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" eType="#//Resource"
-        eOpposite="#//Resource/describes"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="describes" upperBound="-1"
-        eType="#//Resource" containment="true" eOpposite="#//Resource/descriptor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="repositoryFrom" eType="#//Repository"
         eOpposite="#//Repository/resources"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SemanticNode" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="supers" upperBound="-1"
-        eType="#//SemanticNode"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subs" upperBound="-1" eType="#//SemanticNode"/>
+        eType="#//SemanticNode" eOpposite="#//SemanticNode/subs"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subs" upperBound="-1" eType="#//SemanticNode"
+        eOpposite="#//SemanticNode/supers"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Property" containment="true" eOpposite="#//Property/semanticNodeFrom"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="instanceOfNode" eType="#//SemanticNode"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceFrom" eType="#//Resource"
         eOpposite="#//Resource/nodes"/>
   </eClassifiers>
@@ -44,17 +39,23 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
         transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="drawn" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" eType="#//NamedElement"
+        eOpposite="#//NamedElement/describes"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="describes" upperBound="-1"
+        eType="#//NamedElement" eOpposite="#//NamedElement/descriptor"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property" abstract="true" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticNodeFrom" eType="#//SemanticNode"
         eOpposite="#//SemanticNode/properties"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectProperty" eSuperTypes="#//Property">
     <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="#//SemanticNode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowerBound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperBound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataProperty" eSuperTypes="#//Property">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Type">
     <eLiterals name="String" literal="String"/>
@@ -62,6 +63,9 @@
     <eLiterals name="Boolean" value="2"/>
     <eLiterals name="Float" value="3"/>
     <eLiterals name="Double" value="4"/>
+    <eLiterals name="SemanticNode" value="5"/>
+    <eLiterals name="DataProperty" value="6"/>
+    <eLiterals name="ObjectProperty" value="7"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SemanticGroup" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"

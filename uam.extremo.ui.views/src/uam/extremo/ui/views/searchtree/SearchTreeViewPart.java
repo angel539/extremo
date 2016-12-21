@@ -92,8 +92,16 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		//viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		new DrillDownAdapter(viewer);
 		
+		/*ComposedAdapterFactory composedAdapterFactory = 
+				   new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(composedAdapterFactory);
+		AdapterFactoryContentProvider contentProvider = new AdapterFactoryContentProvider(composedAdapterFactory);*/
+		
 		viewer.setContentProvider(new SearchTreeViewContentProvider(AssistantFactory.getInstance().getRepositoryManager(), getViewSite()));
 		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new SearchTreeViewLabelProvider()));
+				  
+		//viewer.setContentProvider(contentProvider);
+		//viewer.setLabelProvider(labelProvider);
 		viewer.setInput(getViewSite());
 		
 		SearchTreeViewFilter filter = new SearchTreeViewFilter();
@@ -142,7 +150,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 
     	AssistantFactory.getInstance().getRepositoryManager().eAdapters().add(adapter);
 	}
-	
+
 	private void hookContextMenu() {
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
 		menuMgr.setRemoveAllWhenShown(true);

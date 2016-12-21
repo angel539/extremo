@@ -10,14 +10,12 @@ import org.eclipse.ui.PlatformUI;
 
 import semanticmanager.DataProperty;
 import semanticmanager.ObjectProperty;
-import semanticmanager.Search;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
-import semanticmanager.TreeNode;
 import uam.extremo.ui.views.Activator;
 
 public class SearchTreeViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
@@ -30,7 +28,19 @@ public class SearchTreeViewLabelProvider extends LabelProvider implements IStyle
 		if(obj instanceof SearchResultOptionValue) return Activator.getImageDescriptor("icons/value16.png").createImage();
 		if(obj instanceof SearchOption) return Activator.getImageDescriptor("icons/option16.png").createImage();
 		if(obj instanceof SemanticGroup) return Activator.getImageDescriptor("icons/class_set.gif").createImage();
-		if(obj instanceof SemanticNode) return Activator.getImageDescriptor("icons/class_obj.png").createImage();
+		
+		
+		//if(obj instanceof SemanticNode) return Activator.getImageDescriptor("icons/class_obj.png").createImage();
+		
+		if(obj instanceof SemanticNode){
+			if(((SemanticNode) obj).getDescriptor() == null){
+				return Activator.getImageDescriptor("icons/class_obj.png").createImage();
+			}
+			else{
+        		return Activator.getImageDescriptor("icons/objects16.png").createImage();
+			}
+    	}
+		
 		if(obj instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.gif").createImage();
 		if(obj instanceof DataProperty) return Activator.getImageDescriptor("icons/attribute.png").createImage();
 
@@ -85,12 +95,43 @@ public class SearchTreeViewLabelProvider extends LabelProvider implements IStyle
 			return styledString;
 		}
 		
-		if(element instanceof DataProperty){
-			DataProperty property = (DataProperty) element;
-			StyledString styledString = new StyledString(property.getName());
-			if(property.getType() != null) styledString.append(" (" + property.getType().getLiteral() + ")", StyledString.QUALIFIER_STYLER);
+		if(element instanceof SemanticNode){
+			if(((SemanticNode) element).getDescriptor() == null){
+				SemanticNode semanticNode = (SemanticNode) element;
+				StyledString styledString = new StyledString(semanticNode.getName());
+				
+				if(semanticNode.getDescribes().size() > 0)
+					styledString.append(" (" + semanticNode.getDescribes().size() + ") descriptions", StyledString.QUALIFIER_STYLER);
+				
+				if(semanticNode.getProperties().size() > 0)
+					styledString.append(" (" + semanticNode.getProperties().size() + ") properties", StyledString.QUALIFIER_STYLER);
+				
+				styledString.append(" (" + semanticNode.getWeight() + ") pts", StyledString.COUNTER_STYLER);
 
-			return styledString;
+				return styledString;
+			}
+			else{
+				SemanticNode semanticNode = (SemanticNode) element;
+				StyledString styledString = new StyledString(semanticNode.getName() + ":");
+				return styledString;
+			}
+    	}
+		
+		if(element instanceof DataProperty){
+			if(((DataProperty) element).getDescriptor() == null){
+				DataProperty property = (DataProperty) element;
+				StyledString styledString = new StyledString(property.getName());
+				if(property.getType() != null) styledString.append(" (" + property.getType().getLiteral() + ")", StyledString.QUALIFIER_STYLER);
+				
+				return styledString;
+			}
+			else{
+				DataProperty property = (DataProperty) element;
+				StyledString styledString = new StyledString(property.getValue() + ":");
+				if(property.getType() != null) styledString.append(" (" + property.getType().getLiteral() + ")", StyledString.QUALIFIER_STYLER);
+				
+				return styledString;
+			}
 		}
 		
 		if(element instanceof ObjectProperty){

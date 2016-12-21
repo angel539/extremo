@@ -23,33 +23,12 @@ import semanticmanager.SemanticmanagerPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link semanticmanager.impl.PropertyImpl#getValue <em>Value</em>}</li>
  *   <li>{@link semanticmanager.impl.PropertyImpl#getSemanticNodeFrom <em>Semantic Node From</em>}</li>
  * </ul>
  *
  * @generated
  */
 public abstract class PropertyImpl extends NamedElementImpl implements Property {
-	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String value = VALUE_EDEFAULT;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,27 +46,6 @@ public abstract class PropertyImpl extends NamedElementImpl implements Property 
 	@Override
 	protected EClass eStaticClass() {
 		return SemanticmanagerPackage.Literals.PROPERTY;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getValue() {
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.PROPERTY__VALUE, oldValue, value));
 	}
 
 	/**
@@ -183,8 +141,6 @@ public abstract class PropertyImpl extends NamedElementImpl implements Property 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SemanticmanagerPackage.PROPERTY__VALUE:
-				return getValue();
 			case SemanticmanagerPackage.PROPERTY__SEMANTIC_NODE_FROM:
 				return getSemanticNodeFrom();
 		}
@@ -199,9 +155,6 @@ public abstract class PropertyImpl extends NamedElementImpl implements Property 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SemanticmanagerPackage.PROPERTY__VALUE:
-				setValue((String)newValue);
-				return;
 			case SemanticmanagerPackage.PROPERTY__SEMANTIC_NODE_FROM:
 				setSemanticNodeFrom((SemanticNode)newValue);
 				return;
@@ -217,9 +170,6 @@ public abstract class PropertyImpl extends NamedElementImpl implements Property 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SemanticmanagerPackage.PROPERTY__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
 			case SemanticmanagerPackage.PROPERTY__SEMANTIC_NODE_FROM:
 				setSemanticNodeFrom((SemanticNode)null);
 				return;
@@ -235,28 +185,10 @@ public abstract class PropertyImpl extends NamedElementImpl implements Property 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SemanticmanagerPackage.PROPERTY__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case SemanticmanagerPackage.PROPERTY__SEMANTIC_NODE_FROM:
 				return getSemanticNodeFrom() != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
-		result.append(')');
-		return result.toString();
 	}
 
 } //PropertyImpl

@@ -60,7 +60,7 @@ public class AddAResourceToExistingRepositoryWizardDialog extends Wizard {
 		}
 		
 		if(descriptor != null){
-			AssistantFactory.getInstance().createResource(descriptor, resourceName, resourceDescription, resourceUri);
+			AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri);
 		}
 		else{
 			AssistantFactory.getInstance().createResourceDescriptor(repository, resourceName, resourceDescription, resourceUri);

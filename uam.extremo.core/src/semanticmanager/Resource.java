@@ -18,8 +18,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link semanticmanager.Resource#getAssistant <em>Assistant</em>}</li>
  *   <li>{@link semanticmanager.Resource#getNodes <em>Nodes</em>}</li>
  *   <li>{@link semanticmanager.Resource#getUri <em>Uri</em>}</li>
- *   <li>{@link semanticmanager.Resource#getDescriptor <em>Descriptor</em>}</li>
- *   <li>{@link semanticmanager.Resource#getDescribes <em>Describes</em>}</li>
  *   <li>{@link semanticmanager.Resource#getRepositoryFrom <em>Repository From</em>}</li>
  * </ul>
  *
@@ -149,52 +147,6 @@ public interface Resource extends NamedElement {
 	 * @generated
 	 */
 	void setUri(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Descriptor</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link semanticmanager.Resource#getDescribes <em>Describes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Descriptor</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Descriptor</em>' container reference.
-	 * @see #setDescriptor(Resource)
-	 * @see semanticmanager.SemanticmanagerPackage#getResource_Descriptor()
-	 * @see semanticmanager.Resource#getDescribes
-	 * @model opposite="describes" transient="false"
-	 * @generated
-	 */
-	Resource getDescriptor();
-
-	/**
-	 * Sets the value of the '{@link semanticmanager.Resource#getDescriptor <em>Descriptor</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Descriptor</em>' container reference.
-	 * @see #getDescriptor()
-	 * @generated
-	 */
-	void setDescriptor(Resource value);
-
-	/**
-	 * Returns the value of the '<em><b>Describes</b></em>' containment reference list.
-	 * The list contents are of type {@link semanticmanager.Resource}.
-	 * It is bidirectional and its opposite is '{@link semanticmanager.Resource#getDescriptor <em>Descriptor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Describes</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Describes</em>' containment reference list.
-	 * @see semanticmanager.SemanticmanagerPackage#getResource_Describes()
-	 * @see semanticmanager.Resource#getDescriptor
-	 * @model opposite="descriptor" containment="true"
-	 * @generated
-	 */
-	EList<Resource> getDescribes();
 
 	/**
 	 * Returns the value of the '<em><b>Repository From</b></em>' container reference.

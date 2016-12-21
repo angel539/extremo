@@ -81,7 +81,7 @@
 
    <element name="option">
       <complexType>
-      		<attribute name="id" type="string" use="required">
+         <attribute name="id" type="string" use="required">
             <annotation>
                <documentation>
                   
@@ -108,6 +108,12 @@
                   <enumeration value="Int">
                   </enumeration>
                   <enumeration value="Boolean">
+                  </enumeration>
+                  <enumeration value="SemanticNode">
+                  </enumeration>
+                  <enumeration value="DataProperty">
+                  </enumeration>
+                  <enumeration value="ObjectProperty">
                   </enumeration>
                </restriction>
             </simpleType>

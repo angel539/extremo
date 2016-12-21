@@ -1,7 +1,5 @@
 package uam.extremo.extensions;
 
-import java.util.List;
-
 import semanticmanager.DataProperty;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Property;
@@ -14,16 +12,47 @@ public interface IFormatAssistant {
     public boolean load(semanticmanager.Resource semanticResource);
     public void toDataProperty(SemanticNode parent);
     public void toObjectProperty(SemanticNode parent);
-    public void toDataProperty(SemanticNode parent, boolean supers, boolean equivs);
-    public void toObjectProperty(SemanticNode parent, boolean supers, boolean equivs);
-    public List<SemanticNode> getSiblings(SemanticNode parent);
-    public List<SemanticNode> getRelatedClasses(SemanticNode parent, boolean supers, boolean equivs);
+    //public List<SemanticNode> getSiblings(SemanticNode parent);
+    //public List<SemanticNode> getRelatedClasses(SemanticNode parent, boolean supers, boolean equivs);
     public void toSuper(SemanticNode parent);
-    public void toSub(SemanticNode parent);
-    public void toSuper(SemanticNode parent, boolean direct);
-    public void toSub(SemanticNode parent, boolean direct);
-    public List<ObjectProperty> getPath(SemanticNode entityA, SemanticNode entityB);
-    public ObjectProperty getInverseProperty (SemanticNode parent, ObjectProperty property);
+    //public List<ObjectProperty> getPath(SemanticNode entityA, SemanticNode entityB);
+    //public ObjectProperty getInverseProperty (SemanticNode parent, ObjectProperty property);
+    
+    default SemanticNode searchSemanticNodeByName(Resource resource, String name) {
+    	if(resource == null || name == null) return null;
+    	
+    	for(SemanticNode node : resource.getNodes()){
+    		if(node.getName().equals(name)){
+    			return node;
+    		}
+    	}
+    	
+    	return null;
+    }
+    
+    default DataProperty searchDataPropertyByName(SemanticNode semanticNode, String name) {
+    	if(semanticNode == null || name == null) return null;
+    	
+		for(Property property : semanticNode.getProperties()){
+			if(property instanceof DataProperty && property.getName().equals(name)){
+    			return (DataProperty) property;
+    		}
+		}
+    	
+    	return null;
+    }
+    
+    default ObjectProperty searchObjectPropertyByName(SemanticNode semanticNode, String name) {
+    	if(semanticNode == null || name == null) return null;
+    	
+		for(Property property : semanticNode.getProperties()){
+			if(property instanceof ObjectProperty && property.getName().equals(name)){
+    			return (ObjectProperty) property;
+    		}
+		}
+    	
+    	return null;
+    }
     
     default Resource createResource(String uri, String name, String description, boolean active, boolean alive, Resource descriptor) {
     	Resource resource = SemanticmanagerFactory.eINSTANCE.createResource();
@@ -36,26 +65,23 @@ public interface IFormatAssistant {
         return resource;
     }
     
-    default SemanticNode createSemanticNode(Object id, String name, String description, boolean isInstanceOf, SemanticNode instanceOf) {
+    default SemanticNode createSemanticNode(Object id, String name, String description, SemanticNode descriptor) {
     	SemanticNode semanticNode = SemanticmanagerFactory.eINSTANCE.createSemanticNode();
     	semanticNode.setId(id);
     	semanticNode.setName(name);
     	semanticNode.setDescription(description);
     	semanticNode.setWeight(1);
-    	semanticNode.setInstanceOf(isInstanceOf);
-    	semanticNode.setInstanceOfNode(instanceOf);
+    	semanticNode.setDescriptor(descriptor);
         return semanticNode;
     }
     
-    default SemanticNode createSemanticNode(Object id, String name, String description, int weight, boolean isInstanceOf, SemanticNode instanceOf) {
+    default SemanticNode createSemanticNode(Object id, String name, String description, int weight, SemanticNode descriptor) {
     	SemanticNode semanticNode = SemanticmanagerFactory.eINSTANCE.createSemanticNode();
     	semanticNode.setId(id);
     	semanticNode.setName(name);
     	semanticNode.setDescription(description);
     	semanticNode.setWeight(weight);
-    	semanticNode.setInstanceOf(isInstanceOf);
-    	semanticNode.setInstanceOfNode(instanceOf);
-    	
+    	semanticNode.setDescriptor(descriptor);
         return semanticNode;
     }
     
@@ -84,6 +110,19 @@ public interface IFormatAssistant {
     	dataProperty.setName(name);
     	dataProperty.setDescription(description);
     	dataProperty.setType(type);
+    	dataProperty.setDescriptor(null);
+    	
+        return dataProperty;
+    }
+    
+    default DataProperty createDataProperty(DataProperty descriptor, String value){
+    	DataProperty dataProperty = SemanticmanagerFactory.eINSTANCE.createDataProperty();
+    	dataProperty.setId(descriptor.getId());
+    	dataProperty.setName(descriptor.getName());
+    	dataProperty.setDescription(descriptor.getDescription());
+    	dataProperty.setType(descriptor.getType());
+    	dataProperty.setDescriptor(descriptor);
+    	dataProperty.setValue(value);
         return dataProperty;
     }
     
@@ -94,11 +133,27 @@ public interface IFormatAssistant {
     	return true;
     }
     
-    default ObjectProperty createObjectProperty(Object id, String name, SemanticNode range){
+    default ObjectProperty createObjectProperty(Object id, String name, int lowerbound, int upperbound, SemanticNode range){
     	ObjectProperty objectProperty = SemanticmanagerFactory.eINSTANCE.createObjectProperty();
     	objectProperty.setId(id);
     	objectProperty.setName(name);
+    	objectProperty.setLowerBound(lowerbound);
+    	objectProperty.setUpperBound(upperbound);
+    	
     	objectProperty.setRange(range);
+    	objectProperty.setDescriptor(null);
+        return objectProperty;
+    }
+    
+    default ObjectProperty createObjectProperty(ObjectProperty descriptor, SemanticNode range){
+    	ObjectProperty objectProperty = SemanticmanagerFactory.eINSTANCE.createObjectProperty();
+    	objectProperty.setId(descriptor.getId());
+    	objectProperty.setName(descriptor.getName());
+    	objectProperty.setLowerBound(descriptor.getLowerBound());
+    	objectProperty.setUpperBound(descriptor.getUpperBound());
+    	
+    	objectProperty.setRange(range);
+    	objectProperty.setDescriptor(descriptor);
         return objectProperty;
     }
     
@@ -109,8 +164,8 @@ public interface IFormatAssistant {
     	return true;
     }
     
-    default SemanticNode semanticNodeFromId(Resource resource, Object id){
-    	for(SemanticNode node : resource.getNodes()) if(node.getId().equals(id)) return node;
+    default SemanticNode semanticNodeFromName(Resource resource, String name){
+    	for(SemanticNode node : resource.getNodes()) if(node.getName().equals(name)) return node;
     	return null;
     }
     

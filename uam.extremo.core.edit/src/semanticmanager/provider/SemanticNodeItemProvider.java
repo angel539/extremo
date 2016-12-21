@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import semanticmanager.SemanticNode;
@@ -50,8 +49,6 @@ public class SemanticNodeItemProvider extends NamedElementItemProvider {
 
 			addSupersPropertyDescriptor(object);
 			addSubsPropertyDescriptor(object);
-			addInstanceOfPropertyDescriptor(object);
-			addInstanceOfNodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -92,50 +89,6 @@ public class SemanticNodeItemProvider extends NamedElementItemProvider {
 				 getString("_UI_SemanticNode_subs_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SemanticNode_subs_feature", "_UI_SemanticNode_type"),
 				 SemanticmanagerPackage.Literals.SEMANTIC_NODE__SUBS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Instance Of feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInstanceOfPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SemanticNode_instanceOf_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SemanticNode_instanceOf_feature", "_UI_SemanticNode_type"),
-				 SemanticmanagerPackage.Literals.SEMANTIC_NODE__INSTANCE_OF,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Instance Of Node feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInstanceOfNodePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SemanticNode_instanceOfNode_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SemanticNode_instanceOfNode_feature", "_UI_SemanticNode_type"),
-				 SemanticmanagerPackage.Literals.SEMANTIC_NODE__INSTANCE_OF_NODE,
 				 true,
 				 false,
 				 true,
@@ -212,9 +165,6 @@ public class SemanticNodeItemProvider extends NamedElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SemanticNode.class)) {
-			case SemanticmanagerPackage.SEMANTIC_NODE__INSTANCE_OF:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case SemanticmanagerPackage.SEMANTIC_NODE__PROPERTIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -242,6 +192,29 @@ public class SemanticNodeItemProvider extends NamedElementItemProvider {
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.SEMANTIC_NODE__PROPERTIES,
 				 SemanticmanagerFactory.eINSTANCE.createDataProperty()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == SemanticmanagerPackage.Literals.NAMED_ELEMENT__DESCRIBES ||
+			childFeature == SemanticmanagerPackage.Literals.SEMANTIC_NODE__PROPERTIES;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

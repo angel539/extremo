@@ -52,8 +52,6 @@ public class ResourceItemProvider extends NamedElementItemProvider {
 			addAlivePropertyDescriptor(object);
 			addAssistantPropertyDescriptor(object);
 			addUriPropertyDescriptor(object);
-			addDescriptorPropertyDescriptor(object);
-			addDescribesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -142,50 +140,6 @@ public class ResourceItemProvider extends NamedElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Descriptor feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDescriptorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Resource_descriptor_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Resource_descriptor_feature", "_UI_Resource_type"),
-				 SemanticmanagerPackage.Literals.RESOURCE__DESCRIPTOR,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Describes feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDescribesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Resource_describes_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Resource_describes_feature", "_UI_Resource_type"),
-				 SemanticmanagerPackage.Literals.RESOURCE__DESCRIBES,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}
@@ -286,6 +240,29 @@ public class ResourceItemProvider extends NamedElementItemProvider {
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.RESOURCE__NODES,
 				 SemanticmanagerFactory.eINSTANCE.createSemanticNode()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == SemanticmanagerPackage.Literals.NAMED_ELEMENT__DESCRIBES ||
+			childFeature == SemanticmanagerPackage.Literals.RESOURCE__NODES;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

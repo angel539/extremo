@@ -73,7 +73,7 @@
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="extensions" type="string">
+         <attribute name="extensions" type="string" use="required">
             <annotation>
                <documentation>
                   Add a comma-separated list with the extensions of the files to resolve

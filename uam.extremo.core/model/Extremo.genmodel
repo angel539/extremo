@@ -12,6 +12,9 @@
       <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Boolean"/>
       <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Float"/>
       <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Double"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/SemanticNode"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/DataProperty"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/ObjectProperty"/>
     </genEnums>
     <genClasses image="false" ecoreClass="Extremo.ecore#//RepositoryManager">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//RepositoryManager/repositories"/>
@@ -26,16 +29,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/assistant"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/nodes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/uri"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/descriptor"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/describes"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/repositoryFrom"/>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//SemanticNode">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/supers"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/subs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/properties"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SemanticNode/instanceOf"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/instanceOfNode"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/resourceFrom"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Extremo.ecore#//NamedElement">
@@ -44,16 +43,20 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/weight"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/drawn"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/descriptor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/describes"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Extremo.ecore#//Property">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Property/value"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//Property/semanticNodeFrom"/>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//ObjectProperty">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ObjectProperty/range"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//ObjectProperty/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//ObjectProperty/upperBound"/>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//DataProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//DataProperty/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//DataProperty/value"/>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//SemanticGroup">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticGroup/nodes"/>

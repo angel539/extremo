@@ -66,7 +66,31 @@ public enum Type implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	DOUBLE(4, "Double", "Double");
+	DOUBLE(4, "Double", "Double"), /**
+	 * The '<em><b>Semantic Node</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SEMANTIC_NODE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	SEMANTIC_NODE(5, "SemanticNode", "SemanticNode"), /**
+	 * The '<em><b>Data Property</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DATA_PROPERTY_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DATA_PROPERTY(6, "DataProperty", "DataProperty"), /**
+	 * The '<em><b>Object Property</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OBJECT_PROPERTY_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	OBJECT_PROPERTY(7, "ObjectProperty", "ObjectProperty");
 
 	/**
 	 * The '<em><b>String</b></em>' literal value.
@@ -144,6 +168,51 @@ public enum Type implements Enumerator {
 	public static final int DOUBLE_VALUE = 4;
 
 	/**
+	 * The '<em><b>Semantic Node</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Semantic Node</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SEMANTIC_NODE
+	 * @model name="SemanticNode"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SEMANTIC_NODE_VALUE = 5;
+
+	/**
+	 * The '<em><b>Data Property</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Data Property</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #DATA_PROPERTY
+	 * @model name="DataProperty"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DATA_PROPERTY_VALUE = 6;
+
+	/**
+	 * The '<em><b>Object Property</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Object Property</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #OBJECT_PROPERTY
+	 * @model name="ObjectProperty"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int OBJECT_PROPERTY_VALUE = 7;
+
+	/**
 	 * An array of all the '<em><b>Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -156,6 +225,9 @@ public enum Type implements Enumerator {
 			BOOLEAN,
 			FLOAT,
 			DOUBLE,
+			SEMANTIC_NODE,
+			DATA_PROPERTY,
+			OBJECT_PROPERTY,
 		};
 
 	/**
@@ -217,6 +289,9 @@ public enum Type implements Enumerator {
 			case BOOLEAN_VALUE: return BOOLEAN;
 			case FLOAT_VALUE: return FLOAT;
 			case DOUBLE_VALUE: return DOUBLE;
+			case SEMANTIC_NODE_VALUE: return SEMANTIC_NODE;
+			case DATA_PROPERTY_VALUE: return DATA_PROPERTY;
+			case OBJECT_PROPERTY_VALUE: return OBJECT_PROPERTY;
 		}
 		return null;
 	}

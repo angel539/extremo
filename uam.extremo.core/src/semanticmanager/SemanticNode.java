@@ -16,8 +16,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link semanticmanager.SemanticNode#getSupers <em>Supers</em>}</li>
  *   <li>{@link semanticmanager.SemanticNode#getSubs <em>Subs</em>}</li>
  *   <li>{@link semanticmanager.SemanticNode#getProperties <em>Properties</em>}</li>
- *   <li>{@link semanticmanager.SemanticNode#isInstanceOf <em>Instance Of</em>}</li>
- *   <li>{@link semanticmanager.SemanticNode#getInstanceOfNode <em>Instance Of Node</em>}</li>
  *   <li>{@link semanticmanager.SemanticNode#getResourceFrom <em>Resource From</em>}</li>
  * </ul>
  *
@@ -29,6 +27,7 @@ public interface SemanticNode extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Supers</b></em>' reference list.
 	 * The list contents are of type {@link semanticmanager.SemanticNode}.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.SemanticNode#getSubs <em>Subs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Supers</em>' reference list isn't clear,
@@ -37,7 +36,8 @@ public interface SemanticNode extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Supers</em>' reference list.
 	 * @see semanticmanager.SemanticmanagerPackage#getSemanticNode_Supers()
-	 * @model
+	 * @see semanticmanager.SemanticNode#getSubs
+	 * @model opposite="subs"
 	 * @generated
 	 */
 	EList<SemanticNode> getSupers();
@@ -45,6 +45,7 @@ public interface SemanticNode extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Subs</b></em>' reference list.
 	 * The list contents are of type {@link semanticmanager.SemanticNode}.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.SemanticNode#getSupers <em>Supers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Subs</em>' reference list isn't clear,
@@ -53,7 +54,8 @@ public interface SemanticNode extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subs</em>' reference list.
 	 * @see semanticmanager.SemanticmanagerPackage#getSemanticNode_Subs()
-	 * @model
+	 * @see semanticmanager.SemanticNode#getSupers
+	 * @model opposite="supers"
 	 * @generated
 	 */
 	EList<SemanticNode> getSubs();
@@ -75,58 +77,6 @@ public interface SemanticNode extends NamedElement {
 	 * @generated
 	 */
 	EList<Property> getProperties();
-
-	/**
-	 * Returns the value of the '<em><b>Instance Of</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Instance Of</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Instance Of</em>' attribute.
-	 * @see #setInstanceOf(boolean)
-	 * @see semanticmanager.SemanticmanagerPackage#getSemanticNode_InstanceOf()
-	 * @model
-	 * @generated
-	 */
-	boolean isInstanceOf();
-
-	/**
-	 * Sets the value of the '{@link semanticmanager.SemanticNode#isInstanceOf <em>Instance Of</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Instance Of</em>' attribute.
-	 * @see #isInstanceOf()
-	 * @generated
-	 */
-	void setInstanceOf(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Instance Of Node</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Instance Of Node</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Instance Of Node</em>' reference.
-	 * @see #setInstanceOfNode(SemanticNode)
-	 * @see semanticmanager.SemanticmanagerPackage#getSemanticNode_InstanceOfNode()
-	 * @model
-	 * @generated
-	 */
-	SemanticNode getInstanceOfNode();
-
-	/**
-	 * Sets the value of the '{@link semanticmanager.SemanticNode#getInstanceOfNode <em>Instance Of Node</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Instance Of Node</em>' reference.
-	 * @see #getInstanceOfNode()
-	 * @generated
-	 */
-	void setInstanceOfNode(SemanticNode value);
 
 	/**
 	 * Returns the value of the '<em><b>Resource From</b></em>' container reference.

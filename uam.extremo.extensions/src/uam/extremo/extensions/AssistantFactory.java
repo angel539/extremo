@@ -2,16 +2,18 @@ package uam.extremo.extensions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IContributor;
 import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.spi.RegistryContributor;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -21,8 +23,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.osgi.framework.Bundle;
@@ -32,17 +37,14 @@ import semanticmanager.NamedElement;
 import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
 import semanticmanager.Resource;
-import semanticmanager.Search;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchResult;
-import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.SemanticmanagerPackage;
-import semanticmanager.TreeNode;
 import semanticmanager.Type;
 import semanticmanager.impl.SemanticmanagerPackageImpl;
-import uam.extremo.core.utils.LangUtils;
+import semanticmanager.presentation.SemanticmanagerModelWizard;
 import uam.extremo.extensions.wizard.PathSelectorWizardDialog;
 
 public class AssistantFactory {
@@ -52,7 +54,6 @@ public class AssistantFactory {
 	private static AssistantFactory INSTANCE = null;
 	private static RepositoryManager repositoryManager;
 	private static List<IFormatAssistant> assistants = null;
-	//private static List<SearchConfiguration> searches = null;
 	
 	private static NamedElement drawnElement = null;
 
@@ -69,11 +70,11 @@ public class AssistantFactory {
 					IContributor contributor = extension.getContributor();
 
 					if (contributor instanceof RegistryContributor) {
-					  long id = Long.parseLong(((RegistryContributor) contributor).getActualId());
-					  Bundle thisBundle = FrameworkUtil.getBundle(getClass());
-					  bundle = thisBundle.getBundleContext().getBundle(id);
+						long id = Long.parseLong(((RegistryContributor) contributor).getActualId());
+						Bundle thisBundle = FrameworkUtil.getBundle(getClass());
+						bundle = thisBundle.getBundleContext().getBundle(id);
 					} else {
-					  bundle = Platform.getBundle(contributor.getName());          
+						bundle = Platform.getBundle(contributor.getName());          
 					}
 					
 					try{
@@ -86,7 +87,15 @@ public class AssistantFactory {
 							String extensionsAttribute = StringUtils.deleteWhitespace(extension.getAttribute("extensions"));
 							String[] extensionsSeparated = StringUtils.splitByWholeSeparator(extensionsAttribute, ",");
 							
+							System.out.println(extensionsAttribute + " " + extensionsSeparated);
+							
+							List<String> extensionsCleaned = new ArrayList<String>();
 							for(String s : extensionsSeparated){
+								String cleans = StringUtils.deleteWhitespace(s);
+								extensionsCleaned.add(cleans);
+							}
+							
+							for(String s : extensionsCleaned){
 								((FormatAssistant)assistant).addExtension(s);
 							}
 							
@@ -152,7 +161,6 @@ public class AssistantFactory {
 							}
 							
 							repositoryManager.getConfigurations().add(searchConfiguration);
-							//searches.add(searchConfiguration);
 						}
 					}
 					catch(CoreException e){
@@ -182,7 +190,6 @@ public class AssistantFactory {
                     SemanticmanagerPackage.eINSTANCE.getClass();
                     setRepositoryManager(SemanticmanagerFactory.eINSTANCE.createRepositoryManager());
                     setAssistants(new ArrayList<IFormatAssistant>());
-                    //setSearches(new ArrayList<SearchConfiguration>());
                 }
             }
         }
@@ -275,7 +282,7 @@ public class AssistantFactory {
 							assistant.toDataProperty(node);
 							assistant.toObjectProperty(node);
 							assistant.toSuper(node);
-							assistant.toSub(node);
+							//assistant.toSub(node);
 						}
 					}
 					break loop;
@@ -287,11 +294,12 @@ public class AssistantFactory {
 		return resource;
 	}
 	
-	public Resource createResource(Resource descriptor, String name, String description, String uri){
+	public Resource createResource(Repository repository, Resource descriptor, String name, String description, String uri){
 		Resource resource = SemanticmanagerFactory.eINSTANCE.createResource();
 		resource.setName(name);
 		resource.setDescription(description);
 		resource.setUri(uri);
+		resource.setDescriptor(descriptor);
 		
 		String extensionFile = FilenameUtils.getExtension(uri);
 		loop: 
@@ -308,7 +316,7 @@ public class AssistantFactory {
 							assistant.toDataProperty(node);
 							assistant.toObjectProperty(node);
 							assistant.toSuper(node);
-							assistant.toSub(node);
+							//assistant.toSub(node);
 						}
 					}
 					break loop;
@@ -316,40 +324,48 @@ public class AssistantFactory {
 			}
 		}
 		
-		descriptor.getDescribes().add(resource);
+		repository.getResources().add(resource);
+		//descriptor.getDescribes().add(resource);
 		return resource;
 	}
 	
 	public void save(){
-		String path = null;
+		System.out.println("fuera del wizard: " + AssistantFactory.getInstance().getRepositoryManager());
+		WizardDialog wizardDialog = new WizardDialog(null, new SemanticmanagerModelWizard(AssistantFactory.getInstance().getRepositoryManager(), Activator.getDefault().getWorkbench(), new StructuredSelection()));
+		if (wizardDialog.open() == Window.OK) {
+			System.out.println("todo ok");
+		}
+		
+		
+		/*String path = null;
 		
 		WizardDialog wizardDialog = new WizardDialog(null, new PathSelectorWizardDialog(path));
 		if (wizardDialog.open() == Window.OK) {
-			org.eclipse.emf.ecore.resource.Resource.Factory.Registry reg = org.eclipse.emf.ecore.resource.Resource.Factory.Registry.INSTANCE;
-	        Map<String, Object> m = reg.getExtensionToFactoryMap();
-	        m.put("extremo", new XMIResourceFactoryImpl());
-			
-			ResourceSet resSet = new ResourceSetImpl();
-	        
-	        Diagnostic diagnostic = Diagnostician.INSTANCE.validate(repositoryManager);
-			int severity = diagnostic.getSeverity();
-			
-			if(severity ==  Diagnostic.OK){
-				org.eclipse.emf.ecore.resource.Resource resource = resSet.createResource(URI.createURI("Users/angel/Desktop" + "/" + "saved.extremo"));
-		        resource.getContents().add(repositoryManager);
+	        try {
+	        	org.eclipse.emf.ecore.resource.Resource.Factory.Registry reg = org.eclipse.emf.ecore.resource.Resource.Factory.Registry.INSTANCE;
+	        	Map<String, Object> m = reg.getExtensionToFactoryMap();
+	        	m.put("semanticmanager", new XMIResourceFactoryImpl());
+	        	
+	        	ResourceSet resSet = new ResourceSetImpl();
+	        	
+				URI fileURI = URI.createFileURI(path + "/" + "saved.semanticmanager");
+	        	
+				org.eclipse.emf.ecore.resource.Resource resource = resSet.createResource(fileURI);
 		        
-		        try {
-		        	resource.save(null);
-		        } catch (IOException e) {
-					MessageDialog.openError(null, "Save and validate", "The model was not saved properly: " + e.getMessage());
-		        }
-			}
-			else{
-				MessageDialog.openError(null, "Save and validate", "The model could not be validated");
-			}  
+				if(repositoryManager != null)
+					resource.getContents().add(repositoryManager);
+		        
+		        String encoding = "UTF-8";
+		        Map<Object, Object> options = new HashMap<Object, Object>();
+		        options.put(XMLResource.OPTION_ENCODING, encoding);
+		        resource.save(options);
+		    }
+	        catch (IOException e) {
+		    	MessageDialog.openError(null, "Save and validate", "The model was not saved properly: " + e.getMessage());
+		    } 
 		}
 		else{
 			MessageDialog.openError(null, "Add Repository", "Repository could not be added");
-		}
+		}*/
 	}
 }

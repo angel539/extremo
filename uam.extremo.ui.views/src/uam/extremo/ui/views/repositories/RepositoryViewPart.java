@@ -62,8 +62,11 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
+import semanticmanager.DataProperty;
+import semanticmanager.ObjectProperty;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
+import semanticmanager.SemanticNode;
 import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.extensions.IFormatAssistant;
@@ -173,6 +176,54 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 				return styledString;
 			}
 			
+			if(element instanceof SemanticNode){
+				if(((SemanticNode) element).getDescriptor() == null){
+					SemanticNode semanticNode = (SemanticNode) element;
+					StyledString styledString = new StyledString(semanticNode.getName());
+					
+					if(semanticNode.getDescribes().size() > 0)
+						styledString.append(" (" + semanticNode.getDescribes().size() + ") descriptions", StyledString.QUALIFIER_STYLER);
+					
+					if(semanticNode.getProperties().size() > 0)
+						styledString.append(" (" + semanticNode.getProperties().size() + ") properties", StyledString.QUALIFIER_STYLER);
+					
+					styledString.append(" (" + semanticNode.getWeight() + ") pts", StyledString.COUNTER_STYLER);
+
+					return styledString;
+				}
+				else{
+					SemanticNode semanticNode = (SemanticNode) element;
+					StyledString styledString = new StyledString(semanticNode.getName() + ":");
+					styledString.append(" (" + semanticNode.getDescriptor().getName() + ")", StyledString.QUALIFIER_STYLER);
+					return styledString;
+				}
+	    	}
+			
+			if(element instanceof DataProperty){
+				if(((DataProperty) element).getDescriptor() == null){
+					DataProperty property = (DataProperty) element;
+					StyledString styledString = new StyledString(property.getName());
+					if(property.getType() != null) styledString.append(" (" + property.getType().getLiteral() + ")", StyledString.QUALIFIER_STYLER);
+					
+					return styledString;
+				}
+				else{
+					DataProperty property = (DataProperty) element;
+					StyledString styledString = new StyledString(property.getValue() + ":");
+					if(property.getType() != null) styledString.append(" (" + property.getType().getLiteral() + ")", StyledString.QUALIFIER_STYLER);
+					
+					return styledString;
+				}
+			}
+			
+			if(element instanceof ObjectProperty){
+				ObjectProperty property = (ObjectProperty) element;
+				StyledString styledString = new StyledString(property.getName());
+				if(property.getRange() != null) styledString.append(" (" + property.getRange().getName() + ")", StyledString.QUALIFIER_STYLER);
+
+				return styledString;
+			}
+			
 			return null;
 		}
 		
@@ -195,6 +246,18 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	        		}
 				}
         	}
+			
+			if(element instanceof SemanticNode){
+				if(((SemanticNode) element).getDescriptor() == null){
+					return Activator.getImageDescriptor("icons/class_obj.png").createImage();
+				}
+				else{
+	        		return Activator.getImageDescriptor("icons/objects16.png").createImage();
+				}
+	    	}
+			
+			if(element instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.gif").createImage();
+			if(element instanceof DataProperty) return Activator.getImageDescriptor("icons/attribute.png").createImage();
         	
 			return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 		}
@@ -233,7 +296,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 				return styledString;
 			}
 			
-			return null;
+			return new StyledString("");
 		}
 	}
 	
@@ -256,7 +319,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		
 		viewer.setSelection(new StructuredSelection(AssistantFactory.getInstance().getRepositoryManager()), true);
 		new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
-		
 		
 		
 		
@@ -446,8 +508,8 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					if(element instanceof Resource){
 						Resource resource = (Resource) element;
 						
-						if(resource.getDescriptor() != null){
-							resource.getDescriptor().getRepositoryFrom().getResources().add(resource);
+						if(resource.getDescriptor() != null && resource.getDescriptor() instanceof Resource){
+							((Resource) resource.getDescriptor()).getRepositoryFrom().getResources().add(resource);
 						}		
 					}
 					else{

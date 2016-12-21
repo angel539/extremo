@@ -180,13 +180,31 @@ public interface SemanticmanagerPackage extends EPackage {
 	int NAMED_ELEMENT__DRAWN = 4;
 
 	/**
+	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__DESCRIPTOR = 5;
+
+	/**
+	 * The feature id for the '<em><b>Describes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__DESCRIBES = 6;
+
+	/**
 	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_FEATURE_COUNT = 5;
+	int NAMED_ELEMENT_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Named Element</em>' class.
@@ -241,6 +259,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int REPOSITORY__DRAWN = NAMED_ELEMENT__DRAWN;
+
+	/**
+	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY__DESCRIPTOR = NAMED_ELEMENT__DESCRIPTOR;
+
+	/**
+	 * The feature id for the '<em><b>Describes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -315,6 +351,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	int RESOURCE__DRAWN = NAMED_ELEMENT__DRAWN;
 
 	/**
+	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__DESCRIPTOR = NAMED_ELEMENT__DESCRIPTOR;
+
+	/**
+	 * The feature id for the '<em><b>Describes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
+
+	/**
 	 * The feature id for the '<em><b>Active</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -360,31 +414,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int RESOURCE__URI = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Descriptor</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE__DESCRIPTOR = NAMED_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Describes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE__DESCRIBES = NAMED_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
 	 * The feature id for the '<em><b>Repository From</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__REPOSITORY_FROM = NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int RESOURCE__REPOSITORY_FROM = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -393,7 +429,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 8;
+	int RESOURCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Resource</em>' class.
@@ -460,6 +496,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEMANTIC_NODE__DRAWN = NAMED_ELEMENT__DRAWN;
 
 	/**
+	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_NODE__DESCRIPTOR = NAMED_ELEMENT__DESCRIPTOR;
+
+	/**
+	 * The feature id for the '<em><b>Describes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_NODE__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
+
+	/**
 	 * The feature id for the '<em><b>Supers</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -487,31 +541,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEMANTIC_NODE__PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Instance Of</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMANTIC_NODE__INSTANCE_OF = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Instance Of Node</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMANTIC_NODE__INSTANCE_OF_NODE = NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
 	 * The feature id for the '<em><b>Resource From</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__RESOURCE_FROM = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int SEMANTIC_NODE__RESOURCE_FROM = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Semantic Node</em>' class.
@@ -520,7 +556,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int SEMANTIC_NODE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Semantic Node</em>' class.
@@ -587,13 +623,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int PROPERTY__DRAWN = NAMED_ELEMENT__DRAWN;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__VALUE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int PROPERTY__DESCRIPTOR = NAMED_ELEMENT__DESCRIPTOR;
+
+	/**
+	 * The feature id for the '<em><b>Describes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
@@ -602,7 +647,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__SEMANTIC_NODE_FROM = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int PROPERTY__SEMANTIC_NODE_FROM = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Property</em>' class.
@@ -611,7 +656,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int PROPERTY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Property</em>' class.
@@ -678,13 +723,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int OBJECT_PROPERTY__DRAWN = PROPERTY__DRAWN;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_PROPERTY__VALUE = PROPERTY__VALUE;
+	int OBJECT_PROPERTY__DESCRIPTOR = PROPERTY__DESCRIPTOR;
+
+	/**
+	 * The feature id for the '<em><b>Describes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY__DESCRIBES = PROPERTY__DESCRIBES;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
@@ -705,13 +759,31 @@ public interface SemanticmanagerPackage extends EPackage {
 	int OBJECT_PROPERTY__RANGE = PROPERTY_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY__LOWER_BOUND = PROPERTY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY__UPPER_BOUND = PROPERTY_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Object Property</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 1;
+	int OBJECT_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Object Property</em>' class.
@@ -778,13 +850,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int DATA_PROPERTY__DRAWN = PROPERTY__DRAWN;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_PROPERTY__VALUE = PROPERTY__VALUE;
+	int DATA_PROPERTY__DESCRIPTOR = PROPERTY__DESCRIPTOR;
+
+	/**
+	 * The feature id for the '<em><b>Describes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROPERTY__DESCRIBES = PROPERTY__DESCRIBES;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
@@ -805,13 +886,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int DATA_PROPERTY__TYPE = PROPERTY_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROPERTY__VALUE = PROPERTY_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Data Property</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 1;
+	int DATA_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Data Property</em>' class.
@@ -876,6 +966,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEMANTIC_GROUP__DRAWN = NAMED_ELEMENT__DRAWN;
+
+	/**
+	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_GROUP__DESCRIPTOR = NAMED_ELEMENT__DESCRIPTOR;
+
+	/**
+	 * The feature id for the '<em><b>Describes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_GROUP__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
 
 	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
@@ -1326,28 +1434,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	EAttribute getResource_Uri();
 
 	/**
-	 * Returns the meta object for the container reference '{@link semanticmanager.Resource#getDescriptor <em>Descriptor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Descriptor</em>'.
-	 * @see semanticmanager.Resource#getDescriptor()
-	 * @see #getResource()
-	 * @generated
-	 */
-	EReference getResource_Descriptor();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link semanticmanager.Resource#getDescribes <em>Describes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Describes</em>'.
-	 * @see semanticmanager.Resource#getDescribes()
-	 * @see #getResource()
-	 * @generated
-	 */
-	EReference getResource_Describes();
-
-	/**
 	 * Returns the meta object for the container reference '{@link semanticmanager.Resource#getRepositoryFrom <em>Repository From</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1400,28 +1486,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSemanticNode_Properties();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.SemanticNode#isInstanceOf <em>Instance Of</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Instance Of</em>'.
-	 * @see semanticmanager.SemanticNode#isInstanceOf()
-	 * @see #getSemanticNode()
-	 * @generated
-	 */
-	EAttribute getSemanticNode_InstanceOf();
-
-	/**
-	 * Returns the meta object for the reference '{@link semanticmanager.SemanticNode#getInstanceOfNode <em>Instance Of Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Instance Of Node</em>'.
-	 * @see semanticmanager.SemanticNode#getInstanceOfNode()
-	 * @see #getSemanticNode()
-	 * @generated
-	 */
-	EReference getSemanticNode_InstanceOfNode();
 
 	/**
 	 * Returns the meta object for the container reference '{@link semanticmanager.SemanticNode#getResourceFrom <em>Resource From</em>}'.
@@ -1500,6 +1564,28 @@ public interface SemanticmanagerPackage extends EPackage {
 	EAttribute getNamedElement_Drawn();
 
 	/**
+	 * Returns the meta object for the reference '{@link semanticmanager.NamedElement#getDescriptor <em>Descriptor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Descriptor</em>'.
+	 * @see semanticmanager.NamedElement#getDescriptor()
+	 * @see #getNamedElement()
+	 * @generated
+	 */
+	EReference getNamedElement_Descriptor();
+
+	/**
+	 * Returns the meta object for the reference list '{@link semanticmanager.NamedElement#getDescribes <em>Describes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Describes</em>'.
+	 * @see semanticmanager.NamedElement#getDescribes()
+	 * @see #getNamedElement()
+	 * @generated
+	 */
+	EReference getNamedElement_Describes();
+
+	/**
 	 * Returns the meta object for class '{@link semanticmanager.Property <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1508,17 +1594,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getProperty();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.Property#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see semanticmanager.Property#getValue()
-	 * @see #getProperty()
-	 * @generated
-	 */
-	EAttribute getProperty_Value();
 
 	/**
 	 * Returns the meta object for the container reference '{@link semanticmanager.Property#getSemanticNodeFrom <em>Semantic Node From</em>}'.
@@ -1553,6 +1628,28 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getObjectProperty_Range();
 
 	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.ObjectProperty#getLowerBound <em>Lower Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
+	 * @see semanticmanager.ObjectProperty#getLowerBound()
+	 * @see #getObjectProperty()
+	 * @generated
+	 */
+	EAttribute getObjectProperty_LowerBound();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.ObjectProperty#getUpperBound <em>Upper Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
+	 * @see semanticmanager.ObjectProperty#getUpperBound()
+	 * @see #getObjectProperty()
+	 * @generated
+	 */
+	EAttribute getObjectProperty_UpperBound();
+
+	/**
 	 * Returns the meta object for class '{@link semanticmanager.DataProperty <em>Data Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1572,6 +1669,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataProperty_Type();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.DataProperty#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see semanticmanager.DataProperty#getValue()
+	 * @see #getDataProperty()
+	 * @generated
+	 */
+	EAttribute getDataProperty_Value();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.SemanticGroup <em>Semantic Group</em>}'.
@@ -1975,22 +2083,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		EAttribute RESOURCE__URI = eINSTANCE.getResource_Uri();
 
 		/**
-		 * The meta object literal for the '<em><b>Descriptor</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOURCE__DESCRIPTOR = eINSTANCE.getResource_Descriptor();
-
-		/**
-		 * The meta object literal for the '<em><b>Describes</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOURCE__DESCRIBES = eINSTANCE.getResource_Describes();
-
-		/**
 		 * The meta object literal for the '<em><b>Repository From</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2031,22 +2123,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SEMANTIC_NODE__PROPERTIES = eINSTANCE.getSemanticNode_Properties();
-
-		/**
-		 * The meta object literal for the '<em><b>Instance Of</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEMANTIC_NODE__INSTANCE_OF = eINSTANCE.getSemanticNode_InstanceOf();
-
-		/**
-		 * The meta object literal for the '<em><b>Instance Of Node</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SEMANTIC_NODE__INSTANCE_OF_NODE = eINSTANCE.getSemanticNode_InstanceOfNode();
 
 		/**
 		 * The meta object literal for the '<em><b>Resource From</b></em>' container reference feature.
@@ -2107,6 +2183,22 @@ public interface SemanticmanagerPackage extends EPackage {
 		EAttribute NAMED_ELEMENT__DRAWN = eINSTANCE.getNamedElement_Drawn();
 
 		/**
+		 * The meta object literal for the '<em><b>Descriptor</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMED_ELEMENT__DESCRIPTOR = eINSTANCE.getNamedElement_Descriptor();
+
+		/**
+		 * The meta object literal for the '<em><b>Describes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMED_ELEMENT__DESCRIBES = eINSTANCE.getNamedElement_Describes();
+
+		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.PropertyImpl <em>Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2115,14 +2207,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PROPERTY = eINSTANCE.getProperty();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PROPERTY__VALUE = eINSTANCE.getProperty_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Semantic Node From</b></em>' container reference feature.
@@ -2151,6 +2235,22 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference OBJECT_PROPERTY__RANGE = eINSTANCE.getObjectProperty_Range();
 
 		/**
+		 * The meta object literal for the '<em><b>Lower Bound</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OBJECT_PROPERTY__LOWER_BOUND = eINSTANCE.getObjectProperty_LowerBound();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper Bound</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OBJECT_PROPERTY__UPPER_BOUND = eINSTANCE.getObjectProperty_UpperBound();
+
+		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.DataPropertyImpl <em>Data Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2167,6 +2267,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_PROPERTY__TYPE = eINSTANCE.getDataProperty_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_PROPERTY__VALUE = eINSTANCE.getDataProperty_Value();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SemanticGroupImpl <em>Semantic Group</em>}' class.

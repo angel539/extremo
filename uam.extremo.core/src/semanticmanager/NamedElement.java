@@ -2,6 +2,7 @@
  */
 package semanticmanager;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link semanticmanager.NamedElement#getWeight <em>Weight</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getId <em>Id</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#isDrawn <em>Drawn</em>}</li>
+ *   <li>{@link semanticmanager.NamedElement#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link semanticmanager.NamedElement#getDescribes <em>Describes</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getNamedElement()
@@ -154,5 +157,51 @@ public interface NamedElement extends EObject {
 	 * @generated
 	 */
 	void setDrawn(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Descriptor</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.NamedElement#getDescribes <em>Describes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Descriptor</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Descriptor</em>' reference.
+	 * @see #setDescriptor(NamedElement)
+	 * @see semanticmanager.SemanticmanagerPackage#getNamedElement_Descriptor()
+	 * @see semanticmanager.NamedElement#getDescribes
+	 * @model opposite="describes"
+	 * @generated
+	 */
+	NamedElement getDescriptor();
+
+	/**
+	 * Sets the value of the '{@link semanticmanager.NamedElement#getDescriptor <em>Descriptor</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Descriptor</em>' reference.
+	 * @see #getDescriptor()
+	 * @generated
+	 */
+	void setDescriptor(NamedElement value);
+
+	/**
+	 * Returns the value of the '<em><b>Describes</b></em>' reference list.
+	 * The list contents are of type {@link semanticmanager.NamedElement}.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.NamedElement#getDescriptor <em>Descriptor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Describes</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Describes</em>' reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getNamedElement_Describes()
+	 * @see semanticmanager.NamedElement#getDescriptor
+	 * @model opposite="descriptor"
+	 * @generated
+	 */
+	EList<NamedElement> getDescribes();
 
 } // NamedElement

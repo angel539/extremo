@@ -12,6 +12,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import semanticmanager.ObjectProperty;
 import semanticmanager.SemanticmanagerPackage;
 
@@ -44,6 +46,8 @@ public class ObjectPropertyItemProvider extends PropertyItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addRangePropertyDescriptor(object);
+			addLowerBoundPropertyDescriptor(object);
+			addUpperBoundPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -66,6 +70,50 @@ public class ObjectPropertyItemProvider extends PropertyItemProvider {
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Lower Bound feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLowerBoundPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ObjectProperty_lowerBound_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectProperty_lowerBound_feature", "_UI_ObjectProperty_type"),
+				 SemanticmanagerPackage.Literals.OBJECT_PROPERTY__LOWER_BOUND,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Upper Bound feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUpperBoundPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ObjectProperty_upperBound_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectProperty_upperBound_feature", "_UI_ObjectProperty_type"),
+				 SemanticmanagerPackage.Literals.OBJECT_PROPERTY__UPPER_BOUND,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -106,6 +154,13 @@ public class ObjectPropertyItemProvider extends PropertyItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(ObjectProperty.class)) {
+			case SemanticmanagerPackage.OBJECT_PROPERTY__LOWER_BOUND:
+			case SemanticmanagerPackage.OBJECT_PROPERTY__UPPER_BOUND:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
