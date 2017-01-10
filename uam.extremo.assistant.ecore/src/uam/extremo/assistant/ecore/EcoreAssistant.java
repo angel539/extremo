@@ -9,12 +9,16 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
@@ -32,6 +36,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	String extension;
 	
 	Map<EObject, SemanticNode> correspondance = new HashMap<EObject, SemanticNode>();
+	ResourceSet resourceSet = new ResourceSetImpl(); 
 	
 	@Override
 	public boolean load(semanticmanager.Resource semanticResource) {
@@ -73,11 +78,18 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 
 	private void ecoreClassesToSemanticNodes(){
 		Resource resource = null;
+		
 		try{
-			ResourceSet resourceSet = new ResourceSetImpl(); 
 			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());		
+			
+			final ExtendedMetaData extendedMetaData = new BasicExtendedMetaData(resourceSet.getPackageRegistry());
+			resourceSet.getLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA,
+				    extendedMetaData);	
+			
 			URI fileURI = URI.createFileURI(file.getAbsolutePath());
 			resource = resourceSet.getResource(fileURI, true);
+		    resource.load(null);
+			
 			resourceSet.getAllContents().next();
 			modelAll = resource.getAllContents();
 		}
@@ -89,17 +101,27 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			while(modelAll.hasNext()){
 				EObject obj = modelAll.next();
 				
+				if (obj instanceof EPackage) {
+				    EPackage p = (EPackage) obj;
+				    if(p.getNsURI() != null){
+				    	resourceSet.getPackageRegistry().put(p.getNsURI(), p);
+				    }
+				    else{
+				    	resourceSet.getPackageRegistry().put(p.getName(), p);
+				    }
+				}
+				
 				if((obj != null) && (obj instanceof EClass)){
 					String name = ((EClass) obj).getName();
 					String description = ((EClass) obj).getEAnnotations().toString();
-					
+									
 					SemanticNode semanticNode = 
 							createSemanticNode(
 									obj, //original object as id
 									name, 
 									description, 
 									null); //it is actually a descriptor element
-					
+										
 					addSemanticNodeToResource(semanticResource, semanticNode);
 				}
 			}
@@ -110,22 +132,27 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	private void xmiObjectsToSemanticNodes() {
 		Resource resource = null;
 		try{
-			ResourceSet resourceSet = new ResourceSetImpl(); 
-			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());		
+			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(extension, new XMIResourceFactoryImpl());		
+			
 			URI fileURI = URI.createFileURI(file.getAbsolutePath());
 			resource = resourceSet.getResource(fileURI, true);
 			resourceSet.getAllContents().next();
 			modelAll = resource.getAllContents();
+			System.out.println("carga el modelo");
 		}
 		catch(Exception e){
 			semanticResource.setAlive(false);
+			//System.out.println("salta una excepción " + e.getMessage());
 		}
 		
 		int counter = 0;
 		if((modelAll != null) && (semanticResource.isAlive())){
 			while(modelAll.hasNext()){
+				
 				EObject obj = modelAll.next();
 				counter++;
+				
+				//System.out.println("recorrer modelo " + obj);
 				
 				if((obj != null) && (obj instanceof EObject)){
 					EStructuralFeature structuralfeature = obj.eClass().getEStructuralFeature("name");
@@ -192,7 +219,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 		if(parent.getId() != null && parent.getId() instanceof EClass){
 			EClass eClass = (EClass) parent.getId(); 
 
-			for(EAttribute attr : eClass.getEAttributes()){
+			for(EAttribute attr : eClass.getEAttributes()){				
 				try{
 					String name = attr.getName();
 					Type type = defineStringType();
