@@ -107,7 +107,13 @@
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//SearchResultOptionValue">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResultOptionValue/option"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchResultOptionValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//SearchResultOptionStringValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchResultOptionStringValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//SearchResultOptionNamedElementListValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResultOptionNamedElementListValue/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchResultOptionNamedElementListValue/condition"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -279,26 +279,49 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.SearchResultOptionValue} instances.
+	 * This keeps track of the one adapter used for all {@link semanticmanager.SearchResultOptionStringValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SearchResultOptionValueItemProvider searchResultOptionValueItemProvider;
+	protected SearchResultOptionStringValueItemProvider searchResultOptionStringValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.SearchResultOptionValue}.
+	 * This creates an adapter for a {@link semanticmanager.SearchResultOptionStringValue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSearchResultOptionValueAdapter() {
-		if (searchResultOptionValueItemProvider == null) {
-			searchResultOptionValueItemProvider = new SearchResultOptionValueItemProvider(this);
+	public Adapter createSearchResultOptionStringValueAdapter() {
+		if (searchResultOptionStringValueItemProvider == null) {
+			searchResultOptionStringValueItemProvider = new SearchResultOptionStringValueItemProvider(this);
 		}
 
-		return searchResultOptionValueItemProvider;
+		return searchResultOptionStringValueItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link semanticmanager.SearchResultOptionNamedElementListValue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SearchResultOptionNamedElementListValueItemProvider searchResultOptionNamedElementListValueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link semanticmanager.SearchResultOptionNamedElementListValue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSearchResultOptionNamedElementListValueAdapter() {
+		if (searchResultOptionNamedElementListValueItemProvider == null) {
+			searchResultOptionNamedElementListValueItemProvider = new SearchResultOptionNamedElementListValueItemProvider(this);
+		}
+
+		return searchResultOptionNamedElementListValueItemProvider;
 	}
 
 	/**
@@ -409,7 +432,8 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 		if (semanticGroupItemProvider != null) semanticGroupItemProvider.dispose();
 		if (searchOptionItemProvider != null) searchOptionItemProvider.dispose();
 		if (searchResultItemProvider != null) searchResultItemProvider.dispose();
-		if (searchResultOptionValueItemProvider != null) searchResultOptionValueItemProvider.dispose();
+		if (searchResultOptionStringValueItemProvider != null) searchResultOptionStringValueItemProvider.dispose();
+		if (searchResultOptionNamedElementListValueItemProvider != null) searchResultOptionNamedElementListValueItemProvider.dispose();
 	}
 
 }

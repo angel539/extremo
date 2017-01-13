@@ -1278,22 +1278,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT_OPTION_VALUE__OPTION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH_RESULT_OPTION_VALUE__VALUE = 1;
-
-	/**
 	 * The number of structural features of the '<em>Search Result Option Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT = 2;
+	int SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Search Result Option Value</em>' class.
@@ -1305,6 +1296,107 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link semanticmanager.impl.SearchResultOptionStringValueImpl <em>Search Result Option String Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.SearchResultOptionStringValueImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResultOptionStringValue()
+	 * @generated
+	 */
+	int SEARCH_RESULT_OPTION_STRING_VALUE = 13;
+
+	/**
+	 * The feature id for the '<em><b>Option</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT_OPTION_STRING_VALUE__OPTION = SEARCH_RESULT_OPTION_VALUE__OPTION;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT_OPTION_STRING_VALUE__VALUE = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Search Result Option String Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT_OPTION_STRING_VALUE_FEATURE_COUNT = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Search Result Option String Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT_OPTION_STRING_VALUE_OPERATION_COUNT = SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link semanticmanager.impl.SearchResultOptionNamedElementListValueImpl <em>Search Result Option Named Element List Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.SearchResultOptionNamedElementListValueImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResultOptionNamedElementListValue()
+	 * @generated
+	 */
+	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE = 14;
+
+	/**
+	 * The feature id for the '<em><b>Option</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__OPTION = SEARCH_RESULT_OPTION_VALUE__OPTION;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__VALUE = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__CONDITION = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Search Result Option Named Element List Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE_FEATURE_COUNT = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Search Result Option Named Element List Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE_OPERATION_COUNT = SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link semanticmanager.Type <em>Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1312,7 +1404,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getType()
 	 * @generated
 	 */
-	int TYPE = 13;
+	int TYPE = 15;
 
 
 	/**
@@ -1945,15 +2037,57 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getSearchResultOptionValue_Option();
 
 	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.SearchResultOptionValue#getValue <em>Value</em>}'.
+	 * Returns the meta object for class '{@link semanticmanager.SearchResultOptionStringValue <em>Search Result Option String Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Search Result Option String Value</em>'.
+	 * @see semanticmanager.SearchResultOptionStringValue
+	 * @generated
+	 */
+	EClass getSearchResultOptionStringValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.SearchResultOptionStringValue#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see semanticmanager.SearchResultOptionValue#getValue()
-	 * @see #getSearchResultOptionValue()
+	 * @see semanticmanager.SearchResultOptionStringValue#getValue()
+	 * @see #getSearchResultOptionStringValue()
 	 * @generated
 	 */
-	EAttribute getSearchResultOptionValue_Value();
+	EAttribute getSearchResultOptionStringValue_Value();
+
+	/**
+	 * Returns the meta object for class '{@link semanticmanager.SearchResultOptionNamedElementListValue <em>Search Result Option Named Element List Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Search Result Option Named Element List Value</em>'.
+	 * @see semanticmanager.SearchResultOptionNamedElementListValue
+	 * @generated
+	 */
+	EClass getSearchResultOptionNamedElementListValue();
+
+	/**
+	 * Returns the meta object for the reference list '{@link semanticmanager.SearchResultOptionNamedElementListValue#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Value</em>'.
+	 * @see semanticmanager.SearchResultOptionNamedElementListValue#getValue()
+	 * @see #getSearchResultOptionNamedElementListValue()
+	 * @generated
+	 */
+	EReference getSearchResultOptionNamedElementListValue_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.SearchResultOptionNamedElementListValue#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Condition</em>'.
+	 * @see semanticmanager.SearchResultOptionNamedElementListValue#getCondition()
+	 * @see #getSearchResultOptionNamedElementListValue()
+	 * @generated
+	 */
+	EAttribute getSearchResultOptionNamedElementListValue_Condition();
 
 	/**
 	 * Returns the meta object for enum '{@link semanticmanager.Type <em>Type</em>}'.
@@ -2487,12 +2621,48 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference SEARCH_RESULT_OPTION_VALUE__OPTION = eINSTANCE.getSearchResultOptionValue_Option();
 
 		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.SearchResultOptionStringValueImpl <em>Search Result Option String Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.SearchResultOptionStringValueImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResultOptionStringValue()
+		 * @generated
+		 */
+		EClass SEARCH_RESULT_OPTION_STRING_VALUE = eINSTANCE.getSearchResultOptionStringValue();
+
+		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEARCH_RESULT_OPTION_VALUE__VALUE = eINSTANCE.getSearchResultOptionValue_Value();
+		EAttribute SEARCH_RESULT_OPTION_STRING_VALUE__VALUE = eINSTANCE.getSearchResultOptionStringValue_Value();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.SearchResultOptionNamedElementListValueImpl <em>Search Result Option Named Element List Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.SearchResultOptionNamedElementListValueImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResultOptionNamedElementListValue()
+		 * @generated
+		 */
+		EClass SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE = eINSTANCE.getSearchResultOptionNamedElementListValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__VALUE = eINSTANCE.getSearchResultOptionNamedElementListValue_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__CONDITION = eINSTANCE.getSearchResultOptionNamedElementListValue_Condition();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.Type <em>Type</em>}' enum.

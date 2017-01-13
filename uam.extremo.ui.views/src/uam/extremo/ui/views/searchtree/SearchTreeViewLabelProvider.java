@@ -13,6 +13,8 @@ import semanticmanager.ObjectProperty;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
+import semanticmanager.SearchResultOptionNamedElementListValue;
+import semanticmanager.SearchResultOptionStringValue;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
@@ -65,9 +67,16 @@ public class SearchTreeViewLabelProvider extends LabelProvider implements IStyle
 			return styledString;
 		}
 		
-		if (element instanceof SearchResultOptionValue) {
-			SearchResultOptionValue searchResultOptionValue = (SearchResultOptionValue) element;
+		if (element instanceof SearchResultOptionStringValue) {
+			SearchResultOptionStringValue searchResultOptionValue = (SearchResultOptionStringValue) element;
 			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName() + " : " + searchResultOptionValue.getValue());
+			return styledString;
+		}
+		
+		if (element instanceof SearchResultOptionNamedElementListValue) {
+			SearchResultOptionNamedElementListValue searchResultOptionValue = (SearchResultOptionNamedElementListValue) element;
+			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName());
+			styledString.append(" (" + searchResultOptionValue.getValue().size() + ") ", StyledString.QUALIFIER_STYLER);
 			return styledString;
 		}
 		

@@ -121,8 +121,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
         eType="#//Resource"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SearchResultOptionValue">
+  <eClassifiers xsi:type="ecore:EClass" name="SearchResultOptionValue" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="option" eType="#//SearchOption"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SearchResultOptionStringValue" eSuperTypes="#//SearchResultOptionValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SearchResultOptionNamedElementListValue"
+      eSuperTypes="#//SearchResultOptionValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//NamedElement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

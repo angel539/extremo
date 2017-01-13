@@ -129,7 +129,6 @@ public interface IFormatAssistant {
     default boolean addDataPropertyToNode(SemanticNode node, DataProperty property){
     	if(node == null || property == null) return false;
     	node.getProperties().add((Property) property);
-    	property.setSemanticNodeFrom(node);
     	return true;
     }
     
@@ -160,7 +159,7 @@ public interface IFormatAssistant {
     default boolean addObjectPropertyToNode(SemanticNode node, ObjectProperty property){
     	if(node == null || property == null) return false;
     	node.getProperties().add((Property) property);
-    	property.setSemanticNodeFrom(node);
+    	//property.setSemanticNodeFrom(node);
     	return true;
     }
     

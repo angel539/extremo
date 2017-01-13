@@ -21,6 +21,8 @@ import semanticmanager.Resource;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
+import semanticmanager.SearchResultOptionNamedElementListValue;
+import semanticmanager.SearchResultOptionStringValue;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
@@ -125,6 +127,20 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * @generated
 	 */
 	private EClass searchResultOptionValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass searchResultOptionStringValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass searchResultOptionNamedElementListValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -730,8 +746,44 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSearchResultOptionValue_Value() {
-		return (EAttribute)searchResultOptionValueEClass.getEStructuralFeatures().get(1);
+	public EClass getSearchResultOptionStringValue() {
+		return searchResultOptionStringValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSearchResultOptionStringValue_Value() {
+		return (EAttribute)searchResultOptionStringValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSearchResultOptionNamedElementListValue() {
+		return searchResultOptionNamedElementListValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSearchResultOptionNamedElementListValue_Value() {
+		return (EReference)searchResultOptionNamedElementListValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSearchResultOptionNamedElementListValue_Condition() {
+		return (EAttribute)searchResultOptionNamedElementListValueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -842,7 +894,13 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 
 		searchResultOptionValueEClass = createEClass(SEARCH_RESULT_OPTION_VALUE);
 		createEReference(searchResultOptionValueEClass, SEARCH_RESULT_OPTION_VALUE__OPTION);
-		createEAttribute(searchResultOptionValueEClass, SEARCH_RESULT_OPTION_VALUE__VALUE);
+
+		searchResultOptionStringValueEClass = createEClass(SEARCH_RESULT_OPTION_STRING_VALUE);
+		createEAttribute(searchResultOptionStringValueEClass, SEARCH_RESULT_OPTION_STRING_VALUE__VALUE);
+
+		searchResultOptionNamedElementListValueEClass = createEClass(SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE);
+		createEReference(searchResultOptionNamedElementListValueEClass, SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__VALUE);
+		createEAttribute(searchResultOptionNamedElementListValueEClass, SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__CONDITION);
 
 		// Create enums
 		typeEEnum = createEEnum(TYPE);
@@ -883,6 +941,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		objectPropertyEClass.getESuperTypes().add(this.getProperty());
 		dataPropertyEClass.getESuperTypes().add(this.getProperty());
 		semanticGroupEClass.getESuperTypes().add(this.getNamedElement());
+		searchResultOptionStringValueEClass.getESuperTypes().add(this.getSearchResultOptionValue());
+		searchResultOptionNamedElementListValueEClass.getESuperTypes().add(this.getSearchResultOptionValue());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(repositoryManagerEClass, RepositoryManager.class, "RepositoryManager", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -974,9 +1034,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		addEParameter(op, this.getSemanticGroup(), "semanticGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getObjectProperty(), "objectProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(searchResultOptionValueEClass, SearchResultOptionValue.class, "SearchResultOptionValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(searchResultOptionValueEClass, SearchResultOptionValue.class, "SearchResultOptionValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSearchResultOptionValue_Option(), this.getSearchOption(), null, "option", null, 0, 1, SearchResultOptionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSearchResultOptionValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, SearchResultOptionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(searchResultOptionStringValueEClass, SearchResultOptionStringValue.class, "SearchResultOptionStringValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSearchResultOptionStringValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, SearchResultOptionStringValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(searchResultOptionNamedElementListValueEClass, SearchResultOptionNamedElementListValue.class, "SearchResultOptionNamedElementListValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSearchResultOptionNamedElementListValue_Value(), this.getNamedElement(), null, "value", null, 0, -1, SearchResultOptionNamedElementListValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSearchResultOptionNamedElementListValue_Condition(), ecorePackage.getEString(), "condition", null, 0, 1, SearchResultOptionNamedElementListValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(typeEEnum, Type.class, "Type");

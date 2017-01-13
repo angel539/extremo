@@ -7,9 +7,12 @@ import org.eclipse.swt.widgets.TableItem;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
 import uam.extremo.extensions.AssistantFactory;
+import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.wizards.dialogs.newrepository.NewRepositoryWizardPage;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddFolderResourceListWizardDialog extends Wizard {
 	NewRepositoryWizardPage newRepositoryPage;
@@ -62,10 +65,14 @@ public class AddFolderResourceListWizardDialog extends Wizard {
 		descriptorCheck:
 		for(TableItem item : selectDescriptorPage.getTable().getItems()){
 			if(item.getChecked()){
-				String resourceName = ((File)item.getData()).getName();
-				String resourceDescription = ((File)item.getData()).getName();
-				String resourceUri = ((File)item.getData()).getAbsolutePath();
-				descriptor = AssistantFactory.getInstance().createResourceDescriptor(repository, resourceName, resourceDescription, resourceUri);
+				String resourceName = ((File)item.getData("file")).getName();
+				String resourceDescription = (String) item.getData("description");
+				String resourceUri = ((File)item.getData("file")).getAbsolutePath();
+				
+				IFormatAssistant assistant = (IFormatAssistant)item.getData("assistant");
+				//descriptor = AssistantFactory.getInstance().createResourceDescriptor(repository, resourceName, resourceDescription, resourceUri);
+				descriptor = AssistantFactory.getInstance().createResourceDescriptor(repository, resourceName, resourceDescription, resourceUri, assistant);
+				
 				break descriptorCheck;
 			}
 		}
@@ -73,19 +80,25 @@ public class AddFolderResourceListWizardDialog extends Wizard {
 		if(descriptor != null){
 			for(TableItem item : selectDescriptorPage.getTable().getItems()){
 				if(!item.getChecked()){
-					String resourceName = ((File)item.getData()).getName();
-					String resourceDescription = ((File)item.getData()).getName();
-					String resourceUri = ((File)item.getData()).getAbsolutePath();
-					AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri);
+					String resourceName = ((File)item.getData("file")).getName();
+					String resourceDescription = (String) item.getData("description");
+					String resourceUri = ((File)item.getData("file")).getAbsolutePath();
+					
+					IFormatAssistant assistant = (IFormatAssistant)item.getData("assistant");
+					//AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri);
+					AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri, assistant);
 				}
 			}
 		}
 		else{
 			for(TableItem item : selectDescriptorPage.getTable().getItems()){
-				String resourceName = ((File)item.getData()).getName();
-				String resourceDescription = ((File)item.getData()).getName();
-				String resourceUri = ((File)item.getData()).getAbsolutePath();
-				AssistantFactory.getInstance().createResourceDescriptor(repository, resourceName, resourceDescription, resourceUri);
+				String resourceName = ((File)item.getData("file")).getName();
+				String resourceDescription = (String) item.getData("description");
+				String resourceUri = ((File)item.getData("file")).getAbsolutePath();
+				
+				IFormatAssistant assistant = (IFormatAssistant)item.getData("assistant");
+				//AssistantFactory.getInstance().createResourceDescriptor(repository, resourceName, resourceDescription, resourceUri);
+				AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri, assistant);
 			}
 		}
 

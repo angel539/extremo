@@ -1,9 +1,11 @@
 package uam.extremo.ui.wizards.dialogs.searchnew;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -12,24 +14,26 @@ import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
+import semanticmanager.NamedElement;
+import semanticmanager.Resource;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
+import semanticmanager.SearchResult;
+import semanticmanager.SemanticNode;
 import semanticmanager.Type;
-import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.wizards.*;
-import uam.extremo.ui.wizards.dialogs.searchnew.treeviewer.SearchTreeViewer;
+import uam.extremo.ui.wizards.dialogs.searchnew.treeviewer.SearchTableViewer;
 
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 
 public class SearchWizardPage extends WizardPage {
 	private CCombo comboSearchType;
@@ -37,14 +41,19 @@ public class SearchWizardPage extends WizardPage {
 	private List<SearchConfiguration> searchConfigurations;
 	
 	private SearchConfiguration searchConfigurationSelected;
-	private Map<SearchOption, String> values; 
+	private Map<SearchOption, String> values;
+	private Map<SearchOption, List<NamedElement>> listValues;
 	
-	public SearchWizardPage(String pageName, String pageDescription, List<SearchConfiguration> searchConfigurations) {
+	
+	private SearchResult searchResult;
+	
+	public SearchWizardPage(String pageName, String pageDescription, List<SearchConfiguration> searchConfigurations, SearchResult searchResult) {
 		super(pageName);
 		setTitle(pageName);
 		setDescription(pageDescription);
 		setImageDescriptor(Activator.getImageDescriptor("icons/searchBig.png"));
 		this.searchConfigurations = searchConfigurations;
+		this.searchResult = searchResult;
 	}
 
 	@Override
@@ -118,6 +127,8 @@ public class SearchWizardPage extends WizardPage {
 	    		
 	    		if(searchConfigurationSelected != null){
 	    			Map<SearchOption, String> values = new LinkedHashMap<SearchOption, String>(); 
+	    			
+	    			Map<SearchOption, List<NamedElement>> listValues = new LinkedHashMap<SearchOption, List<NamedElement>>(); 
 		    		
 		    		for(SearchOption searchOption : searchConfigurationSelected.getOptions()){		    			
 		    			if(searchOption.getType().equals(Type.STRING)){
@@ -133,7 +144,7 @@ public class SearchWizardPage extends WizardPage {
 		    			}
 		    			
 		    			if(searchOption.getType().equals(Type.SEMANTIC_NODE)){
-		    				createTreeViewer(searchOption, values);
+		    				createTableViewer(searchOption, listValues);
 		    			}
 		    			
 		    			if(searchOption.getType().equals(Type.DATA_PROPERTY)){
@@ -146,6 +157,7 @@ public class SearchWizardPage extends WizardPage {
 		    		}
 		    		
 		    		setValues(values);
+		    		setListValues(listValues);
 	    		}
 	            scrollcontainer.setMinSize(container.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 	            container.layout();
@@ -154,7 +166,7 @@ public class SearchWizardPage extends WizardPage {
 	            setControl(scrollcontainer);
 	    	}
 
-			private void createTreeViewer(SearchOption searchOption, Map<SearchOption, String> values) {
+			private void createTableViewer(SearchOption searchOption, Map<SearchOption, List<NamedElement>> listValues) {
 				Label optionNamedElement = new Label(selectionContainer, SWT.NONE);
 				optionNamedElement.setText(searchOption.getName());
 				optionNamedElement.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
@@ -162,7 +174,15 @@ public class SearchWizardPage extends WizardPage {
 				final Composite viewerContainer = new Composite(selectionContainer, SWT.NONE);
 		        viewerContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
 		        viewerContainer.setLayout(new GridLayout(1, true));
-		        SearchTreeViewer optionSemanticNodeField = new SearchTreeViewer(viewerContainer, AssistantFactory.getInstance().getRepositoryManager());
+		        
+		        List<SemanticNode> semanticNodes = new ArrayList<SemanticNode>();
+		        for(Resource resource : searchResult.getResources()){
+		        	if(resource.getDescriptor() == null){
+		        		semanticNodes.addAll(resource.getNodes());
+		        	}
+		        }
+		        
+		        SearchTableViewer optionSemanticNodeField = new SearchTableViewer(viewerContainer, semanticNodes);
 		        optionSemanticNodeField.getSelection();
 				
 				Label optionNamedElementValue = new Label(selectionContainer, SWT.NONE);
@@ -178,11 +198,34 @@ public class SearchWizardPage extends WizardPage {
 			
 				      @Override
 				      public void keyReleased(KeyEvent e) {
-				    	  values.put(searchOption, String.valueOf(optionNamedElementValueField.getText()));
+				    	  //values.put(searchOption, String.valueOf(optionNamedElementValueField.getText()));
 				      }
 			    });
 				
 				optionNamedElementValueField.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
+				
+				optionSemanticNodeField.getTable().addListener(SWT.Selection, new Listener() {
+				      public void handleEvent(Event event) {
+					        if (event.detail == SWT.CHECK) {
+					          //text.setText("You checked " + event.item);
+					        }
+				      }
+				});
+				
+				IStructuredSelection selection = (IStructuredSelection)optionSemanticNodeField.getSelection();
+				
+				List<?> selections = selection.toList();
+				List<NamedElement> namedElements =  new ArrayList<NamedElement>();
+				
+				for(Object s : selections){
+					if (s instanceof NamedElement) {
+						NamedElement namedElement = (NamedElement) s;
+						namedElements.add(namedElement);
+						
+					}
+				}
+				
+				listValues.put(searchOption, namedElements);
 			}
 
 			private void createIntegerField(SearchOption searchOption, Map<SearchOption, String> values) {
@@ -276,5 +319,13 @@ public class SearchWizardPage extends WizardPage {
 
 	public void setValues(Map<SearchOption, String> values) {
 		this.values = values;
+	}
+
+	public Map<SearchOption, List<NamedElement>> getListValues() {
+		return listValues;
+	}
+
+	public void setListValues(Map<SearchOption, List<NamedElement>> listValues) {
+		this.listValues = listValues;
 	}
 }

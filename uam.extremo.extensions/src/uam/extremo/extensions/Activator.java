@@ -1,15 +1,15 @@
 package uam.extremo.extensions;
 
+import org.eclipse.ui.IStartup;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
-
+public class Activator extends AbstractUIPlugin{
 	// The plug-in ID
-	public static final String PLUGIN_ID = "metaRDF.core.extensions"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "uam.extremo.extensions"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;
@@ -36,6 +36,7 @@ public class Activator extends AbstractUIPlugin {
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
+		AssistantFactory.getInstance().save();
 	}
 
 	/**
@@ -46,5 +47,4 @@ public class Activator extends AbstractUIPlugin {
 	public static Activator getDefault() {
 		return plugin;
 	}
-
 }

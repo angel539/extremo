@@ -153,6 +153,20 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_STRING_VALUE: {
+				SearchResultOptionStringValue searchResultOptionStringValue = (SearchResultOptionStringValue)theEObject;
+				T result = caseSearchResultOptionStringValue(searchResultOptionStringValue);
+				if (result == null) result = caseSearchResultOptionValue(searchResultOptionStringValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE: {
+				SearchResultOptionNamedElementListValue searchResultOptionNamedElementListValue = (SearchResultOptionNamedElementListValue)theEObject;
+				T result = caseSearchResultOptionNamedElementListValue(searchResultOptionNamedElementListValue);
+				if (result == null) result = caseSearchResultOptionValue(searchResultOptionNamedElementListValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -349,6 +363,36 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSearchResultOptionValue(SearchResultOptionValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Search Result Option String Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Search Result Option String Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSearchResultOptionStringValue(SearchResultOptionStringValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Search Result Option Named Element List Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Search Result Option Named Element List Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSearchResultOptionNamedElementListValue(SearchResultOptionNamedElementListValue object) {
 		return null;
 	}
 

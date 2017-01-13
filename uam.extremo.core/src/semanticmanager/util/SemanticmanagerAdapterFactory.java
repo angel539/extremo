@@ -120,6 +120,14 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 				return createSearchResultOptionValueAdapter();
 			}
 			@Override
+			public Adapter caseSearchResultOptionStringValue(SearchResultOptionStringValue object) {
+				return createSearchResultOptionStringValueAdapter();
+			}
+			@Override
+			public Adapter caseSearchResultOptionNamedElementListValue(SearchResultOptionNamedElementListValue object) {
+				return createSearchResultOptionNamedElementListValueAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -318,6 +326,34 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSearchResultOptionValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link semanticmanager.SearchResultOptionStringValue <em>Search Result Option String Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see semanticmanager.SearchResultOptionStringValue
+	 * @generated
+	 */
+	public Adapter createSearchResultOptionStringValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link semanticmanager.SearchResultOptionNamedElementListValue <em>Search Result Option Named Element List Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see semanticmanager.SearchResultOptionNamedElementListValue
+	 * @generated
+	 */
+	public Adapter createSearchResultOptionNamedElementListValueAdapter() {
 		return null;
 	}
 

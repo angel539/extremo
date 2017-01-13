@@ -23,12 +23,11 @@ import semanticmanager.SemanticmanagerPackage;
  * </p>
  * <ul>
  *   <li>{@link semanticmanager.impl.SearchResultOptionValueImpl#getOption <em>Option</em>}</li>
- *   <li>{@link semanticmanager.impl.SearchResultOptionValueImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SearchResultOptionValueImpl extends MinimalEObjectImpl.Container implements SearchResultOptionValue {
+public abstract class SearchResultOptionValueImpl extends MinimalEObjectImpl.Container implements SearchResultOptionValue {
 	/**
 	 * The cached value of the '{@link #getOption() <em>Option</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -38,26 +37,6 @@ public class SearchResultOptionValueImpl extends MinimalEObjectImpl.Container im
 	 * @ordered
 	 */
 	protected SearchOption option;
-
-	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,35 +100,12 @@ public class SearchResultOptionValueImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE__VALUE, oldValue, value));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE__OPTION:
 				if (resolve) return getOption();
 				return basicGetOption();
-			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE__VALUE:
-				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,9 +120,6 @@ public class SearchResultOptionValueImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE__OPTION:
 				setOption((SearchOption)newValue);
-				return;
-			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE__VALUE:
-				setValue((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -183,9 +136,6 @@ public class SearchResultOptionValueImpl extends MinimalEObjectImpl.Container im
 			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE__OPTION:
 				setOption((SearchOption)null);
 				return;
-			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -200,26 +150,8 @@ public class SearchResultOptionValueImpl extends MinimalEObjectImpl.Container im
 		switch (featureID) {
 			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE__OPTION:
 				return option != null;
-			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
-		result.append(')');
-		return result.toString();
 	}
 
 } //SearchResultOptionValueImpl

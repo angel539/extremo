@@ -62,13 +62,16 @@ public class ImportResourceListWizardPage extends WizardPage {
 				if(ficheros!=null){
 					for(File file : ficheros){
 						TableItem item = new TableItem(table, SWT.CHECK);
-			    		item.setData(file);
+						
+						item.setData("file", file);
+						item.setData("description", "");
+						item.setData("assistant", null);
+						
 			    		item.setChecked(true);
 				    	item.setText(new String[]{file.getName(), file.getAbsolutePath()});
 					}
 				}
-	    	}
-			
+	    	}	
 	    }
 		
 	    table.setSortColumn(tc1);

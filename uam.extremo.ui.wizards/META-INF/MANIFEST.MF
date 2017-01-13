@@ -17,7 +17,6 @@ Export-Package: uam.extremo.ui.wizards.dialogs,
  uam.extremo.ui.wizards.dialogs.changeToResource,
  uam.extremo.ui.wizards.dialogs.newrepository,
  uam.extremo.ui.wizards.dialogs.newresource,
- uam.extremo.ui.wizards.dialogs.search,
  uam.extremo.ui.wizards.dialogs.searchnew
 Bundle-ClassPath: icons/,
  .

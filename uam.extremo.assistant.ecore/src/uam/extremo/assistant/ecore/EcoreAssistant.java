@@ -8,11 +8,11 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -138,11 +138,9 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			resource = resourceSet.getResource(fileURI, true);
 			resourceSet.getAllContents().next();
 			modelAll = resource.getAllContents();
-			System.out.println("carga el modelo");
 		}
 		catch(Exception e){
 			semanticResource.setAlive(false);
-			//System.out.println("salta una excepción " + e.getMessage());
 		}
 		
 		int counter = 0;
@@ -151,9 +149,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 				
 				EObject obj = modelAll.next();
 				counter++;
-				
-				//System.out.println("recorrer modelo " + obj);
-				
+								
 				if((obj != null) && (obj instanceof EObject)){
 					EStructuralFeature structuralfeature = obj.eClass().getEStructuralFeature("name");
 					
@@ -218,25 +214,25 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	private void ecoreAttributesToDataProperties(SemanticNode parent) {
 		if(parent.getId() != null && parent.getId() instanceof EClass){
 			EClass eClass = (EClass) parent.getId(); 
-
+			
 			for(EAttribute attr : eClass.getEAttributes()){				
 				try{
 					String name = attr.getName();
 					Type type = defineStringType();
 					
-					if(attr.getEType().equals(EcorePackage.eINSTANCE.getEInt())){
+					if(attr.getEAttributeType().getName().equals("Integer")){
 						type = defineIntType();
 					}
 					
-					if(attr.getEType().equals(EcorePackage.eINSTANCE.getEFloat())){
+					if(attr.getEAttributeType().getName().equals("Float")){
 						type = defineFloatType();
 					}
 					
-					if(attr.getEType().equals(EcorePackage.eINSTANCE.getEDouble())){
+					if(attr.getEAttributeType().getName().equals("Double")){
 						type = defineDoubleType();
 					}
 					
-					if(attr.getEType().equals(EcorePackage.eINSTANCE.getEBoolean())){
+					if(attr.getEAttributeType().getName().equals("Boolean")){
 						type = defineBooleanType();
 					}
 					
@@ -247,7 +243,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 									"", 
 									type //the type selected from the enum class
 							);
-					
+										
 					addDataPropertyToNode(parent, dataProperty);
 				}
 				catch(Exception e){
@@ -261,12 +257,9 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 		if(parent.getId() != null && parent.getId() instanceof EObject){
 			EObject eobject = (EObject) parent.getId();
 			
-			List<EStructuralFeature> structuralFeatures = eobject.eClass().getEAllStructuralFeatures();
+			List<EAttribute> eAttributes = eobject.eClass().getEAllAttributes();
 			
-			for(EStructuralFeature structuralFeature : structuralFeatures){	
-				if(structuralFeature instanceof EAttribute){
-					EAttribute eAttribute = (EAttribute) structuralFeature;
-					
+			for(EAttribute eAttribute : eAttributes){	
 					DataProperty descriptor = 
 							searchDataPropertyByName(
 									(SemanticNode) parent.getDescriptor(), 
@@ -274,11 +267,12 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 							);
 					
 					if(descriptor != null){
-						Object eAttrValue = eobject.eGet(eAttribute);
-						
-						
+						EDataType  eAttrValue = (EDataType) eobject.eGet(eAttribute, true);
+
 						String value = "";
-						if(eAttrValue != null) value = eAttrValue.toString();
+						if(eAttrValue != null){
+							value = eAttrValue.toString();
+						}
 						
 						DataProperty dataProperty = 
 								createDataProperty(
@@ -289,7 +283,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 						
 						addDataPropertyToNode(parent, dataProperty);
 					}
-				}
+				//}
 			}
 		}
 	}
@@ -319,7 +313,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			
 			for(EReference reference : eClass.getEReferences()){
 				SemanticNode range = semanticNodeFromName(semanticResource, reference.getEContainingClass().getName());
-				
+
 				ObjectProperty objectProperty = 
 						createObjectProperty(
 								reference, 
@@ -350,19 +344,22 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 							);
 					
 					if(descriptor != null){
-						Object eReferenceValue = eobject.eGet(eReference);
+						Object eReferenceValue = eobject.eGet(eReference, true);
 						
-						if(eReferenceValue instanceof EObject[]){
-							for(EObject reference : (EObject[]) eReferenceValue){
-								SemanticNode range = correspondance.get(reference);
-								
-								ObjectProperty objectProperty = 
-										createObjectProperty(
-												descriptor, //descriptor
-												range //value
-										);
-								
-								addObjectPropertyToNode(parent, objectProperty);
+						if (eReferenceValue instanceof List<?>) {
+							List<?> references = (List<?>) eReferenceValue;
+							
+							for(Object reference : references){
+								if(reference instanceof EObject){
+									SemanticNode range = correspondance.get(reference);
+									
+									ObjectProperty objectProperty = 
+											createObjectProperty(
+													descriptor, //descriptor
+													range //value
+											);
+									
+									addObjectPropertyToNode(parent, objectProperty);								}
 							}
 						}
 						else{
@@ -373,8 +370,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 										createObjectProperty(
 												descriptor, //descriptor
 												range //value
-										);
-								
+										);	
 								addObjectPropertyToNode(parent, objectProperty);
 							}
 						}

@@ -17,8 +17,9 @@ public class RepositoryViewFilter extends ViewerFilter {
 		return element instanceof RepositoryManager || 
 				element instanceof Repository || 
 				element instanceof Resource ||
-				element instanceof SemanticNode ||
+				element instanceof SemanticNode||
 				element instanceof DataProperty ||
-				element instanceof ObjectProperty;
+				element instanceof ObjectProperty
+				;
 	}
 }

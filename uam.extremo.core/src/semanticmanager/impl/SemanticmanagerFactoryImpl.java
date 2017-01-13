@@ -66,7 +66,8 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 			case SemanticmanagerPackage.SEMANTIC_GROUP: return createSemanticGroup();
 			case SemanticmanagerPackage.SEARCH_OPTION: return createSearchOption();
 			case SemanticmanagerPackage.SEARCH_RESULT: return createSearchResult();
-			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE: return createSearchResultOptionValue();
+			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_STRING_VALUE: return createSearchResultOptionStringValue();
+			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE: return createSearchResultOptionNamedElementListValue();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -197,9 +198,19 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SearchResultOptionValue createSearchResultOptionValue() {
-		SearchResultOptionValueImpl searchResultOptionValue = new SearchResultOptionValueImpl();
-		return searchResultOptionValue;
+	public SearchResultOptionStringValue createSearchResultOptionStringValue() {
+		SearchResultOptionStringValueImpl searchResultOptionStringValue = new SearchResultOptionStringValueImpl();
+		return searchResultOptionStringValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SearchResultOptionNamedElementListValue createSearchResultOptionNamedElementListValue() {
+		SearchResultOptionNamedElementListValueImpl searchResultOptionNamedElementListValue = new SearchResultOptionNamedElementListValueImpl();
+		return searchResultOptionNamedElementListValue;
 	}
 
 	/**

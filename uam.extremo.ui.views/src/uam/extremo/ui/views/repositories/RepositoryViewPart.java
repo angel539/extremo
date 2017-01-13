@@ -32,8 +32,8 @@ import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ComboBoxViewerCellEditor;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
-import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
+import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -63,14 +63,15 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
 import semanticmanager.DataProperty;
+import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
 import semanticmanager.SemanticNode;
 import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
 import uam.extremo.extensions.AssistantFactory;
-import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.extensions.FormatAssistant;
+import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.views.Activator;
 import uam.extremo.ui.wizards.dialogs.AddFolderResourceListWizardDialog;
 import uam.extremo.ui.wizards.dialogs.changeToResource.ChangeDescriptorToResourceWizardDialog;
@@ -126,23 +127,38 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		@Override
 		protected Object getValue(Object element) {
 			if(element instanceof Resource){
-				return ((Resource) element).getName();
+				return ((Resource) element).getAssistant();
 			}
 			return null;
 		}
 
 		@Override
-		protected void setValue(Object element, Object value) {
-			if(element instanceof Resource){
-				((Resource) element).setAssistant(String.valueOf(value));
+		protected void setValue(Object element, Object value) {	
+        	if(element instanceof Resource){
+				Resource resource = (Resource) element;
+				
+				if(resource.getDescriptor() == null){ //descriptor --> all describes to assistant
+					for(NamedElement namedElement : resource.getDescribes()){
+						if (namedElement instanceof Resource) {
+							Resource described = (Resource) namedElement;
+							described.setAssistant(String.valueOf(value));
+							AssistantFactory.getInstance().changeResourceAssistant(described, String.valueOf(value));
+						}
+					}
+				}
+
+				resource.setAssistant(String.valueOf(value));
+				AssistantFactory.getInstance().changeResourceAssistant(resource, String.valueOf(value));
+
 			}
 			
 			if(element instanceof Repository){
 				for(Resource resource : ((Repository) element).getResources()){
 					resource.setAssistant(String.valueOf(value));
+					AssistantFactory.getInstance().changeResourceAssistant(resource, String.valueOf(value));
 				}
 			}
-		}
+        }
 	}
 	
 	class ViewLabelProvider extends LabelProvider {
@@ -209,7 +225,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 				}
 				else{
 					DataProperty property = (DataProperty) element;
-					StyledString styledString = new StyledString(property.getValue() + ":");
+					StyledString styledString = new StyledString(property.getValue());
 					if(property.getType() != null) styledString.append(" (" + property.getType().getLiteral() + ")", StyledString.QUALIFIER_STYLER);
 					
 					return styledString;
@@ -340,13 +356,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		uriColumn.getColumn().setAlignment(SWT.LEFT);
 		uriColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnThreeViewLabelProvider()));
 		
-		
-		
-		
 		initializeEditingDomain();
-		
-		
-		
 		
 		EContentAdapter adapter = new EContentAdapter() {
             public void notifyChanged(Notification notification) {
@@ -688,8 +698,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		}
 	}
 
-	
-	
+
 	@Override
 	public Viewer getViewer() {
 		return viewer;

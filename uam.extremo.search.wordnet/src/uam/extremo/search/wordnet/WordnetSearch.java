@@ -16,6 +16,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 
 import semanticmanager.Resource;
 import semanticmanager.SearchResult;
+import semanticmanager.SearchResultOptionStringValue;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
@@ -44,27 +45,32 @@ public class WordnetSearch extends SearchConfigurationImpl{
 	@Override
 	public void resolveOptions(EList<SearchResultOptionValue> values) {
 		for(SearchResultOptionValue value : values){
-			try{
-				switch(value.getOption().getId()){
-					case "searchfield":
-						searchField = value.getValue();
-						break;
-						
-					case "equivalents":
-						isFromEquivs = Boolean.getBoolean(value.getValue());
-						break;
-						
-					case "super":
-						isFromSupers = Boolean.getBoolean(value.getValue());
-						break;
-						
-					default:
-						break;
+			if (value instanceof SearchResultOptionStringValue) {
+				SearchResultOptionStringValue stringValue = (SearchResultOptionStringValue) value;
+				
+				try{
+					switch(stringValue.getOption().getId()){
+						case "searchfield":
+							searchField = stringValue.getValue();
+							break;
+							
+						case "equivalents":
+							isFromEquivs = Boolean.getBoolean(stringValue.getValue());
+							break;
+							
+						case "super":
+							isFromSupers = Boolean.getBoolean(stringValue.getValue());
+							break;
+							
+						default:
+							break;
+					}
+				}
+				catch(Exception e){
+					MessageDialog.openError(null, "Option Validation", "Options couldn't be validated for the search");
 				}
 			}
-			catch(Exception e){
-				MessageDialog.openError(null, "Option Validation", "Options couldn't be validated for the search");
-			}
+			
 		}
 	}
 	

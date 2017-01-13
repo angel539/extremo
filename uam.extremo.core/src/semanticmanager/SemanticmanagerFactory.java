@@ -103,13 +103,22 @@ public interface SemanticmanagerFactory extends EFactory {
 	SearchResult createSearchResult();
 
 	/**
-	 * Returns a new object of class '<em>Search Result Option Value</em>'.
+	 * Returns a new object of class '<em>Search Result Option String Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Search Result Option Value</em>'.
+	 * @return a new object of class '<em>Search Result Option String Value</em>'.
 	 * @generated
 	 */
-	SearchResultOptionValue createSearchResultOptionValue();
+	SearchResultOptionStringValue createSearchResultOptionStringValue();
+
+	/**
+	 * Returns a new object of class '<em>Search Result Option Named Element List Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Search Result Option Named Element List Value</em>'.
+	 * @generated
+	 */
+	SearchResultOptionNamedElementListValue createSearchResultOptionNamedElementListValue();
 
 	/**
 	 * Returns the package supported by this factory.
