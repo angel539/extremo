@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="extremo.core.extensions.search">
+      <search
+            class="uam.extremo.search.metrics.AttrsOverloadedSearch"
+            id="uam.extremo.search.metrics.attrs"
+            name="Metric 01: Attrs Overloaded">
+         <option
+               id="maxattrs"
+               name="Max Attrs"
+               type="Int">
+         </option>
+      </search>
+      <search
+            class="uam.extremo.search.metrics.RefsOverloadedSearch"
+            id="uam.extremo.search.metrics.refs"
+            name="Metric 02: References overloaded">
+         <option
+               id="maxrefs"
+               name="Max Refs"
+               type="Int">
+         </option>
+      </search>
+      <search
+            class="uam.extremo.search.metrics.InRefsOverloadedSearch"
+            id="uam.extremo.search.metrics.inrefs"
+            name="Metric 03: No class is referred from too many others">
+         <option
+               id="maxrefs"
+               name="Max Refs"
+               type="Int">
+         </option>
+      </search>
+      <search
+            class="uam.extremo.search.metrics.HierarchyLimitSearch"
+            id="uam.extremo.search.metrics.hierarchy"
+            name="Metric 04: No hierarchy is too deep ">
+         <option
+               id="maxdepth"
+               name="Max Depth"
+               type="Int">
+         </option>
+      </search>
+      <search
+            class="uam.extremo.search.metrics.ChildrenLimitSearch"
+            id="uam.extremo.search.metrics.children"
+            name="Metric 05: No class has too many direct children">
+         <option
+               id="maxchildren"
+               name="Max Children"
+               type="Int">
+         </option>
+      </search>
+   </extension>
+
+</plugin>

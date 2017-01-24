@@ -1,5 +1,6 @@
 package uam.extremo.assistant.ecore;
 import java.io.File;
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -219,21 +220,24 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 				try{
 					String name = attr.getName();
 					Type type = defineStringType();
+					Class<?> cl = (attr.getEType() != null)?attr.getEType().getInstanceClass():null;
 					
-					if(attr.getEAttributeType().getName().equals("Integer")){
-						type = defineIntType();
-					}
-					
-					if(attr.getEAttributeType().getName().equals("Float")){
-						type = defineFloatType();
-					}
-					
-					if(attr.getEAttributeType().getName().equals("Double")){
-						type = defineDoubleType();
-					}
-					
-					if(attr.getEAttributeType().getName().equals("Boolean")){
-						type = defineBooleanType();
+					if (cl != null) {
+						if(cl == Integer.class || cl == int.class || cl == short.class || cl == Short.class || cl == BigInteger.class || cl == byte.class || cl == Byte.class){
+							type = defineIntType();
+						}
+						
+						if(cl == Float.class || cl == float.class){
+							type = defineFloatType();
+						}
+						
+						if(cl == double.class || cl == Double.class){
+							type = defineDoubleType();
+						}
+						
+						if(cl == boolean.class || cl == Boolean.class){
+							type = defineBooleanType();
+						}
 					}
 					
 					DataProperty dataProperty = 
@@ -312,7 +316,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			EClass eClass = (EClass) parent.getId();
 			
 			for(EReference reference : eClass.getEReferences()){
-				SemanticNode range = semanticNodeFromName(semanticResource, reference.getEContainingClass().getName());
+				SemanticNode range = semanticNodeFromName(semanticResource, reference.getEReferenceType().getName());
 
 				ObjectProperty objectProperty = 
 						createObjectProperty(
@@ -345,21 +349,18 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 					
 					if(descriptor != null){
 						Object eReferenceValue = eobject.eGet(eReference, true);
-						
-						if (eReferenceValue instanceof List<?>) {
-							List<?> references = (List<?>) eReferenceValue;
-							
-							for(Object reference : references){
-								if(reference instanceof EObject){
-									SemanticNode range = correspondance.get(reference);
-									
-									ObjectProperty objectProperty = 
-											createObjectProperty(
-													descriptor, //descriptor
-													range //value
-											);
-									
-									addObjectPropertyToNode(parent, objectProperty);								}
+
+						if(eReferenceValue instanceof EObject[]){
+							for(EObject reference : (EObject[]) eReferenceValue){
+								SemanticNode range = correspondance.get(reference);
+								
+								ObjectProperty objectProperty = 
+										createObjectProperty(
+												descriptor, //descriptor
+												range //value
+										);
+								
+								addObjectPropertyToNode(parent, objectProperty);
 							}
 						}
 						else{
