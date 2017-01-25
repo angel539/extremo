@@ -24,6 +24,8 @@ import semanticmanager.ObjectProperty;
 import semanticmanager.Resource;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchResult;
+import semanticmanager.SearchResultOptionNamedElementListValue;
+import semanticmanager.SearchResultOptionStringValue;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
@@ -42,6 +44,7 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.SearchResultImpl#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link semanticmanager.impl.SearchResultImpl#getResults <em>Results</em>}</li>
  *   <li>{@link semanticmanager.impl.SearchResultImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link semanticmanager.impl.SearchResultImpl#isShowByResource <em>Show By Resource</em>}</li>
  * </ul>
  *
  * @generated
@@ -76,6 +79,26 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	 * @ordered
 	 */
 	protected EList<Resource> resources;
+
+	/**
+	 * The default value of the '{@link #isShowByResource() <em>Show By Resource</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isShowByResource()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SHOW_BY_RESOURCE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isShowByResource() <em>Show By Resource</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isShowByResource()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean showByResource = SHOW_BY_RESOURCE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,6 +199,27 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isShowByResource() {
+		return showByResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setShowByResource(boolean newShowByResource) {
+		boolean oldShowByResource = showByResource;
+		showByResource = newShowByResource;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.SEARCH_RESULT__SHOW_BY_RESOURCE, oldShowByResource, showByResource));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public SemanticGroup createSemanticGroup(String name, String description) {
@@ -211,6 +255,43 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	 */
 	public void addObjectPropertyToSemanticGroup(SemanticGroup semanticGroup, ObjectProperty objectProperty) {
 		semanticGroup.getNodes().add(objectProperty);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Object getOptionValue(String key) {
+		for(SearchResultOptionValue value : getValues()){
+			if (value instanceof SearchResultOptionStringValue) {
+				SearchResultOptionStringValue stringValue = (SearchResultOptionStringValue) value;
+				
+				try{
+					if(stringValue.getOption().getId().equals(key)){
+						return stringValue.getValue();
+					}
+				}
+				catch(Exception e){
+					return null;
+				}
+			}
+			
+			if (value instanceof SearchResultOptionNamedElementListValue) {
+				SearchResultOptionNamedElementListValue namedElementListValue = (SearchResultOptionNamedElementListValue) value;
+				
+				try{
+					if(namedElementListValue.getOption().getId().equals(key)){
+						return namedElementListValue.getValue();
+					}
+				}
+				catch(Exception e){
+					return null;
+				}
+			}
+		}
+		
+		return null;
 	}
 
 	/**
@@ -277,6 +358,8 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 				return getResults();
 			case SemanticmanagerPackage.SEARCH_RESULT__RESOURCES:
 				return getResources();
+			case SemanticmanagerPackage.SEARCH_RESULT__SHOW_BY_RESOURCE:
+				return isShowByResource();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -305,6 +388,9 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 				getResources().clear();
 				getResources().addAll((Collection<? extends Resource>)newValue);
 				return;
+			case SemanticmanagerPackage.SEARCH_RESULT__SHOW_BY_RESOURCE:
+				setShowByResource((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -329,6 +415,9 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 			case SemanticmanagerPackage.SEARCH_RESULT__RESOURCES:
 				getResources().clear();
 				return;
+			case SemanticmanagerPackage.SEARCH_RESULT__SHOW_BY_RESOURCE:
+				setShowByResource(SHOW_BY_RESOURCE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -349,6 +438,8 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 				return results != null && !results.isEmpty();
 			case SemanticmanagerPackage.SEARCH_RESULT__RESOURCES:
 				return resources != null && !resources.isEmpty();
+			case SemanticmanagerPackage.SEARCH_RESULT__SHOW_BY_RESOURCE:
+				return showByResource != SHOW_BY_RESOURCE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -372,8 +463,26 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 			case SemanticmanagerPackage.SEARCH_RESULT___ADD_OBJECT_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_OBJECTPROPERTY:
 				addObjectPropertyToSemanticGroup((SemanticGroup)arguments.get(0), (ObjectProperty)arguments.get(1));
 				return null;
+			case SemanticmanagerPackage.SEARCH_RESULT___GET_OPTION_VALUE__STRING:
+				return getOptionValue((String)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (showByResource: ");
+		result.append(showByResource);
+		result.append(')');
+		return result.toString();
 	}
 
 } //SearchResultImpl

@@ -1,19 +1,14 @@
 package uam.extremo.search.metrics;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.jface.dialogs.MessageDialog;
-
 import semanticmanager.DataProperty;
 import semanticmanager.Resource;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionStringValue;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
 
 public class AttrsOverloadedSearch extends SearchConfigurationImpl {
-	int maxAttrs; 
+	/*int maxAttrs; 
 	
 	@Override
 	public void resolveOptions(EList<SearchResultOptionValue> values) {
@@ -37,10 +32,12 @@ public class AttrsOverloadedSearch extends SearchConfigurationImpl {
 			}
 			
 		}
-	}
+	}*/
 	
 	@Override
 	public void search(SearchResult search) {
+		int maxAttrs = (int) search.getOptionValue("maxattrs");
+		
 		SemanticGroup semanticGroup = search.createSemanticGroup("no_class_overloaded", "No class is overloaded with attributes.");
 
 		for(Resource resource : search.getResources()){

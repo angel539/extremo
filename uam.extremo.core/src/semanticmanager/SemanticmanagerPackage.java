@@ -288,13 +288,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int REPOSITORY__RESOURCES = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Project</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY__PROJECT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Repository</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int REPOSITORY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Repository</em>' class.
@@ -550,13 +559,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEMANTIC_NODE__RESOURCE_FROM = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_NODE__ABSTRACT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Semantic Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int SEMANTIC_NODE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Semantic Node</em>' class.
@@ -1086,22 +1104,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_CONFIGURATION___SEARCH__SEARCHRESULT = 1;
 
 	/**
-	 * The operation id for the '<em>Resolve Options</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH_CONFIGURATION___RESOLVE_OPTIONS__ELIST = 2;
-
-	/**
 	 * The number of operations of the '<em>Search Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_CONFIGURATION_OPERATION_COUNT = 3;
+	int SEARCH_CONFIGURATION_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.SearchOptionImpl <em>Search Option</em>}' class.
@@ -1205,13 +1214,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT__RESOURCES = 3;
 
 	/**
+	 * The feature id for the '<em><b>Show By Resource</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT__SHOW_BY_RESOURCE = 4;
+
+	/**
 	 * The number of structural features of the '<em>Search Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_FEATURE_COUNT = 4;
+	int SEARCH_RESULT_FEATURE_COUNT = 5;
 
 	/**
 	 * The operation id for the '<em>Create Semantic Group</em>' operation.
@@ -1250,13 +1268,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT___ADD_OBJECT_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_OBJECTPROPERTY = 3;
 
 	/**
+	 * The operation id for the '<em>Get Option Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT___GET_OPTION_VALUE__STRING = 4;
+
+	/**
 	 * The number of operations of the '<em>Search Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPERATION_COUNT = 4;
+	int SEARCH_RESULT_OPERATION_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.SearchResultOptionValueImpl <em>Search Result Option Value</em>}' class.
@@ -1461,6 +1488,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getRepository_Resources();
 
 	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.Repository#getProject <em>Project</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Project</em>'.
+	 * @see semanticmanager.Repository#getProject()
+	 * @see #getRepository()
+	 * @generated
+	 */
+	EAttribute getRepository_Project();
+
+	/**
 	 * Returns the meta object for class '{@link semanticmanager.Resource <em>Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1589,6 +1627,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSemanticNode_ResourceFrom();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.SemanticNode#isAbstract <em>Abstract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Abstract</em>'.
+	 * @see semanticmanager.SemanticNode#isAbstract()
+	 * @see #getSemanticNode()
+	 * @generated
+	 */
+	EAttribute getSemanticNode_Abstract();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.NamedElement <em>Named Element</em>}'.
@@ -1869,16 +1918,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	EOperation getSearchConfiguration__Search__SearchResult();
 
 	/**
-	 * Returns the meta object for the '{@link semanticmanager.SearchConfiguration#resolveOptions(org.eclipse.emf.common.util.EList) <em>Resolve Options</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Resolve Options</em>' operation.
-	 * @see semanticmanager.SearchConfiguration#resolveOptions(org.eclipse.emf.common.util.EList)
-	 * @generated
-	 */
-	EOperation getSearchConfiguration__ResolveOptions__EList();
-
-	/**
 	 * Returns the meta object for class '{@link semanticmanager.SearchOption <em>Search Option</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1976,6 +2015,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getSearchResult_Resources();
 
 	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.SearchResult#isShowByResource <em>Show By Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show By Resource</em>'.
+	 * @see semanticmanager.SearchResult#isShowByResource()
+	 * @see #getSearchResult()
+	 * @generated
+	 */
+	EAttribute getSearchResult_ShowByResource();
+
+	/**
 	 * Returns the meta object for the '{@link semanticmanager.SearchResult#createSemanticGroup(java.lang.String, java.lang.String) <em>Create Semantic Group</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2014,6 +2064,16 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getSearchResult__AddObjectPropertyToSemanticGroup__SemanticGroup_ObjectProperty();
+
+	/**
+	 * Returns the meta object for the '{@link semanticmanager.SearchResult#getOptionValue(java.lang.String) <em>Get Option Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Option Value</em>' operation.
+	 * @see semanticmanager.SearchResult#getOptionValue(java.lang.String)
+	 * @generated
+	 */
+	EOperation getSearchResult__GetOptionValue__String();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.SearchResultOptionValue <em>Search Result Option Value</em>}'.
@@ -2167,6 +2227,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference REPOSITORY__RESOURCES = eINSTANCE.getRepository_Resources();
 
 		/**
+		 * The meta object literal for the '<em><b>Project</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPOSITORY__PROJECT = eINSTANCE.getRepository_Project();
+
+		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.ResourceImpl <em>Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2265,6 +2333,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SEMANTIC_NODE__RESOURCE_FROM = eINSTANCE.getSemanticNode_ResourceFrom();
+
+		/**
+		 * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEMANTIC_NODE__ABSTRACT = eINSTANCE.getSemanticNode_Abstract();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -2487,14 +2563,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		EOperation SEARCH_CONFIGURATION___SEARCH__SEARCHRESULT = eINSTANCE.getSearchConfiguration__Search__SearchResult();
 
 		/**
-		 * The meta object literal for the '<em><b>Resolve Options</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SEARCH_CONFIGURATION___RESOLVE_OPTIONS__ELIST = eINSTANCE.getSearchConfiguration__ResolveOptions__EList();
-
-		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SearchOptionImpl <em>Search Option</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2571,6 +2639,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference SEARCH_RESULT__RESOURCES = eINSTANCE.getSearchResult_Resources();
 
 		/**
+		 * The meta object literal for the '<em><b>Show By Resource</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEARCH_RESULT__SHOW_BY_RESOURCE = eINSTANCE.getSearchResult_ShowByResource();
+
+		/**
 		 * The meta object literal for the '<em><b>Create Semantic Group</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2601,6 +2677,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SEARCH_RESULT___ADD_OBJECT_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_OBJECTPROPERTY = eINSTANCE.getSearchResult__AddObjectPropertyToSemanticGroup__SemanticGroup_ObjectProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Option Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SEARCH_RESULT___GET_OPTION_VALUE__STRING = eINSTANCE.getSearchResult__GetOptionValue__String();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SearchResultOptionValueImpl <em>Search Result Option Value</em>}' class.

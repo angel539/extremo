@@ -12,6 +12,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import semanticmanager.Repository;
 import semanticmanager.SemanticmanagerPackage;
 
@@ -44,6 +46,7 @@ public class RepositoryItemProvider extends NamedElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addResourcesPropertyDescriptor(object);
+			addProjectPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -66,6 +69,28 @@ public class RepositoryItemProvider extends NamedElementItemProvider {
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Project feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addProjectPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Repository_project_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Repository_project_feature", "_UI_Repository_type"),
+				 SemanticmanagerPackage.Literals.REPOSITORY__PROJECT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -106,6 +131,12 @@ public class RepositoryItemProvider extends NamedElementItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Repository.class)) {
+			case SemanticmanagerPackage.REPOSITORY__PROJECT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

@@ -101,9 +101,9 @@
             </annotation>
             <simpleType>
                <restriction base="string">
-                  <enumeration value="entities">
-                  </enumeration>
                   <enumeration value="repositories">
+                  </enumeration>
+                  <enumeration value="searches">
                   </enumeration>
                </restriction>
             </simpleType>

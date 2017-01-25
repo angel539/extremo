@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.SemanticmanagerPackage;
 import semanticmanager.Type;
@@ -218,17 +217,6 @@ public abstract class SearchConfigurationImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void resolveOptions(EList<SearchResultOptionValue> values) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -360,9 +348,6 @@ public abstract class SearchConfigurationImpl extends MinimalEObjectImpl.Contain
 				return null;
 			case SemanticmanagerPackage.SEARCH_CONFIGURATION___SEARCH__SEARCHRESULT:
 				search((SearchResult)arguments.get(0));
-				return null;
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION___RESOLVE_OPTIONS__ELIST:
-				resolveOptions((EList<SearchResultOptionValue>)arguments.get(0));
 				return null;
 		}
 		return super.eInvoke(operationID, arguments);

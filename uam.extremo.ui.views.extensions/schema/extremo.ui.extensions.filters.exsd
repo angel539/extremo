@@ -76,7 +76,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="org.eclipse.jface.viewers.ViewerFilter:"/>
+                  <meta.attribute kind="java" basedOn="uam.extremo.ui.views.extensions.filters.ExtremoViewPartFilter:"/>
                </appinfo>
             </annotation>
          </attribute>

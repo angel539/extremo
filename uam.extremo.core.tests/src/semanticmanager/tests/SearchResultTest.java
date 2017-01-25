@@ -20,6 +20,7 @@ import semanticmanager.SemanticmanagerFactory;
  *   <li>{@link semanticmanager.SearchResult#addSemanticNodeToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.SemanticNode) <em>Add Semantic Node To Semantic Group</em>}</li>
  *   <li>{@link semanticmanager.SearchResult#addDataPropertyToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.DataProperty) <em>Add Data Property To Semantic Group</em>}</li>
  *   <li>{@link semanticmanager.SearchResult#addObjectPropertyToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.ObjectProperty) <em>Add Object Property To Semantic Group</em>}</li>
+ *   <li>{@link semanticmanager.SearchResult#getOptionValue(java.lang.String) <em>Get Option Value</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -142,6 +143,19 @@ public class SearchResultTest extends TestCase {
 	 * @generated
 	 */
 	public void testAddObjectPropertyToSemanticGroup__SemanticGroup_ObjectProperty() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link semanticmanager.SearchResult#getOptionValue(java.lang.String) <em>Get Option Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.SearchResult#getOptionValue(java.lang.String)
+	 * @generated
+	 */
+	public void testGetOptionValue__String() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

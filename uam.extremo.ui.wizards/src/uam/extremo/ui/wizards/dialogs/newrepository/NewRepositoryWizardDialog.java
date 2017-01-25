@@ -1,5 +1,6 @@
 package uam.extremo.ui.wizards.dialogs.newrepository;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.wizard.Wizard;
 
 import semanticmanager.Repository;
@@ -30,15 +31,21 @@ public class NewRepositoryWizardDialog extends Wizard {
 
 	@Override
 	public boolean performFinish() {
-		String repositoryName = newRepositoryPage.getRepositoryName();
-		String repositoryDescription = newRepositoryPage.getRepositoryDescription();
-		Repository repository = AssistantFactory.getInstance().createRepository(repositoryName, repositoryDescription);
+		IProject project = newRepositoryPage.getProjectSelected();
 		
-		String resourceName = newResourcePage.getResourceName();
-		String resourceDescription = newResourcePage.getResourceDescription();
-		String resourceUri = newResourcePage.getResourceUri();
-		//AssistantFactory.getInstance().createResource(repository, resourceName, resourceDescription, resourceUri);
-		
-		return true;
+		if(project != null){
+			String repositoryName = newRepositoryPage.getRepositoryName();
+			String repositoryDescription = newRepositoryPage.getRepositoryDescription();
+			Repository repository = AssistantFactory.getInstance().createRepository(project, repositoryName, repositoryDescription);
+			
+			String resourceName = newResourcePage.getResourceName();
+			String resourceDescription = newResourcePage.getResourceDescription();
+			String resourceUri = newResourcePage.getResourceUri();
+			
+			//AssistantFactory.getInstance().createResource(repository, resourceName, resourceDescription, resourceUri);
+			
+			return true;
+		}
+		return false;
 	}
 }

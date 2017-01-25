@@ -15,7 +15,6 @@ import semanticmanager.SearchConfiguration;
  * <ul>
  *   <li>{@link semanticmanager.SearchConfiguration#addSearchOption(java.lang.String, java.lang.String, semanticmanager.Type) <em>Add Search Option</em>}</li>
  *   <li>{@link semanticmanager.SearchConfiguration#search(semanticmanager.SearchResult) <em>Search</em>}</li>
- *   <li>{@link semanticmanager.SearchConfiguration#resolveOptions(org.eclipse.emf.common.util.EList) <em>Resolve Options</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -81,19 +80,6 @@ public abstract class SearchConfigurationTest extends TestCase {
 	 * @generated
 	 */
 	public void testSearch__SearchResult() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link semanticmanager.SearchConfiguration#resolveOptions(org.eclipse.emf.common.util.EList) <em>Resolve Options</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see semanticmanager.SearchConfiguration#resolveOptions(org.eclipse.emf.common.util.EList)
-	 * @generated
-	 */
-	public void testResolveOptions__EList() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

@@ -1,18 +1,13 @@
 package uam.extremo.search.metrics;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.jface.dialogs.MessageDialog;
-
 import semanticmanager.Resource;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionStringValue;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
 
 public class ChildrenLimitSearch extends SearchConfigurationImpl {
-	int maxChildren;
+	/*int maxChildren;
 	
 	@Override
 	public void resolveOptions(EList<SearchResultOptionValue> values) {
@@ -36,10 +31,12 @@ public class ChildrenLimitSearch extends SearchConfigurationImpl {
 			}
 			
 		}
-	}
+	}*/
 	
 	@Override
 	public void search(SearchResult search) {
+		int maxChildren = (int) search.getOptionValue("maxchildren");
+		
 		SemanticGroup semanticGroup = search.createSemanticGroup("no_class_too_many_children", "No class has too many direct children.");
 	
 		for(Resource resource : search.getResources()){

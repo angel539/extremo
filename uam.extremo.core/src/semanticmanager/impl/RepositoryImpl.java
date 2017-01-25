@@ -4,11 +4,13 @@ package semanticmanager.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import semanticmanager.Repository;
@@ -24,6 +26,7 @@ import semanticmanager.SemanticmanagerPackage;
  * </p>
  * <ul>
  *   <li>{@link semanticmanager.impl.RepositoryImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link semanticmanager.impl.RepositoryImpl#getProject <em>Project</em>}</li>
  * </ul>
  *
  * @generated
@@ -38,6 +41,25 @@ public class RepositoryImpl extends NamedElementImpl implements Repository {
 	 * @ordered
 	 */
 	protected EList<Resource> resources;
+
+	/**
+	 * The default value of the '{@link #getProject() <em>Project</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProject()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PROJECT_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getProject() <em>Project</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProject()
+	 * @generated
+	 * @ordered
+	 */
+	protected String project = PROJECT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,6 +90,27 @@ public class RepositoryImpl extends NamedElementImpl implements Repository {
 			resources = new EObjectContainmentWithInverseEList<Resource>(Resource.class, this, SemanticmanagerPackage.REPOSITORY__RESOURCES, SemanticmanagerPackage.RESOURCE__REPOSITORY_FROM);
 		}
 		return resources;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getProject() {
+		return project;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProject(String newProject) {
+		String oldProject = project;
+		project = newProject;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.REPOSITORY__PROJECT, oldProject, project));
 	}
 
 	/**
@@ -109,6 +152,8 @@ public class RepositoryImpl extends NamedElementImpl implements Repository {
 		switch (featureID) {
 			case SemanticmanagerPackage.REPOSITORY__RESOURCES:
 				return getResources();
+			case SemanticmanagerPackage.REPOSITORY__PROJECT:
+				return getProject();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -126,6 +171,9 @@ public class RepositoryImpl extends NamedElementImpl implements Repository {
 				getResources().clear();
 				getResources().addAll((Collection<? extends Resource>)newValue);
 				return;
+			case SemanticmanagerPackage.REPOSITORY__PROJECT:
+				setProject((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -141,6 +189,9 @@ public class RepositoryImpl extends NamedElementImpl implements Repository {
 			case SemanticmanagerPackage.REPOSITORY__RESOURCES:
 				getResources().clear();
 				return;
+			case SemanticmanagerPackage.REPOSITORY__PROJECT:
+				setProject(PROJECT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -155,8 +206,26 @@ public class RepositoryImpl extends NamedElementImpl implements Repository {
 		switch (featureID) {
 			case SemanticmanagerPackage.REPOSITORY__RESOURCES:
 				return resources != null && !resources.isEmpty();
+			case SemanticmanagerPackage.REPOSITORY__PROJECT:
+				return PROJECT_EDEFAULT == null ? project != null : !PROJECT_EDEFAULT.equals(project);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (project: ");
+		result.append(project);
+		result.append(')');
+		return result.toString();
 	}
 
 } //RepositoryImpl

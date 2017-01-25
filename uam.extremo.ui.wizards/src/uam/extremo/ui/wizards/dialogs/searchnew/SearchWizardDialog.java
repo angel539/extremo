@@ -11,7 +11,6 @@ import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
 import semanticmanager.SearchResultOptionNamedElementListValue;
 import semanticmanager.SearchResultOptionStringValue;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticmanagerFactory;
 
 

@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import semanticmanager.SemanticNode;
@@ -49,6 +50,7 @@ public class SemanticNodeItemProvider extends NamedElementItemProvider {
 
 			addSupersPropertyDescriptor(object);
 			addSubsPropertyDescriptor(object);
+			addAbstractPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -93,6 +95,28 @@ public class SemanticNodeItemProvider extends NamedElementItemProvider {
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Abstract feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAbstractPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SemanticNode_abstract_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SemanticNode_abstract_feature", "_UI_SemanticNode_type"),
+				 SemanticmanagerPackage.Literals.SEMANTIC_NODE__ABSTRACT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -165,6 +189,9 @@ public class SemanticNodeItemProvider extends NamedElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SemanticNode.class)) {
+			case SemanticmanagerPackage.SEMANTIC_NODE__ABSTRACT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case SemanticmanagerPackage.SEMANTIC_NODE__PROPERTIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

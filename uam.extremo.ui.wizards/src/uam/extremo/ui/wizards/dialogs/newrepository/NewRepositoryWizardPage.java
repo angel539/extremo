@@ -1,7 +1,13 @@
 package uam.extremo.ui.wizards.dialogs.newrepository;
 
+import java.util.Iterator;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -14,13 +20,19 @@ import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import uam.extremo.extensions.FormatAssistant;
+import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.wizards.Activator;
 
 public class NewRepositoryWizardPage extends WizardPage {
+	public static final String NATURE_ID = "uam.extremo.ui.nature.extremonature";
+	
 	private Text name;
 	private Text description;
 	private Text path;
 	private Composite container;
+	private CCombo comboProject;
+	
 	
 	public NewRepositoryWizardPage(String pageName, String pageDescription) {
 		super(pageName);
@@ -35,6 +47,24 @@ public class NewRepositoryWizardPage extends WizardPage {
 	    GridLayout layout = new GridLayout();
 	    container.setLayout(layout);
 	    layout.numColumns = 2;
+	    
+	    Label projectLabel = new Label(container, SWT.NONE);
+	    projectLabel.setText("Project");
+	    
+	    comboProject = new CCombo(container, SWT.NONE);
+	   
+	    IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+	    
+	    for (IProject project : projects) {
+	    	try {
+				if(project.isNatureEnabled(NATURE_ID)){
+					comboProject.add(project.getName());
+					comboProject.setData(project.getName(), project);
+				}
+			} catch (CoreException e) {
+				//System.out.println(e.getMessage());
+			}
+		}
 	    
 	    Label nameLabel = new Label(container, SWT.NONE);
 	    nameLabel.setText("Name");
@@ -103,6 +133,8 @@ public class NewRepositoryWizardPage extends WizardPage {
 	    name.setLayoutData(gd);
 	    description.setLayoutData(gd);
 	    path.setLayoutData(gd);
+	    comboProject.setLayoutData(gd);
+	    
 	    setControl(container);
 	    setPageComplete(false);
 	}
@@ -117,5 +149,17 @@ public class NewRepositoryWizardPage extends WizardPage {
 	
 	 public String getRepositoryUri() {
 		 return path.getText();
+	 }
+	 
+	 public IProject getProjectSelected(){
+		 Object object = comboProject.getData(comboProject.getText());
+		 
+		 if (object instanceof IProject) {
+			IProject project = (IProject) object;
+			
+			return project;
+		}
+
+		return null;
 	 }
 }

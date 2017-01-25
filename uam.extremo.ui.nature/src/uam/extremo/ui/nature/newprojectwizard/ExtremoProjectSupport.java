@@ -30,8 +30,8 @@ public class ExtremoProjectSupport {
             String[] pathsDataset = {"model"};
             addToProjectStructure(project.getProject(), pathsDataset);
             
-            String[] pathsDatasetVirtual = {"resources"};
-            addVirtualsToProjectStructure(project.getProject(), pathsDatasetVirtual);
+            /*String[] pathsDatasetVirtual = {"resources"};
+            addVirtualsToProjectStructure(project.getProject(), pathsDatasetVirtual);*/
             
             
             IFolder binFolder = project.getProject().getFolder("bin");
@@ -99,22 +99,14 @@ public class ExtremoProjectSupport {
     private static void createFolder(IFolder folder) throws CoreException {
         IContainer parent = folder.getParent();
         if (parent instanceof IFolder) {
-            createVirtualFolder((IFolder) parent);
+            createFolder((IFolder) parent);
         }
         if (!folder.exists()) {
             folder.create(true, true, null);
         }
     }
     
-    private static void createVirtualFolder(IFolder folder) throws CoreException {
-        IContainer parent = folder.getParent();
-        if (parent instanceof IFolder) {
-            createVirtualFolder((IFolder) parent);
-        }
-        if (!folder.exists()) {
-            folder.create(IResource.VIRTUAL, true, null);
-        }
-    }
+    
  
     private static void addToProjectStructure(IProject newProject, String[] paths) throws CoreException {
         for (String path : paths) {
@@ -131,12 +123,6 @@ public class ExtremoProjectSupport {
      * @param paths
      * @throws CoreException
      */
-    private static void addVirtualsToProjectStructure(IProject newProject, String[] paths) throws CoreException {
-        for (String path : paths) {
-            IFolder etcFolders = newProject.getFolder(path);
-            createVirtualFolder(etcFolders);
-        }
-    }
  
     private static void addNature(IProject project) throws CoreException {
         if (!project.hasNature(ExtremoProjectNature.NATURE_ID)) {

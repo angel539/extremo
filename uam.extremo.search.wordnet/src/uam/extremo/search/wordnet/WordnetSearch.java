@@ -11,13 +11,8 @@ import java.util.TreeMap;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang3.StringUtils;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.jface.dialogs.MessageDialog;
-
 import semanticmanager.Resource;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionStringValue;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
@@ -27,10 +22,6 @@ import uam.extremo.search.wordnet.stemmer.*;
 
 public class WordnetSearch extends SearchConfigurationImpl{
 	TreeNode<String> searchTree;
-	String searchField = "";
-	
-	boolean isFromSupers;
-	boolean isFromEquivs;
 	
 	private int[] weights;
 	
@@ -42,7 +33,7 @@ public class WordnetSearch extends SearchConfigurationImpl{
 	private int maxWeight;
 	private int variance;
 	
-	@Override
+	/*@Override
 	public void resolveOptions(EList<SearchResultOptionValue> values) {
 		for(SearchResultOptionValue value : values){
 			if (value instanceof SearchResultOptionStringValue) {
@@ -72,11 +63,15 @@ public class WordnetSearch extends SearchConfigurationImpl{
 			}
 			
 		}
-	}
+	}*/
 	
 	@Override
 	public void search(SearchResult search) {
-		expand();
+		String searchField = (String) search.getOptionValue("searchfield");
+		boolean isFromSupers = (boolean) search.getOptionValue("equivalents");
+		boolean isFromEquivs = (boolean) search.getOptionValue("super");
+		
+		expand(searchField);
 		
 		Map<String, Integer> searchList = (Map<String, Integer>) getOrderSearchesListByWeight();
 		
@@ -111,14 +106,14 @@ public class WordnetSearch extends SearchConfigurationImpl{
 		}
 	}
 
-	public void expand(){
-		expandLanguageTree();
+	public void expand(String searchField){
+		expandLanguageTree(searchField);
 		cleanRepeatedBranch();
 		cleanSynsetsWithNoSense();
 	}
 	
-	private void expandLanguageTree(){
-		String[] root = StringUtils.splitByWholeSeparator(this.searchField, ",", 0);
+	private void expandLanguageTree(String searchField){
+		String[] root = StringUtils.splitByWholeSeparator(searchField, ",", 0);
 		
 		this.searchTree = new TreeNode<String>();
 		this.searchTree.setData(root);

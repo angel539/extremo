@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link semanticmanager.SemanticNode#getSubs <em>Subs</em>}</li>
  *   <li>{@link semanticmanager.SemanticNode#getProperties <em>Properties</em>}</li>
  *   <li>{@link semanticmanager.SemanticNode#getResourceFrom <em>Resource From</em>}</li>
+ *   <li>{@link semanticmanager.SemanticNode#isAbstract <em>Abstract</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getSemanticNode()
@@ -105,5 +106,31 @@ public interface SemanticNode extends NamedElement {
 	 * @generated
 	 */
 	void setResourceFrom(Resource value);
+
+	/**
+	 * Returns the value of the '<em><b>Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Abstract</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Abstract</em>' attribute.
+	 * @see #setAbstract(boolean)
+	 * @see semanticmanager.SemanticmanagerPackage#getSemanticNode_Abstract()
+	 * @model
+	 * @generated
+	 */
+	boolean isAbstract();
+
+	/**
+	 * Sets the value of the '{@link semanticmanager.SemanticNode#isAbstract <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Abstract</em>' attribute.
+	 * @see #isAbstract()
+	 * @generated
+	 */
+	void setAbstract(boolean value);
 
 } // SemanticNode

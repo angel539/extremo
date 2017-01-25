@@ -1,18 +1,13 @@
 package uam.extremo.search.metrics;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.jface.dialogs.MessageDialog;
-
 import semanticmanager.Resource;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionStringValue;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
 
 public class MoreThanNumberChildrenSearch extends SearchConfigurationImpl {
-	int children;
+	/*int children;
 	
 	@Override
 	public void resolveOptions(EList<SearchResultOptionValue> values) {
@@ -36,10 +31,12 @@ public class MoreThanNumberChildrenSearch extends SearchConfigurationImpl {
 			}
 			
 		}
-	}
+	}*/
 	
 	@Override
 	public void search(SearchResult search) {
+		int children = (int) search.getOptionValue("morethanchildren");
+		
 		SemanticGroup semanticGroup = search.createSemanticGroup("more_than_a_number_of_children", "A class with more than a number of children");
 	
 		for(Resource resource : search.getResources()){

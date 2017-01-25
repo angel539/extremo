@@ -5,14 +5,19 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.command.BasicCommandStack;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
-import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -22,12 +27,15 @@ import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory
 import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ComboBoxViewerCellEditor;
@@ -55,7 +63,15 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IMemento;
+import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IViewSite;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
@@ -73,6 +89,9 @@ import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.views.Activator;
+import uam.extremo.ui.views.dnd.GraphityEditorTransferDropTargetListener;
+import uam.extremo.ui.views.extensions.ExtremoViewPartAction;
+import uam.extremo.ui.views.extensions.filters.ExtremoViewPartFilter;
 import uam.extremo.ui.wizards.dialogs.AddFolderResourceListWizardDialog;
 import uam.extremo.ui.wizards.dialogs.changeToResource.ChangeDescriptorToResourceWizardDialog;
 import uam.extremo.ui.wizards.dialogs.newrepository.NewRepositoryWizardDialog;
@@ -94,6 +113,8 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	protected AdapterFactoryEditingDomain editingDomain;
 	protected ComposedAdapterFactory adapterFactory;
 	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
+	
+	private ISelectionListener pageSelectionListener;
 	
 	class AssistantEditingSupport extends EditingSupport {
 		private ComboBoxViewerCellEditor editor;
@@ -331,12 +352,8 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		viewer.setInput(getViewSite());
 		viewer.getTree().setHeaderVisible(true);
 		
-		
-		
 		viewer.setSelection(new StructuredSelection(AssistantFactory.getInstance().getRepositoryManager()), true);
 		new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
-		
-		
 		
 		TreeViewerColumn nameColumn = new TreeViewerColumn(viewer, SWT.NONE);
 		nameColumn.getColumn().setText("Name");
@@ -358,7 +375,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		
 		initializeEditingDomain();
 		
-		EContentAdapter adapter = new EContentAdapter() {
+		Adapter adapter = new AdapterImpl() {
             public void notifyChanged(Notification notification) {
            		 super.notifyChanged(notification);
            		 refresh();
@@ -377,10 +394,195 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		getSite().setSelectionProvider(viewer);
 		getViewSite().setSelectionProvider(viewer);
 		
+		callActions();
+		//callFilters();
+		callEditors();
+		
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
 		contributeToActionBars();
+		
+		hookPageSelection();
+	}
+	
+	/*class ExtremoViewPartFilterAction extends Action{
+		ExtremoViewPartFilter filter;
+		
+		public void saveState(IMemento memento) {
+			filter.saveState(memento);
+		}
+		
+		public void init(IMemento memento) {
+			filter.init(memento);
+		}
+	}*/
+	
+	private void callFilters() {
+		IExtensionRegistry registry = Platform.getExtensionRegistry();
+		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.FILTER_EXTENSIONS_ID);
+		
+		for(IConfigurationElement extension : extensions) {
+			if(extension.getName().compareTo("filter") == 0){
+				ExtremoViewPartFilter filter;
+				
+				try{
+					filter = (ExtremoViewPartFilter) extension.createExecutableExtension("class");
+					
+					if((filter != null) 
+							&& (extension.getAttribute("view")).equals("repositories")){
+						
+						Action extensionFilterAction = new Action() {
+							public void run() {
+								ViewerFilter[] filters = {filter};
+								viewer.setFilters(filters);
+								viewer.refresh();
+							}
+						};
+						
+						extensionFilterAction.setText(extension.getAttribute("name"));
+						extensionFilterAction.setToolTipText(extension.getAttribute("description"));
+						
+						String namespace = extension.getDeclaringExtension().getNamespaceIdentifier();
+						ImageDescriptor descriptor = null;
+						while((descriptor == null) && (!namespace.isEmpty())){
+							descriptor = Activator.getImageDescriptor(namespace, extension.getAttribute("icon"));
+							
+							if(descriptor == null){
+								if(namespace.contains(".")){
+									namespace = namespace.substring(0, namespace.lastIndexOf("."));
+								}
+								else{
+									namespace = "";
+								}
+							}
+						}
+						
+						if(descriptor != null) extensionFilterAction.setImageDescriptor(descriptor);
+						
+						IActionBars bars = getViewSite().getActionBars();
+						bars.getMenuManager().add(extensionFilterAction);
+					}
+				}
+				catch(CoreException e){
+				}
+			}	
+		}
+	}
+	
+	private void callActions() {
+		IExtensionRegistry registry = Platform.getExtensionRegistry();
+		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.ACTION_EXTENSIONS_ID);
+		MenuManager menuMgr = new MenuManager("#PopupMenu");
+		menuMgr.setRemoveAllWhenShown(true);
+		
+		for(IConfigurationElement extension : extensions){
+			if(extension.getName().compareTo("action")==0){
+				ExtremoViewPartAction action;
+				try{
+					action = (ExtremoViewPartAction) extension.createExecutableExtension("class");
+					action.setText(extension.getAttribute("name"));
+					action.setToolTipText(extension.getAttribute("description"));
+					action.setEditorID(extension.getAttribute("editorId"));
+					action.setViewer(viewer);
+					
+					String namespace = extension.getDeclaringExtension().getNamespaceIdentifier();
+					
+					ImageDescriptor descriptor = null;
+					while((descriptor == null) && (!namespace.isEmpty())){
+						descriptor = Activator.getImageDescriptor(namespace, extension.getAttribute("icon"));
+						
+						if(descriptor == null){
+							if(namespace.contains(".")){
+								namespace = namespace.substring(0, namespace.lastIndexOf("."));
+							}
+							else{
+								namespace = "";
+							}
+						}
+					}
+					
+					if(descriptor != null) action.setImageDescriptor(descriptor);
+					
+					if((action != null) 
+							&& (extension.getAttribute("view")).equals("repositories")){
+						IActionBars bars = getViewSite().getActionBars();
+						if(extension.getAttribute("position").equals("toolbar")){
+							bars.getToolBarManager().add(action);
+						}
+						if(extension.getAttribute("position").equals("menumanager")){
+							menuMgr.addMenuListener(new IMenuListener() {
+								public void menuAboutToShow(IMenuManager manager) {
+									manager.add(action);
+								}
+							});
+							
+						}
+					}
+				}
+				catch(CoreException e){
+				}
+			}	
+		}
+		
+		Menu menu = menuMgr.createContextMenu(viewer.getControl());
+		viewer.getControl().setMenu(menu);
+		getSite().registerContextMenu(menuMgr, viewer);
+	}
+	
+	private void callEditors(){
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+		IEditorPart editor = window.getActivePage().getActiveEditor();
+		
+		if (editor instanceof IDiagramContainerUI){
+			IDiagramContainerUI diagramEditor =  (IDiagramContainerUI) editor;
+			GraphicalViewer graphicalViewer = diagramEditor.getGraphicalViewer();
+
+			IExtensionRegistry registry = Platform.getExtensionRegistry();
+			IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.EDITOR_EXTENSIONS_ID);
+			
+			for(IConfigurationElement extension : extensions){
+				if(extension.getName().compareTo("editordrop") == 0){
+					GraphityEditorTransferDropTargetListener graphityDrop;
+					try{
+						graphityDrop = (GraphityEditorTransferDropTargetListener) extension.createExecutableExtension("class");
+						graphicalViewer.addDropTargetListener(graphityDrop);
+					}
+					catch(CoreException e){
+					}
+				}	
+			}
+		 }
+	}
+	
+	private void hookPageSelection() {
+		pageSelectionListener = new ISelectionListener() {
+			public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+				pageSelectionChanged(part, selection);
+			}
+		};
+		
+		getSite().getPage().addPostSelectionListener(pageSelectionListener);
+	}
+	
+	protected void pageSelectionChanged(IWorkbenchPart part, ISelection selection) {
+		if (part == this)
+			return;
+		if (!(selection instanceof IStructuredSelection))
+			return;
+		
+		IStructuredSelection sel = (IStructuredSelection) selection;
+		viewer.setSelection(sel, true);
+	}
+
+	@Override
+	public void dispose() {
+		super.dispose();
+		
+		if (pageSelectionListener != null)
+			   getSite().getPage().removePostSelectionListener(
+			       pageSelectionListener);
 	}
 	
 	public void refresh() {
@@ -697,7 +899,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 			return super.getAdapter(key);
 		}
 	}
-
 
 	@Override
 	public Viewer getViewer() {

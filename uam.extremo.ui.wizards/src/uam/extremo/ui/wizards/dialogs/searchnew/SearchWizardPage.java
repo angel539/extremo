@@ -62,25 +62,14 @@ public class SearchWizardPage extends WizardPage {
 		scrollcontainer.setExpandHorizontal(true);
 		scrollcontainer.setExpandVertical(true);
 		
-		
-		
-		
-		
-		
-		
         final Composite container = new Composite(scrollcontainer, SWT.NONE);
         container.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
         container.setLayout(new GridLayout(1, true));
 		scrollcontainer.setContent(container);
-		
-		
         
         final Composite selectorContainer = new Composite(container, SWT.NONE);
         selectorContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
         selectorContainer.setLayout(new GridLayout(5, true));
-        
-        
-        
         
 	    Label typeLabel = new Label(selectorContainer, SWT.NONE);
 	    typeLabel.setText("Search Type");
@@ -88,12 +77,7 @@ public class SearchWizardPage extends WizardPage {
 	    
 	    comboSearchType = new CCombo(selectorContainer, SWT.NONE);
 	    comboSearchType.setText("Select search type");
-	    comboSearchType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
-	    
-	    
-	    
-	    
-	    
+	    comboSearchType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));	    
 	    
 		for(SearchConfiguration searchConfiguration : searchConfigurations){
 			String name = ((SearchConfiguration) searchConfiguration).getName();
@@ -103,14 +87,9 @@ public class SearchWizardPage extends WizardPage {
 		
 		scrollcontainer.setMinSize(container.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 		
-		
-		
 		final Composite selectionContainer = new Composite(container, SWT.NONE);
 		selectionContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		selectionContainer.setLayout(new GridLayout(5, true));
-		
-		
-		
 		
 	    comboSearchType.addSelectionListener(new SelectionAdapter() {
 	    	public void widgetSelected(SelectionEvent e) {
@@ -145,14 +124,6 @@ public class SearchWizardPage extends WizardPage {
 		    			
 		    			if(searchOption.getType().equals(Type.SEMANTIC_NODE)){
 		    				createTableViewer(searchOption, listValues);
-		    			}
-		    			
-		    			if(searchOption.getType().equals(Type.DATA_PROPERTY)){
-		    				
-		    			}
-		    			
-		    			if(searchOption.getType().equals(Type.OBJECT_PROPERTY)){
-		    				
 		    			}
 		    		}
 		    		

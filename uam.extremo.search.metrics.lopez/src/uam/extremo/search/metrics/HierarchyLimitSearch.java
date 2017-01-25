@@ -4,19 +4,14 @@ import java.util.Comparator;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.jface.dialogs.MessageDialog;
-
 import semanticmanager.Resource;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionStringValue;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
 
 public class HierarchyLimitSearch extends SearchConfigurationImpl {
-	int maxDepth;
+	/*int maxDepth;
 	
 	@Override
 	public void resolveOptions(EList<SearchResultOptionValue> values) {
@@ -40,10 +35,12 @@ public class HierarchyLimitSearch extends SearchConfigurationImpl {
 			}
 			
 		}
-	}
+	}*/
 	
 	@Override
 	public void search(SearchResult search) {
+		int maxDepth = (int) search.getOptionValue("maxdepth");
+		
 		SemanticGroup semanticGroup = search.createSemanticGroup("no_class_too_deep", "No hierarchy is too deep.");
 	
 		for(Resource resource : search.getResources()){

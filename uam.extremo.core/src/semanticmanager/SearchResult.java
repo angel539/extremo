@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link semanticmanager.SearchResult#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link semanticmanager.SearchResult#getResults <em>Results</em>}</li>
  *   <li>{@link semanticmanager.SearchResult#getResources <em>Resources</em>}</li>
+ *   <li>{@link semanticmanager.SearchResult#isShowByResource <em>Show By Resource</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getSearchResult()
@@ -102,6 +103,32 @@ public interface SearchResult extends EObject {
 	EList<Resource> getResources();
 
 	/**
+	 * Returns the value of the '<em><b>Show By Resource</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Show By Resource</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Show By Resource</em>' attribute.
+	 * @see #setShowByResource(boolean)
+	 * @see semanticmanager.SemanticmanagerPackage#getSearchResult_ShowByResource()
+	 * @model
+	 * @generated
+	 */
+	boolean isShowByResource();
+
+	/**
+	 * Sets the value of the '{@link semanticmanager.SearchResult#isShowByResource <em>Show By Resource</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Show By Resource</em>' attribute.
+	 * @see #isShowByResource()
+	 * @generated
+	 */
+	void setShowByResource(boolean value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
@@ -132,5 +159,13 @@ public interface SearchResult extends EObject {
 	 * @generated
 	 */
 	void addObjectPropertyToSemanticGroup(SemanticGroup semanticGroup, ObjectProperty objectProperty);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Object getOptionValue(String key);
 
 } // SearchResult

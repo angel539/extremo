@@ -1,19 +1,14 @@
 package uam.extremo.search.metrics;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.jface.dialogs.MessageDialog;
-
 import semanticmanager.ObjectProperty;
 import semanticmanager.Resource;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionStringValue;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
 
 public class TooManyRefsSearch extends SearchConfigurationImpl {
-	int refs;
+	/*int refs;
 	
 	@Override
 	public void resolveOptions(EList<SearchResultOptionValue> values) {
@@ -37,10 +32,12 @@ public class TooManyRefsSearch extends SearchConfigurationImpl {
 			}
 			
 		}
-	}
+	}*/
 	
 	@Override
 	public void search(SearchResult search) {
+		int refs = (int) search.getOptionValue("morethanrefs");
+		
 		SemanticGroup semanticGroup = search.createSemanticGroup("class_with_more_than_a_number_refs", "A class with more than a number of references");
 
 		for(Resource resource : search.getResources()){

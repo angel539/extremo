@@ -126,12 +126,4 @@ public interface SearchConfiguration extends EObject {
 	 * @generated
 	 */
 	void search(SearchResult search);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valuesMany="true"
-	 * @generated
-	 */
-	void resolveOptions(EList<SearchResultOptionValue> values);
 } // SearchConfiguration

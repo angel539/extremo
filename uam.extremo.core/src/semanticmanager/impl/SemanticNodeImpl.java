@@ -35,6 +35,7 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getSubs <em>Subs</em>}</li>
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getResourceFrom <em>Resource From</em>}</li>
+ *   <li>{@link semanticmanager.impl.SemanticNodeImpl#isAbstract <em>Abstract</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,6 +70,26 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 	 * @ordered
 	 */
 	protected EList<Property> properties;
+
+	/**
+	 * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ABSTRACT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean abstract_ = ABSTRACT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -171,6 +192,27 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isAbstract() {
+		return abstract_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAbstract(boolean newAbstract) {
+		boolean oldAbstract = abstract_;
+		abstract_ = newAbstract;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.SEMANTIC_NODE__ABSTRACT, oldAbstract, abstract_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -239,6 +281,8 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 				return getProperties();
 			case SemanticmanagerPackage.SEMANTIC_NODE__RESOURCE_FROM:
 				return getResourceFrom();
+			case SemanticmanagerPackage.SEMANTIC_NODE__ABSTRACT:
+				return isAbstract();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -267,6 +311,9 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 			case SemanticmanagerPackage.SEMANTIC_NODE__RESOURCE_FROM:
 				setResourceFrom((Resource)newValue);
 				return;
+			case SemanticmanagerPackage.SEMANTIC_NODE__ABSTRACT:
+				setAbstract((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -291,6 +338,9 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 			case SemanticmanagerPackage.SEMANTIC_NODE__RESOURCE_FROM:
 				setResourceFrom((Resource)null);
 				return;
+			case SemanticmanagerPackage.SEMANTIC_NODE__ABSTRACT:
+				setAbstract(ABSTRACT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -311,8 +361,26 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 				return properties != null && !properties.isEmpty();
 			case SemanticmanagerPackage.SEMANTIC_NODE__RESOURCE_FROM:
 				return getResourceFrom() != null;
+			case SemanticmanagerPackage.SEMANTIC_NODE__ABSTRACT:
+				return abstract_ != ABSTRACT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (abstract: ");
+		result.append(abstract_);
+		result.append(')');
+		return result.toString();
 	}
 
 } //SemanticNodeImpl

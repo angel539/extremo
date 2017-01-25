@@ -3,6 +3,7 @@ package uam.extremo.ui.wizards.dialogs;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.apache.commons.io.FilenameUtils;
 import org.eclipse.jface.wizard.WizardPage;
@@ -96,7 +97,6 @@ public class SelectResourceDescriptorWizardPage extends WizardPage {
 	    	    CCombo comboAssistant = new CCombo(table, SWT.NONE);
 	    	    comboAssistant.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
 	    	    
-	    	    
     			for(IFormatAssistant assistant : assistances){
     				String nameAssistant = ((FormatAssistant) assistant).getNameExtension();
     				comboAssistant.add(nameAssistant);
@@ -132,7 +132,6 @@ public class SelectResourceDescriptorWizardPage extends WizardPage {
 	    	    editor.setEditor(comboAssistant, itemNew, 1);
 	    	    
 	    	    
-	    	    
 	    	    Text description = new Text(table, SWT.NONE);
 	    	    description.setText("");
 	    	    
@@ -151,7 +150,7 @@ public class SelectResourceDescriptorWizardPage extends WizardPage {
 	    	}			
 	    }
 	    
-	    table.addListener(SWT.Selection, new Listener() {
+	    /*table.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				for(TableItem item : table.getItems()){
 					if(!table.getItem(event.index).equals(item)){
@@ -159,6 +158,16 @@ public class SelectResourceDescriptorWizardPage extends WizardPage {
 					}
 				}
 			}
+	    });*/
+	    
+	    table.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                   for(TableItem item : table.getItems()){
+                          if (!Objects.equals(item, event.item)) {//TODO: event.index seems to always return 0, used event.item thus
+                                item.setChecked(false);
+                          }
+                   }
+            }
 	    });
 		
 	    table.setSortColumn(tc1);

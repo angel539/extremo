@@ -8,7 +8,6 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import semanticmanager.DataProperty;
@@ -260,6 +259,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getRepository_Project() {
+		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getResource() {
 		return resourceEClass;
 	}
@@ -361,6 +369,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 */
 	public EReference getSemanticNode_ResourceFrom() {
 		return (EReference)semanticNodeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSemanticNode_Abstract() {
+		return (EAttribute)semanticNodeEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -602,15 +619,6 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getSearchConfiguration__ResolveOptions__EList() {
-		return searchConfigurationEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getSearchOption() {
 		return searchOptionEClass;
 	}
@@ -692,6 +700,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSearchResult_ShowByResource() {
+		return (EAttribute)searchResultEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getSearchResult__CreateSemanticGroup__String_String() {
 		return searchResultEClass.getEOperations().get(0);
 	}
@@ -721,6 +738,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 */
 	public EOperation getSearchResult__AddObjectPropertyToSemanticGroup__SemanticGroup_ObjectProperty() {
 		return searchResultEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSearchResult__GetOptionValue__String() {
+		return searchResultEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -829,6 +855,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 
 		repositoryEClass = createEClass(REPOSITORY);
 		createEReference(repositoryEClass, REPOSITORY__RESOURCES);
+		createEAttribute(repositoryEClass, REPOSITORY__PROJECT);
 
 		resourceEClass = createEClass(RESOURCE);
 		createEAttribute(resourceEClass, RESOURCE__ACTIVE);
@@ -843,6 +870,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEReference(semanticNodeEClass, SEMANTIC_NODE__SUBS);
 		createEReference(semanticNodeEClass, SEMANTIC_NODE__PROPERTIES);
 		createEReference(semanticNodeEClass, SEMANTIC_NODE__RESOURCE_FROM);
+		createEAttribute(semanticNodeEClass, SEMANTIC_NODE__ABSTRACT);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -875,7 +903,6 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEReference(searchConfigurationEClass, SEARCH_CONFIGURATION__RESULTS);
 		createEOperation(searchConfigurationEClass, SEARCH_CONFIGURATION___ADD_SEARCH_OPTION__STRING_STRING_TYPE);
 		createEOperation(searchConfigurationEClass, SEARCH_CONFIGURATION___SEARCH__SEARCHRESULT);
-		createEOperation(searchConfigurationEClass, SEARCH_CONFIGURATION___RESOLVE_OPTIONS__ELIST);
 
 		searchOptionEClass = createEClass(SEARCH_OPTION);
 		createEAttribute(searchOptionEClass, SEARCH_OPTION__TYPE);
@@ -887,10 +914,12 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEReference(searchResultEClass, SEARCH_RESULT__CONFIGURATION);
 		createEReference(searchResultEClass, SEARCH_RESULT__RESULTS);
 		createEReference(searchResultEClass, SEARCH_RESULT__RESOURCES);
+		createEAttribute(searchResultEClass, SEARCH_RESULT__SHOW_BY_RESOURCE);
 		createEOperation(searchResultEClass, SEARCH_RESULT___CREATE_SEMANTIC_GROUP__STRING_STRING);
 		createEOperation(searchResultEClass, SEARCH_RESULT___ADD_SEMANTIC_NODE_TO_SEMANTIC_GROUP__SEMANTICGROUP_SEMANTICNODE);
 		createEOperation(searchResultEClass, SEARCH_RESULT___ADD_DATA_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_DATAPROPERTY);
 		createEOperation(searchResultEClass, SEARCH_RESULT___ADD_OBJECT_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_OBJECTPROPERTY);
+		createEOperation(searchResultEClass, SEARCH_RESULT___GET_OPTION_VALUE__STRING);
 
 		searchResultOptionValueEClass = createEClass(SEARCH_RESULT_OPTION_VALUE);
 		createEReference(searchResultOptionValueEClass, SEARCH_RESULT_OPTION_VALUE__OPTION);
@@ -951,6 +980,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 
 		initEClass(repositoryEClass, Repository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRepository_Resources(), this.getResource(), this.getResource_RepositoryFrom(), "resources", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRepository_Project(), ecorePackage.getEString(), "project", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourceEClass, Resource.class, "Resource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getResource_Active(), ecorePackage.getEBoolean(), "active", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -965,6 +995,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEReference(getSemanticNode_Subs(), this.getSemanticNode(), this.getSemanticNode_Supers(), "subs", null, 0, -1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemanticNode_Properties(), this.getProperty(), this.getProperty_SemanticNodeFrom(), "properties", null, 0, -1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemanticNode_ResourceFrom(), this.getResource(), this.getResource_Nodes(), "resourceFrom", null, 0, 1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSemanticNode_Abstract(), ecorePackage.getEBoolean(), "abstract", null, 0, 1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1004,9 +1035,6 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		op = initEOperation(getSearchConfiguration__Search__SearchResult(), null, "search", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getSearchResult(), "search", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getSearchConfiguration__ResolveOptions__EList(), null, "resolveOptions", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getSearchResultOptionValue(), "values", 0, -1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(searchOptionEClass, SearchOption.class, "SearchOption", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSearchOption_Type(), this.getType(), "type", null, 0, 1, SearchOption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSearchOption_Name(), ecorePackage.getEString(), "name", null, 0, 1, SearchOption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1017,6 +1045,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEReference(getSearchResult_Configuration(), this.getSearchConfiguration(), this.getSearchConfiguration_Results(), "configuration", null, 0, 1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSearchResult_Results(), this.getSemanticGroup(), null, "results", null, 0, -1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSearchResult_Resources(), this.getResource(), null, "resources", null, 0, -1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSearchResult_ShowByResource(), ecorePackage.getEBoolean(), "showByResource", null, 0, 1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getSearchResult__CreateSemanticGroup__String_String(), this.getSemanticGroup(), "createSemanticGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1033,6 +1062,9 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		op = initEOperation(getSearchResult__AddObjectPropertyToSemanticGroup__SemanticGroup_ObjectProperty(), null, "addObjectPropertyToSemanticGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getSemanticGroup(), "semanticGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getObjectProperty(), "objectProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getSearchResult__GetOptionValue__String(), ecorePackage.getEJavaObject(), "getOptionValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(searchResultOptionValueEClass, SearchResultOptionValue.class, "SearchResultOptionValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSearchResultOptionValue_Option(), this.getSearchOption(), null, "option", null, 0, 1, SearchResultOptionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -1,22 +1,16 @@
 package uam.extremo.search.metrics;
 
-import java.util.List;
 import java.util.Objects;
-
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.jface.dialogs.MessageDialog;
 
 import semanticmanager.ObjectProperty;
 import semanticmanager.Resource;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionStringValue;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
 
 public class InRefsOverloadedSearch extends SearchConfigurationImpl {
-	int maxRefs;
+	/*int maxRefs;
 	
 	@Override
 	public void resolveOptions(EList<SearchResultOptionValue> values) {
@@ -40,10 +34,12 @@ public class InRefsOverloadedSearch extends SearchConfigurationImpl {
 			}
 			
 		}
-	}
+	}*/
 	
 	@Override
 	public void search(SearchResult search) {
+		int maxRefs = (int) search.getOptionValue("maxrefs");
+		
 		SemanticGroup semanticGroup = search.createSemanticGroup("no_class_in_refs_overloaded", "No class is referred from too many others.");
 	
 		for(Resource resource : search.getResources()){

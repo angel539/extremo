@@ -12,7 +12,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -30,6 +32,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -119,8 +122,10 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
 		
 		
-		invokeActions();
-		invokeEditors();
+		callActions();
+		callEditors();
+		//callFilters();
+		
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
@@ -141,7 +146,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		initializeEditingDomain();
 		
 		
-		EContentAdapter adapter = new EContentAdapter() {
+		Adapter adapter = new AdapterImpl() {
             public void notifyChanged(Notification notification) {
            		 super.notifyChanged(notification);
            		 refresh();
@@ -249,7 +254,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		return null;
 	}
 
-	private void invokeEditors(){
+	private void callEditors(){
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 		IEditorPart editor = window.getActivePage().getActiveEditor();
@@ -275,7 +280,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		 }
 	}
 	
-	private void invokeActions() {
+	private void callActions() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.ACTION_EXTENSIONS_ID);
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
@@ -309,7 +314,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 					
 					if(descriptor != null) action.setImageDescriptor(descriptor);
 					
-					if((action != null) && (extension.getAttribute("view")).equals("entities")){
+					if((action != null) && (extension.getAttribute("view")).equals("searches")){
 						IActionBars bars = getViewSite().getActionBars();
 						if(extension.getAttribute("position").equals("toolbar")){
 							bars.getToolBarManager().add(action);
@@ -336,6 +341,54 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		getSite().registerContextMenu(menuMgr, viewer);
 	}
 	
+	private void callFilters() {
+		IExtensionRegistry registry = Platform.getExtensionRegistry();
+		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.FILTER_EXTENSIONS_ID);
+		
+		for(IConfigurationElement extension : extensions){
+			if(extension.getName().compareTo("filter")==0){
+				ViewerFilter filter;
+				try{
+					filter = (ViewerFilter) extension.createExecutableExtension("class");
+					
+					if((filter != null) && (extension.getAttribute("view")).equals("searches")){
+						Action extensionFilterAction = new Action() {
+							public void run() {
+								ViewerFilter[] filters = {filter};
+								viewer.setFilters(filters);
+								viewer.refresh();
+							}
+						};
+						
+						extensionFilterAction.setText(extension.getAttribute("name"));
+						extensionFilterAction.setToolTipText(extension.getAttribute("description"));
+						
+						String namespace = extension.getDeclaringExtension().getNamespaceIdentifier();
+						ImageDescriptor descriptor = null;
+						while((descriptor == null) && (!namespace.isEmpty())){
+							descriptor = Activator.getImageDescriptor(namespace, extension.getAttribute("icon"));
+							
+							if(descriptor == null){
+								if(namespace.contains(".")){
+									namespace = namespace.substring(0, namespace.lastIndexOf("."));
+								}
+								else{
+									namespace = "";
+								}
+							}
+						}
+						
+						if(descriptor != null) extensionFilterAction.setImageDescriptor(descriptor);
+						
+						IActionBars bars = getViewSite().getActionBars();
+						bars.getMenuManager().add(extensionFilterAction);
+					}
+				}
+				catch(CoreException e){
+				}
+			}	
+		}
+	}
 	@Override
 	public String getContributorId() {
 		return ID;

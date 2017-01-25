@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link semanticmanager.Repository#getResources <em>Resources</em>}</li>
+ *   <li>{@link semanticmanager.Repository#getProject <em>Project</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getRepository()
@@ -38,5 +39,31 @@ public interface Repository extends NamedElement {
 	 * @generated
 	 */
 	EList<Resource> getResources();
+
+	/**
+	 * Returns the value of the '<em><b>Project</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Project</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Project</em>' attribute.
+	 * @see #setProject(String)
+	 * @see semanticmanager.SemanticmanagerPackage#getRepository_Project()
+	 * @model
+	 * @generated
+	 */
+	String getProject();
+
+	/**
+	 * Sets the value of the '{@link semanticmanager.Repository#getProject <em>Project</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Project</em>' attribute.
+	 * @see #getProject()
+	 * @generated
+	 */
+	void setProject(String value);
 
 } // Repository
