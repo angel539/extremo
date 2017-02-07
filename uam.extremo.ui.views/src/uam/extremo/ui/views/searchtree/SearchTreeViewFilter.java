@@ -4,18 +4,17 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
+import semanticmanager.Constraint;
 import semanticmanager.DataProperty;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Property;
 import semanticmanager.RepositoryManager;
-import semanticmanager.Search;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
-import semanticmanager.TreeNode;
 
 public class SearchTreeViewFilter extends ViewerFilter {
 	@Override
@@ -26,6 +25,7 @@ public class SearchTreeViewFilter extends ViewerFilter {
 				|| element instanceof SearchResultOptionValue
 				|| element instanceof SearchOption
 				|| element instanceof SemanticGroup
+				|| element instanceof Constraint
 				|| element instanceof SemanticNode 
 				|| element instanceof Property
 				|| element instanceof ObjectProperty

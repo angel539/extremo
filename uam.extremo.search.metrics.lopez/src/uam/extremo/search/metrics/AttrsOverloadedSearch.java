@@ -7,33 +7,7 @@ import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
 
-public class AttrsOverloadedSearch extends SearchConfigurationImpl {
-	/*int maxAttrs; 
-	
-	@Override
-	public void resolveOptions(EList<SearchResultOptionValue> values) {
-		for(SearchResultOptionValue value : values){
-			if (value instanceof SearchResultOptionStringValue) {
-				SearchResultOptionStringValue stringValue = (SearchResultOptionStringValue) value;
-				
-				try{
-					switch(stringValue.getOption().getId()){
-						case "maxattrs":
-							maxAttrs = Integer.getInteger(stringValue.getValue());
-							break;
-							
-						default:
-							break;
-					}
-				}
-				catch(Exception e){
-					MessageDialog.openError(null, "Option Validation", "Options couldn't be validated for the search: " + e.getMessage());
-				}
-			}
-			
-		}
-	}*/
-	
+public class AttrsOverloadedSearch extends SearchConfigurationImpl {	
 	@Override
 	public void search(SearchResult search) {
 		int maxAttrs = (int) search.getOptionValue("maxattrs");

@@ -2,6 +2,7 @@ package uam.extremo.ui.views.actions.ecore.action;
 
 import java.io.IOException;
 
+
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -11,7 +12,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -33,7 +36,16 @@ public class CreateClass extends ExtremoViewPartAction {
 		if(selection instanceof TreeSelection){
 			TreeSelection treeSelection = (TreeSelection) selection;
 			
+			if(!treeSelection.isEmpty()){
+				TreePath[] paths = treeSelection.getPaths();
+				
+				for(TreePath path : paths){
+					System.out.println(path.toString());
+				}
+			}
+			
 			Object object = treeSelection.getFirstElement();
+			
 			if (object != null){
 				if(object instanceof SemanticNode){
 					SemanticNode semanticElement = (SemanticNode) object;
@@ -41,34 +53,35 @@ public class CreateClass extends ExtremoViewPartAction {
 					if(semanticElement != null){
 						IEditorInput editorInput = editorPart == null ? null : editorPart.getEditorInput();
 						
-						IPath path = editorInput instanceof FileEditorInput 
-						        ? ((FileEditorInput)editorInput).getPath()
-								        : null;
-						
-						if (path != null){
-							ResourceSet resourceSet = new ResourceSetImpl();
+						if(editorInput != null){
+							IPath path = editorInput instanceof FileEditorInput 
+							        ? ((FileEditorInput)editorInput).getPath()
+									        : null;
 							
-							org.eclipse.emf.common.util.URI uri = org.eclipse.emf.common.util.URI.createFileURI(path.toOSString());
-							resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap(). put( "ecore", new XMIResourceFactoryImpl());
-							Resource resource = resourceSet.createResource(uri);
-							
-							EObject eobject = resource.getContents().get(0);
-							if(eobject instanceof EPackage){
-								createEClass((EPackage)eobject,
-										semanticElement.getName(), false);
-								saveResource(resource);
-								editorPart.isDirty();
+							if (path != null){
+								ResourceSet resourceSet = new ResourceSetImpl();
 								
-								IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-								activePage.closeEditor(editorPart, false);
+								org.eclipse.emf.common.util.URI uri = org.eclipse.emf.common.util.URI.createFileURI(path.toOSString());
+								resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap(). put( "ecore", new XMIResourceFactoryImpl());
+								Resource resource = resourceSet.createResource(uri);
 								
-								if(editorID != null){
-									try {
-										IDE.openEditor(activePage, editorInput, editorID);
-									} catch (PartInitException e) {
-										//Messages.displayGeneralErrorMessage("Refresh editor", "Error refreshing the editor");
-									}
-								}			
+								EObject eobject = resource.getContents().get(0);
+								if(eobject instanceof EPackage){
+									createEClass((EPackage)eobject,
+											semanticElement.getName(), false);
+									saveResource(resource);
+									editorPart.isDirty();
+									
+									IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+									activePage.closeEditor(editorPart, false);
+									
+									if(editorID != null){
+										try {
+											IDE.openEditor(activePage, editorInput, editorID);
+										} catch (PartInitException e) {
+											MessageDialog.openError(null, "Refresh editor", "Error refreshing the editor");										}
+									}			
+								}
 							}
 						}
 					}

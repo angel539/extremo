@@ -1,9 +1,11 @@
+
 package uam.extremo.extensions;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -18,8 +20,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IContributor;
 import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
@@ -32,6 +36,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
+import semanticmanager.ConstraintInterpreter;
 import semanticmanager.NamedElement;
 import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
@@ -45,9 +50,13 @@ import semanticmanager.Type;
 import semanticmanager.impl.SemanticmanagerPackageImpl;
 import semanticmanager.presentation.SemanticmanagerModelWizard;
 
+/**
+ * @author MISO group {Angel.MoraS@uam.es}
+ */
 public class AssistantFactory implements IResourceChangeListener{
 	public static final String ASSISTANT_EXTENSIONS_ID = "extremo.core.extensions.assistant";
 	public static final String SEARCH_EXTENSIONS_ID = "extremo.core.extensions.search";
+	public static final String CONSTRAINT_EXTENSIONS_ID = "extremo.core.extensions.constraintinterpreter";
 	public static final String NATURE_ID = "uam.extremo.ui.nature.extremonature";
 	
 	private static AssistantFactory INSTANCE = null;
@@ -56,6 +65,10 @@ public class AssistantFactory implements IResourceChangeListener{
 	
 	private static NamedElement drawnElement = null;
 
+	/**
+	 * 
+	 * @return The list of available assistants
+	 */
 	public List<IFormatAssistant> getAssistances(){
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(ASSISTANT_EXTENSIONS_ID);
@@ -123,6 +136,10 @@ public class AssistantFactory implements IResourceChangeListener{
 		return false;
 	}
 	
+	/**
+	 * 
+	 * @return The list of available searches extensions
+	 */
 	public List<SearchConfiguration> getSearches() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(SEARCH_EXTENSIONS_ID);
@@ -179,6 +196,60 @@ public class AssistantFactory implements IResourceChangeListener{
 		}
 		return false;
 	}
+	
+	/**
+	 * 
+	 * @return The list of available searches extensions
+	 */
+	public List<ConstraintInterpreter> getConstraintInterpreter() {
+		IExtensionRegistry registry = Platform.getExtensionRegistry();
+		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(CONSTRAINT_EXTENSIONS_ID);
+		
+		for(IConfigurationElement extension : extensions){
+			if(!searchIsOnTheList(extension.getAttribute("id"))){
+				if(extension.getName().compareTo("constraintinterpreter") == 0){
+					ConstraintInterpreter constraintInterpreter;
+					
+					Bundle bundle = null;
+					IContributor contributor = extension.getContributor();
+
+					if (contributor instanceof RegistryContributor) {
+						long id = Long.parseLong(((RegistryContributor) contributor).getActualId());
+						Bundle thisBundle = FrameworkUtil.getBundle(getClass());
+						bundle = thisBundle.getBundleContext().getBundle(id);
+					}
+					else {
+						bundle = Platform.getBundle(contributor.getName());          
+					}
+					
+					try{
+						if(extension.createExecutableExtension("class") instanceof SearchConfiguration){
+							constraintInterpreter = (ConstraintInterpreter) extension.createExecutableExtension("class");
+							
+							((ConstraintInterpreter) constraintInterpreter).setId(extension.getAttribute("id"));
+							((ConstraintInterpreter) constraintInterpreter).setName(extension.getAttribute("name"));
+							
+							repositoryManager.getInterpreters().add(constraintInterpreter);
+						}
+					}
+					catch(CoreException e){
+					}
+				}
+			}		
+		}
+		
+		return repositoryManager.getInterpreters();
+	}
+	
+	private boolean constraintInterpreterIsOnTheList(String attribute) {
+		for(ConstraintInterpreter interpreter : repositoryManager.getInterpreters()){
+			if(interpreter instanceof ConstraintInterpreter){
+				if(((ConstraintInterpreter) interpreter).getId().compareTo(attribute)==0) return true;
+			}
+		}
+		return false;
+	}
+	
 
 	private static void createInstance() {
    	 if (INSTANCE == null) {
@@ -189,13 +260,49 @@ public class AssistantFactory implements IResourceChangeListener{
                     SemanticmanagerPackage.eINSTANCE.getClass();
                     setRepositoryManager(SemanticmanagerFactory.eINSTANCE.createRepositoryManager());
                     setAssistants(new ArrayList<IFormatAssistant>());
+                    
+                    /*EContentAdapter adapter = new EContentAdapter() {
+                        public void notifyChanged(Notification notification) {
+                       		 super.notifyChanged(notification);
+                       		 
+                       		 Object notifier = notification.getNotifier();
+                       		 
+                       		 if (notifier instanceof Resource) {
+								Resource resource = (Resource) notifier;
+								
+								int type = notification.getEventType();
+								
+								switch (type) {
+									case Notification.ADD:
+										modelChanged();
+										break;
+										
+									case Notification.ADD_MANY:
+										
+										break;
+										
+									case Notification.REMOVE:
+										
+										break;
+										
+									case Notification.REMOVE_MANY:
+									
+										break;
+	
+									default:
+										break;
+								}
+                       		 }
+                        }
+                	};
+                	
+                	INSTANCE.getRepositoryManager().eAdapters().add(adapter);*/
                 }
             }
         }
    }
 
 	public AssistantFactory(){
-		//IResourceChangeListener
 		ResourcesPlugin.getWorkspace().addResourceChangeListener (this, IResourceChangeEvent.POST_CHANGE);
 	}
 	
@@ -251,7 +358,6 @@ public class AssistantFactory implements IResourceChangeListener{
 	}
 	
 	public void search(SearchResult search) {
-		search.getConfiguration().resolveOptions(search.getValues());
 		search.getConfiguration().search(search);
 	}
 
@@ -263,16 +369,38 @@ public class AssistantFactory implements IResourceChangeListener{
 		AssistantFactory.repositoryManager = repositoryManager;
 	}
 	
-	public Repository createRepository(String name, String description){
+	public Repository createRepository(IProject project, String name, String description){
 		Repository repository = SemanticmanagerFactory.eINSTANCE.createRepository();
 		repository.setName(name);
 		repository.setDescription(description);
+		repository.setProject(project.getName());
+		
+		try {
+			addVirtualsToProjectStructure(project, name);
+		} catch (CoreException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		repositoryManager.getRepositories().add(repository);
 		return repository;
 	}
 	
-	public Resource createResourceDescriptor(Repository repository, String name, String description, String uri){
+    private static void addVirtualsToProjectStructure(IProject project, String path) throws CoreException {
+    	IFolder repoFolder = project.getFolder(path);
+    	createVirtualFolder(repoFolder);
+    }
+    
+    private static void createVirtualFolder(IFolder folder) throws CoreException {
+        IContainer parent = folder.getParent();
+        if (parent instanceof IFolder) {
+            createVirtualFolder((IFolder) parent);
+        }
+        if (!folder.exists()) {
+            folder.create(IResource.VIRTUAL, true, null);
+        }
+    }
+	
+	public Resource createResourceDescriptor(Repository repository, String name, String description, String uri) throws CoreException{
 		Resource resource = SemanticmanagerFactory.eINSTANCE.createResource();
 		resource.setName(name);
 		resource.setDescription(description);
@@ -290,16 +418,9 @@ public class AssistantFactory implements IResourceChangeListener{
 					
 					if(loaded){
 						for(SemanticNode node : resource.getNodes()){
-							//assistant.toDataProperty(node);
 							toDataThread(assistant, node);
-							
-							//assistant.toObjectProperty(node);
 							toObjectThread(assistant, node);
-							
-							//assistant.toSuper(node);
 							toSuperThread(assistant, node);
-							
-							//assistant.toSub(node);
 						}
 					}
 					break loop;
@@ -307,11 +428,22 @@ public class AssistantFactory implements IResourceChangeListener{
 			}
 		}
 		
+		String projectName = repository.getProject();
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+		
+		if(project != null){
+			IFolder folder = project.getFolder(repository.getName());
+			IFile child = folder.getFile(name);
+			
+			IPath location = new Path(uri);
+			child.createLink(location, IResource.FILE, null);
+		}
+
 		repository.getResources().add(resource);
 		return resource;
 	}
 	
-	public Resource createResourceDescriptor(Repository repository, String name, String description, String uri, IFormatAssistant assistant){
+	public Resource createResourceDescriptor(Repository repository, String name, String description, String uri, IFormatAssistant assistant) throws CoreException{
 		Resource resource = SemanticmanagerFactory.eINSTANCE.createResource();
 		resource.setName(name);
 		resource.setDescription(description);
@@ -321,24 +453,24 @@ public class AssistantFactory implements IResourceChangeListener{
 		resource.setAlive(assistant.load(resource));
 		
 		boolean loaded = assistant.load((Resource) resource);
-		
-		//System.out.println("el descriptor ha sido... " + loaded);
-		
+	
 		if(loaded){
 			for(SemanticNode node : resource.getNodes()){
-				//System.out.println("recorriendo descriptores... " + node);
-
 				assistant.toDataProperty(node);
-				//toDataThread(assistant, node);
-				
 				assistant.toObjectProperty(node);
-				//toObjectThread(assistant, node);
-				
 				assistant.toSuper(node);
-				//toSuperThread(assistant, node);
-				
-				//assistant.toSub(node);
 			}
+		}
+		
+		String projectName = repository.getProject();
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+		
+		if(project != null){
+			IFolder folder = project.getFolder(repository.getName());
+			IFile child = folder.getFile(name);
+			
+			IPath location = new Path(uri);
+			child.createLink(location, IResource.FILE, null);
 		}
 		
 		repository.getResources().add(resource);
@@ -356,9 +488,7 @@ public class AssistantFactory implements IResourceChangeListener{
 				if(loaded){
 					for(SemanticNode node : resource.getNodes()){
 						assistant.toDataProperty(node);
-						
 						assistant.toObjectProperty(node);
-						
 						assistant.toSuper(node);
 					}
 				}
@@ -367,7 +497,7 @@ public class AssistantFactory implements IResourceChangeListener{
 		}
 	}
 	
-	public Resource createResource(Repository repository, Resource descriptor, String name, String description, String uri){
+	public Resource createResource(Repository repository, Resource descriptor, String name, String description, String uri) throws CoreException{
 		Resource resource = SemanticmanagerFactory.eINSTANCE.createResource();
 		resource.setName(name);
 		resource.setDescription(description);
@@ -387,9 +517,7 @@ public class AssistantFactory implements IResourceChangeListener{
 					if(loaded){
 						for(SemanticNode node : resource.getNodes()){
 							assistant.toDataProperty(node);
-	
 							assistant.toObjectProperty(node);
-
 							assistant.toSuper(node);
 						}
 					}
@@ -398,12 +526,22 @@ public class AssistantFactory implements IResourceChangeListener{
 			}
 		}
 		
+		String projectName = repository.getProject();
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+		
+		if(project != null){
+			IFolder folder = project.getFolder(repository.getName());
+			IFile child = folder.getFile(name);
+			
+			IPath location = new Path(uri);
+			child.createLink(location, IResource.FILE, null);
+		}
+		
 		repository.getResources().add(resource);
-		//descriptor.getDescribes().add(resource);
 		return resource;
 	}
 	
-	public Resource createResource(Repository repository, Resource descriptor, String name, String description, String uri, IFormatAssistant assistant){
+	public Resource createResource(Repository repository, Resource descriptor, String name, String description, String uri, IFormatAssistant assistant) throws CoreException{
 		Resource resource = SemanticmanagerFactory.eINSTANCE.createResource();
 		resource.setName(name);
 		resource.setDescription(description);
@@ -418,11 +556,20 @@ public class AssistantFactory implements IResourceChangeListener{
 		if(loaded){
 			for(SemanticNode node : resource.getNodes()){
 				assistant.toDataProperty(node);
-
 				assistant.toObjectProperty(node);
-
 				assistant.toSuper(node);
 			}
+		}
+		
+		String projectName = repository.getProject();
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+		
+		if(project != null){
+			IFolder folder = project.getFolder(repository.getName());
+			IFile child = folder.getFile(name);
+			
+			IPath location = new Path(uri);
+			child.createLink(location, IResource.FILE, null);
 		}
 		
 		repository.getResources().add(resource);
@@ -430,10 +577,10 @@ public class AssistantFactory implements IResourceChangeListener{
 	}
 	
 	public void save(){
-		WizardDialog wizardDialog = new WizardDialog(null, new SemanticmanagerModelWizard(AssistantFactory.getInstance().getRepositoryManager(), Activator.getDefault().getWorkbench(), new StructuredSelection()));
+		/*WizardDialog wizardDialog = new WizardDialog(null, new SemanticmanagerModelWizard(AssistantFactory.getInstance().getRepositoryManager(), Activator.getDefault().getWorkbench(), new StructuredSelection()));
 		if (wizardDialog.open() == Window.OK) {
 			System.out.println("todo ok");
-		}
+		}*/
 		
 		
 		/*String path = null;
@@ -477,7 +624,6 @@ public class AssistantFactory implements IResourceChangeListener{
 	        }
 		};
 	
-		// Start the Job
 		job.schedule();
 	}
 	
@@ -507,6 +653,10 @@ public class AssistantFactory implements IResourceChangeListener{
 		job.schedule();
 	}
 
+	public static void modelChanged() {
+		//System.out.println("model changed... en assistant");
+	}
+	
 	//from IResourceChangeListener
 	@Override
 	public void resourceChanged(IResourceChangeEvent event) {
@@ -515,11 +665,17 @@ public class AssistantFactory implements IResourceChangeListener{
 				public boolean visit(IResourceDelta delta) throws CoreException{
 					IResource resource = delta.getResource();
 					
-					if (resource instanceof IFile) {
-						IFile file = (IFile) resource;
+					if (resource instanceof IWorkspaceRoot) {
+						IWorkspaceRoot workspace = (IWorkspaceRoot) resource;
+						
+						System.out.println("workspace: " + workspace);
+					}
+					
+					if (resource instanceof IProject) {
+						IProject project = (IProject) resource;
+						
+						if(project.isNatureEnabled(NATURE_ID)){
 
-						if(file.getProject().isNatureEnabled(NATURE_ID)){
-							
 						}
 					}
 					
@@ -531,18 +687,24 @@ public class AssistantFactory implements IResourceChangeListener{
 						}
 					}
 					
-					if (resource instanceof IProject) {
-						IProject project = (IProject) resource;
-						
-						if(project.isNatureEnabled(NATURE_ID)){
+					if (resource instanceof IFile) {
+						IFile file = (IFile) resource;
 
+						if(file.getProject().isNatureEnabled(NATURE_ID)){
+							switch (delta.getKind()) {
+								/*case IResourceDelta.ADDED:
+									break;
+									
+								case IResourceDelta.REMOVED:
+									break;*/
+								case IResourceDelta.CHANGED:
+									System.out.println("Resource CHANGED: " + resource);
+									break;
+									
+								default:
+									break;
+							}
 						}
-					}
-					
-					if (resource instanceof IWorkspaceRoot) {
-						IWorkspaceRoot workspace = (IWorkspaceRoot) resource;
-						
-						System.out.println("workspace: " + workspace);
 					}
 					
 					StringBuffer buf = new StringBuffer(80);

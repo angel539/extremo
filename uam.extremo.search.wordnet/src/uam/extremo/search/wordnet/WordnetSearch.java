@@ -1,393 +1,105 @@
 package uam.extremo.search.wordnet;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.TreeMap;
 import java.util.Map.Entry;
 
-import org.apache.commons.lang3.StringUtils;
+import semanticmanager.DataProperty;
+import semanticmanager.NamedElement;
+import semanticmanager.ObjectProperty;
 import semanticmanager.Resource;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
 
-import uam.extremo.search.wordnet.utils.*;
 import uam.extremo.search.wordnet.stemmer.*;
 
 public class WordnetSearch extends SearchConfigurationImpl{
-	TreeNode<String> searchTree;
-	
-	private int[] weights;
-	
-	private int relevanceR1;
-	private int relevanceR2;
-	private int relevanceR3;
-	private int relevanceR4;
-	
-	private int maxWeight;
-	private int variance;
-	
-	/*@Override
-	public void resolveOptions(EList<SearchResultOptionValue> values) {
-		for(SearchResultOptionValue value : values){
-			if (value instanceof SearchResultOptionStringValue) {
-				SearchResultOptionStringValue stringValue = (SearchResultOptionStringValue) value;
-				
-				try{
-					switch(stringValue.getOption().getId()){
-						case "searchfield":
-							searchField = stringValue.getValue();
-							break;
-							
-						case "equivalents":
-							isFromEquivs = Boolean.getBoolean(stringValue.getValue());
-							break;
-							
-						case "super":
-							isFromSupers = Boolean.getBoolean(stringValue.getValue());
-							break;
-							
-						default:
-							break;
-					}
-				}
-				catch(Exception e){
-					MessageDialog.openError(null, "Option Validation", "Options couldn't be validated for the search");
-				}
-			}
-			
-		}
-	}*/
+	private WordnetSearchExpansionTree expansionTree;
+
+	public WordnetSearch(){
+		expansionTree = new WordnetSearchExpansionTree();
+	}
 	
 	@Override
 	public void search(SearchResult search) {
-		String searchField = (String) search.getOptionValue("searchfield");
-		boolean isFromSupers = (boolean) search.getOptionValue("equivalents");
-		boolean isFromEquivs = (boolean) search.getOptionValue("super");
-		
-		expand(searchField);
-		
-		Map<String, Integer> searchList = (Map<String, Integer>) getOrderSearchesListByWeight();
-		
-		for(Resource resource : search.getResources()){
-			if(resource.isActive()){
-				SemanticGroup semanticGroup = search.createSemanticGroup(resource.getName(), resource.getDescription());
-				
-				iterator:
-				for(SemanticNode semanticNode : resource.getNodes()){
-					for(Entry<String, Integer> word : searchList.entrySet()){
-						if(semanticNode.getName().compareTo(word.getKey()) == 0){
-							search.addSemanticNodeToSemanticGroup(semanticGroup, semanticNode);
-							continue iterator;
-						}
-						
-						List<String> wordInNameClass = LangUtils.cleanAndSeparateWords(semanticNode.getName());
-						for(String wordInName : wordInNameClass){	
-							if(wordInName.compareTo(word.getKey()) == 0){
-								search.addSemanticNodeToSemanticGroup(semanticGroup, semanticNode);
-								continue iterator;
-							}
-							else{
-								if(LangUtils.haveTheSameStem(wordInName, word.getKey())){
-									search.addSemanticNodeToSemanticGroup(semanticGroup, semanticNode);
-									continue iterator;
-								}
-							}
-						}
-					}
-				}
-			}	
-		}
-	}
-
-	public void expand(String searchField){
-		expandLanguageTree(searchField);
-		cleanRepeatedBranch();
-		cleanSynsetsWithNoSense();
-	}
-	
-	private void expandLanguageTree(String searchField){
-		String[] root = StringUtils.splitByWholeSeparator(searchField, ",", 0);
-		
-		this.searchTree = new TreeNode<String>();
-		this.searchTree.setData(root);
-		this.searchTree.setKind(0);
-		
-		for(String dataR : root){
-			TreeNode<String> dataRChild = new TreeNode<String>();
-			String[] dataRSeparated = StringUtils.splitByCharacterTypeCamelCase(dataR);
+		if((search.getOptionValue("searchfield") != null) && (search.getOptionValue("searchfield") instanceof String)){
 			
-			List<String> dataRSeparatedNoBlank = new ArrayList<String>();
-			for(String dataRSep : dataRSeparated){
-				if((!StringUtils.isWhitespace(dataRSep)) && (!StringUtils.isBlank(dataRSep))){
-					dataRSeparatedNoBlank.add(StringUtils.capitalize(dataRSep));
-				}
-			}	
+			String searchField = (String) search.getOptionValue("searchfield");
+			List<NamedElement> namedElements = new ArrayList<NamedElement>();
 			
-			dataRChild.setData(dataRSeparatedNoBlank.toArray(new String[dataRSeparatedNoBlank.size()]));
-			dataRChild.setKind(1);
-			
-			if(dataRChild.getData().length > 1){
-				for(String s : dataRChild.getData()){
-					TreeNode<String> atomicWordNode = new TreeNode<String>();
-					atomicWordNode.setData(new String[]{s});
-					atomicWordNode.setKind(2);
-					dataRChild.getChildren().add(atomicWordNode);
-					
-					Map<String, Tuple<String[], String[]>> wordnetSynsetMap = Wordnet.getInstance().getSynonymsProposal(s);
-					
-					for(Entry<String, Tuple<String[], String[]>> entry : wordnetSynsetMap.entrySet()){
-						TreeNode<String> synsetWordnetNode = new TreeNode<String>();
-						synsetWordnetNode.setDefinition(entry.getKey());
-						
-						synsetWordnetNode.setData(entry.getValue().x);
-						synsetWordnetNode.setUsages(entry.getValue().y);
-						
-						synsetWordnetNode.setCountWordnet(entry.getValue().weight);
-						
-						synsetWordnetNode.setKind(3);
-						atomicWordNode.getChildren().add(synsetWordnetNode);
-					}
-				}
+			if(search.getApplyOnElements().isEmpty()){
+				for(Resource resource : search.getResources()){
+					namedElements.addAll(resource.getNodes());
+				}	
 			}
 			else{
-				if(dataRChild.getData().length > 0){
-					dataRChild.setKind(2);
-					
-					Map<String, Tuple<String[], String[]>> wordnetSynsetMap = Wordnet.getInstance().getSynonymsProposal(dataRChild.getData()[0]);
-					
-					for(Entry<String, Tuple<String[], String[]>> entry : wordnetSynsetMap.entrySet()){
-						TreeNode<String> synsetWordnetNode = new TreeNode<String>();
-						synsetWordnetNode.setDefinition(entry.getKey());
-						synsetWordnetNode.setData(entry.getValue().x);
-						synsetWordnetNode.setUsages(entry.getValue().y);
-						synsetWordnetNode.setCountWordnet(entry.getValue().weight);
-						
-						synsetWordnetNode.setKind(3);
-						dataRChild.getChildren().add(synsetWordnetNode);
-					}
-				}
-				else{
-					dataRChild.setKind(-1);
-				}
+				namedElements = search.getApplyOnElements();
 			}
-
-			this.searchTree.getChildren().add(dataRChild);
+			
+			expansionTree.expand(searchField);
+			Map<String, Integer> searchList = (Map<String, Integer>) expansionTree.getOrderSearchesListByWeight();
+			
+			SemanticGroup resources = search.createSemanticGroup(searchField + " in resources", searchField + " in resources");
+			SemanticGroup nodes = search.createSemanticGroup(searchField + " in semantic nodes", searchField + " in semantic nodes");
+			SemanticGroup dataProperties = search.createSemanticGroup(searchField + " in data properties", searchField + " in data properties");
+			SemanticGroup references = search.createSemanticGroup(searchField + " in references", searchField + " in references");
+			
+			namedElements.forEach(
+					element -> {
+						if(element instanceof Resource){
+							Resource resource = (Resource) element;
+							
+							resource.eAllContents().forEachRemaining(
+								content -> {
+									compareKeys(search, content, resources, searchList);
+								}
+							);							
+						}
+						if(element instanceof SemanticNode){
+							SemanticNode semanticNode = (SemanticNode) element;
+							
+							semanticNode.eAllContents().forEachRemaining(
+									content -> {
+										compareKeys(search, content, nodes, searchList);
+									}
+								);
+						}
+						if(element instanceof DataProperty){
+							compareKeys(search, element, dataProperties, searchList);
+						}
+						if(element instanceof ObjectProperty){
+							compareKeys(search, element, resources, searchList);
+							compareKeys(search, ((ObjectProperty) element).getRange(), references, searchList);
+						}
+					}
+			);
 		}
 	}
-	
-	private synchronized void cleanRepeatedBranch(){
-		for(TreeNode<String> child : this.searchTree.getChildren()) 
-			cleanRepeatedBranch(this.searchTree, child);
-	}
-	
-	private void cleanRepeatedBranch(TreeNode<String> parent, TreeNode<String> child) {
-		if((child.getKind() == 1) || (child.getKind() == 2)){
-			for(TreeNode<String> sibling : parent.getChildren()){
-				if(!sibling.equals(child)){
-					if(Arrays.equals(sibling.getData(), child.getData())){
-						sibling.setValid(false);
-						child.setValid(true);
-					}
+
+	private void compareKeys(SearchResult search, Object element, SemanticGroup semanticGroup, Map<String, Integer> searchList) {
+		if((element != null) && (element instanceof NamedElement)){
+			NamedElement namedElement = (NamedElement) element;
+			
+			for(Entry<String, Integer> word : searchList.entrySet()){
+				if(namedElement.getName().compareTo(word.getKey()) == 0){
+					search.addNamedElementToSemanticGroup(semanticGroup, namedElement);
 				}
 				
-				for(TreeNode<String> nephew : sibling.getChildren()){
-					if(Arrays.equals(nephew.getData(), child.getData())){
-						child.setValid(false);
-						nephew.setValid(true);
+				List<String> wordInNameClass = LangUtils.cleanAndSeparateWords(namedElement.getName());
+				for(String wordInName : wordInNameClass){	
+					if(wordInName.compareTo(word.getKey()) == 0){
+						search.addNamedElementToSemanticGroup(semanticGroup, namedElement);
 					}
-				}
-			}
-		}
-		
-		for(TreeNode<String> grandchild : child.getChildren()) cleanRepeatedBranch(child, grandchild);
-	}
-	
-
-    private synchronized void cleanSynsetsWithNoSense() {
-    	for(TreeNode<String> child : this.searchTree.getChildren()) 
-    		cleanSynsetsWithNoSense(this.searchTree, child);
-	}
-    
-	private void cleanSynsetsWithNoSense(TreeNode<String> parent, TreeNode<String> child){
-   	 	if((child == null) || (!child.isValid())) return;
-   	 	
-   	 	calculateWeights();
-   	 	
-   	 	if(child.getKind() == 2){
-	   	 	for(TreeNode<String> sibling : parent.getChildren()){
-				if((!sibling.equals(child)) && (sibling.getKind() == 2)){
-					for(String data : sibling.getData()){
-
-						for(TreeNode<String> grandchild : child.getChildren()){
-							String[] synsets = grandchild.getData();
-							if(synsets != null){
-								for(String synset : synsets){
-									if(StringUtils.containsIgnoreCase(synset, data)){
-										grandchild.addPoints(weights[0]);
-									}
-									
-									if(!Wordnet.getInstance().getDerivation(synset, data).isEmpty()){
-										grandchild.addPoints(weights[1]);
-									}
-								}
-							}
-							
-							String definition = grandchild.getDefinition();
-							if(definition != null){
-								String[] sppliteds = StringUtils.split(definition, " ");
-								for(String spplited : sppliteds){
-									if(StringUtils.containsOnly(StringUtils.capitalize(StringUtils.deleteWhitespace(spplited)), data)){
-										grandchild.addPoints(weights[2]);
-									}
-								}
-							}
-							
-							String[] examples = grandchild.getUsages();
-							for(String example : examples){
-								if(example != null){
-									String[] sppliteds = StringUtils.split(example, " ");
-									for(String spplited : sppliteds){
-										if(StringUtils.containsOnly(StringUtils.capitalize(StringUtils.deleteWhitespace(spplited)), data)){
-											grandchild.addPoints(weights[3]);
-										}
-									}
-								}
-							}
-						}
-					}
-					for(TreeNode<String> cousin : sibling.getChildren()){
-						for(String data : cousin.getData()){
-							for(TreeNode<String> grandchild : child.getChildren()){
-								String[] synsets = grandchild.getData();
-								if(synsets != null){
-									for(String synset : synsets){
-										if(StringUtils.containsIgnoreCase(synset, data)){
-											grandchild.addPoints(weights[0]*(variance/100));
-										}
-										
-										if(!Wordnet.getInstance().getDerivation(synset, data).isEmpty()){
-											grandchild.addPoints(weights[1]*(variance/100));
-										}
-									}
-								}
-								
-								String definition = grandchild.getDefinition();
-								if(definition != null){
-									String[] sppliteds = StringUtils.split(definition, " ");
-									for(String spplited : sppliteds){
-										if(StringUtils.containsOnly(StringUtils.capitalize(StringUtils.deleteWhitespace(spplited)), data)){
-											grandchild.addPoints(weights[2]*(variance/100));
-										}
-									}
-								}
-								
-								String[] examples = grandchild.getUsages();
-								for(String example : examples){
-									if(example != null){
-										String[] sppliteds = StringUtils.split(example, " ");
-										for(String spplited : sppliteds){
-											if(StringUtils.containsOnly(StringUtils.capitalize(StringUtils.deleteWhitespace(spplited)), data)){
-												grandchild.addPoints(weights[3]*(variance/100));
-											}
-										}
-									}
-								}
-							}
+					else{
+						if(LangUtils.haveTheSameStem(wordInName, word.getKey())){
+							search.addNamedElementToSemanticGroup(semanticGroup, namedElement);
 						}
 					}
 				}
 			}
-   	 	}
-   	 	
-   	 	for(TreeNode<String> grandchild : child.getChildren()) cleanSynsetsWithNoSense(child, grandchild);
-   }
-	
-	public synchronized Map<String, Integer> getOrderSearchesListByWeight() {
-		Map<String, Integer> searches = new TreeMap<String, Integer>();
-		
-		for(TreeNode<String> child : this.searchTree.getChildren()){
-			for(String data : child.getData()){
-		    	if(!isOnTheList(searches, data)){
-		    		searches.put(data, maxWeight*10);
-		    	}
-		    }
 		}
-		
-		PriorityQueue<TreeNode<String>> queue = getOrderSearchesListByWeightHelper(this.searchTree);
-		Iterator<TreeNode<String>> iter = queue.iterator();
-		
-		while (iter.hasNext()) {
-		    TreeNode<String> current = iter.next();
-		    for(String data : current.getData()){
-		    	if(!isOnTheList(searches, data)){
-		    		searches.put(data, current.getPoints());
-		    	}
-		    }
-		}
-		
-		return searches;
 	}
-	
-	private boolean isOnTheList(Map<String, Integer> searches, String data) {
-		for(Entry<String, Integer> s : searches.entrySet()){
-			if(StringUtils.capitalize(s.getKey()).compareTo(StringUtils.capitalize(data)) == 0) return true;
-		}
-		return false;
-	}
-
-	private PriorityQueue<TreeNode<String>> getOrderSearchesListByWeightHelper(TreeNode<String> root){
-		TreeNodeSynsetComparator comparator = new TreeNodeSynsetComparator();
-		PriorityQueue<TreeNode<String>> queue = new PriorityQueue<TreeNode<String>>(comparator);
-		
-		if(root == null) return queue;
-		if(!root.isValid()) return queue;
-		if(root.getKind() == 3){
-			if((root.getCountWordnet() > 0) || (root.getPoints() > 0)){
-				queue.add(root); 
-			}
-		}
-		
-		for(TreeNode<String> child : root.getChildren()) queue.addAll(getOrderSearchesListByWeightHelper(child));
-		
-		return queue;
-	}
-	
-	public void calculateWeights() {
-		weights = new int[4];
-		weights[0] = (relevanceR1 * maxWeight) / 10;
-		weights[1] = (relevanceR2 * maxWeight) / 10;
-		weights[2] = (relevanceR3 * maxWeight) / 10;
-		weights[3] = (relevanceR4 * maxWeight) / 10;
-	}
-	
-	class TreeNodeSynsetComparator implements Comparator<TreeNode<String>>{
-		@Override
-		public int compare(TreeNode<String> node1, TreeNode<String> node2) {
-			if(node1.getPoints() > node2.getPoints()){
-				return 1;
-			}
-			if(node1.getPoints() < node2.getPoints()){
-				return -1;
-			}
-			if(node1.getPoints() == node2.getPoints()){
-				if(node1.getCountWordnet() > node2.getCountWordnet()){
-					return 1;
-				}
-				if(node1.getCountWordnet() < node2.getCountWordnet()){
-					return -1;
-				}
-			}
-		
-			return 0;
-		}
-		
-	}
-
 }

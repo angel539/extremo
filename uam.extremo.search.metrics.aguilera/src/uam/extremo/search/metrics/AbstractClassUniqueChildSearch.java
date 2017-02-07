@@ -21,5 +21,4 @@ public class AbstractClassUniqueChildSearch extends SearchConfigurationImpl {
 			}
 		}
 	}
-
 }

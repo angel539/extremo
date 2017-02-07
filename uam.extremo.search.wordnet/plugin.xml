@@ -12,21 +12,6 @@
                name="Search"
                type="String">
          </option>
-         <option
-               id="equivalents"
-               name="From equivalents"
-               type="Boolean">
-         </option>
-         <option
-               id="supers"
-               name="From supers"
-               type="Boolean">
-         </option>
-         <option
-               id="semanticNode"
-               name="SemanticNode"
-               type="SemanticNode">
-         </option>
 
       </search>
       <search

@@ -67,6 +67,7 @@ public class NamedElementItemProvider
 			addWeightPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addDrawnPropertyDescriptor(object);
+			addConstraintsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -177,6 +178,28 @@ public class NamedElementItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Constraints feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConstraintsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_NamedElement_constraints_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_constraints_feature", "_UI_NamedElement_type"),
+				 SemanticmanagerPackage.Literals.NAMED_ELEMENT__CONSTRAINTS,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

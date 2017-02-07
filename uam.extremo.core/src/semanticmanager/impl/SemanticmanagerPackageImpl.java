@@ -10,6 +10,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import semanticmanager.Constraint;
+import semanticmanager.ConstraintInterpreter;
 import semanticmanager.DataProperty;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
@@ -20,8 +22,6 @@ import semanticmanager.Resource;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionNamedElementListValue;
-import semanticmanager.SearchResultOptionStringValue;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
@@ -132,14 +132,14 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass searchResultOptionStringValueEClass = null;
+	private EClass constraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass searchResultOptionNamedElementListValueEClass = null;
+	private EClass constraintInterpreterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -234,6 +234,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 */
 	public EReference getRepositoryManager_Configurations() {
 		return (EReference)repositoryManagerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRepositoryManager_Interpreters() {
+		return (EReference)repositoryManagerEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -450,6 +459,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 */
 	public EReference getNamedElement_Describes() {
 		return (EReference)namedElementEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNamedElement_Constraints() {
+		return (EReference)namedElementEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -709,6 +727,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSearchResult_ApplyOnElements() {
+		return (EReference)searchResultEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getSearchResult__CreateSemanticGroup__String_String() {
 		return searchResultEClass.getEOperations().get(0);
 	}
@@ -754,6 +781,24 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getSearchResult__AddNamedElementToSemanticGroup__SemanticGroup_NamedElement() {
+		return searchResultEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSearchResult__AddResourceToSemanticGroup__SemanticGroup_Resource() {
+		return searchResultEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSearchResultOptionValue() {
 		return searchResultOptionValueEClass;
 	}
@@ -772,8 +817,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSearchResultOptionStringValue() {
-		return searchResultOptionStringValueEClass;
+	public EAttribute getSearchResultOptionValue_Value() {
+		return (EAttribute)searchResultOptionValueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -781,8 +826,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSearchResultOptionStringValue_Value() {
-		return (EAttribute)searchResultOptionStringValueEClass.getEStructuralFeatures().get(0);
+	public EClass getConstraint() {
+		return constraintEClass;
 	}
 
 	/**
@@ -790,8 +835,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSearchResultOptionNamedElementListValue() {
-		return searchResultOptionNamedElementListValueEClass;
+	public EAttribute getConstraint_Key() {
+		return (EAttribute)constraintEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -799,8 +844,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSearchResultOptionNamedElementListValue_Value() {
-		return (EReference)searchResultOptionNamedElementListValueEClass.getEStructuralFeatures().get(0);
+	public EAttribute getConstraint_Value() {
+		return (EAttribute)constraintEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -808,8 +853,62 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSearchResultOptionNamedElementListValue_Condition() {
-		return (EAttribute)searchResultOptionNamedElementListValueEClass.getEStructuralFeatures().get(1);
+	public EReference getConstraint_Elements() {
+		return (EReference)constraintEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConstraint_Interpreter() {
+		return (EReference)constraintEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConstraintInterpreter() {
+		return constraintInterpreterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConstraintInterpreter_Id() {
+		return (EAttribute)constraintInterpreterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConstraintInterpreter_Name() {
+		return (EAttribute)constraintInterpreterEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConstraintInterpreter_Constraints() {
+		return (EReference)constraintInterpreterEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getConstraintInterpreter__Execute__Constraint() {
+		return constraintInterpreterEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -852,6 +951,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		repositoryManagerEClass = createEClass(REPOSITORY_MANAGER);
 		createEReference(repositoryManagerEClass, REPOSITORY_MANAGER__REPOSITORIES);
 		createEReference(repositoryManagerEClass, REPOSITORY_MANAGER__CONFIGURATIONS);
+		createEReference(repositoryManagerEClass, REPOSITORY_MANAGER__INTERPRETERS);
 
 		repositoryEClass = createEClass(REPOSITORY);
 		createEReference(repositoryEClass, REPOSITORY__RESOURCES);
@@ -880,6 +980,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__DRAWN);
 		createEReference(namedElementEClass, NAMED_ELEMENT__DESCRIPTOR);
 		createEReference(namedElementEClass, NAMED_ELEMENT__DESCRIBES);
+		createEReference(namedElementEClass, NAMED_ELEMENT__CONSTRAINTS);
 
 		propertyEClass = createEClass(PROPERTY);
 		createEReference(propertyEClass, PROPERTY__SEMANTIC_NODE_FROM);
@@ -915,21 +1016,30 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEReference(searchResultEClass, SEARCH_RESULT__RESULTS);
 		createEReference(searchResultEClass, SEARCH_RESULT__RESOURCES);
 		createEAttribute(searchResultEClass, SEARCH_RESULT__SHOW_BY_RESOURCE);
+		createEReference(searchResultEClass, SEARCH_RESULT__APPLY_ON_ELEMENTS);
 		createEOperation(searchResultEClass, SEARCH_RESULT___CREATE_SEMANTIC_GROUP__STRING_STRING);
 		createEOperation(searchResultEClass, SEARCH_RESULT___ADD_SEMANTIC_NODE_TO_SEMANTIC_GROUP__SEMANTICGROUP_SEMANTICNODE);
 		createEOperation(searchResultEClass, SEARCH_RESULT___ADD_DATA_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_DATAPROPERTY);
 		createEOperation(searchResultEClass, SEARCH_RESULT___ADD_OBJECT_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_OBJECTPROPERTY);
 		createEOperation(searchResultEClass, SEARCH_RESULT___GET_OPTION_VALUE__STRING);
+		createEOperation(searchResultEClass, SEARCH_RESULT___ADD_NAMED_ELEMENT_TO_SEMANTIC_GROUP__SEMANTICGROUP_NAMEDELEMENT);
+		createEOperation(searchResultEClass, SEARCH_RESULT___ADD_RESOURCE_TO_SEMANTIC_GROUP__SEMANTICGROUP_RESOURCE);
 
 		searchResultOptionValueEClass = createEClass(SEARCH_RESULT_OPTION_VALUE);
 		createEReference(searchResultOptionValueEClass, SEARCH_RESULT_OPTION_VALUE__OPTION);
+		createEAttribute(searchResultOptionValueEClass, SEARCH_RESULT_OPTION_VALUE__VALUE);
 
-		searchResultOptionStringValueEClass = createEClass(SEARCH_RESULT_OPTION_STRING_VALUE);
-		createEAttribute(searchResultOptionStringValueEClass, SEARCH_RESULT_OPTION_STRING_VALUE__VALUE);
+		constraintEClass = createEClass(CONSTRAINT);
+		createEAttribute(constraintEClass, CONSTRAINT__KEY);
+		createEAttribute(constraintEClass, CONSTRAINT__VALUE);
+		createEReference(constraintEClass, CONSTRAINT__ELEMENTS);
+		createEReference(constraintEClass, CONSTRAINT__INTERPRETER);
 
-		searchResultOptionNamedElementListValueEClass = createEClass(SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE);
-		createEReference(searchResultOptionNamedElementListValueEClass, SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__VALUE);
-		createEAttribute(searchResultOptionNamedElementListValueEClass, SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__CONDITION);
+		constraintInterpreterEClass = createEClass(CONSTRAINT_INTERPRETER);
+		createEAttribute(constraintInterpreterEClass, CONSTRAINT_INTERPRETER__ID);
+		createEAttribute(constraintInterpreterEClass, CONSTRAINT_INTERPRETER__NAME);
+		createEReference(constraintInterpreterEClass, CONSTRAINT_INTERPRETER__CONSTRAINTS);
+		createEOperation(constraintInterpreterEClass, CONSTRAINT_INTERPRETER___EXECUTE__CONSTRAINT);
 
 		// Create enums
 		typeEEnum = createEEnum(TYPE);
@@ -970,13 +1080,12 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		objectPropertyEClass.getESuperTypes().add(this.getProperty());
 		dataPropertyEClass.getESuperTypes().add(this.getProperty());
 		semanticGroupEClass.getESuperTypes().add(this.getNamedElement());
-		searchResultOptionStringValueEClass.getESuperTypes().add(this.getSearchResultOptionValue());
-		searchResultOptionNamedElementListValueEClass.getESuperTypes().add(this.getSearchResultOptionValue());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(repositoryManagerEClass, RepositoryManager.class, "RepositoryManager", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRepositoryManager_Repositories(), this.getRepository(), null, "repositories", null, 0, -1, RepositoryManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRepositoryManager_Configurations(), this.getSearchConfiguration(), null, "configurations", null, 0, -1, RepositoryManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRepositoryManager_Interpreters(), this.getConstraintInterpreter(), null, "interpreters", null, 0, -1, RepositoryManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(repositoryEClass, Repository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRepository_Resources(), this.getResource(), this.getResource_RepositoryFrom(), "resources", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1005,6 +1114,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEAttribute(getNamedElement_Drawn(), ecorePackage.getEBoolean(), "drawn", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNamedElement_Descriptor(), this.getNamedElement(), this.getNamedElement_Describes(), "descriptor", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNamedElement_Describes(), this.getNamedElement(), this.getNamedElement_Descriptor(), "describes", null, 0, -1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNamedElement_Constraints(), this.getConstraint(), this.getConstraint_Elements(), "constraints", null, 0, -1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyEClass, Property.class, "Property", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProperty_SemanticNodeFrom(), this.getSemanticNode(), this.getSemanticNode_Properties(), "semanticNodeFrom", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1046,6 +1156,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEReference(getSearchResult_Results(), this.getSemanticGroup(), null, "results", null, 0, -1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSearchResult_Resources(), this.getResource(), null, "resources", null, 0, -1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSearchResult_ShowByResource(), ecorePackage.getEBoolean(), "showByResource", null, 0, 1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSearchResult_ApplyOnElements(), this.getNamedElement(), null, "applyOnElements", null, 0, -1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getSearchResult__CreateSemanticGroup__String_String(), this.getSemanticGroup(), "createSemanticGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1066,15 +1177,31 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		op = initEOperation(getSearchResult__GetOptionValue__String(), ecorePackage.getEJavaObject(), "getOptionValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(searchResultOptionValueEClass, SearchResultOptionValue.class, "SearchResultOptionValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		op = initEOperation(getSearchResult__AddNamedElementToSemanticGroup__SemanticGroup_NamedElement(), null, "addNamedElementToSemanticGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSemanticGroup(), "semanticGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNamedElement(), "namedElement", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getSearchResult__AddResourceToSemanticGroup__SemanticGroup_Resource(), null, "addResourceToSemanticGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSemanticGroup(), "semanticGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getResource(), "resource", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(searchResultOptionValueEClass, SearchResultOptionValue.class, "SearchResultOptionValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSearchResultOptionValue_Option(), this.getSearchOption(), null, "option", null, 0, 1, SearchResultOptionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSearchResultOptionValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, SearchResultOptionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(searchResultOptionStringValueEClass, SearchResultOptionStringValue.class, "SearchResultOptionStringValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSearchResultOptionStringValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, SearchResultOptionStringValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConstraint_Key(), ecorePackage.getEString(), "key", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConstraint_Value(), ecorePackage.getEJavaObject(), "value", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraint_Elements(), this.getNamedElement(), this.getNamedElement_Constraints(), "elements", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraint_Interpreter(), this.getConstraintInterpreter(), this.getConstraintInterpreter_Constraints(), "interpreter", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(searchResultOptionNamedElementListValueEClass, SearchResultOptionNamedElementListValue.class, "SearchResultOptionNamedElementListValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSearchResultOptionNamedElementListValue_Value(), this.getNamedElement(), null, "value", null, 0, -1, SearchResultOptionNamedElementListValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSearchResultOptionNamedElementListValue_Condition(), ecorePackage.getEString(), "condition", null, 0, 1, SearchResultOptionNamedElementListValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(constraintInterpreterEClass, ConstraintInterpreter.class, "ConstraintInterpreter", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConstraintInterpreter_Id(), ecorePackage.getEString(), "id", null, 0, 1, ConstraintInterpreter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConstraintInterpreter_Name(), ecorePackage.getEString(), "name", null, 0, 1, ConstraintInterpreter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraintInterpreter_Constraints(), this.getConstraint(), this.getConstraint_Interpreter(), "constraints", null, 0, -1, ConstraintInterpreter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getConstraintInterpreter__Execute__Constraint(), ecorePackage.getEBoolean(), "execute", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getConstraint(), "constraint", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(typeEEnum, Type.class, "Type");
@@ -1083,9 +1210,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		addEEnumLiteral(typeEEnum, Type.BOOLEAN);
 		addEEnumLiteral(typeEEnum, Type.FLOAT);
 		addEEnumLiteral(typeEEnum, Type.DOUBLE);
-		addEEnumLiteral(typeEEnum, Type.SEMANTIC_NODE);
-		addEEnumLiteral(typeEEnum, Type.DATA_PROPERTY);
-		addEEnumLiteral(typeEEnum, Type.OBJECT_PROPERTY);
+		addEEnumLiteral(typeEEnum, Type.NAMED_ELEMENT);
 
 		// Create resource
 		createResource(eNS_URI);

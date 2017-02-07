@@ -12,13 +12,12 @@
       <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Boolean"/>
       <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Float"/>
       <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Double"/>
-      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/SemanticNode"/>
-      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/DataProperty"/>
-      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/ObjectProperty"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/NamedElement"/>
     </genEnums>
     <genClasses image="false" ecoreClass="Extremo.ecore#//RepositoryManager">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//RepositoryManager/repositories"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//RepositoryManager/configurations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//RepositoryManager/interpreters"/>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//Repository">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//Repository/resources"/>
@@ -47,6 +46,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/drawn"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/descriptor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/describes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/constraints"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Extremo.ecore#//Property">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//Property/semanticNodeFrom"/>
@@ -88,6 +88,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResult/results"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResult/resources"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchResult/showByResource"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResult/applyOnElements"/>
       <genOperations ecoreOperation="Extremo.ecore#//SearchResult/createSemanticGroup">
         <genParameters ecoreParameter="Extremo.ecore#//SearchResult/createSemanticGroup/name"/>
         <genParameters ecoreParameter="Extremo.ecore#//SearchResult/createSemanticGroup/description"/>
@@ -107,16 +108,32 @@
       <genOperations ecoreOperation="Extremo.ecore#//SearchResult/getOptionValue">
         <genParameters ecoreParameter="Extremo.ecore#//SearchResult/getOptionValue/key"/>
       </genOperations>
+      <genOperations ecoreOperation="Extremo.ecore#//SearchResult/addNamedElementToSemanticGroup">
+        <genParameters ecoreParameter="Extremo.ecore#//SearchResult/addNamedElementToSemanticGroup/semanticGroup"/>
+        <genParameters ecoreParameter="Extremo.ecore#//SearchResult/addNamedElementToSemanticGroup/namedElement"/>
+      </genOperations>
+      <genOperations ecoreOperation="Extremo.ecore#//SearchResult/addResourceToSemanticGroup">
+        <genParameters ecoreParameter="Extremo.ecore#//SearchResult/addResourceToSemanticGroup/semanticGroup"/>
+        <genParameters ecoreParameter="Extremo.ecore#//SearchResult/addResourceToSemanticGroup/resource"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//SearchResultOptionValue">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResultOptionValue/option"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchResultOptionValue/value"/>
     </genClasses>
-    <genClasses ecoreClass="Extremo.ecore#//SearchResultOptionStringValue">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchResultOptionStringValue/value"/>
+    <genClasses ecoreClass="Extremo.ecore#//Constraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Constraint/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Constraint/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//Constraint/elements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//Constraint/interpreter"/>
     </genClasses>
-    <genClasses ecoreClass="Extremo.ecore#//SearchResultOptionNamedElementListValue">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResultOptionNamedElementListValue/value"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchResultOptionNamedElementListValue/condition"/>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//ConstraintInterpreter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//ConstraintInterpreter/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//ConstraintInterpreter/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ConstraintInterpreter/constraints"/>
+      <genOperations ecoreOperation="Extremo.ecore#//ConstraintInterpreter/execute">
+        <genParameters ecoreParameter="Extremo.ecore#//ConstraintInterpreter/execute/constraint"/>
+      </genOperations>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

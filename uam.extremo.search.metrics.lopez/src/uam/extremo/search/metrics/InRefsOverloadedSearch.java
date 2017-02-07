@@ -9,33 +9,7 @@ import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
 
-public class InRefsOverloadedSearch extends SearchConfigurationImpl {
-	/*int maxRefs;
-	
-	@Override
-	public void resolveOptions(EList<SearchResultOptionValue> values) {
-		for(SearchResultOptionValue value : values){
-			if (value instanceof SearchResultOptionStringValue) {
-				SearchResultOptionStringValue stringValue = (SearchResultOptionStringValue) value;
-				
-				try{
-					switch(stringValue.getOption().getId()){
-						case "maxrefs":
-							maxRefs = Integer.getInteger(stringValue.getValue());
-							break;
-							
-						default:
-							break;
-					}
-				}
-				catch(Exception e){
-					MessageDialog.openError(null, "Option Validation", "Options couldn't be validated for the search: " + e.getMessage());
-				}
-			}
-			
-		}
-	}*/
-	
+public class InRefsOverloadedSearch extends SearchConfigurationImpl {	
 	@Override
 	public void search(SearchResult search) {
 		int maxRefs = (int) search.getOptionValue("maxrefs");

@@ -434,12 +434,21 @@ public class OwlAssistant extends FormatAssistant implements IFormatAssistant {
 		
 	}
 
-	/*@Override
-	public List<Class<? extends INamedElement>> getRegisteredTypes() {
-		List<Class<? extends INamedElement>> types = new ArrayList<Class<? extends INamedElement>>();
-		types.add(OWLSemanticClass.class);
-		types.add(OWLSemanticDataProperty.class);
-		types.add(OWLSemanticObjectProperty.class);
-		return types;
-	}*/
+	@Override
+	public void toDataProperty(SemanticNode parent) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void toObjectProperty(SemanticNode parent) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void toSuper(SemanticNode parent) {
+		// TODO Auto-generated method stub
+		
+	}
 }

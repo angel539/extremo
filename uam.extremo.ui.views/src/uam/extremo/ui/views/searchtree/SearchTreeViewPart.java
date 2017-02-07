@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
@@ -12,6 +14,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
@@ -19,14 +22,11 @@ import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
-import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
@@ -48,9 +48,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.dnd.DND;
-import org.eclipse.swt.dnd.DragSource;
-import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
@@ -68,12 +65,13 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
 import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
+import semanticmanager.util.SemanticmanagerAdapterFactory;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.views.Activator;
 import uam.extremo.ui.views.dnd.GraphityEditorTransferDropTargetListener;
 import uam.extremo.ui.views.extensions.ExtremoViewPartAction;
 
-public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, IEditingDomainProvider, ITabbedPropertySheetPageContributor {
+public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor {
 	public static final String ID = "uam.extremo.ui.views.SearchTree";
 	
 	public static TreeViewer viewer;
@@ -84,8 +82,9 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 	protected ComposedAdapterFactory adapterFactory;
 	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 	
+	//@Override
 	@Override
-	public void createPartControl(Composite parent) {
+	public void createPartControl(Composite parent) {		
 		PatternFilter patternfilter = new PatternFilter();
 		FilteredTree tree = new FilteredTree(parent, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL, patternfilter, true);
@@ -99,12 +98,10 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 				   new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(composedAdapterFactory);
 		AdapterFactoryContentProvider contentProvider = new AdapterFactoryContentProvider(composedAdapterFactory);*/
-		
+
 		viewer.setContentProvider(new SearchTreeViewContentProvider(AssistantFactory.getInstance().getRepositoryManager(), getViewSite()));
 		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new SearchTreeViewLabelProvider()));
 				  
-		//viewer.setContentProvider(contentProvider);
-		//viewer.setLabelProvider(labelProvider);
 		viewer.setInput(getViewSite());
 		
 		SearchTreeViewFilter filter = new SearchTreeViewFilter();
@@ -113,38 +110,21 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "extremo.ui.viewer");
 		
-		//connection with properties view
 		getSite().setSelectionProvider(viewer);
 		getViewSite().setSelectionProvider(viewer);
-		
 		
 		viewer.setSelection(new StructuredSelection(AssistantFactory.getInstance().getRepositoryManager()), true);
 		new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
 		
-		
 		callActions();
 		callEditors();
-		//callFilters();
-		
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
 		contributeToActionBars();
 		
-		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
-		Transfer[] transfers = new Transfer[]{SemanticNodeModelTransfer.getTransfer()};
-		
-		DragSource source = new DragSource(viewer.getTree(), dndOperations);
-		source.setTransfer(transfers);
-		SemanticNodeDragListener listener = new SemanticNodeDragListener(viewer);
-		source.addDragListener(listener);
-		
     	SearchTreeViewerComparator comparator = new SearchTreeViewerComparator();
 		viewer.setComparator(comparator);
-		
-		
-		initializeEditingDomain();
-		
 		
 		Adapter adapter = new AdapterImpl() {
             public void notifyChanged(Notification notification) {
@@ -199,12 +179,28 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		throw new CloneNotSupportedException(); 
 	}
 	
+	/*public void refresh(){
+		IRunnableWithProgress op = new IRunnableWithProgress() {
+			public void run(IProgressMonitor monitor) throws InvocationTargetException {
+				try {
+					doFinish(monitor);									
+				} finally {
+					monitor.done();
+				}
+			}
+
+			private void doFinish(IProgressMonitor monitor) {
+				 viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
+			}
+		};
+	}*/
+	
 	public void refresh() {
 		Job job = new Job("Refreshing Search Tree View") {
             @Override
             protected IStatus run(IProgressMonitor monitor) {
                 doLongThing();
-                syncWithUi();
+                //syncWithUi();
                 return Status.OK_STATUS;
             }
 	    };
@@ -212,13 +208,13 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 	    job.schedule();
 	}
 	
-	private void syncWithUi() {
+	/*private void syncWithUi() {
         try {
         	Thread.sleep(100);
         } catch (InterruptedException e) {
                 e.printStackTrace();
         }
-	}
+	}*/
 
 	private void doLongThing() {
 		Display.getDefault().asyncExec(new Runnable() {
@@ -389,6 +385,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 			}	
 		}
 	}
+	
 	@Override
 	public String getContributorId() {
 		return ID;
@@ -420,7 +417,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		}
 	}
 
-	@Override
+	/*@Override
 	public EditingDomain getEditingDomain() {
 		return editingDomain;
 	}
@@ -433,9 +430,9 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, null);
-	}
+	}*/
 	
-	public IPropertySheetPage getPropertySheetPage() {
+	/*public IPropertySheetPage getPropertySheetPage() {
 		PropertySheetPage propertySheetPage =
 			new ExtendedPropertySheetPage(editingDomain) {
 				@Override
@@ -451,10 +448,10 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		propertySheetPages.add(propertySheetPage);
 
 		return propertySheetPage;
-	}
+	}*/
 	
-	@SuppressWarnings("rawtypes")
-	@Override
+	//@SuppressWarnings("rawtypes")
+	/*@Override
 	public Object getAdapter(Class key) {
 		if (key.equals(IPropertySheetPage.class)) {
 			return getPropertySheetPage();
@@ -462,6 +459,23 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		else {
 			return super.getAdapter(key);
 		}
+	}*/
+	
+	private ExtendedPropertySheetPage propertyPage;
+	
+	@Override
+	public Object getAdapter(Class adapter) {
+		if (adapter.equals(IPropertySheetPage.class)) {
+			if(propertyPage == null){
+				AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(new SemanticmanagerAdapterFactory(), new BasicCommandStack());
+				propertyPage = new ExtendedPropertySheetPage(editingDomain);
+				propertyPage.setPropertySourceProvider(new AdapterFactoryContentProvider(new SemanticmanagerItemProviderAdapterFactory()));
+			}
+			
+			return propertyPage;
+		}
+		
+		return super.getAdapter(adapter);
 	}
 
 	@Override

@@ -136,7 +136,6 @@ public class InheritanceGraphPartViewLabelProvider implements ILabelProvider, IC
 	@Override
 	public void addListener(ILabelProviderListener listener) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

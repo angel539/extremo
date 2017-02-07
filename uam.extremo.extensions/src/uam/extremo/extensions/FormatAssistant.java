@@ -58,12 +58,4 @@ public class FormatAssistant{
 		if(this.extensions == null) extensions = new ArrayList<String>();
 		extensions.add(extension);
 	}
-
-	/*public String getWordnetLocation() {
-		return wordnetLocation;
-	}
-
-	public void setWordnetLocation(String wordnetLocation) {
-		this.wordnetLocation = wordnetLocation;
-	}*/
 }

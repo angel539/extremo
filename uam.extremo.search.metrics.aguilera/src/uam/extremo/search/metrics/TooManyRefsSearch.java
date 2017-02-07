@@ -8,32 +8,6 @@ import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
 
 public class TooManyRefsSearch extends SearchConfigurationImpl {
-	/*int refs;
-	
-	@Override
-	public void resolveOptions(EList<SearchResultOptionValue> values) {
-		for(SearchResultOptionValue value : values){
-			if (value instanceof SearchResultOptionStringValue) {
-				SearchResultOptionStringValue stringValue = (SearchResultOptionStringValue) value;
-				
-				try{
-					switch(stringValue.getOption().getId()){
-						case "morethanrefs":
-							refs = Integer.getInteger(stringValue.getValue());
-							break;
-							
-						default:
-							break;
-					}
-				}
-				catch(Exception e){
-					MessageDialog.openError(null, "Option Validation", "Options couldn't be validated for the search: " + e.getMessage());
-				}
-			}
-			
-		}
-	}*/
-	
 	@Override
 	public void search(SearchResult search) {
 		int refs = (int) search.getOptionValue("morethanrefs");
@@ -54,4 +28,8 @@ public class TooManyRefsSearch extends SearchConfigurationImpl {
 		}
 	}
 
+	public static void main(String [] args){
+		TooManyRefsSearch too = new TooManyRefsSearch();
+		too.search(null);
+	}
 }

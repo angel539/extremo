@@ -2,8 +2,9 @@ package uam.extremo.ui.views.repositories;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -19,11 +20,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
-import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
@@ -58,26 +55,27 @@ import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.TextTransfer;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IMemento;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
+import semanticmanager.Constraint;
 import semanticmanager.DataProperty;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
@@ -85,19 +83,20 @@ import semanticmanager.Repository;
 import semanticmanager.Resource;
 import semanticmanager.SemanticNode;
 import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
+import semanticmanager.util.SemanticmanagerAdapterFactory;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.views.Activator;
 import uam.extremo.ui.views.dnd.GraphityEditorTransferDropTargetListener;
+import uam.extremo.ui.views.dnd.ViewPartDragListener;
 import uam.extremo.ui.views.extensions.ExtremoViewPartAction;
-import uam.extremo.ui.views.extensions.filters.ExtremoViewPartFilter;
 import uam.extremo.ui.wizards.dialogs.AddFolderResourceListWizardDialog;
 import uam.extremo.ui.wizards.dialogs.changeToResource.ChangeDescriptorToResourceWizardDialog;
 import uam.extremo.ui.wizards.dialogs.newrepository.NewRepositoryWizardDialog;
 import uam.extremo.ui.wizards.dialogs.newresource.AddAResourceToExistingRepositoryWizardDialog;
 
-public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, IEditingDomainProvider, ITabbedPropertySheetPageContributor{
+public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor{
 	public static final String ID = "uam.extremo.ui.views.RepositoryView";
 
 	private static TreeViewer viewer;
@@ -236,6 +235,14 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 				}
 	    	}
 			
+			if(element instanceof Constraint){
+				Constraint constraint = (Constraint) element;
+				StyledString styledString = new StyledString(constraint.getKey());
+				styledString.append(" (" + constraint.getValue().toString() + ")", StyledString.COUNTER_STYLER);
+
+				return styledString;
+			}
+			
 			if(element instanceof DataProperty){
 				if(((DataProperty) element).getDescriptor() == null){
 					DataProperty property = (DataProperty) element;
@@ -293,6 +300,8 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 				}
 	    	}
 			
+			if(element instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
+			
 			if(element instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.gif").createImage();
 			if(element instanceof DataProperty) return Activator.getImageDescriptor("icons/attribute.png").createImage();
         	
@@ -343,9 +352,14 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	public RepositoryViewPart() {
 	}
 
+	@Override
 	public void createPartControl(Composite parent) {		
 		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 	
+		int operations = DND.DROP_COPY| DND.DROP_MOVE;
+        Transfer[] transferTypes = new Transfer[]{TextTransfer.getInstance()};
+        viewer.addDragSupport(operations, transferTypes , new ViewPartDragListener(viewer));
+        
 		RepositoryViewContentProvider provider = new RepositoryViewContentProvider(AssistantFactory.getInstance().getRepositoryManager(), getViewSite());
 		viewer.setContentProvider(provider);
 		viewer.setSorter(new NameSorter());
@@ -372,8 +386,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		uriColumn.getColumn().setWidth(400);
 		uriColumn.getColumn().setAlignment(SWT.LEFT);
 		uriColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnThreeViewLabelProvider()));
-		
-		initializeEditingDomain();
 		
 		Adapter adapter = new AdapterImpl() {
             public void notifyChanged(Notification notification) {
@@ -418,7 +430,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		}
 	}*/
 	
-	private void callFilters() {
+	/*private void callFilters() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.FILTER_EXTENSIONS_ID);
 		
@@ -468,7 +480,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 				}
 			}	
 		}
-	}
+	}*/
 	
 	private void callActions() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
@@ -507,20 +519,22 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					if((action != null) 
 							&& (extension.getAttribute("view")).equals("repositories")){
 						IActionBars bars = getViewSite().getActionBars();
+						
 						if(extension.getAttribute("position").equals("toolbar")){
 							bars.getToolBarManager().add(action);
 						}
+						
 						if(extension.getAttribute("position").equals("menumanager")){
 							menuMgr.addMenuListener(new IMenuListener() {
 								public void menuAboutToShow(IMenuManager manager) {
 									manager.add(action);
 								}
-							});
-							
+							});			
 						}
 					}
 				}
 				catch(CoreException e){
+					MessageDialog.openError(null, "Repository View Part", e.getMessage());
 				}
 			}	
 		}
@@ -545,11 +559,13 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 			for(IConfigurationElement extension : extensions){
 				if(extension.getName().compareTo("editordrop") == 0){
 					GraphityEditorTransferDropTargetListener graphityDrop;
+					
 					try{
 						graphityDrop = (GraphityEditorTransferDropTargetListener) extension.createExecutableExtension("class");
 						graphicalViewer.addDropTargetListener(graphityDrop);
 					}
 					catch(CoreException e){
+						MessageDialog.openError(null, "Repository View Part", e.getMessage());
 					}
 				}	
 			}
@@ -585,12 +601,28 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 			       pageSelectionListener);
 	}
 	
+	/*public void refresh(){
+		IRunnableWithProgress op = new IRunnableWithProgress() {
+			public void run(IProgressMonitor monitor) throws InvocationTargetException {
+				try {
+					doFinish(monitor);									
+				} finally {
+					monitor.done();
+				}
+			}
+
+			private void doFinish(IProgressMonitor monitor) {
+				 viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
+			}
+		};
+	}*/
+	
 	public void refresh() {
 		Job job = new Job("Refreshing Repository View") {
             @Override
             protected IStatus run(IProgressMonitor monitor) {
                 doLongThing();
-                syncWithUi();
+                //syncWithUi();
                 return Status.OK_STATUS;
             }
 	    };
@@ -598,13 +630,13 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	    job.schedule();
 	}
 	
-	private void syncWithUi() {
+	/*private void syncWithUi() {
         try {
         	Thread.sleep(100);
         } catch (InterruptedException e) {
                 e.printStackTrace();
         }
-	}
+	}*/
 
 	private void doLongThing() {
 		Display.getDefault().asyncExec(new Runnable() {
@@ -780,8 +812,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	public String getContributorId() {
 		return ID;
 	}
-
-    //ISelectionProvider
     
 	@Override
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
@@ -807,7 +837,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		}
 	}
 
-	@Override
+	/*@Override
 	public EditingDomain getEditingDomain() {
 		return editingDomain;
 	}
@@ -821,9 +851,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 
 		BasicCommandStack commandStack = new BasicCommandStack();
 
-		// Add a listener to set the most recent command's affected objects to be the selection of the viewer with focus.
-		//
-		/*commandStack.addCommandStackListener
+		commandStack.addCommandStackListener
 			(new CommandStackListener() {
 				 public void commandStackChanged(final EventObject event) {
 					 viewer.getDisplay().asyncExec
@@ -849,10 +877,10 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 							  }
 						  });
 				 }
-			 });*/
+			 });
 		
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap<org.eclipse.emf.ecore.resource.Resource, Boolean>());
-	}
+	}*/
 	
 	public void setSelectionToViewer(Collection<?> collection) {
 		final Collection<?> theSelection = collection;
@@ -870,7 +898,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		}
 	}
 	
-	public IPropertySheetPage getPropertySheetPage() {
+	/*public IPropertySheetPage getPropertySheetPage() {
 		PropertySheetPage propertySheetPage =
 			new ExtendedPropertySheetPage(editingDomain) {
 				@Override
@@ -898,8 +926,25 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		else {
 			return super.getAdapter(key);
 		}
-	}
+	}*/
 
+	private ExtendedPropertySheetPage propertyPage;
+	
+	@Override
+	public Object getAdapter(Class adapter) {
+		if (adapter.equals(IPropertySheetPage.class)) {
+			if(propertyPage == null){
+				AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(new SemanticmanagerAdapterFactory(), new BasicCommandStack());
+				propertyPage = new ExtendedPropertySheetPage(editingDomain);
+				propertyPage.setPropertySourceProvider(new AdapterFactoryContentProvider(new SemanticmanagerItemProviderAdapterFactory()));
+			}
+			
+			return propertyPage;
+		}
+		
+		return super.getAdapter(adapter);
+	}
+	
 	@Override
 	public Viewer getViewer() {
 		return viewer;

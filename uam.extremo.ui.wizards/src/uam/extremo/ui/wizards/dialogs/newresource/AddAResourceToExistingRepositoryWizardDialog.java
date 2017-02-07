@@ -1,6 +1,7 @@
 package uam.extremo.ui.wizards.dialogs.newresource;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.TableItem;
@@ -63,17 +64,17 @@ public class AddAResourceToExistingRepositoryWizardDialog extends Wizard {
 		if(descriptor != null){
 			try {
 				AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri);
-			} catch (CoreException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			}
+			catch (CoreException e) {
+				MessageDialog.openError(null, "Resource creation", e.getMessage());
 			}
 		}
 		else{
 			try {
 				AssistantFactory.getInstance().createResourceDescriptor(repository, resourceName, resourceDescription, resourceUri);
-			} catch (CoreException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			}
+			catch (CoreException e) {
+				MessageDialog.openError(null, "Resource creation", e.getMessage());
 			}
 		}
 		

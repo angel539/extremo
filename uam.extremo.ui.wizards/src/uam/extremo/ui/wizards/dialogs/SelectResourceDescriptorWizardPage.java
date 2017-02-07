@@ -150,21 +150,12 @@ public class SelectResourceDescriptorWizardPage extends WizardPage {
 	    	}			
 	    }
 	    
-	    /*table.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				for(TableItem item : table.getItems()){
-					if(!table.getItem(event.index).equals(item)){
-						item.setChecked(false);
-					}
-				}
-			}
-	    });*/
-	    
 	    table.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
                    for(TableItem item : table.getItems()){
-                          if (!Objects.equals(item, event.item)) {//TODO: event.index seems to always return 0, used event.item thus
-                                item.setChecked(false);
+                          if (!Objects.equals(item, event.item)) {
+                        	  //TODO: event.index seems to always return 0, used event.item thus
+                              item.setChecked(false);
                           }
                    }
             }

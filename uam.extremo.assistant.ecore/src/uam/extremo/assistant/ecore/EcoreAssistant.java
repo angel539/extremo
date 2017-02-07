@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -350,20 +351,26 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 					if(descriptor != null){
 						Object eReferenceValue = eobject.eGet(eReference, true);
 
-						if(eReferenceValue instanceof EObject[]){
-							for(EObject reference : (EObject[]) eReferenceValue){
-								SemanticNode range = correspondance.get(reference);
+						if(eReferenceValue instanceof EList){							
+							for(Object reference : (EList) eReferenceValue){
+								if (reference instanceof EObject) {
+									EObject referenceObject = (EObject) reference;
+									
+									SemanticNode range = correspondance.get(referenceObject);
+									
+									ObjectProperty objectProperty = 
+											createObjectProperty(
+													descriptor, //descriptor
+													range //value
+											);
+									
+									addObjectPropertyToNode(parent, objectProperty);	
+								}
 								
-								ObjectProperty objectProperty = 
-										createObjectProperty(
-												descriptor, //descriptor
-												range //value
-										);
-								
-								addObjectPropertyToNode(parent, objectProperty);
 							}
 						}
-						else{
+						else
+						{
 							if(eReferenceValue instanceof EObject){
 								SemanticNode range = correspondance.get(eReferenceValue);
 								

@@ -4,6 +4,7 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
+import semanticmanager.Constraint;
 import semanticmanager.DataProperty;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Repository;
@@ -17,6 +18,7 @@ public class RepositoryViewFilter extends ViewerFilter {
 		return element instanceof RepositoryManager || 
 				element instanceof Repository || 
 				element instanceof Resource ||
+				element instanceof Constraint ||
 				element instanceof SemanticNode||
 				element instanceof DataProperty ||
 				element instanceof ObjectProperty

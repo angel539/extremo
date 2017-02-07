@@ -1,6 +1,7 @@
 package uam.extremo.ui.views.extensions;
 
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
@@ -9,7 +10,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
 public abstract class ExtremoViewPartAction extends Action implements IExtremoViewPartActionContribution{
-	private Viewer viewer;
+	private StructuredViewer viewer;
 	private static IEditorPart editorPart;
 	private String editorID;
 	
@@ -25,7 +26,7 @@ public abstract class ExtremoViewPartAction extends Action implements IExtremoVi
 		return viewer;
 	}
 
-	public void setViewer(Viewer viewer) {
+	public void setViewer(StructuredViewer viewer) {
 		this.viewer = viewer;
 	}
 	

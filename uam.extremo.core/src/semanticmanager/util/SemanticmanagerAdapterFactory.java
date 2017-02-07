@@ -120,12 +120,12 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 				return createSearchResultOptionValueAdapter();
 			}
 			@Override
-			public Adapter caseSearchResultOptionStringValue(SearchResultOptionStringValue object) {
-				return createSearchResultOptionStringValueAdapter();
+			public Adapter caseConstraint(Constraint object) {
+				return createConstraintAdapter();
 			}
 			@Override
-			public Adapter caseSearchResultOptionNamedElementListValue(SearchResultOptionNamedElementListValue object) {
-				return createSearchResultOptionNamedElementListValueAdapter();
+			public Adapter caseConstraintInterpreter(ConstraintInterpreter object) {
+				return createConstraintInterpreterAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -330,30 +330,30 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link semanticmanager.SearchResultOptionStringValue <em>Search Result Option String Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link semanticmanager.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see semanticmanager.SearchResultOptionStringValue
+	 * @see semanticmanager.Constraint
 	 * @generated
 	 */
-	public Adapter createSearchResultOptionStringValueAdapter() {
+	public Adapter createConstraintAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link semanticmanager.SearchResultOptionNamedElementListValue <em>Search Result Option Named Element List Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link semanticmanager.ConstraintInterpreter <em>Constraint Interpreter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see semanticmanager.SearchResultOptionNamedElementListValue
+	 * @see semanticmanager.ConstraintInterpreter
 	 * @generated
 	 */
-	public Adapter createSearchResultOptionNamedElementListValueAdapter() {
+	public Adapter createConstraintInterpreterAdapter() {
 		return null;
 	}
 

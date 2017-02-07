@@ -9,19 +9,19 @@
             editor="org.eclipse.uml2.uml.editor.presentation.UMLEditor"
             editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
             icon="icons/geometry.png"
-            id="metaRDF.ui.actions.uml2.action.CreateClass"
+            id="uam.extremo.ui.views.actions.uml2.action.CreateClass"
             name="CreateUMLClass"
             position="menumanager"
-            view="entities">
+            view="searches">
       </action>
       <action
             class="uam.extremo.ui.views.actions.uml2.action.CreateAttribute"
             editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
             icon="icons/sort_down.png"
-            id="metaRDF.ui.actions.uml2.action.CreateAttribute"
+            id="uam.extremo.ui.views.actions.uml2.action.CreateAttribute"
             name="CreateUMLAttribute"
             position="menumanager"
-            view="entities">
+            view="searches">
       </action>
    </extension>
 

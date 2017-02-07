@@ -28,25 +28,22 @@ import edu.smu.tspell.wordnet.Synset;
 import edu.smu.tspell.wordnet.SynsetType;
 import edu.smu.tspell.wordnet.WordNetDatabase;
 import edu.smu.tspell.wordnet.WordSense;
+import uam.extremo.search.wordnet.Activator;
 
 public class Wordnet{
-	public static final String PLUGIN_ID = "uam.extremo.core";
-   private WordNetDatabase database = null;
-   private static Wordnet INSTANCE = null;
-   //private static String LOCATION = "dict";
+	private WordNetDatabase database = null;
+	private static Wordnet INSTANCE = null;
    
-   public Wordnet(){
-	   super();
-	   
-	   //String wordnet_location = getPathDict();
-	   //System.setProperty("wordnet.database.dir", wordnet_location);
-	   System.setProperty("wordnet.database.dir", "/Users/angel/Desktop/workspace-miso/metaRDF.core/dict");
-	   
-	   database = WordNetDatabase.getFileInstance();
-   }
+	   public Wordnet(){
+		   super();
+		   
+		   String wordnet_location = getPathDict();
+		   System.setProperty("wordnet.database.dir", wordnet_location);
+		   database = WordNetDatabase.getFileInstance();
+	   }
    
    private static String getPathDict(){
-	   Bundle plugin = Platform.getBundle(PLUGIN_ID);
+	   Bundle plugin = Platform.getBundle(Activator.PLUGIN_ID);
 	   IPath relativeIPath = new Path("dict" + File.separator);	
 	   
 	   URL fileInPlugin = FileLocator.find(plugin, relativeIPath, null);

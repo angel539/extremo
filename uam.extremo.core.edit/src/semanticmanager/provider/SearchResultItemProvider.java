@@ -66,6 +66,7 @@ public class SearchResultItemProvider
 			addValuesPropertyDescriptor(object);
 			addResourcesPropertyDescriptor(object);
 			addShowByResourcePropertyDescriptor(object);
+			addApplyOnElementsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -132,6 +133,28 @@ public class SearchResultItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Apply On Elements feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addApplyOnElementsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SearchResult_applyOnElements_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SearchResult_applyOnElements_feature", "_UI_SearchResult_type"),
+				 SemanticmanagerPackage.Literals.SEARCH_RESULT__APPLY_ON_ELEMENTS,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

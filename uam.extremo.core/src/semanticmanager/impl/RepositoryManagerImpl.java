@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import semanticmanager.ConstraintInterpreter;
 import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
 import semanticmanager.SearchConfiguration;
@@ -29,6 +30,7 @@ import semanticmanager.SemanticmanagerPackage;
  * <ul>
  *   <li>{@link semanticmanager.impl.RepositoryManagerImpl#getRepositories <em>Repositories</em>}</li>
  *   <li>{@link semanticmanager.impl.RepositoryManagerImpl#getConfigurations <em>Configurations</em>}</li>
+ *   <li>{@link semanticmanager.impl.RepositoryManagerImpl#getInterpreters <em>Interpreters</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,6 +55,16 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected EList<SearchConfiguration> configurations;
+
+	/**
+	 * The cached value of the '{@link #getInterpreters() <em>Interpreters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterpreters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ConstraintInterpreter> interpreters;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,6 +114,18 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ConstraintInterpreter> getInterpreters() {
+		if (interpreters == null) {
+			interpreters = new EObjectContainmentEList<ConstraintInterpreter>(ConstraintInterpreter.class, this, SemanticmanagerPackage.REPOSITORY_MANAGER__INTERPRETERS);
+		}
+		return interpreters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -109,6 +133,8 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 				return ((InternalEList<?>)getRepositories()).basicRemove(otherEnd, msgs);
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__CONFIGURATIONS:
 				return ((InternalEList<?>)getConfigurations()).basicRemove(otherEnd, msgs);
+			case SemanticmanagerPackage.REPOSITORY_MANAGER__INTERPRETERS:
+				return ((InternalEList<?>)getInterpreters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -125,6 +151,8 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 				return getRepositories();
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__CONFIGURATIONS:
 				return getConfigurations();
+			case SemanticmanagerPackage.REPOSITORY_MANAGER__INTERPRETERS:
+				return getInterpreters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -146,6 +174,10 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 				getConfigurations().clear();
 				getConfigurations().addAll((Collection<? extends SearchConfiguration>)newValue);
 				return;
+			case SemanticmanagerPackage.REPOSITORY_MANAGER__INTERPRETERS:
+				getInterpreters().clear();
+				getInterpreters().addAll((Collection<? extends ConstraintInterpreter>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -164,6 +196,9 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__CONFIGURATIONS:
 				getConfigurations().clear();
 				return;
+			case SemanticmanagerPackage.REPOSITORY_MANAGER__INTERPRETERS:
+				getInterpreters().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -180,6 +215,8 @@ public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implemen
 				return repositories != null && !repositories.isEmpty();
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__CONFIGURATIONS:
 				return configurations != null && !configurations.isEmpty();
+			case SemanticmanagerPackage.REPOSITORY_MANAGER__INTERPRETERS:
+				return interpreters != null && !interpreters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

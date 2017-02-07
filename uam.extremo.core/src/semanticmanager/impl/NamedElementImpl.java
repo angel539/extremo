@@ -12,8 +12,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import semanticmanager.Constraint;
 import semanticmanager.NamedElement;
 import semanticmanager.SemanticmanagerPackage;
 
@@ -32,6 +34,7 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.NamedElementImpl#isDrawn <em>Drawn</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getDescriptor <em>Descriptor</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getDescribes <em>Describes</em>}</li>
+ *   <li>{@link semanticmanager.impl.NamedElementImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
  *
  * @generated
@@ -156,6 +159,16 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 	 * @ordered
 	 */
 	protected EList<NamedElement> describes;
+
+	/**
+	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Constraint> constraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -358,6 +371,18 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Constraint> getConstraints() {
+		if (constraints == null) {
+			constraints = new EObjectContainmentWithInverseEList<Constraint>(Constraint.class, this, SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS, SemanticmanagerPackage.CONSTRAINT__ELEMENTS);
+		}
+		return constraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -368,6 +393,8 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 				return basicSetDescriptor((NamedElement)otherEnd, msgs);
 			case SemanticmanagerPackage.NAMED_ELEMENT__DESCRIBES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDescribes()).basicAdd(otherEnd, msgs);
+			case SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConstraints()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -384,6 +411,8 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 				return basicSetDescriptor(null, msgs);
 			case SemanticmanagerPackage.NAMED_ELEMENT__DESCRIBES:
 				return ((InternalEList<?>)getDescribes()).basicRemove(otherEnd, msgs);
+			case SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS:
+				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -411,6 +440,8 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 				return basicGetDescriptor();
 			case SemanticmanagerPackage.NAMED_ELEMENT__DESCRIBES:
 				return getDescribes();
+			case SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS:
+				return getConstraints();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -446,6 +477,10 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 				getDescribes().clear();
 				getDescribes().addAll((Collection<? extends NamedElement>)newValue);
 				return;
+			case SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS:
+				getConstraints().clear();
+				getConstraints().addAll((Collection<? extends Constraint>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -479,6 +514,9 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 			case SemanticmanagerPackage.NAMED_ELEMENT__DESCRIBES:
 				getDescribes().clear();
 				return;
+			case SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS:
+				getConstraints().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -505,6 +543,8 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 				return descriptor != null;
 			case SemanticmanagerPackage.NAMED_ELEMENT__DESCRIBES:
 				return describes != null && !describes.isEmpty();
+			case SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS:
+				return constraints != null && !constraints.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

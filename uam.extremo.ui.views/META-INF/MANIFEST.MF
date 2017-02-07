@@ -35,7 +35,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.e4.ui.di;bundle-version="1.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: uam.extremo.ui.views.entities,
+Export-Package: uam.extremo.ui.views.dnd,
  uam.extremo.ui.views.repositories,
  uam.extremo.ui.views.searchtree
 Import-Package: org.apache.commons.lang3;version="3.1.0",

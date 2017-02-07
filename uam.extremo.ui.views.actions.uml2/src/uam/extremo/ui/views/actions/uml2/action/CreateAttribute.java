@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IEditorInput;
@@ -24,9 +25,7 @@ import uam.extremo.ui.views.extensions.ExtremoViewPartAction;
 
 public class CreateAttribute extends ExtremoViewPartAction {
 
-	public CreateAttribute() {
-		// TODO Auto-generated constructor stub
-	}
+	public CreateAttribute() {}
 
 	@Override
 	public void execute(IEditorPart editorPart, ISelection selection, String editorID) {
@@ -65,8 +64,9 @@ public class CreateAttribute extends ExtremoViewPartAction {
 								if(editorID != null){
 									try {
 										IDE.openEditor(activePage, editorInput, editorID);
-									} catch (PartInitException e) {
-										//Messages.displayGeneralErrorMessage("Refresh editor", "Error refreshing the editor");
+									}
+									catch (PartInitException e) {
+										MessageDialog.openError(null, "Refresh editor", "Error refreshing the editor");
 									}
 								}			
 							}
@@ -90,17 +90,9 @@ public class CreateAttribute extends ExtremoViewPartAction {
 	protected static void saveResource(Resource resource) {
 		try {
 			resource.save(null);
-		} catch (IOException ioe) {
-			System.err.println(ioe.getMessage());
+		}
+		catch (IOException ioe) {
+			MessageDialog.openError(null, "Saving resource", ioe.getMessage());
 		}
 	}
-	
-	/*TreePath[] treePaths = ((TreeSelection) selection).getPaths();
-	for(TreePath treePath : treePaths){
-		System.out.println("path count " + treePath.getSegmentCount() + " treepath:: " + treePath.toString());
-	}
-	for (Iterator<?> iter = treeSelection.iterator(); iter.hasNext();) {
-		Object node = (Object) iter.next();
-		System.out.println("el nodo es:: " + node);
-	}*/
 }

@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link semanticmanager.NamedElement#isDrawn <em>Drawn</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getDescriptor <em>Descriptor</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getDescribes <em>Describes</em>}</li>
+ *   <li>{@link semanticmanager.NamedElement#getConstraints <em>Constraints</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getNamedElement()
@@ -203,5 +204,23 @@ public interface NamedElement extends EObject {
 	 * @generated
 	 */
 	EList<NamedElement> getDescribes();
+
+	/**
+	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
+	 * The list contents are of type {@link semanticmanager.Constraint}.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.Constraint#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Constraints</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Constraints</em>' containment reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getNamedElement_Constraints()
+	 * @see semanticmanager.Constraint#getElements
+	 * @model opposite="elements" containment="true"
+	 * @generated
+	 */
+	EList<Constraint> getConstraints();
 
 } // NamedElement

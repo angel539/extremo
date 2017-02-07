@@ -20,12 +20,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 import semanticmanager.DataProperty;
+import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Resource;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionNamedElementListValue;
-import semanticmanager.SearchResultOptionStringValue;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
@@ -45,6 +44,7 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.SearchResultImpl#getResults <em>Results</em>}</li>
  *   <li>{@link semanticmanager.impl.SearchResultImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link semanticmanager.impl.SearchResultImpl#isShowByResource <em>Show By Resource</em>}</li>
+ *   <li>{@link semanticmanager.impl.SearchResultImpl#getApplyOnElements <em>Apply On Elements</em>}</li>
  * </ul>
  *
  * @generated
@@ -99,6 +99,16 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	 * @ordered
 	 */
 	protected boolean showByResource = SHOW_BY_RESOURCE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getApplyOnElements() <em>Apply On Elements</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApplyOnElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<NamedElement> applyOnElements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -220,6 +230,18 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<NamedElement> getApplyOnElements() {
+		if (applyOnElements == null) {
+			applyOnElements = new EObjectResolvingEList<NamedElement>(NamedElement.class, this, SemanticmanagerPackage.SEARCH_RESULT__APPLY_ON_ELEMENTS);
+		}
+		return applyOnElements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public SemanticGroup createSemanticGroup(String name, String description) {
@@ -228,6 +250,42 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 		semanticGroup.setDescription(description);
 		getResults().add(semanticGroup);
 		return semanticGroup;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void addNamedElementToSemanticGroup(SemanticGroup semanticGroup, NamedElement namedElement) {
+		if (namedElement instanceof Resource) {
+			Resource resource = (Resource) namedElement;
+			addResourceToSemanticGroup(semanticGroup, resource);
+		}
+		
+		if (namedElement instanceof SemanticNode) {
+			SemanticNode semanticNode = (SemanticNode) namedElement;
+			addSemanticNodeToSemanticGroup(semanticGroup, semanticNode);
+		}
+		
+		if (namedElement instanceof DataProperty) {
+			DataProperty dataProperty = (DataProperty) namedElement;
+			addDataPropertyToSemanticGroup(semanticGroup, dataProperty);
+		}
+		
+		if (namedElement instanceof ObjectProperty) {
+			ObjectProperty objectProperty = (ObjectProperty) namedElement;
+			addObjectPropertyToSemanticGroup(semanticGroup, objectProperty);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void addResourceToSemanticGroup(SemanticGroup semanticGroup, Resource resource) {
+		semanticGroup.getNodes().add(resource);
 	}
 
 	/**
@@ -264,8 +322,8 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	 */
 	public Object getOptionValue(String key) {
 		for(SearchResultOptionValue value : getValues()){
-			if (value instanceof SearchResultOptionStringValue) {
-				SearchResultOptionStringValue stringValue = (SearchResultOptionStringValue) value;
+			if (value instanceof SearchResultOptionValue) {
+				SearchResultOptionValue stringValue = (SearchResultOptionValue) value;
 				
 				try{
 					if(stringValue.getOption().getId().equals(key)){
@@ -276,23 +334,12 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 					return null;
 				}
 			}
-			
-			if (value instanceof SearchResultOptionNamedElementListValue) {
-				SearchResultOptionNamedElementListValue namedElementListValue = (SearchResultOptionNamedElementListValue) value;
-				
-				try{
-					if(namedElementListValue.getOption().getId().equals(key)){
-						return namedElementListValue.getValue();
-					}
-				}
-				catch(Exception e){
-					return null;
-				}
-			}
 		}
 		
 		return null;
 	}
+
+	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -360,6 +407,8 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 				return getResources();
 			case SemanticmanagerPackage.SEARCH_RESULT__SHOW_BY_RESOURCE:
 				return isShowByResource();
+			case SemanticmanagerPackage.SEARCH_RESULT__APPLY_ON_ELEMENTS:
+				return getApplyOnElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -391,6 +440,10 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 			case SemanticmanagerPackage.SEARCH_RESULT__SHOW_BY_RESOURCE:
 				setShowByResource((Boolean)newValue);
 				return;
+			case SemanticmanagerPackage.SEARCH_RESULT__APPLY_ON_ELEMENTS:
+				getApplyOnElements().clear();
+				getApplyOnElements().addAll((Collection<? extends NamedElement>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -418,6 +471,9 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 			case SemanticmanagerPackage.SEARCH_RESULT__SHOW_BY_RESOURCE:
 				setShowByResource(SHOW_BY_RESOURCE_EDEFAULT);
 				return;
+			case SemanticmanagerPackage.SEARCH_RESULT__APPLY_ON_ELEMENTS:
+				getApplyOnElements().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -440,6 +496,8 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 				return resources != null && !resources.isEmpty();
 			case SemanticmanagerPackage.SEARCH_RESULT__SHOW_BY_RESOURCE:
 				return showByResource != SHOW_BY_RESOURCE_EDEFAULT;
+			case SemanticmanagerPackage.SEARCH_RESULT__APPLY_ON_ELEMENTS:
+				return applyOnElements != null && !applyOnElements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -465,6 +523,12 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 				return null;
 			case SemanticmanagerPackage.SEARCH_RESULT___GET_OPTION_VALUE__STRING:
 				return getOptionValue((String)arguments.get(0));
+			case SemanticmanagerPackage.SEARCH_RESULT___ADD_NAMED_ELEMENT_TO_SEMANTIC_GROUP__SEMANTICGROUP_NAMEDELEMENT:
+				addNamedElementToSemanticGroup((SemanticGroup)arguments.get(0), (NamedElement)arguments.get(1));
+				return null;
+			case SemanticmanagerPackage.SEARCH_RESULT___ADD_RESOURCE_TO_SEMANTIC_GROUP__SEMANTICGROUP_RESOURCE:
+				addResourceToSemanticGroup((SemanticGroup)arguments.get(0), (Resource)arguments.get(1));
+				return null;
 		}
 		return super.eInvoke(operationID, arguments);
 	}

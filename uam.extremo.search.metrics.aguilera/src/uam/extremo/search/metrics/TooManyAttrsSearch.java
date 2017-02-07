@@ -8,32 +8,6 @@ import semanticmanager.SemanticNode;
 import semanticmanager.impl.SearchConfigurationImpl;
 
 public class TooManyAttrsSearch extends SearchConfigurationImpl {
-	/*int morethanattrs; 
-	
-	@Override
-	public void resolveOptions(EList<SearchResultOptionValue> values) {
-		for(SearchResultOptionValue value : values){
-			if (value instanceof SearchResultOptionStringValue) {
-				SearchResultOptionStringValue stringValue = (SearchResultOptionStringValue) value;
-				
-				try{
-					switch(stringValue.getOption().getId()){
-						case "morethanattrs":
-							morethanattrs = Integer.getInteger(stringValue.getValue());
-							break;
-							
-						default:
-							break;
-					}
-				}
-				catch(Exception e){
-					MessageDialog.openError(null, "Option Validation", "Options couldn't be validated for the search: " + e.getMessage());
-				}
-			}
-			
-		}
-	}*/
-	
 	@Override
 	public void search(SearchResult search) {
 		int morethanattrs = (int) search.getOptionValue("morethanattrs");

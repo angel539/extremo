@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link semanticmanager.SearchResult#getResults <em>Results</em>}</li>
  *   <li>{@link semanticmanager.SearchResult#getResources <em>Resources</em>}</li>
  *   <li>{@link semanticmanager.SearchResult#isShowByResource <em>Show By Resource</em>}</li>
+ *   <li>{@link semanticmanager.SearchResult#getApplyOnElements <em>Apply On Elements</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getSearchResult()
@@ -129,6 +130,22 @@ public interface SearchResult extends EObject {
 	void setShowByResource(boolean value);
 
 	/**
+	 * Returns the value of the '<em><b>Apply On Elements</b></em>' reference list.
+	 * The list contents are of type {@link semanticmanager.NamedElement}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Apply On Elements</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Apply On Elements</em>' reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getSearchResult_ApplyOnElements()
+	 * @model
+	 * @generated
+	 */
+	EList<NamedElement> getApplyOnElements();
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
@@ -167,5 +184,21 @@ public interface SearchResult extends EObject {
 	 * @generated
 	 */
 	Object getOptionValue(String key);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void addNamedElementToSemanticGroup(SemanticGroup semanticGroup, NamedElement namedElement);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void addResourceToSemanticGroup(SemanticGroup semanticGroup, Resource resource);
 
 } // SearchResult

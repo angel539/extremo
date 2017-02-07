@@ -11,19 +11,17 @@ public class ExtremoProjectNature implements IProjectNature{
 
 	@Override
 	public void configure() throws CoreException {
-		// TODO Auto-generated method stub
+		// TODO Configure method in nature?
 		
 	}
 
 	@Override
 	public void deconfigure() throws CoreException {
-		// TODO Auto-generated method stub
-		
+		// TODO Deconfigure method in nature?
 	}
 
 	@Override
 	public IProject getProject() {
-		// TODO Auto-generated method stub
 		return project;
 	}
 

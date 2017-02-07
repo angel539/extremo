@@ -6,7 +6,7 @@ import org.eclipse.ui.IPerspectiveFactory;
 
 import uam.extremo.ui.views.repositories.RepositoryViewPart;
 import uam.extremo.ui.views.searchtree.SearchTreeViewPart;
-import uam.extremo.ui.zest.views.inheritance.InheritanceGraphViewPart;
+//import uam.extremo.ui.zest.views.inheritance.InheritanceGraphViewPart;
 //import uam.extremo.ui.zest.views.relations.RelationshipGraphViewPart;
 
 public class ExtremoPerspective implements IPerspectiveFactory {
@@ -25,7 +25,7 @@ public class ExtremoPerspective implements IPerspectiveFactory {
 		layout.addShowViewShortcut(RepositoryViewPart.ID);
 		layout.addShowViewShortcut(SearchTreeViewPart.ID);
 		
-		layout.addShowViewShortcut(InheritanceGraphViewPart.ID);
+		//layout.addShowViewShortcut(InheritanceGraphViewPart.ID);
 		//layout.addShowViewShortcut(RelationshipGraphViewPart.ID);
 	}
 	
@@ -41,7 +41,7 @@ public class ExtremoPerspective implements IPerspectiveFactory {
 		bottom.addView(SearchTreeViewPart.ID);
 		
 		IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, (float) 0.70, editorArea);
-		right.addView(InheritanceGraphViewPart.ID);
+		//right.addView(InheritanceGraphViewPart.ID);
 		//right.addView(RelationshipGraphViewPart.ID);
 	}
 }

@@ -87,13 +87,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int REPOSITORY_MANAGER__CONFIGURATIONS = 1;
 
 	/**
+	 * The feature id for the '<em><b>Interpreters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY_MANAGER__INTERPRETERS = 2;
+
+	/**
 	 * The number of structural features of the '<em>Repository Manager</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY_MANAGER_FEATURE_COUNT = 2;
+	int REPOSITORY_MANAGER_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Repository Manager</em>' class.
@@ -198,13 +207,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int NAMED_ELEMENT__DESCRIBES = 6;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__CONSTRAINTS = 7;
+
+	/**
 	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_FEATURE_COUNT = 7;
+	int NAMED_ELEMENT_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Named Element</em>' class.
@@ -277,6 +295,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int REPOSITORY__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -376,6 +403,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int RESOURCE__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Active</b></em>' attribute.
@@ -523,6 +559,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEMANTIC_NODE__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_NODE__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Supers</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -659,6 +704,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	int PROPERTY__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -757,6 +811,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECT_PROPERTY__DESCRIBES = PROPERTY__DESCRIBES;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY__CONSTRAINTS = PROPERTY__CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
@@ -886,6 +949,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	int DATA_PROPERTY__DESCRIBES = PROPERTY__DESCRIBES;
 
 	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROPERTY__CONSTRAINTS = PROPERTY__CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1002,6 +1074,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEMANTIC_GROUP__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_GROUP__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
@@ -1223,13 +1304,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT__SHOW_BY_RESOURCE = 4;
 
 	/**
+	 * The feature id for the '<em><b>Apply On Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT__APPLY_ON_ELEMENTS = 5;
+
+	/**
 	 * The number of structural features of the '<em>Search Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_FEATURE_COUNT = 5;
+	int SEARCH_RESULT_FEATURE_COUNT = 6;
 
 	/**
 	 * The operation id for the '<em>Create Semantic Group</em>' operation.
@@ -1277,13 +1367,31 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT___GET_OPTION_VALUE__STRING = 4;
 
 	/**
+	 * The operation id for the '<em>Add Named Element To Semantic Group</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT___ADD_NAMED_ELEMENT_TO_SEMANTIC_GROUP__SEMANTICGROUP_NAMEDELEMENT = 5;
+
+	/**
+	 * The operation id for the '<em>Add Resource To Semantic Group</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT___ADD_RESOURCE_TO_SEMANTIC_GROUP__SEMANTICGROUP_RESOURCE = 6;
+
+	/**
 	 * The number of operations of the '<em>Search Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPERATION_COUNT = 5;
+	int SEARCH_RESULT_OPERATION_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.SearchResultOptionValueImpl <em>Search Result Option Value</em>}' class.
@@ -1305,13 +1413,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT_OPTION_VALUE__OPTION = 0;
 
 	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT_OPTION_VALUE__VALUE = 1;
+
+	/**
 	 * The number of structural features of the '<em>Search Result Option Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT = 1;
+	int SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Search Result Option Value</em>' class.
@@ -1323,23 +1440,23 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link semanticmanager.impl.SearchResultOptionStringValueImpl <em>Search Result Option String Value</em>}' class.
+	 * The meta object id for the '{@link semanticmanager.impl.ConstraintImpl <em>Constraint</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see semanticmanager.impl.SearchResultOptionStringValueImpl
-	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResultOptionStringValue()
+	 * @see semanticmanager.impl.ConstraintImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getConstraint()
 	 * @generated
 	 */
-	int SEARCH_RESULT_OPTION_STRING_VALUE = 13;
+	int CONSTRAINT = 13;
 
 	/**
-	 * The feature id for the '<em><b>Option</b></em>' reference.
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_STRING_VALUE__OPTION = SEARCH_RESULT_OPTION_VALUE__OPTION;
+	int CONSTRAINT__KEY = 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1348,80 +1465,107 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_STRING_VALUE__VALUE = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 0;
+	int CONSTRAINT__VALUE = 1;
 
 	/**
-	 * The number of structural features of the '<em>Search Result Option String Value</em>' class.
+	 * The feature id for the '<em><b>Elements</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_STRING_VALUE_FEATURE_COUNT = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 1;
+	int CONSTRAINT__ELEMENTS = 2;
 
 	/**
-	 * The number of operations of the '<em>Search Result Option String Value</em>' class.
+	 * The feature id for the '<em><b>Interpreter</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_STRING_VALUE_OPERATION_COUNT = SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT + 0;
+	int CONSTRAINT__INTERPRETER = 3;
 
 	/**
-	 * The meta object id for the '{@link semanticmanager.impl.SearchResultOptionNamedElementListValueImpl <em>Search Result Option Named Element List Value</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see semanticmanager.impl.SearchResultOptionNamedElementListValueImpl
-	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResultOptionNamedElementListValue()
-	 * @generated
-	 */
-	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE = 14;
-
-	/**
-	 * The feature id for the '<em><b>Option</b></em>' reference.
+	 * The number of structural features of the '<em>Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__OPTION = SEARCH_RESULT_OPTION_VALUE__OPTION;
+	int CONSTRAINT_FEATURE_COUNT = 4;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' reference list.
+	 * The number of operations of the '<em>Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__VALUE = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 0;
+	int CONSTRAINT_OPERATION_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Condition</b></em>' attribute.
+	 * The meta object id for the '{@link semanticmanager.impl.ConstraintInterpreterImpl <em>Constraint Interpreter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.ConstraintInterpreterImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getConstraintInterpreter()
+	 * @generated
+	 */
+	int CONSTRAINT_INTERPRETER = 14;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__CONDITION = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 1;
+	int CONSTRAINT_INTERPRETER__ID = 0;
 
 	/**
-	 * The number of structural features of the '<em>Search Result Option Named Element List Value</em>' class.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE_FEATURE_COUNT = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 2;
+	int CONSTRAINT_INTERPRETER__NAME = 1;
 
 	/**
-	 * The number of operations of the '<em>Search Result Option Named Element List Value</em>' class.
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE_OPERATION_COUNT = SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT + 0;
+	int CONSTRAINT_INTERPRETER__CONSTRAINTS = 2;
+
+	/**
+	 * The number of structural features of the '<em>Constraint Interpreter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_INTERPRETER_FEATURE_COUNT = 3;
+
+	/**
+	 * The operation id for the '<em>Execute</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_INTERPRETER___EXECUTE__CONSTRAINT = 0;
+
+	/**
+	 * The number of operations of the '<em>Constraint Interpreter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_INTERPRETER_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.Type <em>Type</em>}' enum.
@@ -1465,6 +1609,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRepositoryManager_Configurations();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link semanticmanager.RepositoryManager#getInterpreters <em>Interpreters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Interpreters</em>'.
+	 * @see semanticmanager.RepositoryManager#getInterpreters()
+	 * @see #getRepositoryManager()
+	 * @generated
+	 */
+	EReference getRepositoryManager_Interpreters();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.Repository <em>Repository</em>}'.
@@ -1725,6 +1880,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getNamedElement_Describes();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link semanticmanager.NamedElement#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
+	 * @see semanticmanager.NamedElement#getConstraints()
+	 * @see #getNamedElement()
+	 * @generated
+	 */
+	EReference getNamedElement_Constraints();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.Property <em>Property</em>}'.
@@ -2026,6 +2192,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	EAttribute getSearchResult_ShowByResource();
 
 	/**
+	 * Returns the meta object for the reference list '{@link semanticmanager.SearchResult#getApplyOnElements <em>Apply On Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Apply On Elements</em>'.
+	 * @see semanticmanager.SearchResult#getApplyOnElements()
+	 * @see #getSearchResult()
+	 * @generated
+	 */
+	EReference getSearchResult_ApplyOnElements();
+
+	/**
 	 * Returns the meta object for the '{@link semanticmanager.SearchResult#createSemanticGroup(java.lang.String, java.lang.String) <em>Create Semantic Group</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2076,6 +2253,26 @@ public interface SemanticmanagerPackage extends EPackage {
 	EOperation getSearchResult__GetOptionValue__String();
 
 	/**
+	 * Returns the meta object for the '{@link semanticmanager.SearchResult#addNamedElementToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.NamedElement) <em>Add Named Element To Semantic Group</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Named Element To Semantic Group</em>' operation.
+	 * @see semanticmanager.SearchResult#addNamedElementToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.NamedElement)
+	 * @generated
+	 */
+	EOperation getSearchResult__AddNamedElementToSemanticGroup__SemanticGroup_NamedElement();
+
+	/**
+	 * Returns the meta object for the '{@link semanticmanager.SearchResult#addResourceToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.Resource) <em>Add Resource To Semantic Group</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Resource To Semantic Group</em>' operation.
+	 * @see semanticmanager.SearchResult#addResourceToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.Resource)
+	 * @generated
+	 */
+	EOperation getSearchResult__AddResourceToSemanticGroup__SemanticGroup_Resource();
+
+	/**
 	 * Returns the meta object for class '{@link semanticmanager.SearchResultOptionValue <em>Search Result Option Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2097,57 +2294,122 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getSearchResultOptionValue_Option();
 
 	/**
-	 * Returns the meta object for class '{@link semanticmanager.SearchResultOptionStringValue <em>Search Result Option String Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Search Result Option String Value</em>'.
-	 * @see semanticmanager.SearchResultOptionStringValue
-	 * @generated
-	 */
-	EClass getSearchResultOptionStringValue();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.SearchResultOptionStringValue#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link semanticmanager.SearchResultOptionValue#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see semanticmanager.SearchResultOptionStringValue#getValue()
-	 * @see #getSearchResultOptionStringValue()
+	 * @see semanticmanager.SearchResultOptionValue#getValue()
+	 * @see #getSearchResultOptionValue()
 	 * @generated
 	 */
-	EAttribute getSearchResultOptionStringValue_Value();
+	EAttribute getSearchResultOptionValue_Value();
 
 	/**
-	 * Returns the meta object for class '{@link semanticmanager.SearchResultOptionNamedElementListValue <em>Search Result Option Named Element List Value</em>}'.
+	 * Returns the meta object for class '{@link semanticmanager.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Search Result Option Named Element List Value</em>'.
-	 * @see semanticmanager.SearchResultOptionNamedElementListValue
+	 * @return the meta object for class '<em>Constraint</em>'.
+	 * @see semanticmanager.Constraint
 	 * @generated
 	 */
-	EClass getSearchResultOptionNamedElementListValue();
+	EClass getConstraint();
 
 	/**
-	 * Returns the meta object for the reference list '{@link semanticmanager.SearchResultOptionNamedElementListValue#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link semanticmanager.Constraint#getKey <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Value</em>'.
-	 * @see semanticmanager.SearchResultOptionNamedElementListValue#getValue()
-	 * @see #getSearchResultOptionNamedElementListValue()
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see semanticmanager.Constraint#getKey()
+	 * @see #getConstraint()
 	 * @generated
 	 */
-	EReference getSearchResultOptionNamedElementListValue_Value();
+	EAttribute getConstraint_Key();
 
 	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.SearchResultOptionNamedElementListValue#getCondition <em>Condition</em>}'.
+	 * Returns the meta object for the attribute '{@link semanticmanager.Constraint#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Condition</em>'.
-	 * @see semanticmanager.SearchResultOptionNamedElementListValue#getCondition()
-	 * @see #getSearchResultOptionNamedElementListValue()
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see semanticmanager.Constraint#getValue()
+	 * @see #getConstraint()
 	 * @generated
 	 */
-	EAttribute getSearchResultOptionNamedElementListValue_Condition();
+	EAttribute getConstraint_Value();
+
+	/**
+	 * Returns the meta object for the container reference '{@link semanticmanager.Constraint#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Elements</em>'.
+	 * @see semanticmanager.Constraint#getElements()
+	 * @see #getConstraint()
+	 * @generated
+	 */
+	EReference getConstraint_Elements();
+
+	/**
+	 * Returns the meta object for the reference '{@link semanticmanager.Constraint#getInterpreter <em>Interpreter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Interpreter</em>'.
+	 * @see semanticmanager.Constraint#getInterpreter()
+	 * @see #getConstraint()
+	 * @generated
+	 */
+	EReference getConstraint_Interpreter();
+
+	/**
+	 * Returns the meta object for class '{@link semanticmanager.ConstraintInterpreter <em>Constraint Interpreter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Constraint Interpreter</em>'.
+	 * @see semanticmanager.ConstraintInterpreter
+	 * @generated
+	 */
+	EClass getConstraintInterpreter();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.ConstraintInterpreter#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see semanticmanager.ConstraintInterpreter#getId()
+	 * @see #getConstraintInterpreter()
+	 * @generated
+	 */
+	EAttribute getConstraintInterpreter_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.ConstraintInterpreter#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see semanticmanager.ConstraintInterpreter#getName()
+	 * @see #getConstraintInterpreter()
+	 * @generated
+	 */
+	EAttribute getConstraintInterpreter_Name();
+
+	/**
+	 * Returns the meta object for the reference list '{@link semanticmanager.ConstraintInterpreter#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Constraints</em>'.
+	 * @see semanticmanager.ConstraintInterpreter#getConstraints()
+	 * @see #getConstraintInterpreter()
+	 * @generated
+	 */
+	EReference getConstraintInterpreter_Constraints();
+
+	/**
+	 * Returns the meta object for the '{@link semanticmanager.ConstraintInterpreter#execute(semanticmanager.Constraint) <em>Execute</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Execute</em>' operation.
+	 * @see semanticmanager.ConstraintInterpreter#execute(semanticmanager.Constraint)
+	 * @generated
+	 */
+	EOperation getConstraintInterpreter__Execute__Constraint();
 
 	/**
 	 * Returns the meta object for enum '{@link semanticmanager.Type <em>Type</em>}'.
@@ -2207,6 +2469,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REPOSITORY_MANAGER__CONFIGURATIONS = eINSTANCE.getRepositoryManager_Configurations();
+
+		/**
+		 * The meta object literal for the '<em><b>Interpreters</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPOSITORY_MANAGER__INTERPRETERS = eINSTANCE.getRepositoryManager_Interpreters();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.RepositoryImpl <em>Repository</em>}' class.
@@ -2407,6 +2677,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference NAMED_ELEMENT__DESCRIBES = eINSTANCE.getNamedElement_Describes();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMED_ELEMENT__CONSTRAINTS = eINSTANCE.getNamedElement_Constraints();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.PropertyImpl <em>Property</em>}' class.
@@ -2647,6 +2925,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EAttribute SEARCH_RESULT__SHOW_BY_RESOURCE = eINSTANCE.getSearchResult_ShowByResource();
 
 		/**
+		 * The meta object literal for the '<em><b>Apply On Elements</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEARCH_RESULT__APPLY_ON_ELEMENTS = eINSTANCE.getSearchResult_ApplyOnElements();
+
+		/**
 		 * The meta object literal for the '<em><b>Create Semantic Group</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2687,6 +2973,22 @@ public interface SemanticmanagerPackage extends EPackage {
 		EOperation SEARCH_RESULT___GET_OPTION_VALUE__STRING = eINSTANCE.getSearchResult__GetOptionValue__String();
 
 		/**
+		 * The meta object literal for the '<em><b>Add Named Element To Semantic Group</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SEARCH_RESULT___ADD_NAMED_ELEMENT_TO_SEMANTIC_GROUP__SEMANTICGROUP_NAMEDELEMENT = eINSTANCE.getSearchResult__AddNamedElementToSemanticGroup__SemanticGroup_NamedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Resource To Semantic Group</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SEARCH_RESULT___ADD_RESOURCE_TO_SEMANTIC_GROUP__SEMANTICGROUP_RESOURCE = eINSTANCE.getSearchResult__AddResourceToSemanticGroup__SemanticGroup_Resource();
+
+		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SearchResultOptionValueImpl <em>Search Result Option Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2705,14 +3007,30 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference SEARCH_RESULT_OPTION_VALUE__OPTION = eINSTANCE.getSearchResultOptionValue_Option();
 
 		/**
-		 * The meta object literal for the '{@link semanticmanager.impl.SearchResultOptionStringValueImpl <em>Search Result Option String Value</em>}' class.
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see semanticmanager.impl.SearchResultOptionStringValueImpl
-		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResultOptionStringValue()
 		 * @generated
 		 */
-		EClass SEARCH_RESULT_OPTION_STRING_VALUE = eINSTANCE.getSearchResultOptionStringValue();
+		EAttribute SEARCH_RESULT_OPTION_VALUE__VALUE = eINSTANCE.getSearchResultOptionValue_Value();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.ConstraintImpl <em>Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.ConstraintImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getConstraint()
+		 * @generated
+		 */
+		EClass CONSTRAINT = eINSTANCE.getConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTRAINT__KEY = eINSTANCE.getConstraint_Key();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -2720,33 +3038,65 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEARCH_RESULT_OPTION_STRING_VALUE__VALUE = eINSTANCE.getSearchResultOptionStringValue_Value();
+		EAttribute CONSTRAINT__VALUE = eINSTANCE.getConstraint_Value();
 
 		/**
-		 * The meta object literal for the '{@link semanticmanager.impl.SearchResultOptionNamedElementListValueImpl <em>Search Result Option Named Element List Value</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see semanticmanager.impl.SearchResultOptionNamedElementListValueImpl
-		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResultOptionNamedElementListValue()
-		 * @generated
-		 */
-		EClass SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE = eINSTANCE.getSearchResultOptionNamedElementListValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Elements</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__VALUE = eINSTANCE.getSearchResultOptionNamedElementListValue_Value();
+		EReference CONSTRAINT__ELEMENTS = eINSTANCE.getConstraint_Elements();
 
 		/**
-		 * The meta object literal for the '<em><b>Condition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Interpreter</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE__CONDITION = eINSTANCE.getSearchResultOptionNamedElementListValue_Condition();
+		EReference CONSTRAINT__INTERPRETER = eINSTANCE.getConstraint_Interpreter();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.ConstraintInterpreterImpl <em>Constraint Interpreter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.ConstraintInterpreterImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getConstraintInterpreter()
+		 * @generated
+		 */
+		EClass CONSTRAINT_INTERPRETER = eINSTANCE.getConstraintInterpreter();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTRAINT_INTERPRETER__ID = eINSTANCE.getConstraintInterpreter_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTRAINT_INTERPRETER__NAME = eINSTANCE.getConstraintInterpreter_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONSTRAINT_INTERPRETER__CONSTRAINTS = eINSTANCE.getConstraintInterpreter_Constraints();
+
+		/**
+		 * The meta object literal for the '<em><b>Execute</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONSTRAINT_INTERPRETER___EXECUTE__CONSTRAINT = eINSTANCE.getConstraintInterpreter__Execute__Constraint();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.Type <em>Type</em>}' enum.

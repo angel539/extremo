@@ -153,17 +153,15 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_STRING_VALUE: {
-				SearchResultOptionStringValue searchResultOptionStringValue = (SearchResultOptionStringValue)theEObject;
-				T result = caseSearchResultOptionStringValue(searchResultOptionStringValue);
-				if (result == null) result = caseSearchResultOptionValue(searchResultOptionStringValue);
+			case SemanticmanagerPackage.CONSTRAINT: {
+				Constraint constraint = (Constraint)theEObject;
+				T result = caseConstraint(constraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_NAMED_ELEMENT_LIST_VALUE: {
-				SearchResultOptionNamedElementListValue searchResultOptionNamedElementListValue = (SearchResultOptionNamedElementListValue)theEObject;
-				T result = caseSearchResultOptionNamedElementListValue(searchResultOptionNamedElementListValue);
-				if (result == null) result = caseSearchResultOptionValue(searchResultOptionNamedElementListValue);
+			case SemanticmanagerPackage.CONSTRAINT_INTERPRETER: {
+				ConstraintInterpreter constraintInterpreter = (ConstraintInterpreter)theEObject;
+				T result = caseConstraintInterpreter(constraintInterpreter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -367,32 +365,32 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Search Result Option String Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Search Result Option String Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSearchResultOptionStringValue(SearchResultOptionStringValue object) {
+	public T caseConstraint(Constraint object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Search Result Option Named Element List Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Constraint Interpreter</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Search Result Option Named Element List Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Constraint Interpreter</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSearchResultOptionNamedElementListValue(SearchResultOptionNamedElementListValue object) {
+	public T caseConstraintInterpreter(ConstraintInterpreter object) {
 		return null;
 	}
 

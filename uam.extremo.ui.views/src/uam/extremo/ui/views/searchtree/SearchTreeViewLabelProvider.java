@@ -8,13 +8,12 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
+import semanticmanager.Constraint;
 import semanticmanager.DataProperty;
 import semanticmanager.ObjectProperty;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionNamedElementListValue;
-import semanticmanager.SearchResultOptionStringValue;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
@@ -30,9 +29,7 @@ public class SearchTreeViewLabelProvider extends LabelProvider implements IStyle
 		if(obj instanceof SearchResultOptionValue) return Activator.getImageDescriptor("icons/value16.png").createImage();
 		if(obj instanceof SearchOption) return Activator.getImageDescriptor("icons/option16.png").createImage();
 		if(obj instanceof SemanticGroup) return Activator.getImageDescriptor("icons/class_set.gif").createImage();
-		
-		
-		//if(obj instanceof SemanticNode) return Activator.getImageDescriptor("icons/class_obj.png").createImage();
+		if(obj instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
 		
 		if(obj instanceof SemanticNode){
 			if(((SemanticNode) obj).getDescriptor() == null){
@@ -62,21 +59,15 @@ public class SearchTreeViewLabelProvider extends LabelProvider implements IStyle
 		if (element instanceof SearchResult) {
 			SearchResult searchResult = (SearchResult) element;
 			StyledString styledString = new StyledString("");
-			styledString.append("(" + searchResult.getResources().size() + ") resources applied", StyledString.COUNTER_STYLER);
+			styledString.append("(" + searchResult.getResources().size() + ") resources selected", StyledString.COUNTER_STYLER);
+			styledString.append(" -> over (" + searchResult.getApplyOnElements().size() + ") nodes applied", StyledString.COUNTER_STYLER);
 			styledString.append(" -> (" + searchResult.getResults().size() + ") groups resolved", StyledString.COUNTER_STYLER);
 			return styledString;
 		}
 		
-		if (element instanceof SearchResultOptionStringValue) {
-			SearchResultOptionStringValue searchResultOptionValue = (SearchResultOptionStringValue) element;
+		if (element instanceof SearchResultOptionValue) {
+			SearchResultOptionValue searchResultOptionValue = (SearchResultOptionValue) element;
 			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName() + " : " + searchResultOptionValue.getValue());
-			return styledString;
-		}
-		
-		if (element instanceof SearchResultOptionNamedElementListValue) {
-			SearchResultOptionNamedElementListValue searchResultOptionValue = (SearchResultOptionNamedElementListValue) element;
-			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName());
-			styledString.append(" (" + searchResultOptionValue.getValue().size() + ") ", StyledString.QUALIFIER_STYLER);
 			return styledString;
 		}
 		
@@ -91,6 +82,14 @@ public class SearchTreeViewLabelProvider extends LabelProvider implements IStyle
 			SemanticGroup semanticGroup = (SemanticGroup) element;
 			StyledString styledString = new StyledString(semanticGroup.getName());
 			styledString.append(" (" + semanticGroup.getNodes().size() + ") ", StyledString.QUALIFIER_STYLER);
+
+			return styledString;
+		}
+		
+		if(element instanceof Constraint){
+			Constraint constraint = (Constraint) element;
+			StyledString styledString = new StyledString(constraint.getKey());
+			styledString.append(" (" + constraint.getValue().toString() + ")", StyledString.COUNTER_STYLER);
 
 			return styledString;
 		}

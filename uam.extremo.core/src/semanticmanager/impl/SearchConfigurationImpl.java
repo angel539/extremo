@@ -204,7 +204,7 @@ public abstract class SearchConfigurationImpl extends MinimalEObjectImpl.Contain
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void search(SearchResult search) {
 		// TODO: implement this method

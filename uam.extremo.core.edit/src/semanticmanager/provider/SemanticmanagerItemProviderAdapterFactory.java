@@ -279,49 +279,49 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.SearchResultOptionStringValue} instances.
+	 * This keeps track of the one adapter used for all {@link semanticmanager.SearchResultOptionValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SearchResultOptionStringValueItemProvider searchResultOptionStringValueItemProvider;
+	protected SearchResultOptionValueItemProvider searchResultOptionValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.SearchResultOptionStringValue}.
+	 * This creates an adapter for a {@link semanticmanager.SearchResultOptionValue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSearchResultOptionStringValueAdapter() {
-		if (searchResultOptionStringValueItemProvider == null) {
-			searchResultOptionStringValueItemProvider = new SearchResultOptionStringValueItemProvider(this);
+	public Adapter createSearchResultOptionValueAdapter() {
+		if (searchResultOptionValueItemProvider == null) {
+			searchResultOptionValueItemProvider = new SearchResultOptionValueItemProvider(this);
 		}
 
-		return searchResultOptionStringValueItemProvider;
+		return searchResultOptionValueItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.SearchResultOptionNamedElementListValue} instances.
+	 * This keeps track of the one adapter used for all {@link semanticmanager.Constraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SearchResultOptionNamedElementListValueItemProvider searchResultOptionNamedElementListValueItemProvider;
+	protected ConstraintItemProvider constraintItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.SearchResultOptionNamedElementListValue}.
+	 * This creates an adapter for a {@link semanticmanager.Constraint}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSearchResultOptionNamedElementListValueAdapter() {
-		if (searchResultOptionNamedElementListValueItemProvider == null) {
-			searchResultOptionNamedElementListValueItemProvider = new SearchResultOptionNamedElementListValueItemProvider(this);
+	public Adapter createConstraintAdapter() {
+		if (constraintItemProvider == null) {
+			constraintItemProvider = new ConstraintItemProvider(this);
 		}
 
-		return searchResultOptionNamedElementListValueItemProvider;
+		return constraintItemProvider;
 	}
 
 	/**
@@ -432,8 +432,8 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 		if (semanticGroupItemProvider != null) semanticGroupItemProvider.dispose();
 		if (searchOptionItemProvider != null) searchOptionItemProvider.dispose();
 		if (searchResultItemProvider != null) searchResultItemProvider.dispose();
-		if (searchResultOptionStringValueItemProvider != null) searchResultOptionStringValueItemProvider.dispose();
-		if (searchResultOptionNamedElementListValueItemProvider != null) searchResultOptionNamedElementListValueItemProvider.dispose();
+		if (searchResultOptionValueItemProvider != null) searchResultOptionValueItemProvider.dispose();
+		if (constraintItemProvider != null) constraintItemProvider.dispose();
 	}
 
 }

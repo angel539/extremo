@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IEditorInput;
@@ -31,7 +32,6 @@ public class CreateClass extends ExtremoViewPartAction {
 			Object object = treeSelection.getFirstElement();
 			if (object != null){
 				if(object instanceof SemanticNode){
-					//TreeObject treeObject = (TreeObject) object;
 					SemanticNode semanticElement = (SemanticNode) object;
 					
 					if(semanticElement != null && semanticElement instanceof SemanticNode){
@@ -61,8 +61,9 @@ public class CreateClass extends ExtremoViewPartAction {
 								if(editorID != null){
 									try {
 										IDE.openEditor(activePage, editorInput, editorID);
-									} catch (PartInitException e) {
-										//Messages.displayGeneralErrorMessage("Refresh editor", "Error refreshing the editor");
+									} 
+									catch (PartInitException e) {
+										MessageDialog.openError(null, "Refresh editor", "Error refreshing the editor");
 									}
 								}			
 							}
@@ -77,8 +78,7 @@ public class CreateClass extends ExtremoViewPartAction {
 			org.eclipse.uml2.uml.Package package_, String name,
 			boolean isAbstract) {
 
-		org.eclipse.uml2.uml.Class class_ = package_.createOwnedClass(name,
-			isAbstract);
+		org.eclipse.uml2.uml.Class class_ = package_.createOwnedClass(name, isAbstract);
 
 		return class_;
 	}
@@ -86,38 +86,9 @@ public class CreateClass extends ExtremoViewPartAction {
 	protected static void saveResource(Resource resource) {
 		try {
 			resource.save(null);
-		} catch (IOException ioe) {
-			System.err.println(ioe.getMessage());
+		}
+		catch (IOException ioe) {
+			MessageDialog.openError(null, "Saving resource", ioe.getMessage());
 		}
 	}
 }
-/*
-	protected static void save(org.eclipse.uml2.uml.Package package_, URI uri) {
-		ResourceSet resourceSet = new ResourceSetImpl();
-		UMLResourcesUtil.init(resourceSet);
-		
-		Resource resource = resourceSet.createResource(uri);
-		resource.getContents().add(package_);
-
-		try {
-			resource.save(null);
-		} catch (IOException ioe) {
-			System.err.println(ioe.getMessage());
-		}
-	}
-	
-	protected static Model createModel(String name) {
-		Model model = UMLFactory.eINSTANCE.createModel();
-		model.setName(name);
-		return model;
-	}
-*/
-
-/*TreePath[] treePaths = ((TreeSelection) selection).getPaths();
-for(TreePath treePath : treePaths){
-	System.out.println("path count " + treePath.getSegmentCount() + " treepath:: " + treePath.toString());
-}
-for (Iterator<?> iter = treeSelection.iterator(); iter.hasNext();) {
-	Object node = (Object) iter.next();
-	System.out.println("el nodo es:: " + node);
-}*/

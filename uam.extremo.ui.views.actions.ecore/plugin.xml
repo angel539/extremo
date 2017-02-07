@@ -10,7 +10,7 @@
             id="metaRDF.ui.actions.ecore.action.CreateClass"
             name="CreateEcoreClass"
             position="toolbar"
-            view="entities">
+            view="searches">
       </action>
       <action
             class="uam.extremo.ui.views.actions.ecore.action.CreateAttribute"
@@ -19,7 +19,7 @@
             id="metaRDF.ui.actions.ecore.action.CreateAttribute"
             name="CreateEcoreAttribute"
             position="toolbar"
-            view="entities">
+            view="searches">
       </action>
    </extension>
 

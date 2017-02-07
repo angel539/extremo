@@ -79,6 +79,7 @@ public class RepositoryManagerItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__REPOSITORIES);
 			childrenFeatures.add(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__CONFIGURATIONS);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__INTERPRETERS);
 		}
 		return childrenFeatures;
 	}
@@ -122,6 +123,7 @@ public class RepositoryManagerItemProvider
 		switch (notification.getFeatureID(RepositoryManager.class)) {
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__REPOSITORIES:
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__CONFIGURATIONS:
+			case SemanticmanagerPackage.REPOSITORY_MANAGER__INTERPRETERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
