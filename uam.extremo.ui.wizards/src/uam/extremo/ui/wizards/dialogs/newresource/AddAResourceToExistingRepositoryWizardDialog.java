@@ -61,6 +61,8 @@ public class AddAResourceToExistingRepositoryWizardDialog extends Wizard {
 			}
 		}
 		
+		long startTime = System.currentTimeMillis();
+
 		if(descriptor != null){
 			try {
 				AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri);
@@ -77,6 +79,12 @@ public class AddAResourceToExistingRepositoryWizardDialog extends Wizard {
 				MessageDialog.openError(null, "Resource creation", e.getMessage());
 			}
 		}
+		
+		long endTime   = System.currentTimeMillis();
+
+		long totalTime = endTime - startTime;
+		
+		MessageDialog.openInformation(null, "Time: ", Long.toString(totalTime * 1000) + " seconds");
 		
 		return true;
 	}

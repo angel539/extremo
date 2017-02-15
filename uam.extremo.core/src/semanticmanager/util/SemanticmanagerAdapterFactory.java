@@ -104,8 +104,8 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 				return createSemanticGroupAdapter();
 			}
 			@Override
-			public Adapter caseSearchConfiguration(SearchConfiguration object) {
-				return createSearchConfigurationAdapter();
+			public Adapter caseSimpleSearchConfiguration(SimpleSearchConfiguration object) {
+				return createSimpleSearchConfigurationAdapter();
 			}
 			@Override
 			public Adapter caseSearchOption(SearchOption object) {
@@ -126,6 +126,18 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseConstraintInterpreter(ConstraintInterpreter object) {
 				return createConstraintInterpreterAdapter();
+			}
+			@Override
+			public Adapter caseCompositeSearchConfiguration(CompositeSearchConfiguration object) {
+				return createCompositeSearchConfigurationAdapter();
+			}
+			@Override
+			public Adapter caseConnection(Connection object) {
+				return createConnectionAdapter();
+			}
+			@Override
+			public Adapter caseSearchConfiguration(SearchConfiguration object) {
+				return createSearchConfigurationAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -274,6 +286,20 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link semanticmanager.SimpleSearchConfiguration <em>Simple Search Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see semanticmanager.SimpleSearchConfiguration
+	 * @generated
+	 */
+	public Adapter createSimpleSearchConfigurationAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link semanticmanager.SearchConfiguration <em>Search Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -354,6 +380,34 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConstraintInterpreterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link semanticmanager.CompositeSearchConfiguration <em>Composite Search Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see semanticmanager.CompositeSearchConfiguration
+	 * @generated
+	 */
+	public Adapter createCompositeSearchConfigurationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link semanticmanager.Connection <em>Connection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see semanticmanager.Connection
+	 * @generated
+	 */
+	public Adapter createConnectionAdapter() {
 		return null;
 	}
 

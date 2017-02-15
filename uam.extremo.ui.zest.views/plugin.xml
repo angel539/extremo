@@ -29,6 +29,23 @@
          </command>
       </menuContribution>
    </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="extremo.ui.perspective.extremo">
+         <view
+               closeable="true"
+               id="uam.extremo.ui.zest.views.InheritanceGraphViewPart"
+               minimized="false"
+               moveable="true"
+               relationship="right"
+               visible="true">
+         </view>
+         <viewShortcut
+               id="uam.extremo.ui.zest.views.InheritanceGraphViewPart">
+         </viewShortcut>
+      </perspectiveExtension>
+   </extension>
 
 
 </plugin>

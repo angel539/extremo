@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
 import org.eclipse.zest.core.viewers.INestedContentProvider;

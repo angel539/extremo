@@ -67,7 +67,6 @@ public class NamedElementItemProvider
 			addWeightPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addDrawnPropertyDescriptor(object);
-			addConstraintsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -183,28 +182,6 @@ public class NamedElementItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Constraints feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addConstraintsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_NamedElement_constraints_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_constraints_feature", "_UI_NamedElement_type"),
-				 SemanticmanagerPackage.Literals.NAMED_ELEMENT__CONSTRAINTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -217,6 +194,7 @@ public class NamedElementItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SemanticmanagerPackage.Literals.NAMED_ELEMENT__DESCRIBES);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.NAMED_ELEMENT__CONSTRAINTS);
 		}
 		return childrenFeatures;
 	}
@@ -269,6 +247,7 @@ public class NamedElementItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case SemanticmanagerPackage.NAMED_ELEMENT__DESCRIBES:
+			case SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -315,6 +294,11 @@ public class NamedElementItemProvider
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.NAMED_ELEMENT__DESCRIBES,
 				 SemanticmanagerFactory.eINSTANCE.createSemanticGroup()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SemanticmanagerPackage.Literals.NAMED_ELEMENT__CONSTRAINTS,
+				 SemanticmanagerFactory.eINSTANCE.createConstraint()));
 	}
 
 	/**

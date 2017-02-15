@@ -5,18 +5,19 @@ import org.eclipse.gef.dnd.AbstractTransferDropTargetListener;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTarget;
 import org.eclipse.swt.dnd.DropTargetEvent;
+import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.graphics.Point;
 
 public abstract class GraphityEditorTransferDropTargetListener extends  AbstractTransferDropTargetListener implements IGraphityEditorContribution{	
 	private static EditPartViewer viewer = null;
 	
 	public GraphityEditorTransferDropTargetListener(GraphicalViewer viewer) {
-		super(viewer, ExtremoModelTransfer.getTransfer());
+		super(viewer, TextTransfer.getInstance());
 		setEnablementDeterminedByCommand(true);
 	}
 	
 	public GraphityEditorTransferDropTargetListener(){
-		super(viewer, ExtremoModelTransfer.getTransfer());
+		super(viewer, TextTransfer.getInstance());
 		setEnablementDeterminedByCommand(true);
 	}
 	

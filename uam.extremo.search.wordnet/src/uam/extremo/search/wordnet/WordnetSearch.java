@@ -12,11 +12,10 @@ import semanticmanager.Resource;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
-import semanticmanager.impl.SearchConfigurationImpl;
+import semanticmanager.impl.SimpleSearchConfigurationImpl;
+import uam.extremo.search.wordnet.stemmer.LangUtils;
 
-import uam.extremo.search.wordnet.stemmer.*;
-
-public class WordnetSearch extends SearchConfigurationImpl{
+public class WordnetSearch extends SimpleSearchConfigurationImpl{
 	private WordnetSearchExpansionTree expansionTree;
 
 	public WordnetSearch(){

@@ -129,9 +129,10 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION: {
-				SearchConfiguration searchConfiguration = (SearchConfiguration)theEObject;
-				T result = caseSearchConfiguration(searchConfiguration);
+			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION: {
+				SimpleSearchConfiguration simpleSearchConfiguration = (SimpleSearchConfiguration)theEObject;
+				T result = caseSimpleSearchConfiguration(simpleSearchConfiguration);
+				if (result == null) result = caseSearchConfiguration(simpleSearchConfiguration);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -162,6 +163,25 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 			case SemanticmanagerPackage.CONSTRAINT_INTERPRETER: {
 				ConstraintInterpreter constraintInterpreter = (ConstraintInterpreter)theEObject;
 				T result = caseConstraintInterpreter(constraintInterpreter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SemanticmanagerPackage.COMPOSITE_SEARCH_CONFIGURATION: {
+				CompositeSearchConfiguration compositeSearchConfiguration = (CompositeSearchConfiguration)theEObject;
+				T result = caseCompositeSearchConfiguration(compositeSearchConfiguration);
+				if (result == null) result = caseSearchConfiguration(compositeSearchConfiguration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SemanticmanagerPackage.CONNECTION: {
+				Connection connection = (Connection)theEObject;
+				T result = caseConnection(connection);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SemanticmanagerPackage.SEARCH_CONFIGURATION: {
+				SearchConfiguration searchConfiguration = (SearchConfiguration)theEObject;
+				T result = caseSearchConfiguration(searchConfiguration);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -305,6 +325,21 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Simple Search Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Simple Search Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSimpleSearchConfiguration(SimpleSearchConfiguration object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Search Configuration</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -391,6 +426,36 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConstraintInterpreter(ConstraintInterpreter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Composite Search Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Composite Search Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCompositeSearchConfiguration(CompositeSearchConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connection</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connection</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnection(Connection object) {
 		return null;
 	}
 

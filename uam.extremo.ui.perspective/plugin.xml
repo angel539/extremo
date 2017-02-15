@@ -5,10 +5,10 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             class="uam.extremo.ui.perspective.ExtremoPerspective"
-            fixed="true"
+            fixed="false"
             icon="icons/extremoIcon16.png"
             id="extremo.ui.perspective.extremo"
-            name="Extremo New">
+            name="Extremo">
       </perspective>
    </extension>
 

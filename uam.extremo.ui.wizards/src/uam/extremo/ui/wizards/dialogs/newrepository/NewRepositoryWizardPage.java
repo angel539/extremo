@@ -1,10 +1,9 @@
 package uam.extremo.ui.wizards.dialogs.newrepository;
 
-import java.util.Iterator;
-
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -20,8 +19,6 @@ import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import uam.extremo.extensions.FormatAssistant;
-import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.wizards.Activator;
 
 public class NewRepositoryWizardPage extends WizardPage {
@@ -43,13 +40,15 @@ public class NewRepositoryWizardPage extends WizardPage {
 
 	@Override
 	public void createControl(Composite parent) {		
-		container = new Composite(parent, SWT.NONE);
-	    GridLayout layout = new GridLayout();
-	    container.setLayout(layout);
-	    layout.numColumns = 2;
+	    container = new Composite(parent, SWT.NONE);
+        GridLayout layout = new GridLayout();
+        container.setLayout(layout);
+        layout.numColumns = 2;
+        
 	    
 	    Label projectLabel = new Label(container, SWT.NONE);
 	    projectLabel.setText("Project");
+	    
 	    
 	    comboProject = new CCombo(container, SWT.NONE);
 	   
@@ -61,10 +60,12 @@ public class NewRepositoryWizardPage extends WizardPage {
 					comboProject.add(project.getName());
 					comboProject.setData(project.getName(), project);
 				}
-			} catch (CoreException e) {
-				//System.out.println(e.getMessage());
+			}
+	    	catch (CoreException e) {
+				MessageDialog.openError(null, "New repository creation", e.getMessage());
 			}
 		}
+	    
 	    
 	    Label nameLabel = new Label(container, SWT.NONE);
 	    nameLabel.setText("Name");
@@ -83,6 +84,7 @@ public class NewRepositoryWizardPage extends WizardPage {
 			        }
 		      }
 	    });
+	    
 	    
 	    Label descriptionLabel = new Label(container, SWT.NONE);
 	    descriptionLabel.setText("Description");
@@ -133,7 +135,7 @@ public class NewRepositoryWizardPage extends WizardPage {
 	    name.setLayoutData(gd);
 	    description.setLayoutData(gd);
 	    path.setLayoutData(gd);
-	    comboProject.setLayoutData(gd);
+	    //comboProject.setLayoutData(gd);
 	    
 	    setControl(container);
 	    setPageComplete(false);

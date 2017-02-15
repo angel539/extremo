@@ -1,25 +1,27 @@
-package uam.extremo.ui.views.repositories;
+package uam.extremo.ui.views.searchtree;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
-import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.ui.IViewSite;
-
 import semanticmanager.RepositoryManager;
 
-public class RepositoryViewContentProvider implements IStructuredContentProvider, ITreeContentProvider {	
-	private IViewSite iViewSite;
+public class SearchTreeViewAdapterFactoryContentProvider extends AdapterFactoryContentProvider {	
 	private RepositoryManager repositoryManager;
+	private TreeViewer viewer;
 
-	public RepositoryViewContentProvider(RepositoryManager repositoryManager, IViewSite iViewSite) {
-		super();
-		this.repositoryManager = repositoryManager;
-		this.iViewSite = iViewSite;
+	public SearchTreeViewAdapterFactoryContentProvider(TreeViewer viewer, AdapterFactory adapterFactory) {
+		super(adapterFactory);
+		this.setViewer(viewer);
 	}
-
+	
 	public void inputChanged(Viewer v, Object oldInput, Object newInput) {
+		this.setViewer((TreeViewer) v);
+		
+		if (repositoryManager != null)
+			repositoryManager = (RepositoryManager) newInput;
 	}
 
 	public void dispose() {
@@ -58,5 +60,13 @@ public class RepositoryViewContentProvider implements IStructuredContentProvider
 			}
 		}
 		return false;
+	}
+
+	public TreeViewer getViewer() {
+		return viewer;
+	}
+
+	public void setViewer(TreeViewer viewer) {
+		this.viewer = viewer;
 	}
 }

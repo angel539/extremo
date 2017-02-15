@@ -4,9 +4,9 @@ import semanticmanager.Resource;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
-import semanticmanager.impl.SearchConfigurationImpl;
+import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class NumberOfParentsSearch extends SearchConfigurationImpl {
+public class NumberOfParentsSearch extends SimpleSearchConfigurationImpl {
 	@Override
 	public void search(SearchResult search) {
 		int parents = (int) search.getOptionValue("morethanparents");

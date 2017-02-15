@@ -4,20 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.command.BasicCommandStack;
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -27,6 +19,8 @@ import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
@@ -49,7 +43,6 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
@@ -70,6 +63,7 @@ import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.views.Activator;
 import uam.extremo.ui.views.dnd.GraphityEditorTransferDropTargetListener;
 import uam.extremo.ui.views.extensions.ExtremoViewPartAction;
+import uam.extremo.ui.views.repositories.SemanticManagerAdapter;
 
 public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor {
 	public static final String ID = "uam.extremo.ui.views.SearchTree";
@@ -79,10 +73,13 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 	protected ISelection editorSelection = StructuredSelection.EMPTY;
 	protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 	protected AdapterFactoryEditingDomain editingDomain;
-	protected ComposedAdapterFactory adapterFactory;
 	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
+
+	protected ComposedAdapterFactory adapterFactory;
+	List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
 	
-	//@Override
+	SemanticManagerAdapter adapter;
+	
 	@Override
 	public void createPartControl(Composite parent) {		
 		PatternFilter patternfilter = new PatternFilter();
@@ -91,22 +88,24 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		
 		viewer = tree.getViewer();
 		
-		//viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		new DrillDownAdapter(viewer);
-		
-		/*ComposedAdapterFactory composedAdapterFactory = 
-				   new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-		AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(composedAdapterFactory);
-		AdapterFactoryContentProvider contentProvider = new AdapterFactoryContentProvider(composedAdapterFactory);*/
-
-		viewer.setContentProvider(new SearchTreeViewContentProvider(AssistantFactory.getInstance().getRepositoryManager(), getViewSite()));
-		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new SearchTreeViewLabelProvider()));
-				  
-		viewer.setInput(getViewSite());
-		
 		SearchTreeViewFilter filter = new SearchTreeViewFilter();
 		ViewerFilter[] filters = {filter};
 		viewer.setFilters(filters);
+		
+		new DrillDownAdapter(viewer);
+		
+		factories.add(new ResourceItemProviderAdapterFactory());
+		factories.add(new SemanticmanagerItemProviderAdapterFactory());
+		factories.add(new ReflectiveItemProviderAdapterFactory());
+		adapterFactory = new ComposedAdapterFactory(factories);
+		
+		viewer.setContentProvider(new 
+				SearchTreeViewAdapterFactoryContentProvider(viewer, adapterFactory));
+
+		viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
+
+		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new SearchTreeViewAdapterFactoryLabelProvider(adapterFactory)));
+				  
 		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "extremo.ui.viewer");
 		
@@ -117,7 +116,9 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
 		
 		callActions();
-		callEditors();
+		callEditorsDrop();
+		callFilters();
+		
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
@@ -126,13 +127,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
     	SearchTreeViewerComparator comparator = new SearchTreeViewerComparator();
 		viewer.setComparator(comparator);
 		
-		Adapter adapter = new AdapterImpl() {
-            public void notifyChanged(Notification notification) {
-           		 super.notifyChanged(notification);
-           		 refresh();
-            }
-    	};
-
+		adapter = new SemanticManagerAdapter(viewer);
     	AssistantFactory.getInstance().getRepositoryManager().eAdapters().add(adapter);
 	}
 
@@ -179,51 +174,6 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		throw new CloneNotSupportedException(); 
 	}
 	
-	/*public void refresh(){
-		IRunnableWithProgress op = new IRunnableWithProgress() {
-			public void run(IProgressMonitor monitor) throws InvocationTargetException {
-				try {
-					doFinish(monitor);									
-				} finally {
-					monitor.done();
-				}
-			}
-
-			private void doFinish(IProgressMonitor monitor) {
-				 viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
-			}
-		};
-	}*/
-	
-	public void refresh() {
-		Job job = new Job("Refreshing Search Tree View") {
-            @Override
-            protected IStatus run(IProgressMonitor monitor) {
-                doLongThing();
-                //syncWithUi();
-                return Status.OK_STATUS;
-            }
-	    };
-	    job.setUser(true);
-	    job.schedule();
-	}
-	
-	/*private void syncWithUi() {
-        try {
-        	Thread.sleep(100);
-        } catch (InterruptedException e) {
-                e.printStackTrace();
-        }
-	}*/
-
-	private void doLongThing() {
-		Display.getDefault().asyncExec(new Runnable() {
-            public void run() {
-            	   viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
-            }
-		});
-	}
-	
 	static public EditingDomain getEditingDomainFor(EObject object){
 		Resource resource = object.eResource();
 		if (resource != null){
@@ -250,7 +200,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		return null;
 	}
 
-	private void callEditors(){
+	private void callEditorsDrop(){
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 		IEditorPart editor = window.getActivePage().getActiveEditor();
@@ -415,51 +365,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		for (ISelectionChangedListener listener : selectionChangedListeners) {
 			listener.selectionChanged(new SelectionChangedEvent(this, selection));
 		}
-	}
-
-	/*@Override
-	public EditingDomain getEditingDomain() {
-		return editingDomain;
-	}
-	
-	protected void initializeEditingDomain() {
-		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-
-		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new SemanticmanagerItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
-
-		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, null);
-	}*/
-	
-	/*public IPropertySheetPage getPropertySheetPage() {
-		PropertySheetPage propertySheetPage =
-			new ExtendedPropertySheetPage(editingDomain) {
-				@Override
-				public void setSelectionToViewer(List<?> selection) {
-				}
-
-				@Override
-				public void setActionBars(IActionBars actionBars) {
-					super.setActionBars(actionBars);
-				}
-			};
-		propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
-		propertySheetPages.add(propertySheetPage);
-
-		return propertySheetPage;
-	}*/
-	
-	//@SuppressWarnings("rawtypes")
-	/*@Override
-	public Object getAdapter(Class key) {
-		if (key.equals(IPropertySheetPage.class)) {
-			return getPropertySheetPage();
-		}
-		else {
-			return super.getAdapter(key);
-		}
-	}*/
+	}	
 	
 	private ExtendedPropertySheetPage propertyPage;
 	

@@ -28,14 +28,20 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.spi.RegistryContributor;
+import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.window.Window;
-import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
+import semanticmanager.CompositeSearchConfiguration;
+import semanticmanager.Constraint;
 import semanticmanager.ConstraintInterpreter;
 import semanticmanager.NamedElement;
 import semanticmanager.Repository;
@@ -46,9 +52,10 @@ import semanticmanager.SearchResult;
 import semanticmanager.SemanticNode;
 import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.SemanticmanagerPackage;
+import semanticmanager.SimpleSearchConfiguration;
 import semanticmanager.Type;
 import semanticmanager.impl.SemanticmanagerPackageImpl;
-import semanticmanager.presentation.SemanticmanagerModelWizard;
+import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
 
 /**
  * @author MISO group {Angel.MoraS@uam.es}
@@ -56,6 +63,7 @@ import semanticmanager.presentation.SemanticmanagerModelWizard;
 public class AssistantFactory implements IResourceChangeListener{
 	public static final String ASSISTANT_EXTENSIONS_ID = "extremo.core.extensions.assistant";
 	public static final String SEARCH_EXTENSIONS_ID = "extremo.core.extensions.search";
+	public static final String COMPOSITE_SEARCH_EXTENSIONS_ID = "extremo.core.extensions.compositesearch";
 	public static final String CONSTRAINT_EXTENSIONS_ID = "extremo.core.extensions.constraintinterpreter";
 	public static final String NATURE_ID = "uam.extremo.ui.nature.extremonature";
 	
@@ -147,7 +155,7 @@ public class AssistantFactory implements IResourceChangeListener{
 		for(IConfigurationElement extension : extensions){
 			if(!searchIsOnTheList(extension.getAttribute("id"))){
 				if(extension.getName().compareTo("search") == 0){
-					SearchConfiguration searchConfiguration;
+					SimpleSearchConfiguration searchConfiguration;
 					
 					Bundle bundle = null;
 					IContributor contributor = extension.getContributor();
@@ -163,10 +171,10 @@ public class AssistantFactory implements IResourceChangeListener{
 					
 					try{
 						if(extension.createExecutableExtension("class") instanceof SearchConfiguration){
-							searchConfiguration = (SearchConfiguration) extension.createExecutableExtension("class");
+							searchConfiguration = (SimpleSearchConfiguration) extension.createExecutableExtension("class");
 							
-							((SearchConfiguration)searchConfiguration).setId(extension.getAttribute("id"));
-							((SearchConfiguration)searchConfiguration).setName(extension.getAttribute("name"));
+							((SimpleSearchConfiguration)searchConfiguration).setId(extension.getAttribute("id"));
+							((SimpleSearchConfiguration)searchConfiguration).setName(extension.getAttribute("name"));
 							
 							for(IConfigurationElement option : extension.getChildren("option")){
 								String id = option.getAttribute("id");
@@ -175,6 +183,41 @@ public class AssistantFactory implements IResourceChangeListener{
 								
 								searchConfiguration.addSearchOption(id, name, Type.get(type));
 							}
+							
+							repositoryManager.getConfigurations().add(searchConfiguration);
+						}
+					}
+					catch(CoreException e){
+					}
+				}
+			}		
+		}
+		
+		IConfigurationElement[] compositeextensions = registry.getConfigurationElementsFor(COMPOSITE_SEARCH_EXTENSIONS_ID);
+		
+		for(IConfigurationElement compositeextension : compositeextensions){
+			if(!searchIsOnTheList(compositeextension.getAttribute("id"))){
+				if(compositeextension.getName().compareTo("search") == 0){
+					CompositeSearchConfiguration searchConfiguration;
+					
+					Bundle bundle = null;
+					IContributor contributor = compositeextension.getContributor();
+
+					if (contributor instanceof RegistryContributor) {
+						long id = Long.parseLong(((RegistryContributor) contributor).getActualId());
+						Bundle thisBundle = FrameworkUtil.getBundle(getClass());
+						bundle = thisBundle.getBundleContext().getBundle(id);
+					}
+					else {
+						bundle = Platform.getBundle(contributor.getName());          
+					}
+					
+					try{
+						if(compositeextension.createExecutableExtension("class") instanceof SearchConfiguration){
+							searchConfiguration = (CompositeSearchConfiguration) compositeextension.createExecutableExtension("class");
+							
+							((CompositeSearchConfiguration)searchConfiguration).setId(compositeextension.getAttribute("id"));
+							((CompositeSearchConfiguration)searchConfiguration).setName(compositeextension.getAttribute("name"));
 							
 							repositoryManager.getConfigurations().add(searchConfiguration);
 						}
@@ -250,7 +293,6 @@ public class AssistantFactory implements IResourceChangeListener{
 		return false;
 	}
 	
-
 	private static void createInstance() {
    	 if (INSTANCE == null) {
             synchronized(AssistantFactory.class) {
@@ -258,45 +300,16 @@ public class AssistantFactory implements IResourceChangeListener{
                     INSTANCE = new AssistantFactory();
                     SemanticmanagerPackageImpl.init();
                     SemanticmanagerPackage.eINSTANCE.getClass();
-                    setRepositoryManager(SemanticmanagerFactory.eINSTANCE.createRepositoryManager());
-                    setAssistants(new ArrayList<IFormatAssistant>());
                     
-                    /*EContentAdapter adapter = new EContentAdapter() {
-                        public void notifyChanged(Notification notification) {
-                       		 super.notifyChanged(notification);
-                       		 
-                       		 Object notifier = notification.getNotifier();
-                       		 
-                       		 if (notifier instanceof Resource) {
-								Resource resource = (Resource) notifier;
-								
-								int type = notification.getEventType();
-								
-								switch (type) {
-									case Notification.ADD:
-										modelChanged();
-										break;
-										
-									case Notification.ADD_MANY:
-										
-										break;
-										
-									case Notification.REMOVE:
-										
-										break;
-										
-									case Notification.REMOVE_MANY:
-									
-										break;
-	
-									default:
-										break;
-								}
-                       		 }
-                        }
-                	};
-                	
-                	INSTANCE.getRepositoryManager().eAdapters().add(adapter);*/
+                    setRepositoryManager(SemanticmanagerFactory.eINSTANCE.createRepositoryManager());
+                    
+                    /*repositoryManager = loadRepositoryManager();
+                    
+                    if(repositoryManager == null){
+                    	repositoryManager = SemanticmanagerFactory.eINSTANCE.createRepositoryManager();
+                    }*/
+                    //setRepositoryManager();
+                    setAssistants(new ArrayList<IFormatAssistant>());
                 }
             }
         }
@@ -314,6 +327,60 @@ public class AssistantFactory implements IResourceChangeListener{
 		}
 	}
 	
+	public static RepositoryManager loadRepositoryManager(){
+		
+			RepositoryManager repositoryManager = null;
+			org.eclipse.emf.ecore.resource.Resource resource = null;
+		
+		try {
+			ResourceSet resourceSet = new ResourceSetImpl();
+			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());		
+			
+			String pathFromIPath = "/Users/angel/Desktop/".concat("semanticmanager.xmi");
+			URI fileURI = URI.createFileURI(pathFromIPath);
+			resource = resourceSet.getResource(fileURI, true);
+			resourceSet.getAllContents().next();
+		
+			repositoryManager = (RepositoryManager) resource.getContents().get(0);
+		}
+		catch (Exception e) {
+			return null;
+		}
+		
+        return repositoryManager;
+	}
+	
+	public void save(){
+		//System.out.println(repositoryManager.eAdapters());
+		
+		/*try {
+        	if (repositoryManager == null)
+      	      return;
+        	
+        	org.eclipse.emf.ecore.resource.Resource.Factory.Registry reg = org.eclipse.emf.ecore.resource.Resource.Factory.Registry.INSTANCE;
+        	Map<String, Object> m = reg.getExtensionToFactoryMap();
+        	m.put("xmi", new XMIResourceFactoryImpl());
+        	
+        	ResourceSet resSet = new ResourceSetImpl();
+
+        	File file = Activator.getDefault().getStateLocation().append("semanticmanager" + System.currentTimeMillis() + ".xmi").toFile();
+        	OutputStream outputStream = new FileOutputStream(file);
+        	
+			org.eclipse.emf.ecore.resource.Resource resource = resSet.createResource(URI.createFileURI(file));			
+			
+			if(repositoryManager != null)
+				resource.getContents().add(repositoryManager);
+			
+	        String encoding = "UTF-8";
+	        Map<Object, Object> options = new HashMap<Object, Object>();
+	        options.put(XMLResource.OPTION_ENCODING, encoding);
+	        resource.save(outputStream, options);
+	    }
+        catch (IOException e) {
+	    	MessageDialog.openError(null, "Save and validate", "The model was not saved properly: " + e.getMessage());
+	    }*/
+	}
+
    public static AssistantFactory getInstance() {
        if (INSTANCE == null){
        	createInstance();
@@ -360,6 +427,10 @@ public class AssistantFactory implements IResourceChangeListener{
 	public void search(SearchResult search) {
 		search.getConfiguration().search(search);
 	}
+	
+	public void validateConstraint(Constraint constraint) {
+		constraint.getInterpreter().execute(constraint);
+	}
 
 	public RepositoryManager getRepositoryManager() {
 		return repositoryManager;
@@ -381,7 +452,12 @@ public class AssistantFactory implements IResourceChangeListener{
 			System.out.println(e.getMessage());
 		}
 		
-		repositoryManager.getRepositories().add(repository);
+		BasicCommandStack commandStack = new BasicCommandStack();
+		AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(new SemanticmanagerItemProviderAdapterFactory(), commandStack);
+		
+		org.eclipse.emf.common.command.Command command = AddCommand.create(editingDomain, getRepositoryManager(), SemanticmanagerPackage.eINSTANCE.getRepositoryManager_Repositories(), repository);
+		editingDomain.getCommandStack().execute(command);
+		//repositoryManager.getRepositories().add(repository);
 		return repository;
 	}
 	
@@ -438,8 +514,17 @@ public class AssistantFactory implements IResourceChangeListener{
 			IPath location = new Path(uri);
 			child.createLink(location, IResource.FILE, null);
 		}
+		
+		
+		
+		BasicCommandStack commandStack = new BasicCommandStack();
+		AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(new SemanticmanagerItemProviderAdapterFactory(), commandStack);
+		
+		org.eclipse.emf.common.command.Command command = AddCommand.create(editingDomain, repository, SemanticmanagerPackage.eINSTANCE.getRepository_Resources(), resource);
+		editingDomain.getCommandStack().execute(command);
+		
 
-		repository.getResources().add(resource);
+		//repository.getResources().add(resource);
 		return resource;
 	}
 	
@@ -473,7 +558,15 @@ public class AssistantFactory implements IResourceChangeListener{
 			child.createLink(location, IResource.FILE, null);
 		}
 		
-		repository.getResources().add(resource);
+		
+		BasicCommandStack commandStack = new BasicCommandStack();
+		AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(new SemanticmanagerItemProviderAdapterFactory(), commandStack);
+		
+		org.eclipse.emf.common.command.Command command = AddCommand.create(editingDomain, repository, SemanticmanagerPackage.eINSTANCE.getRepository_Resources(), resource);
+		editingDomain.getCommandStack().execute(command);
+		
+		
+		//repository.getResources().add(resource);
 		return resource;
 	}
 
@@ -537,7 +630,15 @@ public class AssistantFactory implements IResourceChangeListener{
 			child.createLink(location, IResource.FILE, null);
 		}
 		
-		repository.getResources().add(resource);
+		
+		BasicCommandStack commandStack = new BasicCommandStack();
+		AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(new SemanticmanagerItemProviderAdapterFactory(), commandStack);
+		
+		org.eclipse.emf.common.command.Command command = AddCommand.create(editingDomain, repository, SemanticmanagerPackage.eINSTANCE.getRepository_Resources(), resource);
+		editingDomain.getCommandStack().execute(command);
+		
+		
+		//repository.getResources().add(resource);
 		return resource;
 	}
 	
@@ -572,49 +673,17 @@ public class AssistantFactory implements IResourceChangeListener{
 			child.createLink(location, IResource.FILE, null);
 		}
 		
-		repository.getResources().add(resource);
+		
+		BasicCommandStack commandStack = new BasicCommandStack();
+		AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(new SemanticmanagerItemProviderAdapterFactory(), commandStack);
+		
+		org.eclipse.emf.common.command.Command command = AddCommand.create(editingDomain, repository, SemanticmanagerPackage.eINSTANCE.getRepository_Resources(), resource);
+		editingDomain.getCommandStack().execute(command);
+		
+		//repository.getResources().add(resource);
 		return resource;
 	}
-	
-	public void save(){
-		/*WizardDialog wizardDialog = new WizardDialog(null, new SemanticmanagerModelWizard(AssistantFactory.getInstance().getRepositoryManager(), Activator.getDefault().getWorkbench(), new StructuredSelection()));
-		if (wizardDialog.open() == Window.OK) {
-			System.out.println("todo ok");
-		}*/
-		
-		
-		/*String path = null;
-		
-		WizardDialog wizardDialog = new WizardDialog(null, new PathSelectorWizardDialog(path));
-		if (wizardDialog.open() == Window.OK) {
-	        try {
-	        	org.eclipse.emf.ecore.resource.Resource.Factory.Registry reg = org.eclipse.emf.ecore.resource.Resource.Factory.Registry.INSTANCE;
-	        	Map<String, Object> m = reg.getExtensionToFactoryMap();
-	        	m.put("semanticmanager", new XMIResourceFactoryImpl());
-	        	
-	        	ResourceSet resSet = new ResourceSetImpl();
-	        	
-				URI fileURI = URI.createFileURI(path + "/" + "saved.semanticmanager");
-	        	
-				org.eclipse.emf.ecore.resource.Resource resource = resSet.createResource(fileURI);
-		        
-				if(repositoryManager != null)
-					resource.getContents().add(repositoryManager);
-		        
-		        String encoding = "UTF-8";
-		        Map<Object, Object> options = new HashMap<Object, Object>();
-		        options.put(XMLResource.OPTION_ENCODING, encoding);
-		        resource.save(options);
-		    }
-	        catch (IOException e) {
-		    	MessageDialog.openError(null, "Save and validate", "The model was not saved properly: " + e.getMessage());
-		    } 
-		}
-		else{
-			MessageDialog.openError(null, "Add Repository", "Repository could not be added");
-		}*/
-	}
-	
+
 	private void toDataThread(IFormatAssistant assistant, SemanticNode node){
 		Job job = new Job(node.getName() + " : resolving data properties") {
 	        @Override
@@ -653,10 +722,6 @@ public class AssistantFactory implements IResourceChangeListener{
 		job.schedule();
 	}
 
-	public static void modelChanged() {
-		//System.out.println("model changed... en assistant");
-	}
-	
 	//from IResourceChangeListener
 	@Override
 	public void resourceChanged(IResourceChangeEvent event) {
@@ -740,4 +805,23 @@ public class AssistantFactory implements IResourceChangeListener{
 		   System.out.println(ex.getMessage());
 	   }
 	}
+
+	public NamedElement searchNamedElement(EObject node, Object data){
+    	NamedElement found = null;
+    	
+		if((node instanceof NamedElement) && (((NamedElement) node).getName().equals(data))){
+           found = (NamedElement) node;
+        }
+		else {
+			for(EObject content : node.eContents()){
+				if(content instanceof NamedElement){
+					found = searchNamedElement((NamedElement) content, data);
+					
+					if(found != null) break;
+				}	
+			}
+         }
+    	
+        return found;
+    }
 }

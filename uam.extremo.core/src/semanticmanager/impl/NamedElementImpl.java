@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import semanticmanager.Constraint;
@@ -373,7 +373,7 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 	 */
 	public EList<Constraint> getConstraints() {
 		if (constraints == null) {
-			constraints = new EObjectContainmentWithInverseEList<Constraint>(Constraint.class, this, SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS, SemanticmanagerPackage.CONSTRAINT__ELEMENTS);
+			constraints = new EObjectContainmentEList<Constraint>(Constraint.class, this, SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS);
 		}
 		return constraints;
 	}
@@ -393,8 +393,6 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 				return basicSetDescriptor((NamedElement)otherEnd, msgs);
 			case SemanticmanagerPackage.NAMED_ELEMENT__DESCRIBES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDescribes()).basicAdd(otherEnd, msgs);
-			case SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConstraints()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}

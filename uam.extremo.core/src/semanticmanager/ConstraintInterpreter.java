@@ -101,6 +101,6 @@ public interface ConstraintInterpreter extends EObject {
 	 * @model
 	 * @generated
 	 */
-	boolean execute(Constraint constraint);
+	void execute(Constraint constraint);
 
 } // ConstraintInterpreter

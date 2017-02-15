@@ -12,6 +12,8 @@ import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.VerifyEvent;
+import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -22,6 +24,7 @@ import org.eclipse.swt.widgets.Text;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
+import semanticmanager.SimpleSearchConfiguration;
 import semanticmanager.Type;
 import uam.extremo.ui.wizards.*;
 import uam.extremo.ui.wizards.dialogs.searchnew.treeviewer.SearchTableViewer;
@@ -31,14 +34,14 @@ import org.eclipse.swt.widgets.Control;
 public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	private CCombo comboSearchType;
 	
-	private List<SearchConfiguration> searchConfigurations;
+	private List<SimpleSearchConfiguration> searchConfigurations;
 	
-	private SearchConfiguration searchConfigurationSelected = null;
+	private SimpleSearchConfiguration searchConfigurationSelected = null;
 	private Map<SearchOption, String> values;
 	private Map<SearchOption, SearchTableViewer> listValues;
 	private SearchResult searchResult;
 	
-	public SearchConfigurationSelectorWizardPage(String pageName, String pageDescription, List<SearchConfiguration> searchConfigurations, SearchResult searchResult) {
+	public SearchConfigurationSelectorWizardPage(String pageName, String pageDescription, List<SimpleSearchConfiguration> searchConfigurations, SearchResult searchResult) {
 		super(pageName);
 		setTitle(pageName);
 		setDescription(pageDescription);
@@ -93,7 +96,6 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		 * Depends on the options... 
 		 */
 		
-		
 	    comboSearchType.addSelectionListener(new SelectionAdapter() {
 	    	public void widgetSelected(SelectionEvent e) {
 	    		for(Control child : selectionContainer.getChildren()) child.dispose();
@@ -101,9 +103,9 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    		/*
 	    		 * Search selection can change
 	    		 */
-	    		SearchConfiguration searchConfigurationSelected = null;
+	    		SimpleSearchConfiguration searchConfigurationSelected = null;
 	    		loop:
-	    		for(SearchConfiguration searchConfiguration : searchConfigurations){
+	    		for(SimpleSearchConfiguration searchConfiguration : searchConfigurations){
 	    			if(comboSearchType.getText().equals(searchConfiguration.getName())){
 	    				searchConfigurationSelected = searchConfiguration;
 	    				break loop;
@@ -113,8 +115,6 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    		if(searchConfigurationSelected != null){
 	    			Map<SearchOption, String> values = new LinkedHashMap<SearchOption, String>(); 
 	   
-	    			//Map<SearchOption, SearchTableViewer> listValues = new LinkedHashMap<SearchOption, SearchTableViewer>(); 
-		    		
 		    		for(SearchOption searchOption : searchConfigurationSelected.getOptions()){		    			
 		    			if(searchOption.getType().equals(Type.STRING)){
 		    				createTextField(searchOption, values);	
@@ -143,9 +143,11 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 				Label optionInteger = new Label(selectionContainer, SWT.NONE);
 				optionInteger.setText(searchOption.getName());
 				optionInteger.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-			    
+				
 				Text optionIntegerField = new Text(selectionContainer, SWT.BORDER);
 				optionIntegerField.setText("");
+				optionIntegerField.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
+				
 				optionIntegerField.addKeyListener(new KeyListener() {
 				      @Override
 				      public void keyPressed(KeyEvent e) {
@@ -156,8 +158,21 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 				    	  values.put(searchOption, String.valueOf(optionIntegerField.getText()));
 				      }
 			    });
-				optionIntegerField.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));
-				values.put(searchOption, optionIntegerField.getText());
+				
+				optionIntegerField.addVerifyListener(new VerifyListener() {
+					@Override
+					public void verifyText(VerifyEvent e) {
+						 e.doit = e.text.matches("[0-9]+");
+					     try {
+					         new Integer(e.text);
+					     }
+					     catch (NumberFormatException nfe) {
+					         e.doit = false;
+					     }
+					}
+				});
+
+				values.put(searchOption, optionIntegerField.getText());	
 			}
 
 			private void createCheckButton(SearchOption searchOption, Map<SearchOption, String> values) {
@@ -214,11 +229,11 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    setPageComplete(true);
 	}
 
-	public SearchConfiguration getSearchConfigurationSelected() {
+	public SimpleSearchConfiguration getSearchConfigurationSelected() {
 		return searchConfigurationSelected;
 	}
 
-	public void setSearchConfigurationSelected(SearchConfiguration searchConfigurationSelected) {
+	public void setSearchConfigurationSelected(SimpleSearchConfiguration searchConfigurationSelected) {
 		this.searchConfigurationSelected = searchConfigurationSelected;
 	}
 

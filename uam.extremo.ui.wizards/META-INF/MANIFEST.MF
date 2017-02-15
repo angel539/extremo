@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Wizards
-Bundle-SymbolicName: uam.extremo.ui.wizards
+Bundle-SymbolicName: uam.extremo.ui.wizards;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: uam.extremo.ui.wizards.Activator
 Require-Bundle: org.eclipse.ui,

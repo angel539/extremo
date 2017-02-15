@@ -2,29 +2,13 @@
  */
 package semanticmanager.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
-import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import semanticmanager.SearchConfiguration;
-import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
-import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.SemanticmanagerPackage;
-import semanticmanager.Type;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,8 +20,6 @@ import semanticmanager.Type;
  * <ul>
  *   <li>{@link semanticmanager.impl.SearchConfigurationImpl#getId <em>Id</em>}</li>
  *   <li>{@link semanticmanager.impl.SearchConfigurationImpl#getName <em>Name</em>}</li>
- *   <li>{@link semanticmanager.impl.SearchConfigurationImpl#getOptions <em>Options</em>}</li>
- *   <li>{@link semanticmanager.impl.SearchConfigurationImpl#getResults <em>Results</em>}</li>
  * </ul>
  *
  * @generated
@@ -82,26 +64,6 @@ public abstract class SearchConfigurationImpl extends MinimalEObjectImpl.Contain
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getOptions() <em>Options</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOptions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<SearchOption> options;
-
-	/**
-	 * The cached value of the '{@link #getResults() <em>Results</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResults()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<SearchResult> results;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,42 +126,7 @@ public abstract class SearchConfigurationImpl extends MinimalEObjectImpl.Contain
 			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.SEARCH_CONFIGURATION__NAME, oldName, name));
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<SearchOption> getOptions() {
-		if (options == null) {
-			options = new EObjectContainmentEList<SearchOption>(SearchOption.class, this, SemanticmanagerPackage.SEARCH_CONFIGURATION__OPTIONS);
-		}
-		return options;
-	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<SearchResult> getResults() {
-		if (results == null) {
-			results = new EObjectContainmentWithInverseEList<SearchResult>(SearchResult.class, this, SemanticmanagerPackage.SEARCH_CONFIGURATION__RESULTS, SemanticmanagerPackage.SEARCH_RESULT__CONFIGURATION);
-		}
-		return results;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void addSearchOption(String id, String name, Type type) {
-		SearchOption searchOption = SemanticmanagerFactory.eINSTANCE.createSearchOption();
-		searchOption.setId(id);
-		searchOption.setName(name);
-		searchOption.setType(type);
-		getOptions().add(searchOption);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,37 +144,6 @@ public abstract class SearchConfigurationImpl extends MinimalEObjectImpl.Contain
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION__RESULTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getResults()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION__OPTIONS:
-				return ((InternalEList<?>)getOptions()).basicRemove(otherEnd, msgs);
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION__RESULTS:
-				return ((InternalEList<?>)getResults()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -255,10 +151,6 @@ public abstract class SearchConfigurationImpl extends MinimalEObjectImpl.Contain
 				return getId();
 			case SemanticmanagerPackage.SEARCH_CONFIGURATION__NAME:
 				return getName();
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION__OPTIONS:
-				return getOptions();
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION__RESULTS:
-				return getResults();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -278,14 +170,6 @@ public abstract class SearchConfigurationImpl extends MinimalEObjectImpl.Contain
 			case SemanticmanagerPackage.SEARCH_CONFIGURATION__NAME:
 				setName((String)newValue);
 				return;
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION__OPTIONS:
-				getOptions().clear();
-				getOptions().addAll((Collection<? extends SearchOption>)newValue);
-				return;
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION__RESULTS:
-				getResults().clear();
-				getResults().addAll((Collection<? extends SearchResult>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -304,12 +188,6 @@ public abstract class SearchConfigurationImpl extends MinimalEObjectImpl.Contain
 			case SemanticmanagerPackage.SEARCH_CONFIGURATION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION__OPTIONS:
-				getOptions().clear();
-				return;
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION__RESULTS:
-				getResults().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -326,31 +204,8 @@ public abstract class SearchConfigurationImpl extends MinimalEObjectImpl.Contain
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case SemanticmanagerPackage.SEARCH_CONFIGURATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION__OPTIONS:
-				return options != null && !options.isEmpty();
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION__RESULTS:
-				return results != null && !results.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION___ADD_SEARCH_OPTION__STRING_STRING_TYPE:
-				addSearchOption((String)arguments.get(0), (String)arguments.get(1), (Type)arguments.get(2));
-				return null;
-			case SemanticmanagerPackage.SEARCH_CONFIGURATION___SEARCH__SEARCHRESULT:
-				search((SearchResult)arguments.get(0));
-				return null;
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

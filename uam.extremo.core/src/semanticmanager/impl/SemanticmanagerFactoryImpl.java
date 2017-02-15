@@ -68,6 +68,7 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 			case SemanticmanagerPackage.SEARCH_RESULT: return createSearchResult();
 			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE: return createSearchResultOptionValue();
 			case SemanticmanagerPackage.CONSTRAINT: return createConstraint();
+			case SemanticmanagerPackage.CONNECTION: return createConnection();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -83,6 +84,8 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 		switch (eDataType.getClassifierID()) {
 			case SemanticmanagerPackage.TYPE:
 				return createTypeFromString(eDataType, initialValue);
+			case SemanticmanagerPackage.CONNECTION_TYPE:
+				return createConnectionTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -98,6 +101,8 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 		switch (eDataType.getClassifierID()) {
 			case SemanticmanagerPackage.TYPE:
 				return convertTypeToString(eDataType, instanceValue);
+			case SemanticmanagerPackage.CONNECTION_TYPE:
+				return convertConnectionTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -218,6 +223,16 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Connection createConnection() {
+		ConnectionImpl connection = new ConnectionImpl();
+		return connection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Type createTypeFromString(EDataType eDataType, String initialValue) {
 		Type result = Type.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -230,6 +245,26 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	 * @generated
 	 */
 	public String convertTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConnectionType createConnectionTypeFromString(EDataType eDataType, String initialValue) {
+		ConnectionType result = ConnectionType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertConnectionTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FilenameUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -24,11 +24,12 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import semanticmanager.*;
+import semanticmanager.DataProperty;
+import semanticmanager.ObjectProperty;
+import semanticmanager.SemanticNode;
+import semanticmanager.Type;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
-
-import org.apache.commons.io.FilenameUtils;
 
 public class EcoreAssistant extends FormatAssistant implements IFormatAssistant {
 	File file;
@@ -272,12 +273,10 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 							);
 					
 					if(descriptor != null){
-						EDataType  eAttrValue = (EDataType) eobject.eGet(eAttribute, true);
-
+						Object eAttrValue = eobject.eGet(eAttribute);
+						
 						String value = "";
-						if(eAttrValue != null){
-							value = eAttrValue.toString();
-						}
+						if(eAttrValue != null) value = eAttrValue.toString();
 						
 						DataProperty dataProperty = 
 								createDataProperty(

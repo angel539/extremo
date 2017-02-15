@@ -17,7 +17,6 @@ import semanticmanager.Resource;
 import semanticmanager.SemanticNode;
 import uam.extremo.ui.zest.views.Activator;
 
-//, IFigureProvider
 public class InheritanceGraphPartViewLabelProvider implements ILabelProvider, IColorProvider/*, IFigureProvider*/{
     public Color BLACK = new Color(Display.getDefault(), 0, 0, 0);
     public Color WHITE = new Color(Display.getDefault(), 255, 255, 255);
@@ -98,41 +97,6 @@ public class InheritanceGraphPartViewLabelProvider implements ILabelProvider, IC
 		return YELLOW;
 	}
 
-
-	/*@Override
-	public IFigure getFigure(Object element) {
-		if(element instanceof IStructuredSelection) element = ((IStructuredSelection) element).getFirstElement();
-		
-		if (element instanceof Repository) {
-			Repository repository = (Repository) element;
-			RepositoryFigure repositoryFigure = new RepositoryFigure(repository.getYearMarried());
-			repositoryFigure.setSize(repositoryFigure.getPreferredSize());
-			return repositoryFigure;
-		}
-		
-		if (element instanceof Resource) {
-		}
-		
-		if (element instanceof SemanticNode) {
-		}
-		
-		return null;
-	}*/
-	/*@Override
-	public IFigure getFigure(Object element) {
-		if(element instanceof IStructuredSelection) element = ((IStructuredSelection) element).getFirstElement();
-		
-		if(element instanceof SemanticNode){
-			IFigure iFigure = new SemanticNodeFigure(((SemanticNode) element));
-			if(((SemanticNode) element).getProperties() == null || ((SemanticNode) element).getProperties().size() < 1){
-				iFigure.setBackgroundColor(ColorConstants.gray);
-			}
-			iFigure.setSize(-1, -1);
-		}
-				
-		return null;
-	}*/
-
 	@Override
 	public void addListener(ILabelProviderListener listener) {
 		// TODO Auto-generated method stub
@@ -141,7 +105,6 @@ public class InheritanceGraphPartViewLabelProvider implements ILabelProvider, IC
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -152,7 +115,6 @@ public class InheritanceGraphPartViewLabelProvider implements ILabelProvider, IC
 
 	@Override
 	public void removeListener(ILabelProviderListener listener) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 }

@@ -168,7 +168,7 @@ public abstract class ConstraintInterpreterImpl extends MinimalEObjectImpl.Conta
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean execute(Constraint constraint) {
+	public void execute(Constraint constraint) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -292,7 +292,8 @@ public abstract class ConstraintInterpreterImpl extends MinimalEObjectImpl.Conta
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case SemanticmanagerPackage.CONSTRAINT_INTERPRETER___EXECUTE__CONSTRAINT:
-				return execute((Constraint)arguments.get(0));
+				execute((Constraint)arguments.get(0));
+				return null;
 		}
 		return super.eInvoke(operationID, arguments);
 	}

@@ -72,7 +72,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="semanticmanager.impl.SearchConfigurationImpl:"/>
+                  <meta.attribute kind="java" basedOn="semanticmanager.impl.SimpleSearchConfigurationImpl:"/>
                </appinfo>
             </annotation>
          </attribute>

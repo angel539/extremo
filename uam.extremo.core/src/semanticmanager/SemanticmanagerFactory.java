@@ -121,6 +121,15 @@ public interface SemanticmanagerFactory extends EFactory {
 	Constraint createConstraint();
 
 	/**
+	 * Returns a new object of class '<em>Connection</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Connection</em>'.
+	 * @generated
+	 */
+	Connection createConnection();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

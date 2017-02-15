@@ -1,6 +1,6 @@
 package uam.extremo.search.wordnet;
 
-import semanticmanager.impl.SearchConfigurationImpl;
+import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class WordnetSearchPath extends SearchConfigurationImpl{
+public class WordnetSearchPath extends SimpleSearchConfigurationImpl{
 }

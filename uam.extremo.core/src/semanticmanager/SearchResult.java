@@ -45,7 +45,7 @@ public interface SearchResult extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Configuration</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link semanticmanager.SearchConfiguration#getResults <em>Results</em>}'.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.SimpleSearchConfiguration#getResults <em>Results</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Configuration</em>' container reference isn't clear,
@@ -53,13 +53,13 @@ public interface SearchResult extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Configuration</em>' container reference.
-	 * @see #setConfiguration(SearchConfiguration)
+	 * @see #setConfiguration(SimpleSearchConfiguration)
 	 * @see semanticmanager.SemanticmanagerPackage#getSearchResult_Configuration()
-	 * @see semanticmanager.SearchConfiguration#getResults
+	 * @see semanticmanager.SimpleSearchConfiguration#getResults
 	 * @model opposite="results" transient="false"
 	 * @generated
 	 */
-	SearchConfiguration getConfiguration();
+	SimpleSearchConfiguration getConfiguration();
 
 	/**
 	 * Sets the value of the '{@link semanticmanager.SearchResult#getConfiguration <em>Configuration</em>}' container reference.
@@ -69,7 +69,7 @@ public interface SearchResult extends EObject {
 	 * @see #getConfiguration()
 	 * @generated
 	 */
-	void setConfiguration(SearchConfiguration value);
+	void setConfiguration(SimpleSearchConfiguration value);
 
 	/**
 	 * Returns the value of the '<em><b>Results</b></em>' containment reference list.

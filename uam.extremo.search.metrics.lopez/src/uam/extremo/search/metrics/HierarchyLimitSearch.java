@@ -8,9 +8,9 @@ import semanticmanager.Resource;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
-import semanticmanager.impl.SearchConfigurationImpl;
+import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class HierarchyLimitSearch extends SearchConfigurationImpl {	
+public class HierarchyLimitSearch extends SimpleSearchConfigurationImpl {	
 	@Override
 	public void search(SearchResult search) {
 		int maxDepth = (int) search.getOptionValue("maxdepth");

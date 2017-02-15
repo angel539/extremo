@@ -2,14 +2,16 @@
  */
 package semanticmanager.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import semanticmanager.Constraint;
 import semanticmanager.ConstraintInterpreter;
 import semanticmanager.NamedElement;
@@ -25,8 +27,9 @@ import semanticmanager.SemanticmanagerPackage;
  * <ul>
  *   <li>{@link semanticmanager.impl.ConstraintImpl#getKey <em>Key</em>}</li>
  *   <li>{@link semanticmanager.impl.ConstraintImpl#getValue <em>Value</em>}</li>
- *   <li>{@link semanticmanager.impl.ConstraintImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link semanticmanager.impl.ConstraintImpl#getValidatedElements <em>Validated Elements</em>}</li>
  *   <li>{@link semanticmanager.impl.ConstraintImpl#getInterpreter <em>Interpreter</em>}</li>
+ *   <li>{@link semanticmanager.impl.ConstraintImpl#getApplyOnElements <em>Apply On Elements</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,6 +76,16 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	protected Object value = VALUE_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getValidatedElements() <em>Validated Elements</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValidatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<NamedElement> validatedElements;
+
+	/**
 	 * The cached value of the '{@link #getInterpreter() <em>Interpreter</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -81,6 +94,16 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * @ordered
 	 */
 	protected ConstraintInterpreter interpreter;
+
+	/**
+	 * The cached value of the '{@link #getApplyOnElements() <em>Apply On Elements</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApplyOnElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<NamedElement> applyOnElements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,40 +171,11 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NamedElement getElements() {
-		if (eContainerFeatureID() != SemanticmanagerPackage.CONSTRAINT__ELEMENTS) return null;
-		return (NamedElement)eInternalContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetElements(NamedElement newElements, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newElements, SemanticmanagerPackage.CONSTRAINT__ELEMENTS, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setElements(NamedElement newElements) {
-		if (newElements != eInternalContainer() || (eContainerFeatureID() != SemanticmanagerPackage.CONSTRAINT__ELEMENTS && newElements != null)) {
-			if (EcoreUtil.isAncestor(this, newElements))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newElements != null)
-				msgs = ((InternalEObject)newElements).eInverseAdd(this, SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS, NamedElement.class, msgs);
-			msgs = basicSetElements(newElements, msgs);
-			if (msgs != null) msgs.dispatch();
+	public EList<NamedElement> getValidatedElements() {
+		if (validatedElements == null) {
+			validatedElements = new EObjectResolvingEList<NamedElement>(NamedElement.class, this, SemanticmanagerPackage.CONSTRAINT__VALIDATED_ELEMENTS);
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SemanticmanagerPackage.CONSTRAINT__ELEMENTS, newElements, newElements));
+		return validatedElements;
 	}
 
 	/**
@@ -249,14 +243,22 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<NamedElement> getApplyOnElements() {
+		if (applyOnElements == null) {
+			applyOnElements = new EObjectResolvingEList<NamedElement>(NamedElement.class, this, SemanticmanagerPackage.CONSTRAINT__APPLY_ON_ELEMENTS);
+		}
+		return applyOnElements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case SemanticmanagerPackage.CONSTRAINT__ELEMENTS:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetElements((NamedElement)otherEnd, msgs);
 			case SemanticmanagerPackage.CONSTRAINT__INTERPRETER:
 				if (interpreter != null)
 					msgs = ((InternalEObject)interpreter).eInverseRemove(this, SemanticmanagerPackage.CONSTRAINT_INTERPRETER__CONSTRAINTS, ConstraintInterpreter.class, msgs);
@@ -273,26 +275,10 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case SemanticmanagerPackage.CONSTRAINT__ELEMENTS:
-				return basicSetElements(null, msgs);
 			case SemanticmanagerPackage.CONSTRAINT__INTERPRETER:
 				return basicSetInterpreter(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case SemanticmanagerPackage.CONSTRAINT__ELEMENTS:
-				return eInternalContainer().eInverseRemove(this, SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS, NamedElement.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -307,11 +293,13 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 				return getKey();
 			case SemanticmanagerPackage.CONSTRAINT__VALUE:
 				return getValue();
-			case SemanticmanagerPackage.CONSTRAINT__ELEMENTS:
-				return getElements();
+			case SemanticmanagerPackage.CONSTRAINT__VALIDATED_ELEMENTS:
+				return getValidatedElements();
 			case SemanticmanagerPackage.CONSTRAINT__INTERPRETER:
 				if (resolve) return getInterpreter();
 				return basicGetInterpreter();
+			case SemanticmanagerPackage.CONSTRAINT__APPLY_ON_ELEMENTS:
+				return getApplyOnElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -331,11 +319,16 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 			case SemanticmanagerPackage.CONSTRAINT__VALUE:
 				setValue(newValue);
 				return;
-			case SemanticmanagerPackage.CONSTRAINT__ELEMENTS:
-				setElements((NamedElement)newValue);
+			case SemanticmanagerPackage.CONSTRAINT__VALIDATED_ELEMENTS:
+				getValidatedElements().clear();
+				getValidatedElements().addAll((Collection<? extends NamedElement>)newValue);
 				return;
 			case SemanticmanagerPackage.CONSTRAINT__INTERPRETER:
 				setInterpreter((ConstraintInterpreter)newValue);
+				return;
+			case SemanticmanagerPackage.CONSTRAINT__APPLY_ON_ELEMENTS:
+				getApplyOnElements().clear();
+				getApplyOnElements().addAll((Collection<? extends NamedElement>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -355,11 +348,14 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 			case SemanticmanagerPackage.CONSTRAINT__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
-			case SemanticmanagerPackage.CONSTRAINT__ELEMENTS:
-				setElements((NamedElement)null);
+			case SemanticmanagerPackage.CONSTRAINT__VALIDATED_ELEMENTS:
+				getValidatedElements().clear();
 				return;
 			case SemanticmanagerPackage.CONSTRAINT__INTERPRETER:
 				setInterpreter((ConstraintInterpreter)null);
+				return;
+			case SemanticmanagerPackage.CONSTRAINT__APPLY_ON_ELEMENTS:
+				getApplyOnElements().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -377,10 +373,12 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 				return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
 			case SemanticmanagerPackage.CONSTRAINT__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-			case SemanticmanagerPackage.CONSTRAINT__ELEMENTS:
-				return getElements() != null;
+			case SemanticmanagerPackage.CONSTRAINT__VALIDATED_ELEMENTS:
+				return validatedElements != null && !validatedElements.isEmpty();
 			case SemanticmanagerPackage.CONSTRAINT__INTERPRETER:
 				return interpreter != null;
+			case SemanticmanagerPackage.CONSTRAINT__APPLY_ON_ELEMENTS:
+				return applyOnElements != null && !applyOnElements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            class="uam.extremo.ui.wizards.dialogs.searchnew.SearchWizardDialog"
+            finalPerspective="extremo.ui.perspective.extremo"
+            id="uam.extremo.ui.wizards.searchnew"
+            name="Search">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="extremo.ui.perspective.extremo">
+         <newWizardShortcut
+               id="uam.extremo.ui.wizards.searchnew">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="uam.extremo.ui.nature.newprojectwizard">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="semanticmanager.presentation.SemanticmanagerModelWizardID">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>

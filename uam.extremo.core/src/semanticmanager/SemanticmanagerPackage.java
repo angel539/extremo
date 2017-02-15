@@ -1119,7 +1119,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchConfiguration()
 	 * @generated
 	 */
-	int SEARCH_CONFIGURATION = 9;
+	int SEARCH_CONFIGURATION = 17;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1140,49 +1140,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_CONFIGURATION__NAME = 1;
 
 	/**
-	 * The feature id for the '<em><b>Options</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH_CONFIGURATION__OPTIONS = 2;
-
-	/**
-	 * The feature id for the '<em><b>Results</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH_CONFIGURATION__RESULTS = 3;
-
-	/**
 	 * The number of structural features of the '<em>Search Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_CONFIGURATION_FEATURE_COUNT = 4;
-
-	/**
-	 * The operation id for the '<em>Add Search Option</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH_CONFIGURATION___ADD_SEARCH_OPTION__STRING_STRING_TYPE = 0;
-
-	/**
-	 * The operation id for the '<em>Search</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH_CONFIGURATION___SEARCH__SEARCHRESULT = 1;
+	int SEARCH_CONFIGURATION_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Search Configuration</em>' class.
@@ -1191,7 +1155,89 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_CONFIGURATION_OPERATION_COUNT = 2;
+	int SEARCH_CONFIGURATION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link semanticmanager.impl.SimpleSearchConfigurationImpl <em>Simple Search Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.SimpleSearchConfigurationImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSimpleSearchConfiguration()
+	 * @generated
+	 */
+	int SIMPLE_SEARCH_CONFIGURATION = 9;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_SEARCH_CONFIGURATION__ID = SEARCH_CONFIGURATION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_SEARCH_CONFIGURATION__NAME = SEARCH_CONFIGURATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Options</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_SEARCH_CONFIGURATION__OPTIONS = SEARCH_CONFIGURATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Results</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_SEARCH_CONFIGURATION__RESULTS = SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Simple Search Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT = SEARCH_CONFIGURATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Add Search Option</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_SEARCH_CONFIGURATION___ADD_SEARCH_OPTION__STRING_STRING_TYPE = SEARCH_CONFIGURATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Search</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_SEARCH_CONFIGURATION___SEARCH__SEARCHRESULT = SEARCH_CONFIGURATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Simple Search Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT = SEARCH_CONFIGURATION_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.SearchOptionImpl <em>Search Option</em>}' class.
@@ -1468,13 +1514,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int CONSTRAINT__VALUE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Elements</b></em>' container reference.
+	 * The feature id for the '<em><b>Validated Elements</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__ELEMENTS = 2;
+	int CONSTRAINT__VALIDATED_ELEMENTS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Interpreter</b></em>' reference.
@@ -1486,13 +1532,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int CONSTRAINT__INTERPRETER = 3;
 
 	/**
+	 * The feature id for the '<em><b>Apply On Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__APPLY_ON_ELEMENTS = 4;
+
+	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT_FEATURE_COUNT = 4;
+	int CONSTRAINT_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Constraint</em>' class.
@@ -1568,6 +1623,107 @@ public interface SemanticmanagerPackage extends EPackage {
 	int CONSTRAINT_INTERPRETER_OPERATION_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link semanticmanager.impl.CompositeSearchConfigurationImpl <em>Composite Search Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.CompositeSearchConfigurationImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getCompositeSearchConfiguration()
+	 * @generated
+	 */
+	int COMPOSITE_SEARCH_CONFIGURATION = 15;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_SEARCH_CONFIGURATION__ID = SEARCH_CONFIGURATION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_SEARCH_CONFIGURATION__NAME = SEARCH_CONFIGURATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Results</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_SEARCH_CONFIGURATION__RESULTS = SEARCH_CONFIGURATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Composite Search Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_SEARCH_CONFIGURATION_FEATURE_COUNT = SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Composite Search Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_SEARCH_CONFIGURATION_OPERATION_COUNT = SEARCH_CONFIGURATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link semanticmanager.impl.ConnectionImpl <em>Connection</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.ConnectionImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getConnection()
+	 * @generated
+	 */
+	int CONNECTION = 16;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__TYPE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Search Configuration</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION__SEARCH_CONFIGURATION = 1;
+
+	/**
+	 * The number of structural features of the '<em>Connection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Connection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link semanticmanager.Type <em>Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1575,7 +1731,18 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getType()
 	 * @generated
 	 */
-	int TYPE = 15;
+	int TYPE = 18;
+
+
+	/**
+	 * The meta object id for the '{@link semanticmanager.ConnectionType <em>Connection Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.ConnectionType
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getConnectionType()
+	 * @generated
+	 */
+	int CONNECTION_TYPE = 19;
 
 
 	/**
@@ -2010,6 +2177,58 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getSemanticGroup_Nodes();
 
 	/**
+	 * Returns the meta object for class '{@link semanticmanager.SimpleSearchConfiguration <em>Simple Search Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Simple Search Configuration</em>'.
+	 * @see semanticmanager.SimpleSearchConfiguration
+	 * @generated
+	 */
+	EClass getSimpleSearchConfiguration();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link semanticmanager.SimpleSearchConfiguration#getOptions <em>Options</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Options</em>'.
+	 * @see semanticmanager.SimpleSearchConfiguration#getOptions()
+	 * @see #getSimpleSearchConfiguration()
+	 * @generated
+	 */
+	EReference getSimpleSearchConfiguration_Options();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link semanticmanager.SimpleSearchConfiguration#getResults <em>Results</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Results</em>'.
+	 * @see semanticmanager.SimpleSearchConfiguration#getResults()
+	 * @see #getSimpleSearchConfiguration()
+	 * @generated
+	 */
+	EReference getSimpleSearchConfiguration_Results();
+
+	/**
+	 * Returns the meta object for the '{@link semanticmanager.SimpleSearchConfiguration#addSearchOption(java.lang.String, java.lang.String, semanticmanager.Type) <em>Add Search Option</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Search Option</em>' operation.
+	 * @see semanticmanager.SimpleSearchConfiguration#addSearchOption(java.lang.String, java.lang.String, semanticmanager.Type)
+	 * @generated
+	 */
+	EOperation getSimpleSearchConfiguration__AddSearchOption__String_String_Type();
+
+	/**
+	 * Returns the meta object for the '{@link semanticmanager.SimpleSearchConfiguration#search(semanticmanager.SearchResult) <em>Search</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Search</em>' operation.
+	 * @see semanticmanager.SimpleSearchConfiguration#search(semanticmanager.SearchResult)
+	 * @generated
+	 */
+	EOperation getSimpleSearchConfiguration__Search__SearchResult();
+
+	/**
 	 * Returns the meta object for class '{@link semanticmanager.SearchConfiguration <em>Search Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2040,48 +2259,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSearchConfiguration_Name();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link semanticmanager.SearchConfiguration#getOptions <em>Options</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Options</em>'.
-	 * @see semanticmanager.SearchConfiguration#getOptions()
-	 * @see #getSearchConfiguration()
-	 * @generated
-	 */
-	EReference getSearchConfiguration_Options();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link semanticmanager.SearchConfiguration#getResults <em>Results</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Results</em>'.
-	 * @see semanticmanager.SearchConfiguration#getResults()
-	 * @see #getSearchConfiguration()
-	 * @generated
-	 */
-	EReference getSearchConfiguration_Results();
-
-	/**
-	 * Returns the meta object for the '{@link semanticmanager.SearchConfiguration#addSearchOption(java.lang.String, java.lang.String, semanticmanager.Type) <em>Add Search Option</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Add Search Option</em>' operation.
-	 * @see semanticmanager.SearchConfiguration#addSearchOption(java.lang.String, java.lang.String, semanticmanager.Type)
-	 * @generated
-	 */
-	EOperation getSearchConfiguration__AddSearchOption__String_String_Type();
-
-	/**
-	 * Returns the meta object for the '{@link semanticmanager.SearchConfiguration#search(semanticmanager.SearchResult) <em>Search</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Search</em>' operation.
-	 * @see semanticmanager.SearchConfiguration#search(semanticmanager.SearchResult)
-	 * @generated
-	 */
-	EOperation getSearchConfiguration__Search__SearchResult();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.SearchOption <em>Search Option</em>}'.
@@ -2337,15 +2514,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	EAttribute getConstraint_Value();
 
 	/**
-	 * Returns the meta object for the container reference '{@link semanticmanager.Constraint#getElements <em>Elements</em>}'.
+	 * Returns the meta object for the reference list '{@link semanticmanager.Constraint#getValidatedElements <em>Validated Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Elements</em>'.
-	 * @see semanticmanager.Constraint#getElements()
+	 * @return the meta object for the reference list '<em>Validated Elements</em>'.
+	 * @see semanticmanager.Constraint#getValidatedElements()
 	 * @see #getConstraint()
 	 * @generated
 	 */
-	EReference getConstraint_Elements();
+	EReference getConstraint_ValidatedElements();
 
 	/**
 	 * Returns the meta object for the reference '{@link semanticmanager.Constraint#getInterpreter <em>Interpreter</em>}'.
@@ -2357,6 +2534,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getConstraint_Interpreter();
+
+	/**
+	 * Returns the meta object for the reference list '{@link semanticmanager.Constraint#getApplyOnElements <em>Apply On Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Apply On Elements</em>'.
+	 * @see semanticmanager.Constraint#getApplyOnElements()
+	 * @see #getConstraint()
+	 * @generated
+	 */
+	EReference getConstraint_ApplyOnElements();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.ConstraintInterpreter <em>Constraint Interpreter</em>}'.
@@ -2412,6 +2600,59 @@ public interface SemanticmanagerPackage extends EPackage {
 	EOperation getConstraintInterpreter__Execute__Constraint();
 
 	/**
+	 * Returns the meta object for class '{@link semanticmanager.CompositeSearchConfiguration <em>Composite Search Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Composite Search Configuration</em>'.
+	 * @see semanticmanager.CompositeSearchConfiguration
+	 * @generated
+	 */
+	EClass getCompositeSearchConfiguration();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link semanticmanager.CompositeSearchConfiguration#getResults <em>Results</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Results</em>'.
+	 * @see semanticmanager.CompositeSearchConfiguration#getResults()
+	 * @see #getCompositeSearchConfiguration()
+	 * @generated
+	 */
+	EReference getCompositeSearchConfiguration_Results();
+
+	/**
+	 * Returns the meta object for class '{@link semanticmanager.Connection <em>Connection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Connection</em>'.
+	 * @see semanticmanager.Connection
+	 * @generated
+	 */
+	EClass getConnection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.Connection#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see semanticmanager.Connection#getType()
+	 * @see #getConnection()
+	 * @generated
+	 */
+	EAttribute getConnection_Type();
+
+	/**
+	 * Returns the meta object for the reference '{@link semanticmanager.Connection#getSearchConfiguration <em>Search Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Search Configuration</em>'.
+	 * @see semanticmanager.Connection#getSearchConfiguration()
+	 * @see #getConnection()
+	 * @generated
+	 */
+	EReference getConnection_SearchConfiguration();
+
+	/**
 	 * Returns the meta object for enum '{@link semanticmanager.Type <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2420,6 +2661,16 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getType();
+
+	/**
+	 * Returns the meta object for enum '{@link semanticmanager.ConnectionType <em>Connection Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Connection Type</em>'.
+	 * @see semanticmanager.ConnectionType
+	 * @generated
+	 */
+	EEnum getConnectionType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2783,6 +3034,48 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference SEMANTIC_GROUP__NODES = eINSTANCE.getSemanticGroup_Nodes();
 
 		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.SimpleSearchConfigurationImpl <em>Simple Search Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.SimpleSearchConfigurationImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSimpleSearchConfiguration()
+		 * @generated
+		 */
+		EClass SIMPLE_SEARCH_CONFIGURATION = eINSTANCE.getSimpleSearchConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Options</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIMPLE_SEARCH_CONFIGURATION__OPTIONS = eINSTANCE.getSimpleSearchConfiguration_Options();
+
+		/**
+		 * The meta object literal for the '<em><b>Results</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIMPLE_SEARCH_CONFIGURATION__RESULTS = eINSTANCE.getSimpleSearchConfiguration_Results();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Search Option</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SIMPLE_SEARCH_CONFIGURATION___ADD_SEARCH_OPTION__STRING_STRING_TYPE = eINSTANCE.getSimpleSearchConfiguration__AddSearchOption__String_String_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Search</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SIMPLE_SEARCH_CONFIGURATION___SEARCH__SEARCHRESULT = eINSTANCE.getSimpleSearchConfiguration__Search__SearchResult();
+
+		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SearchConfigurationImpl <em>Search Configuration</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2807,38 +3100,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SEARCH_CONFIGURATION__NAME = eINSTANCE.getSearchConfiguration_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Options</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SEARCH_CONFIGURATION__OPTIONS = eINSTANCE.getSearchConfiguration_Options();
-
-		/**
-		 * The meta object literal for the '<em><b>Results</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SEARCH_CONFIGURATION__RESULTS = eINSTANCE.getSearchConfiguration_Results();
-
-		/**
-		 * The meta object literal for the '<em><b>Add Search Option</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SEARCH_CONFIGURATION___ADD_SEARCH_OPTION__STRING_STRING_TYPE = eINSTANCE.getSearchConfiguration__AddSearchOption__String_String_Type();
-
-		/**
-		 * The meta object literal for the '<em><b>Search</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SEARCH_CONFIGURATION___SEARCH__SEARCHRESULT = eINSTANCE.getSearchConfiguration__Search__SearchResult();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SearchOptionImpl <em>Search Option</em>}' class.
@@ -3041,12 +3302,12 @@ public interface SemanticmanagerPackage extends EPackage {
 		EAttribute CONSTRAINT__VALUE = eINSTANCE.getConstraint_Value();
 
 		/**
-		 * The meta object literal for the '<em><b>Elements</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Validated Elements</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONSTRAINT__ELEMENTS = eINSTANCE.getConstraint_Elements();
+		EReference CONSTRAINT__VALIDATED_ELEMENTS = eINSTANCE.getConstraint_ValidatedElements();
 
 		/**
 		 * The meta object literal for the '<em><b>Interpreter</b></em>' reference feature.
@@ -3055,6 +3316,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONSTRAINT__INTERPRETER = eINSTANCE.getConstraint_Interpreter();
+
+		/**
+		 * The meta object literal for the '<em><b>Apply On Elements</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONSTRAINT__APPLY_ON_ELEMENTS = eINSTANCE.getConstraint_ApplyOnElements();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.ConstraintInterpreterImpl <em>Constraint Interpreter</em>}' class.
@@ -3099,6 +3368,50 @@ public interface SemanticmanagerPackage extends EPackage {
 		EOperation CONSTRAINT_INTERPRETER___EXECUTE__CONSTRAINT = eINSTANCE.getConstraintInterpreter__Execute__Constraint();
 
 		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.CompositeSearchConfigurationImpl <em>Composite Search Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.CompositeSearchConfigurationImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getCompositeSearchConfiguration()
+		 * @generated
+		 */
+		EClass COMPOSITE_SEARCH_CONFIGURATION = eINSTANCE.getCompositeSearchConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Results</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSITE_SEARCH_CONFIGURATION__RESULTS = eINSTANCE.getCompositeSearchConfiguration_Results();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.ConnectionImpl <em>Connection</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.ConnectionImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getConnection()
+		 * @generated
+		 */
+		EClass CONNECTION = eINSTANCE.getConnection();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONNECTION__TYPE = eINSTANCE.getConnection_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Search Configuration</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTION__SEARCH_CONFIGURATION = eINSTANCE.getConnection_SearchConfiguration();
+
+		/**
 		 * The meta object literal for the '{@link semanticmanager.Type <em>Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3107,6 +3420,16 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum TYPE = eINSTANCE.getType();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.ConnectionType <em>Connection Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.ConnectionType
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getConnectionType()
+		 * @generated
+		 */
+		EEnum CONNECTION_TYPE = eINSTANCE.getConnectionType();
 
 	}
 

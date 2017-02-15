@@ -1,5 +1,8 @@
  package uam.extremo.ui.views.repositories.actions;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -12,8 +15,10 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import semanticmanager.Repository;
 import semanticmanager.Resource;
+import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticmanagerFactory;
+import semanticmanager.SimpleSearchConfiguration;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.wizards.dialogs.searchnew.SearchWizardDialog;
 
@@ -52,7 +57,20 @@ public class SearchSemanticNodesHandler extends AbstractHandler {
 		 }
 		
 		
-		WizardDialog wizardDialog = new WizardDialog(null, new SearchWizardDialog(AssistantFactory.getInstance().getSearches(), searchResult));
+		List<SearchConfiguration> configurations = AssistantFactory.getInstance().getSearches();
+		List<SimpleSearchConfiguration> simpleConfigurations = new ArrayList<SimpleSearchConfiguration>();
+		
+		configurations.forEach(
+				element -> {
+					if (element instanceof SimpleSearchConfiguration) {
+						SimpleSearchConfiguration simpleConfiguration = (SimpleSearchConfiguration) element;
+						simpleConfigurations.add(simpleConfiguration);
+					}
+					
+				}
+		);
+		
+		WizardDialog wizardDialog = new WizardDialog(null, new SearchWizardDialog(simpleConfigurations, searchResult));
 		if (wizardDialog.open() == Window.OK) {
 			search(searchResult);
 		}

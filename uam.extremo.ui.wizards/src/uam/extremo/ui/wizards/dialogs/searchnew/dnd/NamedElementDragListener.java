@@ -14,7 +14,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
 import org.eclipse.swt.dnd.TextTransfer;
-
 import semanticmanager.NamedElement;
 
 public class NamedElementDragListener implements DragSourceListener {
@@ -22,11 +21,11 @@ public class NamedElementDragListener implements DragSourceListener {
 	
 	public NamedElementDragListener(DragMetaModelElementViewer viewer){
 		this.viewer = viewer;
-		
 	}
 	
 	@Override
 	public void dragStart(DragSourceEvent event) {
+		event.doit = !viewer.getSelection().isEmpty();
 	}
 
 	@Override
@@ -42,7 +41,5 @@ public class NamedElementDragListener implements DragSourceListener {
 
 	@Override
 	public void dragFinished(DragSourceEvent event) {
-		
 	}
-
 }

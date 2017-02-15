@@ -4,13 +4,11 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
-import uam.extremo.ui.views.repositories.RepositoryViewPart;
-import uam.extremo.ui.views.searchtree.SearchTreeViewPart;
-//import uam.extremo.ui.zest.views.inheritance.InheritanceGraphViewPart;
-//import uam.extremo.ui.zest.views.relations.RelationshipGraphViewPart;
-
 public class ExtremoPerspective implements IPerspectiveFactory {
-
+	private static final String REPOSITORIES_VIEW_ID = "uam.extremo.ui.views.RepositoryView";
+	private static final String SEARCH_VIEW_ID = "uam.extremo.ui.views.SearchTree";
+	private static final String GRAPH_VIEW_ID = "uam.extremo.ui.zest.views.InheritanceGraphViewPart";
+	
 	@Override
 	public void createInitialLayout(IPageLayout layout) {
 		defineActions(layout);
@@ -20,13 +18,13 @@ public class ExtremoPerspective implements IPerspectiveFactory {
 	private void defineActions(IPageLayout layout) {
 		layout.addNewWizardShortcut("org.eclipse.ui.wizards.new.folder");
 		layout.addNewWizardShortcut("org.eclipse.ui.wizards.new.file");
+		layout.addNewWizardShortcut("uam.extremo.ui.wizards.searchnew");
+		
 		layout.addShowViewShortcut(IPageLayout.ID_PROJECT_EXPLORER);
 		layout.addShowViewShortcut(IPageLayout.ID_PROP_SHEET);
-		layout.addShowViewShortcut(RepositoryViewPart.ID);
-		layout.addShowViewShortcut(SearchTreeViewPart.ID);
-		
-		//layout.addShowViewShortcut(InheritanceGraphViewPart.ID);
-		//layout.addShowViewShortcut(RelationshipGraphViewPart.ID);
+		//layout.addShowViewShortcut(REPOSITORIES_VIEW_ID);
+		//layout.addShowViewShortcut(SEARCH_VIEW_ID);
+		//layout.addShowViewShortcut(GRAPH_VIEW_ID);
 	}
 	
 	private void defineLayout(IPageLayout layout) {
@@ -37,11 +35,10 @@ public class ExtremoPerspective implements IPerspectiveFactory {
 		
 		IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, (float) 0.70, editorArea);
 		bottom.addView(IPageLayout.ID_PROP_SHEET);
-		bottom.addView(RepositoryViewPart.ID);
-		bottom.addView(SearchTreeViewPart.ID);
+		//bottom.addView(REPOSITORIES_VIEW_ID);
+		//bottom.addView(SEARCH_VIEW_ID);
 		
 		IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, (float) 0.70, editorArea);
-		//right.addView(InheritanceGraphViewPart.ID);
-		//right.addView(RelationshipGraphViewPart.ID);
+		//right.addView(GRAPH_VIEW_ID);
 	}
 }

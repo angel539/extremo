@@ -15,17 +15,18 @@ import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticmanagerFactory;
+import semanticmanager.SimpleSearchConfiguration;
 import uam.extremo.ui.wizards.dialogs.searchnew.dnd.NamedElementSelectionWizardPage;
 
 public class SearchWizardDialog extends Wizard{
 	SearchConfigurationSelectorWizardPage searchPage;
 	
-	List<SearchConfiguration> searchConfigurations;
+	List<SimpleSearchConfiguration> searchConfigurations;
 	SearchResult searchResult;
-	SearchConfiguration selectedConfiguration;
+	SimpleSearchConfiguration selectedConfiguration;
 	NamedElementSelectionWizardPage namedElementSelectionWizardPage;
 	
-	public SearchWizardDialog(List<SearchConfiguration> searchConfigurations, SearchResult searchResult) {
+	public SearchWizardDialog(List<SimpleSearchConfiguration> searchConfigurations, SearchResult searchResult) {
 		super();
 		setNeedsProgressMonitor(true);
 		this.searchConfigurations = searchConfigurations;
@@ -75,7 +76,7 @@ public class SearchWizardDialog extends Wizard{
 	
 	@Override
 	public boolean performFinish() {
-		SearchConfiguration searchConfigurationSelected = searchPage.getSearchConfigurationSelected();
+		SimpleSearchConfiguration searchConfigurationSelected = searchPage.getSearchConfigurationSelected();
 		searchResult.setConfiguration(searchConfigurationSelected);
 		
 		IRunnableWithProgress op = new IRunnableWithProgress() {

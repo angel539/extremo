@@ -180,7 +180,6 @@ public class SemanticmanagerModelWizard extends Wizard implements INewWizard {
 		super();
 		
 		this.rootObject = rootObject;
-		
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(ExtremoEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));

@@ -1,6 +1,8 @@
 package uam.extremo.extensions;
 
+import semanticmanager.Constraint;
 import semanticmanager.DataProperty;
+import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Property;
 import semanticmanager.Resource;
@@ -12,12 +14,8 @@ public interface IFormatAssistant {
     public boolean load(semanticmanager.Resource semanticResource);
     public void toDataProperty(SemanticNode parent);
     public void toObjectProperty(SemanticNode parent);
-    //public List<SemanticNode> getSiblings(SemanticNode parent);
-    //public List<SemanticNode> getRelatedClasses(SemanticNode parent, boolean supers, boolean equivs);
     public void toSuper(SemanticNode parent);
-    //public List<ObjectProperty> getPath(SemanticNode entityA, SemanticNode entityB);
-    //public ObjectProperty getInverseProperty (SemanticNode parent, ObjectProperty property);
-    
+
     default SemanticNode searchSemanticNodeByName(Resource resource, String name) {
     	if(resource == null || name == null) return null;
     	
@@ -63,6 +61,18 @@ public interface IFormatAssistant {
     	resource.setAlive(alive);
     	resource.setDescriptor(descriptor);
         return resource;
+    }
+    
+    default Constraint createConstraint(String key, Object value) {
+    	Constraint constraint = SemanticmanagerFactory.eINSTANCE.createConstraint();
+    	constraint.setKey(key);
+    	constraint.setValue(value);
+        return constraint;
+    }
+    
+    default boolean addConstraintToElement(NamedElement element, Constraint constraint){
+    	element.getConstraints().add(constraint);
+    	return true;
     }
     
     default SemanticNode createSemanticNode(Object id, String name, String description, SemanticNode descriptor) {

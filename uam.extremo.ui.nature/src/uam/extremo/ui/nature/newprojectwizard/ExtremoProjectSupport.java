@@ -7,7 +7,6 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -18,6 +17,7 @@ import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.launching.IVMInstall;
 import org.eclipse.jdt.launching.JavaRuntime;
 import org.eclipse.jdt.launching.LibraryLocation;
+import org.eclipse.jface.dialogs.MessageDialog;
 
 import uam.extremo.ui.nature.ExtremoProjectNature;
  
@@ -29,10 +29,6 @@ public class ExtremoProjectSupport {
             
             String[] pathsDataset = {"model"};
             addToProjectStructure(project.getProject(), pathsDataset);
-            
-            /*String[] pathsDatasetVirtual = {"resources"};
-            addVirtualsToProjectStructure(project.getProject(), pathsDatasetVirtual);*/
-            
             
             IFolder binFolder = project.getProject().getFolder("bin");
             binFolder.create(false, true, null);
@@ -60,6 +56,7 @@ public class ExtremoProjectSupport {
         }
         catch (CoreException e) {
             project = null;
+            MessageDialog.openError(null, "Project creation", e.getMessage());
         }
  
         return project;
@@ -89,7 +86,7 @@ public class ExtremoProjectSupport {
                     newProject.open(null);
                 }
             } catch (CoreException e) {
-                e.printStackTrace();
+            	MessageDialog.openError(null, "Project creation", e.getMessage());
             }
         }
  

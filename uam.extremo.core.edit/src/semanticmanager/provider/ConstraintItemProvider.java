@@ -62,8 +62,9 @@ public class ConstraintItemProvider
 
 			addKeyPropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
-			addElementsPropertyDescriptor(object);
+			addValidatedElementsPropertyDescriptor(object);
 			addInterpreterPropertyDescriptor(object);
+			addApplyOnElementsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -113,19 +114,19 @@ public class ConstraintItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Elements feature.
+	 * This adds a property descriptor for the Validated Elements feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addElementsPropertyDescriptor(Object object) {
+	protected void addValidatedElementsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Constraint_elements_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_elements_feature", "_UI_Constraint_type"),
-				 SemanticmanagerPackage.Literals.CONSTRAINT__ELEMENTS,
+				 getString("_UI_Constraint_validatedElements_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_validatedElements_feature", "_UI_Constraint_type"),
+				 SemanticmanagerPackage.Literals.CONSTRAINT__VALIDATED_ELEMENTS,
 				 true,
 				 false,
 				 true,
@@ -148,6 +149,28 @@ public class ConstraintItemProvider
 				 getString("_UI_Constraint_interpreter_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_interpreter_feature", "_UI_Constraint_type"),
 				 SemanticmanagerPackage.Literals.CONSTRAINT__INTERPRETER,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Apply On Elements feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addApplyOnElementsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Constraint_applyOnElements_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_applyOnElements_feature", "_UI_Constraint_type"),
+				 SemanticmanagerPackage.Literals.CONSTRAINT__APPLY_ON_ELEMENTS,
 				 true,
 				 false,
 				 true,

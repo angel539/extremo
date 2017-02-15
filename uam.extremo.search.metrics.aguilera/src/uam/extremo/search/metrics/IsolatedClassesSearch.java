@@ -5,9 +5,9 @@ import semanticmanager.Resource;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
-import semanticmanager.impl.SearchConfigurationImpl;
+import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class IsolatedClassesSearch extends SearchConfigurationImpl {
+public class IsolatedClassesSearch extends SimpleSearchConfigurationImpl {
 	@Override
 	public void search(SearchResult search) {
 		SemanticGroup semanticGroup = search.createSemanticGroup("no_class_refs_overloaded", "No class refers to too many others.");

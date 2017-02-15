@@ -5,8 +5,7 @@ Bundle-SymbolicName: uam.extremo.ui.perspective; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: uam.extremo.ui.perspective.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- uam.extremo.ui.views;bundle-version="1.0.0"
+ org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: icons/,

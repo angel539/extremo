@@ -2,6 +2,7 @@
  */
 package semanticmanager;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,8 +16,9 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link semanticmanager.Constraint#getKey <em>Key</em>}</li>
  *   <li>{@link semanticmanager.Constraint#getValue <em>Value</em>}</li>
- *   <li>{@link semanticmanager.Constraint#getElements <em>Elements</em>}</li>
+ *   <li>{@link semanticmanager.Constraint#getValidatedElements <em>Validated Elements</em>}</li>
  *   <li>{@link semanticmanager.Constraint#getInterpreter <em>Interpreter</em>}</li>
+ *   <li>{@link semanticmanager.Constraint#getApplyOnElements <em>Apply On Elements</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getConstraint()
@@ -77,32 +79,20 @@ public interface Constraint extends EObject {
 	void setValue(Object value);
 
 	/**
-	 * Returns the value of the '<em><b>Elements</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link semanticmanager.NamedElement#getConstraints <em>Constraints</em>}'.
+	 * Returns the value of the '<em><b>Validated Elements</b></em>' reference list.
+	 * The list contents are of type {@link semanticmanager.NamedElement}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Elements</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Validated Elements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Elements</em>' container reference.
-	 * @see #setElements(NamedElement)
-	 * @see semanticmanager.SemanticmanagerPackage#getConstraint_Elements()
-	 * @see semanticmanager.NamedElement#getConstraints
-	 * @model opposite="constraints" transient="false"
+	 * @return the value of the '<em>Validated Elements</em>' reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getConstraint_ValidatedElements()
+	 * @model
 	 * @generated
 	 */
-	NamedElement getElements();
-
-	/**
-	 * Sets the value of the '{@link semanticmanager.Constraint#getElements <em>Elements</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Elements</em>' container reference.
-	 * @see #getElements()
-	 * @generated
-	 */
-	void setElements(NamedElement value);
+	EList<NamedElement> getValidatedElements();
 
 	/**
 	 * Returns the value of the '<em><b>Interpreter</b></em>' reference.
@@ -131,5 +121,21 @@ public interface Constraint extends EObject {
 	 * @generated
 	 */
 	void setInterpreter(ConstraintInterpreter value);
+
+	/**
+	 * Returns the value of the '<em><b>Apply On Elements</b></em>' reference list.
+	 * The list contents are of type {@link semanticmanager.NamedElement}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Apply On Elements</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Apply On Elements</em>' reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getConstraint_ApplyOnElements()
+	 * @model
+	 * @generated
+	 */
+	EList<NamedElement> getApplyOnElements();
 
 } // Constraint

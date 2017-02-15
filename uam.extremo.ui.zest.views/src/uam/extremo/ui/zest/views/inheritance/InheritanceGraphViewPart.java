@@ -8,10 +8,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -37,7 +33,6 @@ import org.eclipse.zest.layouts.algorithms.SpringLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 
 import semanticmanager.NamedElement;
-import semanticmanager.RepositoryManager;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.zest.views.Activator;
 import uam.extremo.ui.zest.views.GraphViewPartFilter;
@@ -80,14 +75,14 @@ public class InheritanceGraphViewPart extends ViewPart implements IZoomableWorkb
 	    
 	    fillToolBar();
 	    
-	    EContentAdapter adapter = new EContentAdapter() {
+	    /*EAdapterList adapter = new EAdapter() {
             public void notifyChanged(Notification notification) {
            		 super.notifyChanged(notification);
            		 refresh();
             }
     	};
     	
-    	AssistantFactory.getInstance().getRepositoryManager().eAdapters().add(adapter);
+    	AssistantFactory.getInstance().getRepositoryManager().eAdapters().add(adapter);*/
 	}
 	
 	public void refresh() {

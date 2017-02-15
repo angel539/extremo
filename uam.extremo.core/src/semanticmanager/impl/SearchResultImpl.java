@@ -23,13 +23,13 @@ import semanticmanager.DataProperty;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Resource;
-import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchResult;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.SemanticmanagerPackage;
+import semanticmanager.SimpleSearchConfiguration;
 
 /**
  * <!-- begin-user-doc -->
@@ -146,9 +146,9 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SearchConfiguration getConfiguration() {
+	public SimpleSearchConfiguration getConfiguration() {
 		if (eContainerFeatureID() != SemanticmanagerPackage.SEARCH_RESULT__CONFIGURATION) return null;
-		return (SearchConfiguration)eInternalContainer();
+		return (SimpleSearchConfiguration)eInternalContainer();
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetConfiguration(SearchConfiguration newConfiguration, NotificationChain msgs) {
+	public NotificationChain basicSetConfiguration(SimpleSearchConfiguration newConfiguration, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject)newConfiguration, SemanticmanagerPackage.SEARCH_RESULT__CONFIGURATION, msgs);
 		return msgs;
 	}
@@ -166,7 +166,7 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConfiguration(SearchConfiguration newConfiguration) {
+	public void setConfiguration(SimpleSearchConfiguration newConfiguration) {
 		if (newConfiguration != eInternalContainer() || (eContainerFeatureID() != SemanticmanagerPackage.SEARCH_RESULT__CONFIGURATION && newConfiguration != null)) {
 			if (EcoreUtil.isAncestor(this, newConfiguration))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -174,7 +174,7 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newConfiguration != null)
-				msgs = ((InternalEObject)newConfiguration).eInverseAdd(this, SemanticmanagerPackage.SEARCH_CONFIGURATION__RESULTS, SearchConfiguration.class, msgs);
+				msgs = ((InternalEObject)newConfiguration).eInverseAdd(this, SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION__RESULTS, SimpleSearchConfiguration.class, msgs);
 			msgs = basicSetConfiguration(newConfiguration, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -352,7 +352,7 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 			case SemanticmanagerPackage.SEARCH_RESULT__CONFIGURATION:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetConfiguration((SearchConfiguration)otherEnd, msgs);
+				return basicSetConfiguration((SimpleSearchConfiguration)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -384,7 +384,7 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case SemanticmanagerPackage.SEARCH_RESULT__CONFIGURATION:
-				return eInternalContainer().eInverseRemove(this, SemanticmanagerPackage.SEARCH_CONFIGURATION__RESULTS, SearchConfiguration.class, msgs);
+				return eInternalContainer().eInverseRemove(this, SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION__RESULTS, SimpleSearchConfiguration.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -427,7 +427,7 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 				getValues().addAll((Collection<? extends SearchResultOptionValue>)newValue);
 				return;
 			case SemanticmanagerPackage.SEARCH_RESULT__CONFIGURATION:
-				setConfiguration((SearchConfiguration)newValue);
+				setConfiguration((SimpleSearchConfiguration)newValue);
 				return;
 			case SemanticmanagerPackage.SEARCH_RESULT__RESULTS:
 				getResults().clear();
@@ -460,7 +460,7 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 				getValues().clear();
 				return;
 			case SemanticmanagerPackage.SEARCH_RESULT__CONFIGURATION:
-				setConfiguration((SearchConfiguration)null);
+				setConfiguration((SimpleSearchConfiguration)null);
 				return;
 			case SemanticmanagerPackage.SEARCH_RESULT__RESULTS:
 				getResults().clear();

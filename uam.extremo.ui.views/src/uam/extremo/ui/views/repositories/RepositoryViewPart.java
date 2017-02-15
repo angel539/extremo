@@ -4,24 +4,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.command.BasicCommandStack;
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.gef.GraphicalViewer;
@@ -37,7 +30,6 @@ import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ComboBoxViewerCellEditor;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
-import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -46,7 +38,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
@@ -55,17 +46,11 @@ import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.dnd.DND;
-import org.eclipse.swt.dnd.TextTransfer;
-import org.eclipse.swt.dnd.Transfer;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.ISelectionListener;
-import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -75,13 +60,9 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
-import semanticmanager.Constraint;
-import semanticmanager.DataProperty;
 import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
-import semanticmanager.SemanticNode;
 import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
 import semanticmanager.util.SemanticmanagerAdapterFactory;
 import uam.extremo.extensions.AssistantFactory;
@@ -89,18 +70,15 @@ import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.views.Activator;
 import uam.extremo.ui.views.dnd.GraphityEditorTransferDropTargetListener;
-import uam.extremo.ui.views.dnd.ViewPartDragListener;
 import uam.extremo.ui.views.extensions.ExtremoViewPartAction;
 import uam.extremo.ui.wizards.dialogs.AddFolderResourceListWizardDialog;
 import uam.extremo.ui.wizards.dialogs.changeToResource.ChangeDescriptorToResourceWizardDialog;
-import uam.extremo.ui.wizards.dialogs.newrepository.NewRepositoryWizardDialog;
 import uam.extremo.ui.wizards.dialogs.newresource.AddAResourceToExistingRepositoryWizardDialog;
 
 public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor{
 	public static final String ID = "uam.extremo.ui.views.RepositoryView";
 
 	private static TreeViewer viewer;
-	private Action addRepository;
 	private Action addResourceToExistingRepository;
 	private Action addFolder;
 	
@@ -110,10 +88,11 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	protected ISelection editorSelection = StructuredSelection.EMPTY;	
 	protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 	protected AdapterFactoryEditingDomain editingDomain;
-	protected ComposedAdapterFactory adapterFactory;
 	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 	
 	private ISelectionListener pageSelectionListener;
+	protected ComposedAdapterFactory adapterFactory;
+	List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
 	
 	class AssistantEditingSupport extends EditingSupport {
 		private ComboBoxViewerCellEditor editor;
@@ -186,165 +165,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 			return obj.toString();
 		}
 	}
-
-	class ColumnOneViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
-		@Override
-		public StyledString getStyledText(Object element) {
-			if(element instanceof IStructuredSelection) element = ((IStructuredSelection) element).getFirstElement();
-			
-			if (element instanceof Repository) {
-				Repository repositoryNode = (Repository) element;
-				StyledString styledString = new StyledString(repositoryNode.getName());
-				
-				if (repositoryNode.getResources() != null) {
-					styledString.append(" (" + repositoryNode.getResources().size() + ") ", StyledString.QUALIFIER_STYLER);
-				}
-				return styledString;
-			}
-			
-			if (element instanceof Resource) {
-				StyledString styledString = new StyledString(((Resource) element).getName());
-				
-				if(((Resource) element).getDescriptor() == null){
-					styledString.append(" describes (" + ((Resource) element).getDescribes().size() + ") resources", StyledString.COUNTER_STYLER);
-				}
-				
-				return styledString;
-			}
-			
-			if(element instanceof SemanticNode){
-				if(((SemanticNode) element).getDescriptor() == null){
-					SemanticNode semanticNode = (SemanticNode) element;
-					StyledString styledString = new StyledString(semanticNode.getName());
-					
-					if(semanticNode.getDescribes().size() > 0)
-						styledString.append(" (" + semanticNode.getDescribes().size() + ") descriptions", StyledString.QUALIFIER_STYLER);
-					
-					if(semanticNode.getProperties().size() > 0)
-						styledString.append(" (" + semanticNode.getProperties().size() + ") properties", StyledString.QUALIFIER_STYLER);
-					
-					styledString.append(" (" + semanticNode.getWeight() + ") pts", StyledString.COUNTER_STYLER);
-
-					return styledString;
-				}
-				else{
-					SemanticNode semanticNode = (SemanticNode) element;
-					StyledString styledString = new StyledString(semanticNode.getName() + ":");
-					styledString.append(" (" + semanticNode.getDescriptor().getName() + ")", StyledString.QUALIFIER_STYLER);
-					return styledString;
-				}
-	    	}
-			
-			if(element instanceof Constraint){
-				Constraint constraint = (Constraint) element;
-				StyledString styledString = new StyledString(constraint.getKey());
-				styledString.append(" (" + constraint.getValue().toString() + ")", StyledString.COUNTER_STYLER);
-
-				return styledString;
-			}
-			
-			if(element instanceof DataProperty){
-				if(((DataProperty) element).getDescriptor() == null){
-					DataProperty property = (DataProperty) element;
-					StyledString styledString = new StyledString(property.getName());
-					if(property.getType() != null) styledString.append(" (" + property.getType().getLiteral() + ")", StyledString.QUALIFIER_STYLER);
-					
-					return styledString;
-				}
-				else{
-					DataProperty property = (DataProperty) element;
-					StyledString styledString = new StyledString(property.getValue());
-					if(property.getType() != null) styledString.append(" (" + property.getType().getLiteral() + ")", StyledString.QUALIFIER_STYLER);
-					
-					return styledString;
-				}
-			}
-			
-			if(element instanceof ObjectProperty){
-				ObjectProperty property = (ObjectProperty) element;
-				StyledString styledString = new StyledString(property.getName());
-				if(property.getRange() != null) styledString.append(" (" + property.getRange().getName() + ")", StyledString.QUALIFIER_STYLER);
-
-				return styledString;
-			}
-			
-			return null;
-		}
-		
-		@Override
-		public Image getImage(Object element) {
-			if(element instanceof IStructuredSelection) element = ((IStructuredSelection) element).getFirstElement();
-			
-			String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
-			
-			if(element instanceof Repository) return Activator.getImageDescriptor("icons/folder-icon_16.png").createImage();
-        	
-			if(element instanceof Resource){
-				if(((Resource) element).getDescriptor() == null){
-					return Activator.getImageDescriptor("icons/schema16.png").createImage();
-				}
-				else{
-					if(((Resource) element).isAlive()) return Activator.getImageDescriptor("icons/3d_objects_16.png").createImage();
-	        		else{
-	        			return Activator.getImageDescriptor("icons/3d_objects_off_16.png").createImage();
-	        		}
-				}
-        	}
-			
-			if(element instanceof SemanticNode){
-				if(((SemanticNode) element).getDescriptor() == null){
-					return Activator.getImageDescriptor("icons/class_obj.png").createImage();
-				}
-				else{
-	        		return Activator.getImageDescriptor("icons/objects16.png").createImage();
-				}
-	    	}
-			
-			if(element instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
-			
-			if(element instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.gif").createImage();
-			if(element instanceof DataProperty) return Activator.getImageDescriptor("icons/attribute.png").createImage();
-        	
-			return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
-		}
-	}
-	
-	class ColumnTwoViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
-		@Override
-		public StyledString getStyledText(Object element) {
-			if(element instanceof IStructuredSelection) element = ((IStructuredSelection) element).getFirstElement();
-			
-			if (element instanceof Resource) {
-				Resource resourceObject = (Resource) element;
-				if(resourceObject.getAssistant() != null) return new StyledString(resourceObject.getAssistant());
-				else new StyledString("");
-			}
-			
-			return new StyledString("");
-		}
-	}
-	
-	class ColumnThreeViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
-		@Override
-		public StyledString getStyledText(Object element) {
-			if(element instanceof IStructuredSelection) element = ((IStructuredSelection) element).getFirstElement();
-			
-			if (element instanceof Repository) {
-				Repository repositoryNode = (Repository) element;
-				StyledString styledString = new StyledString(repositoryNode.getName());
-				return styledString;
-			}
-			
-			if (element instanceof Resource) {
-				Resource resourceObject = (Resource) element;
-				StyledString styledString = new StyledString((String)resourceObject.getUri());
-				
-				return styledString;
-			}
-			
-			return new StyledString("");
-		}
-	}
 	
 	class NameSorter extends ViewerSorter {
 	}
@@ -352,54 +172,57 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	public RepositoryViewPart() {
 	}
 
+	SemanticManagerAdapter adapter;
+	
 	@Override
 	public void createPartControl(Composite parent) {		
 		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 	
-		int operations = DND.DROP_COPY| DND.DROP_MOVE;
+    	RepositoryViewFilter filter = new RepositoryViewFilter();
+		ViewerFilter[] filters = {filter};
+		viewer.setFilters(filters);
+		
+		/*int operations = DND.DROP_COPY| DND.DROP_MOVE;
         Transfer[] transferTypes = new Transfer[]{TextTransfer.getInstance()};
-        viewer.addDragSupport(operations, transferTypes , new ViewPartDragListener(viewer));
         
-		RepositoryViewContentProvider provider = new RepositoryViewContentProvider(AssistantFactory.getInstance().getRepositoryManager(), getViewSite());
-		viewer.setContentProvider(provider);
+        ViewPartDragListener dragListener = new ViewPartDragListener(viewer);
+        viewer.addDragSupport(operations, transferTypes, dragListener);*/
+		
+		// Building the content and the label provider from EMF Edit
+		factories.add(new ResourceItemProviderAdapterFactory());
+		factories.add(new SemanticmanagerItemProviderAdapterFactory());
+		factories.add(new ReflectiveItemProviderAdapterFactory());
+		adapterFactory = new ComposedAdapterFactory(factories);
+		
+		viewer.setContentProvider(new 
+				RepositoryViewAdapterFactoryContentProvider(viewer, adapterFactory));
+
+		viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
+		
 		viewer.setSorter(new NameSorter());
-		viewer.setInput(getViewSite());
 		viewer.getTree().setHeaderVisible(true);
-		
 		viewer.setSelection(new StructuredSelection(AssistantFactory.getInstance().getRepositoryManager()), true);
-		new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
 		
+		//Three Columns
 		TreeViewerColumn nameColumn = new TreeViewerColumn(viewer, SWT.NONE);
 		nameColumn.getColumn().setText("Name");
 		nameColumn.getColumn().setWidth(300);
-		nameColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnOneViewLabelProvider()));
+		nameColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnOneRepositoryViewAdapterFactoryLabelProvider(adapterFactory)));
 		
 		TreeViewerColumn assistedByColumn = new TreeViewerColumn(viewer, SWT.NONE);
 		assistedByColumn.getColumn().setText("Assistant");
 		assistedByColumn.getColumn().setWidth(100);
 		assistedByColumn.getColumn().setAlignment(SWT.LEFT);
-		assistedByColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnTwoViewLabelProvider()));
+		assistedByColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnTwoRepositoryViewAdapterFactoryLabelProvider(adapterFactory)));
 		assistedByColumn.setEditingSupport(new AssistantEditingSupport());
 		
 		TreeViewerColumn uriColumn = new TreeViewerColumn(viewer, SWT.NONE);
 		uriColumn.getColumn().setText("Uri");
 		uriColumn.getColumn().setWidth(400);
 		uriColumn.getColumn().setAlignment(SWT.LEFT);
-		uriColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnThreeViewLabelProvider()));
+		uriColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnThreeRepositoryViewAdapterFactoryLabelProvider(adapterFactory)));
 		
-		Adapter adapter = new AdapterImpl() {
-            public void notifyChanged(Notification notification) {
-           		 super.notifyChanged(notification);
-           		 refresh();
-            }
-    	};
-    	
-    	AssistantFactory.getInstance().getRepositoryManager().eAdapters().add(adapter);
-		
-    	RepositoryViewFilter filter = new RepositoryViewFilter();
-		ViewerFilter[] filters = {filter};
-		viewer.setFilters(filters);
-    	
+		//old adapter was here
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "extremo.ui.viewer");
 		
 		//Connection with properties view
@@ -407,8 +230,8 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		getViewSite().setSelectionProvider(viewer);
 		
 		callActions();
-		//callFilters();
-		callEditors();
+		callFilters();
+		callEditorsDrop();
 		
 		makeActions();
 		hookContextMenu();
@@ -416,34 +239,24 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		contributeToActionBars();
 		
 		hookPageSelection();
+    	
+		adapter = new SemanticManagerAdapter(viewer);
+		
+    	AssistantFactory.getInstance().getRepositoryManager().eAdapters().add(adapter);
 	}
 	
-	/*class ExtremoViewPartFilterAction extends Action{
-		ExtremoViewPartFilter filter;
-		
-		public void saveState(IMemento memento) {
-			filter.saveState(memento);
-		}
-		
-		public void init(IMemento memento) {
-			filter.init(memento);
-		}
-	}*/
 	
-	/*private void callFilters() {
+	private void callFilters() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.FILTER_EXTENSIONS_ID);
 		
-		for(IConfigurationElement extension : extensions) {
-			if(extension.getName().compareTo("filter") == 0){
-				ExtremoViewPartFilter filter;
-				
+		for(IConfigurationElement extension : extensions){
+			if(extension.getName().compareTo("filter")==0){
+				ViewerFilter filter;
 				try{
-					filter = (ExtremoViewPartFilter) extension.createExecutableExtension("class");
+					filter = (ViewerFilter) extension.createExecutableExtension("class");
 					
-					if((filter != null) 
-							&& (extension.getAttribute("view")).equals("repositories")){
-						
+					if((filter != null) && (extension.getAttribute("view")).equals("repositories")){
 						Action extensionFilterAction = new Action() {
 							public void run() {
 								ViewerFilter[] filters = {filter};
@@ -480,7 +293,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 				}
 			}	
 		}
-	}*/
+	}
 	
 	private void callActions() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
@@ -544,7 +357,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		getSite().registerContextMenu(menuMgr, viewer);
 	}
 	
-	private void callEditors(){
+	private void callEditorsDrop(){
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 		IEditorPart editor = window.getActivePage().getActiveEditor();
@@ -596,54 +409,12 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	public void dispose() {
 		super.dispose();
 		
+		if (adapter != null)
+			AssistantFactory.getInstance().getRepositoryManager().eAdapters().remove(adapter);
+			
 		if (pageSelectionListener != null)
 			   getSite().getPage().removePostSelectionListener(
 			       pageSelectionListener);
-	}
-	
-	/*public void refresh(){
-		IRunnableWithProgress op = new IRunnableWithProgress() {
-			public void run(IProgressMonitor monitor) throws InvocationTargetException {
-				try {
-					doFinish(monitor);									
-				} finally {
-					monitor.done();
-				}
-			}
-
-			private void doFinish(IProgressMonitor monitor) {
-				 viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
-			}
-		};
-	}*/
-	
-	public void refresh() {
-		Job job = new Job("Refreshing Repository View") {
-            @Override
-            protected IStatus run(IProgressMonitor monitor) {
-                doLongThing();
-                //syncWithUi();
-                return Status.OK_STATUS;
-            }
-	    };
-	    job.setUser(true);
-	    job.schedule();
-	}
-	
-	/*private void syncWithUi() {
-        try {
-        	Thread.sleep(100);
-        } catch (InterruptedException e) {
-                e.printStackTrace();
-        }
-	}*/
-
-	private void doLongThing() {
-		Display.getDefault().asyncExec(new Runnable() {
-            public void run() {
-            	   viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
-            }
-		});
 	}
 
 	private void hookContextMenu() {
@@ -666,7 +437,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	}
 
 	private void fillLocalPullDown(IMenuManager manager) {
-		manager.add(addRepository);
+		//manager.add(addRepository);
 	}
 
 	private void fillContextMenu(IMenuManager manager) {
@@ -677,11 +448,13 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	}
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
-		manager.add(addRepository);
+		//manager.add(addRepository);
 		manager.add(addFolder);
 	}
 
 	private void makeActions() {
+		/*
+		 * 
 		addRepository = new Action() {
 			public void run() {
 				WizardDialog wizardDialog = new WizardDialog(null, new NewRepositoryWizardDialog());
@@ -697,6 +470,8 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		addRepository.setText("Add Repository");
 		addRepository.setToolTipText("");
 		addRepository.setImageDescriptor(Activator.getImageDescriptor("icons/newfolder_wiz.gif"));
+		
+		*/
 		
 		addFolder = new Action() {
 			public void run() {
@@ -836,51 +611,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 			listener.selectionChanged(new SelectionChangedEvent(this, selection));
 		}
 	}
-
-	/*@Override
-	public EditingDomain getEditingDomain() {
-		return editingDomain;
-	}
-	
-	protected void initializeEditingDomain() {
-		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-
-		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new SemanticmanagerItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
-
-		BasicCommandStack commandStack = new BasicCommandStack();
-
-		commandStack.addCommandStackListener
-			(new CommandStackListener() {
-				 public void commandStackChanged(final EventObject event) {
-					 viewer.getDisplay().asyncExec
-						 (new Runnable() {
-							  public void run() {
-								  firePropertyChange(IEditorPart.PROP_DIRTY);
-
-								  // Try to select the affected objects.
-								  //
-								  Command mostRecentCommand = ((CommandStack)event.getSource()).getMostRecentCommand();
-								  if (mostRecentCommand != null) {
-									  setSelectionToViewer(mostRecentCommand.getAffectedObjects());
-								  }
-								  for (Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext(); ) {
-									  PropertySheetPage propertySheetPage = i.next();
-									  if (propertySheetPage.getControl().isDisposed()) {
-										  i.remove();
-									  }
-									  else {
-										  propertySheetPage.refresh();
-									  }
-								  }
-							  }
-						  });
-				 }
-			 });
-		
-		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap<org.eclipse.emf.ecore.resource.Resource, Boolean>());
-	}*/
 	
 	public void setSelectionToViewer(Collection<?> collection) {
 		final Collection<?> theSelection = collection;
@@ -897,36 +627,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 			getSite().getShell().getDisplay().asyncExec(runnable);
 		}
 	}
-	
-	/*public IPropertySheetPage getPropertySheetPage() {
-		PropertySheetPage propertySheetPage =
-			new ExtendedPropertySheetPage(editingDomain) {
-				@Override
-				public void setSelectionToViewer(List<?> selection) {
-					setSelectionToViewer(selection);
-				}
-
-				@Override
-				public void setActionBars(IActionBars actionBars) {
-					super.setActionBars(actionBars);
-				}
-			};
-		propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
-		propertySheetPages.add(propertySheetPage);
-
-		return propertySheetPage;
-	}
-	
-	@SuppressWarnings("rawtypes")
-	@Override
-	public Object getAdapter(Class key) {
-		if (key.equals(IPropertySheetPage.class)) {
-			return getPropertySheetPage();
-		}
-		else {
-			return super.getAdapter(key);
-		}
-	}*/
 
 	private ExtendedPropertySheetPage propertyPage;
 	

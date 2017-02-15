@@ -1,8 +1,9 @@
 package uam.extremo.ui.views.searchtree;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
@@ -19,7 +20,12 @@ import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import uam.extremo.ui.views.Activator;
 
-public class SearchTreeViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
+public class SearchTreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider{
+	public SearchTreeViewAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {
+		super(adapterFactory);
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Image getImage(Object obj) {
 		if(obj instanceof IStructuredSelection) obj = ((IStructuredSelection) obj).getFirstElement();
 		

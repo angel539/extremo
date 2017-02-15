@@ -5,9 +5,9 @@ import semanticmanager.Resource;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
-import semanticmanager.impl.SearchConfigurationImpl;
+import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class TooManyAttrsSearch extends SearchConfigurationImpl {
+public class TooManyAttrsSearch extends SimpleSearchConfigurationImpl {
 	@Override
 	public void search(SearchResult search) {
 		int morethanattrs = (int) search.getOptionValue("morethanattrs");

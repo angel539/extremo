@@ -6,7 +6,7 @@
       <search
             class="uam.extremo.search.metrics.AttrsOverloadedSearch"
             id="uam.extremo.search.metrics.attrs"
-            name="Metric 01: Attrs Overloaded">
+            name="Attributes are overloaded">
          <option
                id="maxattrs"
                name="Max Attrs"
@@ -16,7 +16,7 @@
       <search
             class="uam.extremo.search.metrics.RefsOverloadedSearch"
             id="uam.extremo.search.metrics.refs"
-            name="Metric 02: References overloaded">
+            name="References are overloaded">
          <option
                id="maxrefs"
                name="Max Refs"
@@ -26,7 +26,7 @@
       <search
             class="uam.extremo.search.metrics.InRefsOverloadedSearch"
             id="uam.extremo.search.metrics.inrefs"
-            name="Metric 03: No class is referred from too many others">
+            name="No class is referred from too many others">
          <option
                id="maxrefs"
                name="Max Refs"
@@ -36,7 +36,7 @@
       <search
             class="uam.extremo.search.metrics.HierarchyLimitSearch"
             id="uam.extremo.search.metrics.hierarchy"
-            name="Metric 04: No hierarchy is too deep ">
+            name="A hierarchy is too deep ">
          <option
                id="maxdepth"
                name="Max Depth"
@@ -46,7 +46,7 @@
       <search
             class="uam.extremo.search.metrics.ChildrenLimitSearch"
             id="uam.extremo.search.metrics.children"
-            name="Metric 05: No class has too many direct children">
+            name="No class has too many direct children">
          <option
                id="maxchildren"
                name="Max Children"

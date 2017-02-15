@@ -6,7 +6,7 @@
       <search
             class="uam.extremo.search.metrics.TooManyAttrsSearch"
             id="uam.extremo.search.metrics.attrs"
-            name="AGU01: Class with more than a number of attributes">
+            name="Class with more than a number of attributes">
          <option
                id="morethanattrs"
                name="Attrs"
@@ -16,7 +16,7 @@
       <search
             class="uam.extremo.search.metrics.TooManyRefsSearch"
             id="uam.extremo.search.metrics.refs"
-            name="AGU02: Class with two many references">
+            name="Class with too many references">
          <option
                id="morethanrefs"
                name="Refs"
@@ -26,12 +26,12 @@
       <search
             class="uam.extremo.search.metrics.IsolatedClassesSearch"
             id="uam.extremo.search.metrics.inrefs"
-            name="AGU03: Isolated classes">
+            name="Isolated classes">
       </search>
       <search
             class="uam.extremo.search.metrics.MoreThanNumberChildrenSearch"
             id="uam.extremo.search.metrics.children"
-            name="AGU04: A class has more than a number of children">
+            name="A class has more than a number of children">
          <option
                id="morethanchildren"
                name="Number of Children"
@@ -41,7 +41,7 @@
       <search
             class="uam.extremo.search.metrics.NumberOfParentsSearch"
             id="uam.extremo.search.metrics.children"
-            name="AGU05: A class has more than a number of parents">
+            name="A class has more than a number of parents">
          <option
                id="morethanparents"
                name="Number of parents"
@@ -51,12 +51,12 @@
       <search
             class="uam.extremo.search.metrics.AbstractClassUniqueChildSearch"
             id="uam.extremo.search.metrics.abstractclassuniquechild"
-            name="AGU06: An abstract class with an unique child">
+            name="An abstract class with an unique child">
       </search>
       <search
             class="uam.extremo.search.metrics.AbstractClassWithoutChildrenSearch"
             id="uam.extremo.search.metrics.abstractclasswithoutchildren"
-            name="AGU07: An abstract class without children">
+            name="An abstract class without children">
       </search>
    </extension>
 

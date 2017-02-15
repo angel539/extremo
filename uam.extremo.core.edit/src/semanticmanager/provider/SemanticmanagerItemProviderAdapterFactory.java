@@ -325,6 +325,29 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link semanticmanager.Connection} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConnectionItemProvider connectionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link semanticmanager.Connection}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConnectionAdapter() {
+		if (connectionItemProvider == null) {
+			connectionItemProvider = new ConnectionItemProvider(this);
+		}
+
+		return connectionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -434,6 +457,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 		if (searchResultItemProvider != null) searchResultItemProvider.dispose();
 		if (searchResultOptionValueItemProvider != null) searchResultOptionValueItemProvider.dispose();
 		if (constraintItemProvider != null) constraintItemProvider.dispose();
+		if (connectionItemProvider != null) connectionItemProvider.dispose();
 	}
 
 }
