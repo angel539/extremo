@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="An Extensible Assistant for Modelling and Meta-Modelling">
+	<meta name="description" content="Automated modelling assistance by integrating heterogeneous information">
     <title>extremo</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 	<!--[if lte IE 8]>
@@ -121,10 +121,7 @@
 						<div class="pure-u-4-5" >
 							<!--<div class="l-box">-->
 								<h1 class="email-content-title" style="padding-left: 20px;">Extremo</h1>
-								<h2 class="email-content-title" style="padding-left: 20px;">An Extensible Assistant for Modelling and Meta-Modelling</h2>
-								<p class="email-content-subtitle" style="padding-left: 20px;">
-                                    Currently working on a new version of the project
-								</p>
+								<h2 class="email-content-title" style="padding-left: 20px;">Automated modelling assistance by integrating heterogeneous information</h2>
 							<!--</div>-->
 						</div>
 					</div>
@@ -135,13 +132,11 @@
 				</div>
 
 	            <div class="email-content-body">
-	            	<p>Meta-models play a pivotal role in Model-Driven Engineering (MDE). They are used to create domain-specific models, and to type model management operations like model transformations or code generators. However, even though creating meta-models is a common activity, it is currently mostly a manual activity, which does not profit from existing knowledge.</p>
+					<p>Model-Driven Engineering (MDE) uses models as the main assets in the software development process. The structure of a model is described through a meta-model and therefore modelling and meta-modelling are recurrent activities in MDE. While there is a vast amount of MDE tools nowadays, modelling and meta-modelling are tasks typically performed in an unassisted way. One reason for this situation is that these tools cannot extract useful knowledge for modelling, which might be found in heterogeneous information sources, such as XML, RDF, CSV or other models and meta-models.</p>
 
-	            	<p>In order to facilitate the meta-modelling task, in this paper we present an extensible modelling assistant. The assistant is useful both for constructing both models and meta-models.</p>
-	            	
-	            	<p>The assistant system permits the provision of heterogeneous data description sources (like ontologies, RDF data, XML schemas, database schemas and meta-models), and enables their uniform querying. Different kinds of queries are supported, and improved through synonym search. Query results are prioritized through sense disambiguation, can be visualized graphically, and incorporated into the (meta-)model being built.</p>
+					<p>In order to facilitate modelling at any level of the process, we propose an assistant for modelling and meta-modelling. The assistant enables the gathering of information from sources in various technological spaces. These can be queried uniformly by means of an extensible mechanism, which can make use of services, e.g., for synonym search and word sense analysis. The query results can then be easily incorporated into the (meta-)model being built.</p>
 
-	            	<p>The assistant has been realized within Eclipse, and its architecture has been designed to be independent of the meta-modelling technology used. As a proof-of-concept, we show its integration within DSL-tao, a pattern-based meta-modelling tool built by our group, and two other modelling and meta-modelling tools developed by third-parties. The usefulness of the system is illustrated with a running example in the process modelling domain.</p>
+					<p>The assistant, called \Extremo, has been developed as an Eclipse plugin and it has been validated by case studies in the process modelling and production systems domains. We report on the evaluation of different aspects of Extremo, including its integration with various modelling and meta-modelling environments, the provision of handlers for several heterogeneous sources, a catalogue of general queries and a user study.</p>
 	            </div>
 				
 				<div class="email-content-header pure-g">
@@ -199,29 +194,6 @@
 	                    <button class="secondary-button pure-button">Move to top</button>
 	                </div>
 	            </div>
-				
-				<!-- NEW VERSION -->
-				<!--<div class="email-content-body">
-					<h4>Metamodel</h4>
-					<div class="pure-g">
-						<div class="pure-u-1-3">
-							<div class="l-box">
-								<a href="images/metamodel/1.png" target="_blank"><img alt="Class Diagram" class="pure-img" src="images/metamodel/1.png"></a>
-							</div>
-						</div>
-
-						<div class="pure-u-1-3">
-							<div class="l-box">
-								<a href="images/metamodel/2.png" target="_blank"><img alt="Class Diagram" class="pure-img" src="images/metamodel/2.png"></a>
-							</div>
-						</div>
-
-						<div class="pure-u-1-3">
-								<a href="images/metamodel/3.png" target="_blank"><img alt="Class Diagram" class="pure-img" src="images/metamodel/3.png"></a>
-							</div>
-						</div>
-					</div>
-				</div>-->
 				
 				<div class="email-content-header pure-g">
 	                <div class="pure-u-1-2">
