@@ -14,4 +14,35 @@
             genModel="model/Extremo.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Extremo -->
+      <package
+            uri="constraints"
+            class="semanticmanager.constraints.ConstraintsPackage"
+            genModel="model/Extremo.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Extremo -->
+      <package
+            uri="queries"
+            class="semanticmanager.queries.QueriesPackage"
+            genModel="model/Extremo.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Extremo -->
+      <package
+            uri="dataModel"
+            class="semanticmanager.dataModel.DataModelPackage"
+            genModel="model/Extremo.genmodel"/>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.factory_override">
+      <factory
+            class="semanticmanager.impl.ExtendedSemanticmanagerFactoryImpl"
+            uri="http://www.core.extremo/SemanticManager">
+      </factory>
+   </extension>
+
 </plugin>

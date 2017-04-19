@@ -1,0 +1,69 @@
+/**
+ */
+package semanticmanager.dataModel;
+
+import org.eclipse.emf.common.util.EList;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Repository</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link semanticmanager.dataModel.Repository#getResources <em>Resources</em>}</li>
+ *   <li>{@link semanticmanager.dataModel.Repository#getProject <em>Project</em>}</li>
+ * </ul>
+ *
+ * @see semanticmanager.dataModel.DataModelPackage#getRepository()
+ * @model
+ * @generated
+ */
+public interface Repository extends NamedElement {
+	/**
+	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
+	 * The list contents are of type {@link semanticmanager.dataModel.Resource}.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.dataModel.Resource#getRepositoryFrom <em>Repository From</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Resources</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Resources</em>' containment reference list.
+	 * @see semanticmanager.dataModel.DataModelPackage#getRepository_Resources()
+	 * @see semanticmanager.dataModel.Resource#getRepositoryFrom
+	 * @model opposite="repositoryFrom" containment="true"
+	 * @generated
+	 */
+	EList<Resource> getResources();
+
+	/**
+	 * Returns the value of the '<em><b>Project</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Project</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Project</em>' attribute.
+	 * @see #setProject(String)
+	 * @see semanticmanager.dataModel.DataModelPackage#getRepository_Project()
+	 * @model
+	 * @generated
+	 */
+	String getProject();
+
+	/**
+	 * Sets the value of the '{@link semanticmanager.dataModel.Repository#getProject <em>Project</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Project</em>' attribute.
+	 * @see #getProject()
+	 * @generated
+	 */
+	void setProject(String value);
+
+} // Repository

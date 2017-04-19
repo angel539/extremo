@@ -1,0 +1,6 @@
+package semanticmanager.queries.impl;
+
+import semanticmanager.queries.ExtensiblePredicateBasedSearch;
+
+public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl implements ExtensiblePredicateBasedSearch {
+}
