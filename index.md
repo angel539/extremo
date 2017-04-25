@@ -1,14 +1,6 @@
-### Welcome to GitHub Pages.
-This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here [using GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/), select a template crafted by a designer, and publish. After your page is generated, you can check out the new `gh-pages` branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.
+### Abstract.
+Model-Driven Engineering (MDE) uses models as the main assets in the software development process. The structure of a model is described through a meta-model and therefore modelling and meta-modelling are recurrent activities in MDE. While there is a vast amount of MDE tools nowadays, modelling and meta-modelling are tasks typically performed in an unassisted way. One reason for this situation is that these tools cannot extract useful knowledge for modelling, which might be found in heterogeneous information sources, such as XML, RDF, CSV or other models and meta-models.
 
-### Designer Templates
-We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.
+In order to facilitate modelling at any level of the process, we propose an assistant for modelling and meta-modelling. The assistant enables the gathering of information from sources in various technological spaces. These can be queried uniformly by means of an extensible mechanism, which can make use of services, e.g., for synonym search and word sense analysis. The query results can then be easily incorporated into the (meta-)model being built.
 
-### Creating pages manually
-If you prefer to not use the automatic generator, push a branch named `gh-pages` to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.
-
-### Authors and Contributors
-You can @mention a GitHub username to generate a link to their profile. The resulting `<a>` element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (@defunkt), PJ Hyett (@pjhyett), and Tom Preston-Werner (@mojombo) founded GitHub.
-
-### Support or Contact
-Having trouble with Pages? Check out our [documentation](https://help.github.com/pages) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+The assistant, called Extremo, has been developed as an Eclipse plugin and it has been validated by case studies in the process modelling and production systems domains. We report on the evaluation of different aspects of Extremo, including its integration with various modelling and meta-modelling environments, the provision of handlers for several heterogeneous sources, a catalogue of general queries and a user study.
