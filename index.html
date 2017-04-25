@@ -1,0 +1,438 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Automated modelling assistance by integrating heterogeneous information sources">
+    <title>extremo</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/email-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="css/layouts/email.css">
+    <!--<![endif]-->
+</head>
+
+<body>
+ 	<div id="layout" class="content pure-g">
+		<div id="nav" class="pure-u" style="background-image: url(images/background.jpg); height: 100% width: 100% border: 1px solid black;">
+	    </div>
+
+	    <div id="list" class="pure-u-1">
+	        <div class="email-item pure-g">
+	            <div class="pure-u">
+	                <img class="email-avatar" alt="Demo avatar" height="64" width="64" src="images/screen.png">
+	            </div>
+
+	            <div class="pure-u-3-4">
+	                <h5 class="email-name">Demo</h5>
+	                <h4 class="email-subject">Screencasts and video demo</h4>
+	                <p class="email-desc">
+	                    <a href="#demo">Watch some videos.</a>
+	                </p>
+	            </div>
+	        </div>
+
+	        <div class="email-item email-item-unread pure-g">
+	            <div class="pure-u">
+	                <img class="email-avatar" alt="Eclipse avatar" height="64" width="64" src="images/electrical.png">
+	            </div>
+
+	            <div class="pure-u-3-4">
+	                <h5 class="email-name">Tool support</h5>
+	                <h4 class="email-subject">Extending the tool</h4>
+	                <p class="email-desc">
+	                    <a href="#modelling">... with a new assistant, a new constraint interpreter, a new search or integrate the tool with an editor</a>
+	                </p>
+	            </div>
+	        </div>
+			
+			<div class="email-item pure-g">
+	            <div class="pure-u">
+	                <img class="email-avatar" alt="Code avatar" height="64" width="64" src="images/example.png">
+	            </div>
+
+				<div class="pure-u-3-4">
+	                <h5 class="email-name">Put in practice</h5>
+	                <h4 class="email-subject">Running Example</h4>
+	                <p class="email-desc">
+						<a href="#example">Study of a graphical DSL to issue visas to cross the US border</a>
+	                </p>
+	            </div>
+	        </div>
+
+			<div class="email-item email-item-unread pure-g">
+	            <div class="pure-u">
+	                <img class="email-avatar" alt="Eclipse avatar" height="64" width="64" src="images/status.png">
+	            </div>
+
+	            <div class="pure-u-3-4">
+	                <h5 class="email-name">Status</h5>
+	                <h4 class="email-subject">Published articles and Github</h4>
+	                <p class="email-desc">
+	                    <a href="#status">Get an installable version of the project</a>
+	                </p>
+	            </div>
+	        </div>
+			
+			<div class="email-item pure-g">
+	            <div class="pure-u">
+	                <img class="email-avatar" alt="Authors" height="64" width="64" src="images/authors.png">
+	            </div>
+
+	            <div class="pure-u-3-4">
+					<h5 class="email-name">About the authors</h5>
+	                <h4 class="email-subject">Contact</h4>
+	                <p class="email-desc">
+	                    <a href="#contact">Get in touch with the authors to know more about Extremo</a>
+	                </p>
+	            </div>
+	        </div>
+
+	        <div class="email-item pure-g">
+            <div class="pure-u">
+                <img class="email-avatar" alt="Acknowledment avatar" height="64" width="64" src="images/applause.png">
+            </div>
+
+            <div class="pure-u-3-4">
+                <h5 class="email-name">Acknowledgement</h5>
+                <h4 class="email-subject">FPU Grant</h4>
+                <p class="email-desc">
+					<a href="http://www.mecd.gob.es/mecd/servicios-al-ciudadano-mecd/catalogo/general/educacion/998758/ficha.html">This work is supported by the Ministry of Education of Spain (FPU grant FPU13/02698) and by the Spanish MINECO (TIN2014-52129-R)</a>
+                </p>
+            </div>
+        </div>
+	    </div>
+
+	    <div id="main" class="pure-u-1">
+	        <div class="email-content">
+
+	            <div class="email-content-header pure-g">
+
+					<div class="pure-g">
+						<div class="pure-u-1-5">
+			                <img class="email-avatar-profile" alt="Logo" width="150" src="images/logo_extremo.png">
+			            </div>
+						
+						<div class="pure-u-4-5" >
+							<h1 class="email-content-title" style="padding-left: 20px;">/Extremo</h1>
+							<h2 class="email-content-title" style="padding-left: 20px;">Automated modelling assistance by integrating heterogeneous information sources</h2>
+						</div>
+					</div>
+	            </div>
+
+	            <div class="email-content-body">
+		            
+				</div>
+
+	            <div class="email-content-body">
+					<p>Model-Driven Engineering (MDE) uses models as the main assets in the software development process. The structure of a model is described through a meta-model and therefore modelling and meta-modelling are recurrent activities in MDE. While there is a vast amount of MDE tools nowadays, modelling and meta-modelling are tasks typically performed in an unassisted way. One reason for this situation is that these tools cannot extract useful knowledge for modelling, which might be found in heterogeneous information sources, such as XML, RDF, CSV or other models and meta-models.</p>
+
+					<p>In order to facilitate modelling at any level of the process, we propose an assistant for modelling and meta-modelling. The assistant enables the gathering of information from sources in various technological spaces. These can be queried uniformly by means of an extensible mechanism, which can make use of services, e.g., for synonym search and word sense analysis. The query results can then be easily incorporated into the (meta-)model being built.</p>
+
+					<p>The assistant, called Extremo, has been developed as an Eclipse plugin and it has been validated by case studies in the process modelling and production systems domains. We report on the evaluation of different aspects of Extremo, including its integration with various modelling and meta-modelling environments, the provision of handlers for several heterogeneous sources, a catalogue of general queries and a user study.</p>
+	            </div>
+				
+				<div class="email-content-header pure-g">
+	                <div id="demo" class="pure-u-1-2">
+						<h2 class="email-content-title">Demos</h2>
+						<h3 class="email-content-subtitle"><code>HINT! Right click > Show controls</code></h3>
+	                </div>
+
+	                <div class="email-content-controls pure-u-1-2">
+	                    <button class="secondary-button pure-button">Move to top</button>
+	                </div>
+	            </div>
+
+
+	            <div class="email-content-body">
+					<div class="pure-g">
+						<div class="pure-u-1-1">
+							<h4 class="email-content-title">1 - Handling heterogeneous sources and quering</h4>
+						</div>
+
+						<!--<div class="pure-u-1-1">
+							<div class="l-box">
+								<video src="videos/1-edited.mov" width="70%"></video>
+							</div>
+						</div>-->
+					
+						<div class="pure-u-1-1">
+							<h5 class="email-content-title">2 - Integration with a modelling tool</h5>
+						</div>
+					
+						<!--<div class="pure-u-1-1">
+							<div class="l-box">
+								<video src="videos/2.mp4" width="70%"></video>
+							</div>
+						</div>-->
+						
+						<div class="pure-u-1-1">
+							<h5 class="email-content-title">3 - Designing a metamodel from the recommended classes</h5>
+						</div>
+					
+						<!--<div class="pure-u-1-1">
+							<div class="l-box">
+								<video src="videos/3.mp4" width="70%"></video>
+							</div>
+						</div>-->
+					</div>
+				</div>
+				
+				<div class="email-content-header pure-g">
+	                <div id="modelling" class="pure-u-1-2">
+						<h2 class="email-content-title">Tool Support: Extending the tool</h2>
+	                </div>
+
+	                <div class="email-content-controls pure-u-1-2">
+	                    <button class="secondary-button pure-button">Move to top</button>
+	                </div>
+	            </div>
+				
+				<div class="email-content-header pure-g">
+	                <div class="pure-u-1-2">
+						<h4 class="email-content-title">#1_ Contributing with a new format assistant</h4>
+	                </div>
+	            </div>
+
+	            <div class="email-content-body">
+	            	<p>
+	            		The tool supports models represented in Ecore/XMI, XSD/XML and RDF-ontologies. But new model representations can be supported with the definition of an extension point. To extend the tool follow the next instructions:
+	            	</p>
+	            </div>
+
+	            <div class="email-content-body">
+					<p><code>Eclipse</code> > <code>New</code> > <code>Other</code> > <code>Plugin project</code> > ... > <code>Finish</code></p>
+
+					<p>In the <code>MANIFEST</code> insert a Dependency to <code>uam.extremo.core.extensions</code> and to <code>uam.extremo.core</code>. Both dependencies give access to the core classes of Extremo.</p>
+
+					<p>Add an extension to <code>extremo.core.extensions.assistant</code> and then a new Assistant. Give the assistant a <code>name</code>, a <code>class implementation</code>, and list the file extensions the assistant will be applied to.</p>
+					<p>A new all-methods-empty class should be created implementing the <code>IFormatAssistant</code> class. This class needs to parse your format to our class structure (shown in the metamodel above).</p>
+					<div class="pure-g">
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Adding the dependencies</h5>
+								<a href="images/tool/ext11.png" target="_blank"><img class="pure-img" src="images/tool/ext11.png"/></a>
+							</div>
+						</div>
+
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Selecting the extension</h5>
+								<a href="images/tool/ext12.png" target="_blank"><img class="pure-img" src="images/tool/ext12.png"/></a>
+							</div>
+						</div>
+
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Assistant definition</h5>
+								<a href="images/tool/ext13.png" target="_blank"><img class="pure-img" src="images/tool/ext13.png"/></a>
+							</div>
+						</div>
+
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Class implementation</h5>
+								<a href="images/tool/ext14.png" target="_blank"><img class="pure-img" src="images/tool/ext14.png"/></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="email-content-header pure-g">
+	                <div class="pure-u-1-2">
+						<h4 class="email-content-title">#2_ Integration with an Eclipse Editor</h4>
+	                </div>
+	            </div>
+
+				<div class="email-content-body">
+					<div class="pure-g">
+						<div class="pure-u-1-2">
+							<div class="l-box">
+								<h4>Actions integration</h4>
+								<a href="images/integration/integration1.png" target="_blank"><img class="pure-img" src="images/integration/integration1.png"/></a>
+							</div>
+						</div>
+
+						<div class="pure-u-1-2">
+							<div class="l-box">
+								<h4>Drag & Drop integration</h4>
+								<a href="images/integration/integration2.png" target="_blank"><img class="pure-img" src="images/integration/integration2.png"/></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="pure-g">
+						<div class="pure-u-1-2">
+							<div class="l-box">
+								<p><code>extremo.ui.extensions.actions</code></p>
+								<p>
+									Illustrated with the UML2 Tree Editor, Extremo has an extension point to add actions to the view of entities. Then, the Editor Part will receive the selected elements. To transform the semantic classes into elements of the model the extension point needs to implement the method <code>execute(IEditorPart editorPart, ISelection selection)</code> and create new elements into the model.
+								</p>
+							</div>
+						</div>
+
+						<div class="pure-u-1-2">
+							<div class="l-box">
+								<p><code>extremo.ui.extensions.drop</code></p>
+								<p>
+									Illustrated with an example of integrating Extremo in DSL-tao (a tool developed by our group). Extremo counts with an extension point to add a drop support to a Graphical Editor (based on GEF) inside Eclipse. The class that implements the extension point will receive a class with a <code>handledrop(...)</code> method that receives the list of semantic elements dragged to the editor.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="email-content-header pure-g">
+	                <div id="example" class="pure-u-1-2">
+						<h2 class="email-content-title">Running example</h2>
+	                </div>
+
+	                <div class="email-content-controls pure-u-1-2">
+	                    <button class="secondary-button pure-button">Move to top</button>
+	                </div>
+	            </div>
+
+	            <div class="email-content-body">
+					<div class="pure-g">
+						<div class="pure-u-1-1">
+							<div class="l-box">
+                                <span>The system is useful...</span>
+                                <ul>
+                                    <li>for helping in the development of new metamodels for particular domains,</li>
+                                    <li>for the creation of <a href="http://ieeexplore.ieee.org/document/6858077/?reload=true&arnumber=6858077" target="_blank">‘concept’ meta-models</a> (a minimal metamodel that gathers the core primitives within a domain),</li>
+                                    <li>for creating models in different scenarios.</li>
+                                </ul>
+							</div>
+						</div>
+				
+                        <div class="pure-u-1-2">
+							<div class="l-box">
+								<a href="images/examples/example-visa.png" target="_blank"><img class="pure-img" src="images/examples/example-visa.png"/></a>
+							</div>
+						</div>
+                        
+						<div class="pure-u-1-2">
+							<div class="l-box">
+								<a href="images/examples/example-metamodel.png" target="_blank"><img class="pure-img" src="images/examples/example-metamodel.png"/></a>
+							</div>
+                        </div>
+					</div>
+				</div>
+
+			<div class="email-content-header pure-g">
+                <div id = "status" class="pure-u-1-2">
+					<h2 class="email-content-title">Status</h2>
+                </div>
+
+				<div class="email-content-controls pure-u-1-2">
+					<a class="secondary-button pure-button" href="">Move to top</a>
+                </div>
+            </div>
+            
+            <div class="email-content-body pure-u-md-1-2">
+            	<div class="pure-u-1-2">
+						<h4 class="email-content-title">Get the tool</h4>
+	            </div>
+            	<div>
+            		<p>Research prototype and examples are available on <a href="" target="_blank">Github</a> and an installable version of the tool for Eclipse IDE can be reached through: <a href="" target="_blank">http://angel539.github.io/extremo/uam.extremo.updatesite</a></p>
+            		<p>This project is currently suffering changes and stability is not guaranteed.</p>
+            	</div>
+
+            	<div class="pure-u-1-2">
+						<h4 class="email-content-title">Contribution</h4>
+	            </div>
+	            <div>
+            		<p>This project has already (1) publication:</p>
+            	</div>
+            	<div>
+	            	<table class="pure-table">
+						<tbody>
+							<tr>
+								<td>
+									<img class="email-avatar" alt="leader avatar" height="64" width="64" src="images/publication.png">
+								</td>
+								<td><p>An Extensible Meta-modelling Assistant</p></td>
+								<td>IEEE 20th The Enterprise Computing Conference, 2016. Viena, Austria.</td>
+								<td>Ángel Mora Segura, Ana Pescador, Juan de Lara, Manuel Wimmer</td>
+								<td><a class="pure-button pure-button-primary" href="http://miso.es/pubs/edoc.pdf" target="_blank">download</a></td>
+	                            <td><a class="pure-button pure-button-primary" href="https://docs.google.com/presentation/d/1cTAZUOPDYLELSvNPe5_v2MkLr52-P7EYyofxSc8SPVw/pub?start=false&loop=false&delayms=5000" target="_blank">slides</a></td>
+							</tr>
+						</tbody>
+					</table>
+            	</div>
+            </div>
+
+            <div class="email-content-header pure-g">
+	                <div id="contact" class="pure-u-1-2">
+						<h2 class="email-content-title">Contact</h2>
+	                </div>
+
+	                <div class="email-content-controls pure-u-1-2">
+	                    <button class="secondary-button pure-button">Move to top</button>
+	                </div>
+	        </div>
+
+	         <div class="email-content-body pure-u-md-1-2">
+                <table class="pure-table">
+					<tbody>
+						<tr>
+							<td>
+								<img class="email-avatar" alt="leader avatar" height="64" width="64" src="images/authors/myself.png">
+							</td>
+							<td><p>Ángel Mora Segura</p></td>
+							<td><a href="mailto:Angel.MoraS@uam.es?Subject=Extremo%20info" target="_top">Angel.MoraS@uam.es</a></td>
+							<td><a href="http://angelmoras.com/" target="_blank">Web</a></td>
+							<td><a href="http://www.miso.es/" target="_blank">MISO group, Universidad Autónoma de Madrid</a></td>
+						</tr>
+						<tr>
+							<td>
+								<img class="email-avatar" alt="leader avatar" height="64" width="64" src="images/authors/juan.jpeg">
+							</td>
+							<td><p>Juan de Lara</p></td>
+							<td><a href="mailto:Juan.deLara@uam.es?Subject=Extremo%20info" target="_top">Juan.deLara@uam.es</a></td>
+							<td><a href="http://arantxa.ii.uam.es/~jlara/" target="_blank">Web</a></td>
+							<td><a href="http://www.miso.es/" target="_blank">MISO group, Universidad Autónoma de Madrid</a></td>
+						</tr>
+						<tr>
+							<td>
+								<img class="email-avatar" alt="leader avatar" height="64" width="64" src="images/authors/patrick.jpeg">
+							</td>
+							<td><p>Patrick Neubauer</p></td>
+							<td><a href="mailto:neubauer@big.tuwien.ac.at?Subject=Extremo%20info" target="_top">neubauer@big.tuwien.ac.at</a></td>
+							<td><a href="https://www.big.tuwien.ac.at/staff/pneubauer" target="_blank">Web</a></td>
+							<td><a href="https://www.big.tuwien.ac.at/" target="_blank">BIG, Vienna University of Technology</a></td>
+						</tr>
+						<tr>
+							<td>
+								<img class="email-avatar" alt="leader avatar" height="64" width="64" src="images/authors/manuel.jpg">
+							</td>
+							<td><p>Manuel Wimmer</p></td>
+							<td><a href="mailto:wimmer@big.tuwien.ac.at?Subject=Extremo%20info" target="_top">wimmer@big.tuwien.ac.at</a></td>
+							<td><a href="https://www.big.tuwien.ac.at/staff/mwimmer" target="_blank">Web</a></td>
+							<td><a href="https://www.big.tuwien.ac.at/" target="_blank">BIG, Vienna University of Technology</a></td>
+						</tr>
+					</tbody>
+				</table>
+            </div>
+    </div>
+    </div>
+</div>
+
+<script src="http://yui.yahooapis.com/3.17.2/build/yui/yui-min.js"></script>
+
+<script>
+    YUI().use('node-base', 'node-event-delegate', function (Y) {
+
+        var menuButton = Y.one('.nav-menu-button'),
+            nav        = Y.one('#nav');
+			
+        menuButton.on('click', function (e) {
+            nav.toggleClass('active');
+        });
+    });
+</script>
+</body>
+</html>
