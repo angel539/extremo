@@ -3,18 +3,17 @@ package semanticmanager.impl;
 import org.eclipse.emf.ecore.EDataType;
 
 import semanticmanager.ExtendedSemanticmanagerFactory;
-import semanticmanager.constraints.ExtensibleConstraintInterpreter;
-import semanticmanager.constraints.impl.ExtensibleConstraintInterpreterImpl;
-import semanticmanager.queries.ExtensibleAtomicSearchResult;
-import semanticmanager.queries.ExtensibleCustomSearch;
-import semanticmanager.queries.ExtensibleGroupedSearchResult;
-import semanticmanager.queries.ExtensiblePredicateBasedSearch;
-import semanticmanager.queries.ExtensibleService;
-import semanticmanager.queries.impl.ExtensibleAtomicSearchResultImpl;
-import semanticmanager.queries.impl.ExtensibleCustomSearchImpl;
-import semanticmanager.queries.impl.ExtensibleGroupedSearchResultImpl;
-import semanticmanager.queries.impl.ExtensiblePredicateBasedSearchImpl;
-import semanticmanager.queries.impl.ExtensibleServiceImpl;
+import semanticmanager.ExtensibleConstraintInterpreter;
+import semanticmanager.ExtensibleAtomicSearchResult;
+import semanticmanager.ExtensibleCustomSearch;
+import semanticmanager.ExtensibleGroupedSearchResult;
+import semanticmanager.ExtensiblePredicateBasedSearch;
+import semanticmanager.ExtensibleService;
+import semanticmanager.impl.ExtensibleAtomicSearchResultImpl;
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
+import semanticmanager.impl.ExtensibleGroupedSearchResultImpl;
+import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
+import semanticmanager.impl.ExtensibleServiceImpl;
 
 public class ExtendedSemanticmanagerFactoryImpl extends SemanticmanagerFactoryImpl implements ExtendedSemanticmanagerFactory {
 	@Override

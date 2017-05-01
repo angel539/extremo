@@ -41,6 +41,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
@@ -63,7 +64,6 @@ import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.views.Activator;
 import uam.extremo.ui.views.dnd.GraphityEditorTransferDropTargetListener;
 import uam.extremo.ui.views.extensions.ExtremoViewPartAction;
-import uam.extremo.ui.views.repositories.SemanticManagerAdapter;
 
 public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor {
 	public static final String ID = "uam.extremo.ui.views.SearchTree";
@@ -78,7 +78,10 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 	protected ComposedAdapterFactory adapterFactory;
 	List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
 	
-	SemanticManagerAdapter adapter;
+	//SemanticManagerAdapter adapter;
+	
+	class NameSorter extends ViewerSorter {
+	}
 	
 	@Override
 	public void createPartControl(Composite parent) {		
@@ -94,16 +97,20 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		
 		new DrillDownAdapter(viewer);
 		
+		// Building the content and the label provider from EMF Edit
 		factories.add(new ResourceItemProviderAdapterFactory());
 		factories.add(new SemanticmanagerItemProviderAdapterFactory());
 		factories.add(new ReflectiveItemProviderAdapterFactory());
-		adapterFactory = new ComposedAdapterFactory(factories);
 		
-		viewer.setContentProvider(new 
-				SearchTreeViewAdapterFactoryContentProvider(viewer, adapterFactory));
-
+		adapterFactory = new ComposedAdapterFactory(factories);
+		AdapterFactoryContentProvider contentProvider = new AdapterFactoryContentProvider(adapterFactory);
+		viewer.setContentProvider(contentProvider);
+		
 		viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
-
+		viewer.setSorter(new NameSorter());
+		
+		viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
+		
 		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new SearchTreeViewAdapterFactoryLabelProvider(adapterFactory)));
 				  
 		
@@ -113,6 +120,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		getViewSite().setSelectionProvider(viewer);
 		
 		viewer.setSelection(new StructuredSelection(AssistantFactory.getInstance().getRepositoryManager()), true);
+		
 		new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
 		
 		callActions();
@@ -126,9 +134,6 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		
     	SearchTreeViewerComparator comparator = new SearchTreeViewerComparator();
 		viewer.setComparator(comparator);
-		
-		adapter = new SemanticManagerAdapter(viewer);
-    	AssistantFactory.getInstance().getRepositoryManager().eAdapters().add(adapter);
 	}
 
 	private void hookContextMenu() {

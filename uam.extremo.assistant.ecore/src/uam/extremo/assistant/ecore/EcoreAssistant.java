@@ -24,12 +24,10 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import semanticmanager.DataProperty;
-import semanticmanager.ObjectProperty;
-import semanticmanager.SemanticNode;
-import semanticmanager.Type;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
+
+import semanticmanager.*;
 
 public class EcoreAssistant extends FormatAssistant implements IFormatAssistant {
 	File file;
@@ -215,8 +213,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	}
 
 	private void ecoreAttributesToDataProperties(SemanticNode parent) {
-		if(parent.getId() != null && parent.getId() instanceof EClass){
-			EClass eClass = (EClass) parent.getId(); 
+		if(parent.getTrace() != null && parent.getTrace() instanceof EClass){
+			EClass eClass = (EClass) parent.getTrace(); 
 			
 			for(EAttribute attr : eClass.getEAttributes()){				
 				try{
@@ -246,6 +244,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 							createDataProperty(
 									(EAttribute) attr, 
 									name, 
+									attr.getLowerBound(), 
+									attr.getUpperBound(),
 									"", 
 									type //the type selected from the enum class
 							);
@@ -260,8 +260,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	}
 	
 	private void xmiAttributesToDataProperties(SemanticNode parent) {
-		if(parent.getId() != null && parent.getId() instanceof EObject){
-			EObject eobject = (EObject) parent.getId();
+		if(parent.getTrace() != null && parent.getTrace() instanceof EObject){
+			EObject eobject = (EObject) parent.getTrace();
 			
 			List<EAttribute> eAttributes = eobject.eClass().getEAllAttributes();
 			
@@ -312,8 +312,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	}
 
 	private void ecoreReferencesToObjectProperties(SemanticNode parent) {
-		if(parent.getId() != null && parent.getId() instanceof EClass){
-			EClass eClass = (EClass) parent.getId();
+		if(parent.getTrace() != null && parent.getTrace() instanceof EClass){
+			EClass eClass = (EClass) parent.getTrace();
 			
 			for(EReference reference : eClass.getEReferences()){
 				SemanticNode range = semanticNodeFromName(semanticResource, reference.getEReferenceType().getName());
@@ -332,8 +332,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	}
 	
 	private void xmiReferencesToObjectProperties(SemanticNode parent) {
-		if(parent.getId() != null && parent.getId() instanceof EObject){
-			EObject eobject = (EObject) parent.getId();
+		if(parent.getTrace() != null && parent.getTrace() instanceof EObject){
+			EObject eobject = (EObject) parent.getTrace();
 			
 			List<EStructuralFeature> structuralFeatures = eobject.eClass().getEAllStructuralFeatures();
 			
@@ -359,13 +359,14 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 									
 									ObjectProperty objectProperty = 
 											createObjectProperty(
+													reference, // trace
+													"", // name
 													descriptor, //descriptor
 													range //value
 											);
 									
 									addObjectPropertyToNode(parent, objectProperty);	
-								}
-								
+								}		
 							}
 						}
 						else
@@ -375,6 +376,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 								
 								ObjectProperty objectProperty = 
 										createObjectProperty(
+												eReferenceValue, // trace
+												"", // name
 												descriptor, //descriptor
 												range //value
 										);	
@@ -401,8 +404,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	}
 	
 	private void ecoreSuperToSemanticNodes(SemanticNode parent) {
-		if(parent.getId() != null && parent.getId() instanceof EClass){
-			EClass eClass = (EClass) parent.getId();
+		if(parent.getTrace() != null && parent.getTrace() instanceof EClass){
+			EClass eClass = (EClass) parent.getTrace();
 			
 			for(EClass superclass : eClass.getESuperTypes()){
 				SemanticNode range = semanticNodeFromName(semanticResource, superclass.getName());

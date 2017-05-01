@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
 <schema targetNamespace="uam.extremo.extensions" xmlns="http://www.w3.org/2001/XMLSchema">
-	<annotation>
+<annotation>
       <appinfo>
          <meta.schema plugin="uam.extremo.extensions" id="extremo.core.extensions.search" name="extremo.core.extensions.search"/>
       </appinfo>
@@ -18,7 +18,8 @@
       </annotation>
       <complexType>
          <choice minOccurs="1" maxOccurs="unbounded">
-            <element ref="search"/>
+            <element ref="customsearch"/>
+            <element ref="predicatebasedsearch"/>
          </choice>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,7 +48,7 @@
       </complexType>
    </element>
 
-   <element name="search">
+   <element name="customsearch">
       <complexType>
          <sequence minOccurs="0" maxOccurs="unbounded">
             <element ref="option"/>
@@ -72,9 +73,28 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="semanticmanager.impl.SimpleSearchConfigurationImpl:"/>
+                  <meta.attribute kind="java" basedOn="semanticmanager.queries.impl.ExtensibleCustomSearchImpl:"/>
                </appinfo>
             </annotation>
+         </attribute>
+         <attribute name="filterBy" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="Resource">
+                  </enumeration>
+                  <enumeration value="SemanticNode">
+                  </enumeration>
+                  <enumeration value="DataProperty">
+                  </enumeration>
+                  <enumeration value="ObjectProperty">
+                  </enumeration>
+               </restriction>
+            </simpleType>
          </attribute>
       </complexType>
    </element>
@@ -108,6 +128,57 @@
                   <enumeration value="Int">
                   </enumeration>
                   <enumeration value="Boolean">
+                  </enumeration>
+                  <enumeration value="SemanticNode">
+                  </enumeration>
+                  <enumeration value="DataProperty">
+                  </enumeration>
+                  <enumeration value="ObjectProperty">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="predicatebasedsearch">
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="option"/>
+         </sequence>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn="semanticmanager.queries.impl.ExtensiblePredicateBasedSearchImpl:"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="filterBy" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="Resource">
                   </enumeration>
                   <enumeration value="SemanticNode">
                   </enumeration>

@@ -24,8 +24,9 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.FileEditorInput;
 
-import semanticmanager.SemanticNode;
 import uam.extremo.ui.views.extensions.ExtremoViewPartAction;
+
+import semanticmanager.SemanticNode;
 
 public class CreateClass extends ExtremoViewPartAction {
 	public CreateClass() {

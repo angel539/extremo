@@ -2,6 +2,10 @@ package uam.extremo.ui.wizards.dialogs.searchnew.dnd;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -14,33 +18,51 @@ import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
-import semanticmanager.Constraint;
-import semanticmanager.DataProperty;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Resource;
-import semanticmanager.SemanticNode;
+import semanticmanager.*;
 import uam.extremo.ui.wizards.Activator;
 
 public class DragMetaModelElementViewer extends TreeViewer{
-	List<Resource> resources = null;
 	IStructuredSelection selection = null;
 	
-	public void refresh(List<Resource> resources) {
-		if(resources != null){
-			this.resources = resources;
-			setInput(resources);
-			refresh();
-			expandAll();
-		}
+	public void addElements(List<NamedElement> elements) {
+		Job job = new Job("Printing elements to drag") {
+            @Override
+            protected IStatus run(IProgressMonitor monitor) {
+            	if (Display.getCurrent() != null) {
+            		setInput(elements);
+                	refresh();
+        		}
+            	else{
+        			Display.getDefault().asyncExec(new Runnable() {
+                        public void run() {
+                        	setInput(elements);
+                        	refresh();
+                        }
+            		});
+        		}
+                return Status.OK_STATUS;
+            }
+	    };
+	    job.setUser(true);
+	    job.schedule();
 	}
 	
-	public DragMetaModelElementViewer(Composite parent, List<Resource> resources) {
+	/*private void syncWithUi() {
+        try {
+        	Thread.sleep(10);
+        } catch (InterruptedException e) {
+			MessageDialog.openError(null, "Showing elements", e.getMessage());
+        }
+	}*/
+	
+	
+	public DragMetaModelElementViewer(Composite parent, List<NamedElement> namedElements) {
 		super(parent);
-		this.resources = resources;
-		
+
 		int operations = DND.DROP_COPY| DND.DROP_MOVE;
 		Transfer[] transferTypes = new Transfer[]{TextTransfer.getInstance()};
 		addDragSupport(operations, transferTypes , new NamedElementDragListener(this));
@@ -49,10 +71,11 @@ public class DragMetaModelElementViewer extends TreeViewer{
 		ViewerFilter[] filters = {filter};
 		setFilters(filters);
 		
-		setContentProvider(new TreeViewContentProvider(resources));
+		setContentProvider(new TreeViewContentProvider(namedElements));
+		//setContentProvider(ArrayContentProvider.getInstance());
 		setLabelProvider(new DelegatingStyledCellLabelProvider(new TreeViewLabelProvider()));
 		
-		setInput(resources);
+		setInput(namedElements);
 	}
 	
 	class TreeViewLabelProvider extends LabelProvider implements IStyledLabelProvider{
@@ -92,14 +115,6 @@ public class DragMetaModelElementViewer extends TreeViewer{
 					return styledString;
 				}
 	    	}
-			
-			if(element instanceof Constraint){
-				Constraint constraint = (Constraint) element;
-				StyledString styledString = new StyledString(constraint.getKey());
-				styledString.append(" (" + constraint.getValue().toString() + ")", StyledString.COUNTER_STYLER);
-
-				return styledString;
-			}
 			
 			if(element instanceof DataProperty){
 				if(((DataProperty) element).getDescriptor() == null){
@@ -156,7 +171,7 @@ public class DragMetaModelElementViewer extends TreeViewer{
 				}
 	    	}
 			
-			if(element instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
+			//if(element instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
 			
 			if(element instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.gif").createImage();
 			if(element instanceof DataProperty) return Activator.getImageDescriptor("icons/attribute.png").createImage();

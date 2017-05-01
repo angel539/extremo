@@ -1,14 +1,10 @@
 package uam.extremo.ui.views.repositories;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IExtensionRegistry;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -16,16 +12,12 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
-import org.eclipse.gef.GraphicalViewer;
-import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ComboBoxViewerCellEditor;
@@ -48,15 +40,12 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.ISelectionListener;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
-import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
@@ -64,16 +53,11 @@ import semanticmanager.NamedElement;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
 import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
-import semanticmanager.util.SemanticmanagerAdapterFactory;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.views.Activator;
-import uam.extremo.ui.views.dnd.GraphityEditorTransferDropTargetListener;
-import uam.extremo.ui.views.extensions.ExtremoViewPartAction;
 import uam.extremo.ui.wizards.dialogs.AddFolderResourceListWizardDialog;
-import uam.extremo.ui.wizards.dialogs.changeToResource.ChangeDescriptorToResourceWizardDialog;
-import uam.extremo.ui.wizards.dialogs.newresource.AddAResourceToExistingRepositoryWizardDialog;
 
 public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor{
 	public static final String ID = "uam.extremo.ui.views.RepositoryView";
@@ -91,6 +75,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
 	
 	private ISelectionListener pageSelectionListener;
+	
 	protected ComposedAdapterFactory adapterFactory;
 	List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
 	
@@ -141,20 +126,34 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 						if (namedElement instanceof Resource) {
 							Resource described = (Resource) namedElement;
 							described.setAssistant(String.valueOf(value));
-							AssistantFactory.getInstance().changeResourceAssistant(described, String.valueOf(value));
+							try {
+								AssistantFactory.getInstance().changeResourceAssistant(described, String.valueOf(value));
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						}
 					}
 				}
 
 				resource.setAssistant(String.valueOf(value));
-				AssistantFactory.getInstance().changeResourceAssistant(resource, String.valueOf(value));
+				try {
+					AssistantFactory.getInstance().changeResourceAssistant(resource, String.valueOf(value));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 
 			}
 			
 			if(element instanceof Repository){
 				for(Resource resource : ((Repository) element).getResources()){
 					resource.setAssistant(String.valueOf(value));
-					AssistantFactory.getInstance().changeResourceAssistant(resource, String.valueOf(value));
+					try {
+						AssistantFactory.getInstance().changeResourceAssistant(resource, String.valueOf(value));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
         }
@@ -172,8 +171,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	public RepositoryViewPart() {
 	}
 
-	SemanticManagerAdapter adapter;
-	
 	@Override
 	public void createPartControl(Composite parent) {		
 		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
@@ -192,17 +189,17 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		factories.add(new ResourceItemProviderAdapterFactory());
 		factories.add(new SemanticmanagerItemProviderAdapterFactory());
 		factories.add(new ReflectiveItemProviderAdapterFactory());
+		
 		adapterFactory = new ComposedAdapterFactory(factories);
 		
-		viewer.setContentProvider(new 
-				RepositoryViewAdapterFactoryContentProvider(viewer, adapterFactory));
-
-		viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
+		AdapterFactoryContentProvider contentProvider = new AdapterFactoryContentProvider(adapterFactory);
 		
+		viewer.setContentProvider(contentProvider);
+		
+		viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
 		viewer.setSorter(new NameSorter());
 		viewer.getTree().setHeaderVisible(true);
-		viewer.setSelection(new StructuredSelection(AssistantFactory.getInstance().getRepositoryManager()), true);
-		
+
 		//Three Columns
 		TreeViewerColumn nameColumn = new TreeViewerColumn(viewer, SWT.NONE);
 		nameColumn.getColumn().setText("Name");
@@ -229,9 +226,9 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		getSite().setSelectionProvider(viewer);
 		getViewSite().setSelectionProvider(viewer);
 		
-		callActions();
-		callFilters();
-		callEditorsDrop();
+		//callActions();
+		//callFilters();
+		//callEditorsDrop();
 		
 		makeActions();
 		hookContextMenu();
@@ -239,14 +236,9 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		contributeToActionBars();
 		
 		hookPageSelection();
-    	
-		adapter = new SemanticManagerAdapter(viewer);
-		
-    	AssistantFactory.getInstance().getRepositoryManager().eAdapters().add(adapter);
 	}
 	
-	
-	private void callFilters() {
+	/*private void callFilters() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.FILTER_EXTENSIONS_ID);
 		
@@ -383,7 +375,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 				}	
 			}
 		 }
-	}
+	}*/
 	
 	private void hookPageSelection() {
 		pageSelectionListener = new ISelectionListener() {
@@ -408,9 +400,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	@Override
 	public void dispose() {
 		super.dispose();
-		
-		if (adapter != null)
-			AssistantFactory.getInstance().getRepositoryManager().eAdapters().remove(adapter);
 			
 		if (pageSelectionListener != null)
 			   getSite().getPage().removePostSelectionListener(
@@ -437,42 +426,19 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	}
 
 	private void fillLocalPullDown(IMenuManager manager) {
-		//manager.add(addRepository);
 	}
 
 	private void fillContextMenu(IMenuManager manager) {
 		manager.add(addResourceToExistingRepository);
-		
 		manager.add(changeDescriptorToResource);
 		manager.add(changeResourceToDescriptor);
 	}
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
-		//manager.add(addRepository);
 		manager.add(addFolder);
 	}
 
 	private void makeActions() {
-		/*
-		 * 
-		addRepository = new Action() {
-			public void run() {
-				WizardDialog wizardDialog = new WizardDialog(null, new NewRepositoryWizardDialog());
-				if (wizardDialog.open() == Window.OK) {
-					MessageDialog.openConfirm(null, "Add Repository", "Repository has been added");
-				}
-				else{
-					MessageDialog.openError(null, "Add Repository", "Repository could not be added");
-				}
-			}
-		};
-		
-		addRepository.setText("Add Repository");
-		addRepository.setToolTipText("");
-		addRepository.setImageDescriptor(Activator.getImageDescriptor("icons/newfolder_wiz.gif"));
-		
-		*/
-		
 		addFolder = new Action() {
 			public void run() {
 				WizardDialog wizardDialog = new WizardDialog(null, new AddFolderResourceListWizardDialog());
@@ -482,6 +448,33 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 				else{
 					MessageDialog.openError(null, "Add Folder", "Resources could not be imported");
 				}
+				
+				//AddFolderResourceListWizardDialog wizard = new AddFolderResourceListWizardDialog();
+				//wizard.init(PlatformUI.getWorkbench(), viewer.getSelection());
+				
+				//Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+				//WizardDialog wizardDialog = new WizardDialog(activeShell, wizard);
+				//wizardDialog.open();
+				
+				//if (wizardDialog.open() == Window.OK) {
+					//MessageDialog.openConfirm(activeShell, "Add Folder", "Resources imported");
+				//}
+				//else{
+					//MessageDialog.openError(activeShell, "Add Folder", "Resources could not be imported");
+				//}
+				
+				/*PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable(){
+					@Override
+					public void run() {
+						Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+						if (wizardDialog.open() == Window.OK) {
+							MessageDialog.openConfirm(activeShell, "Add Folder", "Resources imported");
+						}
+						else{
+							MessageDialog.openError(activeShell, "Add Folder", "Resources could not be imported");
+						}
+					}
+				});*/
 			}
 		};
 		
@@ -497,18 +490,39 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					IStructuredSelection strucSelection = (IStructuredSelection) selection;
 					Object element = strucSelection.getFirstElement();
 					
-					if(element instanceof Repository){
-						WizardDialog wizardDialog = new WizardDialog(null, new AddAResourceToExistingRepositoryWizardDialog((Repository) element));
-						if (wizardDialog.open() == Window.OK) {
-							MessageDialog.openConfirm(null, "Add resource to repository", "Resource has been added");
+					
+					AddFolderResourceListWizardDialog wizard = new AddFolderResourceListWizardDialog();
+					//wizard.init(PlatformUI.getWorkbench(), viewer.getSelection());
+					
+					Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+					WizardDialog wizardDialog = new WizardDialog(activeShell, wizard);
+					wizardDialog.open();
+					
+					
+					
+					/*PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable(){
+						@Override
+						public void run() {
+							Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+
+							if(element instanceof Repository){
+								WizardDialog wizardDialog = new WizardDialog(null, new AddAResourceToExistingRepositoryWizardDialog((Repository) element));
+								
+
+								if (wizardDialog.open() == Window.OK) {
+									MessageDialog.openConfirm(activeShell, "Add resource to repository", "Resource has been added");
+								}
+								else{
+									MessageDialog.openError(activeShell, "Add resource to repository", "Resource could not be added");
+								}
+							}
+							else{
+								MessageDialog.openError(activeShell, "Add resource to repository", "Repository must be selected");
+							}
 						}
-						else{
-							MessageDialog.openError(null, "Add resource to repository", "Resource could not be added");
-						}
-					}
-					else{
-						MessageDialog.openError(null, "Add resource to repository", "Repository must be selected");
-					}
+					});*/
+
+					
 				}	
 			}
 		};
@@ -524,7 +538,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					IStructuredSelection strucSelection = (IStructuredSelection) selection;
 					Object element = strucSelection.getFirstElement();
 					
-					if(element instanceof Resource){
+					/*if(element instanceof Resource){
 						Resource resource = (Resource) element;
 						
 						if(resource.getDescriptor() != null && resource.getDescriptor() instanceof Resource){
@@ -532,8 +546,15 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 						}		
 					}
 					else{
-						MessageDialog.openError(null, "Change descriptor to resource", "Resource must be selected");
-					}
+						PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable(){
+							@Override
+							public void run() {
+								Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+
+								MessageDialog.openError(activeShell, "Change descriptor to resource", "Resource must be selected");
+							}
+						});
+					}*/
 				}	
 			}
 		};
@@ -549,25 +570,32 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					IStructuredSelection strucSelection = (IStructuredSelection) selection;
 					Object element = strucSelection.getFirstElement();
 					
-					if(element instanceof Resource){
-						Resource resource = (Resource) element;
-						
-						if(resource.getDescriptor() == null){
-							WizardDialog wizardDialog = new WizardDialog(null, new ChangeDescriptorToResourceWizardDialog(resource));
-							if (wizardDialog.open() == Window.OK) {
-								MessageDialog.openConfirm(null, "Add resource to repository", "Resource has been added");
+					/*PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable(){
+						@Override
+						public void run() {
+							Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+							
+							if(element instanceof Resource){
+								Resource resource = (Resource) element;
+								
+								if(resource.getDescriptor() == null){
+									WizardDialog wizardDialog = new WizardDialog(null, new ChangeDescriptorToResourceWizardDialog(resource));
+									if (wizardDialog.open() == Window.OK) {
+										MessageDialog.openConfirm(activeShell, "Add resource to repository", "Resource has been added");
+									}
+									else{
+										MessageDialog.openError(activeShell, "Add resource to repository", "Resource could not be added");
+									}
+								}
+								else{
+									MessageDialog.openError(activeShell, "Change descriptor to resource", "Resource is not a descriptor. It cannot be changed");
+								}
 							}
 							else{
-								MessageDialog.openError(null, "Add resource to repository", "Resource could not be added");
+								MessageDialog.openError(activeShell, "Change descriptor to resource", "Resource must be selected");
 							}
 						}
-						else{
-							MessageDialog.openError(null, "Change descriptor to resource", "Resource is not a descriptor. It cannot be changed");
-						}
-					}
-					else{
-						MessageDialog.openError(null, "Change descriptor to resource", "Resource must be selected");
-					}
+					});*/
 				}	
 			}
 		};
@@ -625,12 +653,12 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					}
 				};
 			getSite().getShell().getDisplay().asyncExec(runnable);
-		}
+		}  
 	}
 
-	private ExtendedPropertySheetPage propertyPage;
+	//private ExtendedPropertySheetPage propertyPage;
 	
-	@Override
+	/*@Override
 	public Object getAdapter(Class adapter) {
 		if (adapter.equals(IPropertySheetPage.class)) {
 			if(propertyPage == null){
@@ -643,7 +671,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		}
 		
 		return super.getAdapter(adapter);
-	}
+	}*/
 	
 	@Override
 	public Viewer getViewer() {

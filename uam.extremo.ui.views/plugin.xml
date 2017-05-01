@@ -10,7 +10,7 @@
       <view
             category="extremo.ui.views"
             class="uam.extremo.ui.views.repositories.RepositoryViewPart"
-            icon="icons/site_element.gif"
+            icon="icons/repository.png"
             id="uam.extremo.ui.views.RepositoryView"
             name="Repositories"
             restorable="true">
@@ -18,15 +18,15 @@
       <view
             category="extremo.ui.views"
             class="uam.extremo.ui.views.searchtree.SearchTreeViewPart"
-            icon="icons/searchtree.png"
+            icon="icons/queries.png"
             id="uam.extremo.ui.views.SearchTree"
-            name="Search Word Tree"
+            name="Searches"
             restorable="true">
       </view>
       <view
             category="extremo.ui.views"
             class="uam.extremo.ui.views.constraints.ConstraintValidationViewPart"
-            icon="icons/constraint.png"
+            icon="icons/constraints.png"
             id="uam.extremo.ui.views.ConstraintInterpreters"
             name="Constraints"
             restorable="true">
@@ -52,15 +52,6 @@
                relative="uam.extremo.ui.views.RepositoryView"
                visible="true">
          </view>
-         <viewShortcut
-               id="uam.extremo.ui.views.RepositoryView">
-         </viewShortcut>
-         <viewShortcut
-               id="uam.extremo.ui.views.SearchTree">
-         </viewShortcut>
-         <perspectiveShortcut
-               id="extremo.ui.perspective.extremo">
-         </perspectiveShortcut>
          <view
                closeable="false"
                id="uam.extremo.ui.views.ConstraintInterpreters"
@@ -69,6 +60,15 @@
                relative="uam.extremo.ui.views.SearchTree"
                visible="true">
          </view>
+         <perspectiveShortcut
+               id="extremo.ui.perspective.extremo">
+         </perspectiveShortcut>
+         <viewShortcut
+               id="uam.extremo.ui.views.RepositoryView">
+         </viewShortcut>
+         <viewShortcut
+               id="uam.extremo.ui.views.SearchTree">
+         </viewShortcut>
          <viewShortcut
                id="uam.extremo.ui.views.ConstraintInterpreters">
          </viewShortcut>
@@ -111,12 +111,12 @@
             locationURI="popup:uam.extremo.ui.views.RepositoryView">
          <command
                commandId="uam.extremo.ui.views.searchsemanticNodes"
-               icon="icons/search.png"
+               icon="icons/queries.png"
                style="push">
          </command>
          <command
                commandId="uam.extremo.ui.views.constraintvalidation"
-               icon="icons/constraint.png"
+               icon="icons/constraints.png"
                style="push">
          </command>
          <separator
@@ -138,12 +138,12 @@
             locationURI="toolbar:uam.extremo.ui.views.RepositoryView">
          <command
                commandId="uam.extremo.ui.views.searchsemanticNodes"
-               icon="icons/search.png"
+               icon="icons/queries.png"
                style="push">
          </command>
          <command
                commandId="uam.extremo.ui.views.constraintvalidation"
-               icon="icons/constraint.png"
+               icon="icons/constraints.png"
                style="push">
          </command>
       </menuContribution>

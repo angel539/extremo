@@ -18,37 +18,39 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
-import semanticmanager.SearchResult;
 import semanticmanager.SimpleSearchConfiguration;
 import semanticmanager.Type;
-import uam.extremo.ui.wizards.*;
+import uam.extremo.ui.wizards.Activator;
 import uam.extremo.ui.wizards.dialogs.searchnew.treeviewer.SearchTableViewer;
-
-import org.eclipse.swt.widgets.Control;
 
 public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	private CCombo comboSearchType;
 	
-	private List<SimpleSearchConfiguration> searchConfigurations;
+	private List<SearchConfiguration> searchConfigurations;
+	private SearchConfiguration searchConfigurationSelected = null;
 	
-	private SimpleSearchConfiguration searchConfigurationSelected = null;
 	private Map<SearchOption, String> values;
 	private Map<SearchOption, SearchTableViewer> listValues;
-	private SearchResult searchResult;
 	
-	public SearchConfigurationSelectorWizardPage(String pageName, String pageDescription, List<SimpleSearchConfiguration> searchConfigurations, SearchResult searchResult) {
+	public SearchConfigurationSelectorWizardPage(
+			String pageName, 
+			String pageDescription, 
+			List<SearchConfiguration> searchConfigurations, 
+			SearchConfiguration searchConfigurationSelected) {
 		super(pageName);
+		
 		setTitle(pageName);
 		setDescription(pageDescription);
-		setImageDescriptor(Activator.getImageDescriptor("icons/searchBig.png"));
+		setImageDescriptor(Activator.getImageDescriptor("icons/searchWizard.png"));
 		
 		this.searchConfigurations = searchConfigurations;
-		this.searchResult = searchResult;
+		this.searchConfigurationSelected = searchConfigurationSelected;
 	}
 
 	@Override
@@ -62,9 +64,6 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
         container.setLayout(new GridLayout(1, true));
 		scrollcontainer.setContent(container);
         
-		/*
-		 * Select the search among the extension points
-		 */
         final Composite selectorContainer = new Composite(container, SWT.NONE);
         selectorContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
         selectorContainer.setLayout(new GridLayout(5, true));
@@ -85,37 +84,29 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		
 		scrollcontainer.setMinSize(container.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 
-		/*
-		 * Create the new composite with the contents provided by the extension point as options.
-		 */
 		final Composite selectionContainer = new Composite(container, SWT.NONE);
 		selectionContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		selectionContainer.setLayout(new GridLayout(5, true));
-		
-		/*
-		 * Depends on the options... 
-		 */
 		
 	    comboSearchType.addSelectionListener(new SelectionAdapter() {
 	    	public void widgetSelected(SelectionEvent e) {
 	    		for(Control child : selectionContainer.getChildren()) child.dispose();
 	    			
-	    		/*
-	    		 * Search selection can change
-	    		 */
-	    		SimpleSearchConfiguration searchConfigurationSelected = null;
+	    		SearchConfiguration searchConfigurationSelected = null;
 	    		loop:
-	    		for(SimpleSearchConfiguration searchConfiguration : searchConfigurations){
+	    		for(SearchConfiguration searchConfiguration : searchConfigurations){
 	    			if(comboSearchType.getText().equals(searchConfiguration.getName())){
 	    				searchConfigurationSelected = searchConfiguration;
 	    				break loop;
 	    			}
 	    		}
 
-	    		if(searchConfigurationSelected != null){
+	    		if((searchConfigurationSelected != null) && (searchConfigurationSelected instanceof SimpleSearchConfiguration)){
+	    			
+	    			SimpleSearchConfiguration simpleSearchConfiguration = (SimpleSearchConfiguration) searchConfigurationSelected;
 	    			Map<SearchOption, String> values = new LinkedHashMap<SearchOption, String>(); 
 	   
-		    		for(SearchOption searchOption : searchConfigurationSelected.getOptions()){		    			
+		    		for(SearchOption searchOption : simpleSearchConfiguration.getOptions()){		    			
 		    			if(searchOption.getType().equals(Type.STRING)){
 		    				createTextField(searchOption, values);	
 		    			}
@@ -229,11 +220,11 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    setPageComplete(true);
 	}
 
-	public SimpleSearchConfiguration getSearchConfigurationSelected() {
+	public SearchConfiguration getSearchConfigurationSelected() {
 		return searchConfigurationSelected;
 	}
 
-	public void setSearchConfigurationSelected(SimpleSearchConfiguration searchConfigurationSelected) {
+	public void setSearchConfigurationSelected(SearchConfiguration searchConfigurationSelected) {
 		this.searchConfigurationSelected = searchConfigurationSelected;
 	}
 

@@ -1,5 +1,6 @@
 package uam.extremo.extensions.utils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +14,7 @@ import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
 
 public class ReflectiveUtils {
-	public static Set<Class<? extends Object>> getAllClassInstances(){
+	public static Set<Class<? extends Object>> getAllClassInstances() throws IOException{
 		List<String> idPackages = new ArrayList<String>();
 		for(IFormatAssistant assistant :  AssistantFactory.getInstance().getAssistances()){
 			idPackages.add(((FormatAssistant)assistant).getId() + ".model");
@@ -62,7 +63,7 @@ public class ReflectiveUtils {
  Set<Fields> fields = getAllFields(SomeClass.class, withAnnotation(annotation), withTypeAssignableTo(type));
 	 */
 	
-	public static Set<Class<? extends ObjectProperty>> getAllObjectPropertyInstances(){
+	public static Set<Class<? extends ObjectProperty>> getAllObjectPropertyInstances() throws IOException{
 		List<String> idPackages = new ArrayList<String>();
 		for(IFormatAssistant assistant :  AssistantFactory.getInstance().getAssistances()){
 			idPackages.add(((FormatAssistant)assistant).getId() + ".model");
@@ -79,7 +80,7 @@ public class ReflectiveUtils {
 		return allClasses;
 	}
 	
-	public static Set<Class<? extends DataProperty>> getAllDataPropertyInstances(){
+	public static Set<Class<? extends DataProperty>> getAllDataPropertyInstances() throws IOException{
 		List<String> idPackages = new ArrayList<String>();
 		for(IFormatAssistant assistant :  AssistantFactory.getInstance().getAssistances()){
 			idPackages.add(((FormatAssistant)assistant).getId() + ".model");

@@ -10,7 +10,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import semanticmanager.NamedElement;
 import uam.extremo.extensions.AssistantFactory;
 
-
 public class ExploreConnectionsHandler extends AbstractHandler {
 
 	@Override

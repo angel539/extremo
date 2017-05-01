@@ -4,19 +4,8 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import semanticmanager.Constraint;
-import semanticmanager.ConstraintInterpreter;
-import semanticmanager.DataProperty;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Property;
 import semanticmanager.RepositoryManager;
-import semanticmanager.Resource;
-import semanticmanager.SearchConfiguration;
-import semanticmanager.SearchOption;
-import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionValue;
-import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
+import semanticmanager.*;
 
 public class ConstraintValidationViewFilter extends ViewerFilter {
 	@Override

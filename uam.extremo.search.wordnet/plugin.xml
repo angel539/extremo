@@ -3,32 +3,43 @@
 <plugin>
    <extension
          point="extremo.core.extensions.search">
-      <search
+      <customsearch
             class="uam.extremo.search.wordnet.WordnetSearch"
             id="uam.extremo.search.wordnet.search"
-            name="Wordnet Search">
+            name="Wordnet Search"
+            filterBy="Resource">
          <option
                id="searchfield"
                name="Search"
                type="String">
          </option>
-
-      </search>
-      <search
-            class="uam.extremo.search.wordnet.WordnetSearchPath"
-            id="uam.extremo.search.wordnet.searchpath"
-            name="Wordnet Search Path">
+      </customsearch>
+      <customsearch
+            class="uam.extremo.search.wordnet.DataPropertiesValueSearch"
+            filterBy="DataProperty"
+            id="uam.extremo.search.wordnet.datapropertiesvalue"
+            name="Data Properties Value Search">
          <option
-               id="fromfield"
-               name="From"
+               id="valuefield"
+               name="Value"
                type="String">
          </option>
+      </customsearch>
+      <customsearch
+            class="uam.extremo.search.wordnet.DataPropertiesValueRangeSearch"
+            filterBy="DataProperty"
+            id="uam.extremo.search.wordnet.datapropertiesvalue"
+            name="Data Properties Value Range">
          <option
-               id="tofield"
-               name="To"
-               type="String">
+               id="minvaluefield"
+               name="MIn Value"
+               type="Int">
          </option>
-      </search>
+         <option
+               id="maxvaluefield"
+               name="Max Value"
+               type="Int">
+         </option>
+      </customsearch>
    </extension>
-
 </plugin>

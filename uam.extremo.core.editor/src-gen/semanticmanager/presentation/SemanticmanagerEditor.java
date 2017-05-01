@@ -153,6 +153,9 @@ import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+
+import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
+
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 
@@ -698,7 +701,7 @@ public class SemanticmanagerEditor
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		//adapterFactory.addAdapterFactory(new SemanticmanagerItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new SemanticmanagerItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
@@ -714,7 +717,9 @@ public class SemanticmanagerEditor
 						 (new Runnable() {
 							  public void run() {
 								  firePropertyChange(IEditorPart.PROP_DIRTY);
-								  
+
+								  // Try to select the affected objects.
+								  //
 								  Command mostRecentCommand = ((CommandStack)event.getSource()).getMostRecentCommand();
 								  if (mostRecentCommand != null) {
 									  setSelectionToViewer(mostRecentCommand.getAffectedObjects());

@@ -3,211 +3,191 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/uam.extremo.core/src-gen" editDirectory="/uam.extremo.core.edit/src-gen"
     editorDirectory="/uam.extremo.core.editor/src-gen" modelPluginID="uam.extremo.core"
     modelName="Extremo" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    reflectiveDelegation="true" testsDirectory="/uam.extremo.core.tests/src-gen" importerID="org.eclipse.emf.importer.ecore"
+    reflectiveDelegation="true" testsDirectory="/uam.extremo.core.tests/src-gen" importerID="fr.inria.atlanmod.neoemf.eclipse.ui.migrator.NeoImporter"
     featureDelegation="Reflective" complianceLevel="8.0" copyrightFields="false" operationReflection="true"
     importOrganizing="true">
   <foreignModel>Extremo.ecore</foreignModel>
+  <modelPluginVariables>NEOEMF=fr.inria.atlanmod.neoemf.core</modelPluginVariables>
   <genPackages prefix="Semanticmanager" disposableProviderFactory="true" ecorePackage="Extremo.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Extremo.ecore#//ConnectionType">
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//ConnectionType/or"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//ConnectionType/and"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//ConnectionType/not"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Extremo.ecore#//DataModelType">
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//DataModelType/Resource"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//DataModelType/SemanticNode"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//DataModelType/DataProperty"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//DataModelType/ObjectProperty"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Extremo.ecore#//Type">
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/String"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Int"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Float"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Double"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/NamedElement"/>
+    </genEnums>
     <genDataTypes ecoreDataType="Extremo.ecore#//JavaObject"/>
-    <nestedGenPackages prefix="Constraints" basePackage="semanticmanager" disposableProviderFactory="true"
-        ecorePackage="Extremo.ecore#//constraints">
-      <genClasses ecoreClass="Extremo.ecore#//constraints/Constraint">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//constraints/Constraint/type"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//constraints/Constraint/name"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//constraints/Constraint/body"/>
-        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//constraints/Constraint/appliedTo"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//constraints/Constraint/evaluations"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="Extremo.ecore#//constraints/ConstraintInterpreter">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//constraints/ConstraintInterpreter/id"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//constraints/ConstraintInterpreter/name"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//constraints/ConstraintInterpreter/constraints"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//constraints/ConstraintInterpreter/evals"/>
-        <genOperations ecoreOperation="Extremo.ecore#//constraints/ConstraintInterpreter/eval">
-          <genParameters ecoreParameter="Extremo.ecore#//constraints/ConstraintInterpreter/eval/constraint"/>
-          <genParameters ecoreParameter="Extremo.ecore#//constraints/ConstraintInterpreter/eval/namedElement"/>
-        </genOperations>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//constraints/ConstraintResult">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//constraints/ConstraintResult/constraint"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//constraints/ConstraintResult/context"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//constraints/ConstraintResult/unsat"/>
-      </genClasses>
-    </nestedGenPackages>
-    <nestedGenPackages prefix="Queries" basePackage="semanticmanager" disposableProviderFactory="true"
-        ecorePackage="Extremo.ecore#//queries">
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Extremo.ecore#//queries/ConnectionType">
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//queries/ConnectionType/or"/>
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//queries/ConnectionType/and"/>
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//queries/ConnectionType/not"/>
-      </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Extremo.ecore#//queries/DataModelType">
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//queries/DataModelType/Resource"/>
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//queries/DataModelType/SemanticNode"/>
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//queries/DataModelType/DataProperty"/>
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//queries/DataModelType/ObjectProperty"/>
-      </genEnums>
-      <genClasses ecoreClass="Extremo.ecore#//queries/SearchOption">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//queries/SearchOption/type"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//queries/SearchOption/name"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//queries/SearchOption/id"/>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//queries/SearchResult">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//queries/SearchResult/values"/>
-        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//queries/SearchResult/configuration"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//queries/SearchResult/applyOnElements"/>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//queries/SearchResultOptionValue">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//queries/SearchResultOptionValue/option"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//queries/SearchResultOptionValue/value"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="Extremo.ecore#//queries/SearchConfiguration">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//queries/SearchConfiguration/id"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//queries/SearchConfiguration/name"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//queries/SearchConfiguration/results"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="Extremo.ecore#//queries/SimpleSearchConfiguration">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//queries/SimpleSearchConfiguration/options"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//queries/SimpleSearchConfiguration/filterBy"/>
-        <genOperations ecoreOperation="Extremo.ecore#//queries/SimpleSearchConfiguration/addSearchOption">
-          <genParameters ecoreParameter="Extremo.ecore#//queries/SimpleSearchConfiguration/addSearchOption/id"/>
-          <genParameters ecoreParameter="Extremo.ecore#//queries/SimpleSearchConfiguration/addSearchOption/name"/>
-          <genParameters ecoreParameter="Extremo.ecore#//queries/SimpleSearchConfiguration/addSearchOption/type"/>
-        </genOperations>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//queries/CompositeSearchConfiguration">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//queries/CompositeSearchConfiguration/queries"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//queries/CompositeSearchConfiguration/type"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="Extremo.ecore#//queries/Service">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//queries/Service/id"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//queries/Service/name"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//queries/Service/filterBy"/>
-        <genOperations ecoreOperation="Extremo.ecore#//queries/Service/matches">
-          <genParameters ecoreParameter="Extremo.ecore#//queries/Service/matches/expression"/>
-          <genParameters ecoreParameter="Extremo.ecore#//queries/Service/matches/value"/>
-        </genOperations>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//queries/CustomSearch">
-        <genOperations ecoreOperation="Extremo.ecore#//queries/CustomSearch/search">
-          <genParameters ecoreParameter="Extremo.ecore#//queries/CustomSearch/search/search"/>
-        </genOperations>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//queries/PredicateBasedSearch">
-        <genOperations ecoreOperation="Extremo.ecore#//queries/PredicateBasedSearch/matches">
-          <genParameters ecoreParameter="Extremo.ecore#//queries/PredicateBasedSearch/matches/namedElement"/>
-        </genOperations>
-      </genClasses>
-      <genClasses image="false" ecoreClass="Extremo.ecore#//queries/AtomicSearchResult">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//queries/AtomicSearchResult/elements"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="Extremo.ecore#//queries/GroupedSearchResult">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//queries/GroupedSearchResult/groups"/>
-        <genOperations ecoreOperation="Extremo.ecore#//queries/GroupedSearchResult/createSemanticGroup">
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/createSemanticGroup/name"/>
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/createSemanticGroup/description"/>
-        </genOperations>
-        <genOperations ecoreOperation="Extremo.ecore#//queries/GroupedSearchResult/addSemanticNodeToSemanticGroup">
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/addSemanticNodeToSemanticGroup/semanticGroup"/>
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/addSemanticNodeToSemanticGroup/semanticNode"/>
-        </genOperations>
-        <genOperations ecoreOperation="Extremo.ecore#//queries/GroupedSearchResult/addDataPropertyToSemanticGroup">
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/addDataPropertyToSemanticGroup/semanticGroup"/>
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/addDataPropertyToSemanticGroup/dataProperty"/>
-        </genOperations>
-        <genOperations ecoreOperation="Extremo.ecore#//queries/GroupedSearchResult/addObjectPropertyToSemanticGroup">
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/addObjectPropertyToSemanticGroup/semanticGroup"/>
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/addObjectPropertyToSemanticGroup/objectProperty"/>
-        </genOperations>
-        <genOperations ecoreOperation="Extremo.ecore#//queries/GroupedSearchResult/getOptionValue">
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/getOptionValue/key"/>
-        </genOperations>
-        <genOperations ecoreOperation="Extremo.ecore#//queries/GroupedSearchResult/addNamedElementToSemanticGroup">
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/addNamedElementToSemanticGroup/semanticGroup"/>
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/addNamedElementToSemanticGroup/namedElement"/>
-        </genOperations>
-        <genOperations ecoreOperation="Extremo.ecore#//queries/GroupedSearchResult/addResourceToSemanticGroup">
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/addResourceToSemanticGroup/semanticGroup"/>
-          <genParameters ecoreParameter="Extremo.ecore#//queries/GroupedSearchResult/addResourceToSemanticGroup/resource"/>
-        </genOperations>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//queries/SemanticGroup">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//queries/SemanticGroup/elements"/>
-      </genClasses>
-    </nestedGenPackages>
-    <nestedGenPackages prefix="DataModel" basePackage="semanticmanager" disposableProviderFactory="true"
-        ecorePackage="Extremo.ecore#//dataModel">
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Extremo.ecore#//dataModel/Type">
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//dataModel/Type/String"/>
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//dataModel/Type/Int"/>
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//dataModel/Type/Boolean"/>
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//dataModel/Type/Float"/>
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//dataModel/Type/Double"/>
-        <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//dataModel/Type/NamedElement"/>
-      </genEnums>
-      <genClasses ecoreClass="Extremo.ecore#//dataModel/RepositoryManager">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/RepositoryManager/repositories"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/RepositoryManager/configurations"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/RepositoryManager/interpreters"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/RepositoryManager/services"/>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//dataModel/Repository">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/Repository/resources"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/Repository/project"/>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//dataModel/Resource">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/Resource/active"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/Resource/alive"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/Resource/assistant"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/Resource/nodes"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/Resource/uri"/>
-        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/Resource/repositoryFrom"/>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//dataModel/SemanticNode">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/SemanticNode/supers"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/SemanticNode/subs"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/SemanticNode/properties"/>
-        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/SemanticNode/resourceFrom"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/SemanticNode/abstract"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="Extremo.ecore#//dataModel/NamedElement">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/NamedElement/name"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/NamedElement/description"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/NamedElement/weight"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/NamedElement/trace"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/NamedElement/drawn"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/NamedElement/descriptor"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/NamedElement/describes"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/NamedElement/constraints"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="Extremo.ecore#//dataModel/Property">
-        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/Property/semanticNodeFrom"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/Property/lowerBound"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/Property/upperBound"/>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//dataModel/ObjectProperty">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference Extremo.ecore#//dataModel/ObjectProperty/range"/>
-      </genClasses>
-      <genClasses ecoreClass="Extremo.ecore#//dataModel/DataProperty">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/DataProperty/type"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//dataModel/DataProperty/value"/>
-      </genClasses>
-    </nestedGenPackages>
+    <genClasses ecoreClass="Extremo.ecore#//RepositoryManager">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//RepositoryManager/repositories"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//RepositoryManager/configurations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//RepositoryManager/interpreters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//RepositoryManager/services"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//Constraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Constraint/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Constraint/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Constraint/body"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//Constraint/appliedTo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//Constraint/evaluations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//Constraint/interpreter"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//ConstraintInterpreter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//ConstraintInterpreter/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//ConstraintInterpreter/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ConstraintInterpreter/constraints"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ConstraintInterpreter/evals"/>
+      <genOperations ecoreOperation="Extremo.ecore#//ConstraintInterpreter/eval">
+        <genParameters ecoreParameter="Extremo.ecore#//ConstraintInterpreter/eval/constraint"/>
+        <genParameters ecoreParameter="Extremo.ecore#//ConstraintInterpreter/eval/namedElement"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//ConstraintResult">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ConstraintResult/constraint"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ConstraintResult/context"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ConstraintResult/unsat"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//SearchOption">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchOption/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchOption/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchOption/id"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//SearchResult">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResult/values"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResult/configuration"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResult/applyOnElements"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//SearchResultOptionValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResultOptionValue/option"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchResultOptionValue/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//SearchConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchConfiguration/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchConfiguration/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchConfiguration/results"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//SimpleSearchConfiguration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SimpleSearchConfiguration/options"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SimpleSearchConfiguration/filterBy"/>
+      <genOperations ecoreOperation="Extremo.ecore#//SimpleSearchConfiguration/addSearchOption">
+        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addSearchOption/id"/>
+        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addSearchOption/name"/>
+        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addSearchOption/type"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//CompositeSearchConfiguration">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//CompositeSearchConfiguration/queries"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//CompositeSearchConfiguration/type"/>
+      <genOperations ecoreOperation="Extremo.ecore#//CompositeSearchConfiguration/search">
+        <genParameters ecoreParameter="Extremo.ecore#//CompositeSearchConfiguration/search/result"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//Service">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Service/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Service/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Service/filterBy"/>
+      <genOperations ecoreOperation="Extremo.ecore#//Service/matches">
+        <genParameters ecoreParameter="Extremo.ecore#//Service/matches/expression"/>
+        <genParameters ecoreParameter="Extremo.ecore#//Service/matches/value"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//CustomSearch">
+      <genOperations ecoreOperation="Extremo.ecore#//CustomSearch/search">
+        <genParameters ecoreParameter="Extremo.ecore#//CustomSearch/search/result"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//PredicateBasedSearch">
+      <genOperations ecoreOperation="Extremo.ecore#//PredicateBasedSearch/matches">
+        <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/matches/namedElement"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//AtomicSearchResult">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//AtomicSearchResult/elements"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//GroupedSearchResult">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//GroupedSearchResult/groups"/>
+      <genOperations ecoreOperation="Extremo.ecore#//GroupedSearchResult/createSemanticGroup">
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/createSemanticGroup/name"/>
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/createSemanticGroup/description"/>
+      </genOperations>
+      <genOperations ecoreOperation="Extremo.ecore#//GroupedSearchResult/addSemanticNodeToSemanticGroup">
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addSemanticNodeToSemanticGroup/semanticGroup"/>
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addSemanticNodeToSemanticGroup/semanticNode"/>
+      </genOperations>
+      <genOperations ecoreOperation="Extremo.ecore#//GroupedSearchResult/addDataPropertyToSemanticGroup">
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addDataPropertyToSemanticGroup/semanticGroup"/>
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addDataPropertyToSemanticGroup/dataProperty"/>
+      </genOperations>
+      <genOperations ecoreOperation="Extremo.ecore#//GroupedSearchResult/addObjectPropertyToSemanticGroup">
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addObjectPropertyToSemanticGroup/semanticGroup"/>
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addObjectPropertyToSemanticGroup/objectProperty"/>
+      </genOperations>
+      <genOperations ecoreOperation="Extremo.ecore#//GroupedSearchResult/getOptionValue">
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/getOptionValue/key"/>
+      </genOperations>
+      <genOperations ecoreOperation="Extremo.ecore#//GroupedSearchResult/addNamedElementToSemanticGroup">
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addNamedElementToSemanticGroup/semanticGroup"/>
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addNamedElementToSemanticGroup/namedElement"/>
+      </genOperations>
+      <genOperations ecoreOperation="Extremo.ecore#//GroupedSearchResult/addResourceToSemanticGroup">
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addResourceToSemanticGroup/semanticGroup"/>
+        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addResourceToSemanticGroup/resource"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//SemanticGroup">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticGroup/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//Repository">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//Repository/resources"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Repository/project"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//Resource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/active"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/alive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/assistant"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/nodes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/uri"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/repositoryFrom"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//SemanticNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/supers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/subs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/properties"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/resourceFrom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SemanticNode/abstract"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/weight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/trace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/drawn"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/descriptor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/describes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/constraints"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//Property">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//Property/semanticNodeFrom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Property/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Property/upperBound"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//ObjectProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ObjectProperty/range"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//DataProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//DataProperty/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//DataProperty/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

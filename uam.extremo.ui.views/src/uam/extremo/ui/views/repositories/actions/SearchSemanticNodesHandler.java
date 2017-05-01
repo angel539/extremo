@@ -1,8 +1,4 @@
  package uam.extremo.ui.views.repositories.actions;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -13,12 +9,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import semanticmanager.Repository;
-import semanticmanager.Resource;
-import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchResult;
-import semanticmanager.SemanticmanagerFactory;
-import semanticmanager.SimpleSearchConfiguration;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.wizards.dialogs.searchnew.SearchWizardDialog;
 
@@ -27,55 +18,20 @@ public class SearchSemanticNodesHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		AssistantFactory.getInstance().putAllResourceToNotActive();
 		
-		SearchResult searchResult = SemanticmanagerFactory.eINSTANCE.createSearchResult();
-		
 		ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().getSelection();
+		
 		if (selection != null & selection instanceof IStructuredSelection) {
 			IStructuredSelection strucSelection = (IStructuredSelection) selection;
 			
-			for (Iterator<Object> iterator = strucSelection.iterator(); iterator.hasNext();) {
-				Object element = iterator.next();
-				
-				if(element instanceof Repository){
-					Repository repository = (Repository) element;
-					
-					for(Resource resource : repository.getResources()){
-						resource.setActive(true);
-						searchResult.getResources().add(resource);
-					}
-				}
-				
-				if(element instanceof Resource){
-					Resource resource = (Resource) element;
-					
-					if(!searchResult.getResources().contains(resource)){
-						resource.setActive(true);
-						searchResult.getResources().add(resource);
-					}
-				}
+			SearchResult searchResult = null;
+			
+			WizardDialog wizardDialog = new WizardDialog(null, new SearchWizardDialog(strucSelection, searchResult));
+			if (wizardDialog.open() == Window.OK) {
+				search(searchResult);
 			}
-		 }
-		
-		
-		List<SearchConfiguration> configurations = AssistantFactory.getInstance().getSearches();
-		List<SimpleSearchConfiguration> simpleConfigurations = new ArrayList<SimpleSearchConfiguration>();
-		
-		configurations.forEach(
-				element -> {
-					if (element instanceof SimpleSearchConfiguration) {
-						SimpleSearchConfiguration simpleConfiguration = (SimpleSearchConfiguration) element;
-						simpleConfigurations.add(simpleConfiguration);
-					}
-					
-				}
-		);
-		
-		WizardDialog wizardDialog = new WizardDialog(null, new SearchWizardDialog(simpleConfigurations, searchResult));
-		if (wizardDialog.open() == Window.OK) {
-			search(searchResult);
-		}
-		else{
-			MessageDialog.openError(null, "Search entities", "Searching could not be called");
+			else{
+				MessageDialog.openError(null, "Search entities", "Searching could not be called");
+			}
 		}
 		
 		return null;

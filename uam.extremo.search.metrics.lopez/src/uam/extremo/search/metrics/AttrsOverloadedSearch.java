@@ -1,16 +1,12 @@
 package uam.extremo.search.metrics;
 
-import semanticmanager.DataProperty;
-import semanticmanager.Resource;
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
 import semanticmanager.SearchResult;
-import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class AttrsOverloadedSearch extends SimpleSearchConfigurationImpl {	
+public class AttrsOverloadedSearch extends ExtensibleCustomSearchImpl {	
 	@Override
 	public void search(SearchResult search) {
-		int maxAttrs = (int) search.getOptionValue("maxattrs");
+		/*int maxAttrs = (int) search.getOptionValue("maxattrs");
 		
 		SemanticGroup semanticGroup = search.createSemanticGroup("no_class_overloaded", "No class is overloaded with attributes.");
 
@@ -25,6 +21,6 @@ public class AttrsOverloadedSearch extends SimpleSearchConfigurationImpl {
 					}
 				}
 			}
-		}
+		}*/
 	}
 }

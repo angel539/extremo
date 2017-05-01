@@ -5,17 +5,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import semanticmanager.DataProperty;
-import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Resource;
+import semanticmanager.ExtensibleGroupedSearchResult;
+import semanticmanager.*;
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.SimpleSearchConfigurationImpl;
 import uam.extremo.search.wordnet.stemmer.LangUtils;
 
-public class WordnetSearch extends SimpleSearchConfigurationImpl{
+public class WordnetSearch extends ExtensibleCustomSearchImpl{
 	private WordnetSearchExpansionTree expansionTree;
 
 	public WordnetSearch(){
@@ -24,8 +21,10 @@ public class WordnetSearch extends SimpleSearchConfigurationImpl{
 	
 	@Override
 	public void search(SearchResult search) {
+		
+		/*
+		
 		if((search.getOptionValue("searchfield") != null) && (search.getOptionValue("searchfield") instanceof String)){
-			
 			String searchField = (String) search.getOptionValue("searchfield");
 			List<NamedElement> namedElements = new ArrayList<NamedElement>();
 			
@@ -76,9 +75,13 @@ public class WordnetSearch extends SimpleSearchConfigurationImpl{
 					}
 			);
 		}
+		
+		*/
 	}
 
-	private void compareKeys(SearchResult search, Object element, SemanticGroup semanticGroup, Map<String, Integer> searchList) {
+	/*
+	
+	private void compareKeys(ExtensibleGroupedSearchResult search, Object element, SemanticGroup semanticGroup, Map<String, Integer> searchList) {
 		if((element != null) && (element instanceof NamedElement)){
 			NamedElement namedElement = (NamedElement) element;
 			
@@ -101,4 +104,6 @@ public class WordnetSearch extends SimpleSearchConfigurationImpl{
 			}
 		}
 	}
+	
+	*/
 }

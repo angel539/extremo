@@ -4,13 +4,8 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import semanticmanager.Constraint;
-import semanticmanager.DataProperty;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
-import semanticmanager.Resource;
-import semanticmanager.SemanticNode;
+import semanticmanager.*;
 
 public class TreeViewFilter extends ViewerFilter {
 	@Override
@@ -18,10 +13,8 @@ public class TreeViewFilter extends ViewerFilter {
 		return element instanceof RepositoryManager || 
 				element instanceof Repository || 
 				element instanceof Resource ||
-				element instanceof Constraint ||
 				element instanceof SemanticNode||
 				element instanceof DataProperty ||
-				element instanceof ObjectProperty
-				;
+				element instanceof ObjectProperty;
 	}
 }

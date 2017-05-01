@@ -7,26 +7,28 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-import semanticmanager.Resource;
+
+import semanticmanager.NamedElement;
 
 public class TreeViewContentProvider implements IStructuredContentProvider, ITreeContentProvider {	
-	private List<Resource> resources;
+	private List<NamedElement> namedElements;
 
-	public TreeViewContentProvider(List<Resource> resources) {
+	public TreeViewContentProvider(List<NamedElement> namedElements) {
 		super();
-		this.resources = resources;
+		this.namedElements = namedElements;
 	}
 
 	public void inputChanged(Viewer v, Object oldInput, Object newInput) {
+		System.out.println(newInput);
 	}
 
 	public void dispose() {
 	}
 	
 	public Object[] getElements(Object parent) {
-		if (parent.equals(resources)) {
-			Resource[] resourcesArray = new Resource[resources.size()];
-			resourcesArray = resources.toArray(resourcesArray);
+		if (parent.equals(namedElements)) {
+			NamedElement[] resourcesArray = new NamedElement[namedElements.size()];
+			resourcesArray = namedElements.toArray(resourcesArray);
 			return resourcesArray;
 		}
 		

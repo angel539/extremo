@@ -4,24 +4,24 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import semanticmanager.Constraint;
-import semanticmanager.DataProperty;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Property;
+import semanticmanager.ExtensibleAtomicSearchResult;
+import semanticmanager.ExtensibleCustomSearch;
+import semanticmanager.ExtensibleGroupedSearchResult;
+import semanticmanager.ExtensiblePredicateBasedSearch;
 import semanticmanager.RepositoryManager;
-import semanticmanager.SearchConfiguration;
-import semanticmanager.SearchOption;
-import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionValue;
-import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
+import semanticmanager.*;
 
 public class SearchTreeViewFilter extends ViewerFilter {
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		return element instanceof RepositoryManager
-				|| element instanceof SearchConfiguration
-				|| element instanceof SearchResult
+				|| element instanceof ExtensibleCustomSearch
+				|| element instanceof ExtensiblePredicateBasedSearch
+				|| element instanceof CompositeSearchConfiguration
+				
+				|| element instanceof ExtensibleAtomicSearchResult
+				|| element instanceof ExtensibleGroupedSearchResult
+				
 				|| element instanceof SearchResultOptionValue
 				|| element instanceof SearchOption
 				|| element instanceof SemanticGroup

@@ -6,13 +6,12 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.swt.graphics.Image;
-import semanticmanager.Repository;
-import semanticmanager.Resource;
+
+import semanticmanager.*;
 
 public class ColumnThreeRepositoryViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider{
 	public ColumnThreeRepositoryViewAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

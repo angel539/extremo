@@ -26,6 +26,15 @@ public class Activator extends AbstractUIPlugin{
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		
+		/*AssistantFactory.getInstance();
+		
+		RepositoryManager repositoryManager = AssistantFactory.loadRepositoryManager();
+		
+		if(repositoryManager == null){
+			repositoryManager = ExtendedSemanticmanagerFactory.eINSTANCE.createRepositoryManager();
+		}
+		AssistantFactory.setRepositoryManager(repositoryManager);*/
 	}
 
 	/*
@@ -34,7 +43,7 @@ public class Activator extends AbstractUIPlugin{
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
-		super.stop(context);
+		super.stop(context);        
 		AssistantFactory.getInstance().save();
 	}
 

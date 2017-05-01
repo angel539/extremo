@@ -57,6 +57,21 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case SemanticmanagerPackage.REPOSITORY_MANAGER: return createRepositoryManager();
+			case SemanticmanagerPackage.CONSTRAINT: return createConstraint();
+			case SemanticmanagerPackage.CONSTRAINT_RESULT: return createConstraintResult();
+			case SemanticmanagerPackage.SEARCH_OPTION: return createSearchOption();
+			case SemanticmanagerPackage.SEARCH_RESULT: return createSearchResult();
+			case SemanticmanagerPackage.SEARCH_RESULT_OPTION_VALUE: return createSearchResultOptionValue();
+			case SemanticmanagerPackage.COMPOSITE_SEARCH_CONFIGURATION: return createCompositeSearchConfiguration();
+			case SemanticmanagerPackage.CUSTOM_SEARCH: return createCustomSearch();
+			case SemanticmanagerPackage.PREDICATE_BASED_SEARCH: return createPredicateBasedSearch();
+			case SemanticmanagerPackage.SEMANTIC_GROUP: return createSemanticGroup();
+			case SemanticmanagerPackage.REPOSITORY: return createRepository();
+			case SemanticmanagerPackage.RESOURCE: return createResource();
+			case SemanticmanagerPackage.SEMANTIC_NODE: return createSemanticNode();
+			case SemanticmanagerPackage.OBJECT_PROPERTY: return createObjectProperty();
+			case SemanticmanagerPackage.DATA_PROPERTY: return createDataProperty();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -70,6 +85,12 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case SemanticmanagerPackage.CONNECTION_TYPE:
+				return createConnectionTypeFromString(eDataType, initialValue);
+			case SemanticmanagerPackage.DATA_MODEL_TYPE:
+				return createDataModelTypeFromString(eDataType, initialValue);
+			case SemanticmanagerPackage.TYPE:
+				return createTypeFromString(eDataType, initialValue);
 			case SemanticmanagerPackage.JAVA_OBJECT:
 				return createJavaObjectFromString(eDataType, initialValue);
 			default:
@@ -85,11 +106,227 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case SemanticmanagerPackage.CONNECTION_TYPE:
+				return convertConnectionTypeToString(eDataType, instanceValue);
+			case SemanticmanagerPackage.DATA_MODEL_TYPE:
+				return convertDataModelTypeToString(eDataType, instanceValue);
+			case SemanticmanagerPackage.TYPE:
+				return convertTypeToString(eDataType, instanceValue);
 			case SemanticmanagerPackage.JAVA_OBJECT:
 				return convertJavaObjectToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RepositoryManager createRepositoryManager() {
+		RepositoryManagerImpl repositoryManager = new RepositoryManagerImpl();
+		return repositoryManager;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createConstraint() {
+		ConstraintImpl constraint = new ConstraintImpl();
+		return constraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConstraintResult createConstraintResult() {
+		ConstraintResultImpl constraintResult = new ConstraintResultImpl();
+		return constraintResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SearchOption createSearchOption() {
+		SearchOptionImpl searchOption = new SearchOptionImpl();
+		return searchOption;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SearchResult createSearchResult() {
+		SearchResultImpl searchResult = new SearchResultImpl();
+		return searchResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SearchResultOptionValue createSearchResultOptionValue() {
+		SearchResultOptionValueImpl searchResultOptionValue = new SearchResultOptionValueImpl();
+		return searchResultOptionValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CompositeSearchConfiguration createCompositeSearchConfiguration() {
+		CompositeSearchConfigurationImpl compositeSearchConfiguration = new CompositeSearchConfigurationImpl();
+		return compositeSearchConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CustomSearch createCustomSearch() {
+		CustomSearchImpl customSearch = new CustomSearchImpl();
+		return customSearch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PredicateBasedSearch createPredicateBasedSearch() {
+		PredicateBasedSearchImpl predicateBasedSearch = new PredicateBasedSearchImpl();
+		return predicateBasedSearch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SemanticGroup createSemanticGroup() {
+		SemanticGroupImpl semanticGroup = new SemanticGroupImpl();
+		return semanticGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Repository createRepository() {
+		RepositoryImpl repository = new RepositoryImpl();
+		return repository;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Resource createResource() {
+		ResourceImpl resource = new ResourceImpl();
+		return resource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SemanticNode createSemanticNode() {
+		SemanticNodeImpl semanticNode = new SemanticNodeImpl();
+		return semanticNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ObjectProperty createObjectProperty() {
+		ObjectPropertyImpl objectProperty = new ObjectPropertyImpl();
+		return objectProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataProperty createDataProperty() {
+		DataPropertyImpl dataProperty = new DataPropertyImpl();
+		return dataProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConnectionType createConnectionTypeFromString(EDataType eDataType, String initialValue) {
+		ConnectionType result = ConnectionType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertConnectionTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataModelType createDataModelTypeFromString(EDataType eDataType, String initialValue) {
+		DataModelType result = DataModelType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDataModelTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Type createTypeFromString(EDataType eDataType, String initialValue) {
+		Type result = Type.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FilenameUtils;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -23,12 +24,10 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import at.ac.tuwien.big.xmltext.EcoreToGenericEcoreTransformer;
 import org.eclipse.emf.ecore.resource.Resource;
 
-import semanticmanager.DataProperty;
-import semanticmanager.ObjectProperty;
-import semanticmanager.SemanticNode;
-import semanticmanager.Type;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
+
+import semanticmanager.*;
 
 /**
  * @author pneubaue
@@ -93,7 +92,6 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 	}
 
 	private void xmlObjectsToSemanticNodes() {
-		// Load XML file via XMLText and transform it to Ecore Model
 		Resource genericEcoreResource = transformer.loadXml(file.getAbsolutePath());
 		modelAll = genericEcoreResource.getAllContents();		
 		
@@ -202,8 +200,8 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 	}
 
 	private void xmlAttributesToDataProperties(SemanticNode parent) {
-		if(parent.getId() != null && parent.getId() instanceof EObject){
-			EObject eobject = (EObject) parent.getId();
+		if(parent.getTrace() != null && parent.getTrace() instanceof EObject){
+			EObject eobject = (EObject) parent.getTrace();
 			
 			List<EStructuralFeature> structuralFeatures = eobject.eClass().getEAllStructuralFeatures();
 			
@@ -239,8 +237,8 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 	}
 
 	private void xsdAttributesToDataProperties(SemanticNode parent) {
-		if(parent.getId() != null && parent.getId() instanceof EClass){
-			EClass eClass = (EClass) parent.getId(); 
+		if(parent.getTrace() != null && parent.getTrace() instanceof EClass){
+			EClass eClass = (EClass) parent.getTrace(); 
 
 			for(EAttribute attr : eClass.getEAllAttributes()){				
 				try{
@@ -272,6 +270,8 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 							createDataProperty(
 									(EAttribute) attr, 
 									name, 
+									attr.getLowerBound(), 
+									attr.getUpperBound(),
 									"", 
 									type //the type selected from the enum class
 							);
@@ -305,8 +305,8 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 	}
 
 	private void xmlReferencesToObjectProperties(SemanticNode parent) {
-		if(parent.getId() != null && parent.getId() instanceof EObject){
-			EObject eobject = (EObject) parent.getId();
+		if(parent.getTrace() != null && parent.getTrace() instanceof EObject){
+			EObject eobject = (EObject) parent.getTrace();
 			
 			List<EStructuralFeature> structuralFeatures = eobject.eClass().getEAllStructuralFeatures();
 			
@@ -323,7 +323,7 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 					if(descriptor != null){
 						Object eReferenceValue = eobject.eGet(eReference);
 						
-						if(eReferenceValue instanceof EObject[]){
+						/*if(eReferenceValue instanceof EObject[]){
 							for(EObject reference : (EObject[]) eReferenceValue){
 								SemanticNode range = correspondance.get(reference);
 								
@@ -335,6 +335,25 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 								
 								addObjectPropertyToNode(parent, objectProperty);
 							}
+						}*/
+						if(eReferenceValue instanceof EList){							
+							for(Object reference : (EList) eReferenceValue){
+								if (reference instanceof EObject) {
+									EObject referenceObject = (EObject) reference;
+									
+									SemanticNode range = correspondance.get(referenceObject);
+									
+									ObjectProperty objectProperty = 
+											createObjectProperty(
+													reference, // trace
+													"", // name
+													descriptor, //descriptor
+													range //value
+											);
+									
+									addObjectPropertyToNode(parent, objectProperty);	
+								}		
+							}
 						}
 						else{
 							if(eReferenceValue instanceof EObject){
@@ -342,6 +361,8 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 								
 								ObjectProperty objectProperty = 
 										createObjectProperty(
+												eReferenceValue, // trace
+												"", // name
 												descriptor, //descriptor
 												range //value
 										);
@@ -356,8 +377,8 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 	}
 
 	private void xsdReferencesToObjectProperties(SemanticNode parent) {
-		if(parent.getId() != null && parent.getId() instanceof EClass){
-			EClass eClass = (EClass) parent.getId();
+		if(parent.getTrace() != null && parent.getTrace() instanceof EClass){
+			EClass eClass = (EClass) parent.getTrace();
 			
 			for(EReference reference : eClass.getEAllReferences()){
 				SemanticNode range = semanticNodeFromName(semanticResource, reference.getEReferenceType().getName());
@@ -389,8 +410,8 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 	}
 	
 	private void xsdSuperToSemanticNodes(SemanticNode parent) {
-		if(parent.getId() != null && parent.getId() instanceof EClass){
-			EClass eClass = (EClass) parent.getId();
+		if(parent.getTrace() != null && parent.getTrace() instanceof EClass){
+			EClass eClass = (EClass) parent.getTrace();
 			
 			for(EClass superclass : eClass.getESuperTypes()){
 				SemanticNode range = semanticNodeFromName(semanticResource, superclass.getName());

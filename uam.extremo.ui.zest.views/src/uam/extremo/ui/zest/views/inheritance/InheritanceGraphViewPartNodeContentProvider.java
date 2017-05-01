@@ -9,10 +9,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
 import org.eclipse.zest.core.viewers.INestedContentProvider;
 
-import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Property;
-import semanticmanager.SemanticNode;
+import semanticmanager.*;
 
 public class InheritanceGraphViewPartNodeContentProvider implements IGraphEntityContentProvider, INestedContentProvider {
 	public InheritanceGraphViewPartNodeContentProvider() {

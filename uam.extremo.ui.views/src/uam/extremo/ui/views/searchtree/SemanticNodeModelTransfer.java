@@ -3,8 +3,10 @@ package uam.extremo.ui.views.searchtree;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.TransferData;
-import semanticmanager.NamedElement;
+
 import uam.extremo.ui.views.Serializer;
+
+import semanticmanager.NamedElement;
 
 public class SemanticNodeModelTransfer extends ByteArrayTransfer {
 	private static final String TYPE_NAME = "extremo-model-transfer-format";

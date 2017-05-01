@@ -32,10 +32,11 @@ import org.eclipse.zest.layouts.algorithms.RadialLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.SpringLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 
-import semanticmanager.NamedElement;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.zest.views.Activator;
 import uam.extremo.ui.zest.views.GraphViewPartFilter;
+
+import semanticmanager.NamedElement;
 
 public class InheritanceGraphViewPart extends ViewPart implements IZoomableWorkbenchPart{
 	public static final String ID = "uam.extremo.ui.zest.views.InheritanceGraphViewPart";

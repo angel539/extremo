@@ -3,61 +3,67 @@
 <plugin>
    <extension
          point="extremo.core.extensions.search">
-      <search
+      <customsearch
             class="uam.extremo.search.metrics.TooManyAttrsSearch"
             id="uam.extremo.search.metrics.attrs"
-            name="Class with more than a number of attributes">
+            name="Class with more than a number of attributes"
+            filterBy="Resource">
          <option
                id="morethanattrs"
                name="Attrs"
                type="Int">
          </option>
-      </search>
-      <search
+      </customsearch>
+      <customsearch
             class="uam.extremo.search.metrics.TooManyRefsSearch"
             id="uam.extremo.search.metrics.refs"
-            name="Class with too many references">
+            name="Class with too many references"
+            filterBy="Resource">
          <option
                id="morethanrefs"
                name="Refs"
                type="Int">
          </option>
-      </search>
-      <search
+      </customsearch>
+      <customsearch
             class="uam.extremo.search.metrics.IsolatedClassesSearch"
             id="uam.extremo.search.metrics.inrefs"
-            name="Isolated classes">
-      </search>
-      <search
+            name="Isolated classes"
+            filterBy="Resource">
+      </customsearch>
+      <customsearch
             class="uam.extremo.search.metrics.MoreThanNumberChildrenSearch"
             id="uam.extremo.search.metrics.children"
-            name="A class has more than a number of children">
+            name="A class has more than a number of children"
+            filterBy="Resource">
          <option
                id="morethanchildren"
                name="Number of Children"
                type="Int">
          </option>
-      </search>
-      <search
+      </customsearch>
+      <customsearch
             class="uam.extremo.search.metrics.NumberOfParentsSearch"
             id="uam.extremo.search.metrics.children"
-            name="A class has more than a number of parents">
+            name="A class has more than a number of parents"
+            filterBy="Resource">
          <option
                id="morethanparents"
                name="Number of parents"
                type="Int">
          </option>
-      </search>
-      <search
+      </customsearch>
+      <customsearch
             class="uam.extremo.search.metrics.AbstractClassUniqueChildSearch"
             id="uam.extremo.search.metrics.abstractclassuniquechild"
-            name="An abstract class with an unique child">
-      </search>
-      <search
+            name="An abstract class with an unique child"
+            filterBy="Resource">
+      </customsearch>
+      <customsearch
             class="uam.extremo.search.metrics.AbstractClassWithoutChildrenSearch"
             id="uam.extremo.search.metrics.abstractclasswithoutchildren"
-            name="An abstract class without children">
-      </search>
+            name="An abstract class without children"
+            filterBy="Resource">
+      </customsearch>
    </extension>
-
 </plugin>

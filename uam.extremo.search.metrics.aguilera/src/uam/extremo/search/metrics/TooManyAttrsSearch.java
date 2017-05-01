@@ -1,16 +1,12 @@
 package uam.extremo.search.metrics;
 
-import semanticmanager.DataProperty;
-import semanticmanager.Resource;
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
 import semanticmanager.SearchResult;
-import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class TooManyAttrsSearch extends SimpleSearchConfigurationImpl {
+public class TooManyAttrsSearch extends ExtensibleCustomSearchImpl {
 	@Override
 	public void search(SearchResult search) {
-		int morethanattrs = (int) search.getOptionValue("morethanattrs");
+		/*int morethanattrs = (int) search.getOptionValue("morethanattrs");
 		
 		SemanticGroup semanticGroup = search.createSemanticGroup("class_with_more_than_a_number_attrs", "A class with more than a number of attributes");
 
@@ -25,6 +21,6 @@ public class TooManyAttrsSearch extends SimpleSearchConfigurationImpl {
 					}
 				}
 			}
-		}
+		}*/
 	}
 }

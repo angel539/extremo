@@ -1,0 +1,327 @@
+2017-04-30 11:19:51.800+0000 INFO  [org.neo4j]: You are using an unsupported version of the Java runtime. Please use Oracle(R) Java(TM) Runtime Environment 7.
+2017-04-30 11:19:52.492+0000 INFO  [org.neo4j]: --- INITIALIZED diagnostics START ---
+2017-04-30 11:19:52.494+0000 INFO  [org.neo4j]: Neo4j Kernel properties:
+    neostore.propertystore.db.strings.mapped_memory=563M
+    neostore.nodestore.db.mapped_memory=184M
+    store_dir=/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb
+    neostore.propertystore.db.arrays.mapped_memory=639M
+    neostore.propertystore.db.mapped_memory=663M
+    neostore.relationshipstore.db.mapped_memory=812M
+2017-04-30 11:19:52.502+0000 INFO  [org.neo4j]: Diagnostics providers:
+    org.neo4j.kernel.configuration.Config
+    org.neo4j.kernel.info.DiagnosticsManager
+    SYSTEM_MEMORY
+    JAVA_MEMORY
+    OPERATING_SYSTEM
+    JAVA_VIRTUAL_MACHINE
+    CLASSPATH
+    LIBRARY_PATH
+    SYSTEM_PROPERTIES
+    NETWORK
+2017-04-30 11:19:52.504+0000 INFO  [org.neo4j]: System memory information:
+    Total Physical memory: 8.00 GB
+    Free Physical memory: 48.00 MB
+    Committed virtual memory: 6.01 GB
+    Total swap space: 2.00 GB
+    Free swap space: 1.32 GB
+2017-04-30 11:19:52.516+0000 INFO  [org.neo4j]: JVM memory information:
+    Free  memory: 568.83 MB
+    Total memory: 893.00 MB
+    Max   memory: 1.78 GB
+    Garbage Collector: PS Scavenge: [PS Eden Space, PS Survivor Space]
+    Garbage Collector: PS MarkSweep: [PS Eden Space, PS Survivor Space, PS Old Gen]
+    Memory Pool: Code Cache (Non-heap memory): committed=19.56 MB, used=19.45 MB, max=240.00 MB, threshold=0.00 B
+    Memory Pool: Metaspace (Non-heap memory): committed=91.00 MB, used=81.15 MB, max=-1.00 B, threshold=0.00 B
+    Memory Pool: Compressed Class Space (Non-heap memory): committed=15.00 MB, used=12.12 MB, max=1.00 GB, threshold=0.00 B
+    Memory Pool: PS Eden Space (Heap memory): committed=604.50 MB, used=231.41 MB, max=608.00 MB, threshold=?
+    Memory Pool: PS Survivor Space (Heap memory): committed=35.50 MB, used=0.00 B, max=35.50 MB, threshold=?
+    Memory Pool: PS Old Gen (Heap memory): committed=253.00 MB, used=92.76 MB, max=1.33 GB, threshold=0.00 B
+2017-04-30 11:19:52.522+0000 INFO  [org.neo4j]: Operating system information:
+    Operating System: Mac OS X; version: 10.12.3; arch: x86_64; cpus: 4
+    Max number of file descriptors: 10240
+    Number of open file descriptors: 150
+    Process id: 84671@MacBook-Air-de-Angel.local
+    Byte order: LITTLE_ENDIAN
+    Local timezone: Europe/Vienna
+2017-04-30 11:19:52.528+0000 INFO  [org.neo4j]: JVM information:
+    VM Name: Java HotSpot(TM) 64-Bit Server VM
+    VM Vendor: Oracle Corporation
+    VM Version: 25.51-b03
+    JIT compiler: HotSpot 64-Bit Tiered Compilers
+    VM Arguments: [-Declipse.pde.launch=true, -Declipse.p2.data.area=@config.dir/p2, -Dfile.encoding=UTF-8, -Xbootclasspath/p:/Users/angel/.p2/pool/plugins/org.eclipse.jdt.debug_3.9.1.v20160128-1343/jdi.jar]
+2017-04-30 11:19:52.528+0000 INFO  [org.neo4j]: Java classpath:
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/jsse.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/classes
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/resources.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/rt.jar
+     [classpath] /Users/angel/.p2/pool/plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/jce.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/jfr.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/sunrsasign.jar
+     [bootstrap] /Users/angel/.p2/pool/plugins/org.eclipse.jdt.debug_3.9.1.v20160128-1343/jdi.jar
+     [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib/charsets.jar
+2017-04-30 11:19:52.529+0000 INFO  [org.neo4j]: Library path:
+    /Users/angel/Library/Java/Extensions
+    /Library/Java/Extensions
+    /Network/Library/Java/Extensions
+    /System/Library/Java/Extensions
+    /usr/lib/java
+    /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests
+2017-04-30 11:19:52.530+0000 INFO  [org.neo4j]: System.properties:
+    osgi.bundles.defaultStartLevel = 4
+    sun.java.launcher = SUN_STANDARD
+    org.osgi.supports.framework.extension = true
+    sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+    osgi.ws = cocoa
+    osgi.instance.area = file:/Users/angel/Desktop/junit-workspace/
+    org.osgi.framework.uuid = a0e66ccd-962d-0017-1420-c1dfb2de2bee
+    osgi.nl.user = en_US
+    user.name = angel
+    org.osgi.framework.system.packages = javax.accessibility,javax.activation,javax.activity,javax.annotation,javax.annotation.processing,javax.crypto,javax.crypto.interfaces,javax.crypto.spec,javax.imageio,javax.imageio.event,javax.imageio.metadata,javax.imageio.plugins.bmp,javax.imageio.plugins.jpeg,javax.imageio.spi,javax.imageio.stream,javax.jws,javax.jws.soap,javax.lang.model,javax.lang.model.element,javax.lang.model.type,javax.lang.model.util,javax.management,javax.management.loading,javax.management.modelmbean,javax.management.monitor,javax.management.openmbean,javax.management.relation,javax.management.remote,javax.management.remote.rmi,javax.management.timer,javax.naming,javax.naming.directory,javax.naming.event,javax.naming.ldap,javax.naming.spi,javax.net,javax.net.ssl,javax.print,javax.print.attribute,javax.print.attribute.standard,javax.print.event,javax.rmi,javax.rmi.CORBA,javax.rmi.ssl,javax.script,javax.security.auth,javax.security.auth.callback,javax.security.auth.kerberos,javax.security.auth.login,javax.security.auth.spi,javax.security.auth.x500,javax.security.cert,javax.security.sasl,javax.sound.midi,javax.sound.midi.spi,javax.sound.sampled,javax.sound.sampled.spi,javax.sql,javax.sql.rowset,javax.sql.rowset.serial,javax.sql.rowset.spi,javax.swing,javax.swing.border,javax.swing.colorchooser,javax.swing.event,javax.swing.filechooser,javax.swing.plaf,javax.swing.plaf.basic,javax.swing.plaf.metal,javax.swing.plaf.multi,javax.swing.plaf.nimbus,javax.swing.plaf.synth,javax.swing.table,javax.swing.text,javax.swing.text.html,javax.swing.text.html.parser,javax.swing.text.rtf,javax.swing.tree,javax.swing.undo,javax.tools,javax.transaction,javax.transaction.xa,javax.xml,javax.xml.bind,javax.xml.bind.annotation,javax.xml.bind.annotation.adapters,javax.xml.bind.attachment,javax.xml.bind.helpers,javax.xml.bind.util,javax.xml.crypto,javax.xml.crypto.dom,javax.xml.crypto.dsig,javax.xml.crypto.dsig.dom,javax.xml.crypto.dsig.keyinfo,javax.xml.crypto.dsig.spec,javax.xml.datatype,javax.xml.namespace,javax.xml.parsers,javax.xml.soap,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,javax.xml.transform,javax.xml.transform.dom,javax.xml.transform.sax,javax.xml.transform.stax,javax.xml.transform.stream,javax.xml.validation,javax.xml.ws,javax.xml.ws.handler,javax.xml.ws.handler.soap,javax.xml.ws.http,javax.xml.ws.soap,javax.xml.ws.spi,javax.xml.ws.spi.http,javax.xml.ws.wsaddressing,javax.xml.xpath,org.ietf.jgss,org.omg.CORBA,org.omg.CORBA_2_3,org.omg.CORBA_2_3.portable,org.omg.CORBA.DynAnyPackage,org.omg.CORBA.ORBPackage,org.omg.CORBA.portable,org.omg.CORBA.TypeCodePackage,org.omg.CosNaming,org.omg.CosNaming.NamingContextExtPackage,org.omg.CosNaming.NamingContextPackage,org.omg.Dynamic,org.omg.DynamicAny,org.omg.DynamicAny.DynAnyFactoryPackage,org.omg.DynamicAny.DynAnyPackage,org.omg.IOP,org.omg.IOP.CodecFactoryPackage,org.omg.IOP.CodecPackage,org.omg.Messaging,org.omg.PortableInterceptor,org.omg.PortableInterceptor.ORBInitInfoPackage,org.omg.PortableServer,org.omg.PortableServer.CurrentPackage,org.omg.PortableServer.POAManagerPackage,org.omg.PortableServer.POAPackage,org.omg.PortableServer.portable,org.omg.PortableServer.ServantLocatorPackage,org.omg.SendingContext,org.omg.stub.java.rmi,org.w3c.dom,org.w3c.dom.bootstrap,org.w3c.dom.css,org.w3c.dom.events,org.w3c.dom.html,org.w3c.dom.ls,org.w3c.dom.ranges,org.w3c.dom.stylesheets,org.w3c.dom.traversal,org.w3c.dom.views,org.w3c.dom.xpath,org.xml.sax,org.xml.sax.ext,org.xml.sax.helpers
+    equinox.use.ds = true
+    org.osgi.framework.language = es
+    eclipse.pde.launch = true
+    user.language = es
+    org.osgi.framework.processor = x86-64
+    osgi.syspath = /Users/angel/.p2/pool/plugins
+    sun.boot.library.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home/jre/lib
+    org.osgi.framework.system.capabilities = osgi.ee; osgi.ee="OSGi/Minimum"; version:List<Version>="1.0, 1.1, 1.2",osgi.ee; osgi.ee="JRE"; version:List<Version>="1.0, 1.1",osgi.ee; osgi.ee="JavaSE"; version:List<Version>="1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8",osgi.ee; osgi.ee="JavaSE/compact1"; version:List<Version>="1.8",osgi.ee; osgi.ee="JavaSE/compact2"; version:List<Version>="1.8",osgi.ee; osgi.ee="JavaSE/compact3"; version:List<Version>="1.8"
+    osgi.compatibility.bootdelegation = true
+    org.osgi.framework.os.name = MacOSX
+    user.timezone = Europe/Vienna
+    sun.arch.data.model = 64
+    osgi.bundles = reference:file:/Users/angel/.p2/pool/plugins/org.eclipse.equinox.simpleconfigurator_1.1.100.v20150423-1455.jar@1:start
+    osgi.tracefile = /Users/angel/Desktop/junit-workspace/.metadata/trace.log
+    eclipse.application = org.eclipse.pde.junit.runtime.uitestapplication
+    sun.cpu.isalist = 
+    sun.jnu.encoding = UTF-8
+    file.encoding.pkg = sun.io
+    org.osgi.framework.vendor = Eclipse
+    file.separator = /
+    osgi.checkConfiguration = true
+    user.country = ES
+    osgi.configuration.cascaded = false
+    osgi.os = macosx
+    eclipse.commands = -os
+macosx
+-ws
+cocoa
+-arch
+x86_64
+-nl
+en_US
+-consoleLog
+-version
+3
+-port
+50099
+-testLoaderClass
+org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader
+-loaderpluginname
+org.eclipse.jdt.junit4.runtime
+-testNameFile
+/var/folders/2x/c__6g79d1296t0bmq87_hzlh0000gn/T/testNames6987751688111932780.txt
+-application
+org.eclipse.pde.junit.runtime.uitestapplication
+-product
+org.eclipse.sdk.ide
+-data
+/Users/angel/Desktop/workspace-miso/../junit-workspace
+-configuration
+file:/Users/angel/Desktop/workspace-miso/.metadata/.plugins/org.eclipse.pde.core/pde-junit/
+-dev
+file:/Users/angel/Desktop/workspace-miso/.metadata/.plugins/org.eclipse.pde.core/pde-junit/dev.properties
+-os
+macosx
+-ws
+cocoa
+-arch
+x86_64
+-nl
+en_US
+-consoleLog
+-testpluginname
+uam.extremo.core.tests
+
+    osgi.arch = x86_64
+    path.separator = :
+    org.osgi.supports.framework.fragment = true
+    osgi.framework.shape = jar
+    sun.io.unicode.encoding = UnicodeBig
+    org.osgi.framework.version = 1.8.0
+    awt.toolkit = sun.lwawt.macosx.LWCToolkit
+    eclipse.stateSaveDelayInterval = 30000
+    osgi.install.area = file:/Users/angel/eclipse/dsl-mars/Eclipse.app/Contents/MacOS/
+    osgi.dev = file:/Users/angel/Desktop/workspace-miso/.metadata/.plugins/org.eclipse.pde.core/pde-junit/dev.properties
+    osgi.framework = file:/Users/angel/.p2/pool/plugins/org.eclipse.osgi_3.10.102.v20160118-1700.jar
+    user.home = /Users/angel
+    org.eclipse.equinox.simpleconfigurator.configUrl = file:/Users/angel/Desktop/workspace-miso/.metadata/.plugins/org.eclipse.pde.core/pde-junit/org.eclipse.equinox.simpleconfigurator/bundles.info
+    osgi.framework.useSystemProperties = true
+    osgi.splashPath = file:/Users/angel/.p2/pool/plugins/org.eclipse.sdk_4.5.2.v20160212-1500
+    eclipse.consoleLog = true
+    osgi.nl = en_US
+    org.osgi.framework.os.version = 10.12.3
+    eclipse.startTime = 1493551136594
+    eclipse.p2.data.area = @config.dir/p2
+    gopherProxySet = false
+    sun.java.command = org.eclipse.equinox.launcher.Main -os macosx -ws cocoa -arch x86_64 -nl en_US -consoleLog -version 3 -port 50099 -testLoaderClass org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader -loaderpluginname org.eclipse.jdt.junit4.runtime -testNameFile /var/folders/2x/c__6g79d1296t0bmq87_hzlh0000gn/T/testNames6987751688111932780.txt -application org.eclipse.pde.junit.runtime.uitestapplication -product org.eclipse.sdk.ide -data /Users/angel/Desktop/workspace-miso/../junit-workspace -configuration file:/Users/angel/Desktop/workspace-miso/.metadata/.plugins/org.eclipse.pde.core/pde-junit/ -dev file:/Users/angel/Desktop/workspace-miso/.metadata/.plugins/org.eclipse.pde.core/pde-junit/dev.properties -os macosx -ws cocoa -arch x86_64 -nl en_US -consoleLog -testpluginname uam.extremo.core.tests
+    org.eclipse.update.reconcile = false
+    sun.cpu.endian = little
+    sun.os.patch.level = unknown
+    gosh.args = --nointeractive
+    applicationXMI = org.eclipse.ui.workbench/LegacyIDE.e4xmi
+    eclipse.product = org.eclipse.sdk.ide
+    eclipse.home.location = file:/Users/angel/eclipse/dsl-mars/Eclipse.app/Contents/MacOS/
+    user.dir = /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests
+    org.osgi.supports.framework.requirebundle = true
+    org.apache.commons.logging.Log = org.apache.commons.logging.impl.NoOpLog
+    file.encoding = UTF-8
+    org.osgi.framework.executionenvironment = OSGi/Minimum-1.0,OSGi/Minimum-1.1,OSGi/Minimum-1.2,JavaSE/compact1-1.8,JavaSE/compact2-1.8,JavaSE/compact3-1.8,JRE-1.1,J2SE-1.2,J2SE-1.3,J2SE-1.4,J2SE-1.5,JavaSE-1.6,JavaSE-1.7,JavaSE-1.8
+    osgi.logfile = /Users/angel/Desktop/junit-workspace/.metadata/.log
+    osgi.configuration.area = file:/Users/angel/Desktop/workspace-miso/.metadata/.plugins/org.eclipse.pde.core/pde-junit/
+2017-04-30 11:19:52.531+0000 INFO  [org.neo4j]: Network information:
+    Interface utun2:
+        address: fe80:0:0:0:dfff:a7d5:15b8:f0b9%utun2
+    Interface utun1:
+        address: fd67:537d:b5d0:f58d:1997:2a7a:dbea:d528
+        address: fe80:0:0:0:1997:2a7a:dbea:d528%utun1
+    Interface utun0:
+        address: fe80:0:0:0:c710:2688:652a:d387%utun0
+    Interface awdl0:
+        address: fe80:0:0:0:cd2:b3ff:fef2:811e%awdl0
+    Interface en0:
+        address: fe80:0:0:0:1cf8:75e:707f:59e5%en0
+        address: 192.168.1.39
+    Interface lo0:
+        address: fe80:0:0:0:0:0:0:1%lo0
+        address: 0:0:0:0:0:0:0:1
+        address: 127.0.0.1
+2017-04-30 11:19:52.533+0000 INFO  [org.neo4j]: --- INITIALIZED diagnostics END ---
+2017-04-30 11:19:52.543+0000 INFO  [org.neo4j]: Creating new db @ /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore
+2017-04-30 11:19:52.648+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.nodestore.db] brickCount=0 brickSize=1929375b mappedMem=192937984b (storeSize=0b)
+2017-04-30 11:19:52.656+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.nodestore.db hit=1 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.679+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2017-04-30 11:19:52.683+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2017-04-30 11:19:52.683+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db.names hit=0 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.686+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db hit=0 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.690+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2017-04-30 11:19:52.691+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2017-04-30 11:19:52.691+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.strings] brickCount=0 brickSize=590336b mappedMem=590348288b (storeSize=128b)
+2017-04-30 11:19:52.692+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.index.keys] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2017-04-30 11:19:52.693+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.index] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2017-04-30 11:19:52.695+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.arrays] brickCount=0 brickSize=669952b mappedMem=670040064b (storeSize=128b)
+2017-04-30 11:19:52.700+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db] brickCount=0 brickSize=6952042b mappedMem=695205888b (storeSize=0b)
+2017-04-30 11:19:52.702+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshipstore.db] brickCount=0 brickSize=8514429b mappedMem=851443712b (storeSize=0b)
+2017-04-30 11:19:52.703+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.nodestore.db] brickCount=0 brickSize=192933b mappedMem=192937984b (storeSize=9b)
+2017-04-30 11:19:52.704+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2017-04-30 11:19:52.712+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db.names hit=0 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.713+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db hit=0 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.715+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.strings hit=0 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.716+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.index.keys hit=0 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.717+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.index hit=0 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.719+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.arrays hit=0 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.722+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db hit=0 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.724+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshipstore.db hit=0 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.725+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.nodestore.db hit=0 miss=0 switches=0 ooe=0
+2017-04-30 11:19:52.726+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore hit=0 miss=8 switches=0 ooe=0
+2017-04-30 11:19:52.732+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2017-04-30 11:19:52.732+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2017-04-30 11:19:52.733+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.strings] brickCount=0 brickSize=590336b mappedMem=590348288b (storeSize=128b)
+2017-04-30 11:19:52.733+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.index.keys] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2017-04-30 11:19:52.734+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.index] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2017-04-30 11:19:52.734+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.arrays] brickCount=0 brickSize=669952b mappedMem=670040064b (storeSize=128b)
+2017-04-30 11:19:52.735+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db] brickCount=0 brickSize=6952042b mappedMem=695205888b (storeSize=0b)
+2017-04-30 11:19:52.735+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshipstore.db] brickCount=0 brickSize=8514429b mappedMem=851443712b (storeSize=0b)
+2017-04-30 11:19:52.735+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.nodestore.db] brickCount=0 brickSize=192933b mappedMem=192937984b (storeSize=9b)
+2017-04-30 11:19:52.736+0000 INFO  [org.neo4j]: [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore] brickCount=0 brickSize=0b mappedMem=0b (storeSize=54b)
+2017-04-30 11:19:53.026+0000 INFO  [org.neo4j]: Opened logical log [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/nioneo_logical.log.1] version=0, lastTxId=1 (clean)
+2017-04-30 11:19:53.033+0000 INFO  [org.neo4j]: TM new log: tm_tx_log.1
+2017-04-30 11:19:53.304+0000 INFO  [org.neo4j]: Opened logical log [/Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/index/lucene.log.1] version=0, lastTxId=1 (clean)
+2017-04-30 11:19:53.315+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:Versions START ---
+2017-04-30 11:19:53.315+0000 INFO  [org.neo4j]: Graph Database: org.neo4j.kernel.EmbeddedGraphDatabase StoreId[time:1493551192544, id:659775955987458119, store version: 13561656364791302]
+2017-04-30 11:19:53.317+0000 INFO  [org.neo4j]: Kernel version: neo4j-kernel 1.9.6
+2017-04-30 11:19:53.317+0000 INFO  [org.neo4j]: Neo4j component versions:
+2017-04-30 11:19:53.317+0000 INFO  [org.neo4j]:   neo4j-kernel 1.9.6
+2017-04-30 11:19:53.317+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:Versions END ---
+2017-04-30 11:19:53.323+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_VERSIONS START ---
+2017-04-30 11:19:53.323+0000 INFO  [org.neo4j]: Store versions:
+    Store versions:
+      NeoStore v0.A.0
+      NodeStore v0.A.0
+      RelationshipStore v0.A.0
+      RelationshipTypeStore v0.A.0
+      PropertyStore v0.A.0
+      PropertyIndexStore v0.A.0
+      StringPropertyStore v0.A.0
+      ArrayPropertyStore v0.A.0
+2017-04-30 11:19:53.324+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_VERSIONS END ---
+2017-04-30 11:19:53.324+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_ID_USAGE START ---
+2017-04-30 11:19:53.324+0000 INFO  [org.neo4j]: Id usage:
+    Id usage:
+      NodeStore: used=1 high=0
+      RelationshipStore: used=0 high=-1
+      RelationshipTypeStore: used=0 high=-1
+      PropertyStore: used=0 high=-1
+      PropertyIndexStore: used=0 high=-1
+      StringPropertyStore: used=1 high=0
+      ArrayPropertyStore: used=1 high=0
+2017-04-30 11:19:53.325+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_ID_USAGE END ---
+2017-04-30 11:19:53.325+0000 INFO  [org.neo4j]: --- STARTED diagnostics for PERSISTENCE_WINDOW_POOL_STATS START ---
+2017-04-30 11:19:53.325+0000 INFO  [org.neo4j]: --- STARTED diagnostics for PERSISTENCE_WINDOW_POOL_STATS END ---
+2017-04-30 11:19:53.326+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles START ---
+2017-04-30 11:19:53.327+0000 INFO  [org.neo4j]: Disk space on partition (Total / Free / Free %): 120124866560 / 12739018752 / 10
+Storage files: (filename : modification date - size)
+      active_tx_log: 2017-04-30T13:19:53+0200 - 11.00 B
+      index:
+        lucene-store.db: 2017-04-30T13:19:53+0200 - 40.00 B
+        lucene.log.1: 2017-04-30T13:19:53+0200 - 16.00 B
+        lucene.log.active: 2017-04-30T13:19:53+0200 - 4.00 B
+      - Total: 2017-04-30T13:19:53+0200 - 60.00 B
+      lock: 2017-04-30T13:19:52+0200 - 0.00 B
+      messages.log: 2017-04-30T13:19:53+0200 - 23.83 kB
+      neostore: 2017-04-30T13:19:52+0200 - 54.00 B
+      neostore.id: 2017-04-30T13:19:52+0200 - 9.00 B
+      neostore.nodestore.db: 2017-04-30T13:19:52+0200 - 9.00 B
+      neostore.nodestore.db.id: 2017-04-30T13:19:52+0200 - 9.00 B
+      neostore.propertystore.db: 2017-04-30T13:19:52+0200 - 0.00 B
+      neostore.propertystore.db.arrays: 2017-04-30T13:19:52+0200 - 128.00 B
+      neostore.propertystore.db.arrays.id: 2017-04-30T13:19:52+0200 - 9.00 B
+      neostore.propertystore.db.id: 2017-04-30T13:19:52+0200 - 9.00 B
+      neostore.propertystore.db.index: 2017-04-30T13:19:52+0200 - 0.00 B
+      neostore.propertystore.db.index.id: 2017-04-30T13:19:52+0200 - 9.00 B
+      neostore.propertystore.db.index.keys: 2017-04-30T13:19:52+0200 - 38.00 B
+      neostore.propertystore.db.index.keys.id: 2017-04-30T13:19:52+0200 - 9.00 B
+      neostore.propertystore.db.strings: 2017-04-30T13:19:52+0200 - 128.00 B
+      neostore.propertystore.db.strings.id: 2017-04-30T13:19:52+0200 - 9.00 B
+      neostore.relationshipstore.db: 2017-04-30T13:19:52+0200 - 0.00 B
+      neostore.relationshipstore.db.id: 2017-04-30T13:19:52+0200 - 9.00 B
+      neostore.relationshiptypestore.db: 2017-04-30T13:19:52+0200 - 0.00 B
+      neostore.relationshiptypestore.db.id: 2017-04-30T13:19:52+0200 - 9.00 B
+      neostore.relationshiptypestore.db.names: 2017-04-30T13:19:52+0200 - 38.00 B
+      neostore.relationshiptypestore.db.names.id: 2017-04-30T13:19:52+0200 - 9.00 B
+      nioneo_logical.log.1: 2017-04-30T13:19:53+0200 - 16.00 B
+      nioneo_logical.log.active: 2017-04-30T13:19:53+0200 - 4.00 B
+      store_lock: 2017-04-30T13:19:52+0200 - 0.00 B
+      tm_tx_log.1: 2017-04-30T13:19:53+0200 - 0.00 B
+2017-04-30 11:19:53.333+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles END ---
+2017-04-30 11:19:53.337+0000 INFO  [org.neo4j]: GC Monitor started. 
+2017-04-30 11:19:53.340+0000 INFO  [org.neo4j]: Database is now ready
+2017-04-30 11:19:55.195+0000 INFO  [org.neo4j]: Shutdown started
+2017-04-30 11:19:55.195+0000 INFO  [org.neo4j]: Database is no longer ready
+2017-04-30 11:19:55.196+0000 INFO  [org.neo4j]: GC Monitor stopped. 
+2017-04-30 11:19:55.315+0000 INFO  [org.neo4j]: Closed log /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/index/lucene.log
+2017-04-30 11:19:55.320+0000 INFO  [org.neo4j]: TM shutting down
+2017-04-30 11:19:55.324+0000 INFO  [org.neo4j]: Closed log /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/nioneo_logical.log
+2017-04-30 11:19:55.325+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db.names hit=0 miss=2 switches=0 ooe=0
+2017-04-30 11:19:55.330+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshiptypestore.db hit=0 miss=2 switches=0 ooe=0
+2017-04-30 11:19:55.331+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.strings hit=4 miss=0 switches=0 ooe=0
+2017-04-30 11:19:55.333+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.index.keys hit=0 miss=7 switches=0 ooe=0
+2017-04-30 11:19:55.346+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.index hit=0 miss=7 switches=0 ooe=0
+2017-04-30 11:19:55.362+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db.arrays hit=3 miss=0 switches=0 ooe=0
+2017-04-30 11:19:55.364+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.propertystore.db hit=12 miss=0 switches=0 ooe=0
+2017-04-30 11:19:55.366+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.relationshipstore.db hit=4 miss=0 switches=0 ooe=0
+2017-04-30 11:19:55.369+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore.nodestore.db hit=9 miss=0 switches=0 ooe=0
+2017-04-30 11:19:55.372+0000 INFO  [org.neo4j]: /Users/angel/Desktop/workspace-miso/uam.extremo.core.tests/models/repositoryManager.neodb/neostore hit=0 miss=22 switches=0 ooe=0
+2017-04-30 11:19:55.375+0000 INFO  [org.neo4j]: NeoStore closed
+2017-04-30 11:19:55.375+0000 INFO  [org.neo4j]: --- STOPPING diagnostics START ---
+2017-04-30 11:19:55.375+0000 INFO  [org.neo4j]: --- STOPPING diagnostics END ---

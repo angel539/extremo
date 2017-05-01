@@ -9,19 +9,13 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
-import semanticmanager.Constraint;
-import semanticmanager.DataProperty;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Repository;
-import semanticmanager.Resource;
-import semanticmanager.SemanticNode;
+import semanticmanager.*;
 import uam.extremo.ui.views.Activator;
 
 public class ColumnOneRepositoryViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider{
 
 	public ColumnOneRepositoryViewAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -30,6 +24,7 @@ public class ColumnOneRepositoryViewAdapterFactoryLabelProvider extends AdapterF
 		
 		if (element instanceof Repository) {
 			Repository repositoryNode = (Repository) element;
+			
 			StyledString styledString = new StyledString(repositoryNode.getName());
 			
 			if (repositoryNode.getResources() != null) {
@@ -42,7 +37,7 @@ public class ColumnOneRepositoryViewAdapterFactoryLabelProvider extends AdapterF
 			StyledString styledString = new StyledString(((Resource) element).getName());
 			
 			if(((Resource) element).getDescriptor() == null){
-				styledString.append(" describes (" + ((Resource) element).getDescribes().size() + ") resources", StyledString.COUNTER_STYLER);
+				styledString.append(" describes (" + ((Resource) element).getDescribes().size() + ")", StyledString.COUNTER_STYLER);
 			}
 			
 			return styledString;
@@ -54,28 +49,27 @@ public class ColumnOneRepositoryViewAdapterFactoryLabelProvider extends AdapterF
 				StyledString styledString = new StyledString(semanticNode.getName());
 				
 				if(semanticNode.getDescribes().size() > 0)
-					styledString.append(" (" + semanticNode.getDescribes().size() + ") descriptions", StyledString.QUALIFIER_STYLER);
+					styledString.append(" describes (" + semanticNode.getDescribes().size() + ")", StyledString.COUNTER_STYLER);
 				
-				if(semanticNode.getProperties().size() > 0)
-					styledString.append(" (" + semanticNode.getProperties().size() + ") properties", StyledString.QUALIFIER_STYLER);
+				//if(semanticNode.getProperties().size() > 0)
+				//	styledString.append(" (" + semanticNode.getProperties().size() + ") properties", StyledString.QUALIFIER_STYLER);
 				
-				styledString.append(" (" + semanticNode.getWeight() + ") pts", StyledString.COUNTER_STYLER);
+				//styledString.append(" (" + semanticNode.getWeight() + ") pts", StyledString.COUNTER_STYLER);
 
 				return styledString;
 			}
 			else{
 				SemanticNode semanticNode = (SemanticNode) element;
-				StyledString styledString = new StyledString(semanticNode.getName() + ":");
-				styledString.append(" (" + semanticNode.getDescriptor().getName() + ")", StyledString.QUALIFIER_STYLER);
+				StyledString styledString = new StyledString(semanticNode.getName());
+				styledString.append(" :" + semanticNode.getDescriptor().getName(), StyledString.COUNTER_STYLER);
 				return styledString;
 			}
     	}
 		
 		if (element instanceof Constraint) {
 			Constraint constraint = (Constraint) element;
-			StyledString styledString = new StyledString(((Constraint) element).getKey());
-			styledString.append(" -> over (" + constraint.getApplyOnElements().size() + ") nodes applied", StyledString.COUNTER_STYLER);
-			styledString.append(" -> (" + constraint.getValidatedElements().size() + ") elements validated", StyledString.COUNTER_STYLER);
+			StyledString styledString = new StyledString(((Constraint) element).getName());
+			styledString.append(" (" + constraint.getBody() + ")", StyledString.COUNTER_STYLER);
 			return styledString;
 		}
 		
@@ -83,25 +77,34 @@ public class ColumnOneRepositoryViewAdapterFactoryLabelProvider extends AdapterF
 			if(((DataProperty) element).getDescriptor() == null){
 				DataProperty property = (DataProperty) element;
 				StyledString styledString = new StyledString(property.getName());
-				if(property.getType() != null) styledString.append(" (" + property.getType().getLiteral() + ")", StyledString.QUALIFIER_STYLER);
+				if(property.getType() != null) styledString.append(": " + property.getType().getLiteral(), StyledString.COUNTER_STYLER);
 				
 				return styledString;
 			}
 			else{
 				DataProperty property = (DataProperty) element;
 				StyledString styledString = new StyledString(property.getValue());
-				if(property.getType() != null) styledString.append(" (" + property.getType().getLiteral() + ")", StyledString.QUALIFIER_STYLER);
+				styledString.append(" :" + property.getDescriptor().getName(), StyledString.COUNTER_STYLER);
 				
 				return styledString;
 			}
 		}
 		
 		if(element instanceof ObjectProperty){
-			ObjectProperty property = (ObjectProperty) element;
-			StyledString styledString = new StyledString(property.getName());
-			if(property.getRange() != null) styledString.append(" (" + property.getRange().getName() + ")", StyledString.QUALIFIER_STYLER);
-
-			return styledString;
+			if(((ObjectProperty) element).getDescriptor() == null){
+				ObjectProperty property = (ObjectProperty) element;
+				StyledString styledString = new StyledString(property.getName());
+				if(property.getRange() != null) styledString.append(" ->" + property.getRange().getName(), StyledString.COUNTER_STYLER);
+				
+				return styledString;
+			}
+			else{
+				ObjectProperty property = (ObjectProperty) element;
+				StyledString styledString = new StyledString(property.getName());
+				styledString.append(" :" + property.getDescriptor().getName(), StyledString.COUNTER_STYLER);
+				
+				return styledString;
+			}
 		}
 		
 		return null;
@@ -113,16 +116,16 @@ public class ColumnOneRepositoryViewAdapterFactoryLabelProvider extends AdapterF
 		
 		String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
 		
-		if(element instanceof Repository) return Activator.getImageDescriptor("icons/folder-icon_16.png").createImage();
+		if(element instanceof Repository) return Activator.getImageDescriptor("icons/repo.png").createImage();
     	
 		if(element instanceof Resource){
 			if(((Resource) element).getDescriptor() == null){
-				return Activator.getImageDescriptor("icons/schema16.png").createImage();
+				return Activator.getImageDescriptor("icons/descriptor.png").createImage();
 			}
 			else{
-				if(((Resource) element).isAlive()) return Activator.getImageDescriptor("icons/3d_objects_16.png").createImage();
+				if(((Resource) element).isAlive()) return Activator.getImageDescriptor("icons/description_on.png").createImage();
         		else{
-        			return Activator.getImageDescriptor("icons/3d_objects_off_16.png").createImage();
+        			return Activator.getImageDescriptor("icons/description.png").createImage();
         		}
 			}
     	}
@@ -132,13 +135,13 @@ public class ColumnOneRepositoryViewAdapterFactoryLabelProvider extends AdapterF
 				return Activator.getImageDescriptor("icons/class_obj.png").createImage();
 			}
 			else{
-        		return Activator.getImageDescriptor("icons/objects16.png").createImage();
+        		return Activator.getImageDescriptor("icons/object.png").createImage();
 			}
     	}
 		
 		if(element instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
 		
-		if(element instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.gif").createImage();
+		if(element instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.png").createImage();
 		if(element instanceof DataProperty) return Activator.getImageDescriptor("icons/attribute.png").createImage();
     	
 		return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);

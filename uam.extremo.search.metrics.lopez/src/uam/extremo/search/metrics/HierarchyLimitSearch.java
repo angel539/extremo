@@ -1,19 +1,12 @@
 package uam.extremo.search.metrics;
 
-import java.util.Comparator;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import semanticmanager.Resource;
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
 import semanticmanager.SearchResult;
-import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class HierarchyLimitSearch extends SimpleSearchConfigurationImpl {	
+public class HierarchyLimitSearch extends ExtensibleCustomSearchImpl {	
 	@Override
 	public void search(SearchResult search) {
-		int maxDepth = (int) search.getOptionValue("maxdepth");
+		/*int maxDepth = (int) search.getOptionValue("maxdepth");
 		
 		SemanticGroup semanticGroup = search.createSemanticGroup("no_class_too_deep", "No hierarchy is too deep.");
 	
@@ -28,10 +21,10 @@ public class HierarchyLimitSearch extends SimpleSearchConfigurationImpl {
 					}
 				}
 			}
-		}
+		}*/
 	}
 	
-	private int depth(SemanticNode node){
+	/*private int depth(SemanticNode node){
 		if (node.getSupers() == null) {
 			return 1;
 		}
@@ -56,5 +49,5 @@ public class HierarchyLimitSearch extends SimpleSearchConfigurationImpl {
 			
 			return resultInteger;
 		}
-	}	
+	}*/	
 }

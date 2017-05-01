@@ -62,7 +62,7 @@ public class NewRepositoryWizardPage extends WizardPage {
 				}
 			}
 	    	catch (CoreException e) {
-				MessageDialog.openError(null, "New repository creation", e.getMessage());
+				//MessageDialog.openError(null, "New repository creation", e.getMessage());
 			}
 		}
 	    

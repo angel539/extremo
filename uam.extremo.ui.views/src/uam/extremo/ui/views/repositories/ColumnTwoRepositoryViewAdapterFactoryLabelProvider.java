@@ -11,7 +11,6 @@ import semanticmanager.Resource;
 public class ColumnTwoRepositoryViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider{
 	public ColumnTwoRepositoryViewAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

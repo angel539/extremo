@@ -1,15 +1,14 @@
 package uam.extremo.search.metrics;
 
-import semanticmanager.Resource;
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
 import semanticmanager.SearchResult;
-import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class ChildrenLimitSearch extends SimpleSearchConfigurationImpl {	
+public class ChildrenLimitSearch extends ExtensibleCustomSearchImpl {	
 	@Override
 	public void search(SearchResult search) {
-		int maxChildren = (int) search.getOptionValue("maxchildren");
+		/*int maxChildren = (int) search.getOptionValue("maxchildren");
+		
+		search.getApplyOnElements()
 		
 		SemanticGroup semanticGroup = search.createSemanticGroup("no_class_too_many_children", "No class has too many direct children.");
 	
@@ -21,7 +20,6 @@ public class ChildrenLimitSearch extends SimpleSearchConfigurationImpl {
 					}
 				}
 			}
-		}
+		}*/
 	}
-	
 }

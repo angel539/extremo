@@ -4,9 +4,10 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.ecore.EObject;
-import semanticmanager.NamedElement;
+
 import uam.extremo.extensions.AssistantFactory;
 
+import semanticmanager.NamedElement;
 
 public class GoToParentConnectionsHandler extends AbstractHandler {
 

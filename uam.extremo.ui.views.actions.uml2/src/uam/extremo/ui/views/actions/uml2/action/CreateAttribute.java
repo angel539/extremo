@@ -20,8 +20,9 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
 
-import semanticmanager.SemanticNode;
 import uam.extremo.ui.views.extensions.ExtremoViewPartAction;
+
+import semanticmanager.SemanticNode;
 
 public class CreateAttribute extends ExtremoViewPartAction {
 

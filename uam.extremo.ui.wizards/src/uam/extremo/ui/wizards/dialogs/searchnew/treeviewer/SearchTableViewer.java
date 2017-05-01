@@ -16,11 +16,9 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 
-import semanticmanager.NamedElement;
-import semanticmanager.Repository;
-import semanticmanager.Resource;
-import semanticmanager.SemanticNode;
 import uam.extremo.ui.wizards.Activator;
+
+import semanticmanager.*;
 
 public class SearchTableViewer extends TableViewer{
 	public SearchTableViewer(Composite parent, List<NamedElement> semanticNodes) {

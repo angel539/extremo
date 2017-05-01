@@ -11,10 +11,8 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 
-import semanticmanager.DataProperty;
-import semanticmanager.Property;
-import semanticmanager.SemanticNode;
 import uam.extremo.ui.zest.views.Activator;
+import semanticmanager.*;
 
 public class SemanticNodeFigure extends Figure {
 	  public static Color classColor = new Color(null,255,255,255);

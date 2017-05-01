@@ -1,16 +1,12 @@
 package uam.extremo.search.metrics;
 
-import semanticmanager.ObjectProperty;
-import semanticmanager.Resource;
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
 import semanticmanager.SearchResult;
-import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class RefsOverloadedSearch extends SimpleSearchConfigurationImpl {
+public class RefsOverloadedSearch extends ExtensibleCustomSearchImpl {
 	@Override
 	public void search(SearchResult search) {
-		int maxRefs = (int) search.getOptionValue("maxrefs");
+		/*int maxRefs = (int) search.getOptionValue("maxrefs");
 		
 		SemanticGroup semanticGroup = search.createSemanticGroup("no_class_refs_overloaded", "No class refers to too many others.");
 
@@ -25,7 +21,7 @@ public class RefsOverloadedSearch extends SimpleSearchConfigurationImpl {
 					}
 				}
 			}
-		}
+		}*/
 	}
 
 }

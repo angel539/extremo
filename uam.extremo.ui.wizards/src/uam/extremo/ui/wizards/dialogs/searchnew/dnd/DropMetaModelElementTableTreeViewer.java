@@ -28,12 +28,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
-import semanticmanager.Constraint;
-import semanticmanager.DataProperty;
-import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Resource;
-import semanticmanager.SemanticNode;
+import semanticmanager.*;
 import uam.extremo.ui.wizards.Activator;
 
 public class DropMetaModelElementTableTreeViewer extends TableViewer{
@@ -70,12 +65,12 @@ public class DropMetaModelElementTableTreeViewer extends TableViewer{
         }
 	}
 	
-	public DropMetaModelElementTableTreeViewer(Composite parent, List<Resource> resources) {	
+	public DropMetaModelElementTableTreeViewer(Composite parent, List<NamedElement> namedElements) {	
 		super(parent);
 		int operations = DND.DROP_COPY | DND.DROP_MOVE;
 		
 		Transfer[] transferTypes = new Transfer[]{TextTransfer.getInstance()};
-	    addDropSupport(operations, transferTypes, new NamedElementDropListener(this, resources));
+	    addDropSupport(operations, transferTypes, new NamedElementDropListener(this, namedElements));
 	    //setContentProvider(new TreeViewContentProvider(resource));
 	    setContentProvider(ArrayContentProvider.getInstance());
 		
@@ -135,13 +130,13 @@ public class DropMetaModelElementTableTreeViewer extends TableViewer{
 				}
 	    	}
 			
-			if(element instanceof Constraint){
+			/*if(element instanceof Constraint){
 				Constraint constraint = (Constraint) element;
 				StyledString styledString = new StyledString(constraint.getKey());
 				styledString.append(" (" + constraint.getValue().toString() + ")", StyledString.COUNTER_STYLER);
 
 				return styledString;
-			}
+			}*/
 			
 			if(element instanceof DataProperty){
 				if(((DataProperty) element).getDescriptor() == null){
@@ -198,7 +193,7 @@ public class DropMetaModelElementTableTreeViewer extends TableViewer{
 				}
 	    	}
 			
-			if(element instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
+			//if(element instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
 			
 			if(element instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.gif").createImage();
 			if(element instanceof DataProperty) return Activator.getImageDescriptor("icons/attribute.png").createImage();

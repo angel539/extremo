@@ -8,10 +8,7 @@ Bundle-Activator: semanticmanager.presentation.ExtremoEditorPlugin$Implementatio
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: semanticmanager.constraints.presentation,
- semanticmanager.dataModel.presentation,
- semanticmanager.presentation,
- semanticmanager.queries.presentation
+Export-Package: semanticmanager.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  uam.extremo.core.edit;visibility:=reexport,

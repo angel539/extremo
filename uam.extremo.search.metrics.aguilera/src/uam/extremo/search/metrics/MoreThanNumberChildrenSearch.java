@@ -1,15 +1,12 @@
 package uam.extremo.search.metrics;
 
-import semanticmanager.Resource;
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
 import semanticmanager.SearchResult;
-import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class MoreThanNumberChildrenSearch extends SimpleSearchConfigurationImpl {
+public class MoreThanNumberChildrenSearch extends ExtensibleCustomSearchImpl {
 	@Override
 	public void search(SearchResult search) {
-		int children = (int) search.getOptionValue("morethanchildren");
+		/*int children = (int) search.getOptionValue("morethanchildren");
 		
 		SemanticGroup semanticGroup = search.createSemanticGroup("more_than_a_number_of_children", "A class with more than a number of children");
 	
@@ -21,6 +18,6 @@ public class MoreThanNumberChildrenSearch extends SimpleSearchConfigurationImpl 
 					}
 				}
 			}
-		}
+		}*/
 	}
 }

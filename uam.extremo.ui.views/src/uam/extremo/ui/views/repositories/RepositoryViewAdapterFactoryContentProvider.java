@@ -1,11 +1,13 @@
 package uam.extremo.ui.views.repositories;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
+
 import semanticmanager.RepositoryManager;
 
 public class RepositoryViewAdapterFactoryContentProvider extends AdapterFactoryContentProvider {	
@@ -19,6 +21,25 @@ public class RepositoryViewAdapterFactoryContentProvider extends AdapterFactoryC
 	
 	public void inputChanged(Viewer v, Object oldInput, Object newInput) {
 		this.setViewer((TreeViewer) v);
+
+		if (viewer != null) {
+			viewer.getControl().removeDisposeListener(new DisposeListener() {
+				@Override
+				public void widgetDisposed(DisposeEvent e) {
+				}
+			});
+		}
+				
+		this.viewer = (TreeViewer) viewer;
+		
+		if (this.viewer != null) {
+			viewer.getControl().addDisposeListener(new DisposeListener() {
+				@Override
+				public void widgetDisposed(DisposeEvent e) {
+					// add your data change listener
+				}
+			});
+		}
 		
 		if (repositoryManager != null)
 			repositoryManager = (RepositoryManager) newInput;
@@ -27,7 +48,7 @@ public class RepositoryViewAdapterFactoryContentProvider extends AdapterFactoryC
 	public void dispose() {
 	}
 	
-	public Object[] getElements(Object parent) {
+	public Object[] getElements(Object parent) {	
 		if (parent.equals(repositoryManager)) {
 			return getChildren(repositoryManager);
 		}
@@ -42,9 +63,14 @@ public class RepositoryViewAdapterFactoryContentProvider extends AdapterFactoryC
 		return null;
 	}
 	
-	public Object [] getChildren(Object parent) {
+	/*public Object [] getChildren(Object parent) {
 		if (parent instanceof EObject) {
-			Object[] containmentAll = ArrayUtils.addAll(((EObject)parent).eContents().toArray(), ((EObject)parent).eCrossReferences().toArray());
+			EObject parentEObject = (EObject) parent;
+			
+			Object[] containments = parentEObject.eContents().toArray();
+			Object[] crossReferences = parentEObject.eCrossReferences().toArray();
+			
+			Object[] containmentAll = ArrayUtils.addAll(containments, crossReferences);
 			return containmentAll;
 		}
 		return new Object[0];
@@ -60,7 +86,7 @@ public class RepositoryViewAdapterFactoryContentProvider extends AdapterFactoryC
 			}
 		}
 		return false;
-	}
+	}*/
 
 	public TreeViewer getViewer() {
 		return viewer;

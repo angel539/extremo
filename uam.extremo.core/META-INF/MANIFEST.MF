@@ -39,19 +39,24 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore;visibility:=reexport,
  fr.inria.atlanmod.neoemf.core;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.apache.commons.io,
- semanticmanager,
- semanticmanager.constraints,
- semanticmanager.constraints.impl,
- semanticmanager.constraints.util,
- semanticmanager.dataModel,
- semanticmanager.dataModel.impl,
- semanticmanager.dataModel.util,
- semanticmanager.impl,
- semanticmanager.queries,
- semanticmanager.queries.impl,
- semanticmanager.queries.util,
+Export-Package: org.apache.commons.io;
+  uses:="org.apache.commons.io.filefilter",
+ semanticmanager;
+  uses:="semanticmanager.queries,
+   semanticmanager.constraints",
+ semanticmanager.impl;
+  uses:="org.eclipse.emf.ecore,
+   semanticmanager.queries,
+   semanticmanager,
+   semanticmanager.constraints",
+ semanticmanager.util;
+  uses:="org.eclipse.emf.ecore,
+   semanticmanager,
+   org.eclipse.emf.common.notify,
+   org.eclipse.emf.common.notify.impl,
+   org.eclipse.emf.ecore.util",
  uam.extremo.core.utils,
- uam.extremo.core.wordnet
+ uam.extremo.core.wordnet;
+  uses:="edu.smu.tspell.wordnet"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.commons.lang3

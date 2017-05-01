@@ -1,16 +1,12 @@
 package uam.extremo.search.metrics;
 
-import semanticmanager.ObjectProperty;
-import semanticmanager.Resource;
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
 import semanticmanager.SearchResult;
-import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.SimpleSearchConfigurationImpl;
 
-public class IsolatedClassesSearch extends SimpleSearchConfigurationImpl {
+public class IsolatedClassesSearch extends ExtensibleCustomSearchImpl {
 	@Override
 	public void search(SearchResult search) {
-		SemanticGroup semanticGroup = search.createSemanticGroup("no_class_refs_overloaded", "No class refers to too many others.");
+		/*SemanticGroup semanticGroup = search.createSemanticGroup("no_class_refs_overloaded", "No class refers to too many others.");
 
 		for(Resource resource : search.getResources()){
 			if(resource.isActive()){
@@ -27,10 +23,10 @@ public class IsolatedClassesSearch extends SimpleSearchConfigurationImpl {
 					}
 				}
 			}
-		}	
+		}*/	
 	}
 	
-	private long incommingReferencesCounter(Resource resource, SemanticNode node){
+	/*private long incommingReferencesCounter(Resource resource, SemanticNode node){
 		int counter = 0;
 		
 		for(SemanticNode semanticNode : resource.getNodes()){
@@ -39,5 +35,5 @@ public class IsolatedClassesSearch extends SimpleSearchConfigurationImpl {
 		}
 		
 		return counter;
-	}
+	}*/
 }

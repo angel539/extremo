@@ -12,81 +12,26 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="semanticmanager.constraints.presentation.ConstraintsModelWizardID"
-            name="%_UI_ConstraintsModelWizard_label"
-            class="semanticmanager.constraints.presentation.ConstraintsModelWizard"
+            id="semanticmanager.presentation.SemanticmanagerModelWizardID"
+            name="%_UI_SemanticmanagerModelWizard_label"
+            class="semanticmanager.presentation.SemanticmanagerModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/ConstraintsModelFile.gif">
-         <description>%_UI_ConstraintsModelWizard_description</description>
+            icon="icons/full/obj16/SemanticmanagerModelFile.gif">
+         <description>%_UI_SemanticmanagerModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
 
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated Extremo -->
-      <editor
-            id="semanticmanager.constraints.presentation.ConstraintsEditorID"
-            name="%_UI_ConstraintsEditor_label"
-            icon="icons/full/obj16/ConstraintsModelFile.gif"
-            extensions="constraints"
-            class="semanticmanager.constraints.presentation.ConstraintsEditor"
-            contributorClass="semanticmanager.constraints.presentation.ConstraintsActionBarContributor">
-      </editor>
-   </extension>
-
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated Extremo -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="semanticmanager.queries.presentation.QueriesModelWizardID"
-            name="%_UI_QueriesModelWizard_label"
-            class="semanticmanager.queries.presentation.QueriesModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/QueriesModelFile.gif">
-         <description>%_UI_QueriesModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
 
    <extension point="org.eclipse.ui.editors">
       <!-- @generated Extremo -->
       <editor
-            id="semanticmanager.queries.presentation.QueriesEditorID"
-            name="%_UI_QueriesEditor_label"
-            icon="icons/full/obj16/QueriesModelFile.gif"
-            extensions="queries"
-            class="semanticmanager.queries.presentation.QueriesEditor"
-            contributorClass="semanticmanager.queries.presentation.QueriesActionBarContributor">
-      </editor>
-   </extension>
-
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated Extremo -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="semanticmanager.dataModel.presentation.DataModelModelWizardID"
-            name="%_UI_DataModelModelWizard_label"
-            class="semanticmanager.dataModel.presentation.DataModelModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/DataModelModelFile.gif">
-         <description>%_UI_DataModelModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated Extremo -->
-      <editor
-            id="semanticmanager.dataModel.presentation.DataModelEditorID"
-            name="%_UI_DataModelEditor_label"
-            icon="icons/full/obj16/DataModelModelFile.gif"
-            extensions="datamodel"
-            class="semanticmanager.dataModel.presentation.DataModelEditor"
-            contributorClass="semanticmanager.dataModel.presentation.DataModelActionBarContributor">
+            id="semanticmanager.presentation.SemanticmanagerEditorID"
+            name="%_UI_SemanticmanagerEditor_label"
+            icon="icons/full/obj16/SemanticmanagerModelFile.gif"
+            extensions="semanticmanager"
+            class="semanticmanager.presentation.SemanticmanagerEditor"
+            contributorClass="semanticmanager.presentation.SemanticmanagerActionBarContributor">
       </editor>
    </extension>
 </plugin>

@@ -8,16 +8,15 @@ import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TransferData;
 
 import semanticmanager.NamedElement;
-import semanticmanager.Resource;
 
 public class NamedElementDropListener extends ViewerDropAdapter {
 	private final DropMetaModelElementTableTreeViewer viewer;
-	private List<Resource> resources = null;
+	private List<NamedElement> namedElements = null;
 	
-	protected NamedElementDropListener(DropMetaModelElementTableTreeViewer viewer, List<Resource> resources) {
+	protected NamedElementDropListener(DropMetaModelElementTableTreeViewer viewer, List<NamedElement> namedElements) {
 		super(viewer);
 		this.viewer = viewer;
-		this.resources = resources;
+		this.namedElements = namedElements;
 	}
 
 	@Override
@@ -29,7 +28,8 @@ public class NamedElementDropListener extends ViewerDropAdapter {
 	 @Override
 	 public void drop(DropTargetEvent event) {
 	    int location = this.determineLocation(event);
-	    String target = (String) determineTarget(event);
+	    
+	    /*String target = (String) determineTarget(event);
 	    String translatedLocation = "";
 	    
 	    switch (location){
@@ -45,16 +45,19 @@ public class NamedElementDropListener extends ViewerDropAdapter {
 		    case 4 :
 		      translatedLocation = "Dropped into nothing ";
 		      break;
-	    }
+	    }*/
 	    
 	    super.drop(event);
 	 }
 	 
 	 @Override
 	 public boolean performDrop(Object data) {
-		 for(NamedElement resource : resources){
-			 NamedElement element = search(resource, data);
+		 System.out.println("data " + data);
+		 
+		 for(NamedElement namedElement : namedElements){
+			 NamedElement element = search(namedElement, data);
 			 
+			 System.out.println("element " + element); 
 			 if(element != null){
 				 viewer.add(element);
 				 return true;

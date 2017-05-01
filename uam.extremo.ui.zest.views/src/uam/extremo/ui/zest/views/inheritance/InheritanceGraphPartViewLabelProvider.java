@@ -11,11 +11,9 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.zest.core.viewers.EntityConnectionData;
-import semanticmanager.DataProperty;
-import semanticmanager.Repository;
-import semanticmanager.Resource;
-import semanticmanager.SemanticNode;
 import uam.extremo.ui.zest.views.Activator;
+
+import semanticmanager.*;
 
 public class InheritanceGraphPartViewLabelProvider implements ILabelProvider, IColorProvider/*, IFigureProvider*/{
     public Color BLACK = new Color(Display.getDefault(), 0, 0, 0);

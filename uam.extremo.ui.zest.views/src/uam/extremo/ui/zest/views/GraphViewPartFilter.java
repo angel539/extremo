@@ -4,12 +4,8 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import semanticmanager.DataProperty;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
-import semanticmanager.Resource;
-import semanticmanager.SemanticNode;
+import semanticmanager.*;
 
 public class GraphViewPartFilter extends ViewerFilter {
 	@Override

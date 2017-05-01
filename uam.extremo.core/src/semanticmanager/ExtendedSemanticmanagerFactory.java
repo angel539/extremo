@@ -2,13 +2,6 @@
  */
 package semanticmanager;
 
-import semanticmanager.constraints.ExtensibleConstraintInterpreter;
-import semanticmanager.queries.ExtensibleAtomicSearchResult;
-import semanticmanager.queries.ExtensibleCustomSearch;
-import semanticmanager.queries.ExtensibleGroupedSearchResult;
-import semanticmanager.queries.ExtensiblePredicateBasedSearch;
-import semanticmanager.queries.ExtensibleService;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Factory</b> for the model.

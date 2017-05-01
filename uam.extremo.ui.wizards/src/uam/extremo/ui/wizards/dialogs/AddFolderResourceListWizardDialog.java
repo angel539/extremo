@@ -1,19 +1,17 @@
 package uam.extremo.ui.wizards.dialogs;
 
+import java.io.File;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.TableItem;
 
-import semanticmanager.Repository;
-import semanticmanager.Resource;
+import semanticmanager.*;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.wizards.dialogs.newrepository.NewRepositoryWizardPage;
-
-import java.io.File;
 
 public class AddFolderResourceListWizardDialog extends Wizard {
 	NewRepositoryWizardPage newRepositoryPage;
@@ -61,6 +59,8 @@ public class AddFolderResourceListWizardDialog extends Wizard {
 		if(project != null){
 			String repositoryName = newRepositoryPage.getRepositoryName();
 			String repositoryDescription = newRepositoryPage.getRepositoryDescription();
+			
+			//AssistantFactory.getInstance();
 			Repository repository = AssistantFactory.getInstance().createRepository(project, repositoryName, repositoryDescription);
 			
 			// there is descriptor
@@ -79,7 +79,7 @@ public class AddFolderResourceListWizardDialog extends Wizard {
 						descriptor = AssistantFactory.getInstance().createResourceDescriptor(repository, resourceName, resourceDescription, resourceUri, assistant);
 					}
 					catch (CoreException e) {
-						MessageDialog.openError(null, "Resource creation", e.getMessage());
+						//MessageDialog.openError(null, "Resource creation", e.getMessage());
 					}
 					
 					break descriptorCheck;
@@ -99,7 +99,7 @@ public class AddFolderResourceListWizardDialog extends Wizard {
 							AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri, assistant);
 						}
 						catch (CoreException e) {
-							MessageDialog.openError(null, "Resource creation", e.getMessage());
+							//MessageDialog.openError(null, "Resource creation", e.getMessage());
 						}
 					}
 				}
@@ -115,7 +115,7 @@ public class AddFolderResourceListWizardDialog extends Wizard {
 					try {
 						AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri, assistant);
 					} catch (CoreException e) {
-						MessageDialog.openError(null, "Resource creation", e.getMessage());
+						//MessageDialog.openError(null, "Resource creation", e.getMessage());
 					}
 				}
 			}

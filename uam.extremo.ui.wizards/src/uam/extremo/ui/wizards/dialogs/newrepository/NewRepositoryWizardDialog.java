@@ -3,9 +3,10 @@ package uam.extremo.ui.wizards.dialogs.newrepository;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.wizard.Wizard;
 
-import semanticmanager.Repository;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.wizards.dialogs.newresource.NewResourceWizardPage;
+
+import semanticmanager.Repository;
 
 public class NewRepositoryWizardDialog extends Wizard {
 	NewRepositoryWizardPage newRepositoryPage;

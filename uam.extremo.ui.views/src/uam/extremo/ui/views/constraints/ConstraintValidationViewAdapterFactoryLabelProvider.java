@@ -9,12 +9,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
-import semanticmanager.Constraint;
-import semanticmanager.ConstraintInterpreter;
-import semanticmanager.DataProperty;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Resource;
-import semanticmanager.SemanticNode;
+import semanticmanager.*;
 import uam.extremo.ui.views.Activator;
 
 public class ConstraintValidationViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider{
@@ -28,32 +23,52 @@ public class ConstraintValidationViewAdapterFactoryLabelProvider extends Adapter
 		
 		String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
 		if(obj instanceof ConstraintInterpreter) return Activator.getImageDescriptor("icons/chain.png").createImage();
-		if(obj instanceof Constraint) return Activator.getImageDescriptor("icons/check.png").createImage();
 		
+		
+		if(obj instanceof Repository) return Activator.getImageDescriptor("icons/repo.png").createImage();
+    	
 		if(obj instanceof Resource){
 			if(((Resource) obj).getDescriptor() == null){
-				return Activator.getImageDescriptor("icons/schema16.png").createImage();
+				return Activator.getImageDescriptor("icons/descriptor.png").createImage();
 			}
 			else{
-				if(((Resource) obj).isAlive()) return Activator.getImageDescriptor("icons/3d_objects_16.png").createImage();
+				if(((Resource) obj).isAlive()) return Activator.getImageDescriptor("icons/description_on.png").createImage();
         		else{
-        			return Activator.getImageDescriptor("icons/3d_objects_off_16.png").createImage();
+        			return Activator.getImageDescriptor("icons/description.png").createImage();
         		}
 			}
     	}
+		
+		if(obj instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
+		
+		//if(obj instanceof Repository) return Activator.getImageDescriptor("icons/repo.png").createImage();
+    	
+		/*if(obj instanceof Resource){
+			if(((Resource) element).getDescriptor() == null){
+				return Activator.getImageDescriptor("icons/descriptor.png").createImage();
+			}
+			else{
+				if(((Resource) element).isAlive()) return Activator.getImageDescriptor("icons/description_on.png").createImage();
+        		else{
+        			return Activator.getImageDescriptor("icons/description.png").createImage();
+        		}
+			}
+    	}*/
 		
 		if(obj instanceof SemanticNode){
 			if(((SemanticNode) obj).getDescriptor() == null){
 				return Activator.getImageDescriptor("icons/class_obj.png").createImage();
 			}
 			else{
-        		return Activator.getImageDescriptor("icons/objects16.png").createImage();
+        		return Activator.getImageDescriptor("icons/object.png").createImage();
 			}
     	}
 		
-		if(obj instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.gif").createImage();
+		if(obj instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
+		
+		if(obj instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.png").createImage();
 		if(obj instanceof DataProperty) return Activator.getImageDescriptor("icons/attribute.png").createImage();
-
+		
 		return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 	}
 	
@@ -69,10 +84,8 @@ public class ConstraintValidationViewAdapterFactoryLabelProvider extends Adapter
 		
 		if (element instanceof Constraint) {
 			Constraint constraint = (Constraint) element;
-			StyledString styledString = new StyledString(((Constraint) element).getKey());
-			//styledString.append("(" + constraint.getResources().size() + ") resources selected", StyledString.COUNTER_STYLER);
-			styledString.append(" -> over (" + constraint.getApplyOnElements().size() + ") nodes applied", StyledString.COUNTER_STYLER);
-			styledString.append(" -> (" + constraint.getValidatedElements().size() + ") elements validated", StyledString.COUNTER_STYLER);
+			StyledString styledString = new StyledString("[" + constraint.getType() + "] " + constraint.getName());
+			styledString.append("(" + constraint.getBody() + ")", StyledString.COUNTER_STYLER);
 			return styledString;
 		}
 		
