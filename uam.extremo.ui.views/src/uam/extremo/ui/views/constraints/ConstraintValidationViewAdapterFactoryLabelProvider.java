@@ -15,7 +15,6 @@ import uam.extremo.ui.views.Activator;
 public class ConstraintValidationViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider{
 	public ConstraintValidationViewAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Image getImage(Object obj) {
@@ -28,7 +27,9 @@ public class ConstraintValidationViewAdapterFactoryLabelProvider extends Adapter
 		if(obj instanceof Repository) return Activator.getImageDescriptor("icons/repo.png").createImage();
     	
 		if(obj instanceof Resource){
-			if(((Resource) obj).getDescriptor() == null){
+			Resource resource = (Resource) obj;
+			
+			if((resource.getDescriptors() == null) || (resource.getDescriptors().isEmpty())){
 				return Activator.getImageDescriptor("icons/descriptor.png").createImage();
 			}
 			else{
@@ -41,22 +42,10 @@ public class ConstraintValidationViewAdapterFactoryLabelProvider extends Adapter
 		
 		if(obj instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
 		
-		//if(obj instanceof Repository) return Activator.getImageDescriptor("icons/repo.png").createImage();
-    	
-		/*if(obj instanceof Resource){
-			if(((Resource) element).getDescriptor() == null){
-				return Activator.getImageDescriptor("icons/descriptor.png").createImage();
-			}
-			else{
-				if(((Resource) element).isAlive()) return Activator.getImageDescriptor("icons/description_on.png").createImage();
-        		else{
-        			return Activator.getImageDescriptor("icons/description.png").createImage();
-        		}
-			}
-    	}*/
-		
 		if(obj instanceof SemanticNode){
-			if(((SemanticNode) obj).getDescriptor() == null){
+			SemanticNode semanticNode = (SemanticNode) obj;
+			
+			if((semanticNode.getDescriptors() == null) || (semanticNode.getDescriptors().isEmpty())){
 				return Activator.getImageDescriptor("icons/class_obj.png").createImage();
 			}
 			else{
@@ -92,7 +81,8 @@ public class ConstraintValidationViewAdapterFactoryLabelProvider extends Adapter
 		if (element instanceof Resource) {
 			StyledString styledString = new StyledString(((Resource) element).getName());
 			
-			if(((Resource) element).getDescriptor() == null){
+			Resource resource = (Resource) element;
+			if((resource.getDescriptors() == null) || (resource.getDescriptors().isEmpty())){
 				styledString.append(" describes (" + ((Resource) element).getDescribes().size() + ") resources", StyledString.COUNTER_STYLER);
 			}
 			
@@ -101,16 +91,8 @@ public class ConstraintValidationViewAdapterFactoryLabelProvider extends Adapter
 		
 		if(element instanceof SemanticNode){
 			SemanticNode semanticNode = (SemanticNode) element;
-			StyledString styledString = new StyledString(semanticNode.getName());
-			styledString.append(" (" + semanticNode.getWeight() + ") points", StyledString.COUNTER_STYLER);
-			styledString.append(" (" + semanticNode.getProperties().size() + ") properties", StyledString.QUALIFIER_STYLER);
-
-			return styledString;
-		}
-		
-		if(element instanceof SemanticNode){
-			if(((SemanticNode) element).getDescriptor() == null){
-				SemanticNode semanticNode = (SemanticNode) element;
+			
+			if((semanticNode.getDescriptors() == null) || (semanticNode.getDescriptors().isEmpty())){
 				StyledString styledString = new StyledString(semanticNode.getName());
 				
 				if(semanticNode.getDescribes().size() > 0)
@@ -124,14 +106,15 @@ public class ConstraintValidationViewAdapterFactoryLabelProvider extends Adapter
 				return styledString;
 			}
 			else{
-				SemanticNode semanticNode = (SemanticNode) element;
 				StyledString styledString = new StyledString(semanticNode.getName() + ":");
 				return styledString;
 			}
     	}
 		
 		if(element instanceof DataProperty){
-			if(((DataProperty) element).getDescriptor() == null){
+			DataProperty dataProperty = (DataProperty) element;
+			
+			if((dataProperty.getDescriptors() == null) || (dataProperty.getDescriptors().isEmpty())){
 				DataProperty property = (DataProperty) element;
 				StyledString styledString = new StyledString(property.getName());
 				if(property.getType() != null) styledString.append(" (" + property.getType().getLiteral() + ")", StyledString.QUALIFIER_STYLER);

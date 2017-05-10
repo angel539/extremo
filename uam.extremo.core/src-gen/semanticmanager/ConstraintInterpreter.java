@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link semanticmanager.ConstraintInterpreter#getName <em>Name</em>}</li>
  *   <li>{@link semanticmanager.ConstraintInterpreter#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link semanticmanager.ConstraintInterpreter#getEvals <em>Evals</em>}</li>
+ *   <li>{@link semanticmanager.ConstraintInterpreter#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getConstraintInterpreter()
@@ -111,6 +112,32 @@ public interface ConstraintInterpreter extends EObject {
 	 * @generated
 	 */
 	EList<ConstraintResult> getEvals();
+
+	/**
+	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type</em>' attribute.
+	 * @see #setType(String)
+	 * @see semanticmanager.SemanticmanagerPackage#getConstraintInterpreter_Type()
+	 * @model
+	 * @generated
+	 */
+	String getType();
+
+	/**
+	 * Sets the value of the '{@link semanticmanager.ConstraintInterpreter#getType <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @see #getType()
+	 * @generated
+	 */
+	void setType(String value);
 
 	/**
 	 * <!-- begin-user-doc -->

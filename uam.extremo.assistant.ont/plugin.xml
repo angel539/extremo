@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="extremo.core.extensions.assistant">
+      <assistant
+            class="uam.extremo.assistant.ont.OntologiesAssistant"
+            extensions="owl, rdf"
+            id="extremo.assistant.ontologies"
+            name="Ontologies">
+      </assistant>
+   </extension>
+
+</plugin>

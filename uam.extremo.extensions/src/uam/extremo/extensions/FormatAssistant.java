@@ -8,6 +8,7 @@ public class FormatAssistant{
 	private String id = null;
 	private String nameExtension = null;
 	private List<String> extensions = null;
+	private String interpreter = null;
 	
 	private static void createInstance() {
 	   	 if (INSTANCE == null) {
@@ -44,6 +45,14 @@ public class FormatAssistant{
 
 	public void setNameExtension(String nameExtension) {
 		this.nameExtension = nameExtension;
+	}
+	
+	public String getInterpreter() {
+		return interpreter;
+	}
+
+	public void setInterpreter(String interpreter) {
+		this.interpreter = interpreter;
 	}
 
 	public List<String> getExtensions() {

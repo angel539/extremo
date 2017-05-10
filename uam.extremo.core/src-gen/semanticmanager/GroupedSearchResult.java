@@ -75,14 +75,6 @@ public interface GroupedSearchResult extends SearchResult {
 	 * @model
 	 * @generated
 	 */
-	Object getOptionValue(String key);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
 	void addNamedElementToSemanticGroup(SemanticGroup semanticGroup, NamedElement namedElement);
 
 	/**

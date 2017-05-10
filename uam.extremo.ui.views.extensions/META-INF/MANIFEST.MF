@@ -9,9 +9,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.workbench,
  org.eclipse.gef,
  uam.extremo.core,
- uam.extremo.extensions
+ uam.extremo.extensions,
+ org.eclipse.jface
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: uam.extremo.ui.views.extensions,
+ uam.extremo.ui.views.extensions.actions,
  uam.extremo.ui.views.extensions.dnd,
  uam.extremo.ui.views.extensions.filters

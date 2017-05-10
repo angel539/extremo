@@ -66,17 +66,7 @@ public enum Type implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	DOUBLE(4, "Double", "Double"),
-
-	/**
-	 * The '<em><b>Named Element</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NAMED_ELEMENT_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	NAMED_ELEMENT(5, "NamedElement", "NamedElement");
+	DOUBLE(4, "Double", "Double");
 
 	/**
 	 * The '<em><b>String</b></em>' literal value.
@@ -154,21 +144,6 @@ public enum Type implements Enumerator {
 	public static final int DOUBLE_VALUE = 4;
 
 	/**
-	 * The '<em><b>Named Element</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Named Element</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #NAMED_ELEMENT
-	 * @model name="NamedElement"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NAMED_ELEMENT_VALUE = 5;
-
-	/**
 	 * An array of all the '<em><b>Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -181,7 +156,6 @@ public enum Type implements Enumerator {
 			BOOLEAN,
 			FLOAT,
 			DOUBLE,
-			NAMED_ELEMENT,
 		};
 
 	/**
@@ -243,7 +217,6 @@ public enum Type implements Enumerator {
 			case BOOLEAN_VALUE: return BOOLEAN;
 			case FLOAT_VALUE: return FLOAT;
 			case DOUBLE_VALUE: return DOUBLE;
-			case NAMED_ELEMENT_VALUE: return NAMED_ELEMENT;
 		}
 		return null;
 	}

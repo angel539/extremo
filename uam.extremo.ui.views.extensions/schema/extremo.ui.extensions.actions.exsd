@@ -54,9 +54,6 @@
                <documentation>
                   
                </documentation>
-               <appinfo>
-                  <meta.attribute kind="identifier"/>
-               </appinfo>
             </annotation>
          </attribute>
          <attribute name="name" type="string" use="required">
@@ -79,7 +76,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="uam.extremo.ui.views.extensions.ExtremoViewPartAction:"/>
+                  <meta.attribute kind="java" basedOn="uam.extremo.ui.views.extensions.actions.ExtensibleViewPartActionContribution:"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -104,6 +101,8 @@
                   <enumeration value="repositories">
                   </enumeration>
                   <enumeration value="searches">
+                  </enumeration>
+                  <enumeration value="constraints">
                   </enumeration>
                </restriction>
             </simpleType>

@@ -252,13 +252,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int CONSTRAINT_INTERPRETER__EVALS = 3;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_INTERPRETER__TYPE = 4;
+
+	/**
 	 * The number of structural features of the '<em>Constraint Interpreter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT_INTERPRETER_FEATURE_COUNT = 4;
+	int CONSTRAINT_INTERPRETER_FEATURE_COUNT = 5;
 
 	/**
 	 * The operation id for the '<em>Eval</em>' operation.
@@ -435,13 +444,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT_FEATURE_COUNT = 3;
 
 	/**
+	 * The operation id for the '<em>Get Option Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_RESULT___GET_OPTION_VALUE__STRING = 0;
+
+	/**
 	 * The number of operations of the '<em>Search Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPERATION_COUNT = 0;
+	int SEARCH_RESULT_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.SearchResultOptionValueImpl <em>Search Result Option Value</em>}' class.
@@ -828,13 +846,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int CUSTOM_SEARCH__FILTER_BY = SIMPLE_SEARCH_CONFIGURATION__FILTER_BY;
 
 	/**
+	 * The feature id for the '<em><b>Grouped</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_SEARCH__GROUPED = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Custom Search</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_SEARCH_FEATURE_COUNT = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 0;
+	int CUSTOM_SEARCH_FEATURE_COUNT = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Add Search Option</em>' operation.
@@ -943,7 +970,16 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PREDICATE_BASED_SEARCH___MATCHES__NAMEDELEMENT = SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT + 0;
+	int PREDICATE_BASED_SEARCH___MATCHES__NAMEDELEMENT_ELIST = SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Option Value Key</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDICATE_BASED_SEARCH___GET_OPTION_VALUE_KEY__STRING_ELIST = SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Predicate Based Search</em>' class.
@@ -952,7 +988,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PREDICATE_BASED_SEARCH_OPERATION_COUNT = SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT + 1;
+	int PREDICATE_BASED_SEARCH_OPERATION_COUNT = SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.AtomicSearchResultImpl <em>Atomic Search Result</em>}' class.
@@ -1008,6 +1044,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATOMIC_SEARCH_RESULT_FEATURE_COUNT = SEARCH_RESULT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Option Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_SEARCH_RESULT___GET_OPTION_VALUE__STRING = SEARCH_RESULT___GET_OPTION_VALUE__STRING;
 
 	/**
 	 * The number of operations of the '<em>Atomic Search Result</em>' class.
@@ -1074,6 +1119,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	int GROUPED_SEARCH_RESULT_FEATURE_COUNT = SEARCH_RESULT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Get Option Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUPED_SEARCH_RESULT___GET_OPTION_VALUE__STRING = SEARCH_RESULT___GET_OPTION_VALUE__STRING;
+
+	/**
 	 * The operation id for the '<em>Create Semantic Group</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1110,22 +1164,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int GROUPED_SEARCH_RESULT___ADD_OBJECT_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_OBJECTPROPERTY = SEARCH_RESULT_OPERATION_COUNT + 3;
 
 	/**
-	 * The operation id for the '<em>Get Option Value</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GROUPED_SEARCH_RESULT___GET_OPTION_VALUE__STRING = SEARCH_RESULT_OPERATION_COUNT + 4;
-
-	/**
 	 * The operation id for the '<em>Add Named Element To Semantic Group</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GROUPED_SEARCH_RESULT___ADD_NAMED_ELEMENT_TO_SEMANTIC_GROUP__SEMANTICGROUP_NAMEDELEMENT = SEARCH_RESULT_OPERATION_COUNT + 5;
+	int GROUPED_SEARCH_RESULT___ADD_NAMED_ELEMENT_TO_SEMANTIC_GROUP__SEMANTICGROUP_NAMEDELEMENT = SEARCH_RESULT_OPERATION_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Add Resource To Semantic Group</em>' operation.
@@ -1134,7 +1179,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUPED_SEARCH_RESULT___ADD_RESOURCE_TO_SEMANTIC_GROUP__SEMANTICGROUP_RESOURCE = SEARCH_RESULT_OPERATION_COUNT + 6;
+	int GROUPED_SEARCH_RESULT___ADD_RESOURCE_TO_SEMANTIC_GROUP__SEMANTICGROUP_RESOURCE = SEARCH_RESULT_OPERATION_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Grouped Search Result</em>' class.
@@ -1143,7 +1188,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUPED_SEARCH_RESULT_OPERATION_COUNT = SEARCH_RESULT_OPERATION_COUNT + 7;
+	int GROUPED_SEARCH_RESULT_OPERATION_COUNT = SEARCH_RESULT_OPERATION_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -1201,13 +1246,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int NAMED_ELEMENT__DRAWN = 4;
 
 	/**
-	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT__DESCRIPTOR = 5;
+	int NAMED_ELEMENT__DESCRIPTORS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference list.
@@ -1301,13 +1346,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEMANTIC_GROUP__DRAWN = NAMED_ELEMENT__DRAWN;
 
 	/**
-	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_GROUP__DESCRIPTOR = NAMED_ELEMENT__DESCRIPTOR;
+	int SEMANTIC_GROUP__DESCRIPTORS = NAMED_ELEMENT__DESCRIPTORS;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference list.
@@ -1410,13 +1455,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int REPOSITORY__DRAWN = NAMED_ELEMENT__DRAWN;
 
 	/**
-	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY__DESCRIPTOR = NAMED_ELEMENT__DESCRIPTOR;
+	int REPOSITORY__DESCRIPTORS = NAMED_ELEMENT__DESCRIPTORS;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference list.
@@ -1528,13 +1573,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int RESOURCE__DRAWN = NAMED_ELEMENT__DRAWN;
 
 	/**
-	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__DESCRIPTOR = NAMED_ELEMENT__DESCRIPTOR;
+	int RESOURCE__DESCRIPTORS = NAMED_ELEMENT__DESCRIPTORS;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference list.
@@ -1609,13 +1654,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int RESOURCE__REPOSITORY_FROM = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Default Constraint Interpreter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__DEFAULT_CONSTRAINT_INTERPRETER = NAMED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int RESOURCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Resource</em>' class.
@@ -1682,13 +1736,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEMANTIC_NODE__DRAWN = NAMED_ELEMENT__DRAWN;
 
 	/**
-	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__DESCRIPTOR = NAMED_ELEMENT__DESCRIPTOR;
+	int SEMANTIC_NODE__DESCRIPTORS = NAMED_ELEMENT__DESCRIPTORS;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference list.
@@ -1827,13 +1881,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int PROPERTY__DRAWN = NAMED_ELEMENT__DRAWN;
 
 	/**
-	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__DESCRIPTOR = NAMED_ELEMENT__DESCRIPTOR;
+	int PROPERTY__DESCRIPTORS = NAMED_ELEMENT__DESCRIPTORS;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference list.
@@ -1954,13 +2008,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int OBJECT_PROPERTY__DRAWN = PROPERTY__DRAWN;
 
 	/**
-	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_PROPERTY__DESCRIPTOR = PROPERTY__DESCRIPTOR;
+	int OBJECT_PROPERTY__DESCRIPTORS = PROPERTY__DESCRIPTORS;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference list.
@@ -2090,13 +2144,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int DATA_PROPERTY__DRAWN = PROPERTY__DRAWN;
 
 	/**
-	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_PROPERTY__DESCRIPTOR = PROPERTY__DESCRIPTOR;
+	int DATA_PROPERTY__DESCRIPTORS = PROPERTY__DESCRIPTORS;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference list.
@@ -2405,6 +2459,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getConstraintInterpreter_Evals();
 
 	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.ConstraintInterpreter#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see semanticmanager.ConstraintInterpreter#getType()
+	 * @see #getConstraintInterpreter()
+	 * @generated
+	 */
+	EAttribute getConstraintInterpreter_Type();
+
+	/**
 	 * Returns the meta object for the '{@link semanticmanager.ConstraintInterpreter#eval(semanticmanager.Constraint, semanticmanager.NamedElement) <em>Eval</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2542,6 +2607,16 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSearchResult_ApplyOnElements();
+
+	/**
+	 * Returns the meta object for the '{@link semanticmanager.SearchResult#getOptionValue(java.lang.String) <em>Get Option Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Option Value</em>' operation.
+	 * @see semanticmanager.SearchResult#getOptionValue(java.lang.String)
+	 * @generated
+	 */
+	EOperation getSearchResult__GetOptionValue__String();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.SearchResultOptionValue <em>Search Result Option Value</em>}'.
@@ -2766,6 +2841,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	EClass getCustomSearch();
 
 	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.CustomSearch#isGrouped <em>Grouped</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Grouped</em>'.
+	 * @see semanticmanager.CustomSearch#isGrouped()
+	 * @see #getCustomSearch()
+	 * @generated
+	 */
+	EAttribute getCustomSearch_Grouped();
+
+	/**
 	 * Returns the meta object for the '{@link semanticmanager.CustomSearch#search(semanticmanager.SearchResult) <em>Search</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2786,14 +2872,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	EClass getPredicateBasedSearch();
 
 	/**
-	 * Returns the meta object for the '{@link semanticmanager.PredicateBasedSearch#matches(semanticmanager.NamedElement) <em>Matches</em>}' operation.
+	 * Returns the meta object for the '{@link semanticmanager.PredicateBasedSearch#matches(semanticmanager.NamedElement, org.eclipse.emf.common.util.EList) <em>Matches</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Matches</em>' operation.
-	 * @see semanticmanager.PredicateBasedSearch#matches(semanticmanager.NamedElement)
+	 * @see semanticmanager.PredicateBasedSearch#matches(semanticmanager.NamedElement, org.eclipse.emf.common.util.EList)
 	 * @generated
 	 */
-	EOperation getPredicateBasedSearch__Matches__NamedElement();
+	EOperation getPredicateBasedSearch__Matches__NamedElement_EList();
+
+	/**
+	 * Returns the meta object for the '{@link semanticmanager.PredicateBasedSearch#getOptionValueKey(java.lang.String, org.eclipse.emf.common.util.EList) <em>Get Option Value Key</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Option Value Key</em>' operation.
+	 * @see semanticmanager.PredicateBasedSearch#getOptionValueKey(java.lang.String, org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getPredicateBasedSearch__GetOptionValueKey__String_EList();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.AtomicSearchResult <em>Atomic Search Result</em>}'.
@@ -2876,16 +2972,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getGroupedSearchResult__AddObjectPropertyToSemanticGroup__SemanticGroup_ObjectProperty();
-
-	/**
-	 * Returns the meta object for the '{@link semanticmanager.GroupedSearchResult#getOptionValue(java.lang.String) <em>Get Option Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Option Value</em>' operation.
-	 * @see semanticmanager.GroupedSearchResult#getOptionValue(java.lang.String)
-	 * @generated
-	 */
-	EOperation getGroupedSearchResult__GetOptionValue__String();
 
 	/**
 	 * Returns the meta object for the '{@link semanticmanager.GroupedSearchResult#addNamedElementToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.NamedElement) <em>Add Named Element To Semantic Group</em>}' operation.
@@ -3037,6 +3123,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getResource_RepositoryFrom();
 
 	/**
+	 * Returns the meta object for the reference '{@link semanticmanager.Resource#getDefaultConstraintInterpreter <em>Default Constraint Interpreter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Default Constraint Interpreter</em>'.
+	 * @see semanticmanager.Resource#getDefaultConstraintInterpreter()
+	 * @see #getResource()
+	 * @generated
+	 */
+	EReference getResource_DefaultConstraintInterpreter();
+
+	/**
 	 * Returns the meta object for class '{@link semanticmanager.SemanticNode <em>Semantic Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3167,15 +3264,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	EAttribute getNamedElement_Drawn();
 
 	/**
-	 * Returns the meta object for the reference '{@link semanticmanager.NamedElement#getDescriptor <em>Descriptor</em>}'.
+	 * Returns the meta object for the reference list '{@link semanticmanager.NamedElement#getDescriptors <em>Descriptors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Descriptor</em>'.
-	 * @see semanticmanager.NamedElement#getDescriptor()
+	 * @return the meta object for the reference list '<em>Descriptors</em>'.
+	 * @see semanticmanager.NamedElement#getDescriptors()
 	 * @see #getNamedElement()
 	 * @generated
 	 */
-	EReference getNamedElement_Descriptor();
+	EReference getNamedElement_Descriptors();
 
 	/**
 	 * Returns the meta object for the reference list '{@link semanticmanager.NamedElement#getDescribes <em>Describes</em>}'.
@@ -3502,6 +3599,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference CONSTRAINT_INTERPRETER__EVALS = eINSTANCE.getConstraintInterpreter_Evals();
 
 		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTRAINT_INTERPRETER__TYPE = eINSTANCE.getConstraintInterpreter_Type();
+
+		/**
 		 * The meta object literal for the '<em><b>Eval</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3610,6 +3715,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SEARCH_RESULT__APPLY_ON_ELEMENTS = eINSTANCE.getSearchResult_ApplyOnElements();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Option Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SEARCH_RESULT___GET_OPTION_VALUE__STRING = eINSTANCE.getSearchResult__GetOptionValue__String();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SearchResultOptionValueImpl <em>Search Result Option Value</em>}' class.
@@ -3792,6 +3905,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EClass CUSTOM_SEARCH = eINSTANCE.getCustomSearch();
 
 		/**
+		 * The meta object literal for the '<em><b>Grouped</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_SEARCH__GROUPED = eINSTANCE.getCustomSearch_Grouped();
+
+		/**
 		 * The meta object literal for the '<em><b>Search</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3815,7 +3936,15 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation PREDICATE_BASED_SEARCH___MATCHES__NAMEDELEMENT = eINSTANCE.getPredicateBasedSearch__Matches__NamedElement();
+		EOperation PREDICATE_BASED_SEARCH___MATCHES__NAMEDELEMENT_ELIST = eINSTANCE.getPredicateBasedSearch__Matches__NamedElement_EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Option Value Key</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PREDICATE_BASED_SEARCH___GET_OPTION_VALUE_KEY__STRING_ELIST = eINSTANCE.getPredicateBasedSearch__GetOptionValueKey__String_EList();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.AtomicSearchResultImpl <em>Atomic Search Result</em>}' class.
@@ -3884,14 +4013,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation GROUPED_SEARCH_RESULT___ADD_OBJECT_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_OBJECTPROPERTY = eINSTANCE.getGroupedSearchResult__AddObjectPropertyToSemanticGroup__SemanticGroup_ObjectProperty();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Option Value</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation GROUPED_SEARCH_RESULT___GET_OPTION_VALUE__STRING = eINSTANCE.getGroupedSearchResult__GetOptionValue__String();
 
 		/**
 		 * The meta object literal for the '<em><b>Add Named Element To Semantic Group</b></em>' operation.
@@ -4012,6 +4133,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference RESOURCE__REPOSITORY_FROM = eINSTANCE.getResource_RepositoryFrom();
 
 		/**
+		 * The meta object literal for the '<em><b>Default Constraint Interpreter</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE__DEFAULT_CONSTRAINT_INTERPRETER = eINSTANCE.getResource_DefaultConstraintInterpreter();
+
+		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SemanticNodeImpl <em>Semantic Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4112,12 +4241,12 @@ public interface SemanticmanagerPackage extends EPackage {
 		EAttribute NAMED_ELEMENT__DRAWN = eINSTANCE.getNamedElement_Drawn();
 
 		/**
-		 * The meta object literal for the '<em><b>Descriptor</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Descriptors</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference NAMED_ELEMENT__DESCRIPTOR = eINSTANCE.getNamedElement_Descriptor();
+		EReference NAMED_ELEMENT__DESCRIPTORS = eINSTANCE.getNamedElement_Descriptors();
 
 		/**
 		 * The meta object literal for the '<em><b>Describes</b></em>' reference list feature.

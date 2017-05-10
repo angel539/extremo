@@ -6,6 +6,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.swt.graphics.Image;
+
+import semanticmanager.Constraint;
 import semanticmanager.Resource;
 
 public class ColumnTwoRepositoryViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider{
@@ -20,6 +22,13 @@ public class ColumnTwoRepositoryViewAdapterFactoryLabelProvider extends AdapterF
 		if (element instanceof Resource) {
 			Resource resourceObject = (Resource) element;
 			if(resourceObject.getAssistant() != null) return new StyledString(resourceObject.getAssistant());
+			else new StyledString("");
+		}
+		
+		if (element instanceof Constraint) {
+			Constraint constraint = (Constraint) element;
+			if(constraint.getInterpreter() != null) 
+				return new StyledString(constraint.getInterpreter().getType());
 			else new StyledString("");
 		}
 		

@@ -98,9 +98,11 @@
             </annotation>
             <simpleType>
                <restriction base="string">
-                  <enumeration value="entities">
-                  </enumeration>
                   <enumeration value="repositories">
+                  </enumeration>
+                  <enumeration value="searches">
+                  </enumeration>
+                  <enumeration value="constraints">
                   </enumeration>
                </restriction>
             </simpleType>

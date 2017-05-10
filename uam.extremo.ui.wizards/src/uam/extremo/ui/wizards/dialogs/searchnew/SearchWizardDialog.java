@@ -2,6 +2,7 @@ package uam.extremo.ui.wizards.dialogs.searchnew;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -18,14 +19,12 @@ import uam.extremo.ui.wizards.dialogs.searchnew.dnd.NamedElementSelectionWizardP
 public class SearchWizardDialog extends Wizard{
 	SearchConfigurationSelectorWizardPage searchPage;
 	
-	List<SearchConfiguration> searchConfigurations;
-	SearchConfiguration searchConfigurationSelected;
+	List<SimpleSearchConfiguration> searchConfigurations;
+	SimpleSearchConfiguration searchConfigurationSelected;
 	
 	SearchResult searchResult;
-	SearchConfiguration selectedConfiguration;
+	SimpleSearchConfiguration selectedConfiguration;
 	NamedElementSelectionWizardPage namedElementSelectionWizardPage;
-	
-	//Map<String, List<NamedElement>> namedElementsByType;
 	IStructuredSelection strucSelection;
 	
 	public SearchWizardDialog(IStructuredSelection strucSelection, SearchResult searchResult){
@@ -34,7 +33,10 @@ public class SearchWizardDialog extends Wizard{
 		this.strucSelection = strucSelection;
 		this.searchResult = searchResult;
 		
-		this.searchConfigurations = AssistantFactory.getInstance().getSearches();
+		this.searchConfigurations = AssistantFactory.getInstance().getSearches()
+											.stream().filter(ssc -> ssc instanceof SimpleSearchConfiguration)
+										    .map (ssc -> (SimpleSearchConfiguration) ssc)
+										    .collect(Collectors.toList());
 	}
 	
 	@Override
@@ -43,17 +45,17 @@ public class SearchWizardDialog extends Wizard{
 	}
 	
 	public void addPages(){
-		searchPage = new SearchConfigurationSelectorWizardPage("Search", "Apply a search over the repositories", searchConfigurations, searchConfigurationSelected);
-		namedElementSelectionWizardPage = new NamedElementSelectionWizardPage("Resource Selection", "");
+		searchPage = new SearchConfigurationSelectorWizardPage("Search", "Select a search configuration from the query catalogue", searchConfigurations, searchConfigurationSelected);
+		//namedElementSelectionWizardPage = new NamedElementSelectionWizardPage("Elements Selection", "Select the input elements for the query", searchConfigurationSelected, strucSelection);
 		
 		addPage(searchPage);
-		addPage(namedElementSelectionWizardPage);
+		//addPage(namedElementSelectionWizardPage);
 	}
 	
 	@Override
 	public IWizardPage getNextPage(IWizardPage page) {
 		if(page == searchPage){
-			//namedElementSelectionWizardPage.setDatamodel(searchConfigurationSelected.getFilterBy().getLiteral(), namedElementsByType);
+			namedElementSelectionWizardPage = new NamedElementSelectionWizardPage("Elements Selection", "Select the input elements for the query", searchConfigurationSelected, strucSelection);
 			return namedElementSelectionWizardPage;
 		}
 		

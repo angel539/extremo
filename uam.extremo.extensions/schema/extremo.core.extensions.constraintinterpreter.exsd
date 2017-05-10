@@ -69,8 +69,15 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="semanticmanager.impl.ConstraintInterpreterImpl:"/>
+                  <meta.attribute kind="java" basedOn="semanticmanager.impl.ExtensibleConstraintInterpreterImpl:"/>
                </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="type" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
             </annotation>
          </attribute>
       </complexType>

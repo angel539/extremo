@@ -68,19 +68,31 @@ public class InheritanceGraphPartViewLabelProvider implements ILabelProvider, IC
 		if(obj instanceof Repository) return Activator.getImageDescriptor("icons/folder-icon_16.png").createImage();
     	
 		if(obj instanceof Resource){
-			if(((Resource) obj).getDescriptor() == null){
-				return Activator.getImageDescriptor("icons/schema16.png").createImage();
+			Resource resource = (Resource) obj;
+			if((resource.getDescriptors() == null) || (resource.getDescriptors().isEmpty())){
+				return Activator.getImageDescriptor("icons/descriptor.png").createImage();
 			}
 			else{
-				if(((Resource) obj).isAlive()) return Activator.getImageDescriptor("icons/3d_objects_16.png").createImage();
+				if(((Resource) obj).isAlive()) return Activator.getImageDescriptor("icons/description_on.png").createImage();
         		else{
-        			return Activator.getImageDescriptor("icons/3d_objects_off_16.png").createImage();
+        			return Activator.getImageDescriptor("icons/description.png").createImage();
         		}
 			}
     	}
 		
-		if(obj instanceof SemanticNode) return Activator.getImageDescriptor("icons/class_obj.png").createImage();
+		if(obj instanceof SemanticNode){
+			SemanticNode semanticNode = (SemanticNode) obj;
+			if((semanticNode.getDescriptors() == null) || (semanticNode.getDescriptors().isEmpty())){
+				return Activator.getImageDescriptor("icons/class_obj.png").createImage();
+			}
+			else{
+        		return Activator.getImageDescriptor("icons/object.png").createImage();
+			}
+    	}
+
+		if(obj instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.gif").createImage();
 		if(obj instanceof DataProperty) return Activator.getImageDescriptor("icons/attribute.png").createImage();
+    	
 
 		return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 	}

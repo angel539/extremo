@@ -6,6 +6,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import semanticmanager.ConstraintInterpreter;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
 import semanticmanager.SemanticNode;
@@ -25,6 +26,7 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.ResourceImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link semanticmanager.impl.ResourceImpl#getUri <em>Uri</em>}</li>
  *   <li>{@link semanticmanager.impl.ResourceImpl#getRepositoryFrom <em>Repository From</em>}</li>
+ *   <li>{@link semanticmanager.impl.ResourceImpl#getDefaultConstraintInterpreter <em>Default Constraint Interpreter</em>}</li>
  * </ul>
  *
  * @generated
@@ -147,6 +149,24 @@ public class ResourceImpl extends NamedElementImpl implements Resource {
 	 */
 	public void setRepositoryFrom(Repository newRepositoryFrom) {
 		eSet(SemanticmanagerPackage.Literals.RESOURCE__REPOSITORY_FROM, newRepositoryFrom);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConstraintInterpreter getDefaultConstraintInterpreter() {
+		return (ConstraintInterpreter)eGet(SemanticmanagerPackage.Literals.RESOURCE__DEFAULT_CONSTRAINT_INTERPRETER, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultConstraintInterpreter(ConstraintInterpreter newDefaultConstraintInterpreter) {
+		eSet(SemanticmanagerPackage.Literals.RESOURCE__DEFAULT_CONSTRAINT_INTERPRETER, newDefaultConstraintInterpreter);
 	}
 
 } //ResourceImpl

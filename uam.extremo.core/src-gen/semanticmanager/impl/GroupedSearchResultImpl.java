@@ -109,17 +109,6 @@ public abstract class GroupedSearchResultImpl extends SearchResultImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getOptionValue(String key) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public void addNamedElementToSemanticGroup(SemanticGroup semanticGroup, NamedElement namedElement) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -156,8 +145,6 @@ public abstract class GroupedSearchResultImpl extends SearchResultImpl implement
 			case SemanticmanagerPackage.GROUPED_SEARCH_RESULT___ADD_OBJECT_PROPERTY_TO_SEMANTIC_GROUP__SEMANTICGROUP_OBJECTPROPERTY:
 				addObjectPropertyToSemanticGroup((SemanticGroup)arguments.get(0), (ObjectProperty)arguments.get(1));
 				return null;
-			case SemanticmanagerPackage.GROUPED_SEARCH_RESULT___GET_OPTION_VALUE__STRING:
-				return getOptionValue((String)arguments.get(0));
 			case SemanticmanagerPackage.GROUPED_SEARCH_RESULT___ADD_NAMED_ELEMENT_TO_SEMANTIC_GROUP__SEMANTICGROUP_NAMEDELEMENT:
 				addNamedElementToSemanticGroup((SemanticGroup)arguments.get(0), (NamedElement)arguments.get(1));
 				return null;

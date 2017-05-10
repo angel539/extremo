@@ -124,7 +124,7 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 					
 					SemanticNode conforms_to = 
 							searchSemanticNodeByName(
-									(semanticmanager.Resource) semanticResource.getDescriptor(), 
+									(semanticmanager.Resource) semanticResource.getDescriptors().get(semanticResource.getDescriptors().size() - 1), 
 									obj.eClass().getName()
 							);
 					
@@ -168,11 +168,10 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 					String description = ((EClass) obj).getEAnnotations().toString();
 									
 					SemanticNode semanticNode = 
-							createSemanticNode(
+							createSemanticNodeWithoutDescriptor(
 									obj, //original object as id
 									name, 
-									description, 
-									null); //it is actually a descriptor element
+									description); //it is actually a descriptor element
 										
 					addSemanticNodeToResource(semanticResource, semanticNode);
 				}
@@ -211,7 +210,7 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 					
 					DataProperty descriptor = 
 							searchDataPropertyByName(
-									(SemanticNode) parent.getDescriptor(), 
+									(SemanticNode) parent.getDescriptors().get(parent.getDescriptors().size() - 1),
 									eAttribute.getName()
 							);
 					
@@ -316,7 +315,7 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 					
 					ObjectProperty descriptor = 
 							searchObjectPropertyByName(
-									(SemanticNode) parent.getDescriptor(), 
+									(SemanticNode) parent.getDescriptors().get(parent.getDescriptors().size() - 1),
 									eReference.getName()
 							);
 					

@@ -6,7 +6,8 @@
       <constraintinterpreter
             class="uam.extremo.constraints.regex.RegexConstraintInterpreter"
             id="uam.extremo.constraints.regex"
-            name="Regex">
+            name="Regex"
+            type="Regex">
       </constraintinterpreter>
    </extension>
 

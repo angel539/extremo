@@ -16,6 +16,12 @@ import semanticmanager.SemanticmanagerPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Custom Search</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link semanticmanager.impl.CustomSearchImpl#isGrouped <em>Grouped</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -37,6 +43,24 @@ public class CustomSearchImpl extends SimpleSearchConfigurationImpl implements C
 	@Override
 	protected EClass eStaticClass() {
 		return SemanticmanagerPackage.Literals.CUSTOM_SEARCH;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isGrouped() {
+		return (Boolean)eGet(SemanticmanagerPackage.Literals.CUSTOM_SEARCH__GROUPED, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGrouped(boolean newGrouped) {
+		eSet(SemanticmanagerPackage.Literals.CUSTOM_SEARCH__GROUPED, newGrouped);
 	}
 
 	/**

@@ -59,7 +59,7 @@ public interface IFormatAssistant {
     	resource.setDescription(description);
     	resource.setActive(active);
     	resource.setAlive(alive);
-    	resource.setDescriptor(descriptor);
+    	resource.getDescriptors().add(descriptor);
         return resource;
     }
     
@@ -76,23 +76,21 @@ public interface IFormatAssistant {
     	return true;
     }
     
+    default SemanticNode createSemanticNodeWithoutDescriptor(Object id, String name, String description) {
+    	SemanticNode semanticNode = ExtendedSemanticmanagerFactory.eINSTANCE.createSemanticNode();
+    	semanticNode.setTrace(id);
+    	semanticNode.setName(name);
+    	semanticNode.setDescription(description);
+    	//semanticNode.getDescriptors().add(descriptor);
+        return semanticNode;
+    }
+    
     default SemanticNode createSemanticNode(Object id, String name, String description, SemanticNode descriptor) {
     	SemanticNode semanticNode = ExtendedSemanticmanagerFactory.eINSTANCE.createSemanticNode();
     	semanticNode.setTrace(id);
     	semanticNode.setName(name);
     	semanticNode.setDescription(description);
-    	semanticNode.setWeight(1);
-    	semanticNode.setDescriptor(descriptor);
-        return semanticNode;
-    }
-    
-    default SemanticNode createSemanticNode(Object id, String name, String description, int weight, SemanticNode descriptor) {
-    	SemanticNode semanticNode = ExtendedSemanticmanagerFactory.eINSTANCE.createSemanticNode();
-    	semanticNode.setTrace(id);
-    	semanticNode.setName(name);
-    	semanticNode.setDescription(description);
-    	semanticNode.setWeight(weight);
-    	semanticNode.setDescriptor(descriptor);
+    	semanticNode.getDescriptors().add(descriptor);
         return semanticNode;
     }
     
@@ -117,13 +115,10 @@ public interface IFormatAssistant {
     
     default DataProperty createDataProperty(Object id, String name, int lowerbound, int upperbound, String description, Type type){
     	DataProperty dataProperty = ExtendedSemanticmanagerFactory.eINSTANCE.createDataProperty();
-    	
     	dataProperty.setTrace(id);
     	dataProperty.setName(name);
     	dataProperty.setDescription(description);
     	dataProperty.setType(type);
-    	dataProperty.setDescriptor(null);
-    	
     	dataProperty.setLowerBound(lowerbound);
     	dataProperty.setUpperBound(upperbound);
     	
@@ -132,12 +127,11 @@ public interface IFormatAssistant {
     
     default DataProperty createDataProperty(DataProperty descriptor, String value){
     	DataProperty dataProperty = ExtendedSemanticmanagerFactory.eINSTANCE.createDataProperty();
-    	
     	dataProperty.setTrace(descriptor.getTrace());
     	dataProperty.setName(descriptor.getName());
     	dataProperty.setDescription(descriptor.getDescription());
     	dataProperty.setType(descriptor.getType());
-    	dataProperty.setDescriptor(descriptor);
+    	dataProperty.getDescriptors().add(descriptor);
     	dataProperty.setValue(value);
     	
         return dataProperty;
@@ -157,8 +151,6 @@ public interface IFormatAssistant {
     	objectProperty.setUpperBound(upperbound);
     	
     	objectProperty.setRange(range);
-    	objectProperty.setDescriptor(null);
-    	
         return objectProperty;
     }
     
@@ -166,12 +158,8 @@ public interface IFormatAssistant {
     	ObjectProperty objectProperty = ExtendedSemanticmanagerFactory.eINSTANCE.createObjectProperty();
     	objectProperty.setTrace(id);
     	objectProperty.setName(name);
-    	//objectProperty.setLowerBound(descriptor.getLowerBound());
-    	//objectProperty.setUpperBound(descriptor.getUpperBound());
-    	
     	objectProperty.setRange(range);
-    	objectProperty.setDescriptor(descriptor);
-    	
+    	objectProperty.getDescriptors().add(descriptor);
         return objectProperty;
     }
     

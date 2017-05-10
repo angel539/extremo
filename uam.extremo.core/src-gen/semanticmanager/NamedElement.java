@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link semanticmanager.NamedElement#getWeight <em>Weight</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getTrace <em>Trace</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#isDrawn <em>Drawn</em>}</li>
- *   <li>{@link semanticmanager.NamedElement#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link semanticmanager.NamedElement#getDescriptors <em>Descriptors</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getDescribes <em>Describes</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getConstraints <em>Constraints</em>}</li>
  * </ul>
@@ -161,37 +161,27 @@ public interface NamedElement extends EObject {
 	void setDrawn(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Descriptor</b></em>' reference.
+	 * Returns the value of the '<em><b>Descriptors</b></em>' reference list.
+	 * The list contents are of type {@link semanticmanager.NamedElement}.
 	 * It is bidirectional and its opposite is '{@link semanticmanager.NamedElement#getDescribes <em>Describes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Descriptor</em>' reference isn't clear,
+	 * If the meaning of the '<em>Descriptors</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Descriptor</em>' reference.
-	 * @see #setDescriptor(NamedElement)
-	 * @see semanticmanager.SemanticmanagerPackage#getNamedElement_Descriptor()
+	 * @return the value of the '<em>Descriptors</em>' reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getNamedElement_Descriptors()
 	 * @see semanticmanager.NamedElement#getDescribes
 	 * @model opposite="describes"
 	 * @generated
 	 */
-	NamedElement getDescriptor();
-
-	/**
-	 * Sets the value of the '{@link semanticmanager.NamedElement#getDescriptor <em>Descriptor</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Descriptor</em>' reference.
-	 * @see #getDescriptor()
-	 * @generated
-	 */
-	void setDescriptor(NamedElement value);
+	EList<NamedElement> getDescriptors();
 
 	/**
 	 * Returns the value of the '<em><b>Describes</b></em>' reference list.
 	 * The list contents are of type {@link semanticmanager.NamedElement}.
-	 * It is bidirectional and its opposite is '{@link semanticmanager.NamedElement#getDescriptor <em>Descriptor</em>}'.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.NamedElement#getDescriptors <em>Descriptors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Describes</em>' reference list isn't clear,
@@ -200,8 +190,8 @@ public interface NamedElement extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Describes</em>' reference list.
 	 * @see semanticmanager.SemanticmanagerPackage#getNamedElement_Describes()
-	 * @see semanticmanager.NamedElement#getDescriptor
-	 * @model opposite="descriptor"
+	 * @see semanticmanager.NamedElement#getDescriptors
+	 * @model opposite="descriptors"
 	 * @generated
 	 */
 	EList<NamedElement> getDescribes();

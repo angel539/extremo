@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="extremo.ui.extensions.actions">
+      <action
+            class="uam.extremo.ui.views.actions.exeed.action.CreateExeedTreeStructure"
+            editorId="org.eclipse.emf.ecore.editor.presentation.EcoreEditorID"
+            icon="icons/exeed16.png"
+            id="extremo.ui.extensions.actions.exeed.repositories"
+            name="Create Exeed Structure"
+            position="menumanager"
+            view="repositories">
+      </action>
+      <action
+            class="uam.extremo.ui.views.actions.exeed.action.CreateExeedTreeStructure"
+            editorId="org.eclipse.emf.ecore.editor.presentation.EcoreEditorID"
+            icon="icons/exeed16.png"
+            id="extremo.ui.extensions.actions.exeed.searches"
+            name="Create Exeed Structure"
+            position="menumanager"
+            view="searches">
+      </action>
+      <action
+            class="uam.extremo.ui.views.actions.exeed.action.CreateExeedTreeStructure"
+            editorId="org.eclipse.emf.ecore.editor.presentation.EcoreEditorID"
+            icon="icons/exeed16.png"
+            id="extremo.ui.extensions.actions.exeed.constraints"
+            name="Create Exeed Structure"
+            position="menumanager"
+            view="constraints">
+      </action>
+   </extension>
+
+</plugin>

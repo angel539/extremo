@@ -2,6 +2,7 @@
  */
 package semanticmanager.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -95,6 +96,31 @@ public class SearchResultImpl extends MinimalEObjectImpl.Container implements Se
 	@SuppressWarnings("unchecked")
 	public EList<NamedElement> getApplyOnElements() {
 		return (EList<NamedElement>)eGet(SemanticmanagerPackage.Literals.SEARCH_RESULT__APPLY_ON_ELEMENTS, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object getOptionValue(String key) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case SemanticmanagerPackage.SEARCH_RESULT___GET_OPTION_VALUE__STRING:
+				return getOptionValue((String)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //SearchResultImpl

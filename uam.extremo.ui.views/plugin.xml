@@ -48,7 +48,7 @@
                closeable="false"
                id="uam.extremo.ui.views.SearchTree"
                minimized="false"
-               relationship="stack"
+               relationship="right"
                relative="uam.extremo.ui.views.RepositoryView"
                visible="true">
          </view>

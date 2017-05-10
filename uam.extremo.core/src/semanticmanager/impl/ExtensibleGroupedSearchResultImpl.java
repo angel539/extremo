@@ -67,6 +67,7 @@ public class ExtensibleGroupedSearchResultImpl extends GroupedSearchResultImpl i
 		return null;
 	}
 
+
 	@Override
 	public SearchConfiguration getConfiguration() {
 		return null;

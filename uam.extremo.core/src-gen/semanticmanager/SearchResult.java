@@ -85,4 +85,12 @@ public interface SearchResult extends EObject {
 	 */
 	EList<NamedElement> getApplyOnElements();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Object getOptionValue(String key);
+
 } // SearchResult

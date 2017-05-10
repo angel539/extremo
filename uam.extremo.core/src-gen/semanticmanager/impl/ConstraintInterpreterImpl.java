@@ -28,6 +28,7 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.ConstraintInterpreterImpl#getName <em>Name</em>}</li>
  *   <li>{@link semanticmanager.impl.ConstraintInterpreterImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link semanticmanager.impl.ConstraintInterpreterImpl#getEvals <em>Evals</em>}</li>
+ *   <li>{@link semanticmanager.impl.ConstraintInterpreterImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -116,6 +117,24 @@ public abstract class ConstraintInterpreterImpl extends MinimalEObjectImpl.Conta
 	@SuppressWarnings("unchecked")
 	public EList<ConstraintResult> getEvals() {
 		return (EList<ConstraintResult>)eGet(SemanticmanagerPackage.Literals.CONSTRAINT_INTERPRETER__EVALS, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getType() {
+		return (String)eGet(SemanticmanagerPackage.Literals.CONSTRAINT_INTERPRETER__TYPE, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(String newType) {
+		eSet(SemanticmanagerPackage.Literals.CONSTRAINT_INTERPRETER__TYPE, newType);
 	}
 
 	/**

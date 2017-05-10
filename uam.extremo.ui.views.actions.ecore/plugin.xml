@@ -4,22 +4,31 @@
    <extension
          point="extremo.ui.extensions.actions">
       <action
-            class="uam.extremo.ui.views.actions.ecore.action.CreateClass"
-            editorId="org.eclipse.emf.ecore.editor.presentation.EcoreEditorID"
-            icon="icons/geometry.png"
-            id="metaRDF.ui.actions.ecore.action.CreateClass"
-            name="CreateEcoreClass"
-            position="toolbar"
+            class="uam.extremo.ui.views.actions.ecore.action.CreateEcoreTreeStructure"
+            editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"
+            icon="icons/ecore16.png"
+            id="extremo.ui.extensions.actions.ecore.repositories"
+            name="Create Ecore Structure"
+            position="menumanager"
+            view="repositories">
+      </action>
+      <action
+            class="uam.extremo.ui.views.actions.ecore.action.CreateEcoreTreeStructure"
+            editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"
+            icon="icons/ecore16.png"
+            id="extremo.ui.extensions.actions.ecore.searches"
+            name="Create Ecore Structure"
+            position="menumanager"
             view="searches">
       </action>
       <action
-            class="uam.extremo.ui.views.actions.ecore.action.CreateAttribute"
-            editorId="org.eclipse.emf.ecore.editor.presentation.EcoreEditorID"
-            icon="icons/geometry.png"
-            id="metaRDF.ui.actions.ecore.action.CreateAttribute"
-            name="CreateEcoreAttribute"
-            position="toolbar"
-            view="searches">
+            class="uam.extremo.ui.views.actions.ecore.action.CreateEcoreTreeStructure"
+            editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"
+            icon="icons/ecore16.png"
+            id="extremo.ui.extensions.actions.ecore.constraints"
+            name="Create Ecore Structure"
+            position="menumanager"
+            view="constraints">
       </action>
    </extension>
 

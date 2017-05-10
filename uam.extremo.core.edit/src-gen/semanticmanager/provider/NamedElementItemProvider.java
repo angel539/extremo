@@ -68,7 +68,7 @@ public class NamedElementItemProvider
 			addWeightPropertyDescriptor(object);
 			addTracePropertyDescriptor(object);
 			addDrawnPropertyDescriptor(object);
-			addDescriptorPropertyDescriptor(object);
+			addDescriptorsPropertyDescriptor(object);
 			addDescribesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -185,19 +185,19 @@ public class NamedElementItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Descriptor feature.
+	 * This adds a property descriptor for the Descriptors feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDescriptorPropertyDescriptor(Object object) {
+	protected void addDescriptorsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_NamedElement_descriptor_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_descriptor_feature", "_UI_NamedElement_type"),
-				 SemanticmanagerPackage.Literals.NAMED_ELEMENT__DESCRIPTOR,
+				 getString("_UI_NamedElement_descriptors_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_descriptors_feature", "_UI_NamedElement_type"),
+				 SemanticmanagerPackage.Literals.NAMED_ELEMENT__DESCRIPTORS,
 				 true,
 				 false,
 				 true,

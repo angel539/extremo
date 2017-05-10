@@ -15,7 +15,6 @@ import semanticmanager.GroupedSearchResult;
  *   <li>{@link semanticmanager.GroupedSearchResult#addSemanticNodeToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.SemanticNode) <em>Add Semantic Node To Semantic Group</em>}</li>
  *   <li>{@link semanticmanager.GroupedSearchResult#addDataPropertyToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.DataProperty) <em>Add Data Property To Semantic Group</em>}</li>
  *   <li>{@link semanticmanager.GroupedSearchResult#addObjectPropertyToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.ObjectProperty) <em>Add Object Property To Semantic Group</em>}</li>
- *   <li>{@link semanticmanager.GroupedSearchResult#getOptionValue(java.lang.String) <em>Get Option Value</em>}</li>
  *   <li>{@link semanticmanager.GroupedSearchResult#addNamedElementToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.NamedElement) <em>Add Named Element To Semantic Group</em>}</li>
  *   <li>{@link semanticmanager.GroupedSearchResult#addResourceToSemanticGroup(semanticmanager.SemanticGroup, semanticmanager.Resource) <em>Add Resource To Semantic Group</em>}</li>
  * </ul>
@@ -92,19 +91,6 @@ public abstract class GroupedSearchResultTest extends SearchResultTest {
 	 * @generated
 	 */
 	public void testAddObjectPropertyToSemanticGroup__SemanticGroup_ObjectProperty() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
-
-	/**
-	 * Tests the '{@link semanticmanager.GroupedSearchResult#getOptionValue(java.lang.String) <em>Get Option Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see semanticmanager.GroupedSearchResult#getOptionValue(java.lang.String)
-	 * @generated
-	 */
-	public void testGetOptionValue__String() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

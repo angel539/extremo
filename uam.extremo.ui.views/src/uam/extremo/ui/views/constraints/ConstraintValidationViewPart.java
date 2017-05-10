@@ -24,13 +24,11 @@ import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory
 import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
-import org.eclipse.gef.GraphicalViewer;
-import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.ISelection;
@@ -46,9 +44,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
@@ -62,8 +57,8 @@ import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
 import semanticmanager.util.SemanticmanagerAdapterFactory;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.views.Activator;
-import uam.extremo.ui.views.dnd.GraphityEditorTransferDropTargetListener;
-import uam.extremo.ui.views.extensions.ExtremoViewPartAction;
+import uam.extremo.ui.views.extensions.actions.ExtensibleViewPartActionContribution;
+import uam.extremo.ui.views.searchtree.TreeViewAdapterFactoryLabelProvider;
 
 public class ConstraintValidationViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor {
 	public static final String ID = "uam.extremo.ui.views.ConstraintInterpreters";
@@ -77,8 +72,6 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 
 	protected ComposedAdapterFactory adapterFactory;
 	List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
-	
-	//SemanticManagerAdapter adapter;
 	
 	class NameSorter extends ViewerSorter {
 	}
@@ -97,7 +90,6 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 		
 		new DrillDownAdapter(viewer);
 		
-		// Building the content and the label provider from EMF Edit
 		factories.add(new ResourceItemProviderAdapterFactory());
 		factories.add(new SemanticmanagerItemProviderAdapterFactory());
 		factories.add(new ReflectiveItemProviderAdapterFactory());
@@ -109,8 +101,7 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 		viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
 		viewer.setSorter(new NameSorter());
 		
-		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new ConstraintValidationViewAdapterFactoryLabelProvider(adapterFactory)));		  
-		
+		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new TreeViewAdapterFactoryLabelProvider(adapterFactory)));
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "extremo.ui.viewer");
 		
 		getSite().setSelectionProvider(viewer);
@@ -120,19 +111,18 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 		new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
 		
 		callActions();
-		callEditorsDrop();
-		callFilters();
+		//callEditorsDrop();
+		//callFilters();
 		
 		makeActions();
-		hookContextMenu();
+		//hookContextMenu();
 		hookDoubleClickAction();
 		contributeToActionBars();
-		
-    	ConstraintValidationViewerComparator comparator = new ConstraintValidationViewerComparator();
-		viewer.setComparator(comparator);
+    	//ConstraintValidationViewerComparator comparator = new ConstraintValidationViewerComparator();
+		//viewer.setComparator(comparator);
 	}
 
-	private void hookContextMenu() {
+	/*private void hookContextMenu() {
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.addMenuListener(new IMenuListener() {
@@ -143,7 +133,7 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 		Menu menu = menuMgr.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
 		getSite().registerContextMenu(menuMgr, viewer);
-	}
+	}*/
 
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
@@ -201,7 +191,7 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 		return null;
 	}
 
-	private void callEditorsDrop(){
+	/*private void callEditorsDrop(){
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 		IEditorPart editor = window.getActivePage().getActiveEditor();
@@ -225,19 +215,24 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 				}	
 			}
 		 }
-	}
+	}*/
 	
 	private void callActions() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
+		
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.ACTION_EXTENSIONS_ID);
-		MenuManager menuMgr = new MenuManager("#PopupMenu");
-		menuMgr.setRemoveAllWhenShown(true);
+		
+		//MenuManager menuMgr = new MenuManager("#PopupMenu");
+		//menuMgr.setRemoveAllWhenShown(true);
+		MenuManager menumanager = new MenuManager("#PopupMenu");
+		menumanager.setRemoveAllWhenShown(true);
 		
 		for(IConfigurationElement extension : extensions){
 			if(extension.getName().compareTo("action")==0){
-				ExtremoViewPartAction action;
+				ExtensibleViewPartActionContribution action;
+				
 				try{
-					action = (ExtremoViewPartAction) extension.createExecutableExtension("class");
+					action = (ExtensibleViewPartActionContribution) extension.createExecutableExtension("class");
 					action.setText(extension.getAttribute("name"));
 					action.setToolTipText(extension.getAttribute("description"));
 					action.setEditorID(extension.getAttribute("editorId"));
@@ -259,36 +254,42 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 						}
 					}
 					
-					if(descriptor != null) action.setImageDescriptor(descriptor);
+					if(descriptor != null) 
+						action.setImageDescriptor(descriptor);
 					
-					if((action != null) && (extension.getAttribute("view")).equals("constraints")){
+					if((action != null) 
+							&& (extension.getAttribute("view")).equals("constraints")){
 						IActionBars bars = getViewSite().getActionBars();
+						
+						System.out.println("position: " + extension.getAttribute("position"));
+						
 						if(extension.getAttribute("position").equals("toolbar")){
 							bars.getToolBarManager().add(action);
 						}
+						
 						if(extension.getAttribute("position").equals("menumanager")){
+							IMenuListener listener = new IMenuListener() {
+								 public void menuAboutToShow(IMenuManager m) {
+									 m.add(action);
+								 }
+							};
 							
-							
-							menuMgr.addMenuListener(new IMenuListener() {
-								public void menuAboutToShow(IMenuManager manager) {
-									manager.add(action);
-								}
-							});
-							
+							menumanager.addMenuListener(listener);				
 						}
 					}
 				}
 				catch(CoreException e){
+					MessageDialog.openError(null, "Constraint View Part", e.getMessage());
 				}
 			}	
 		}
 		
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
+		Menu menu = menumanager.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
+		getSite().registerContextMenu(menumanager, viewer);
 	}
 	
-	private void callFilters() {
+	/*private void callFilters() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.FILTER_EXTENSIONS_ID);
 		
@@ -306,14 +307,13 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 								viewer.refresh();
 							}
 							
-							// Saving View State
-							/*public void saveState(IMemento memento) {
+							public void saveState(IMemento memento) {
 								filter.saveState(memento);
 							}
 							
 							public void init(IMemento memento) {
 								filter.init(memento);
-							}*/
+							}
 						};
 						
 						extensionFilterAction.setText(extension.getAttribute("name"));
@@ -344,7 +344,7 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 				}
 			}	
 		}
-	}
+	}*/
 	
 	@Override
 	public String getContributorId() {

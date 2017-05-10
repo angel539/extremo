@@ -5,6 +5,7 @@
          point="org.eclipse.ui.newWizards">
       <wizard
             class="uam.extremo.ui.wizards.dialogs.searchnew.SearchWizardDialog"
+            descriptionImage="icons/searchBig.png"
             finalPerspective="extremo.ui.perspective.extremo"
             id="uam.extremo.ui.wizards.searchnew"
             name="Search">

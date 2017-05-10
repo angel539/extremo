@@ -10,9 +10,10 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
+import uam.extremo.ui.views.extensions.actions.IExtensibleViewPartActionContribution;
 import uam.extremo.ui.views.extensions.dnd.actions.ViewPartDropListener;
 
-public abstract class ViewPartAction extends Action implements IExtremoViewPartActionContribution{
+public abstract class ViewPartAction extends Action implements IExtensibleViewPartActionContribution{
 	private StructuredViewer viewer;
 	private IEditorPart editorPart;
 	private static String viewPartTargetId;

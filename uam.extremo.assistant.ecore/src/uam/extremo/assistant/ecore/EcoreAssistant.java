@@ -1,14 +1,18 @@
 package uam.extremo.assistant.ecore;
+
 import java.io.File;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.commons.io.FilenameUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -37,7 +41,11 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	String extension;
 	
 	Map<EObject, SemanticNode> correspondance = new HashMap<EObject, SemanticNode>();
-	ResourceSet resourceSet = new ResourceSetImpl(); 
+	ResourceSet resourceSet = new ResourceSetImpl();
+	
+	List<String> constraintNames = new ArrayList<String>();
+	
+	private static String OCLUri = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
 	
 	@Override
 	public boolean load(semanticmanager.Resource semanticResource) {
@@ -113,17 +121,30 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 				}
 				
 				if((obj != null) && (obj instanceof EClass)){
-					String name = ((EClass) obj).getName();
-					String description = ((EClass) obj).getEAnnotations().toString();
-									
+					EClass eClass = (EClass) obj;
+					String name = eClass.getName();
+					
 					SemanticNode semanticNode = 
-							createSemanticNode(
+							createSemanticNodeWithoutDescriptor(
 									obj, //original object as id
 									name, 
-									description, 
-									null); //it is actually a descriptor element
+									name); // the name is used as a description label too.
+									//it is actually a descriptor element
 										
 					addSemanticNodeToResource(semanticResource, semanticNode);
+					
+					// Constraints
+					for(EAnnotation annotation : eClass.getEAnnotations()){
+						if(annotation.getSource().equals(OCLUri)){
+							for(Entry<String, String> entry : annotation.getDetails().entrySet()){
+								if(! constraintNames.contains(entry.getKey())){
+									constraintNames.add(entry.getKey());
+									Constraint constraint = createConstraint("OCL", entry.getKey(), entry.getValue());
+									addConstraintToElement(semanticNode, constraint);
+								}
+							}
+						}										
+					}
 				}
 			}
 		}
@@ -173,7 +194,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 					
 					SemanticNode conforms_to = 
 							searchSemanticNodeByName(
-									(semanticmanager.Resource) semanticResource.getDescriptor(), 
+									(semanticmanager.Resource) semanticResource.getDescriptors().get(semanticResource.getDescriptors().size() - 1), 
 									obj.eClass().getName()
 							);
 					
@@ -186,7 +207,6 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 							);
 					
 					addSemanticNodeToResource(semanticResource, semanticNode);
-					
 					correspondance.put(obj, semanticNode);
 				}
 			}
@@ -220,7 +240,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 				try{
 					String name = attr.getName();
 					Type type = defineStringType();
-					Class<?> cl = (attr.getEType() != null)?attr.getEType().getInstanceClass():null;
+					Class<?> cl = (attr.getEType() != null) ? attr.getEType().getInstanceClass() : null;
 					
 					if (cl != null) {
 						if(cl == Integer.class || cl == int.class || cl == short.class || cl == Short.class || cl == BigInteger.class || cl == byte.class || cl == Byte.class){
@@ -251,6 +271,19 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 							);
 										
 					addDataPropertyToNode(parent, dataProperty);
+					
+					// Constraints
+					for(EAnnotation annotation : eClass.getEAnnotations()){
+						if(annotation.getSource().equals(OCLUri)){
+							for(Entry<String, String> entry : annotation.getDetails().entrySet()){
+								if(! constraintNames.contains(entry.getKey())){
+									constraintNames.add(entry.getKey());
+									Constraint constraint = createConstraint("OCL", entry.getKey(), entry.getValue());
+									addConstraintToElement(dataProperty, constraint);
+								}
+							}
+						}										
+					}
 				}
 				catch(Exception e){
 					return;
@@ -268,7 +301,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			for(EAttribute eAttribute : eAttributes){	
 					DataProperty descriptor = 
 							searchDataPropertyByName(
-									(SemanticNode) parent.getDescriptor(), 
+									(SemanticNode) parent.getDescriptors().get(parent.getDescriptors().size() - 1),
 									eAttribute.getName()
 							);
 					
@@ -327,6 +360,19 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 								range);
 				
 				addObjectPropertyToNode(parent, objectProperty);
+				
+				// Constraints
+				for(EAnnotation annotation : eClass.getEAnnotations()){
+					if(annotation.getSource().equals(OCLUri)){
+						for(Entry<String, String> entry : annotation.getDetails().entrySet()){
+							if(! constraintNames.contains(entry.getKey())){
+								constraintNames.add(entry.getKey());
+								Constraint constraint = createConstraint("OCL", entry.getKey(), entry.getValue());
+								addConstraintToElement(objectProperty, constraint);
+							}
+						}
+					}										
+				}
 			}
 		}
 	}
@@ -343,7 +389,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 					
 					ObjectProperty descriptor = 
 							searchObjectPropertyByName(
-									(SemanticNode) parent.getDescriptor(), 
+									//(SemanticNode) parent.getDescriptors(), 
+									(SemanticNode) parent.getDescriptors().get(parent.getDescriptors().size() - 1),
 									eReference.getName()
 							);
 					
@@ -365,7 +412,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 													range //value
 											);
 									
-									addObjectPropertyToNode(parent, objectProperty);	
+									addObjectPropertyToNode(parent, objectProperty);
 								}		
 							}
 						}

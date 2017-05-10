@@ -73,7 +73,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="semanticmanager.queries.impl.ExtensibleCustomSearchImpl:"/>
+                  <meta.attribute kind="java" basedOn="semanticmanager.impl.ExtensibleCustomSearchImpl:"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -166,7 +166,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="semanticmanager.queries.impl.ExtensiblePredicateBasedSearchImpl:"/>
+                  <meta.attribute kind="java" basedOn="semanticmanager.impl.ExtensiblePredicateBasedSearchImpl:"/>
                </appinfo>
             </annotation>
          </attribute>

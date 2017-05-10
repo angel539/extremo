@@ -64,6 +64,7 @@ public class ConstraintInterpreterItemProvider
 			addNamePropertyDescriptor(object);
 			addConstraintsPropertyDescriptor(object);
 			addEvalsPropertyDescriptor(object);
+			addTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -157,6 +158,28 @@ public class ConstraintInterpreterItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ConstraintInterpreter_type_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ConstraintInterpreter_type_feature", "_UI_ConstraintInterpreter_type"),
+				 SemanticmanagerPackage.Literals.CONSTRAINT_INTERPRETER__TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -185,6 +208,7 @@ public class ConstraintInterpreterItemProvider
 		switch (notification.getFeatureID(ConstraintInterpreter.class)) {
 			case SemanticmanagerPackage.CONSTRAINT_INTERPRETER__ID:
 			case SemanticmanagerPackage.CONSTRAINT_INTERPRETER__NAME:
+			case SemanticmanagerPackage.CONSTRAINT_INTERPRETER__TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

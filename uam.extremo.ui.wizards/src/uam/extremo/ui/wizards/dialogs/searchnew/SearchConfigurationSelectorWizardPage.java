@@ -22,7 +22,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
 import semanticmanager.SimpleSearchConfiguration;
 import semanticmanager.Type;
@@ -32,8 +31,8 @@ import uam.extremo.ui.wizards.dialogs.searchnew.treeviewer.SearchTableViewer;
 public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	private CCombo comboSearchType;
 	
-	private List<SearchConfiguration> searchConfigurations;
-	private SearchConfiguration searchConfigurationSelected = null;
+	private List<SimpleSearchConfiguration> searchConfigurations;
+	private SimpleSearchConfiguration searchConfigurationSelected = null;
 	
 	private Map<SearchOption, String> values;
 	private Map<SearchOption, SearchTableViewer> listValues;
@@ -41,13 +40,13 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	public SearchConfigurationSelectorWizardPage(
 			String pageName, 
 			String pageDescription, 
-			List<SearchConfiguration> searchConfigurations, 
-			SearchConfiguration searchConfigurationSelected) {
+			List<SimpleSearchConfiguration> searchConfigurations, 
+			SimpleSearchConfiguration searchConfigurationSelected) {
 		super(pageName);
 		
 		setTitle(pageName);
 		setDescription(pageDescription);
-		setImageDescriptor(Activator.getImageDescriptor("icons/searchWizard.png"));
+		setImageDescriptor(Activator.getImageDescriptor("icons/searchBig.png"));
 		
 		this.searchConfigurations = searchConfigurations;
 		this.searchConfigurationSelected = searchConfigurationSelected;
@@ -76,12 +75,11 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    comboSearchType.setText("Select search type");
 	    comboSearchType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 4, 1));	    
 	    
-		for(SearchConfiguration searchConfiguration : searchConfigurations){
-			String name = ((SearchConfiguration) searchConfiguration).getName();
+		for(SimpleSearchConfiguration searchConfiguration : searchConfigurations){
+			String name = ((SimpleSearchConfiguration) searchConfiguration).getName();
 			comboSearchType.add(name);
 			comboSearchType.setData(searchConfiguration);
 		}
-		
 		scrollcontainer.setMinSize(container.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 
 		final Composite selectionContainer = new Composite(container, SWT.NONE);
@@ -91,22 +89,23 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    comboSearchType.addSelectionListener(new SelectionAdapter() {
 	    	public void widgetSelected(SelectionEvent e) {
 	    		for(Control child : selectionContainer.getChildren()) child.dispose();
-	    			
-	    		SearchConfiguration searchConfigurationSelected = null;
+	    		
+	    		SimpleSearchConfiguration searchConfigurationSelected = null;
+	    		
 	    		loop:
-	    		for(SearchConfiguration searchConfiguration : searchConfigurations){
+	    		for(SimpleSearchConfiguration searchConfiguration : searchConfigurations){
 	    			if(comboSearchType.getText().equals(searchConfiguration.getName())){
 	    				searchConfigurationSelected = searchConfiguration;
 	    				break loop;
 	    			}
 	    		}
 
-	    		if((searchConfigurationSelected != null) && (searchConfigurationSelected instanceof SimpleSearchConfiguration)){
-	    			
+	    		if(searchConfigurationSelected != null){
 	    			SimpleSearchConfiguration simpleSearchConfiguration = (SimpleSearchConfiguration) searchConfigurationSelected;
+	    			
 	    			Map<SearchOption, String> values = new LinkedHashMap<SearchOption, String>(); 
 	   
-		    		for(SearchOption searchOption : simpleSearchConfiguration.getOptions()){		    			
+		    		for(SearchOption searchOption : simpleSearchConfiguration.getOptions()){
 		    			if(searchOption.getType().equals(Type.STRING)){
 		    				createTextField(searchOption, values);	
 		    			}
@@ -116,21 +115,33 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		    			}
 		    			
 		    			if(searchOption.getType().equals(Type.INT)){
-		    				createIntegerField(searchOption, values);
+		    				createNumericField(searchOption, values);
+		    			}
+		    			
+		    			if(searchOption.getType().equals(Type.FLOAT)){
+		    				createNumericField(searchOption, values);
+		    			}
+		    			
+		    			if(searchOption.getType().equals(Type.DOUBLE)){
+		    				createNumericField(searchOption, values);
 		    			}
 		    		}
 		    		
 		    		setValues(values);
 		    		setListValues(listValues);
 	    		}
+	    		
 	            scrollcontainer.setMinSize(container.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+	           
+	            selectionContainer.layout();
+	            selectorContainer.layout();
 	            container.layout();
 	            
 	            setSearchConfigurationSelected(searchConfigurationSelected);
 	            setControl(scrollcontainer);
 	    	}
 
-			private void createIntegerField(SearchOption searchOption, Map<SearchOption, String> values) {
+			private void createNumericField(SearchOption searchOption, Map<SearchOption, String> values) {
 				Label optionInteger = new Label(selectionContainer, SWT.NONE);
 				optionInteger.setText(searchOption.getName());
 				optionInteger.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
@@ -214,17 +225,20 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    });
 	    
         scrollcontainer.setMinSize(container.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+      
+        selectionContainer.layout();
+        selectorContainer.layout();
         container.layout();
 	    
 	    setControl(scrollcontainer);
 	    setPageComplete(true);
 	}
 
-	public SearchConfiguration getSearchConfigurationSelected() {
+	public SimpleSearchConfiguration getSearchConfigurationSelected() {
 		return searchConfigurationSelected;
 	}
 
-	public void setSearchConfigurationSelected(SearchConfiguration searchConfigurationSelected) {
+	public void setSearchConfigurationSelected(SimpleSearchConfiguration searchConfigurationSelected) {
 		this.searchConfigurationSelected = searchConfigurationSelected;
 	}
 

@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import semanticmanager.NamedElement;
 import semanticmanager.PredicateBasedSearch;
+import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticmanagerPackage;
 
 /**
@@ -44,7 +45,18 @@ public class PredicateBasedSearchImpl extends SimpleSearchConfigurationImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean matches(NamedElement namedElement) {
+	public boolean matches(NamedElement namedElement, EList<SearchResultOptionValue> inps) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object getOptionValueKey(String key, EList<SearchResultOptionValue> inps) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -56,10 +68,13 @@ public class PredicateBasedSearchImpl extends SimpleSearchConfigurationImpl impl
 	 * @generated
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case SemanticmanagerPackage.PREDICATE_BASED_SEARCH___MATCHES__NAMEDELEMENT:
-				return matches((NamedElement)arguments.get(0));
+			case SemanticmanagerPackage.PREDICATE_BASED_SEARCH___MATCHES__NAMEDELEMENT_ELIST:
+				return matches((NamedElement)arguments.get(0), (EList<SearchResultOptionValue>)arguments.get(1));
+			case SemanticmanagerPackage.PREDICATE_BASED_SEARCH___GET_OPTION_VALUE_KEY__STRING_ELIST:
+				return getOptionValueKey((String)arguments.get(0), (EList<SearchResultOptionValue>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

@@ -80,6 +80,16 @@
                </documentation>
             </annotation>
          </attribute>
+         <attribute name="eval" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="identifier" basedOn="extremo.core.extensions.constraintinterpreter/constraintinterpreter/@type"/>
+               </appinfo>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 

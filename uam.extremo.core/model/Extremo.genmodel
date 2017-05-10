@@ -26,7 +26,6 @@
       <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Boolean"/>
       <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Float"/>
       <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Double"/>
-      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/NamedElement"/>
     </genEnums>
     <genDataTypes ecoreDataType="Extremo.ecore#//JavaObject"/>
     <genClasses ecoreClass="Extremo.ecore#//RepositoryManager">
@@ -48,6 +47,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//ConstraintInterpreter/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ConstraintInterpreter/constraints"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ConstraintInterpreter/evals"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//ConstraintInterpreter/type"/>
       <genOperations ecoreOperation="Extremo.ecore#//ConstraintInterpreter/eval">
         <genParameters ecoreParameter="Extremo.ecore#//ConstraintInterpreter/eval/constraint"/>
         <genParameters ecoreParameter="Extremo.ecore#//ConstraintInterpreter/eval/namedElement"/>
@@ -67,6 +67,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResult/values"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResult/configuration"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResult/applyOnElements"/>
+      <genOperations ecoreOperation="Extremo.ecore#//SearchResult/getOptionValue">
+        <genParameters ecoreParameter="Extremo.ecore#//SearchResult/getOptionValue/key"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//SearchResultOptionValue">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResultOptionValue/option"/>
@@ -103,6 +106,7 @@
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//CustomSearch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//CustomSearch/grouped"/>
       <genOperations ecoreOperation="Extremo.ecore#//CustomSearch/search">
         <genParameters ecoreParameter="Extremo.ecore#//CustomSearch/search/result"/>
       </genOperations>
@@ -110,6 +114,11 @@
     <genClasses ecoreClass="Extremo.ecore#//PredicateBasedSearch">
       <genOperations ecoreOperation="Extremo.ecore#//PredicateBasedSearch/matches">
         <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/matches/namedElement"/>
+        <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/matches/inps"/>
+      </genOperations>
+      <genOperations ecoreOperation="Extremo.ecore#//PredicateBasedSearch/getOptionValueKey">
+        <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/getOptionValueKey/key"/>
+        <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/getOptionValueKey/inps"/>
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="Extremo.ecore#//AtomicSearchResult">
@@ -132,9 +141,6 @@
       <genOperations ecoreOperation="Extremo.ecore#//GroupedSearchResult/addObjectPropertyToSemanticGroup">
         <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addObjectPropertyToSemanticGroup/semanticGroup"/>
         <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addObjectPropertyToSemanticGroup/objectProperty"/>
-      </genOperations>
-      <genOperations ecoreOperation="Extremo.ecore#//GroupedSearchResult/getOptionValue">
-        <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/getOptionValue/key"/>
       </genOperations>
       <genOperations ecoreOperation="Extremo.ecore#//GroupedSearchResult/addNamedElementToSemanticGroup">
         <genParameters ecoreParameter="Extremo.ecore#//GroupedSearchResult/addNamedElementToSemanticGroup/semanticGroup"/>
@@ -159,6 +165,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/nodes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/uri"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/repositoryFrom"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/defaultConstraintInterpreter"/>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//SemanticNode">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/supers"/>
@@ -173,7 +180,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/weight"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/trace"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/drawn"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/descriptor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/descriptors"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/describes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/constraints"/>
     </genClasses>

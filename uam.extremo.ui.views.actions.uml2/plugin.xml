@@ -5,23 +5,34 @@
          name="UML2"
          point="extremo.ui.extensions.actions">
       <action
-            class="uam.extremo.ui.views.actions.uml2.action.CreateClass"
+            class="uam.extremo.ui.views.actions.uml2.action.CreateUmlTreeStructure"
             editor="org.eclipse.uml2.uml.editor.presentation.UMLEditor"
             editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
-            icon="icons/geometry.png"
-            id="uam.extremo.ui.views.actions.uml2.action.CreateClass"
-            name="CreateUMLClass"
+            icon="icons/uml16.png"
+            id="extremo.ui.extensions.actions.uml.repositories"
+            name="Create UML Structure"
+            position="menumanager"
+            view="repositories">
+      </action>
+      <action
+            class="uam.extremo.ui.views.actions.uml2.action.CreateUmlTreeStructure"
+            editor="org.eclipse.uml2.uml.editor.presentation.UMLEditor"
+            editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+            icon="icons/uml16.png"
+            id="extremo.ui.extensions.actions.uml.searches"
+            name="Create UML Structure"
             position="menumanager"
             view="searches">
       </action>
       <action
-            class="uam.extremo.ui.views.actions.uml2.action.CreateAttribute"
+            class="uam.extremo.ui.views.actions.uml2.action.CreateUmlTreeStructure"
+            editor="org.eclipse.uml2.uml.editor.presentation.UMLEditor"
             editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
-            icon="icons/sort_down.png"
-            id="uam.extremo.ui.views.actions.uml2.action.CreateAttribute"
-            name="CreateUMLAttribute"
+            icon="icons/uml16.png"
+            id="extremo.ui.extensions.actions.uml.constraints"
+            name="Create UML Structure"
             position="menumanager"
-            view="searches">
+            view="constraints">
       </action>
    </extension>
 

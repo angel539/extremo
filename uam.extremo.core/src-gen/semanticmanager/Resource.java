@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link semanticmanager.Resource#getNodes <em>Nodes</em>}</li>
  *   <li>{@link semanticmanager.Resource#getUri <em>Uri</em>}</li>
  *   <li>{@link semanticmanager.Resource#getRepositoryFrom <em>Repository From</em>}</li>
+ *   <li>{@link semanticmanager.Resource#getDefaultConstraintInterpreter <em>Default Constraint Interpreter</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getResource()
@@ -175,5 +176,31 @@ public interface Resource extends NamedElement {
 	 * @generated
 	 */
 	void setRepositoryFrom(Repository value);
+
+	/**
+	 * Returns the value of the '<em><b>Default Constraint Interpreter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Default Constraint Interpreter</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Default Constraint Interpreter</em>' reference.
+	 * @see #setDefaultConstraintInterpreter(ConstraintInterpreter)
+	 * @see semanticmanager.SemanticmanagerPackage#getResource_DefaultConstraintInterpreter()
+	 * @model
+	 * @generated
+	 */
+	ConstraintInterpreter getDefaultConstraintInterpreter();
+
+	/**
+	 * Sets the value of the '{@link semanticmanager.Resource#getDefaultConstraintInterpreter <em>Default Constraint Interpreter</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Constraint Interpreter</em>' reference.
+	 * @see #getDefaultConstraintInterpreter()
+	 * @generated
+	 */
+	void setDefaultConstraintInterpreter(ConstraintInterpreter value);
 
 } // Resource

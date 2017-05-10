@@ -25,7 +25,7 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getWeight <em>Weight</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getTrace <em>Trace</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#isDrawn <em>Drawn</em>}</li>
- *   <li>{@link semanticmanager.impl.NamedElementImpl#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link semanticmanager.impl.NamedElementImpl#getDescriptors <em>Descriptors</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getDescribes <em>Describes</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
@@ -157,17 +157,9 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NamedElement getDescriptor() {
-		return (NamedElement)eGet(SemanticmanagerPackage.Literals.NAMED_ELEMENT__DESCRIPTOR, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDescriptor(NamedElement newDescriptor) {
-		eSet(SemanticmanagerPackage.Literals.NAMED_ELEMENT__DESCRIPTOR, newDescriptor);
+	@SuppressWarnings("unchecked")
+	public EList<NamedElement> getDescriptors() {
+		return (EList<NamedElement>)eGet(SemanticmanagerPackage.Literals.NAMED_ELEMENT__DESCRIPTORS, true);
 	}
 
 	/**
