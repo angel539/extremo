@@ -17,9 +17,9 @@ import org.eclipse.swt.dnd.TextTransfer;
 import semanticmanager.NamedElement;
 
 public class NamedElementDragListener implements DragSourceListener {
-	private final DragMetaModelElementViewer viewer;
+	private final RepositoryTreeViewer viewer;
 	
-	public NamedElementDragListener(DragMetaModelElementViewer viewer){
+	public NamedElementDragListener(RepositoryTreeViewer viewer){
 		this.viewer = viewer;
 	}
 	

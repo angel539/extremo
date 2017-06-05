@@ -9,7 +9,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import semanticmanager.SearchResult;
+import semanticmanager.Repository;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.wizards.dialogs.searchnew.SearchWizardDialog;
 
@@ -17,28 +17,28 @@ public class SearchSemanticNodesHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		AssistantFactory.getInstance().putAllResourceToNotActive();
-		
 		ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().getSelection();
 		
-		if (selection != null & selection instanceof IStructuredSelection) {
+		if (selection != null & selection instanceof IStructuredSelection) {	
 			IStructuredSelection strucSelection = (IStructuredSelection) selection;
-			
-			SearchResult searchResult = null;
-			
-			WizardDialog wizardDialog = new WizardDialog(null, new SearchWizardDialog(strucSelection, searchResult));
-			if (wizardDialog.open() == Window.OK) {
-				search(searchResult);
+			Object firstselection = strucSelection.getFirstElement();
+
+			if (firstselection instanceof Repository) {
+				Repository repository = (Repository) firstselection;
+				
+				WizardDialog wizardDialog = new WizardDialog(null, new SearchWizardDialog(repository));
+				if (wizardDialog.open() == Window.OK) {
+					MessageDialog.openConfirm(null, "Search entities", "Ok");
+				}
+				else{
+					MessageDialog.openError(null, "Search entities", "Searching could not be called");
+				}
 			}
 			else{
-				MessageDialog.openError(null, "Search entities", "Searching could not be called");
+				MessageDialog.openError(null, "Search entities", "Repository must be selected");
 			}
 		}
 		
 		return null;
-	}
-	
-	private static boolean search(SearchResult search){
-		AssistantFactory.getInstance().search(search);
-		return true;
 	}
 }

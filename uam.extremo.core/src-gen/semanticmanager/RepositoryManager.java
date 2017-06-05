@@ -2,9 +2,9 @@
  */
 package semanticmanager;
 
-import org.eclipse.emf.common.util.EList;
+import fr.inria.atlanmod.neoemf.core.PersistentEObject;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,9 +23,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see semanticmanager.SemanticmanagerPackage#getRepositoryManager()
  * @model
+ * @extends PersistentEObject
  * @generated
  */
-public interface RepositoryManager extends EObject {
+public interface RepositoryManager extends PersistentEObject {
 	/**
 	 * Returns the value of the '<em><b>Repositories</b></em>' containment reference list.
 	 * The list contents are of type {@link semanticmanager.Repository}.

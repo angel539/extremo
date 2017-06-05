@@ -2,7 +2,7 @@
  */
 package semanticmanager;
 
-import org.eclipse.emf.ecore.EObject;
+import fr.inria.atlanmod.neoemf.core.PersistentEObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,45 +13,16 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link semanticmanager.SearchOption#getType <em>Type</em>}</li>
  *   <li>{@link semanticmanager.SearchOption#getName <em>Name</em>}</li>
  *   <li>{@link semanticmanager.SearchOption#getId <em>Id</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getSearchOption()
- * @model
+ * @model abstract="true"
+ * @extends PersistentEObject
  * @generated
  */
-public interface SearchOption extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link semanticmanager.Type}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see semanticmanager.Type
-	 * @see #setType(Type)
-	 * @see semanticmanager.SemanticmanagerPackage#getSearchOption_Type()
-	 * @model
-	 * @generated
-	 */
-	Type getType();
-
-	/**
-	 * Sets the value of the '{@link semanticmanager.SearchOption#getType <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' attribute.
-	 * @see semanticmanager.Type
-	 * @see #getType()
-	 * @generated
-	 */
-	void setType(Type value);
-
+public interface SearchOption extends PersistentEObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

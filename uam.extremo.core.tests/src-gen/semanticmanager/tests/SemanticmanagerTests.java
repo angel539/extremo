@@ -31,10 +31,11 @@ public class SemanticmanagerTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new SemanticmanagerTests("semanticmanager Tests");
-		suite.addTestSuite(SearchResultTest.class);
 		suite.addTestSuite(CompositeSearchConfigurationTest.class);
 		suite.addTestSuite(CustomSearchTest.class);
 		suite.addTestSuite(PredicateBasedSearchTest.class);
+		suite.addTestSuite(AtomicSearchResultTest.class);
+		suite.addTestSuite(GroupedSearchResultTest.class);
 		return suite;
 	}
 

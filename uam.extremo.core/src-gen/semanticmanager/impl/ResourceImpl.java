@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EClass;
 import semanticmanager.ConstraintInterpreter;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
-import semanticmanager.SemanticNode;
+import semanticmanager.ResourceElement;
 import semanticmanager.SemanticmanagerPackage;
 
 /**
@@ -23,7 +23,7 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.ResourceImpl#isActive <em>Active</em>}</li>
  *   <li>{@link semanticmanager.impl.ResourceImpl#isAlive <em>Alive</em>}</li>
  *   <li>{@link semanticmanager.impl.ResourceImpl#getAssistant <em>Assistant</em>}</li>
- *   <li>{@link semanticmanager.impl.ResourceImpl#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link semanticmanager.impl.ResourceImpl#getResourceElements <em>Resource Elements</em>}</li>
  *   <li>{@link semanticmanager.impl.ResourceImpl#getUri <em>Uri</em>}</li>
  *   <li>{@link semanticmanager.impl.ResourceImpl#getRepositoryFrom <em>Repository From</em>}</li>
  *   <li>{@link semanticmanager.impl.ResourceImpl#getDefaultConstraintInterpreter <em>Default Constraint Interpreter</em>}</li>
@@ -31,7 +31,7 @@ import semanticmanager.SemanticmanagerPackage;
  *
  * @generated
  */
-public class ResourceImpl extends NamedElementImpl implements Resource {
+public class ResourceImpl extends ResourceElementImpl implements Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,8 +111,8 @@ public class ResourceImpl extends NamedElementImpl implements Resource {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EList<SemanticNode> getNodes() {
-		return (EList<SemanticNode>)eGet(SemanticmanagerPackage.Literals.RESOURCE__NODES, true);
+	public EList<ResourceElement> getResourceElements() {
+		return (EList<ResourceElement>)eGet(SemanticmanagerPackage.Literals.RESOURCE__RESOURCE_ELEMENTS, true);
 	}
 
 	/**

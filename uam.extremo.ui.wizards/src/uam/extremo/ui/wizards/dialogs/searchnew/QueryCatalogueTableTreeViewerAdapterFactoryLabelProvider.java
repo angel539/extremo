@@ -222,14 +222,27 @@ public class QueryCatalogueTableTreeViewerAdapterFactoryLabelProvider extends Ad
 			return styledString;
 		}
 		
-		if (element instanceof SearchResultOptionValue) {
-			SearchResultOptionValue searchResultOptionValue = (SearchResultOptionValue) element;
+		if (element instanceof PrimitiveTypeSearchResultOptionValue) {
+			PrimitiveTypeSearchResultOptionValue searchResultOptionValue = (PrimitiveTypeSearchResultOptionValue) element;
 			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName() + " : " + searchResultOptionValue.getValue());
 			return styledString;
 		}
 		
-		if (element instanceof SearchOption) {
-			SearchOption searchOption = (SearchOption) element;
+		if (element instanceof DataModelTypeSearchResultOptionValue) {
+			DataModelTypeSearchResultOptionValue searchResultOptionValue = (DataModelTypeSearchResultOptionValue) element;
+			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName() + " : " + searchResultOptionValue.getValue());
+			return styledString;
+		}
+		
+		if (element instanceof PrimitiveTypeSearchOption) {
+			PrimitiveTypeSearchOption searchOption = (PrimitiveTypeSearchOption) element;
+			StyledString styledString = new StyledString(searchOption.getType().getLiteral());
+			styledString.append(" " + searchOption.getName(), StyledString.COUNTER_STYLER);
+			return styledString;
+		}
+		
+		if (element instanceof DataModelTypeSearchOption) {
+			DataModelTypeSearchOption searchOption = (DataModelTypeSearchOption) element;
 			StyledString styledString = new StyledString(searchOption.getType().getLiteral());
 			styledString.append(" " + searchOption.getName(), StyledString.COUNTER_STYLER);
 			return styledString;

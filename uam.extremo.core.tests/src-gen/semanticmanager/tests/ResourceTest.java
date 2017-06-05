@@ -13,7 +13,7 @@ import semanticmanager.SemanticmanagerFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResourceTest extends NamedElementTest {
+public class ResourceTest extends ResourceElementTest {
 
 	/**
 	 * <!-- begin-user-doc -->

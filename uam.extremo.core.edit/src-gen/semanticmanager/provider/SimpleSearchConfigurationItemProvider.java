@@ -49,6 +49,7 @@ public class SimpleSearchConfigurationItemProvider extends SearchConfigurationIt
 			super.getPropertyDescriptors(object);
 
 			addFilterByPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -67,6 +68,28 @@ public class SimpleSearchConfigurationItemProvider extends SearchConfigurationIt
 				 getString("_UI_SimpleSearchConfiguration_filterBy_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SimpleSearchConfiguration_filterBy_feature", "_UI_SimpleSearchConfiguration_type"),
 				 SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__FILTER_BY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SimpleSearchConfiguration_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SimpleSearchConfiguration_description_feature", "_UI_SimpleSearchConfiguration_type"),
+				 SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION,
 				 true,
 				 false,
 				 false,
@@ -133,6 +156,7 @@ public class SimpleSearchConfigurationItemProvider extends SearchConfigurationIt
 
 		switch (notification.getFeatureID(SimpleSearchConfiguration.class)) {
 			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION__FILTER_BY:
+			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION__OPTIONS:
@@ -156,7 +180,12 @@ public class SimpleSearchConfigurationItemProvider extends SearchConfigurationIt
 		newChildDescriptors.add
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__OPTIONS,
-				 SemanticmanagerFactory.eINSTANCE.createSearchOption()));
+				 SemanticmanagerFactory.eINSTANCE.createPrimitiveTypeSearchOption()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__OPTIONS,
+				 SemanticmanagerFactory.eINSTANCE.createDataModelTypeSearchOption()));
 	}
 
 }

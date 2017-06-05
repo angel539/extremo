@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link semanticmanager.SemanticNode#getSupers <em>Supers</em>}</li>
  *   <li>{@link semanticmanager.SemanticNode#getSubs <em>Subs</em>}</li>
  *   <li>{@link semanticmanager.SemanticNode#getProperties <em>Properties</em>}</li>
- *   <li>{@link semanticmanager.SemanticNode#getResourceFrom <em>Resource From</em>}</li>
  *   <li>{@link semanticmanager.SemanticNode#isAbstract <em>Abstract</em>}</li>
  * </ul>
  *
@@ -24,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface SemanticNode extends NamedElement {
+public interface SemanticNode extends ResourceElement {
 	/**
 	 * Returns the value of the '<em><b>Supers</b></em>' reference list.
 	 * The list contents are of type {@link semanticmanager.SemanticNode}.
@@ -78,34 +77,6 @@ public interface SemanticNode extends NamedElement {
 	 * @generated
 	 */
 	EList<Property> getProperties();
-
-	/**
-	 * Returns the value of the '<em><b>Resource From</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link semanticmanager.Resource#getNodes <em>Nodes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Resource From</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resource From</em>' container reference.
-	 * @see #setResourceFrom(Resource)
-	 * @see semanticmanager.SemanticmanagerPackage#getSemanticNode_ResourceFrom()
-	 * @see semanticmanager.Resource#getNodes
-	 * @model opposite="nodes" transient="false"
-	 * @generated
-	 */
-	Resource getResourceFrom();
-
-	/**
-	 * Sets the value of the '{@link semanticmanager.SemanticNode#getResourceFrom <em>Resource From</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Resource From</em>' container reference.
-	 * @see #getResourceFrom()
-	 * @generated
-	 */
-	void setResourceFrom(Resource value);
 
 	/**
 	 * Returns the value of the '<em><b>Abstract</b></em>' attribute.

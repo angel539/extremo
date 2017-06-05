@@ -68,12 +68,10 @@ public class InheritanceGraphViewPartNodeContentProvider implements IGraphEntity
 	}
 	
 	@Override
-	public void dispose() {}
+	public void dispose() {
+	}
 
 	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		/*if(newInput instanceof NamedElement){
-			MessageDialog.openConfirm(null, "Input changed", "New input set to " + ((NamedElement) newInput).getName());
-		}*/
 	}
 }

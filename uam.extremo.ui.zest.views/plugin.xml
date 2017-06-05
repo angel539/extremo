@@ -38,7 +38,8 @@
                id="uam.extremo.ui.zest.views.InheritanceGraphViewPart"
                minimized="false"
                moveable="true"
-               relationship="right"
+               relationship="stack"
+               relative="uam.extremo.ui.views.RepositoryView"
                visible="true">
          </view>
          <viewShortcut

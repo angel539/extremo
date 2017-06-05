@@ -7,6 +7,11 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.ui.console.ConsolePlugin;
+import org.eclipse.ui.console.IConsole;
+import org.eclipse.ui.console.IConsoleManager;
+import org.eclipse.ui.console.MessageConsole;
+import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -19,8 +24,10 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "uam.extremo.ui.views"; //$NON-NLS-1$
 	public static final String ACTION_EXTENSIONS_ID = "extremo.ui.extensions.actions";
-	//public static final String FILTER_EXTENSIONS_ID = "extremo.ui.extensions.filters";
-	//public static final String EDITOR_EXTENSIONS_ID = "extremo.ui.extensions.drop";
+	public static final String FILTER_EXTENSIONS_ID = "extremo.ui.extensions.filters";
+	public static final String EDITOR_EXTENSIONS_ID = "extremo.ui.extensions.drop";
+	
+	public static final String CONSOLE_ID = "extremo.core.console";
 
 	// The shared instance
 	private static Activator plugin;
@@ -75,5 +82,25 @@ public class Activator extends AbstractUIPlugin {
 		}
 		
 		return null;
+	}
+	
+	private static MessageConsole findConsole(String name) {
+		ConsolePlugin plugin = ConsolePlugin.getDefault();
+		IConsoleManager conMan = plugin.getConsoleManager();
+		IConsole[] existing = conMan.getConsoles();
+		
+		for (int i = 0; i < existing.length; i++)
+			if (name.equals(existing[i].getName()))
+				return (MessageConsole) existing[i];
+		
+		MessageConsole myConsole = new MessageConsole(name, null);
+		conMan.addConsoles(new IConsole[]{myConsole});
+		return myConsole;
+	}
+	
+	public static void writeConsole(String message) {
+		MessageConsole myConsole = findConsole(CONSOLE_ID);
+		MessageConsoleStream out = myConsole.newMessageStream();
+		out.println(message);
 	}
 }

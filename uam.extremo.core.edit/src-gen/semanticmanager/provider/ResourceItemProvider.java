@@ -26,7 +26,7 @@ import semanticmanager.SemanticmanagerPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResourceItemProvider extends NamedElementItemProvider {
+public class ResourceItemProvider extends ResourceElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -179,7 +179,7 @@ public class ResourceItemProvider extends NamedElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(SemanticmanagerPackage.Literals.RESOURCE__NODES);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.RESOURCE__RESOURCE_ELEMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -241,7 +241,7 @@ public class ResourceItemProvider extends NamedElementItemProvider {
 			case SemanticmanagerPackage.RESOURCE__URI:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case SemanticmanagerPackage.RESOURCE__NODES:
+			case SemanticmanagerPackage.RESOURCE__RESOURCE_ELEMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -261,7 +261,12 @@ public class ResourceItemProvider extends NamedElementItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(SemanticmanagerPackage.Literals.RESOURCE__NODES,
+				(SemanticmanagerPackage.Literals.RESOURCE__RESOURCE_ELEMENTS,
+				 SemanticmanagerFactory.eINSTANCE.createResource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SemanticmanagerPackage.Literals.RESOURCE__RESOURCE_ELEMENTS,
 				 SemanticmanagerFactory.eINSTANCE.createSemanticNode()));
 	}
 

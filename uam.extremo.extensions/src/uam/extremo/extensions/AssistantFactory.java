@@ -26,39 +26,35 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.spi.RegistryContributor;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
 import fr.inria.atlanmod.neoemf.data.PersistenceBackendFactoryRegistry;
-import fr.inria.atlanmod.neoemf.data.blueprints.BlueprintsPersistenceBackendFactory;
-import fr.inria.atlanmod.neoemf.data.blueprints.option.BlueprintsOptionsBuilder;
-import fr.inria.atlanmod.neoemf.data.blueprints.util.BlueprintsURI;
+import fr.inria.atlanmod.neoemf.data.mapdb.MapDbPersistenceBackendFactory;
+import fr.inria.atlanmod.neoemf.data.mapdb.util.MapDbURI;
+import fr.inria.atlanmod.neoemf.option.AbstractPersistenceOptionsBuilder;
 import fr.inria.atlanmod.neoemf.resource.PersistentResource;
 import fr.inria.atlanmod.neoemf.resource.PersistentResourceFactory;
-import semanticmanager.AtomicSearchResult;
-import semanticmanager.CompositeSearchConfiguration;
+
 import semanticmanager.Constraint;
 import semanticmanager.ConstraintInterpreter;
-import semanticmanager.CustomSearch;
 import semanticmanager.DataModelType;
 import semanticmanager.ExtendedSemanticmanagerFactory;
 import semanticmanager.ExtensibleCustomSearch;
 import semanticmanager.ExtensiblePredicateBasedSearch;
 import semanticmanager.NamedElement;
-import semanticmanager.PredicateBasedSearch;
 import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
 import semanticmanager.Resource;
+import semanticmanager.ResourceElement;
 import semanticmanager.SearchConfiguration;
-import semanticmanager.SearchResult;
 import semanticmanager.SemanticNode;
-import semanticmanager.SemanticmanagerFactory;
-import semanticmanager.SemanticmanagerPackage;
 import semanticmanager.Service;
 import semanticmanager.Type;
 
@@ -67,14 +63,14 @@ public class AssistantFactory implements IResourceChangeListener{
 	public static final String SEARCH_EXTENSIONS_ID = "extremo.core.extensions.search";	
 	public static final String CONSTRAINT_EXTENSIONS_ID = "extremo.core.extensions.constraintinterpreter";
 	public static final String SERVICE_EXTENSIONS_ID = "extremo.core.extensions.services";
-	
 	public static final String NATURE_ID = "uam.extremo.ui.nature.extremonature";
 	
 	private static AssistantFactory INSTANCE = null;
 	private static List<IFormatAssistant> assistants = null;
-	private static NamedElement drawnElement = null;
-	private static org.eclipse.emf.ecore.resource.Resource backupResource = null;
-	private static RepositoryManager repositoryManager = null;
+	private static NamedElement drawnElement = null;	
+	
+	private static ResourceSet resourceSet = new ResourceSetImpl();
+	private static org.eclipse.emf.ecore.resource.Resource resourceDb = null;
 
 	public List<IFormatAssistant> getAssistances(){
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
@@ -92,7 +88,8 @@ public class AssistantFactory implements IResourceChangeListener{
 						long id = Long.parseLong(((RegistryContributor) contributor).getActualId());
 						Bundle thisBundle = FrameworkUtil.getBundle(getClass());
 						bundle = thisBundle.getBundleContext().getBundle(id);
-					} else {
+					}
+					else {
 						bundle = Platform.getBundle(contributor.getName());          
 					}
 					
@@ -121,6 +118,7 @@ public class AssistantFactory implements IResourceChangeListener{
 					}
 					catch(CoreException e){
 						ExtremoLog.logError(e);
+						Activator.writeConsole(e.getMessage());
 					}
 				}
 			}		
@@ -176,7 +174,10 @@ public class AssistantFactory implements IResourceChangeListener{
 								((ExtensibleCustomSearch) customSearch).setId(extensions[j].getAttribute("id"));
 								((ExtensibleCustomSearch) customSearch).setName(extensions[j].getAttribute("name"));
 								
-								//System.out.println(">> one custom search " + extensions[j].getAttribute("name"));
+								System.out.println(extensions[j].getAttribute("description"));
+								
+								((ExtensibleCustomSearch) customSearch).setDescription(extensions[j].getAttribute("description"));
+								((ExtensibleCustomSearch) customSearch).setGrouped(Boolean.valueOf(extensions[j].getAttribute("resultsGrouped")));
 								
 								DataModelType dataModelType = DataModelType.get(extensions[j].getAttribute("filterBy"));
 								((ExtensibleCustomSearch) customSearch).setFilterBy(dataModelType);
@@ -186,14 +187,20 @@ public class AssistantFactory implements IResourceChangeListener{
 									String name = option.getAttribute("name");
 									String type = option.getAttribute("type");
 									
-									customSearch.addSearchOption(id, name, Type.get(type));
+									if(type.equals("Resource") || type.equals("SemanticNode") || type.equals("DataProperty") || type.equals("ObjectProperty")){
+										customSearch.addDataModelTypeSearchOption(id, name, DataModelType.get(type));
+									}
+									else{
+										customSearch.addPrimitiveTypeSearchOption(id, name, Type.get(type));	
+									}
 								}
 								
 								getRepositoryManager().getConfigurations().add(customSearch);
 							}
 						}
 						catch(CoreException e){
-							System.out.println(e.getMessage());
+							ExtremoLog.logError(e);
+							Activator.writeConsole(e.getMessage());
 						}
 						
 						break;
@@ -208,7 +215,9 @@ public class AssistantFactory implements IResourceChangeListener{
 								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setId(extensions[j].getAttribute("id"));
 								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setName(extensions[j].getAttribute("name"));
 								
-								System.out.println(">> one predicate based search " + extensions[j].getAttribute("name"));
+								System.out.println(extensions[j].getAttribute("description"));
+								
+								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setDescription(extensions[j].getAttribute("description"));
 								
 								DataModelType dataModelType = DataModelType.get(extensions[j].getAttribute("filterBy"));
 								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setFilterBy(dataModelType);
@@ -218,14 +227,20 @@ public class AssistantFactory implements IResourceChangeListener{
 									String name = option.getAttribute("name");
 									String type = option.getAttribute("type");
 									
-									predicateBasedSearch.addSearchOption(id, name, Type.get(type));
+									if(type.equals("Resource") || type.equals("SemanticNode") || type.equals("DataProperty") || type.equals("ObjectProperty")){
+										predicateBasedSearch.addDataModelTypeSearchOption(id, name, DataModelType.get(type));
+									}
+									else{
+										predicateBasedSearch.addPrimitiveTypeSearchOption(id, name, Type.get(type));	
+									}
 								}
 								
 								getRepositoryManager().getConfigurations().add(predicateBasedSearch);
 							}
 						}
 						catch(CoreException e){
-							System.out.println(e.getMessage());
+							ExtremoLog.logError(e);
+							Activator.writeConsole(e.getMessage());
 						}
 						
 						break;
@@ -283,6 +298,7 @@ public class AssistantFactory implements IResourceChangeListener{
 					}
 					catch(CoreException e){
 						ExtremoLog.logError(e);
+						Activator.writeConsole(e.getMessage());
 					}
 				}
 			}		
@@ -339,6 +355,7 @@ public class AssistantFactory implements IResourceChangeListener{
 					}
 					catch(CoreException e){
 						ExtremoLog.logError(e);
+						Activator.writeConsole(e.getMessage());
 					}
 				}
 			}		
@@ -365,7 +382,6 @@ public class AssistantFactory implements IResourceChangeListener{
             synchronized(AssistantFactory.class) {
                 if (INSTANCE == null) { 
                     INSTANCE = new AssistantFactory();
-
                     assistants = new ArrayList<IFormatAssistant>();
                     createRepositoryManager();
                 }
@@ -386,83 +402,62 @@ public class AssistantFactory implements IResourceChangeListener{
 	}
 	
 	public static void createRepositoryManager(){
-		SemanticmanagerPackage.eINSTANCE.eClass();
-		SemanticmanagerFactory factory = SemanticmanagerFactory.eINSTANCE;
+		 PersistenceBackendFactoryRegistry.register(MapDbURI.SCHEME,
+	                MapDbPersistenceBackendFactory.getInstance());
+		 
+		 resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
+		 		.put(MapDbURI.SCHEME, PersistentResourceFactory.getInstance());
+		 
+		 resourceDb = resourceSet.createResource(MapDbURI.createFileURI(new File(
+	                "models/repositoryManagerDb.mapdb")));
+	}
+	
+	public RepositoryManager getRepositoryManager() {
+		RepositoryManager repositoryManager = null;
 		
-		repositoryManager = factory.createRepositoryManager();
+		try {
+			resourceDb.load(AbstractPersistenceOptionsBuilder.noOption());
+		}
+		catch (IOException e) {
+			createRepositoryManager();
+		}
 		
-		/*repositoryManager.eAdapters().add(new AdapterImpl() {
-			@Override
-			public void notifyChanged(Notification msg) {
-				NeoLogger.info("Notification (type {0}) received from {1}", msg.getEventType(),
-						msg.getNotifier().getClass().getName());
-			}
-		});*/
-		
-		/*PersistenceBackendFactoryRegistry.register(BlueprintsURI.SCHEME,
-				BlueprintsPersistenceBackendFactory.getInstance());
-		
-		ResourceSet rSet = new ResourceSetImpl();
-		rSet.getResourceFactoryRegistry().getProtocolToFactoryMap().put(BlueprintsURI.SCHEME,
-				PersistentResourceFactory.getInstance());
-		
-		try (PersistentResource resource = (PersistentResource) rSet
-				.getResource(BlueprintsURI.createFileURI(new File("models/repositoryManager.neodb")), true)) {
-			
-			List<Object> storeOptions = new ArrayList<Object>();
-		    storeOptions.add(BlueprintsStoreOptions.AUTOCOMMIT);
-			
-		    //NEO4J -> NeoDB // TinkerGraph is not available
-			Map<Object,Object> options = new HashMap<Object,Object>();
-		    options.put(
-		        BlueprintsResourceOptions.GRAPH_TYPE,
-		        BlueprintsNeo4jResourceOptions.GRAPH_TYPE_NEO4J);
-		    options.put(PersistentResourceOptions.STORE_OPTIONS, storeOptions);*/
-		    
-			/*RepositoryManager repositoryManager = factory.createRepositoryManager();
-			
+		if(resourceDb.getContents().isEmpty()){
+			repositoryManager = ExtendedSemanticmanagerFactory.eINSTANCE.createRepositoryManager();
 			repositoryManager.eAdapters().add(new AdapterImpl() {
 				@Override
 				public void notifyChanged(Notification msg) {
-					NeoLogger.info("Notification (type {0}) received from {1}", msg.getEventType(),
-							msg.getNotifier().getClass().getName());
+					Activator.writeConsole("Notification (" 
+								+ msg.getEventType() 
+								+ ") received from " 
+								+ msg.getNotifier().getClass().getName());
 				}
-			});*/
+			});
 			
-			//resource.getContents().add(repositoryManager);
+			resourceDb.getContents().add(repositoryManager);
 			
-			/*List<Object> storeOptions = new ArrayList<Object>();
-		    storeOptions.add(BlueprintsStoreOptions.AUTOCOMMIT);
-			
-			Map<Object,Object> options = new HashMap<Object,Object>();
-		    options.put(
-		        BlueprintsResourceOptions.GRAPH_TYPE,
-		        BlueprintsNeo4jResourceOptions.GRAPH_TYPE_NEO4J);
-		    options.put(PersistentResourceOptions.STORE_OPTIONS, storeOptions);*/
-		    
-		    //resource.save(options);
-		/*}
-		catch (IOException e) {
-			e.printStackTrace();
-		}*/
-	}
-	
-	private static void checkModel(org.eclipse.emf.ecore.resource.Resource resource) {
-		if (resource.getContents().size() == 0) {
-			throw new IllegalStateException(
-					"The content of the resource is empty, make sure you have created it using (Efficient)BlueprintsImporter");
+			try {
+				resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
+			}
+			catch (IOException e) {
+				ExtremoLog.logError(e);
+				Activator.writeConsole(e.getMessage());
+			}
 		}
+		
+		return (RepositoryManager) resourceDb.getContents().get(0);
 	}
 	
 	public void save(){	
 		try {
-			backupResource.save(BlueprintsOptionsBuilder.noOption());
+			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			
-			if (backupResource instanceof PersistentResource) ((PersistentResource) backupResource).close();
-			else backupResource.unload();
+			if (resourceDb instanceof PersistentResource) ((PersistentResource) resourceDb).close();
+			else resourceDb.unload();
 	    }
         catch (Exception e) {
-        	System.out.println(e.getMessage());
+        	ExtremoLog.logError(e);
+			Activator.writeConsole(e.getMessage());
 	    } 
 	}
 
@@ -511,110 +506,10 @@ public class AssistantFactory implements IResourceChangeListener{
 		AssistantFactory.drawnElement = drawnElement;
 	}
 	
-	public void search(SearchResult result) {
-		SearchConfiguration searchConfiguration = result.getConfiguration();
-		
-		if(searchConfiguration instanceof CompositeSearchConfiguration){
-			CompositeSearchConfiguration compositeSearchConfiguration = (CompositeSearchConfiguration) searchConfiguration;
-			compositeSearchConfiguration.search(result);
-		}
-		
-		if (searchConfiguration instanceof CustomSearch) {
-			CustomSearch customSearch = (CustomSearch) searchConfiguration;
-			customSearch.search(result);
-		}
-		
-		if (searchConfiguration instanceof PredicateBasedSearch) {
-			PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfiguration;
-			
-			result.getApplyOnElements().forEach(
-					element -> {
-						if((predicateBasedSearch.matches(element, result.getValues())) && (result instanceof AtomicSearchResult)){
-							AtomicSearchResult atomicSearchResult = (AtomicSearchResult) result;
-							atomicSearchResult.getElements().add(element);
-						}
-					}
-			);	
-		}
-	}
-	
 	public void validateConstraint(Constraint constraint) {
 		constraint.getInterpreter().eval(constraint, constraint.getAppliedTo());
 	}
-	
-	public RepositoryManager getRepositoryManager() {
-		return repositoryManager;
-		
-		/*SemanticmanagerPackage.eINSTANCE.eClass();
 
-		PersistenceBackendFactoryRegistry.register(BlueprintsURI.SCHEME,
-				BlueprintsPersistenceBackendFactory.getInstance());
-
-		ResourceSet rSet = new ResourceSetImpl();
-		rSet.getResourceFactoryRegistry().getProtocolToFactoryMap().put(BlueprintsURI.SCHEME,
-				PersistentResourceFactory.getInstance());
-		
-		try (PersistentResource resource = (PersistentResource) rSet
-				.getResource(BlueprintsURI.createFileURI(new File("models/repositoryManager.neodb")), true)) {
-			
-			resource.load(BlueprintsOptionsBuilder.noOption());
-			checkModel(resource);
-			
-			RepositoryManager model = (RepositoryManager) resource.getContents().get(0);*/
-			
-			
-			
-			//resource.
-			/*model.eAdapters().add(new AdapterImpl() {
-				@Override
-				public void notifyChanged(Notification msg) {
-					NeoLogger.info("Notification (type {0}) received from {1}", msg.getEventType(),
-							msg.getNotifier().getClass().getName());
-				}
-			});*/
-			
-			//List<Object> storeOptions = new ArrayList<Object>();
-		    //storeOptions.add(BlueprintsStoreOptions.AUTOCOMMIT);
-			
-		    //NEO4J -> NeoDB // TinkerGraph is not available
-			/*Map<Object,Object> options = new HashMap<Object,Object>();
-		    options.put(
-		        BlueprintsResourceOptions.GRAPH_TYPE,
-		        BlueprintsNeo4jResourceOptions.GRAPH_TYPE_NEO4J);
-		    options.put(PersistentResourceOptions.STORE_OPTIONS, storeOptions);
-			
-			resource.save(options);*/
-
-			// Unload the resource and shutdown the database engine
-			
-		
-		
-			/*if (resource instanceof PersistentResource) ((PersistentResource) resource).close();
-			else resource.unload();
-			
-			return model;
-		}
-		catch (IOException e) {
-			return null;
-		}*/		
-	}
-	
-	public PersistentResource getResource(){
-		SemanticmanagerPackage.eINSTANCE.eClass();
-
-		PersistenceBackendFactoryRegistry.register(BlueprintsURI.SCHEME,
-				BlueprintsPersistenceBackendFactory.getInstance());
-
-		ResourceSet rSet = new ResourceSetImpl();
-		rSet.getResourceFactoryRegistry().getProtocolToFactoryMap().put(BlueprintsURI.SCHEME,
-				PersistentResourceFactory.getInstance());
-		
-		try (PersistentResource resource = (PersistentResource) rSet
-				.getResource(BlueprintsURI.createFileURI(new File("models/repositoryManager.neodb")), true)) {
-			return resource;
-		}		
-	}
-	
 	public Repository createRepository(IProject project, String name, String description){
 		try{
 			Repository repository = ExtendedSemanticmanagerFactory.eINSTANCE.createRepository();
@@ -624,15 +519,20 @@ public class AssistantFactory implements IResourceChangeListener{
 			
 			try {
 				addVirtualsToProjectStructure(project, name);
-			} catch (CoreException e) {
+			}
+			catch (CoreException e) {
 				ExtremoLog.logError(e);
+				Activator.writeConsole(e.getMessage());
 			}
 			
 			getRepositoryManager().getRepositories().add(repository);
+			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
+			
 			return repository;
 		}
-		catch(Exception fileNotFound){
-			ExtremoLog.logError(fileNotFound);
+		catch(Exception e){
+			ExtremoLog.logError(e);
+			Activator.writeConsole(e.getMessage());
 			return null;
 		}
 	}
@@ -652,6 +552,14 @@ public class AssistantFactory implements IResourceChangeListener{
             folder.create(IResource.VIRTUAL, true, null);
         }
     }
+    
+    public static org.eclipse.emf.ecore.resource.Resource getResource() {
+		return resourceDb;
+	}
+
+	public static void setResource(org.eclipse.emf.ecore.resource.Resource resource) {
+		AssistantFactory.resourceDb = resource;
+	}
 	
     public Resource createResourceDescriptor(Repository repository, String name, String description, String uri) throws CoreException{
 		try{
@@ -666,15 +574,18 @@ public class AssistantFactory implements IResourceChangeListener{
 				for(String ext : ((FormatAssistant) assistant).getExtensions()){
 					if(extensionFile.compareTo(ext) == 0){
 						resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
-						resource.setAlive(assistant.load(resource));
 						
 						boolean loaded = assistant.load((Resource) resource);
+						resource.setAlive(loaded);
 						
 						if(loaded){
-							for(SemanticNode node : resource.getNodes()){
-								toDataThread(assistant, node);
-								toObjectThread(assistant, node);
-								toSuperThread(assistant, node);
+							for(ResourceElement resourceElement : resource.getResourceElements()){
+								if(resourceElement instanceof SemanticNode){
+									SemanticNode node = (SemanticNode) resourceElement;
+									toDataThread(assistant, node);
+									toObjectThread(assistant, node);
+									toSuperThread(assistant, node);
+								}
 							}
 						}
 						break loop;
@@ -693,20 +604,15 @@ public class AssistantFactory implements IResourceChangeListener{
 				child.createLink(location, IResource.FILE, null);
 			}
 			
-			//BasicCommandStack commandStack = new BasicCommandStack();
-			//AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(new DataModelItemProviderAdapterFactory(), commandStack);
-			
-			//org.eclipse.emf.common.command.Command command = AddCommand.create(editingDomain, repository, SemanticmanagerPackage.eINSTANCE.getRepository_Resources(), resource);
-			//editingDomain.getCommandStack().execute(command);
-			
-			//((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
+			Activator.writeConsole(resource.getName() + " created");
 			
 			repository.getResources().add(resource);
-			
+			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			return resource;	
 		}
-		catch(Exception fileNotFound){
-			ExtremoLog.logError(fileNotFound);
+		catch(Exception e){
+			ExtremoLog.logError(e);
+			Activator.writeConsole(e.getMessage());
 			return null;
 		}		
 	}
@@ -719,15 +625,18 @@ public class AssistantFactory implements IResourceChangeListener{
 			resource.setUri(uri);
 			
 			resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
-			resource.setAlive(assistant.load(resource));
 			
 			boolean loaded = assistant.load((Resource) resource);
-		
+			resource.setAlive(loaded);
+			
 			if(loaded){
-				for(SemanticNode node : resource.getNodes()){
-					assistant.toDataProperty(node);
-					assistant.toObjectProperty(node);
-					assistant.toSuper(node);
+				for(ResourceElement resourceElement : resource.getResourceElements()){
+					if(resourceElement instanceof SemanticNode){
+						SemanticNode node = (SemanticNode) resourceElement;
+						toDataThread(assistant, node);
+						toObjectThread(assistant, node);
+						toSuperThread(assistant, node);
+					}
 				}
 			}
 			
@@ -744,27 +653,18 @@ public class AssistantFactory implements IResourceChangeListener{
 					child.createLink(location, IResource.FILE, null);
 				}
 				catch(Exception e){
-					MessageDialog.openInformation(null, "Repository creation", e.getMessage());
+					ExtremoLog.logError(e);
+					Activator.writeConsole(e.getMessage());
 				}
 			}
 			
-			//long before = System.nanoTime();
-			
-			/*org.eclipse.emf.common.command.Command command = AddCommand.create(editingDomain, repository, SemanticmanagerPackage.eINSTANCE.getRepository_Resources(), resource);
-			editingDomain.getCommandStack().execute(command);
-			
-			((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();*/
-			
 			repository.getResources().add(resource);
-			
-			//long after = System.nanoTime();
-			
-			//System.out.println("R1 Time: " + (after - before));
-			
+			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			return resource;
 		}
-		catch(Exception fileNotFound){
-			ExtremoLog.logError(fileNotFound);
+		catch(Exception e){
+			ExtremoLog.logError(e);
+			Activator.writeConsole(e.getMessage());
 			return null;
 		}
 	}
@@ -773,15 +673,19 @@ public class AssistantFactory implements IResourceChangeListener{
 		loop: 
 		for(IFormatAssistant assistant : AssistantFactory.getInstance().getAssistances()){
 			if(((FormatAssistant) assistant).getNameExtension().equals(newassistant)){
-				resource.getNodes().clear();
-				resource.setAlive(assistant.load(resource));
+				resource.getResourceElements().clear();
 				
 				boolean loaded = assistant.load((Resource) resource);
+				resource.setAlive(loaded);
+				
 				if(loaded){
-					for(SemanticNode node : resource.getNodes()){
-						assistant.toDataProperty(node);
-						assistant.toObjectProperty(node);
-						assistant.toSuper(node);
+					for(ResourceElement resourceElement : resource.getResourceElements()){
+						if(resourceElement instanceof SemanticNode){
+							SemanticNode node = (SemanticNode) resourceElement;
+							toDataThread(assistant, node);
+							toObjectThread(assistant, node);
+							toSuperThread(assistant, node);
+						}
 					}
 				}
 				break loop;
@@ -791,12 +695,10 @@ public class AssistantFactory implements IResourceChangeListener{
 
     public Resource createResource(Repository repository, Resource descriptor, String name, String description, String uri) throws CoreException{	
 		try{
-			//System.out.println("repo3");
 			Resource resource = ExtendedSemanticmanagerFactory.eINSTANCE.createResource();
 			resource.setName(name);
 			resource.setDescription(description);
 			resource.setUri(uri);
-			//resource.setDescriptor(descriptor);
 			resource.getDescriptors().add(descriptor);
 
 			String extensionFile = FilenameUtils.getExtension(uri);
@@ -805,15 +707,18 @@ public class AssistantFactory implements IResourceChangeListener{
 				for(String ext : ((FormatAssistant) assistant).getExtensions()){
 					if(extensionFile.compareTo(ext) == 0){
 						resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
-						resource.setAlive(assistant.load(resource));
 						
 						boolean loaded = assistant.load((Resource) resource);
+						resource.setAlive(loaded);
 						
 						if(loaded){
-							for(SemanticNode node : resource.getNodes()){
-								assistant.toDataProperty(node);
-								assistant.toObjectProperty(node);
-								assistant.toSuper(node);
+							for(ResourceElement resourceElement : resource.getResourceElements()){
+								if(resourceElement instanceof SemanticNode){
+									SemanticNode node = (SemanticNode) resourceElement;
+									toDataThread(assistant, node);
+									toObjectThread(assistant, node);
+									toSuperThread(assistant, node);
+								}
 							}
 						}
 						break loop;
@@ -833,31 +738,26 @@ public class AssistantFactory implements IResourceChangeListener{
 					child.createLink(location, IResource.FILE, null);
 				}
 				catch(Exception e){
-					MessageDialog.openInformation(null, "Repository creation", e.getMessage());
+					ExtremoLog.logError(e);
+					Activator.writeConsole(e.getMessage());
 				}
 			}
 			
-			//BasicCommandStack commandStack = new BasicCommandStack();
-			//AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(new DataModelItemProviderAdapterFactory(), commandStack);
-			
-			//org.eclipse.emf.common.command.Command command = AddCommand.create(editingDomain, repository, SemanticmanagerPackage.eINSTANCE.getRepository_Resources(), resource);
-			//editingDomain.getCommandStack().execute(command);
-			
-			//((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
-			
 			repository.getResources().add(resource);
+			
+			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			
 			return resource;
 		}
-		catch(Exception fileNotFound){
-			ExtremoLog.logError(fileNotFound);
+		catch(Exception e){
+			ExtremoLog.logError(e);
+			Activator.writeConsole(e.getMessage());
 			return null;
 		}
 	}
 	
 	public Resource createResource(Repository repository, Resource descriptor, String name, String description, String uri, IFormatAssistant assistant) throws CoreException{	
 		try{
-			//System.out.println("repo4");
 			Resource resource = ExtendedSemanticmanagerFactory.eINSTANCE.createResource();
 			resource.setName(name);
 			resource.setDescription(description);
@@ -865,15 +765,18 @@ public class AssistantFactory implements IResourceChangeListener{
 			resource.getDescriptors().add(descriptor);
 			
 			resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
-			resource.setAlive(assistant.load(resource));
 			
 			boolean loaded = assistant.load((Resource) resource);
-				
+			resource.setAlive(loaded);
+			
 			if(loaded){
-				for(SemanticNode node : resource.getNodes()){
-					assistant.toDataProperty(node);
-					assistant.toObjectProperty(node);
-					assistant.toSuper(node);
+				for(ResourceElement resourceElement : resource.getResourceElements()){
+					if(resourceElement instanceof SemanticNode){
+						SemanticNode node = (SemanticNode) resourceElement;
+						toDataThread(assistant, node);
+						toObjectThread(assistant, node);
+						toSuperThread(assistant, node);
+					}
 				}
 			}
 			
@@ -889,30 +792,18 @@ public class AssistantFactory implements IResourceChangeListener{
 					child.createLink(location, IResource.FILE, null);
 				}
 				catch(Exception e){
-					MessageDialog.openInformation(null, "Repository creation", e.getMessage());
+					ExtremoLog.logError(e);
+					Activator.writeConsole(e.getMessage());
 				}
 			}
 			
-			//long before = System.nanoTime();
-			
-			//BasicCommandStack commandStack = new BasicCommandStack();
-			//AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(itemProvider, commandStack);
-			
-			/*org.eclipse.emf.common.command.Command command = AddCommand.create(editingDomain, repository, SemanticmanagerPackage.eINSTANCE.getRepository_Resources(), resource);
-			editingDomain.getCommandStack().execute(command);
-			
-			((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();*/
-			
 			repository.getResources().add(resource);
-			
-			//long after = System.nanoTime();
-			
-			//System.out.println("R2 Time: " + (after - before));
-			
+			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			return resource;
 		}
-		catch(Exception fileNotFound){
-			ExtremoLog.logError(fileNotFound);
+		catch(Exception e){
+			ExtremoLog.logError(e);
+			Activator.writeConsole(e.getMessage());
 			return null;
 		}
 	}
@@ -974,4 +865,16 @@ public class AssistantFactory implements IResourceChangeListener{
     	
         return found;
     }
+
+	public void emptyResourceDb() {
+		/*getRepositoryManager().getServices().forEach(element -> {EcoreUtil.delete(element);});
+		getRepositoryManager().getConfigurations().forEach(element -> {EcoreUtil.delete(element);});
+		getRepositoryManager().getInterpreters().forEach(element -> {EcoreUtil.delete(element);});
+		getRepositoryManager().getRepositories().forEach(element -> {EcoreUtil.delete(element);});*/
+		getRepositoryManager().getServices().clear();
+		getRepositoryManager().getConfigurations().clear();
+		getRepositoryManager().getInterpreters().clear();
+		getRepositoryManager().getRepositories().clear();
+		
+	}
 }

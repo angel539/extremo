@@ -2,9 +2,9 @@
  */
 package semanticmanager;
 
-import org.eclipse.emf.common.util.EList;
+import fr.inria.atlanmod.neoemf.core.PersistentEObject;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,9 +22,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see semanticmanager.SemanticmanagerPackage#getSearchConfiguration()
  * @model abstract="true"
+ * @extends PersistentEObject
  * @generated
  */
-public interface SearchConfiguration extends EObject {
+public interface SearchConfiguration extends PersistentEObject {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->

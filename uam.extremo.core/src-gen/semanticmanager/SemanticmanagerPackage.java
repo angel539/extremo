@@ -353,22 +353,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_OPTION = 4;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH_OPTION__TYPE = 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_OPTION__NAME = 1;
+	int SEARCH_OPTION__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -377,7 +368,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_OPTION__ID = 2;
+	int SEARCH_OPTION__ID = 1;
 
 	/**
 	 * The number of structural features of the '<em>Search Option</em>' class.
@@ -386,7 +377,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_OPTION_FEATURE_COUNT = 3;
+	int SEARCH_OPTION_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Search Option</em>' class.
@@ -472,31 +463,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT_OPTION_VALUE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Option</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH_RESULT_OPTION_VALUE__OPTION = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEARCH_RESULT_OPTION_VALUE__VALUE = 1;
-
-	/**
 	 * The number of structural features of the '<em>Search Result Option Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT = 2;
+	int SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT = 0;
 
 	/**
 	 * The number of operations of the '<em>Search Result Option Value</em>' class.
@@ -618,22 +591,40 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SIMPLE_SEARCH_CONFIGURATION__FILTER_BY = SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION = SEARCH_CONFIGURATION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Simple Search Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT = SEARCH_CONFIGURATION_FEATURE_COUNT + 2;
+	int SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT = SEARCH_CONFIGURATION_FEATURE_COUNT + 3;
 
 	/**
-	 * The operation id for the '<em>Add Search Option</em>' operation.
+	 * The operation id for the '<em>Add Primitive Type Search Option</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_SEARCH_CONFIGURATION___ADD_SEARCH_OPTION__STRING_STRING_TYPE = SEARCH_CONFIGURATION_OPERATION_COUNT + 0;
+	int SIMPLE_SEARCH_CONFIGURATION___ADD_PRIMITIVE_TYPE_SEARCH_OPTION__STRING_STRING_TYPE = SEARCH_CONFIGURATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add Data Model Type Search Option</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMPLE_SEARCH_CONFIGURATION___ADD_DATA_MODEL_TYPE_SEARCH_OPTION__STRING_STRING_DATAMODELTYPE = SEARCH_CONFIGURATION_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Simple Search Configuration</em>' class.
@@ -642,7 +633,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT = SEARCH_CONFIGURATION_OPERATION_COUNT + 1;
+	int SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT = SEARCH_CONFIGURATION_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.CompositeSearchConfigurationImpl <em>Composite Search Configuration</em>}' class.
@@ -846,6 +837,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	int CUSTOM_SEARCH__FILTER_BY = SIMPLE_SEARCH_CONFIGURATION__FILTER_BY;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_SEARCH__DESCRIPTION = SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION;
+
+	/**
 	 * The feature id for the '<em><b>Grouped</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -864,13 +864,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int CUSTOM_SEARCH_FEATURE_COUNT = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Add Search Option</em>' operation.
+	 * The operation id for the '<em>Add Primitive Type Search Option</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_SEARCH___ADD_SEARCH_OPTION__STRING_STRING_TYPE = SIMPLE_SEARCH_CONFIGURATION___ADD_SEARCH_OPTION__STRING_STRING_TYPE;
+	int CUSTOM_SEARCH___ADD_PRIMITIVE_TYPE_SEARCH_OPTION__STRING_STRING_TYPE = SIMPLE_SEARCH_CONFIGURATION___ADD_PRIMITIVE_TYPE_SEARCH_OPTION__STRING_STRING_TYPE;
+
+	/**
+	 * The operation id for the '<em>Add Data Model Type Search Option</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_SEARCH___ADD_DATA_MODEL_TYPE_SEARCH_OPTION__STRING_STRING_DATAMODELTYPE = SIMPLE_SEARCH_CONFIGURATION___ADD_DATA_MODEL_TYPE_SEARCH_OPTION__STRING_STRING_DATAMODELTYPE;
 
 	/**
 	 * The operation id for the '<em>Search</em>' operation.
@@ -946,6 +955,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	int PREDICATE_BASED_SEARCH__FILTER_BY = SIMPLE_SEARCH_CONFIGURATION__FILTER_BY;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDICATE_BASED_SEARCH__DESCRIPTION = SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION;
+
+	/**
 	 * The number of structural features of the '<em>Predicate Based Search</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -955,13 +973,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int PREDICATE_BASED_SEARCH_FEATURE_COUNT = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Add Search Option</em>' operation.
+	 * The operation id for the '<em>Add Primitive Type Search Option</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PREDICATE_BASED_SEARCH___ADD_SEARCH_OPTION__STRING_STRING_TYPE = SIMPLE_SEARCH_CONFIGURATION___ADD_SEARCH_OPTION__STRING_STRING_TYPE;
+	int PREDICATE_BASED_SEARCH___ADD_PRIMITIVE_TYPE_SEARCH_OPTION__STRING_STRING_TYPE = SIMPLE_SEARCH_CONFIGURATION___ADD_PRIMITIVE_TYPE_SEARCH_OPTION__STRING_STRING_TYPE;
+
+	/**
+	 * The operation id for the '<em>Add Data Model Type Search Option</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDICATE_BASED_SEARCH___ADD_DATA_MODEL_TYPE_SEARCH_OPTION__STRING_STRING_DATAMODELTYPE = SIMPLE_SEARCH_CONFIGURATION___ADD_DATA_MODEL_TYPE_SEARCH_OPTION__STRING_STRING_DATAMODELTYPE;
 
 	/**
 	 * The operation id for the '<em>Matches</em>' operation.
@@ -1273,13 +1300,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int NAMED_ELEMENT__CONSTRAINTS = 7;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__METADATA = 8;
+
+	/**
 	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_FEATURE_COUNT = 8;
+	int NAMED_ELEMENT_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Named Element</em>' class.
@@ -1371,6 +1407,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEMANTIC_GROUP__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_GROUP__METADATA = NAMED_ELEMENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' reference list.
@@ -1482,6 +1527,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	int REPOSITORY__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY__METADATA = NAMED_ELEMENT__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1518,6 +1572,124 @@ public interface SemanticmanagerPackage extends EPackage {
 	int REPOSITORY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link semanticmanager.impl.ResourceElementImpl <em>Resource Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.ResourceElementImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getResourceElement()
+	 * @generated
+	 */
+	int RESOURCE_ELEMENT = 24;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__WEIGHT = NAMED_ELEMENT__WEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Trace</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__TRACE = NAMED_ELEMENT__TRACE;
+
+	/**
+	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__DRAWN = NAMED_ELEMENT__DRAWN;
+
+	/**
+	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__DESCRIPTORS = NAMED_ELEMENT__DESCRIPTORS;
+
+	/**
+	 * The feature id for the '<em><b>Describes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__METADATA = NAMED_ELEMENT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Resource From</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__RESOURCE_FROM = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Resource Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Resource Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link semanticmanager.impl.ResourceImpl <em>Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1534,7 +1706,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__NAME = NAMED_ELEMENT__NAME;
+	int RESOURCE__NAME = RESOURCE_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1543,7 +1715,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+	int RESOURCE__DESCRIPTION = RESOURCE_ELEMENT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Weight</b></em>' attribute.
@@ -1552,7 +1724,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__WEIGHT = NAMED_ELEMENT__WEIGHT;
+	int RESOURCE__WEIGHT = RESOURCE_ELEMENT__WEIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Trace</b></em>' attribute.
@@ -1561,7 +1733,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__TRACE = NAMED_ELEMENT__TRACE;
+	int RESOURCE__TRACE = RESOURCE_ELEMENT__TRACE;
 
 	/**
 	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
@@ -1570,7 +1742,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__DRAWN = NAMED_ELEMENT__DRAWN;
+	int RESOURCE__DRAWN = RESOURCE_ELEMENT__DRAWN;
 
 	/**
 	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
@@ -1579,7 +1751,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__DESCRIPTORS = NAMED_ELEMENT__DESCRIPTORS;
+	int RESOURCE__DESCRIPTORS = RESOURCE_ELEMENT__DESCRIPTORS;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference list.
@@ -1588,7 +1760,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
+	int RESOURCE__DESCRIBES = RESOURCE_ELEMENT__DESCRIBES;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -1597,7 +1769,25 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
+	int RESOURCE__CONSTRAINTS = RESOURCE_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__METADATA = RESOURCE_ELEMENT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Resource From</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__RESOURCE_FROM = RESOURCE_ELEMENT__RESOURCE_FROM;
 
 	/**
 	 * The feature id for the '<em><b>Active</b></em>' attribute.
@@ -1606,7 +1796,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__ACTIVE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int RESOURCE__ACTIVE = RESOURCE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Alive</b></em>' attribute.
@@ -1615,7 +1805,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__ALIVE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int RESOURCE__ALIVE = RESOURCE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Assistant</b></em>' attribute.
@@ -1624,16 +1814,16 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__ASSISTANT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int RESOURCE__ASSISTANT = RESOURCE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Resource Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__NODES = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int RESOURCE__RESOURCE_ELEMENTS = RESOURCE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -1642,7 +1832,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__URI = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int RESOURCE__URI = RESOURCE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Repository From</b></em>' container reference.
@@ -1651,7 +1841,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__REPOSITORY_FROM = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int RESOURCE__REPOSITORY_FROM = RESOURCE_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Default Constraint Interpreter</b></em>' reference.
@@ -1660,7 +1850,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__DEFAULT_CONSTRAINT_INTERPRETER = NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int RESOURCE__DEFAULT_CONSTRAINT_INTERPRETER = RESOURCE_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -1669,7 +1859,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int RESOURCE_FEATURE_COUNT = RESOURCE_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Resource</em>' class.
@@ -1678,7 +1868,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int RESOURCE_OPERATION_COUNT = RESOURCE_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.SemanticNodeImpl <em>Semantic Node</em>}' class.
@@ -1697,7 +1887,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__NAME = NAMED_ELEMENT__NAME;
+	int SEMANTIC_NODE__NAME = RESOURCE_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1706,7 +1896,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+	int SEMANTIC_NODE__DESCRIPTION = RESOURCE_ELEMENT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Weight</b></em>' attribute.
@@ -1715,7 +1905,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__WEIGHT = NAMED_ELEMENT__WEIGHT;
+	int SEMANTIC_NODE__WEIGHT = RESOURCE_ELEMENT__WEIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Trace</b></em>' attribute.
@@ -1724,7 +1914,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__TRACE = NAMED_ELEMENT__TRACE;
+	int SEMANTIC_NODE__TRACE = RESOURCE_ELEMENT__TRACE;
 
 	/**
 	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
@@ -1733,7 +1923,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__DRAWN = NAMED_ELEMENT__DRAWN;
+	int SEMANTIC_NODE__DRAWN = RESOURCE_ELEMENT__DRAWN;
 
 	/**
 	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
@@ -1742,7 +1932,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__DESCRIPTORS = NAMED_ELEMENT__DESCRIPTORS;
+	int SEMANTIC_NODE__DESCRIPTORS = RESOURCE_ELEMENT__DESCRIPTORS;
 
 	/**
 	 * The feature id for the '<em><b>Describes</b></em>' reference list.
@@ -1751,7 +1941,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
+	int SEMANTIC_NODE__DESCRIBES = RESOURCE_ELEMENT__DESCRIBES;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -1760,34 +1950,16 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
+	int SEMANTIC_NODE__CONSTRAINTS = RESOURCE_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Supers</b></em>' reference list.
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__SUPERS = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Subs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMANTIC_NODE__SUBS = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMANTIC_NODE__PROPERTIES = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int SEMANTIC_NODE__METADATA = RESOURCE_ELEMENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Resource From</b></em>' container reference.
@@ -1796,7 +1968,34 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__RESOURCE_FROM = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int SEMANTIC_NODE__RESOURCE_FROM = RESOURCE_ELEMENT__RESOURCE_FROM;
+
+	/**
+	 * The feature id for the '<em><b>Supers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_NODE__SUPERS = RESOURCE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Subs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_NODE__SUBS = RESOURCE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_NODE__PROPERTIES = RESOURCE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -1805,7 +2004,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__ABSTRACT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int SEMANTIC_NODE__ABSTRACT = RESOURCE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Semantic Node</em>' class.
@@ -1814,7 +2013,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int SEMANTIC_NODE_FEATURE_COUNT = RESOURCE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Semantic Node</em>' class.
@@ -1823,7 +2022,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int SEMANTIC_NODE_OPERATION_COUNT = RESOURCE_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.PropertyImpl <em>Property</em>}' class.
@@ -1906,6 +2105,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROPERTY__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__METADATA = NAMED_ELEMENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
@@ -2033,6 +2241,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECT_PROPERTY__CONSTRAINTS = PROPERTY__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY__METADATA = PROPERTY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
@@ -2171,6 +2388,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	int DATA_PROPERTY__CONSTRAINTS = PROPERTY__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROPERTY__METADATA = PROPERTY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2234,6 +2460,263 @@ public interface SemanticmanagerPackage extends EPackage {
 	int DATA_PROPERTY_OPERATION_COUNT = PROPERTY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link semanticmanager.impl.MetaDataImpl <em>Meta Data</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.MetaDataImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getMetaData()
+	 * @generated
+	 */
+	int META_DATA = 23;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_DATA__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_DATA__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Meta Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_DATA_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Meta Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int META_DATA_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link semanticmanager.impl.PrimitiveTypeSearchOptionImpl <em>Primitive Type Search Option</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.PrimitiveTypeSearchOptionImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeSearchOption()
+	 * @generated
+	 */
+	int PRIMITIVE_TYPE_SEARCH_OPTION = 25;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_SEARCH_OPTION__NAME = SEARCH_OPTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_SEARCH_OPTION__ID = SEARCH_OPTION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_SEARCH_OPTION__TYPE = SEARCH_OPTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Primitive Type Search Option</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_SEARCH_OPTION_FEATURE_COUNT = SEARCH_OPTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Primitive Type Search Option</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_SEARCH_OPTION_OPERATION_COUNT = SEARCH_OPTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link semanticmanager.impl.DataModelTypeSearchOptionImpl <em>Data Model Type Search Option</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.DataModelTypeSearchOptionImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getDataModelTypeSearchOption()
+	 * @generated
+	 */
+	int DATA_MODEL_TYPE_SEARCH_OPTION = 26;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MODEL_TYPE_SEARCH_OPTION__NAME = SEARCH_OPTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MODEL_TYPE_SEARCH_OPTION__ID = SEARCH_OPTION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MODEL_TYPE_SEARCH_OPTION__TYPE = SEARCH_OPTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Data Model Type Search Option</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MODEL_TYPE_SEARCH_OPTION_FEATURE_COUNT = SEARCH_OPTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Data Model Type Search Option</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MODEL_TYPE_SEARCH_OPTION_OPERATION_COUNT = SEARCH_OPTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link semanticmanager.impl.DataModelTypeSearchResultOptionValueImpl <em>Data Model Type Search Result Option Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.DataModelTypeSearchResultOptionValueImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getDataModelTypeSearchResultOptionValue()
+	 * @generated
+	 */
+	int DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE = 27;
+
+	/**
+	 * The feature id for the '<em><b>Option</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE__OPTION = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE__VALUE = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Data Model Type Search Result Option Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Data Model Type Search Result Option Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT = SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link semanticmanager.impl.PrimitiveTypeSearchResultOptionValueImpl <em>Primitive Type Search Result Option Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.impl.PrimitiveTypeSearchResultOptionValueImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeSearchResultOptionValue()
+	 * @generated
+	 */
+	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE = 28;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__VALUE = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Option</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__OPTION = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Calls</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__CALLS = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Primitive Type Search Result Option Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Primitive Type Search Result Option Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT = SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link semanticmanager.ConnectionType <em>Connection Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2241,7 +2724,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getConnectionType()
 	 * @generated
 	 */
-	int CONNECTION_TYPE = 23;
+	int CONNECTION_TYPE = 29;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.DataModelType <em>Data Model Type</em>}' enum.
@@ -2251,7 +2734,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getDataModelType()
 	 * @generated
 	 */
-	int DATA_MODEL_TYPE = 24;
+	int DATA_MODEL_TYPE = 30;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.Type <em>Type</em>}' enum.
@@ -2261,7 +2744,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getType()
 	 * @generated
 	 */
-	int TYPE = 25;
+	int TYPE = 31;
 
 	/**
 	 * The meta object id for the '<em>Java Object</em>' data type.
@@ -2271,7 +2754,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getJavaObject()
 	 * @generated
 	 */
-	int JAVA_OBJECT = 26;
+	int JAVA_OBJECT = 32;
 
 
 	/**
@@ -2533,17 +3016,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	EClass getSearchOption();
 
 	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.SearchOption#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see semanticmanager.SearchOption#getType()
-	 * @see #getSearchOption()
-	 * @generated
-	 */
-	EAttribute getSearchOption_Type();
-
-	/**
 	 * Returns the meta object for the attribute '{@link semanticmanager.SearchOption#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2629,28 +3101,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	EClass getSearchResultOptionValue();
 
 	/**
-	 * Returns the meta object for the reference '{@link semanticmanager.SearchResultOptionValue#getOption <em>Option</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Option</em>'.
-	 * @see semanticmanager.SearchResultOptionValue#getOption()
-	 * @see #getSearchResultOptionValue()
-	 * @generated
-	 */
-	EReference getSearchResultOptionValue_Option();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.SearchResultOptionValue#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see semanticmanager.SearchResultOptionValue#getValue()
-	 * @see #getSearchResultOptionValue()
-	 * @generated
-	 */
-	EAttribute getSearchResultOptionValue_Value();
-
-	/**
 	 * Returns the meta object for class '{@link semanticmanager.SearchConfiguration <em>Search Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2726,14 +3176,35 @@ public interface SemanticmanagerPackage extends EPackage {
 	EAttribute getSimpleSearchConfiguration_FilterBy();
 
 	/**
-	 * Returns the meta object for the '{@link semanticmanager.SimpleSearchConfiguration#addSearchOption(java.lang.String, java.lang.String, semanticmanager.Type) <em>Add Search Option</em>}' operation.
+	 * Returns the meta object for the attribute '{@link semanticmanager.SimpleSearchConfiguration#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Add Search Option</em>' operation.
-	 * @see semanticmanager.SimpleSearchConfiguration#addSearchOption(java.lang.String, java.lang.String, semanticmanager.Type)
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see semanticmanager.SimpleSearchConfiguration#getDescription()
+	 * @see #getSimpleSearchConfiguration()
 	 * @generated
 	 */
-	EOperation getSimpleSearchConfiguration__AddSearchOption__String_String_Type();
+	EAttribute getSimpleSearchConfiguration_Description();
+
+	/**
+	 * Returns the meta object for the '{@link semanticmanager.SimpleSearchConfiguration#addPrimitiveTypeSearchOption(java.lang.String, java.lang.String, semanticmanager.Type) <em>Add Primitive Type Search Option</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Primitive Type Search Option</em>' operation.
+	 * @see semanticmanager.SimpleSearchConfiguration#addPrimitiveTypeSearchOption(java.lang.String, java.lang.String, semanticmanager.Type)
+	 * @generated
+	 */
+	EOperation getSimpleSearchConfiguration__AddPrimitiveTypeSearchOption__String_String_Type();
+
+	/**
+	 * Returns the meta object for the '{@link semanticmanager.SimpleSearchConfiguration#addDataModelTypeSearchOption(java.lang.String, java.lang.String, semanticmanager.DataModelType) <em>Add Data Model Type Search Option</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add Data Model Type Search Option</em>' operation.
+	 * @see semanticmanager.SimpleSearchConfiguration#addDataModelTypeSearchOption(java.lang.String, java.lang.String, semanticmanager.DataModelType)
+	 * @generated
+	 */
+	EOperation getSimpleSearchConfiguration__AddDataModelTypeSearchOption__String_String_DataModelType();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.CompositeSearchConfiguration <em>Composite Search Configuration</em>}'.
@@ -3090,15 +3561,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	EAttribute getResource_Assistant();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link semanticmanager.Resource#getNodes <em>Nodes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link semanticmanager.Resource#getResourceElements <em>Resource Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Nodes</em>'.
-	 * @see semanticmanager.Resource#getNodes()
+	 * @return the meta object for the containment reference list '<em>Resource Elements</em>'.
+	 * @see semanticmanager.Resource#getResourceElements()
 	 * @see #getResource()
 	 * @generated
 	 */
-	EReference getResource_Nodes();
+	EReference getResource_ResourceElements();
 
 	/**
 	 * Returns the meta object for the attribute '{@link semanticmanager.Resource#getUri <em>Uri</em>}'.
@@ -3175,17 +3646,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSemanticNode_Properties();
-
-	/**
-	 * Returns the meta object for the container reference '{@link semanticmanager.SemanticNode#getResourceFrom <em>Resource From</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Resource From</em>'.
-	 * @see semanticmanager.SemanticNode#getResourceFrom()
-	 * @see #getSemanticNode()
-	 * @generated
-	 */
-	EReference getSemanticNode_ResourceFrom();
 
 	/**
 	 * Returns the meta object for the attribute '{@link semanticmanager.SemanticNode#isAbstract <em>Abstract</em>}'.
@@ -3297,6 +3757,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getNamedElement_Constraints();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link semanticmanager.NamedElement#getMetadata <em>Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Metadata</em>'.
+	 * @see semanticmanager.NamedElement#getMetadata()
+	 * @see #getNamedElement()
+	 * @generated
+	 */
+	EReference getNamedElement_Metadata();
+
+	/**
 	 * Returns the meta object for class '{@link semanticmanager.Property <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3391,6 +3862,176 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataProperty_Value();
+
+	/**
+	 * Returns the meta object for class '{@link semanticmanager.MetaData <em>Meta Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Meta Data</em>'.
+	 * @see semanticmanager.MetaData
+	 * @generated
+	 */
+	EClass getMetaData();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.MetaData#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see semanticmanager.MetaData#getKey()
+	 * @see #getMetaData()
+	 * @generated
+	 */
+	EAttribute getMetaData_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.MetaData#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see semanticmanager.MetaData#getValue()
+	 * @see #getMetaData()
+	 * @generated
+	 */
+	EAttribute getMetaData_Value();
+
+	/**
+	 * Returns the meta object for class '{@link semanticmanager.ResourceElement <em>Resource Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Resource Element</em>'.
+	 * @see semanticmanager.ResourceElement
+	 * @generated
+	 */
+	EClass getResourceElement();
+
+	/**
+	 * Returns the meta object for the container reference '{@link semanticmanager.ResourceElement#getResourceFrom <em>Resource From</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Resource From</em>'.
+	 * @see semanticmanager.ResourceElement#getResourceFrom()
+	 * @see #getResourceElement()
+	 * @generated
+	 */
+	EReference getResourceElement_ResourceFrom();
+
+	/**
+	 * Returns the meta object for class '{@link semanticmanager.PrimitiveTypeSearchOption <em>Primitive Type Search Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Primitive Type Search Option</em>'.
+	 * @see semanticmanager.PrimitiveTypeSearchOption
+	 * @generated
+	 */
+	EClass getPrimitiveTypeSearchOption();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.PrimitiveTypeSearchOption#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see semanticmanager.PrimitiveTypeSearchOption#getType()
+	 * @see #getPrimitiveTypeSearchOption()
+	 * @generated
+	 */
+	EAttribute getPrimitiveTypeSearchOption_Type();
+
+	/**
+	 * Returns the meta object for class '{@link semanticmanager.DataModelTypeSearchOption <em>Data Model Type Search Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Model Type Search Option</em>'.
+	 * @see semanticmanager.DataModelTypeSearchOption
+	 * @generated
+	 */
+	EClass getDataModelTypeSearchOption();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.DataModelTypeSearchOption#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see semanticmanager.DataModelTypeSearchOption#getType()
+	 * @see #getDataModelTypeSearchOption()
+	 * @generated
+	 */
+	EAttribute getDataModelTypeSearchOption_Type();
+
+	/**
+	 * Returns the meta object for class '{@link semanticmanager.DataModelTypeSearchResultOptionValue <em>Data Model Type Search Result Option Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Model Type Search Result Option Value</em>'.
+	 * @see semanticmanager.DataModelTypeSearchResultOptionValue
+	 * @generated
+	 */
+	EClass getDataModelTypeSearchResultOptionValue();
+
+	/**
+	 * Returns the meta object for the reference '{@link semanticmanager.DataModelTypeSearchResultOptionValue#getOption <em>Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Option</em>'.
+	 * @see semanticmanager.DataModelTypeSearchResultOptionValue#getOption()
+	 * @see #getDataModelTypeSearchResultOptionValue()
+	 * @generated
+	 */
+	EReference getDataModelTypeSearchResultOptionValue_Option();
+
+	/**
+	 * Returns the meta object for the reference '{@link semanticmanager.DataModelTypeSearchResultOptionValue#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value</em>'.
+	 * @see semanticmanager.DataModelTypeSearchResultOptionValue#getValue()
+	 * @see #getDataModelTypeSearchResultOptionValue()
+	 * @generated
+	 */
+	EReference getDataModelTypeSearchResultOptionValue_Value();
+
+	/**
+	 * Returns the meta object for class '{@link semanticmanager.PrimitiveTypeSearchResultOptionValue <em>Primitive Type Search Result Option Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Primitive Type Search Result Option Value</em>'.
+	 * @see semanticmanager.PrimitiveTypeSearchResultOptionValue
+	 * @generated
+	 */
+	EClass getPrimitiveTypeSearchResultOptionValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.PrimitiveTypeSearchResultOptionValue#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see semanticmanager.PrimitiveTypeSearchResultOptionValue#getValue()
+	 * @see #getPrimitiveTypeSearchResultOptionValue()
+	 * @generated
+	 */
+	EAttribute getPrimitiveTypeSearchResultOptionValue_Value();
+
+	/**
+	 * Returns the meta object for the reference '{@link semanticmanager.PrimitiveTypeSearchResultOptionValue#getOption <em>Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Option</em>'.
+	 * @see semanticmanager.PrimitiveTypeSearchResultOptionValue#getOption()
+	 * @see #getPrimitiveTypeSearchResultOptionValue()
+	 * @generated
+	 */
+	EReference getPrimitiveTypeSearchResultOptionValue_Option();
+
+	/**
+	 * Returns the meta object for the reference '{@link semanticmanager.PrimitiveTypeSearchResultOptionValue#getCalls <em>Calls</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Calls</em>'.
+	 * @see semanticmanager.PrimitiveTypeSearchResultOptionValue#getCalls()
+	 * @see #getPrimitiveTypeSearchResultOptionValue()
+	 * @generated
+	 */
+	EReference getPrimitiveTypeSearchResultOptionValue_Calls();
 
 	/**
 	 * Returns the meta object for enum '{@link semanticmanager.ConnectionType <em>Connection Type</em>}'.
@@ -3659,14 +4300,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		EClass SEARCH_OPTION = eINSTANCE.getSearchOption();
 
 		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH_OPTION__TYPE = eINSTANCE.getSearchOption_Type();
-
-		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3735,22 +4368,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		EClass SEARCH_RESULT_OPTION_VALUE = eINSTANCE.getSearchResultOptionValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Option</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SEARCH_RESULT_OPTION_VALUE__OPTION = eINSTANCE.getSearchResultOptionValue_Option();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEARCH_RESULT_OPTION_VALUE__VALUE = eINSTANCE.getSearchResultOptionValue_Value();
-
-		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SearchConfigurationImpl <em>Search Configuration</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3811,12 +4428,28 @@ public interface SemanticmanagerPackage extends EPackage {
 		EAttribute SIMPLE_SEARCH_CONFIGURATION__FILTER_BY = eINSTANCE.getSimpleSearchConfiguration_FilterBy();
 
 		/**
-		 * The meta object literal for the '<em><b>Add Search Option</b></em>' operation.
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation SIMPLE_SEARCH_CONFIGURATION___ADD_SEARCH_OPTION__STRING_STRING_TYPE = eINSTANCE.getSimpleSearchConfiguration__AddSearchOption__String_String_Type();
+		EAttribute SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION = eINSTANCE.getSimpleSearchConfiguration_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Primitive Type Search Option</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SIMPLE_SEARCH_CONFIGURATION___ADD_PRIMITIVE_TYPE_SEARCH_OPTION__STRING_STRING_TYPE = eINSTANCE.getSimpleSearchConfiguration__AddPrimitiveTypeSearchOption__String_String_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Add Data Model Type Search Option</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SIMPLE_SEARCH_CONFIGURATION___ADD_DATA_MODEL_TYPE_SEARCH_OPTION__STRING_STRING_DATAMODELTYPE = eINSTANCE.getSimpleSearchConfiguration__AddDataModelTypeSearchOption__String_String_DataModelType();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.CompositeSearchConfigurationImpl <em>Composite Search Configuration</em>}' class.
@@ -4109,12 +4742,12 @@ public interface SemanticmanagerPackage extends EPackage {
 		EAttribute RESOURCE__ASSISTANT = eINSTANCE.getResource_Assistant();
 
 		/**
-		 * The meta object literal for the '<em><b>Nodes</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Resource Elements</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESOURCE__NODES = eINSTANCE.getResource_Nodes();
+		EReference RESOURCE__RESOURCE_ELEMENTS = eINSTANCE.getResource_ResourceElements();
 
 		/**
 		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
@@ -4173,14 +4806,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SEMANTIC_NODE__PROPERTIES = eINSTANCE.getSemanticNode_Properties();
-
-		/**
-		 * The meta object literal for the '<em><b>Resource From</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SEMANTIC_NODE__RESOURCE_FROM = eINSTANCE.getSemanticNode_ResourceFrom();
 
 		/**
 		 * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
@@ -4265,6 +4890,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference NAMED_ELEMENT__CONSTRAINTS = eINSTANCE.getNamedElement_Constraints();
 
 		/**
+		 * The meta object literal for the '<em><b>Metadata</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMED_ELEMENT__METADATA = eINSTANCE.getNamedElement_Metadata();
+
+		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.PropertyImpl <em>Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4341,6 +4974,146 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_PROPERTY__VALUE = eINSTANCE.getDataProperty_Value();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.MetaDataImpl <em>Meta Data</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.MetaDataImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getMetaData()
+		 * @generated
+		 */
+		EClass META_DATA = eINSTANCE.getMetaData();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute META_DATA__KEY = eINSTANCE.getMetaData_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute META_DATA__VALUE = eINSTANCE.getMetaData_Value();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.ResourceElementImpl <em>Resource Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.ResourceElementImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getResourceElement()
+		 * @generated
+		 */
+		EClass RESOURCE_ELEMENT = eINSTANCE.getResourceElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource From</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE_ELEMENT__RESOURCE_FROM = eINSTANCE.getResourceElement_ResourceFrom();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.PrimitiveTypeSearchOptionImpl <em>Primitive Type Search Option</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.PrimitiveTypeSearchOptionImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeSearchOption()
+		 * @generated
+		 */
+		EClass PRIMITIVE_TYPE_SEARCH_OPTION = eINSTANCE.getPrimitiveTypeSearchOption();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRIMITIVE_TYPE_SEARCH_OPTION__TYPE = eINSTANCE.getPrimitiveTypeSearchOption_Type();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.DataModelTypeSearchOptionImpl <em>Data Model Type Search Option</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.DataModelTypeSearchOptionImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getDataModelTypeSearchOption()
+		 * @generated
+		 */
+		EClass DATA_MODEL_TYPE_SEARCH_OPTION = eINSTANCE.getDataModelTypeSearchOption();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MODEL_TYPE_SEARCH_OPTION__TYPE = eINSTANCE.getDataModelTypeSearchOption_Type();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.DataModelTypeSearchResultOptionValueImpl <em>Data Model Type Search Result Option Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.DataModelTypeSearchResultOptionValueImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getDataModelTypeSearchResultOptionValue()
+		 * @generated
+		 */
+		EClass DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE = eINSTANCE.getDataModelTypeSearchResultOptionValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Option</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE__OPTION = eINSTANCE.getDataModelTypeSearchResultOptionValue_Option();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE__VALUE = eINSTANCE.getDataModelTypeSearchResultOptionValue_Value();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.impl.PrimitiveTypeSearchResultOptionValueImpl <em>Primitive Type Search Result Option Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.impl.PrimitiveTypeSearchResultOptionValueImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeSearchResultOptionValue()
+		 * @generated
+		 */
+		EClass PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE = eINSTANCE.getPrimitiveTypeSearchResultOptionValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__VALUE = eINSTANCE.getPrimitiveTypeSearchResultOptionValue_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Option</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__OPTION = eINSTANCE.getPrimitiveTypeSearchResultOptionValue_Option();
+
+		/**
+		 * The meta object literal for the '<em><b>Calls</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__CALLS = eINSTANCE.getPrimitiveTypeSearchResultOptionValue_Calls();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.ConnectionType <em>Connection Type</em>}' enum.

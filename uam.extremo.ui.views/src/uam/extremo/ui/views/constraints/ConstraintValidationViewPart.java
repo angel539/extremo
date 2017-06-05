@@ -21,9 +21,11 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
-import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -41,9 +43,16 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DragSource;
+import org.eclipse.swt.dnd.TextTransfer;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
@@ -57,7 +66,9 @@ import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
 import semanticmanager.util.SemanticmanagerAdapterFactory;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.views.Activator;
+import uam.extremo.ui.views.draganddrop.NamedElementDragListener;
 import uam.extremo.ui.views.extensions.actions.ExtensibleViewPartActionContribution;
+import uam.extremo.ui.views.extensions.dnd.ExtensibleGEFDragAndDropContribution;
 import uam.extremo.ui.views.searchtree.TreeViewAdapterFactoryLabelProvider;
 
 public class ConstraintValidationViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor {
@@ -98,42 +109,35 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 		AdapterFactoryContentProvider contentProvider = new AdapterFactoryContentProvider(adapterFactory);
 		viewer.setContentProvider(contentProvider);
 		
-		viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
+		AssistantFactory assistantFactory = AssistantFactory.getInstance();
+		
 		viewer.setSorter(new NameSorter());
 		
 		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new TreeViewAdapterFactoryLabelProvider(adapterFactory)));
+		
+		viewer.setInput(assistantFactory.getRepositoryManager());
+		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "extremo.ui.viewer");
 		
 		getSite().setSelectionProvider(viewer);
 		getViewSite().setSelectionProvider(viewer);
 		
-		viewer.setSelection(new StructuredSelection(AssistantFactory.getInstance().getRepositoryManager()), true);
-		new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
+		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
+		Transfer[] transfers = new Transfer[]{TextTransfer.getInstance()};
+		
+		DragSource source = new DragSource(viewer.getTree(), dndOperations);
+		source.setTransfer(transfers);
+		NamedElementDragListener listener = new NamedElementDragListener(viewer);
+		source.addDragListener(listener);
 		
 		callActions();
-		//callEditorsDrop();
-		//callFilters();
+		callEditorsDrop();
+		callFilters();
 		
 		makeActions();
-		//hookContextMenu();
 		hookDoubleClickAction();
 		contributeToActionBars();
-    	//ConstraintValidationViewerComparator comparator = new ConstraintValidationViewerComparator();
-		//viewer.setComparator(comparator);
 	}
-
-	/*private void hookContextMenu() {
-		MenuManager menuMgr = new MenuManager("#PopupMenu");
-		menuMgr.setRemoveAllWhenShown(true);
-		menuMgr.addMenuListener(new IMenuListener() {
-			public void menuAboutToShow(IMenuManager manager) {
-				ConstraintValidationViewPart.this.fillContextMenu(manager);
-			}
-		});
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
-	}*/
 
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
@@ -145,9 +149,6 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 	}
 	
 	private void fillLocalPullDown(IMenuManager manager) {
-	}
-
-	private void fillContextMenu(IMenuManager manager) {
 	}
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
@@ -190,40 +191,12 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 		}
 		return null;
 	}
-
-	/*private void callEditorsDrop(){
-		IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-		IEditorPart editor = window.getActivePage().getActiveEditor();
-		
-		if (editor instanceof IDiagramContainerUI){
-			IDiagramContainerUI diagramEditor =  (IDiagramContainerUI) editor;
-			GraphicalViewer graphicalViewer = diagramEditor.getGraphicalViewer();
-
-			IExtensionRegistry registry = Platform.getExtensionRegistry();
-			IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.EDITOR_EXTENSIONS_ID);
-			
-			for(IConfigurationElement extension : extensions){
-				if(extension.getName().compareTo("editordrop") == 0){
-					GraphityEditorTransferDropTargetListener graphityDrop;
-					try{
-						graphityDrop = (GraphityEditorTransferDropTargetListener) extension.createExecutableExtension("class");
-						graphicalViewer.addDropTargetListener(graphityDrop);
-					}
-					catch(CoreException e){
-					}
-				}	
-			}
-		 }
-	}*/
 	
 	private void callActions() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.ACTION_EXTENSIONS_ID);
 		
-		//MenuManager menuMgr = new MenuManager("#PopupMenu");
-		//menuMgr.setRemoveAllWhenShown(true);
 		MenuManager menumanager = new MenuManager("#PopupMenu");
 		menumanager.setRemoveAllWhenShown(true);
 		
@@ -261,8 +234,6 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 							&& (extension.getAttribute("view")).equals("constraints")){
 						IActionBars bars = getViewSite().getActionBars();
 						
-						System.out.println("position: " + extension.getAttribute("position"));
-						
 						if(extension.getAttribute("position").equals("toolbar")){
 							bars.getToolBarManager().add(action);
 						}
@@ -279,7 +250,7 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 					}
 				}
 				catch(CoreException e){
-					MessageDialog.openError(null, "Constraint View Part", e.getMessage());
+					Activator.writeConsole(e.getMessage());
 				}
 			}	
 		}
@@ -289,7 +260,35 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 		getSite().registerContextMenu(menumanager, viewer);
 	}
 	
-	/*private void callFilters() {
+	private void callEditorsDrop(){
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+		IEditorPart editor = window.getActivePage().getActiveEditor();
+		
+		if (editor instanceof IDiagramContainerUI){
+			IDiagramContainerUI diagramEditor =  (IDiagramContainerUI) editor;
+			GraphicalViewer graphicalViewer = diagramEditor.getGraphicalViewer();
+
+			IExtensionRegistry registry = Platform.getExtensionRegistry();
+			IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.EDITOR_EXTENSIONS_ID);
+			
+			for(IConfigurationElement extension : extensions){
+				if(extension.getName().compareTo("editordrop") == 0){
+					ExtensibleGEFDragAndDropContribution graphityDrop;
+					
+					try{
+						graphityDrop = (ExtensibleGEFDragAndDropContribution) extension.createExecutableExtension("class");
+						graphicalViewer.addDropTargetListener(graphityDrop);
+					}
+					catch(CoreException e){
+						Activator.writeConsole(e.getMessage());
+					}
+				}	
+			}
+		 }
+	}
+	
+	private void callFilters() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.FILTER_EXTENSIONS_ID);
 		
@@ -299,20 +298,12 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 				try{
 					filter = (ViewerFilter) extension.createExecutableExtension("class");
 					
-					if((filter != null) && (extension.getAttribute("view")).equals("constraints")){
+					if((filter != null) && (extension.getAttribute("view")).equals("repositories")){
 						Action extensionFilterAction = new Action() {
 							public void run() {
 								ViewerFilter[] filters = {filter};
 								viewer.setFilters(filters);
 								viewer.refresh();
-							}
-							
-							public void saveState(IMemento memento) {
-								filter.saveState(memento);
-							}
-							
-							public void init(IMemento memento) {
-								filter.init(memento);
 							}
 						};
 						
@@ -341,10 +332,11 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 					}
 				}
 				catch(CoreException e){
+					Activator.writeConsole(e.getMessage());
 				}
 			}	
 		}
-	}*/
+	}
 	
 	@Override
 	public String getContributorId() {

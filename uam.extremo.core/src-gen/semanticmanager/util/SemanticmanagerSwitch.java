@@ -181,6 +181,7 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 			case SemanticmanagerPackage.RESOURCE: {
 				Resource resource = (Resource)theEObject;
 				T result = caseResource(resource);
+				if (result == null) result = caseResourceElement(resource);
 				if (result == null) result = caseNamedElement(resource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -188,6 +189,7 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 			case SemanticmanagerPackage.SEMANTIC_NODE: {
 				SemanticNode semanticNode = (SemanticNode)theEObject;
 				T result = caseSemanticNode(semanticNode);
+				if (result == null) result = caseResourceElement(semanticNode);
 				if (result == null) result = caseNamedElement(semanticNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -218,6 +220,47 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 				T result = caseDataProperty(dataProperty);
 				if (result == null) result = caseProperty(dataProperty);
 				if (result == null) result = caseNamedElement(dataProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SemanticmanagerPackage.META_DATA: {
+				MetaData metaData = (MetaData)theEObject;
+				T result = caseMetaData(metaData);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SemanticmanagerPackage.RESOURCE_ELEMENT: {
+				ResourceElement resourceElement = (ResourceElement)theEObject;
+				T result = caseResourceElement(resourceElement);
+				if (result == null) result = caseNamedElement(resourceElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SemanticmanagerPackage.PRIMITIVE_TYPE_SEARCH_OPTION: {
+				PrimitiveTypeSearchOption primitiveTypeSearchOption = (PrimitiveTypeSearchOption)theEObject;
+				T result = casePrimitiveTypeSearchOption(primitiveTypeSearchOption);
+				if (result == null) result = caseSearchOption(primitiveTypeSearchOption);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SemanticmanagerPackage.DATA_MODEL_TYPE_SEARCH_OPTION: {
+				DataModelTypeSearchOption dataModelTypeSearchOption = (DataModelTypeSearchOption)theEObject;
+				T result = caseDataModelTypeSearchOption(dataModelTypeSearchOption);
+				if (result == null) result = caseSearchOption(dataModelTypeSearchOption);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SemanticmanagerPackage.DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE: {
+				DataModelTypeSearchResultOptionValue dataModelTypeSearchResultOptionValue = (DataModelTypeSearchResultOptionValue)theEObject;
+				T result = caseDataModelTypeSearchResultOptionValue(dataModelTypeSearchResultOptionValue);
+				if (result == null) result = caseSearchResultOptionValue(dataModelTypeSearchResultOptionValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SemanticmanagerPackage.PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE: {
+				PrimitiveTypeSearchResultOptionValue primitiveTypeSearchResultOptionValue = (PrimitiveTypeSearchResultOptionValue)theEObject;
+				T result = casePrimitiveTypeSearchResultOptionValue(primitiveTypeSearchResultOptionValue);
+				if (result == null) result = caseSearchResultOptionValue(primitiveTypeSearchResultOptionValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -567,6 +610,96 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDataProperty(DataProperty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Meta Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Meta Data</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMetaData(MetaData object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Resource Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Resource Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseResourceElement(ResourceElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Primitive Type Search Option</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Primitive Type Search Option</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePrimitiveTypeSearchOption(PrimitiveTypeSearchOption object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Model Type Search Option</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Model Type Search Option</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataModelTypeSearchOption(DataModelTypeSearchOption object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Model Type Search Result Option Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Model Type Search Result Option Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataModelTypeSearchResultOptionValue(DataModelTypeSearchResultOptionValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Primitive Type Search Result Option Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Primitive Type Search Result Option Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePrimitiveTypeSearchResultOptionValue(PrimitiveTypeSearchResultOptionValue object) {
 		return null;
 	}
 

@@ -2,8 +2,9 @@
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/uam.extremo.core/src-gen" editDirectory="/uam.extremo.core.edit/src-gen"
     editorDirectory="/uam.extremo.core.editor/src-gen" modelPluginID="uam.extremo.core"
-    modelName="Extremo" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    reflectiveDelegation="true" testsDirectory="/uam.extremo.core.tests/src-gen" importerID="fr.inria.atlanmod.neoemf.eclipse.ui.migrator.NeoImporter"
+    modelName="Extremo" rootExtendsInterface="fr.inria.atlanmod.neoemf.core.PersistentEObject"
+    rootExtendsClass="fr.inria.atlanmod.neoemf.core.DefaultPersistentEObject" reflectiveDelegation="true"
+    testsDirectory="/uam.extremo.core.tests/src-gen" importerID="fr.inria.atlanmod.neoemf.eclipse.ui.migrator.NeoImporter"
     featureDelegation="Reflective" complianceLevel="8.0" copyrightFields="false" operationReflection="true"
     importOrganizing="true">
   <foreignModel>Extremo.ecore</foreignModel>
@@ -59,7 +60,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ConstraintResult/unsat"/>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//SearchOption">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchOption/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchOption/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchOption/id"/>
     </genClasses>
@@ -71,10 +71,7 @@
         <genParameters ecoreParameter="Extremo.ecore#//SearchResult/getOptionValue/key"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="Extremo.ecore#//SearchResultOptionValue">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResultOptionValue/option"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchResultOptionValue/value"/>
-    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//SearchResultOptionValue"/>
     <genClasses image="false" ecoreClass="Extremo.ecore#//SearchConfiguration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchConfiguration/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchConfiguration/name"/>
@@ -83,10 +80,16 @@
     <genClasses image="false" ecoreClass="Extremo.ecore#//SimpleSearchConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SimpleSearchConfiguration/options"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SimpleSearchConfiguration/filterBy"/>
-      <genOperations ecoreOperation="Extremo.ecore#//SimpleSearchConfiguration/addSearchOption">
-        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addSearchOption/id"/>
-        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addSearchOption/name"/>
-        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addSearchOption/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SimpleSearchConfiguration/description"/>
+      <genOperations ecoreOperation="Extremo.ecore#//SimpleSearchConfiguration/addPrimitiveTypeSearchOption">
+        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addPrimitiveTypeSearchOption/id"/>
+        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addPrimitiveTypeSearchOption/name"/>
+        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addPrimitiveTypeSearchOption/type"/>
+      </genOperations>
+      <genOperations ecoreOperation="Extremo.ecore#//SimpleSearchConfiguration/addDataModelTypeSearchOption">
+        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addDataModelTypeSearchOption/id"/>
+        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addDataModelTypeSearchOption/name"/>
+        <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addDataModelTypeSearchOption/type"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//CompositeSearchConfiguration">
@@ -162,7 +165,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/active"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/alive"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/assistant"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/resourceElements"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/uri"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/repositoryFrom"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//Resource/defaultConstraintInterpreter"/>
@@ -171,7 +174,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/supers"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/subs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/properties"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/resourceFrom"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SemanticNode/abstract"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Extremo.ecore#//NamedElement">
@@ -183,6 +185,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/descriptors"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/describes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/constraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//NamedElement/metadata"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Extremo.ecore#//Property">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//Property/semanticNodeFrom"/>
@@ -195,6 +198,28 @@
     <genClasses ecoreClass="Extremo.ecore#//DataProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//DataProperty/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//DataProperty/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//MetaData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//MetaData/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//MetaData/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//ResourceElement">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//ResourceElement/resourceFrom"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//PrimitiveTypeSearchOption">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//PrimitiveTypeSearchOption/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//DataModelTypeSearchOption">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//DataModelTypeSearchOption/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//DataModelTypeSearchResultOptionValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//DataModelTypeSearchResultOptionValue/option"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//DataModelTypeSearchResultOptionValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Extremo.ecore#//PrimitiveTypeSearchResultOptionValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//PrimitiveTypeSearchResultOptionValue/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//PrimitiveTypeSearchResultOptionValue/option"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//PrimitiveTypeSearchResultOptionValue/calls"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getGroupedSearchResult()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface GroupedSearchResult extends SearchResult {

@@ -14,13 +14,17 @@ public class ChildrenLimitSearch extends ExtensiblePredicateBasedSearchImpl {
 		if (namedElement instanceof SemanticNode) {
 			SemanticNode semanticNode = (SemanticNode) namedElement;
 			
-			int maxChildren = (int) getOptionValueKey("maxchildren", inps);
+			Object moreThanChildren = getOptionValueKey("maxchildren", inps);
 			
-			if(semanticNode.getSubs().size() < maxChildren){
-				return true;
+			if((moreThanChildren != null) && (moreThanChildren instanceof String)){
+				int maxChildren = Integer.getInteger((String) moreThanChildren);
+			
+				if(semanticNode.getSubs().size() < maxChildren){
+					return true;
+				}
 			}
+			return false;	
 		}
-		
 		return false;
 	}
 }

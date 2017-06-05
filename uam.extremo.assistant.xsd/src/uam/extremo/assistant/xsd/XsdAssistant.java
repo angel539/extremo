@@ -164,14 +164,17 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 				}
 				
 				if((obj != null) && (obj instanceof EClass)){
-					String name = ((EClass) obj).getName();
-					String description = ((EClass) obj).getEAnnotations().toString();
-									
+					
+					EClass eClass = (EClass) obj;
+					String name = eClass.getName();
+					
 					SemanticNode semanticNode = 
 							createSemanticNodeWithoutDescriptor(
 									obj, //original object as id
 									name, 
-									description); //it is actually a descriptor element
+									name,
+									eClass.isAbstract()); // the name is used as a description label too.
+									//it is actually a descriptor element
 										
 					addSemanticNodeToResource(semanticResource, semanticNode);
 				}

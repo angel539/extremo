@@ -2,13 +2,14 @@
  */
 package semanticmanager.impl;
 
+import fr.inria.atlanmod.neoemf.core.DefaultPersistentEObject;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import semanticmanager.Constraint;
+import semanticmanager.MetaData;
 import semanticmanager.NamedElement;
 import semanticmanager.SemanticmanagerPackage;
 
@@ -28,11 +29,12 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getDescriptors <em>Descriptors</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getDescribes <em>Describes</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link semanticmanager.impl.NamedElementImpl#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class NamedElementImpl extends MinimalEObjectImpl.Container implements NamedElement {
+public abstract class NamedElementImpl extends DefaultPersistentEObject implements NamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -180,6 +182,16 @@ public abstract class NamedElementImpl extends MinimalEObjectImpl.Container impl
 	@SuppressWarnings("unchecked")
 	public EList<Constraint> getConstraints() {
 		return (EList<Constraint>)eGet(SemanticmanagerPackage.Literals.NAMED_ELEMENT__CONSTRAINTS, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public EList<MetaData> getMetadata() {
+		return (EList<MetaData>)eGet(SemanticmanagerPackage.Literals.NAMED_ELEMENT__METADATA, true);
 	}
 
 } //NamedElementImpl

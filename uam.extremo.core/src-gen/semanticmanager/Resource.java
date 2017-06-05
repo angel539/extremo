@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link semanticmanager.Resource#isActive <em>Active</em>}</li>
  *   <li>{@link semanticmanager.Resource#isAlive <em>Alive</em>}</li>
  *   <li>{@link semanticmanager.Resource#getAssistant <em>Assistant</em>}</li>
- *   <li>{@link semanticmanager.Resource#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link semanticmanager.Resource#getResourceElements <em>Resource Elements</em>}</li>
  *   <li>{@link semanticmanager.Resource#getUri <em>Uri</em>}</li>
  *   <li>{@link semanticmanager.Resource#getRepositoryFrom <em>Repository From</em>}</li>
  *   <li>{@link semanticmanager.Resource#getDefaultConstraintInterpreter <em>Default Constraint Interpreter</em>}</li>
@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Resource extends NamedElement {
+public interface Resource extends ResourceElement {
 	/**
 	 * Returns the value of the '<em><b>Active</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -55,6 +55,7 @@ public interface Resource extends NamedElement {
 
 	/**
 	 * Returns the value of the '<em><b>Alive</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Alive</em>' attribute isn't clear,
@@ -64,7 +65,7 @@ public interface Resource extends NamedElement {
 	 * @return the value of the '<em>Alive</em>' attribute.
 	 * @see #setAlive(boolean)
 	 * @see semanticmanager.SemanticmanagerPackage#getResource_Alive()
-	 * @model
+	 * @model default="true"
 	 * @generated
 	 */
 	boolean isAlive();
@@ -106,22 +107,22 @@ public interface Resource extends NamedElement {
 	void setAssistant(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Nodes</b></em>' containment reference list.
-	 * The list contents are of type {@link semanticmanager.SemanticNode}.
-	 * It is bidirectional and its opposite is '{@link semanticmanager.SemanticNode#getResourceFrom <em>Resource From</em>}'.
+	 * Returns the value of the '<em><b>Resource Elements</b></em>' containment reference list.
+	 * The list contents are of type {@link semanticmanager.ResourceElement}.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.ResourceElement#getResourceFrom <em>Resource From</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Nodes</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Resource Elements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Nodes</em>' containment reference list.
-	 * @see semanticmanager.SemanticmanagerPackage#getResource_Nodes()
-	 * @see semanticmanager.SemanticNode#getResourceFrom
+	 * @return the value of the '<em>Resource Elements</em>' containment reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getResource_ResourceElements()
+	 * @see semanticmanager.ResourceElement#getResourceFrom
 	 * @model opposite="resourceFrom" containment="true"
 	 * @generated
 	 */
-	EList<SemanticNode> getNodes();
+	EList<ResourceElement> getResourceElements();
 
 	/**
 	 * Returns the value of the '<em><b>Uri</b></em>' attribute.

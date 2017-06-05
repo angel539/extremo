@@ -2,11 +2,11 @@
  */
 package semanticmanager.impl;
 
+import fr.inria.atlanmod.neoemf.core.DefaultPersistentEObject;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import semanticmanager.ConstraintInterpreter;
 import semanticmanager.Repository;
@@ -31,7 +31,7 @@ import semanticmanager.Service;
  *
  * @generated
  */
-public class RepositoryManagerImpl extends MinimalEObjectImpl.Container implements RepositoryManager {
+public class RepositoryManagerImpl extends DefaultPersistentEObject implements RepositoryManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -160,6 +160,30 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 				return createDataPropertyAdapter();
 			}
 			@Override
+			public Adapter caseMetaData(MetaData object) {
+				return createMetaDataAdapter();
+			}
+			@Override
+			public Adapter caseResourceElement(ResourceElement object) {
+				return createResourceElementAdapter();
+			}
+			@Override
+			public Adapter casePrimitiveTypeSearchOption(PrimitiveTypeSearchOption object) {
+				return createPrimitiveTypeSearchOptionAdapter();
+			}
+			@Override
+			public Adapter caseDataModelTypeSearchOption(DataModelTypeSearchOption object) {
+				return createDataModelTypeSearchOptionAdapter();
+			}
+			@Override
+			public Adapter caseDataModelTypeSearchResultOptionValue(DataModelTypeSearchResultOptionValue object) {
+				return createDataModelTypeSearchResultOptionValueAdapter();
+			}
+			@Override
+			public Adapter casePrimitiveTypeSearchResultOptionValue(PrimitiveTypeSearchResultOptionValue object) {
+				return createPrimitiveTypeSearchResultOptionValueAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -498,6 +522,90 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDataPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link semanticmanager.MetaData <em>Meta Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see semanticmanager.MetaData
+	 * @generated
+	 */
+	public Adapter createMetaDataAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link semanticmanager.ResourceElement <em>Resource Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see semanticmanager.ResourceElement
+	 * @generated
+	 */
+	public Adapter createResourceElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link semanticmanager.PrimitiveTypeSearchOption <em>Primitive Type Search Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see semanticmanager.PrimitiveTypeSearchOption
+	 * @generated
+	 */
+	public Adapter createPrimitiveTypeSearchOptionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link semanticmanager.DataModelTypeSearchOption <em>Data Model Type Search Option</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see semanticmanager.DataModelTypeSearchOption
+	 * @generated
+	 */
+	public Adapter createDataModelTypeSearchOptionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link semanticmanager.DataModelTypeSearchResultOptionValue <em>Data Model Type Search Result Option Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see semanticmanager.DataModelTypeSearchResultOptionValue
+	 * @generated
+	 */
+	public Adapter createDataModelTypeSearchResultOptionValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link semanticmanager.PrimitiveTypeSearchResultOptionValue <em>Primitive Type Search Result Option Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see semanticmanager.PrimitiveTypeSearchResultOptionValue
+	 * @generated
+	 */
+	public Adapter createPrimitiveTypeSearchResultOptionValueAdapter() {
 		return null;
 	}
 

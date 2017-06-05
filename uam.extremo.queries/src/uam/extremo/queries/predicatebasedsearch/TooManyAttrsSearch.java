@@ -12,7 +12,7 @@ import semanticmanager.SemanticNode;
 public class TooManyAttrsSearch extends ExtensiblePredicateBasedSearchImpl {
 	@Override
 	public boolean matches(NamedElement namedElement, EList<SearchResultOptionValue> inps) {
-		if (namedElement instanceof SemanticNode) {
+		/*if (namedElement instanceof SemanticNode) {
 			SemanticNode semanticNode = (SemanticNode) namedElement;
 			
 			int morethanattrs = (int) getOptionValueKey("morethanattrs", inps);
@@ -23,7 +23,7 @@ public class TooManyAttrsSearch extends ExtensiblePredicateBasedSearchImpl {
 			if(count > morethanattrs){
 				return true;
 			}
-		}
+		}*/
 		
 		return false;
 	}

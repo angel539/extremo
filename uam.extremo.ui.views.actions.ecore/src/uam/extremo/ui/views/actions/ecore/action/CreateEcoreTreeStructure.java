@@ -32,6 +32,7 @@ import semanticmanager.DataProperty;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Property;
+import semanticmanager.ResourceElement;
 import semanticmanager.SemanticNode;
 import uam.extremo.ui.views.extensions.actions.ExtensibleViewPartActionContribution;
 
@@ -82,32 +83,39 @@ public class CreateEcoreTreeStructure extends ExtensibleViewPartActionContributi
 									
 								    Map<SemanticNode, EClass> relation = new HashMap<SemanticNode, EClass>();
 								    
-									for(SemanticNode semanticNode : semanticResource.getNodes()){
-										EClass eClassNew = createEClass(newPackage,
-												semanticNode);
-										newPackage.getEClassifiers().add(eClassNew);
-									    relation.put(semanticNode, eClassNew);
-									       
-										for(Property property : semanticNode.getProperties()){
-											if(property instanceof DataProperty){
-												createEAttribute(eClassNew, (DataProperty) property);
-											}
-										}
-									}
-									
-									for(SemanticNode semanticNode : semanticResource.getNodes()){
-										EClass eClassSource = relation.get(semanticNode);
-										
-										for(Property property : semanticNode.getProperties()){
-											if(property instanceof ObjectProperty){
-												ObjectProperty objectProperty = (ObjectProperty) property;
-												EClass eClassTarget = relation.get(objectProperty.getRange());
-												
-												if(eClassTarget != null){
-													createEReference(eClassSource, (ObjectProperty) property, eClassTarget);
+									for(ResourceElement resourceElement : semanticResource.getResourceElements()){
+										if(resourceElement instanceof SemanticNode){
+											SemanticNode semanticNode = (SemanticNode) resourceElement;
+											EClass eClassNew = createEClass(newPackage,
+													semanticNode);
+											newPackage.getEClassifiers().add(eClassNew);
+										    relation.put(semanticNode, eClassNew);
+										       
+											for(Property property : semanticNode.getProperties()){
+												if(property instanceof DataProperty){
+													createEAttribute(eClassNew, (DataProperty) property);
 												}
 											}
-										}
+										}					
+									}
+									
+									for(ResourceElement resourceElement : semanticResource.getResourceElements()){
+										if (resourceElement instanceof SemanticNode) {
+											SemanticNode semanticNode = (SemanticNode) resourceElement;
+											
+											EClass eClassSource = relation.get(semanticNode);
+											
+											for(Property property : semanticNode.getProperties()){
+												if(property instanceof ObjectProperty){
+													ObjectProperty objectProperty = (ObjectProperty) property;
+													EClass eClassTarget = relation.get(objectProperty.getRange());
+													
+													if(eClassTarget != null){
+														createEReference(eClassSource, (ObjectProperty) property, eClassTarget);
+													}
+												}
+											}		
+										}					
 									}
 									resource.getContents().add(newPackage);
 								}	

@@ -19,23 +19,25 @@ public final class Serializer {
 
 			byte[] byteArray = bos.toByteArray();
 			return byteArray;
-
-		} catch (IOException e) {
-			e.printStackTrace();
+		}
+		catch (IOException e) {
+			Activator.writeConsole(e.getMessage());
 			return null;
-
 		} finally {
 			try {
 				if (out != null)
 					out.close();
-			} catch (IOException ex) {
+			}
+			catch (IOException ex) {
+				Activator.writeConsole(ex.getMessage());
 			}
 			try {
 				bos.close();
-			} catch (IOException ex) {
+			}
+			catch (IOException ex) {
+				Activator.writeConsole(ex.getMessage());
 			}
 		}
-
 	}
 
 	/**
@@ -51,19 +53,24 @@ public final class Serializer {
 			in = new ObjectInputStream(bis);
 			Object o = in.readObject();
 			return o;
-
-		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
+		}
+		catch (ClassNotFoundException | IOException e) {
+			Activator.writeConsole(e.getMessage());
 			return null;
-		} finally {
+		}
+		finally {
 			try {
 				bis.close();
-			} catch (IOException ex) {
+			}
+			catch (IOException ex) {
+				Activator.writeConsole(ex.getMessage());
 			}
 			try {
 				if (in != null)
 					in.close();
-			} catch (IOException ex) {
+			}
+			catch (IOException ex) {
+				Activator.writeConsole(ex.getMessage());
 			}
 		}
 	}

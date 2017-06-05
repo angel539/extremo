@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getAtomicSearchResult()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface AtomicSearchResult extends SearchResult {

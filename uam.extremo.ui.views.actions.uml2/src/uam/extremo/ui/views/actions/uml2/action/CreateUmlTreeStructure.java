@@ -5,10 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -27,16 +25,14 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
-import org.eclipse.uml2.uml.UMLPackage;
-
 import semanticmanager.DataProperty;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Property;
+import semanticmanager.ResourceElement;
 import semanticmanager.SemanticNode;
 import uam.extremo.ui.views.extensions.actions.ExtensibleViewPartActionContribution;
 
@@ -86,28 +82,37 @@ public class CreateUmlTreeStructure extends ExtensibleViewPartActionContribution
 									Map<semanticmanager.Type, PrimitiveType> primitiveTypes = createPrimitiveTypes(newPackage);
 								    Map<SemanticNode, org.eclipse.uml2.uml.Class> relation = new HashMap<SemanticNode, org.eclipse.uml2.uml.Class>();
 								    
-									for(SemanticNode semanticNode : semanticResource.getNodes()){
-										org.eclipse.uml2.uml.Class eClassNew = createClass(newPackage,
-												semanticNode);
-									    relation.put(semanticNode, eClassNew);
-									       
-										for(Property property : semanticNode.getProperties()){
-											if(property instanceof DataProperty){
-												createAttribute(newPackage, eClassNew, (DataProperty) property, primitiveTypes.get(((DataProperty) property).getType()));
+									for(ResourceElement resourceElement : semanticResource.getResourceElements()){
+										if(resourceElement instanceof SemanticNode){
+											SemanticNode semanticNode = (SemanticNode) resourceElement;
+											
+											org.eclipse.uml2.uml.Class eClassNew = createClass(newPackage,
+													semanticNode);
+										    relation.put(semanticNode, eClassNew);
+										       
+											for(Property property : semanticNode.getProperties()){
+												if(property instanceof DataProperty){
+													createAttribute(newPackage, eClassNew, (DataProperty) property, primitiveTypes.get(((DataProperty) property).getType()));
+												}
 											}
 										}
 									}
 									
-									for(SemanticNode semanticNode : semanticResource.getNodes()){
-										org.eclipse.uml2.uml.Class eClassSource = relation.get(semanticNode);
+									for(ResourceElement resourceElement : semanticResource.getResourceElements()){
 										
-										for(Property property : semanticNode.getProperties()){
-											if(property instanceof ObjectProperty){
-												ObjectProperty objectProperty = (ObjectProperty) property;
-												org.eclipse.uml2.uml.Class eClassTarget = relation.get(objectProperty.getRange());
-												
-												if(eClassTarget != null){
-													createAssociation(eClassSource, (ObjectProperty) property, eClassTarget);
+										if (resourceElement instanceof SemanticNode) {
+											SemanticNode semanticNode = (SemanticNode) resourceElement;
+											
+											org.eclipse.uml2.uml.Class eClassSource = relation.get(semanticNode);
+											
+											for(Property property : semanticNode.getProperties()){
+												if(property instanceof ObjectProperty){
+													ObjectProperty objectProperty = (ObjectProperty) property;
+													org.eclipse.uml2.uml.Class eClassTarget = relation.get(objectProperty.getRange());
+													
+													if(eClassTarget != null){
+														createAssociation(eClassSource, (ObjectProperty) property, eClassTarget);
+													}
 												}
 											}
 										}

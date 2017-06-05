@@ -77,7 +77,6 @@ public class NamedElementDropListener extends ViewerDropAdapter {
 			for(EObject content : node.eContents()){
 				if(content instanceof NamedElement){
 					found = search((NamedElement) content, data);
-					
 					if(found != null) break;
 				}	
 			}

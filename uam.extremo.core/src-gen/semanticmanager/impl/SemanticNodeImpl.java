@@ -7,7 +7,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import semanticmanager.Property;
-import semanticmanager.Resource;
 import semanticmanager.SemanticNode;
 import semanticmanager.SemanticmanagerPackage;
 
@@ -22,13 +21,12 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getSupers <em>Supers</em>}</li>
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getSubs <em>Subs</em>}</li>
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getResourceFrom <em>Resource From</em>}</li>
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#isAbstract <em>Abstract</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
+public class SemanticNodeImpl extends ResourceElementImpl implements SemanticNode {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -76,24 +74,6 @@ public class SemanticNodeImpl extends NamedElementImpl implements SemanticNode {
 	@SuppressWarnings("unchecked")
 	public EList<Property> getProperties() {
 		return (EList<Property>)eGet(SemanticmanagerPackage.Literals.SEMANTIC_NODE__PROPERTIES, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Resource getResourceFrom() {
-		return (Resource)eGet(SemanticmanagerPackage.Literals.SEMANTIC_NODE__RESOURCE_FROM, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setResourceFrom(Resource newResourceFrom) {
-		eSet(SemanticmanagerPackage.Literals.SEMANTIC_NODE__RESOURCE_FROM, newResourceFrom);
 	}
 
 	/**

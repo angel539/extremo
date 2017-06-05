@@ -15,24 +15,28 @@ public class ViewPartDropListener extends ViewerDropAdapter{
 	@Override
     public void drop(DropTargetEvent event) {
             int location = this.determineLocation(event);
+            
             String target = (String) determineTarget(event);
             String translatedLocation ="";
+            
             switch (location){
-            case 1 :
-                    translatedLocation = "Dropped before the target ";
-                    break;
-            case 2 :
-                    translatedLocation = "Dropped after the target ";
-                    break;
-            case 3 :
-                    translatedLocation = "Dropped on the target ";
-                    break;
-            case 4 :
-                    translatedLocation = "Dropped into nothing ";
-                    break;
+	            case 1 :
+	                    translatedLocation = "Dropped before the target ";
+	                    break;
+	            case 2 :
+	                    translatedLocation = "Dropped after the target ";
+	                    break;
+	            case 3 :
+	                    translatedLocation = "Dropped on the target ";
+	                    break;
+	            case 4 :
+	                    translatedLocation = "Dropped into nothing ";
+	                    break;
             }
+            
             System.out.println(translatedLocation);
             System.out.println("The drop was done on the element: " + target );
+            
             super.drop(event);
     }
 	

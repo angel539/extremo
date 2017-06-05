@@ -26,7 +26,7 @@ import semanticmanager.SemanticmanagerPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SemanticNodeItemProvider extends NamedElementItemProvider {
+public class SemanticNodeItemProvider extends ResourceElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

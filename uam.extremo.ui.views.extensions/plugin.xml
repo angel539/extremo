@@ -5,4 +5,12 @@
    <extension-point id="extremo.ui.extensions.drop" name="extremo.ui.extensions.drop" schema="schema/extremo.ui.extensions.drop.exsd"/>
    <extension-point id="extremo.ui.extensions.filters" name="extremo.ui.extensions.filters" schema="schema/extremo.ui.extensions.filters.exsd"/>
 	<extension-point id="extremo.ui.views.extensions.zest.filters" name="extremo.ui.views.extensions.zest.filters" schema="schema/extremo.ui.extensions.zest.filters.exsd"/>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated draggablesemanticmanager -->
+      <package
+            uri="http://www.core.extremo/DraggableSemanticManager"
+            class="draggablesemanticmanager.DraggablesemanticmanagerPackage"
+            genModel="model/draggablesemanticmanager.genmodel"/>
+   </extension>
+
 </plugin>

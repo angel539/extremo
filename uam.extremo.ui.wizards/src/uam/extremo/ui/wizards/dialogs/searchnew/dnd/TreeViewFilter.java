@@ -12,7 +12,7 @@ public class TreeViewFilter extends ViewerFilter {
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		return element instanceof RepositoryManager || 
 				element instanceof Repository || 
-				element instanceof Resource ||
+				((element instanceof Resource) && ((Resource) element).getDescriptors().isEmpty()) ||
 				element instanceof SemanticNode||
 				element instanceof DataProperty ||
 				element instanceof ObjectProperty;

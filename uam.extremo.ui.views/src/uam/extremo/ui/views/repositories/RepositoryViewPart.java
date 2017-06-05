@@ -18,6 +18,8 @@ import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
+import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.graphiti.ui.editor.IDiagramContainerUI;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -45,12 +47,19 @@ import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DragSource;
+import org.eclipse.swt.dnd.TextTransfer;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
@@ -66,7 +75,9 @@ import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.views.Activator;
+import uam.extremo.ui.views.draganddrop.NamedElementDragListener;
 import uam.extremo.ui.views.extensions.actions.ExtensibleViewPartActionContribution;
+import uam.extremo.ui.views.extensions.dnd.ExtensibleGEFDragAndDropContribution;
 import uam.extremo.ui.views.searchtree.TreeViewAdapterFactoryLabelProvider;
 import uam.extremo.ui.wizards.dialogs.AddFolderResourceListWizardDialog;
 
@@ -141,7 +152,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 								AssistantFactory.getInstance().changeResourceAssistant(described, String.valueOf(value));
 							}
 							catch (IOException e) {
-								e.printStackTrace();
+								Activator.writeConsole(e.getMessage());
 							}
 						}
 					}
@@ -152,7 +163,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					AssistantFactory.getInstance().changeResourceAssistant(resource, String.valueOf(value));
 				}
 				catch (IOException e) {
-					e.printStackTrace();
+					Activator.writeConsole(e.getMessage());
 				}
 
 			}
@@ -164,7 +175,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 						AssistantFactory.getInstance().changeResourceAssistant(resource, String.valueOf(value));
 					}
 					catch (IOException e) {
-						e.printStackTrace();
+						Activator.writeConsole(e.getMessage());
 					}
 				}
 			}
@@ -186,16 +197,10 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	@Override
 	public void createPartControl(Composite parent) {		
 		viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-	
+		
     	RepositoryViewFilter filter = new RepositoryViewFilter();
 		ViewerFilter[] filters = {filter};
 		viewer.setFilters(filters);
-		
-		/*int operations = DND.DROP_COPY| DND.DROP_MOVE;
-        Transfer[] transferTypes = new Transfer[]{TextTransfer.getInstance()};
-        
-        ViewPartDragListener dragListener = new ViewPartDragListener(viewer);
-        viewer.addDragSupport(operations, transferTypes, dragListener);*/
 		
 		// Building the content and the label provider from EMF Edit
 		factories.add(new ResourceItemProviderAdapterFactory());
@@ -208,7 +213,8 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		
 		viewer.setContentProvider(contentProvider);
 		
-		viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
+		AssistantFactory assistantFactory = AssistantFactory.getInstance();
+		
 		viewer.setSorter(new NameSorter());
 		viewer.getTree().setHeaderVisible(true);
 
@@ -231,6 +237,8 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		uriColumn.getColumn().setAlignment(SWT.LEFT);
 		uriColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(new ColumnThreeRepositoryViewAdapterFactoryLabelProvider(adapterFactory)));
 		
+		viewer.setInput(assistantFactory.getRepositoryManager());
+		
 		//old adapter was here
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "extremo.ui.viewer");
 		
@@ -238,24 +246,123 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		getSite().setSelectionProvider(viewer);
 		getViewSite().setSelectionProvider(viewer);
 		
+		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
+		Transfer[] transfers = new Transfer[]{TextTransfer.getInstance()};
+		
+		DragSource source = new DragSource(viewer.getTree(), dndOperations);
+		source.setTransfer(transfers);
+		NamedElementDragListener listener = new NamedElementDragListener(viewer);
+		source.addDragListener(listener);
+		
 		callActions();
-		//callFilters();
-		//callEditorsDrop();
+		callEditorsDrop();
+		callFilters();
 		
 		makeActions();
-		//hookContextMenu();
 		hookDoubleClickAction();
 		contributeToActionBars();
-		
-		//hookPageSelection();
 	}
 	
-	/*private void callFilters() {
+	private void callActions() {
+		IExtensionRegistry registry = Platform.getExtensionRegistry();
+		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.ACTION_EXTENSIONS_ID);
+		
+		MenuManager menumanager = new MenuManager("#PopupMenu");
+		menumanager.setRemoveAllWhenShown(true);
+		
+		for(IConfigurationElement extension : extensions){
+			if(extension.getName().compareTo("action") == 0){
+				ExtensibleViewPartActionContribution action;
+				
+				try{
+					action = (ExtensibleViewPartActionContribution) extension.createExecutableExtension("class");
+					action.setText(extension.getAttribute("name"));
+					action.setToolTipText(extension.getAttribute("description"));
+					action.setEditorID(extension.getAttribute("editorId"));
+					action.setViewer(viewer);
+					
+					String namespace = extension.getDeclaringExtension().getNamespaceIdentifier();
+					
+					ImageDescriptor descriptor = null;
+					while((descriptor == null) && (!namespace.isEmpty())){
+						descriptor = Activator.getImageDescriptor(namespace, extension.getAttribute("icon"));
+						
+						if(descriptor == null){
+							if(namespace.contains(".")){
+								namespace = namespace.substring(0, namespace.lastIndexOf("."));
+							}
+							else{
+								namespace = "";
+							}
+						}
+					}
+					
+					if(descriptor != null) 
+						action.setImageDescriptor(descriptor);
+					
+					if((action != null) 
+							&& (extension.getAttribute("view")).equals("repositories")){
+						IActionBars bars = getViewSite().getActionBars();
+						
+						if(extension.getAttribute("position").equals("toolbar")){
+							bars.getToolBarManager().add(action);
+						}
+						
+						if(extension.getAttribute("position").equals("menumanager")){
+							IMenuListener listener = new IMenuListener() {
+								 public void menuAboutToShow(IMenuManager m) {
+									 m.add(action);
+								 }
+							};
+							
+							menumanager.addMenuListener(listener);		
+						}
+					}
+				}
+				catch(CoreException e){
+					Activator.writeConsole(e.getMessage());
+				}
+			}	
+		}
+		
+		Menu menu = menumanager.createContextMenu(viewer.getControl());
+		viewer.getControl().setMenu(menu);
+		getSite().registerContextMenu(menumanager, viewer);
+	}
+
+	private void callEditorsDrop(){
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+		IEditorPart editor = window.getActivePage().getActiveEditor();
+		
+		if (editor instanceof IDiagramContainerUI){
+			IDiagramContainerUI diagramEditor =  (IDiagramContainerUI) editor;
+			GraphicalViewer graphicalViewer = diagramEditor.getGraphicalViewer();
+
+			IExtensionRegistry registry = Platform.getExtensionRegistry();
+			IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.EDITOR_EXTENSIONS_ID);
+			
+			for(IConfigurationElement extension : extensions){
+				if(extension.getName().compareTo("editordrop") == 0){
+					ExtensibleGEFDragAndDropContribution graphityDrop;
+					try{
+						graphityDrop = (ExtensibleGEFDragAndDropContribution) extension.createExecutableExtension("class");
+						graphicalViewer.addDropTargetListener(graphityDrop);
+					}
+					catch(CoreException e){
+						Activator.writeConsole(e.getMessage());
+					}
+				}	
+			}
+		 }
+	}
+	
+	private void callFilters() {
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.FILTER_EXTENSIONS_ID);
 		
 		for(IConfigurationElement extension : extensions){
-			if(extension.getName().compareTo("filter")==0){
+			if(extension.getName().compareTo("filter") == 0){
 				ViewerFilter filter;
 				try{
 					filter = (ViewerFilter) extension.createExecutableExtension("class");
@@ -294,111 +401,11 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					}
 				}
 				catch(CoreException e){
+					Activator.writeConsole(e.getMessage());
 				}
 			}	
 		}
-	}*/
-	
-	private void callActions() {
-		IExtensionRegistry registry = Platform.getExtensionRegistry();
-		
-		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.ACTION_EXTENSIONS_ID);
-		
-		//MenuManager menuMgr = new MenuManager("#PopupMenu");
-		//menuMgr.setRemoveAllWhenShown(true);
-		MenuManager menumanager = new MenuManager("#PopupMenu");
-		menumanager.setRemoveAllWhenShown(true);
-		
-		for(IConfigurationElement extension : extensions){
-			if(extension.getName().compareTo("action") == 0){
-				ExtensibleViewPartActionContribution action;
-				
-				try{
-					action = (ExtensibleViewPartActionContribution) extension.createExecutableExtension("class");
-					action.setText(extension.getAttribute("name"));
-					action.setToolTipText(extension.getAttribute("description"));
-					action.setEditorID(extension.getAttribute("editorId"));
-					action.setViewer(viewer);
-					
-					String namespace = extension.getDeclaringExtension().getNamespaceIdentifier();
-					
-					ImageDescriptor descriptor = null;
-					while((descriptor == null) && (!namespace.isEmpty())){
-						descriptor = Activator.getImageDescriptor(namespace, extension.getAttribute("icon"));
-						
-						if(descriptor == null){
-							if(namespace.contains(".")){
-								namespace = namespace.substring(0, namespace.lastIndexOf("."));
-							}
-							else{
-								namespace = "";
-							}
-						}
-					}
-					
-					if(descriptor != null) 
-						action.setImageDescriptor(descriptor);
-					
-					if((action != null) 
-							&& (extension.getAttribute("view")).equals("repositories")){
-						IActionBars bars = getViewSite().getActionBars();
-						
-						System.out.println("position: " + extension.getAttribute("position"));
-						
-						
-						if(extension.getAttribute("position").equals("toolbar")){
-							bars.getToolBarManager().add(action);
-						}
-						
-						if(extension.getAttribute("position").equals("menumanager")){
-							IMenuListener listener = new IMenuListener() {
-								 public void menuAboutToShow(IMenuManager m) {
-									 m.add(action);
-								 }
-							};
-							
-							menumanager.addMenuListener(listener);		
-						}
-					}
-				}
-				catch(CoreException e){
-					MessageDialog.openError(null, "Repository View Part", e.getMessage());
-				}
-			}	
-		}
-		
-		Menu menu = menumanager.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menumanager, viewer);
 	}
-	
-	/*private void callEditorsDrop(){
-		IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-		IEditorPart editor = window.getActivePage().getActiveEditor();
-		
-		if (editor instanceof IDiagramContainerUI){
-			IDiagramContainerUI diagramEditor =  (IDiagramContainerUI) editor;
-			GraphicalViewer graphicalViewer = diagramEditor.getGraphicalViewer();
-
-			IExtensionRegistry registry = Platform.getExtensionRegistry();
-			IConfigurationElement[] extensions = registry.getConfigurationElementsFor(Activator.EDITOR_EXTENSIONS_ID);
-			
-			for(IConfigurationElement extension : extensions){
-				if(extension.getName().compareTo("editordrop") == 0){
-					GraphityEditorTransferDropTargetListener graphityDrop;
-					
-					try{
-						graphityDrop = (GraphityEditorTransferDropTargetListener) extension.createExecutableExtension("class");
-						graphicalViewer.addDropTargetListener(graphityDrop);
-					}
-					catch(CoreException e){
-						MessageDialog.openError(null, "Repository View Part", e.getMessage());
-					}
-				}	
-			}
-		 }
-	}*/
 	
 	private void hookPageSelection() {
 		pageSelectionListener = new ISelectionListener() {
@@ -471,33 +478,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 				else{
 					MessageDialog.openError(null, "Add Folder", "Resources could not be imported");
 				}
-				
-				//AddFolderResourceListWizardDialog wizard = new AddFolderResourceListWizardDialog();
-				//wizard.init(PlatformUI.getWorkbench(), viewer.getSelection());
-				
-				//Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				//WizardDialog wizardDialog = new WizardDialog(activeShell, wizard);
-				//wizardDialog.open();
-				
-				//if (wizardDialog.open() == Window.OK) {
-					//MessageDialog.openConfirm(activeShell, "Add Folder", "Resources imported");
-				//}
-				//else{
-					//MessageDialog.openError(activeShell, "Add Folder", "Resources could not be imported");
-				//}
-				
-				/*PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable(){
-					@Override
-					public void run() {
-						Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-						if (wizardDialog.open() == Window.OK) {
-							MessageDialog.openConfirm(activeShell, "Add Folder", "Resources imported");
-						}
-						else{
-							MessageDialog.openError(activeShell, "Add Folder", "Resources could not be imported");
-						}
-					}
-				});*/
 			}
 		};
 		
@@ -513,9 +493,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					IStructuredSelection strucSelection = (IStructuredSelection) selection;
 					Object element = strucSelection.getFirstElement();
 					
-					
 					AddFolderResourceListWizardDialog wizard = new AddFolderResourceListWizardDialog();
-					//wizard.init(PlatformUI.getWorkbench(), viewer.getSelection());
 					
 					Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 					WizardDialog wizardDialog = new WizardDialog(activeShell, wizard);

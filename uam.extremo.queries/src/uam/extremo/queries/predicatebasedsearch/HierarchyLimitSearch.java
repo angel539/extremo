@@ -15,7 +15,7 @@ import semanticmanager.SemanticNode;
 public class HierarchyLimitSearch extends ExtensiblePredicateBasedSearchImpl {	
 	@Override
 	public boolean matches(NamedElement namedElement, EList<SearchResultOptionValue> inps) {
-		if (namedElement instanceof SemanticNode) {
+		/*if (namedElement instanceof SemanticNode) {
 			int maxDepth = (int) getOptionValueKey("maxdepth", inps);
 			
 			SemanticNode semanticNode = (SemanticNode) namedElement;
@@ -24,7 +24,7 @@ public class HierarchyLimitSearch extends ExtensiblePredicateBasedSearchImpl {
 			if(maxDepth > depthcount){
 				return true;
 			}
-		}
+		}*/
 		
 		return false;
 	}

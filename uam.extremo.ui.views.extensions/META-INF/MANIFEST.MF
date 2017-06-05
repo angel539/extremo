@@ -1,19 +1,30 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Extensions
+Bundle-Name: %pluginName
 Bundle-SymbolicName: uam.extremo.ui.views.extensions;singleton:=true
 Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
 Bundle-Activator: uam.extremo.ui.views.extensions.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ fr.inria.atlanmod.neoemf.core;visibility:=reexport,
  org.eclipse.ui.workbench,
  org.eclipse.gef,
  uam.extremo.core,
  uam.extremo.extensions,
- org.eclipse.jface
+ org.eclipse.jface,
+ org.eclipse.graphiti.ui,
+ org.eclipse.gef.examples.logic
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: uam.extremo.ui.views.extensions,
  uam.extremo.ui.views.extensions.actions,
  uam.extremo.ui.views.extensions.dnd,
- uam.extremo.ui.views.extensions.filters
+ uam.extremo.ui.views.extensions.dnd.actions,
+ uam.extremo.ui.views.extensions.filters,
+ draggablesemanticmanager,
+ draggablesemanticmanager.impl,
+ draggablesemanticmanager.util

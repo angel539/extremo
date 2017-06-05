@@ -30,7 +30,7 @@ import semanticmanager.SemanticmanagerPackage;
  *
  * @generated
  */
-public abstract class GroupedSearchResultImpl extends SearchResultImpl implements GroupedSearchResult {
+public class GroupedSearchResultImpl extends SearchResultImpl implements GroupedSearchResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

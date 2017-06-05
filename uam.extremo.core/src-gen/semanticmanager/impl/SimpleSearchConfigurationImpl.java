@@ -24,6 +24,7 @@ import semanticmanager.Type;
  * <ul>
  *   <li>{@link semanticmanager.impl.SimpleSearchConfigurationImpl#getOptions <em>Options</em>}</li>
  *   <li>{@link semanticmanager.impl.SimpleSearchConfigurationImpl#getFilterBy <em>Filter By</em>}</li>
+ *   <li>{@link semanticmanager.impl.SimpleSearchConfigurationImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,7 +82,36 @@ public abstract class SimpleSearchConfigurationImpl extends SearchConfigurationI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void addSearchOption(String id, String name, Type type) {
+	public String getDescription() {
+		return (String)eGet(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDescription(String newDescription) {
+		eSet(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION, newDescription);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void addPrimitiveTypeSearchOption(String id, String name, Type type) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void addDataModelTypeSearchOption(String id, String name, DataModelType type) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -95,8 +125,11 @@ public abstract class SimpleSearchConfigurationImpl extends SearchConfigurationI
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION___ADD_SEARCH_OPTION__STRING_STRING_TYPE:
-				addSearchOption((String)arguments.get(0), (String)arguments.get(1), (Type)arguments.get(2));
+			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION___ADD_PRIMITIVE_TYPE_SEARCH_OPTION__STRING_STRING_TYPE:
+				addPrimitiveTypeSearchOption((String)arguments.get(0), (String)arguments.get(1), (Type)arguments.get(2));
+				return null;
+			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION___ADD_DATA_MODEL_TYPE_SEARCH_OPTION__STRING_STRING_DATAMODELTYPE:
+				addDataModelTypeSearchOption((String)arguments.get(0), (String)arguments.get(1), (DataModelType)arguments.get(2));
 				return null;
 		}
 		return super.eInvoke(operationID, arguments);

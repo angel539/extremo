@@ -2,13 +2,12 @@
  */
 package semanticmanager.impl;
 
-import org.eclipse.emf.ecore.EClass;
+import fr.inria.atlanmod.neoemf.core.DefaultPersistentEObject;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.EClass;
 
 import semanticmanager.SearchOption;
 import semanticmanager.SemanticmanagerPackage;
-import semanticmanager.Type;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,14 +17,13 @@ import semanticmanager.Type;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link semanticmanager.impl.SearchOptionImpl#getType <em>Type</em>}</li>
  *   <li>{@link semanticmanager.impl.SearchOptionImpl#getName <em>Name</em>}</li>
  *   <li>{@link semanticmanager.impl.SearchOptionImpl#getId <em>Id</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SearchOptionImpl extends MinimalEObjectImpl.Container implements SearchOption {
+public abstract class SearchOptionImpl extends DefaultPersistentEObject implements SearchOption {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -53,24 +51,6 @@ public class SearchOptionImpl extends MinimalEObjectImpl.Container implements Se
 	@Override
 	protected int eStaticFeatureCount() {
 		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Type getType() {
-		return (Type)eGet(SemanticmanagerPackage.Literals.SEARCH_OPTION__TYPE, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setType(Type newType) {
-		eSet(SemanticmanagerPackage.Literals.SEARCH_OPTION__TYPE, newType);
 	}
 
 	/**

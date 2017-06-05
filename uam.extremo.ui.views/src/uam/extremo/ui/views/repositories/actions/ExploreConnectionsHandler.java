@@ -11,7 +11,6 @@ import semanticmanager.NamedElement;
 import uam.extremo.extensions.AssistantFactory;
 
 public class ExploreConnectionsHandler extends AbstractHandler {
-
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().getSelection();
@@ -26,7 +25,6 @@ public class ExploreConnectionsHandler extends AbstractHandler {
 				
 				if(drawnElement == null){
 					toDrawElement.setDrawn(true);
-					
 					AssistantFactory.getInstance().setDrawnElement(toDrawElement);
 				}
 				

@@ -60,33 +60,10 @@ public class SearchOptionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTypePropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SearchOption_type_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SearchOption_type_feature", "_UI_SearchOption_type"),
-				 SemanticmanagerPackage.Literals.SEARCH_OPTION__TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -171,7 +148,6 @@ public class SearchOptionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SearchOption.class)) {
-			case SemanticmanagerPackage.SEARCH_OPTION__TYPE:
 			case SemanticmanagerPackage.SEARCH_OPTION__NAME:
 			case SemanticmanagerPackage.SEARCH_OPTION__ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

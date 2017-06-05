@@ -2,13 +2,13 @@
  */
 package semanticmanager.impl;
 
+import fr.inria.atlanmod.neoemf.core.DefaultPersistentEObject;
+
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import semanticmanager.SemanticmanagerPackage;
 import semanticmanager.Service;
@@ -29,7 +29,7 @@ import semanticmanager.Type;
  *
  * @generated
  */
-public abstract class ServiceImpl extends MinimalEObjectImpl.Container implements Service {
+public abstract class ServiceImpl extends DefaultPersistentEObject implements Service {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

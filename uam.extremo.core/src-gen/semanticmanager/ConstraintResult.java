@@ -2,9 +2,9 @@
  */
 package semanticmanager;
 
-import org.eclipse.emf.common.util.EList;
+import fr.inria.atlanmod.neoemf.core.PersistentEObject;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,9 +22,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see semanticmanager.SemanticmanagerPackage#getConstraintResult()
  * @model
+ * @extends PersistentEObject
  * @generated
  */
-public interface ConstraintResult extends EObject {
+public interface ConstraintResult extends PersistentEObject {
 	/**
 	 * Returns the value of the '<em><b>Constraint</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link semanticmanager.Constraint#getEvaluations <em>Evaluations</em>}'.

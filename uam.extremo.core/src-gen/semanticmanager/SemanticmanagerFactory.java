@@ -49,33 +49,6 @@ public interface SemanticmanagerFactory extends EFactory {
 	ConstraintResult createConstraintResult();
 
 	/**
-	 * Returns a new object of class '<em>Search Option</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Search Option</em>'.
-	 * @generated
-	 */
-	SearchOption createSearchOption();
-
-	/**
-	 * Returns a new object of class '<em>Search Result</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Search Result</em>'.
-	 * @generated
-	 */
-	SearchResult createSearchResult();
-
-	/**
-	 * Returns a new object of class '<em>Search Result Option Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Search Result Option Value</em>'.
-	 * @generated
-	 */
-	SearchResultOptionValue createSearchResultOptionValue();
-
-	/**
 	 * Returns a new object of class '<em>Composite Search Configuration</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,6 +74,24 @@ public interface SemanticmanagerFactory extends EFactory {
 	 * @generated
 	 */
 	PredicateBasedSearch createPredicateBasedSearch();
+
+	/**
+	 * Returns a new object of class '<em>Atomic Search Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Atomic Search Result</em>'.
+	 * @generated
+	 */
+	AtomicSearchResult createAtomicSearchResult();
+
+	/**
+	 * Returns a new object of class '<em>Grouped Search Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Grouped Search Result</em>'.
+	 * @generated
+	 */
+	GroupedSearchResult createGroupedSearchResult();
 
 	/**
 	 * Returns a new object of class '<em>Semantic Group</em>'.
@@ -155,6 +146,51 @@ public interface SemanticmanagerFactory extends EFactory {
 	 * @generated
 	 */
 	DataProperty createDataProperty();
+
+	/**
+	 * Returns a new object of class '<em>Meta Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Meta Data</em>'.
+	 * @generated
+	 */
+	MetaData createMetaData();
+
+	/**
+	 * Returns a new object of class '<em>Primitive Type Search Option</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Primitive Type Search Option</em>'.
+	 * @generated
+	 */
+	PrimitiveTypeSearchOption createPrimitiveTypeSearchOption();
+
+	/**
+	 * Returns a new object of class '<em>Data Model Type Search Option</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Model Type Search Option</em>'.
+	 * @generated
+	 */
+	DataModelTypeSearchOption createDataModelTypeSearchOption();
+
+	/**
+	 * Returns a new object of class '<em>Data Model Type Search Result Option Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Model Type Search Result Option Value</em>'.
+	 * @generated
+	 */
+	DataModelTypeSearchResultOptionValue createDataModelTypeSearchResultOptionValue();
+
+	/**
+	 * Returns a new object of class '<em>Primitive Type Search Result Option Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Primitive Type Search Result Option Value</em>'.
+	 * @generated
+	 */
+	PrimitiveTypeSearchResultOptionValue createPrimitiveTypeSearchResultOptionValue();
 
 	/**
 	 * Returns the package supported by this factory.

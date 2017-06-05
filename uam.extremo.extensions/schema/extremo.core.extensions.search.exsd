@@ -96,6 +96,20 @@
                </restriction>
             </simpleType>
          </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="resultsGrouped" type="boolean" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 
@@ -134,6 +148,8 @@
                   <enumeration value="DataProperty">
                   </enumeration>
                   <enumeration value="ObjectProperty">
+                  </enumeration>
+                  <enumeration value="Resource">
                   </enumeration>
                </restriction>
             </simpleType>
@@ -188,6 +204,13 @@
                   </enumeration>
                </restriction>
             </simpleType>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
          </attribute>
       </complexType>
    </element>

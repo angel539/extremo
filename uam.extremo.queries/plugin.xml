@@ -7,7 +7,9 @@
             class="uam.extremo.queries.customsearch.WordnetSearch"
             filterBy="SemanticNode"
             id="extremo.queries.wordnet"
-            name="Wordnet">
+            name="Wordnet"
+            resultsGrouped="true"
+            description="">
          <option
                id="searchfield"
                name="Search"
@@ -18,7 +20,9 @@
             class="uam.extremo.queries.customsearch.DataPropertiesValueSearch"
             filterBy="DataProperty"
             id="extremo.queries.datapropertiesvalue"
-            name="Data Properties Value">
+            name="Data Properties Value"
+            resultsGrouped="true"
+            description="">
          <option
                id="valuefield"
                name="Value"
@@ -29,7 +33,9 @@
             class="uam.extremo.queries.customsearch.DataPropertiesValueRangeSearch"
             filterBy="DataProperty"
             id="extremo.queries.datapropertiesvaluerange"
-            name="Data Properties Value Range">
+            name="Data Properties Value Range"
+            resultsGrouped="true"
+            description="">
          <option
                id="minvaluefield"
                name="Min Value"
@@ -46,6 +52,7 @@
          point="extremo.core.extensions.search">
       <predicatebasedsearch
             class="uam.extremo.queries.predicatebasedsearch.TooManyRefsSearch"
+            description="Checks if a node has more than a number of references"
             filterBy="SemanticNode"
             id="extremo.queries.nodetoorefs"
             name="A node with too many references">
@@ -140,7 +147,7 @@
             name="Isolated nodes">
       </predicatebasedsearch>
       <predicatebasedsearch
-            class="uuam.extremo.queries.predicatebasedsearch.RefsOverloadedSearch"
+            class="uam.extremo.queries.predicatebasedsearch.RefsOverloadedSearch"
             filterBy="SemanticNode"
             id="extremo.queries.referencesoverloaded"
             name="References are overloaded">
@@ -166,15 +173,19 @@
          point="extremo.core.extensions.search">
       <customsearch
             class="uam.extremo.queries.customsearch.SplitNodesSearch"
+            description="Split the nodes in groups. In every group a inheritance hierarchy is left."
             filterBy="SemanticNode"
             id="extremo.queries.hierarchygroups"
-            name="Split nodes by group">
+            name="Node Splitter"
+            resultsGrouped="true">
       </customsearch>
       <customsearch
             class="uam.extremo.queries.customsearch.NodesWithoutDescriptionsSearch"
             filterBy="SemanticNode"
             id="extremo.queries.nodescriptions"
-            name="Nodes without descriptions">
+            name="Nodes without descriptions"
+            resultsGrouped="true"
+            description="">
       </customsearch>
    </extension>
    <extension

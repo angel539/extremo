@@ -3,10 +3,12 @@ package uam.extremo.extensions;
 import semanticmanager.Constraint;
 import semanticmanager.DataProperty;
 import semanticmanager.ExtendedSemanticmanagerFactory;
+import semanticmanager.MetaData;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Property;
 import semanticmanager.Resource;
+import semanticmanager.ResourceElement;
 import semanticmanager.SemanticNode;
 import semanticmanager.Type;
 
@@ -19,10 +21,14 @@ public interface IFormatAssistant {
     default SemanticNode searchSemanticNodeByName(Resource resource, String name) {
     	if(resource == null || name == null) return null;
     	
-    	for(SemanticNode node : resource.getNodes()){
-    		if(node.getName().equals(name)){
-    			return node;
-    		}
+    	for(ResourceElement resourceElement : resource.getResourceElements()){
+    		if (resourceElement instanceof SemanticNode) {
+				SemanticNode node = (SemanticNode) resourceElement;
+				
+				if(node.getName().equals(name)){
+	    			return node;
+	    		}
+			}
     	}
     	
     	return null;
@@ -76,11 +82,12 @@ public interface IFormatAssistant {
     	return true;
     }
     
-    default SemanticNode createSemanticNodeWithoutDescriptor(Object id, String name, String description) {
+    default SemanticNode createSemanticNodeWithoutDescriptor(Object id, String name, String description, boolean isAbstract) {
     	SemanticNode semanticNode = ExtendedSemanticmanagerFactory.eINSTANCE.createSemanticNode();
     	semanticNode.setTrace(id);
     	semanticNode.setName(name);
     	semanticNode.setDescription(description);
+    	semanticNode.setAbstract(isAbstract);
     	//semanticNode.getDescriptors().add(descriptor);
         return semanticNode;
     }
@@ -96,7 +103,7 @@ public interface IFormatAssistant {
     
     default boolean addSemanticNodeToResource(Resource resource, SemanticNode node){
     	if(resource == null || node == null) return false;
-    	resource.getNodes().add(node);
+    	resource.getResourceElements().add(node);
     	node.setResourceFrom(resource);
     	return true;
     }
@@ -125,6 +132,13 @@ public interface IFormatAssistant {
         return dataProperty;
     }
     
+    default MetaData createMetaData(String key, String value){
+    	MetaData metadata = ExtendedSemanticmanagerFactory.eINSTANCE.createMetaData();
+    	metadata.setKey(key);
+    	metadata.setValue(value);
+        return metadata;
+    }
+    
     default DataProperty createDataProperty(DataProperty descriptor, String value){
     	DataProperty dataProperty = ExtendedSemanticmanagerFactory.eINSTANCE.createDataProperty();
     	dataProperty.setTrace(descriptor.getTrace());
@@ -140,6 +154,12 @@ public interface IFormatAssistant {
     default boolean addDataPropertyToNode(SemanticNode node, DataProperty property){
     	if(node == null || property == null) return false;
     	node.getProperties().add((Property) property);
+    	return true;
+    }
+    
+    default boolean addMetaDataToNamedElement(NamedElement namedElement, MetaData metaData){
+    	if(namedElement == null || metaData == null) return false;
+    	namedElement.getMetadata().add((MetaData) metaData);
     	return true;
     }
     
@@ -172,7 +192,15 @@ public interface IFormatAssistant {
     }
     
     default SemanticNode semanticNodeFromName(Resource resource, String name){
-    	for(SemanticNode node : resource.getNodes()) if(node.getName().equals(name)) return node;
+    	for(ResourceElement resourceElement : resource.getResourceElements()){
+    		if(resourceElement instanceof SemanticNode){
+    			SemanticNode node = (SemanticNode) resourceElement;
+    			
+    			if(node.getName().equals(name)){
+        			return node;
+        		}
+    		}	
+    	}
     	return null;
     }
     

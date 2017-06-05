@@ -10,7 +10,6 @@ import java.io.ObjectOutputStream;
 
 public final class Serializer {
 	public static  <T> byte[] serialize(T object) {
-
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		ObjectOutput out = null;
 		try {
@@ -20,22 +19,24 @@ public final class Serializer {
 			byte[] byteArray = bos.toByteArray();
 			return byteArray;
 
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 			return null;
-
-		} finally {
+		}
+		finally {
 			try {
 				if (out != null)
 					out.close();
-			} catch (IOException ex) {
+			}
+			catch (IOException ex) {
 			}
 			try {
 				bos.close();
-			} catch (IOException ex) {
+			}
+			catch (IOException ex) {
 			}
 		}
-
 	}
 
 	/**

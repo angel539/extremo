@@ -23,7 +23,7 @@ import semanticmanager.SemanticmanagerPackage;
  *
  * @generated
  */
-public abstract class AtomicSearchResultImpl extends SearchResultImpl implements AtomicSearchResult {
+public class AtomicSearchResultImpl extends SearchResultImpl implements AtomicSearchResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

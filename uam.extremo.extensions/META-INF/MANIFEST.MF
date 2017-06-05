@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.filesystem;bundle-version="1.5.0",
  org.eclipse.ui.workbench,
  com.google.guava;bundle-version="15.0.0",
- org.eclipse.emf.compare;bundle-version="3.2.0",
+ org.eclipse.emf.compare;bundle-version="3.2.0";resolution:=optional,
  uam.extremo.core.editor;bundle-version="1.0.0",
  fr.inria.atlanmod.neoemf.core;bundle-version="1.0.1",
  fr.inria.atlanmod.neoemf.data.blueprints.core;bundle-version="1.0.1",
@@ -27,7 +27,8 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.atlanmod.neoemf.eclipse.ui;bundle-version="1.0.1",
  fr.inria.atlanmod.neoemf.io;bundle-version="1.0.1",
  org.eclipse.gmt.modisco.java;bundle-version="0.13.2",
- org.eclipse.ocl.ecore;bundle-version="3.5.0"
+ org.eclipse.ocl.ecore;bundle-version="3.5.0",
+ org.eclipse.ui.console;bundle-version="3.6.100"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: lib/reflections-0.9.9-RC1.jar,
@@ -44,6 +45,7 @@ Bundle-ClassPath: lib/reflections-0.9.9-RC1.jar,
  lib/lucene-core-6.5.1.jar,
  lib/blueprints-neo4j-graph-2.1.0.jar,
  lib/neo4j-kernel-2.1.2.jar,
- lib/neo4j-lucene-index-3.1.1.jar
+ lib/neo4j-lucene-index-3.1.1.jar,
+ icons/
 Export-Package: uam.extremo.extensions,
  uam.extremo.extensions.preferences

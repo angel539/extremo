@@ -79,7 +79,7 @@
       <command
             defaultHandler="uam.extremo.ui.views.repositories.actions.SearchSemanticNodesHandler"
             id="uam.extremo.ui.views.searchsemanticNodes"
-            name="Search Semantic Nodes">
+            name="Search">
       </command>
       <command
             defaultHandler="uam.extremo.ui.views.repositories.actions.ExploreConnectionsHandler"
@@ -156,5 +156,12 @@
       <contexts
             file="contexts.xml">
       </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.dropActions">
+      <action
+            class="uam.extremo.ui.views.draganddrop.NamedElementDropActionDelegate"
+            id="uam.extremo.ui.views.namedElementsDrop">
+      </action>
    </extension>
 </plugin>

@@ -195,7 +195,12 @@ public class SearchConfigurationItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.SEARCH_CONFIGURATION__RESULTS,
-				 SemanticmanagerFactory.eINSTANCE.createSearchResult()));
+				 SemanticmanagerFactory.eINSTANCE.createAtomicSearchResult()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SemanticmanagerPackage.Literals.SEARCH_CONFIGURATION__RESULTS,
+				 SemanticmanagerFactory.eINSTANCE.createGroupedSearchResult()));
 	}
 
 	/**

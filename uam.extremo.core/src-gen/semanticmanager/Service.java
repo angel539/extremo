@@ -2,7 +2,7 @@
  */
 package semanticmanager;
 
-import org.eclipse.emf.ecore.EObject;
+import fr.inria.atlanmod.neoemf.core.PersistentEObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,9 +20,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see semanticmanager.SemanticmanagerPackage#getService()
  * @model abstract="true"
+ * @extends PersistentEObject
  * @generated
  */
-public interface Service extends EObject {
+public interface Service extends PersistentEObject {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->

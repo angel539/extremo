@@ -2,41 +2,49 @@ package uam.extremo.ui.wizards.dialogs.searchnew;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 
-import semanticmanager.*;
-
+import semanticmanager.AtomicSearchResult;
+import semanticmanager.CustomSearch;
+import semanticmanager.DataModelTypeSearchOption;
+import semanticmanager.DataModelTypeSearchResultOptionValue;
+import semanticmanager.ExtendedSemanticmanagerFactory;
+import semanticmanager.NamedElement;
+import semanticmanager.PredicateBasedSearch;
+import semanticmanager.PrimitiveTypeSearchOption;
+import semanticmanager.PrimitiveTypeSearchResultOptionValue;
+import semanticmanager.Repository;
+import semanticmanager.SearchConfiguration;
+import semanticmanager.SearchOption;
+import semanticmanager.SearchResult;
+import semanticmanager.SimpleSearchConfiguration;
 import uam.extremo.extensions.AssistantFactory;
-import uam.extremo.ui.wizards.dialogs.searchnew.dnd.NamedElementSelectionWizardPage;
 
 public class SearchWizardDialog extends Wizard{
-	SearchConfigurationSelectorWizardPage searchPage;
+	SearchConfigurationSelectorWizardPage searchPage = null;
 	
+	NamedElementSelectionWizardPage namedElementSelectionPage;
 	List<SimpleSearchConfiguration> searchConfigurations;
-	SimpleSearchConfiguration searchConfigurationSelected;
 	
 	SearchResult searchResult;
-	SimpleSearchConfiguration selectedConfiguration;
-	NamedElementSelectionWizardPage namedElementSelectionWizardPage;
-	IStructuredSelection strucSelection;
+	Repository repository;
 	
-	public SearchWizardDialog(IStructuredSelection strucSelection, SearchResult searchResult){
+	public SearchWizardDialog(Repository repository){
 		super();
 		setNeedsProgressMonitor(true);
-		this.strucSelection = strucSelection;
-		this.searchResult = searchResult;
-		
+		this.repository = repository;
 		this.searchConfigurations = AssistantFactory.getInstance().getSearches()
 											.stream().filter(ssc -> ssc instanceof SimpleSearchConfiguration)
 										    .map (ssc -> (SimpleSearchConfiguration) ssc)
 										    .collect(Collectors.toList());
+		
+		searchPage = new SearchConfigurationSelectorWizardPage("Search", "Select a search configuration from the query catalogue", searchConfigurations, repository);
 	}
 	
 	@Override
@@ -45,44 +53,75 @@ public class SearchWizardDialog extends Wizard{
 	}
 	
 	public void addPages(){
-		searchPage = new SearchConfigurationSelectorWizardPage("Search", "Select a search configuration from the query catalogue", searchConfigurations, searchConfigurationSelected);
-		//namedElementSelectionWizardPage = new NamedElementSelectionWizardPage("Elements Selection", "Select the input elements for the query", searchConfigurationSelected, strucSelection);
-		
 		addPage(searchPage);
-		//addPage(namedElementSelectionWizardPage);
-	}
-	
-	@Override
-	public IWizardPage getNextPage(IWizardPage page) {
-		if(page == searchPage){
-			namedElementSelectionWizardPage = new NamedElementSelectionWizardPage("Elements Selection", "Select the input elements for the query", searchConfigurationSelected, strucSelection);
-			return namedElementSelectionWizardPage;
-		}
-		
-		return null;
 	}
 	
 	@Override
 	public boolean performFinish() {
-		SearchConfiguration searchConfigurationSelected = searchPage.getSearchConfigurationSelected();
-		searchResult.setConfiguration(searchConfigurationSelected);
+		SimpleSearchConfiguration searchConfigurationSelected = searchPage.getSearchConfigurationSelected();
+		NamedElement namedElementSelected = searchPage.getNamedElementSelected();
+		
+		if (searchConfigurationSelected instanceof PredicateBasedSearch) {
+			PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfigurationSelected;
+			searchResult = ExtendedSemanticmanagerFactory.eINSTANCE.createAtomicSearchResult();
+			searchResult.setConfiguration(predicateBasedSearch);
+			searchResult.getApplyOnElements().addAll(namedElementSelected.getDescribes());
+		}
+		else{
+			// Custom Search
+			CustomSearch customSearch = (CustomSearch) searchConfigurationSelected;
+			
+			if(customSearch.isGrouped()){
+				searchResult = ExtendedSemanticmanagerFactory.eINSTANCE.createGroupedSearchResult();
+				searchResult.setConfiguration(customSearch);
+				searchResult.getApplyOnElements().add(namedElementSelected);
+			}
+			else{
+				searchResult = ExtendedSemanticmanagerFactory.eINSTANCE.createAtomicSearchResult();
+				searchResult.setConfiguration(customSearch);
+				searchResult.getApplyOnElements().add(namedElementSelected);
+			}
+		}
 		
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
 				try {
+					Map<SearchOption, Object> searchOptionStringValues = searchPage.getValues();
+					for(java.util.Map.Entry<SearchOption, Object> entry : searchOptionStringValues.entrySet()){
+						if (entry.getKey() instanceof PrimitiveTypeSearchOption) {
+							PrimitiveTypeSearchOption primitiveTypeSearchOption = (PrimitiveTypeSearchOption) entry.getKey();
+							
+							PrimitiveTypeSearchResultOptionValue primitiveTypeSearchResultOptionValue = ExtendedSemanticmanagerFactory.eINSTANCE.createPrimitiveTypeSearchResultOptionValue();
+							primitiveTypeSearchResultOptionValue.setOption(primitiveTypeSearchOption);
+							primitiveTypeSearchResultOptionValue.setValue((String) entry.getValue());
+							searchResult.getValues().add(primitiveTypeSearchResultOptionValue);
+						}
+						
+						if (entry.getKey() instanceof DataModelTypeSearchOption) {
+							DataModelTypeSearchOption dataModelTypeSearchOption = (DataModelTypeSearchOption) entry.getKey();
+							
+							DataModelTypeSearchResultOptionValue dataModelTypeSearchResultOptionValue = ExtendedSemanticmanagerFactory.eINSTANCE.createDataModelTypeSearchResultOptionValue();
+							dataModelTypeSearchResultOptionValue.setOption(dataModelTypeSearchOption);
+							dataModelTypeSearchResultOptionValue.setValue((NamedElement) entry.getValue());
+							searchResult.getValues().add(dataModelTypeSearchResultOptionValue);
+						}
+					}
+					
 					doFinish(monitor, searchResult, searchConfigurationSelected);									
-				} finally {
+				}
+				finally {
 					monitor.done();
 				}
 			}
 		};
 		try {
 			getContainer().run(true, false, op);
-		} catch (InterruptedException e) {
+		}
+		catch (InterruptedException e) {
 			return false;
-		} catch (InvocationTargetException e) {
+		}
+		catch (InvocationTargetException e) {
 			Throwable realException = e.getTargetException();
-			
 			MessageDialog.openError(getShell(), "Error", realException.getMessage());
 			return false;
 		}
@@ -90,19 +129,27 @@ public class SearchWizardDialog extends Wizard{
 		return true;
 	}
 	
-	public void doFinish(IProgressMonitor monitor, SearchResult searchResult, SearchConfiguration searchConfigurationSelected){
-		/*monitor.beginTask("Generating models...", 1);
-		
-		Map<SearchOption, String> searchOptionStringValues = searchPage.getValues();
-		for(java.util.Map.Entry<SearchOption, String> entry : searchOptionStringValues.entrySet()){
-			SearchResultOptionValue searchResultOptionValue = SemanticmanagerFactory.eINSTANCE.createSearchResultOptionValue();
-			searchResultOptionValue.setOption(entry.getKey());
-			searchResultOptionValue.setValue(entry.getValue());
-			searchResult.getValues().add(searchResultOptionValue);
+	public void doFinish(IProgressMonitor monitor, 
+			SearchResult searchResult, 
+			SearchConfiguration searchConfigurationSelected){
+		if (searchConfigurationSelected instanceof CustomSearch) {
+			CustomSearch customSearch = (CustomSearch) searchConfigurationSelected;
+			customSearch.search(searchResult);
 		}
-		
-		searchResult.getApplyOnElements().addAll(namedElementSelectionWizardPage.getSelectedElements());
-		
-		monitor.worked(1);*/
+			
+		if (searchConfigurationSelected instanceof PredicateBasedSearch) {
+			PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfigurationSelected;
+			
+			if (searchResult instanceof AtomicSearchResult) {
+					AtomicSearchResult atomicSearchResult = (AtomicSearchResult) searchResult;
+					
+					for(NamedElement namedElement : atomicSearchResult.getApplyOnElements()){
+						boolean matches = predicateBasedSearch.matches(namedElement, searchResult.getValues());
+						if(matches){
+							atomicSearchResult.getElements().add(namedElement);
+						}
+					}		
+			}	
+		}
 	}
 }

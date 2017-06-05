@@ -2,9 +2,12 @@ package uam.extremo.ui.views.searchtree;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
+import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StyledString;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
@@ -13,7 +16,7 @@ import uam.extremo.ui.views.Activator;
 
 import semanticmanager.*;
 
-public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider{
+public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider, IFontProvider{
 	public TreeViewAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
@@ -55,6 +58,8 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 				return Activator.getImageDescriptor("icons/datamodel/description16.png").createImage();
 			}
     	}
+		
+		if(obj instanceof MetaData) return Activator.getImageDescriptor("icons/metadata.png").createImage();
 		
 		if(obj instanceof SemanticNode){
 			SemanticNode semanticnode = (SemanticNode) obj;
@@ -225,14 +230,27 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 			return styledString;
 		}
 		
-		if (element instanceof SearchResultOptionValue) {
-			SearchResultOptionValue searchResultOptionValue = (SearchResultOptionValue) element;
+		if (element instanceof PrimitiveTypeSearchResultOptionValue) {
+			PrimitiveTypeSearchResultOptionValue searchResultOptionValue = (PrimitiveTypeSearchResultOptionValue) element;
 			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName() + " : " + searchResultOptionValue.getValue());
 			return styledString;
 		}
 		
-		if (element instanceof SearchOption) {
-			SearchOption searchOption = (SearchOption) element;
+		if (element instanceof DataModelTypeSearchResultOptionValue) {
+			DataModelTypeSearchResultOptionValue searchResultOptionValue = (DataModelTypeSearchResultOptionValue) element;
+			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName() + " : " + searchResultOptionValue.getValue());
+			return styledString;
+		}
+		
+		if (element instanceof PrimitiveTypeSearchOption) {
+			PrimitiveTypeSearchOption searchOption = (PrimitiveTypeSearchOption) element;
+			StyledString styledString = new StyledString(searchOption.getType().getLiteral());
+			styledString.append(" " + searchOption.getName(), StyledString.COUNTER_STYLER);
+			return styledString;
+		}
+		
+		if (element instanceof DataModelTypeSearchOption) {
+			DataModelTypeSearchOption searchOption = (DataModelTypeSearchOption) element;
 			StyledString styledString = new StyledString(searchOption.getType().getLiteral());
 			styledString.append(" " + searchOption.getName(), StyledString.COUNTER_STYLER);
 			return styledString;
@@ -275,10 +293,25 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 			return styledString;
 		}
 		
+		if (element instanceof MetaData) {
+			MetaData metadata = (MetaData) element;
+			StyledString styledString = new StyledString(metadata.getKey() + " = " + metadata.getValue());			
+			return styledString;
+		}
+		
 		if(element instanceof SemanticNode){
 			SemanticNode semanticNode = (SemanticNode) element; 
 			if((semanticNode.getDescriptors() == null) || (semanticNode.getDescriptors().isEmpty())){
+				//Font font = JFaceResources.getFontRegistry().getItalic(JFaceResources.DEFAULT_FONT);
+				//FontDescriptor fontDescriptor = FontDescriptor.createFrom(font);
+				//fontDescriptor.
+				
 				StyledString styledString = new StyledString(semanticNode.getName());
+				//styledString.
+				
+				for(SemanticNode superC : semanticNode.getSupers()){
+					styledString.append(" -> " + superC.getName(), StyledString.QUALIFIER_STYLER);
+				}
 				
 				if(semanticNode.getDescribes().size() > 0)
 					styledString.append(" describes (" + semanticNode.getDescribes().size() + ")", StyledString.COUNTER_STYLER);
@@ -287,6 +320,10 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 			}
 			else{
 				StyledString styledString = new StyledString(semanticNode.getName());
+				
+				for(SemanticNode superC : semanticNode.getSupers()){
+					styledString.append(" -> " + superC.getName(), StyledString.QUALIFIER_STYLER);
+				}
 				
 				for(NamedElement descriptor : semanticNode.getDescriptors())
 					styledString.append(" :" + descriptor.getName(), StyledString.COUNTER_STYLER);
@@ -307,15 +344,28 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 			
 			if((dataProperty.getDescriptors() == null) || (dataProperty.getDescriptors().isEmpty())){
 				DataProperty property = (DataProperty) element;
-				StyledString styledString = new StyledString(property.getName());
-				if(property.getType() != null) styledString.append(": " + property.getType().getLiteral(), StyledString.COUNTER_STYLER);
+				
+				StyledString styledString = null;
+				if(property.getType() != null){
+					styledString = new StyledString(property.getName());
+					styledString.append(" :" + property.getType().getLiteral(), StyledString.COUNTER_STYLER);
+				}
+				else{
+					styledString = new StyledString(property.getName());
+				}
+
+				styledString.append(" [" + property.getLowerBound() + ", " + property.getUpperBound() + "] ", StyledString.QUALIFIER_STYLER);
 				
 				return styledString;
 			}
 			else{
-				StyledString styledString = new StyledString(dataProperty.getValue());
+				StyledString styledString = null;
+				
 				for(NamedElement namedElement : dataProperty.getDescriptors())
-					styledString.append(" :" + namedElement.getName(), StyledString.COUNTER_STYLER);
+				    styledString = new StyledString(namedElement.getName() + " = ");
+			
+				styledString.append(dataProperty.getValue(), StyledString.COUNTER_STYLER);
+				
 				return styledString;
 			}
 		}
@@ -327,7 +377,7 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 				ObjectProperty property = (ObjectProperty) element;
 				StyledString styledString = new StyledString(property.getName());
 				if(property.getRange() != null) styledString.append(" ->" + property.getRange().getName(), StyledString.COUNTER_STYLER);
-				
+				styledString.append(" [" + property.getLowerBound() + ", " + property.getUpperBound() + "] ", StyledString.QUALIFIER_STYLER);
 				return styledString;
 			}
 			else{
@@ -335,10 +385,25 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 				
 				for(NamedElement namedElement : objectProperty.getDescriptors())
 					styledString.append(" :" + namedElement.getName(), StyledString.COUNTER_STYLER);
+				
+				if(objectProperty.getRange() != null) styledString.append(" ->" + objectProperty.getRange().getName(), StyledString.COUNTER_STYLER);
+
 				return styledString;
 			}
 		}
 		
 		return null;
+	}
+	
+	@Override
+	public Font getFont(Object object) {
+		if (object instanceof SemanticNode) {
+			SemanticNode semanticNode = (SemanticNode) object;
+			
+			if(semanticNode.isAbstract()){
+				return JFaceResources.getFontRegistry().getItalic(JFaceResources.DEFAULT_FONT);
+			}
+		}
+		return super.getFont(object);
 	}
 }

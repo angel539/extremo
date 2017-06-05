@@ -2,12 +2,13 @@
  */
 package semanticmanager.impl;
 
+import fr.inria.atlanmod.neoemf.core.DefaultPersistentEObject;
+
 import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import semanticmanager.NamedElement;
 import semanticmanager.SearchConfiguration;
@@ -30,7 +31,7 @@ import semanticmanager.SemanticmanagerPackage;
  *
  * @generated
  */
-public class SearchResultImpl extends MinimalEObjectImpl.Container implements SearchResult {
+public abstract class SearchResultImpl extends DefaultPersistentEObject implements SearchResult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

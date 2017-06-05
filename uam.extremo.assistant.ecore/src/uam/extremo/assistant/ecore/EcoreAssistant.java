@@ -128,7 +128,8 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 							createSemanticNodeWithoutDescriptor(
 									obj, //original object as id
 									name, 
-									name); // the name is used as a description label too.
+									name,
+									eClass.isAbstract()); // the name is used as a description label too.
 									//it is actually a descriptor element
 										
 					addSemanticNodeToResource(semanticResource, semanticNode);

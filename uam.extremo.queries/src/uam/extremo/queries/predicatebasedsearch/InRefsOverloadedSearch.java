@@ -14,7 +14,7 @@ import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
 public class InRefsOverloadedSearch extends ExtensiblePredicateBasedSearchImpl {
 	@Override
 	public boolean matches(NamedElement namedElement, EList<SearchResultOptionValue> inps) {
-		if (namedElement instanceof Resource) {
+		/*if (namedElement instanceof Resource) {
 			int maxRefs = (int) getOptionValueKey("maxrefs", inps);
 			
 			Resource resource = (Resource) namedElement;
@@ -32,7 +32,7 @@ public class InRefsOverloadedSearch extends ExtensiblePredicateBasedSearchImpl {
 					return true;
 				}
 			}
-		}
+		}*/
 		
 		return false;
 	}

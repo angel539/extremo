@@ -2,11 +2,11 @@
  */
 package semanticmanager.impl;
 
+import fr.inria.atlanmod.neoemf.core.DefaultPersistentEObject;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import semanticmanager.Constraint;
 import semanticmanager.ConstraintInterpreter;
@@ -32,7 +32,7 @@ import semanticmanager.SemanticmanagerPackage;
  *
  * @generated
  */
-public class ConstraintImpl extends MinimalEObjectImpl.Container implements Constraint {
+public class ConstraintImpl extends DefaultPersistentEObject implements Constraint {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

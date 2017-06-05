@@ -60,28 +60,30 @@ public class InheritanceGraphPartViewLabelProvider implements ILabelProvider, IC
 	}
 	
 	@Override
-	public Image getImage(Object obj) {
-		if(obj instanceof IStructuredSelection) obj = ((IStructuredSelection) obj).getFirstElement();
+	public Image getImage(Object element) {
+		if(element instanceof IStructuredSelection) element = ((IStructuredSelection) element).getFirstElement();
 		
 		String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
 		
-		if(obj instanceof Repository) return Activator.getImageDescriptor("icons/folder-icon_16.png").createImage();
+		if(element instanceof Repository) return Activator.getImageDescriptor("icons/repo.png").createImage();
     	
-		if(obj instanceof Resource){
-			Resource resource = (Resource) obj;
+		if(element instanceof Resource){
+			Resource resource = (Resource) element;
+			
 			if((resource.getDescriptors() == null) || (resource.getDescriptors().isEmpty())){
 				return Activator.getImageDescriptor("icons/descriptor.png").createImage();
 			}
 			else{
-				if(((Resource) obj).isAlive()) return Activator.getImageDescriptor("icons/description_on.png").createImage();
+				if(((Resource) element).isAlive()) return Activator.getImageDescriptor("icons/description_on.png").createImage();
         		else{
         			return Activator.getImageDescriptor("icons/description.png").createImage();
         		}
 			}
     	}
 		
-		if(obj instanceof SemanticNode){
-			SemanticNode semanticNode = (SemanticNode) obj;
+		if(element instanceof SemanticNode){
+			SemanticNode semanticNode = (SemanticNode) element;
+			
 			if((semanticNode.getDescriptors() == null) || (semanticNode.getDescriptors().isEmpty())){
 				return Activator.getImageDescriptor("icons/class_obj.png").createImage();
 			}
@@ -89,11 +91,12 @@ public class InheritanceGraphPartViewLabelProvider implements ILabelProvider, IC
         		return Activator.getImageDescriptor("icons/object.png").createImage();
 			}
     	}
-
-		if(obj instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.gif").createImage();
-		if(obj instanceof DataProperty) return Activator.getImageDescriptor("icons/attribute.png").createImage();
+		
+		if(element instanceof Constraint) return Activator.getImageDescriptor("icons/constraint.png").createImage();
+		
+		if(element instanceof ObjectProperty) return Activator.getImageDescriptor("icons/det_pane_right.png").createImage();
+		if(element instanceof DataProperty) return Activator.getImageDescriptor("icons/attribute.png").createImage();
     	
-
 		return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
 	}
 	

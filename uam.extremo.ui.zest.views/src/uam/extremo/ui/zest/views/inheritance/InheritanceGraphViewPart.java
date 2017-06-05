@@ -1,13 +1,14 @@
 package uam.extremo.ui.zest.views.inheritance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -16,7 +17,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.PlatformUI;
@@ -36,8 +36,6 @@ import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.zest.views.Activator;
 import uam.extremo.ui.zest.views.GraphViewPartFilter;
 
-import semanticmanager.NamedElement;
-
 public class InheritanceGraphViewPart extends ViewPart implements IZoomableWorkbenchPart{
 	public static final String ID = "uam.extremo.ui.zest.views.InheritanceGraphViewPart";
 	
@@ -48,6 +46,9 @@ public class InheritanceGraphViewPart extends ViewPart implements IZoomableWorkb
 	
 	private GraphViewer viewer;
 	private Graph graph;
+	
+	protected ComposedAdapterFactory adapterFactory;
+	List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
 		
 	@Override
 	public void createPartControl(Composite parent) {
@@ -62,9 +63,10 @@ public class InheritanceGraphViewPart extends ViewPart implements IZoomableWorkb
 		ViewerFilter[] filters = {filter};
 		viewer.setFilters(filters);
 		
+		viewer.setInput(AssistantFactory.getInstance().getRepositoryManager());
+		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "extremo.ui.viewer");
 		
-		//connection with properties view
 		getSite().setSelectionProvider(viewer);
 		getViewSite().setSelectionProvider(viewer);
 	    
@@ -75,67 +77,6 @@ public class InheritanceGraphViewPart extends ViewPart implements IZoomableWorkb
 	    invokeFilters();
 	    
 	    fillToolBar();
-	    
-	    /*EAdapterList adapter = new EAdapter() {
-            public void notifyChanged(Notification notification) {
-           		 super.notifyChanged(notification);
-           		 refresh();
-            }
-    	};
-    	
-    	AssistantFactory.getInstance().getRepositoryManager().eAdapters().add(adapter);*/
-	}
-	
-	public void refresh() {
-		Job job = new Job("Refreshing Inheritance Graph View") {
-            @Override
-            protected IStatus run(IProgressMonitor monitor) {
-                doLongThing();
-                syncWithUi();
-                return Status.OK_STATUS;
-            }
-	    };
-	    job.setUser(true);
-	    job.schedule();
-	}
-	
-	private void syncWithUi() {
-        try {
-        	Thread.sleep(1000);
-        } catch (InterruptedException e) {
-                e.printStackTrace();
-        }
-	}
-
-	private void doLongThing() {
-		Display.getDefault().asyncExec(new Runnable() {
-            public void run() {
-            	NamedElement drawnElement = AssistantFactory.getInstance().getDrawnElement();
-            	
-            	if(drawnElement != null){
-            		viewer.setInput(drawnElement);
-            	}
-            	
-            	/*RepositoryManager repositoryManager = AssistantFactory.getInstance().getRepositoryManager();
-            	
-            	TreeIterator<EObject> iterator = repositoryManager.eAllContents();
-        		EObject input = null;
-            	
-        		iteratorLoop:
-        		while(iterator.hasNext()){
-        			EObject eobject = iterator.next();
-        			
-        			if(eobject instanceof NamedElement && ((NamedElement) eobject).isDrawn()){
-        				input = eobject;
-        				break iteratorLoop;
-        			}
-        		}
-        		
-        		if(input != null){
-        			viewer.setInput(input);
-        		}*/
-            }
-		});
 	}
 
 	private void invokeFilters() {

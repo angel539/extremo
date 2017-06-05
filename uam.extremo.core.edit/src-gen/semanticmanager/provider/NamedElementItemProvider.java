@@ -241,6 +241,7 @@ public class NamedElementItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SemanticmanagerPackage.Literals.NAMED_ELEMENT__CONSTRAINTS);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.NAMED_ELEMENT__METADATA);
 		}
 		return childrenFeatures;
 	}
@@ -293,6 +294,7 @@ public class NamedElementItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case SemanticmanagerPackage.NAMED_ELEMENT__CONSTRAINTS:
+			case SemanticmanagerPackage.NAMED_ELEMENT__METADATA:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -314,6 +316,11 @@ public class NamedElementItemProvider
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.NAMED_ELEMENT__CONSTRAINTS,
 				 SemanticmanagerFactory.eINSTANCE.createConstraint()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SemanticmanagerPackage.Literals.NAMED_ELEMENT__METADATA,
+				 SemanticmanagerFactory.eINSTANCE.createMetaData()));
 	}
 
 	/**

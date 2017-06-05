@@ -32,10 +32,11 @@ Require-Bundle: org.eclipse.ui,
  uam.extremo.core.edit,
  org.eclipse.emf.edit.ui,
  org.eclipse.e4.ui.di;bundle-version="1.1.0",
- uam.extremo.extensions;bundle-version="1.0.0"
+ uam.extremo.extensions;bundle-version="1.0.0",
+ org.eclipse.ui.console
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: uam.extremo.ui.views.dnd,
+Export-Package: uam.extremo.ui.views.draganddrop,
  uam.extremo.ui.views.repositories,
  uam.extremo.ui.views.searchtree
 Import-Package: org.apache.commons.lang3;version="3.1.0",

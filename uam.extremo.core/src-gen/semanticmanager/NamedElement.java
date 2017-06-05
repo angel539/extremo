@@ -2,9 +2,9 @@
  */
 package semanticmanager;
 
-import org.eclipse.emf.common.util.EList;
+import fr.inria.atlanmod.neoemf.core.PersistentEObject;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,13 +23,15 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link semanticmanager.NamedElement#getDescriptors <em>Descriptors</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getDescribes <em>Describes</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link semanticmanager.NamedElement#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getNamedElement()
  * @model abstract="true"
+ * @extends PersistentEObject
  * @generated
  */
-public interface NamedElement extends EObject {
+public interface NamedElement extends PersistentEObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -213,5 +215,21 @@ public interface NamedElement extends EObject {
 	 * @generated
 	 */
 	EList<Constraint> getConstraints();
+
+	/**
+	 * Returns the value of the '<em><b>Metadata</b></em>' containment reference list.
+	 * The list contents are of type {@link semanticmanager.MetaData}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Metadata</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Metadata</em>' containment reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getNamedElement_Metadata()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<MetaData> getMetadata();
 
 } // NamedElement

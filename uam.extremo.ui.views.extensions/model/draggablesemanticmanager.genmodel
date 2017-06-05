@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/uam.extremo.ui.views.extensions/src" modelPluginID="uam.extremo.ui.views.extensions"
+    modelName="Draggablesemanticmanager" rootExtendsInterface="fr.inria.atlanmod.neoemf.core.PersistentEObject"
+    rootExtendsClass="fr.inria.atlanmod.neoemf.core.DefaultPersistentEObject" reflectiveDelegation="true"
+    importerID="fr.inria.atlanmod.neoemf.eclipse.ui.migrator.NeoImporter" featureDelegation="Reflective"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>draggablesemanticmanager.ecore</foreignModel>
+  <modelPluginVariables>NEOEMF=fr.inria.atlanmod.neoemf.core</modelPluginVariables>
+  <genPackages prefix="Draggablesemanticmanager" disposableProviderFactory="true"
+      ecorePackage="draggablesemanticmanager.ecore#/">
+    <genClasses image="false" ecoreClass="draggablesemanticmanager.ecore#//DraggableNamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute draggablesemanticmanager.ecore#//DraggableNamedElement/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference draggablesemanticmanager.ecore#//DraggableNamedElement/descriptors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference draggablesemanticmanager.ecore#//DraggableNamedElement/describes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="draggablesemanticmanager.ecore#//DraggableProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute draggablesemanticmanager.ecore#//DraggableProperty/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute draggablesemanticmanager.ecore#//DraggableProperty/upperBound"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference draggablesemanticmanager.ecore#//DraggableProperty/semanticNodeFrom"/>
+    </genClasses>
+    <genClasses ecoreClass="draggablesemanticmanager.ecore#//DraggableObjectProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference draggablesemanticmanager.ecore#//DraggableObjectProperty/range"/>
+    </genClasses>
+    <genClasses ecoreClass="draggablesemanticmanager.ecore#//DraggableDataProperty"/>
+    <genClasses ecoreClass="draggablesemanticmanager.ecore#//DraggableSemanticNode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference draggablesemanticmanager.ecore#//DraggableSemanticNode/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="draggablesemanticmanager.ecore#//DraggableNamedElementSet">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference draggablesemanticmanager.ecore#//DraggableNamedElementSet/draggableSemanticNodes"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -175,7 +175,12 @@ public class SearchResultItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.SEARCH_RESULT__VALUES,
-				 SemanticmanagerFactory.eINSTANCE.createSearchResultOptionValue()));
+				 SemanticmanagerFactory.eINSTANCE.createDataModelTypeSearchResultOptionValue()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SemanticmanagerPackage.Literals.SEARCH_RESULT__VALUES,
+				 SemanticmanagerFactory.eINSTANCE.createPrimitiveTypeSearchResultOptionValue()));
 	}
 
 	/**

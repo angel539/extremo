@@ -15,14 +15,20 @@ public class RefsOverloadedSearch extends ExtensiblePredicateBasedSearchImpl {
 		if (namedElement instanceof SemanticNode) {
 			SemanticNode semanticNode = (SemanticNode) namedElement;
 			
-			int maxRefs = (int) getOptionValueKey("maxrefs", inps);
+			Object maxRefs = getOptionValueKey("maxrefs", inps);
 			
-			long count = semanticNode.getProperties().stream().
-					filter(p -> p instanceof ObjectProperty).count();
-			
-			if(maxRefs <= count){
-				return true;
+			if((maxRefs != null) && (maxRefs instanceof String)){
+				int refs = Integer.getInteger((String) maxRefs);
+				
+				long count = semanticNode.getProperties().stream().
+						filter(p -> p instanceof ObjectProperty).count();
+				
+				if(refs <= count){
+					return true;
+				}
 			}
+			
+			return false;
 		}
 		
 		return false;

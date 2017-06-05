@@ -2,9 +2,9 @@
  */
 package semanticmanager;
 
-import org.eclipse.emf.common.util.EList;
+import fr.inria.atlanmod.neoemf.core.PersistentEObject;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,10 +21,11 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getSearchResult()
- * @model
+ * @model abstract="true"
+ * @extends PersistentEObject
  * @generated
  */
-public interface SearchResult extends EObject {
+public interface SearchResult extends PersistentEObject {
 	/**
 	 * Returns the value of the '<em><b>Values</b></em>' containment reference list.
 	 * The list contents are of type {@link semanticmanager.SearchResultOptionValue}.

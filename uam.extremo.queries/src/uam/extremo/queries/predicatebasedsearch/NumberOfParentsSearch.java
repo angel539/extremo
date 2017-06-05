@@ -11,7 +11,7 @@ import semanticmanager.SemanticNode;
 public class NumberOfParentsSearch extends ExtensiblePredicateBasedSearchImpl {
 	@Override
 	public boolean matches(NamedElement namedElement, EList<SearchResultOptionValue> inps) {
-		if (namedElement instanceof SemanticNode) {
+		/*if (namedElement instanceof SemanticNode) {
 			SemanticNode semanticNode = (SemanticNode) namedElement;
 			
 			int parents = (int) getOptionValueKey("morethanparents", inps);
@@ -19,7 +19,7 @@ public class NumberOfParentsSearch extends ExtensiblePredicateBasedSearchImpl {
 			if(semanticNode.getSupers().size() > parents){
 				return true;
 			}
-		}
+		}*/
 		
 		return false;
 	}

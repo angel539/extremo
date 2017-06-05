@@ -1,6 +1,5 @@
 package uam.extremo.ui.wizards.dialogs.searchnew;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -21,6 +20,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import semanticmanager.PrimitiveTypeSearchOption;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
 import semanticmanager.SimpleSearchConfiguration;
@@ -72,36 +72,35 @@ public class NewSearchConfigurationSelectorWizardPage extends WizardPage{
 		           IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 		           
 		           if((selection != null) 
-		        		   && (selection instanceof SearchConfiguration)){
-		        	   
-		        	   System.out.println(selection.toString());
-		        	   
+		        		   && (selection instanceof SearchConfiguration)){        	   
 		        	   SearchConfiguration searchConfiguration = (SearchConfiguration) selection;
-		        	   //Map<SearchOption, String> values = new LinkedHashMap<SearchOption, String>(); 
-		    			
 		        	   if (searchConfiguration instanceof SimpleSearchConfiguration) {
 							SimpleSearchConfiguration simpleSearchConfiguration = (SimpleSearchConfiguration) searchConfiguration;
 							
 							for(SearchOption searchOption : simpleSearchConfiguration.getOptions()){
-				    			if(searchOption.getType().equals(Type.STRING)){
-				    				createTextField(searchOption, values);	
-				    			}
-				    			
-				    			if(searchOption.getType().equals(Type.BOOLEAN)){
-				    				createCheckButton(searchOption, values);	
-				    			}
-				    			
-				    			if(searchOption.getType().equals(Type.INT)){
-				    				createNumericField(searchOption, values);
-				    			}
-				    			
-				    			if(searchOption.getType().equals(Type.FLOAT)){
-				    				createNumericField(searchOption, values);
-				    			}
-				    			
-				    			if(searchOption.getType().equals(Type.DOUBLE)){
-				    				createNumericField(searchOption, values);
-				    			}
+								if(searchOption instanceof PrimitiveTypeSearchOption){
+									PrimitiveTypeSearchOption primitiveTypeSearchOption = (PrimitiveTypeSearchOption) searchOption;
+									
+									if(primitiveTypeSearchOption.getType().equals(Type.STRING)){
+					    				createTextField(searchOption, values);	
+					    			}
+					    			
+					    			if(primitiveTypeSearchOption.getType().equals(Type.BOOLEAN)){
+					    				createCheckButton(searchOption, values);	
+					    			}
+					    			
+					    			if(primitiveTypeSearchOption.getType().equals(Type.INT)){
+					    				createNumericField(searchOption, values);
+					    			}
+					    			
+					    			if(primitiveTypeSearchOption.getType().equals(Type.FLOAT)){
+					    				createNumericField(searchOption, values);
+					    			}
+					    			
+					    			if(primitiveTypeSearchOption.getType().equals(Type.DOUBLE)){
+					    				createNumericField(searchOption, values);
+					    			}		
+								}
 				    		}
 						}
 		    			

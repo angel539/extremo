@@ -6,14 +6,15 @@ import org.eclipse.swt.dnd.DropTarget;
 import org.eclipse.swt.dnd.DropTargetAdapter;
 import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.Transfer;
+
 import semanticmanager.NamedElement;
-import uam.extremo.extensions.AssistantFactory;
+import uam.extremo.ui.views.extensions.dnd.DraggableNamedElementTransfer;
 
 public class ViewPartViewerDropAdapter extends DropTargetAdapter{
 		public ViewPartViewerDropAdapter(TreeViewer viewer) {
 			DropTarget target = new DropTarget(viewer.getControl(), DND.DROP_MOVE | DND.DROP_COPY);
 			target.setTransfer(new Transfer[] {
-		            NamedElementTransfer.getInstance()});
+		            DraggableNamedElementTransfer.getTransfer()});
 			target.addDropListener(this);
 		}
 
@@ -28,12 +29,9 @@ public class ViewPartViewerDropAdapter extends DropTargetAdapter{
 	   }
 
 	   public void drop(DropTargetEvent event) {
-	      AssistantFactory manager = AssistantFactory.getInstance();
-	      
-	      if (NamedElementTransfer.getInstance().isSupportedType(
+	      if (DraggableNamedElementTransfer.getTransfer().isSupportedType(
 	            event.currentDataType)
 	            && (event.data instanceof NamedElement[])) {
-	    	  //manager.addFavorites((NamedElement[]) event.data);
 	    	  event.detail = DND.DROP_COPY;
 	      }
 	      else
