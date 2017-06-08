@@ -23,7 +23,6 @@ import semanticmanager.Type;
  * </p>
  * <ul>
  *   <li>{@link semanticmanager.impl.SimpleSearchConfigurationImpl#getOptions <em>Options</em>}</li>
- *   <li>{@link semanticmanager.impl.SimpleSearchConfigurationImpl#getFilterBy <em>Filter By</em>}</li>
  *   <li>{@link semanticmanager.impl.SimpleSearchConfigurationImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
@@ -57,24 +56,6 @@ public abstract class SimpleSearchConfigurationImpl extends SearchConfigurationI
 	@SuppressWarnings("unchecked")
 	public EList<SearchOption> getOptions() {
 		return (EList<SearchOption>)eGet(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__OPTIONS, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DataModelType getFilterBy() {
-		return (DataModelType)eGet(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__FILTER_BY, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFilterBy(DataModelType newFilterBy) {
-		eSet(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__FILTER_BY, newFilterBy);
 	}
 
 	/**

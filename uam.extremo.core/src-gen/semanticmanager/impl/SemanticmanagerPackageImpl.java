@@ -24,6 +24,7 @@ import semanticmanager.DataModelTypeSearchOption;
 import semanticmanager.DataModelTypeSearchResultOptionValue;
 import semanticmanager.DataProperty;
 import semanticmanager.GroupedSearchResult;
+import semanticmanager.Level;
 import semanticmanager.MetaData;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
@@ -277,6 +278,13 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * @generated
 	 */
 	private EEnum typeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum levelEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -693,17 +701,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSimpleSearchConfiguration_FilterBy() {
-		return (EAttribute)simpleSearchConfigurationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getSimpleSearchConfiguration_Description() {
-		return (EAttribute)simpleSearchConfigurationEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)simpleSearchConfigurationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -828,6 +827,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCustomSearch_Level() {
+		return (EAttribute)customSearchEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getCustomSearch__Search__SearchResult() {
 		return customSearchEClass.getEOperations().get(0);
 	}
@@ -839,6 +847,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 */
 	public EClass getPredicateBasedSearch() {
 		return predicateBasedSearchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPredicateBasedSearch_FilterBy() {
+		return (EAttribute)predicateBasedSearchEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -875,6 +892,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 */
 	public EReference getAtomicSearchResult_Elements() {
 		return (EReference)atomicSearchResultEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAtomicSearchResult_Descriptor() {
+		return (EReference)atomicSearchResultEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -992,6 +1018,24 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 */
 	public EAttribute getRepository_Project() {
 		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRepository_Name() {
+		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRepository_Description() {
+		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1458,6 +1502,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getLevel() {
+		return levelEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getJavaObject() {
 		return javaObjectEDataType;
 	}
@@ -1536,7 +1589,6 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 
 		simpleSearchConfigurationEClass = createEClass(SIMPLE_SEARCH_CONFIGURATION);
 		createEReference(simpleSearchConfigurationEClass, SIMPLE_SEARCH_CONFIGURATION__OPTIONS);
-		createEAttribute(simpleSearchConfigurationEClass, SIMPLE_SEARCH_CONFIGURATION__FILTER_BY);
 		createEAttribute(simpleSearchConfigurationEClass, SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION);
 		createEOperation(simpleSearchConfigurationEClass, SIMPLE_SEARCH_CONFIGURATION___ADD_PRIMITIVE_TYPE_SEARCH_OPTION__STRING_STRING_TYPE);
 		createEOperation(simpleSearchConfigurationEClass, SIMPLE_SEARCH_CONFIGURATION___ADD_DATA_MODEL_TYPE_SEARCH_OPTION__STRING_STRING_DATAMODELTYPE);
@@ -1554,14 +1606,17 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 
 		customSearchEClass = createEClass(CUSTOM_SEARCH);
 		createEAttribute(customSearchEClass, CUSTOM_SEARCH__GROUPED);
+		createEAttribute(customSearchEClass, CUSTOM_SEARCH__LEVEL);
 		createEOperation(customSearchEClass, CUSTOM_SEARCH___SEARCH__SEARCHRESULT);
 
 		predicateBasedSearchEClass = createEClass(PREDICATE_BASED_SEARCH);
+		createEAttribute(predicateBasedSearchEClass, PREDICATE_BASED_SEARCH__FILTER_BY);
 		createEOperation(predicateBasedSearchEClass, PREDICATE_BASED_SEARCH___MATCHES__NAMEDELEMENT_ELIST);
 		createEOperation(predicateBasedSearchEClass, PREDICATE_BASED_SEARCH___GET_OPTION_VALUE_KEY__STRING_ELIST);
 
 		atomicSearchResultEClass = createEClass(ATOMIC_SEARCH_RESULT);
 		createEReference(atomicSearchResultEClass, ATOMIC_SEARCH_RESULT__ELEMENTS);
+		createEReference(atomicSearchResultEClass, ATOMIC_SEARCH_RESULT__DESCRIPTOR);
 
 		groupedSearchResultEClass = createEClass(GROUPED_SEARCH_RESULT);
 		createEReference(groupedSearchResultEClass, GROUPED_SEARCH_RESULT__GROUPS);
@@ -1578,6 +1633,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		repositoryEClass = createEClass(REPOSITORY);
 		createEReference(repositoryEClass, REPOSITORY__RESOURCES);
 		createEAttribute(repositoryEClass, REPOSITORY__PROJECT);
+		createEAttribute(repositoryEClass, REPOSITORY__NAME);
+		createEAttribute(repositoryEClass, REPOSITORY__DESCRIPTION);
 
 		resourceEClass = createEClass(RESOURCE);
 		createEAttribute(resourceEClass, RESOURCE__ACTIVE);
@@ -1643,6 +1700,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		connectionTypeEEnum = createEEnum(CONNECTION_TYPE);
 		dataModelTypeEEnum = createEEnum(DATA_MODEL_TYPE);
 		typeEEnum = createEEnum(TYPE);
+		levelEEnum = createEEnum(LEVEL);
 
 		// Create data types
 		javaObjectEDataType = createEDataType(JAVA_OBJECT);
@@ -1683,7 +1741,6 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		atomicSearchResultEClass.getESuperTypes().add(this.getSearchResult());
 		groupedSearchResultEClass.getESuperTypes().add(this.getSearchResult());
 		semanticGroupEClass.getESuperTypes().add(this.getNamedElement());
-		repositoryEClass.getESuperTypes().add(this.getNamedElement());
 		resourceEClass.getESuperTypes().add(this.getResourceElement());
 		semanticNodeEClass.getESuperTypes().add(this.getResourceElement());
 		propertyEClass.getESuperTypes().add(this.getNamedElement());
@@ -1747,7 +1804,6 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 
 		initEClass(simpleSearchConfigurationEClass, SimpleSearchConfiguration.class, "SimpleSearchConfiguration", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSimpleSearchConfiguration_Options(), this.getSearchOption(), null, "options", null, 0, -1, SimpleSearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimpleSearchConfiguration_FilterBy(), this.getDataModelType(), "filterBy", null, 0, 1, SimpleSearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleSearchConfiguration_Description(), ecorePackage.getEString(), "description", null, 0, 1, SimpleSearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getSimpleSearchConfiguration__AddPrimitiveTypeSearchOption__String_String_Type(), null, "addPrimitiveTypeSearchOption", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1778,11 +1834,13 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 
 		initEClass(customSearchEClass, CustomSearch.class, "CustomSearch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomSearch_Grouped(), ecorePackage.getEBoolean(), "grouped", null, 0, 1, CustomSearch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCustomSearch_Level(), this.getLevel(), "level", null, 0, 1, CustomSearch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getCustomSearch__Search__SearchResult(), null, "search", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getSearchResult(), "result", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(predicateBasedSearchEClass, PredicateBasedSearch.class, "PredicateBasedSearch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPredicateBasedSearch_FilterBy(), this.getDataModelType(), "filterBy", null, 0, 1, PredicateBasedSearch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getPredicateBasedSearch__Matches__NamedElement_EList(), ecorePackage.getEBoolean(), "matches", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNamedElement(), "namedElement", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1794,6 +1852,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 
 		initEClass(atomicSearchResultEClass, AtomicSearchResult.class, "AtomicSearchResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAtomicSearchResult_Elements(), this.getNamedElement(), null, "elements", null, 0, -1, AtomicSearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAtomicSearchResult_Descriptor(), this.getNamedElement(), null, "descriptor", null, 0, 1, AtomicSearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(groupedSearchResultEClass, GroupedSearchResult.class, "GroupedSearchResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGroupedSearchResult_Groups(), this.getSemanticGroup(), null, "groups", null, 0, -1, GroupedSearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1828,6 +1887,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEClass(repositoryEClass, Repository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRepository_Resources(), this.getResource(), this.getResource_RepositoryFrom(), "resources", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRepository_Project(), ecorePackage.getEString(), "project", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRepository_Name(), ecorePackage.getEString(), "name", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRepository_Description(), ecorePackage.getEString(), "description", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourceEClass, Resource.class, "Resource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getResource_Active(), ecorePackage.getEBoolean(), "active", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1907,6 +1968,10 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		addEEnumLiteral(typeEEnum, Type.BOOLEAN);
 		addEEnumLiteral(typeEEnum, Type.FLOAT);
 		addEEnumLiteral(typeEEnum, Type.DOUBLE);
+
+		initEEnum(levelEEnum, Level.class, "Level");
+		addEEnumLiteral(levelEEnum, Level.DESCRIPTION);
+		addEEnumLiteral(levelEEnum, Level.DESCRIPTOR);
 
 		// Initialize data types
 		initEDataType(javaObjectEDataType, Object.class, "JavaObject", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

@@ -174,7 +174,6 @@ public class SemanticmanagerSwitch<T> extends Switch<T> {
 			case SemanticmanagerPackage.REPOSITORY: {
 				Repository repository = (Repository)theEObject;
 				T result = caseRepository(repository);
-				if (result == null) result = caseNamedElement(repository);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

@@ -8,6 +8,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import semanticmanager.DataModelType;
 import semanticmanager.NamedElement;
 import semanticmanager.PredicateBasedSearch;
 import semanticmanager.SearchResultOptionValue;
@@ -17,6 +18,12 @@ import semanticmanager.SemanticmanagerPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Predicate Based Search</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link semanticmanager.impl.PredicateBasedSearchImpl#getFilterBy <em>Filter By</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -38,6 +45,24 @@ public class PredicateBasedSearchImpl extends SimpleSearchConfigurationImpl impl
 	@Override
 	protected EClass eStaticClass() {
 		return SemanticmanagerPackage.Literals.PREDICATE_BASED_SEARCH;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataModelType getFilterBy() {
+		return (DataModelType)eGet(SemanticmanagerPackage.Literals.PREDICATE_BASED_SEARCH__FILTER_BY, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFilterBy(DataModelType newFilterBy) {
+		eSet(SemanticmanagerPackage.Literals.PREDICATE_BASED_SEARCH__FILTER_BY, newFilterBy);
 	}
 
 	/**

@@ -9,6 +9,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import semanticmanager.CustomSearch;
+import semanticmanager.Level;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticmanagerPackage;
 
@@ -21,6 +22,7 @@ import semanticmanager.SemanticmanagerPackage;
  * </p>
  * <ul>
  *   <li>{@link semanticmanager.impl.CustomSearchImpl#isGrouped <em>Grouped</em>}</li>
+ *   <li>{@link semanticmanager.impl.CustomSearchImpl#getLevel <em>Level</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,6 +63,24 @@ public class CustomSearchImpl extends SimpleSearchConfigurationImpl implements C
 	 */
 	public void setGrouped(boolean newGrouped) {
 		eSet(SemanticmanagerPackage.Literals.CUSTOM_SEARCH__GROUPED, newGrouped);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Level getLevel() {
+		return (Level)eGet(SemanticmanagerPackage.Literals.CUSTOM_SEARCH__LEVEL, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLevel(Level newLevel) {
+		eSet(SemanticmanagerPackage.Literals.CUSTOM_SEARCH__LEVEL, newLevel);
 	}
 
 	/**

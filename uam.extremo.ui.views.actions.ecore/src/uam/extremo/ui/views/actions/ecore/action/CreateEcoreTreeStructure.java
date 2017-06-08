@@ -51,7 +51,7 @@ public class CreateEcoreTreeStructure extends ExtensibleViewPartActionContributi
 		                if((object instanceof NamedElement) && 
 		                		(((NamedElement)object).getDescriptors().isEmpty())){
 			                IPath path = editorInput instanceof FileEditorInput 
-							        ? ((FileEditorInput)editorInput).getPath()
+							        ? ((FileEditorInput) editorInput).getPath()
 									        : null;
 							        
 							if(path != null){
@@ -59,7 +59,6 @@ public class CreateEcoreTreeStructure extends ExtensibleViewPartActionContributi
 								
 								org.eclipse.emf.common.util.URI uri = org.eclipse.emf.common.util.URI.createFileURI(path.toOSString());
 								resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap(). put( "ecore", new XMIResourceFactoryImpl());
-								
 								
 								EObject mainPackage = null;
 								Resource resource = resourceSet.getResource(uri, true);

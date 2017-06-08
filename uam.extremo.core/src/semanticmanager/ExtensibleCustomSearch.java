@@ -1,5 +1,8 @@
 package semanticmanager;
 
+import semanticmanager.CustomSearch;
+import semanticmanager.DataModelType;
+import semanticmanager.SearchResult;
 import semanticmanager.Type;
 
 public interface ExtensibleCustomSearch extends CustomSearch {

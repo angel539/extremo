@@ -14,7 +14,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edit,
  org.eclipse.emf.edit.ui,
  uam.extremo.core.edit,
- org.eclipse.jface
+ org.eclipse.jface,
+ uam.extremo.extensions;bundle-version="1.0.0",
+ org.eclipse.emf.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.commons.io,

@@ -6,6 +6,7 @@ import semanticmanager.ExtendedSemanticmanagerFactory;
 import semanticmanager.ExtensibleCustomSearch;
 import semanticmanager.PrimitiveTypeSearchOption;
 import semanticmanager.Type;
+import semanticmanager.impl.CustomSearchImpl;
 
 public class ExtensibleCustomSearchImpl extends CustomSearchImpl implements ExtensibleCustomSearch {
 	public void addPrimitiveTypeSearchOption(String id, String name, Type type) {

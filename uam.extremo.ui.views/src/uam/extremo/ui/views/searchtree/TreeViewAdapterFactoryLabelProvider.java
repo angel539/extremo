@@ -12,9 +12,8 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
-import uam.extremo.ui.views.Activator;
-
 import semanticmanager.*;
+import uam.extremo.ui.views.Activator;
 
 public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider, IFontProvider{
 	public TreeViewAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {
@@ -238,7 +237,7 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 		
 		if (element instanceof DataModelTypeSearchResultOptionValue) {
 			DataModelTypeSearchResultOptionValue searchResultOptionValue = (DataModelTypeSearchResultOptionValue) element;
-			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName() + " : " + searchResultOptionValue.getValue());
+			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName() + " : " + searchResultOptionValue.getValue().getName());
 			return styledString;
 		}
 		

@@ -2,6 +2,7 @@
  */
 package semanticmanager;
 
+import fr.inria.atlanmod.neoemf.core.PersistentEObject;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -15,13 +16,16 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link semanticmanager.Repository#getResources <em>Resources</em>}</li>
  *   <li>{@link semanticmanager.Repository#getProject <em>Project</em>}</li>
+ *   <li>{@link semanticmanager.Repository#getName <em>Name</em>}</li>
+ *   <li>{@link semanticmanager.Repository#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getRepository()
  * @model
+ * @extends PersistentEObject
  * @generated
  */
-public interface Repository extends NamedElement {
+public interface Repository extends PersistentEObject {
 	/**
 	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
 	 * The list contents are of type {@link semanticmanager.Resource}.
@@ -65,5 +69,57 @@ public interface Repository extends NamedElement {
 	 * @generated
 	 */
 	void setProject(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see semanticmanager.SemanticmanagerPackage#getRepository_Name()
+	 * @model
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link semanticmanager.Repository#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see semanticmanager.SemanticmanagerPackage#getRepository_Description()
+	 * @model
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link semanticmanager.Repository#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
 
 } // Repository

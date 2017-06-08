@@ -5,9 +5,9 @@
          point="extremo.core.extensions.search">
       <customsearch
             class="uam.extremo.queries.customsearch.WordnetSearch"
-            filterBy="SemanticNode"
             id="extremo.queries.wordnet"
             name="Wordnet"
+            level="descriptor"
             resultsGrouped="true"
             description="">
          <option
@@ -16,155 +16,18 @@
                type="String">
          </option>
       </customsearch>
-      <customsearch
-            class="uam.extremo.queries.customsearch.DataPropertiesValueSearch"
-            filterBy="DataProperty"
-            id="extremo.queries.datapropertiesvalue"
-            name="Data Properties Value"
-            resultsGrouped="true"
-            description="">
-         <option
-               id="valuefield"
-               name="Value"
-               type="String">
-         </option>
-      </customsearch>
-      <customsearch
-            class="uam.extremo.queries.customsearch.DataPropertiesValueRangeSearch"
-            filterBy="DataProperty"
-            id="extremo.queries.datapropertiesvaluerange"
-            name="Data Properties Value Range"
-            resultsGrouped="true"
-            description="">
-         <option
-               id="minvaluefield"
-               name="Min Value"
-               type="Int">
-         </option>
-         <option
-               id="maxvaluefield"
-               name="Max Value"
-               type="Int">
-         </option>
-      </customsearch>      
    </extension>
    <extension
          point="extremo.core.extensions.search">
       <predicatebasedsearch
             class="uam.extremo.queries.predicatebasedsearch.TooManyRefsSearch"
-            description="Checks if a node has more than a number of references"
+            description="Checks if a description node X has more than a number Y of references"
             filterBy="SemanticNode"
-            id="extremo.queries.nodetoorefs"
-            name="A node with too many references">
+            id="extremo.queries.predicatebased.nodetoorefs"
+            name="A node (description) with too many references">
          <option
                id="morethanrefs"
                name="Refs"
-               type="Int">
-         </option>
-      </predicatebasedsearch>
-      <predicatebasedsearch
-            class="uam.extremo.queries.predicatebasedsearch.ChildrenLimitSearch"
-            filterBy="SemanticNode"
-            id="extremo.queries.nodetoochildren"
-            name="A node with too many direct children">
-         <option
-               id="maxchildren"
-               name="Max Children"
-               type="Int">
-         </option>
-      </predicatebasedsearch>
-      <predicatebasedsearch
-            class="uam.extremo.queries.predicatebasedsearch.AbstractClassUniqueChildSearch"
-            filterBy="SemanticNode"
-            id="extremo.queries.abstractclassuniquechild"
-            name="An abstract node with an unique child">
-      </predicatebasedsearch>
-      <predicatebasedsearch
-            class="uam.extremo.queries.predicatebasedsearch.AbstractClassWithoutChildrenSearch"
-            filterBy="SemanticNode"
-            id="extremo.queries.abstractclasswithoutchildren"
-            name="An abstract node without children">
-      </predicatebasedsearch>
-      <predicatebasedsearch
-            class="uam.extremo.queries.predicatebasedsearch.AttrsOverloadedSearch"
-            filterBy="SemanticNode"
-            id="extremo.queries.attrsoverloaded"
-            name="Attributes are overloaded">
-         <option
-               id="maxattrs"
-               name="Max Attrs"
-               type="Int">
-         </option>
-      </predicatebasedsearch>
-      <predicatebasedsearch
-            class="uam.extremo.queries.predicatebasedsearch.HierarchyLimitSearch"
-            filterBy="SemanticNode"
-            id="extremo.queries.hierarchytoodeep"
-            name="A hierarchy is too deep ">
-         <option
-               id="maxdepth"
-               name="Max Depth"
-               type="Int">
-         </option>
-      </predicatebasedsearch>
-      <predicatebasedsearch
-            class="uam.extremo.queries.predicatebasedsearch.InRefsOverloadedSearch"
-            filterBy="Resource"
-            id="extremo.queries.toomanyinrefs"
-            name="No node is referred from too many others">
-         <option
-               id="maxrefs"
-               name="Max Refs"
-               type="Int">
-         </option>
-      </predicatebasedsearch>
-      <predicatebasedsearch
-            class="uam.extremo.queries.predicatebasedsearch.NumberOfParentsSearch"
-            filterBy="SemanticNode"
-            id="extremo.queries.numberofchildren"
-            name="A class has more than a number of parents">
-         <option
-               id="morethanparents"
-               name="Number of parents"
-               type="Int">
-         </option>
-      </predicatebasedsearch>
-      <predicatebasedsearch
-            class="uam.extremo.queries.predicatebasedsearch.TooManyAttrsSearch"
-            filterBy="SemanticNode"
-            id="extremo.queries.numberofattrs"
-            name="A node with more than a number of attributes">
-         <option
-               id="morethanattrs"
-               name="Attrs"
-               type="Int">
-         </option>
-      </predicatebasedsearch>
-      <predicatebasedsearch
-            class="uam.extremo.queries.predicatebasedsearch.IsolatedClassesSearch"
-            filterBy="Resource"
-            id="extremo.queries.isolatednodes"
-            name="Isolated nodes">
-      </predicatebasedsearch>
-      <predicatebasedsearch
-            class="uam.extremo.queries.predicatebasedsearch.RefsOverloadedSearch"
-            filterBy="SemanticNode"
-            id="extremo.queries.referencesoverloaded"
-            name="References are overloaded">
-         <option
-               id="maxrefs"
-               name="Max Refs"
-               type="Int">
-         </option>
-      </predicatebasedsearch>
-      <predicatebasedsearch
-            class="uam.extremo.queries.predicatebasedsearch.MoreThanNumberChildrenSearch"
-            filterBy="SemanticNode"
-            id="extremo.queries.morethananumberofchildren"
-            name="A node has more than a number of children">
-         <option
-               id="morethanchildren"
-               name="Number of Children"
                type="Int">
          </option>
       </predicatebasedsearch>
@@ -174,18 +37,29 @@
       <customsearch
             class="uam.extremo.queries.customsearch.SplitNodesSearch"
             description="Split the nodes in groups. In every group a inheritance hierarchy is left."
-            filterBy="SemanticNode"
-            id="extremo.queries.hierarchygroups"
+            id="extremo.queries.custom.hierarchygroups"
             name="Node Splitter"
+            level="descriptor"
             resultsGrouped="true">
+         <option
+               id="resource"
+               name="Resource"
+               type="Resource">
+         </option>
       </customsearch>
       <customsearch
             class="uam.extremo.queries.customsearch.NodesWithoutDescriptionsSearch"
-            filterBy="SemanticNode"
-            id="extremo.queries.nodescriptions"
+
+            id="extremo.queries.custom.nodescriptions"
             name="Nodes without descriptions"
             resultsGrouped="true"
-            description="">
+            level="descriptor"
+            description="Split the nodes in 2 groups. In the first one appears the nodes with descriptions and in the second one the nodes without descriptions">
+         <option
+               id="resource"
+               name="Resource"
+               type="Resource">
+         </option>
       </customsearch>
    </extension>
    <extension
@@ -196,5 +70,190 @@
             id="extremo.extensions.wordsynonimsexpansionranking"
             name="Word Synonims Expansion Ranking">
       </service>
+   </extension>
+   <extension
+         point="extremo.core.extensions.search">
+      <customsearch
+            class="uam.extremo.queries.customsearch.AbstractClassUniqueChildSearch"
+            description="Checks if a resource contains a node that is abstract and has a unique child"
+            id="extremo.queries.custom.abstractclassuniquechild"
+            name="An abstract node with an unique child"
+            level="descriptor"
+            resultsGrouped="false">
+         <option
+               id="resource"
+               name="Resource"
+               type="Resource">
+         </option>
+      </customsearch>
+      <customsearch
+            class="uam.extremo.queries.customsearch.AbstractClassWithoutChildrenSearch"
+            description="Checks if a resource contains a node that is abstract and has no children"
+            id="extremo.queries.custom.abstractclasswithoutchildren"
+            name="An abstract node without children"
+            level="descriptor"
+            resultsGrouped="false">
+         <option
+               id="resource"
+               name="Resource"
+               type="Resource">
+         </option>
+      </customsearch>
+      <customsearch
+            class="uam.extremo.queries.customsearch.IsolatedClassesSearch"
+            description="Checks if a resource contains a node that is isolated"
+            id="extremo.queries.custom.isolatednodes"
+            level="descriptor"
+            name="Isolated nodes"
+            resultsGrouped="false">
+         <option
+               id="resource"
+               name="Resource"
+               type="Resource">
+         </option>
+      </customsearch>
+      <customsearch
+            class="uam.extremo.queries.customsearch.AttrsOverloadedSearch"
+            description="Checks if a node contains more than a number of attributes"
+            id="extremo.queries.custom.attrsoverloaded"
+            level="descriptor"
+            name="Attributes are overloaded"
+            resultsGrouped="false">
+         <option
+               id="maxattrs"
+               name="Max Attrs"
+               type="Int">
+         </option>
+         <option
+               id="resource"
+               name="Resource"
+               type="Resource">
+         </option>
+      </customsearch>
+      <customsearch
+            class="uam.extremo.queries.customsearch.HierarchyLimitSearch"
+            description="Checks if a node X is on a level of hierarchy too deep"
+            id="extremo.queries.custom.hierarchytoodeep"
+            level="descriptor"
+            name="A hierarchy is too deep "
+            resultsGrouped="false">
+         <option
+               id="maxdepth"
+               name="Max Depth"
+               type="Int">
+         </option>
+         <option
+               id="resource"
+               name="Resource"
+               type="Resource">
+         </option>
+      </customsearch>
+      <customsearch
+            class="uam.extremo.queries.customsearch.InRefsOverloadedSearch"
+            description="Checks if a node X is referred from too many others"
+            id="extremo.queries.custom.toomanyinrefs"
+            level="descriptor"
+            name="No node is referred from too many others"
+            resultsGrouped="false">
+         <option
+               id="maxrefs"
+               name="Max Refs"
+               type="Int">
+         </option>
+         <option
+               id="resource"
+               name="Resource"
+               type="Resource">
+         </option>
+      </customsearch>
+      <customsearch
+            class="uam.extremo.queries.customsearch.RefsOverloadedSearch"
+            description="Checks if a node contains more than a number of references"
+            id="extremo.queries.custom.refsoverloaded"
+            level="descriptor"
+            name="References are overloaded"
+            resultsGrouped="false">
+         <option
+               id="maxrefs"
+               name="Max Refs"
+               type="Int">
+         </option>
+         <option
+               id="resource"
+               name="Resource"
+               type="Resource">
+         </option>
+      </customsearch>
+   </extension>
+   <extension
+         point="extremo.core.extensions.search">
+      <predicatebasedsearch
+            class="uam.extremo.queries.predicatebasedsearch.DataPropertiesValueSearch"
+            description="Checks if a data property (description) X has value Y"
+            filterBy="DataProperty"
+            id="extremo.queries.predicatebased.datapropertiesvalue"
+            name="Data Properties Value">
+         <option
+               id="valuefield"
+               name="Value"
+               type="String">
+         </option>
+      </predicatebasedsearch>
+      <predicatebasedsearch
+            class="uam.extremo.queries.predicatebasedsearch.DataPropertiesValueRangeSearch"
+            description="Checks if a data property (description) X has value between Y and Z"
+            filterBy="DataProperty"
+            id="extremo.queries.predicatebased.datapropertiesvaluerange"
+            name="Data Properties Value Range">
+         <option
+               id="minvaluefield"
+               name="Min Value"
+               type="Int">
+         </option>
+         <option
+               id="maxvaluefield"
+               name="Max Value"
+               type="Int">
+         </option>
+      </predicatebasedsearch>
+   </extension>
+   <extension
+         point="extremo.core.extensions.search">
+      <customsearch
+            class="uam.extremo.queries.customsearch.NumberOfParentsSearch"
+            description="Checks if a node X has more than a number of parents"
+            id="extremo.queries.predicatebased.numberofparents"
+            level="descriptor"
+            name="A node has more than a number of parents"
+            resultsGrouped="false">
+         <option
+               id="parents"
+               name="Number of parents"
+               type="Int">
+         </option>
+         <option
+               id="resource"
+               name="Resource"
+               type="Resource">
+         </option>
+      </customsearch>
+      <customsearch
+            class="uam.extremo.queries.customsearch.NumberOfChildrenSearch"
+            description="Checks if a node X has more than a number of children"
+            id="extremo.queries.predicatebased.numberofchildren"
+            level="descriptor"
+            name="A node has more than a number of children"
+            resultsGrouped="false">
+         <option
+               id="children"
+               name="Number of children"
+               type="Int">
+         </option>
+         <option
+               id="resource"
+               name="Resource"
+               type="Resource">
+         </option>
+      </customsearch>
    </extension>
 </plugin>

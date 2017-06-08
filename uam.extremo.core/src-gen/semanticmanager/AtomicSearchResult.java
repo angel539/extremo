@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link semanticmanager.AtomicSearchResult#getElements <em>Elements</em>}</li>
+ *   <li>{@link semanticmanager.AtomicSearchResult#getDescriptor <em>Descriptor</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getAtomicSearchResult()
@@ -36,5 +37,31 @@ public interface AtomicSearchResult extends SearchResult {
 	 * @generated
 	 */
 	EList<NamedElement> getElements();
+
+	/**
+	 * Returns the value of the '<em><b>Descriptor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Descriptor</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Descriptor</em>' reference.
+	 * @see #setDescriptor(NamedElement)
+	 * @see semanticmanager.SemanticmanagerPackage#getAtomicSearchResult_Descriptor()
+	 * @model
+	 * @generated
+	 */
+	NamedElement getDescriptor();
+
+	/**
+	 * Sets the value of the '{@link semanticmanager.AtomicSearchResult#getDescriptor <em>Descriptor</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Descriptor</em>' reference.
+	 * @see #getDescriptor()
+	 * @generated
+	 */
+	void setDescriptor(NamedElement value);
 
 } // AtomicSearchResult

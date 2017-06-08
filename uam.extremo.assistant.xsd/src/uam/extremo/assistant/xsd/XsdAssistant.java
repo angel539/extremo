@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import at.ac.tuwien.big.xmltext.EcoreToGenericEcoreTransformer;
+import semanticmanager.*;
+
 import org.eclipse.emf.ecore.resource.Resource;
 
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
-
-import semanticmanager.*;
 
 /**
  * @author pneubaue

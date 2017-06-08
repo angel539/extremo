@@ -3,8 +3,8 @@ package semanticmanager.impl;
 import org.eclipse.emf.ecore.EDataType;
 
 import semanticmanager.ExtendedSemanticmanagerFactory;
-import semanticmanager.ExtensibleConstraintInterpreter;
 import semanticmanager.ExtensibleAtomicSearchResult;
+import semanticmanager.ExtensibleConstraintInterpreter;
 import semanticmanager.ExtensibleCustomSearch;
 import semanticmanager.ExtensibleGroupedSearchResult;
 import semanticmanager.ExtensiblePredicateBasedSearch;
@@ -14,6 +14,7 @@ import semanticmanager.impl.ExtensibleCustomSearchImpl;
 import semanticmanager.impl.ExtensibleGroupedSearchResultImpl;
 import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
 import semanticmanager.impl.ExtensibleServiceImpl;
+import semanticmanager.impl.SemanticmanagerFactoryImpl;
 
 public class ExtendedSemanticmanagerFactoryImpl extends SemanticmanagerFactoryImpl implements ExtendedSemanticmanagerFactory {
 	@Override

@@ -1,28 +1,61 @@
 package uam.extremo.queries.customsearch;
 
-import java.util.List;
-
-import semanticmanager.AtomicSearchResult;
+import semanticmanager.GroupedSearchResult;
+import semanticmanager.Resource;
+import semanticmanager.ResourceElement;
 import semanticmanager.SearchResult;
+import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
+import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.impl.ExtensibleCustomSearchImpl;
-import semanticmanager.NamedElement;
 
 public class NodesWithoutDescriptionsSearch extends ExtensibleCustomSearchImpl {
 	@Override
 	public void search(SearchResult result) {
-		if (result instanceof AtomicSearchResult) {
-			AtomicSearchResult atomicSearchResult = (AtomicSearchResult) result;
-			List<NamedElement> nes = atomicSearchResult.getApplyOnElements();
-
-			for(NamedElement ne : nes){
-				if(!(ne instanceof SemanticNode)) continue;
-				SemanticNode sn = (SemanticNode) ne;
-
-				if((sn.getDescriptors() == null) || (sn.getDescriptors().isEmpty()))
-					if(sn.getDescribes() == null || sn.getDescribes().isEmpty())
-						atomicSearchResult.getElements().add(sn);
+		if (result instanceof GroupedSearchResult) {
+			GroupedSearchResult groupedSearchResult = (GroupedSearchResult) result;
+			Object option = groupedSearchResult.getOptionValue("resource");
+			
+			if(option instanceof Resource){
+				Resource resource = (Resource) option;
+				result.getApplyOnElements().add(resource);
+				
+				SemanticGroup group1 = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
+				group1.setName("Nodes with descriptions");
+				
+				SemanticGroup group2 = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
+				group2.setName("Nodes without descriptions");
+				preorder(groupedSearchResult, resource, group1, group2);
+				
+				groupedSearchResult.getGroups().add(group1);
+				groupedSearchResult.getGroups().add(group2);
 			}
 		}
 	}
+	
+	public synchronized void preorder(GroupedSearchResult result, Resource resource, SemanticGroup group1, SemanticGroup group2){
+        preorderHelper(result, resource, group1, group2);
+    }
+     
+    private void preorderHelper(GroupedSearchResult result, ResourceElement node, SemanticGroup group1, SemanticGroup group2)
+    {
+        if(node == null)
+            return;
+        
+        if(node instanceof SemanticNode){
+        	SemanticNode semanticNode = (SemanticNode) node;
+
+        	if(semanticNode.getDescribes() == null || semanticNode.getDescribes().isEmpty()){
+        		group2.getElements().add(semanticNode);
+        	}
+        	else{
+        		group1.getElements().add(semanticNode);
+        	}
+        }
+        
+        if(node instanceof Resource){
+        	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
+        		preorderHelper(result, resourceElement, group1, group2);
+        }
+    }
 }

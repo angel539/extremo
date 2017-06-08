@@ -4,9 +4,6 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import semanticmanager.ExtensibleCustomSearch;
-import semanticmanager.ExtensiblePredicateBasedSearch;
-import semanticmanager.RepositoryManager;
 import semanticmanager.*;
 
 public class QueryCatalogueTableTreeViewerFilter extends ViewerFilter {

@@ -9,11 +9,18 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import semanticmanager.Repository;
@@ -26,7 +33,7 @@ import semanticmanager.SemanticmanagerPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RepositoryItemProvider extends NamedElementItemProvider {
+public class RepositoryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -49,6 +56,8 @@ public class RepositoryItemProvider extends NamedElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addProjectPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -67,6 +76,50 @@ public class RepositoryItemProvider extends NamedElementItemProvider {
 				 getString("_UI_Repository_project_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Repository_project_feature", "_UI_Repository_type"),
 				 SemanticmanagerPackage.Literals.REPOSITORY__PROJECT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Repository_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Repository_name_feature", "_UI_Repository_type"),
+				 SemanticmanagerPackage.Literals.REPOSITORY__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Repository_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Repository_description_feature", "_UI_Repository_type"),
+				 SemanticmanagerPackage.Literals.REPOSITORY__DESCRIPTION,
 				 true,
 				 false,
 				 false,
@@ -144,6 +197,8 @@ public class RepositoryItemProvider extends NamedElementItemProvider {
 
 		switch (notification.getFeatureID(Repository.class)) {
 			case SemanticmanagerPackage.REPOSITORY__PROJECT:
+			case SemanticmanagerPackage.REPOSITORY__NAME:
+			case SemanticmanagerPackage.REPOSITORY__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case SemanticmanagerPackage.REPOSITORY__RESOURCES:
@@ -168,6 +223,17 @@ public class RepositoryItemProvider extends NamedElementItemProvider {
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.REPOSITORY__RESOURCES,
 				 SemanticmanagerFactory.eINSTANCE.createResource()));
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return ExtremoEditPlugin.INSTANCE;
 	}
 
 }

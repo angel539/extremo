@@ -5,13 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import semanticmanager.ExtensibleGroupedSearchResult;
 import semanticmanager.*;
 import semanticmanager.impl.ExtensibleCustomSearchImpl;
 import uam.extremo.queries.services.stemmer.LangUtils;
 import uam.extremo.queries.services.wordnet.WordnetSearchExpansionTree;
-import semanticmanager.SearchResult;
-import semanticmanager.SemanticGroup;
 
 public class WordnetSearch extends ExtensibleCustomSearchImpl{
 	private WordnetSearchExpansionTree expansionTree;

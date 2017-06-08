@@ -2,9 +2,12 @@
 package semanticmanager;
 
 import semanticmanager.DataProperty;
+import semanticmanager.GroupedSearchResult;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Resource;
+import semanticmanager.SearchConfiguration;
+import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 
 public interface ExtensibleGroupedSearchResult extends GroupedSearchResult {

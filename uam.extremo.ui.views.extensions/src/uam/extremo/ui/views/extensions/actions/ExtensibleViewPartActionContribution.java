@@ -42,7 +42,7 @@ public abstract class ExtensibleViewPartActionContribution extends Action implem
 	public String getEditorID() {
 		return editorID;
 	}
-
+	
 	public void setEditorID(String editorID) {
 		this.editorID = editorID;
 	}

@@ -2,6 +2,8 @@
  */
 package semanticmanager.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import semanticmanager.Repository;
@@ -13,7 +15,15 @@ import semanticmanager.SemanticmanagerFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RepositoryTest extends NamedElementTest {
+public class RepositoryTest extends TestCase {
+
+	/**
+	 * The fixture for this Repository test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Repository fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -35,14 +45,23 @@ public class RepositoryTest extends NamedElementTest {
 	}
 
 	/**
+	 * Sets the fixture for this Repository test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(Repository fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
 	 * Returns the fixture for this Repository test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected Repository getFixture() {
-		return (Repository)fixture;
+		return fixture;
 	}
 
 	/**

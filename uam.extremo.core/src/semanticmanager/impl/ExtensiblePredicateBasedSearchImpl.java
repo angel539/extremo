@@ -1,11 +1,17 @@
 package semanticmanager.impl;
 
+import org.eclipse.emf.common.util.EList;
+
 import semanticmanager.DataModelType;
 import semanticmanager.DataModelTypeSearchOption;
+import semanticmanager.DataModelTypeSearchResultOptionValue;
 import semanticmanager.ExtendedSemanticmanagerFactory;
 import semanticmanager.ExtensiblePredicateBasedSearch;
 import semanticmanager.PrimitiveTypeSearchOption;
+import semanticmanager.PrimitiveTypeSearchResultOptionValue;
+import semanticmanager.SearchResultOptionValue;
 import semanticmanager.Type;
+import semanticmanager.impl.PredicateBasedSearchImpl;
 
 public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl implements ExtensiblePredicateBasedSearch {
 	public void addPrimitiveTypeSearchOption(String id, String name, Type type) {
@@ -26,8 +32,8 @@ public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl
 		getOptions().add(searchOption);
 	}
 	
-	/*public String getOptionValueKey(String key, EList<SearchResultOptionValue> inps) {
-		for(SearchResultOptionValue value : getValues()){
+	public Object getOptionValueKey(String key, EList<SearchResultOptionValue> inps) {
+		for(SearchResultOptionValue value : inps){
 			if (value instanceof PrimitiveTypeSearchResultOptionValue) {
 				PrimitiveTypeSearchResultOptionValue stringValue = (PrimitiveTypeSearchResultOptionValue) value;
 				
@@ -55,5 +61,5 @@ public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl
 			}
 		}
 		return null;
-	}*/
+	}
 }

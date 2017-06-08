@@ -1,13 +1,14 @@
 package semanticmanager.impl;
 
-import semanticmanager.ExtensibleGroupedSearchResult;
 import semanticmanager.DataModelTypeSearchResultOptionValue;
 import semanticmanager.DataProperty;
+import semanticmanager.ExtensibleGroupedSearchResult;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.PrimitiveTypeSearchResultOptionValue;
 import semanticmanager.Resource;
 import semanticmanager.SemanticNode;
+import semanticmanager.impl.GroupedSearchResultImpl;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
@@ -80,15 +81,5 @@ public class ExtensibleGroupedSearchResultImpl extends GroupedSearchResultImpl i
 			}
 		}
 		return null;
-	}
-
-
-	@Override
-	public SearchConfiguration getConfiguration() {
-		return null;
-	}
-
-	@Override
-	public void setConfiguration(SearchConfiguration value) {
 	}
 }

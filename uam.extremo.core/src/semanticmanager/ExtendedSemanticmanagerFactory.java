@@ -2,6 +2,8 @@
  */
 package semanticmanager;
 
+import semanticmanager.SemanticmanagerFactory;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Factory</b> for the model.

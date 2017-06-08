@@ -71,7 +71,6 @@ import uam.extremo.ui.views.extensions.dnd.ExtensibleGEFDragAndDropContribution;
 
 public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor {
 	public static final String ID = "uam.extremo.ui.views.SearchTree";
-	
 	public static TreeViewer viewer;
 	
 	protected ISelection editorSelection = StructuredSelection.EMPTY;
@@ -112,7 +111,6 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 		viewer.setSorter(new NameSorter());
 		
 		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new TreeViewAdapterFactoryLabelProvider(adapterFactory)));		  
-		
 		viewer.setInput(assistantFactory.getRepositoryManager());
 		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "extremo.ui.viewer");

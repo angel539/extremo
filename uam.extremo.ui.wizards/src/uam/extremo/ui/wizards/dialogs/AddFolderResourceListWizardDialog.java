@@ -94,7 +94,6 @@ public class AddFolderResourceListWizardDialog extends Wizard {
 						String resourceUri = ((File)item.getData("file")).getAbsolutePath();
 						
 						IFormatAssistant assistant = (IFormatAssistant)item.getData("assistant");
-						//AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri);
 						try {
 							AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri, assistant);
 						}
@@ -111,7 +110,6 @@ public class AddFolderResourceListWizardDialog extends Wizard {
 					String resourceUri = ((File)item.getData("file")).getAbsolutePath();
 					
 					IFormatAssistant assistant = (IFormatAssistant)item.getData("assistant");
-					//AssistantFactory.getInstance().createResourceDescriptor(repository, resourceName, resourceDescription, resourceUri);
 					try {
 						AssistantFactory.getInstance().createResource(repository, descriptor, resourceName, resourceDescription, resourceUri, assistant);
 					} catch (CoreException e) {

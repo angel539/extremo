@@ -4,6 +4,7 @@ import semanticmanager.DataModelTypeSearchResultOptionValue;
 import semanticmanager.ExtensibleAtomicSearchResult;
 import semanticmanager.PrimitiveTypeSearchResultOptionValue;
 import semanticmanager.SearchResultOptionValue;
+import semanticmanager.impl.AtomicSearchResultImpl;
 
 public class ExtensibleAtomicSearchResultImpl extends AtomicSearchResultImpl implements ExtensibleAtomicSearchResult {
 	public Object getOptionValue(String key) {

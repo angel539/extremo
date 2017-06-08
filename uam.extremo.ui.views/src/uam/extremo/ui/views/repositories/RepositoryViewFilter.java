@@ -4,7 +4,6 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import semanticmanager.RepositoryManager;
 import semanticmanager.*;
 
 public class RepositoryViewFilter extends ViewerFilter {

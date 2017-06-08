@@ -1,12 +1,11 @@
 package uam.extremo.queries.predicatebasedsearch;
 
-import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
-
 import org.eclipse.emf.common.util.EList;
 
 import semanticmanager.NamedElement;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticNode;
+import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
 
 public class ChildrenLimitSearch extends ExtensiblePredicateBasedSearchImpl {
 	@Override

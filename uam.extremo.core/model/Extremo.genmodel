@@ -28,6 +28,10 @@
       <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Float"/>
       <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Type/Double"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Extremo.ecore#//Level">
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Level/description"/>
+      <genEnumLiterals ecoreEnumLiteral="Extremo.ecore#//Level/descriptor"/>
+    </genEnums>
     <genDataTypes ecoreDataType="Extremo.ecore#//JavaObject"/>
     <genClasses ecoreClass="Extremo.ecore#//RepositoryManager">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//RepositoryManager/repositories"/>
@@ -79,7 +83,6 @@
     </genClasses>
     <genClasses image="false" ecoreClass="Extremo.ecore#//SimpleSearchConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SimpleSearchConfiguration/options"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SimpleSearchConfiguration/filterBy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SimpleSearchConfiguration/description"/>
       <genOperations ecoreOperation="Extremo.ecore#//SimpleSearchConfiguration/addPrimitiveTypeSearchOption">
         <genParameters ecoreParameter="Extremo.ecore#//SimpleSearchConfiguration/addPrimitiveTypeSearchOption/id"/>
@@ -110,11 +113,13 @@
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//CustomSearch">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//CustomSearch/grouped"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//CustomSearch/level"/>
       <genOperations ecoreOperation="Extremo.ecore#//CustomSearch/search">
         <genParameters ecoreParameter="Extremo.ecore#//CustomSearch/search/result"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//PredicateBasedSearch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//PredicateBasedSearch/filterBy"/>
       <genOperations ecoreOperation="Extremo.ecore#//PredicateBasedSearch/matches">
         <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/matches/namedElement"/>
         <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/matches/inps"/>
@@ -126,6 +131,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="Extremo.ecore#//AtomicSearchResult">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//AtomicSearchResult/elements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//AtomicSearchResult/descriptor"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Extremo.ecore#//GroupedSearchResult">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//GroupedSearchResult/groups"/>
@@ -160,6 +166,8 @@
     <genClasses ecoreClass="Extremo.ecore#//Repository">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//Repository/resources"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Repository/project"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Repository/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Repository/description"/>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//Resource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//Resource/active"/>

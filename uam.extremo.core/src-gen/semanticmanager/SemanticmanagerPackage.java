@@ -582,22 +582,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SIMPLE_SEARCH_CONFIGURATION__OPTIONS = SEARCH_CONFIGURATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Filter By</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMPLE_SEARCH_CONFIGURATION__FILTER_BY = SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION = SEARCH_CONFIGURATION_FEATURE_COUNT + 2;
+	int SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION = SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Simple Search Configuration</em>' class.
@@ -606,7 +597,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT = SEARCH_CONFIGURATION_FEATURE_COUNT + 3;
+	int SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT = SEARCH_CONFIGURATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Add Primitive Type Search Option</em>' operation.
@@ -828,15 +819,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	int CUSTOM_SEARCH__OPTIONS = SIMPLE_SEARCH_CONFIGURATION__OPTIONS;
 
 	/**
-	 * The feature id for the '<em><b>Filter By</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CUSTOM_SEARCH__FILTER_BY = SIMPLE_SEARCH_CONFIGURATION__FILTER_BY;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -855,13 +837,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int CUSTOM_SEARCH__GROUPED = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_SEARCH__LEVEL = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Custom Search</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_SEARCH_FEATURE_COUNT = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
+	int CUSTOM_SEARCH_FEATURE_COUNT = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Add Primitive Type Search Option</em>' operation.
@@ -946,15 +937,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	int PREDICATE_BASED_SEARCH__OPTIONS = SIMPLE_SEARCH_CONFIGURATION__OPTIONS;
 
 	/**
-	 * The feature id for the '<em><b>Filter By</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREDICATE_BASED_SEARCH__FILTER_BY = SIMPLE_SEARCH_CONFIGURATION__FILTER_BY;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -964,13 +946,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int PREDICATE_BASED_SEARCH__DESCRIPTION = SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Filter By</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDICATE_BASED_SEARCH__FILTER_BY = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Predicate Based Search</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PREDICATE_BASED_SEARCH_FEATURE_COUNT = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 0;
+	int PREDICATE_BASED_SEARCH_FEATURE_COUNT = SIMPLE_SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Add Primitive Type Search Option</em>' operation.
@@ -1064,13 +1055,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int ATOMIC_SEARCH_RESULT__ELEMENTS = SEARCH_RESULT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATOMIC_SEARCH_RESULT__DESCRIPTOR = SEARCH_RESULT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Atomic Search Result</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATOMIC_SEARCH_RESULT_FEATURE_COUNT = SEARCH_RESULT_FEATURE_COUNT + 1;
+	int ATOMIC_SEARCH_RESULT_FEATURE_COUNT = SEARCH_RESULT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Get Option Value</em>' operation.
@@ -1455,94 +1455,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int REPOSITORY = 16;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY__WEIGHT = NAMED_ELEMENT__WEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Trace</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY__TRACE = NAMED_ELEMENT__TRACE;
-
-	/**
-	 * The feature id for the '<em><b>Drawn</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY__DRAWN = NAMED_ELEMENT__DRAWN;
-
-	/**
-	 * The feature id for the '<em><b>Descriptors</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY__DESCRIPTORS = NAMED_ELEMENT__DESCRIPTORS;
-
-	/**
-	 * The feature id for the '<em><b>Describes</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY__DESCRIBES = NAMED_ELEMENT__DESCRIBES;
-
-	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REPOSITORY__METADATA = NAMED_ELEMENT__METADATA;
-
-	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY__RESOURCES = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int REPOSITORY__RESOURCES = 0;
 
 	/**
 	 * The feature id for the '<em><b>Project</b></em>' attribute.
@@ -1551,7 +1470,25 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY__PROJECT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int REPOSITORY__PROJECT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY__NAME = 2;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPOSITORY__DESCRIPTION = 3;
 
 	/**
 	 * The number of structural features of the '<em>Repository</em>' class.
@@ -1560,7 +1497,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int REPOSITORY_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Repository</em>' class.
@@ -1569,7 +1506,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int REPOSITORY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.ResourceElementImpl <em>Resource Element</em>}' class.
@@ -2747,6 +2684,16 @@ public interface SemanticmanagerPackage extends EPackage {
 	int TYPE = 31;
 
 	/**
+	 * The meta object id for the '{@link semanticmanager.Level <em>Level</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see semanticmanager.Level
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getLevel()
+	 * @generated
+	 */
+	int LEVEL = 32;
+
+	/**
 	 * The meta object id for the '<em>Java Object</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2754,7 +2701,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getJavaObject()
 	 * @generated
 	 */
-	int JAVA_OBJECT = 32;
+	int JAVA_OBJECT = 33;
 
 
 	/**
@@ -3165,17 +3112,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getSimpleSearchConfiguration_Options();
 
 	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.SimpleSearchConfiguration#getFilterBy <em>Filter By</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Filter By</em>'.
-	 * @see semanticmanager.SimpleSearchConfiguration#getFilterBy()
-	 * @see #getSimpleSearchConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimpleSearchConfiguration_FilterBy();
-
-	/**
 	 * Returns the meta object for the attribute '{@link semanticmanager.SimpleSearchConfiguration#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3323,6 +3259,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	EAttribute getCustomSearch_Grouped();
 
 	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.CustomSearch#getLevel <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see semanticmanager.CustomSearch#getLevel()
+	 * @see #getCustomSearch()
+	 * @generated
+	 */
+	EAttribute getCustomSearch_Level();
+
+	/**
 	 * Returns the meta object for the '{@link semanticmanager.CustomSearch#search(semanticmanager.SearchResult) <em>Search</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3341,6 +3288,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPredicateBasedSearch();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.PredicateBasedSearch#getFilterBy <em>Filter By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Filter By</em>'.
+	 * @see semanticmanager.PredicateBasedSearch#getFilterBy()
+	 * @see #getPredicateBasedSearch()
+	 * @generated
+	 */
+	EAttribute getPredicateBasedSearch_FilterBy();
 
 	/**
 	 * Returns the meta object for the '{@link semanticmanager.PredicateBasedSearch#matches(semanticmanager.NamedElement, org.eclipse.emf.common.util.EList) <em>Matches</em>}' operation.
@@ -3382,6 +3340,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAtomicSearchResult_Elements();
+
+	/**
+	 * Returns the meta object for the reference '{@link semanticmanager.AtomicSearchResult#getDescriptor <em>Descriptor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Descriptor</em>'.
+	 * @see semanticmanager.AtomicSearchResult#getDescriptor()
+	 * @see #getAtomicSearchResult()
+	 * @generated
+	 */
+	EReference getAtomicSearchResult_Descriptor();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.GroupedSearchResult <em>Grouped Search Result</em>}'.
@@ -3516,6 +3485,28 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getRepository_Project();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.Repository#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see semanticmanager.Repository#getName()
+	 * @see #getRepository()
+	 * @generated
+	 */
+	EAttribute getRepository_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link semanticmanager.Repository#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see semanticmanager.Repository#getDescription()
+	 * @see #getRepository()
+	 * @generated
+	 */
+	EAttribute getRepository_Description();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.Resource <em>Resource</em>}'.
@@ -4064,6 +4055,16 @@ public interface SemanticmanagerPackage extends EPackage {
 	EEnum getType();
 
 	/**
+	 * Returns the meta object for enum '{@link semanticmanager.Level <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Level</em>'.
+	 * @see semanticmanager.Level
+	 * @generated
+	 */
+	EEnum getLevel();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.Object <em>Java Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4420,14 +4421,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference SIMPLE_SEARCH_CONFIGURATION__OPTIONS = eINSTANCE.getSimpleSearchConfiguration_Options();
 
 		/**
-		 * The meta object literal for the '<em><b>Filter By</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMPLE_SEARCH_CONFIGURATION__FILTER_BY = eINSTANCE.getSimpleSearchConfiguration_FilterBy();
-
-		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4546,6 +4539,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EAttribute CUSTOM_SEARCH__GROUPED = eINSTANCE.getCustomSearch_Grouped();
 
 		/**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_SEARCH__LEVEL = eINSTANCE.getCustomSearch_Level();
+
+		/**
 		 * The meta object literal for the '<em><b>Search</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4562,6 +4563,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PREDICATE_BASED_SEARCH = eINSTANCE.getPredicateBasedSearch();
+
+		/**
+		 * The meta object literal for the '<em><b>Filter By</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PREDICATE_BASED_SEARCH__FILTER_BY = eINSTANCE.getPredicateBasedSearch_FilterBy();
 
 		/**
 		 * The meta object literal for the '<em><b>Matches</b></em>' operation.
@@ -4596,6 +4605,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ATOMIC_SEARCH_RESULT__ELEMENTS = eINSTANCE.getAtomicSearchResult_Elements();
+
+		/**
+		 * The meta object literal for the '<em><b>Descriptor</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATOMIC_SEARCH_RESULT__DESCRIPTOR = eINSTANCE.getAtomicSearchResult_Descriptor();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.GroupedSearchResultImpl <em>Grouped Search Result</em>}' class.
@@ -4706,6 +4723,22 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute REPOSITORY__PROJECT = eINSTANCE.getRepository_Project();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPOSITORY__NAME = eINSTANCE.getRepository_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPOSITORY__DESCRIPTION = eINSTANCE.getRepository_Description();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.ResourceImpl <em>Resource</em>}' class.
@@ -5144,6 +5177,16 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum TYPE = eINSTANCE.getType();
+
+		/**
+		 * The meta object literal for the '{@link semanticmanager.Level <em>Level</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see semanticmanager.Level
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getLevel()
+		 * @generated
+		 */
+		EEnum LEVEL = eINSTANCE.getLevel();
 
 		/**
 		 * The meta object literal for the '<em>Java Object</em>' data type.

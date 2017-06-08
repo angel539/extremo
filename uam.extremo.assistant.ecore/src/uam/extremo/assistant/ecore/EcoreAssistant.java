@@ -28,10 +28,9 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import semanticmanager.*;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
-
-import semanticmanager.*;
 
 public class EcoreAssistant extends FormatAssistant implements IFormatAssistant {
 	File file;

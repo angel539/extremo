@@ -95,6 +95,8 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 				return createDataModelTypeFromString(eDataType, initialValue);
 			case SemanticmanagerPackage.TYPE:
 				return createTypeFromString(eDataType, initialValue);
+			case SemanticmanagerPackage.LEVEL:
+				return createLevelFromString(eDataType, initialValue);
 			case SemanticmanagerPackage.JAVA_OBJECT:
 				return createJavaObjectFromString(eDataType, initialValue);
 			default:
@@ -116,6 +118,8 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 				return convertDataModelTypeToString(eDataType, instanceValue);
 			case SemanticmanagerPackage.TYPE:
 				return convertTypeToString(eDataType, instanceValue);
+			case SemanticmanagerPackage.LEVEL:
+				return convertLevelToString(eDataType, instanceValue);
 			case SemanticmanagerPackage.JAVA_OBJECT:
 				return convertJavaObjectToString(eDataType, instanceValue);
 			default:
@@ -370,6 +374,26 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	 * @generated
 	 */
 	public String convertTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Level createLevelFromString(EDataType eDataType, String initialValue) {
+		Level result = Level.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLevelToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

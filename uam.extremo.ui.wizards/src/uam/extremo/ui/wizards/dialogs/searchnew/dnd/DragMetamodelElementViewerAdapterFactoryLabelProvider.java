@@ -9,8 +9,8 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
-import uam.extremo.ui.wizards.Activator;
 import semanticmanager.*;
+import uam.extremo.ui.wizards.Activator;
 
 public class DragMetamodelElementViewerAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider{
 	public DragMetamodelElementViewerAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {

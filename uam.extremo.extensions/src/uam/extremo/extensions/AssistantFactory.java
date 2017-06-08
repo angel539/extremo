@@ -48,6 +48,7 @@ import semanticmanager.DataModelType;
 import semanticmanager.ExtendedSemanticmanagerFactory;
 import semanticmanager.ExtensibleCustomSearch;
 import semanticmanager.ExtensiblePredicateBasedSearch;
+import semanticmanager.Level;
 import semanticmanager.NamedElement;
 import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
@@ -97,8 +98,8 @@ public class AssistantFactory implements IResourceChangeListener{
 						if(extension.createExecutableExtension("class") instanceof IFormatAssistant){
 							assistant = (IFormatAssistant) extension.createExecutableExtension("class");
 							
-							((FormatAssistant)assistant).setId(extension.getAttribute("id"));
-							((FormatAssistant)assistant).setNameExtension(extension.getAttribute("name"));
+							((FormatAssistant) assistant).setId(extension.getAttribute("id"));
+							((FormatAssistant) assistant).setNameExtension(extension.getAttribute("name"));
 							
 							String extensionsAttribute = StringUtils.deleteWhitespace(extension.getAttribute("extensions"));
 							String[] extensionsSeparated = StringUtils.splitByWholeSeparator(extensionsAttribute, ",");
@@ -171,6 +172,8 @@ public class AssistantFactory implements IResourceChangeListener{
 							if(extensions[j].createExecutableExtension("class") instanceof ExtensibleCustomSearch){
 								customSearch = (ExtensibleCustomSearch) extensions[j].createExecutableExtension("class");
 								
+								System.out.println(customSearch.getClass().toString());
+								
 								((ExtensibleCustomSearch) customSearch).setId(extensions[j].getAttribute("id"));
 								((ExtensibleCustomSearch) customSearch).setName(extensions[j].getAttribute("name"));
 								
@@ -179,8 +182,8 @@ public class AssistantFactory implements IResourceChangeListener{
 								((ExtensibleCustomSearch) customSearch).setDescription(extensions[j].getAttribute("description"));
 								((ExtensibleCustomSearch) customSearch).setGrouped(Boolean.valueOf(extensions[j].getAttribute("resultsGrouped")));
 								
-								DataModelType dataModelType = DataModelType.get(extensions[j].getAttribute("filterBy"));
-								((ExtensibleCustomSearch) customSearch).setFilterBy(dataModelType);
+								Level level = Level.get(extensions[j].getAttribute("level"));
+								((ExtensibleCustomSearch) customSearch).setLevel(level);
 								
 								for(IConfigurationElement option : extensions[j].getChildren("option")){
 									String id = option.getAttribute("id");
@@ -212,10 +215,10 @@ public class AssistantFactory implements IResourceChangeListener{
 							if(extensions[j].createExecutableExtension("class") instanceof ExtensiblePredicateBasedSearch){
 								predicateBasedSearch = (ExtensiblePredicateBasedSearch) extensions[j].createExecutableExtension("class");
 								
+								System.out.println(predicateBasedSearch.getClass().toString());
+								
 								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setId(extensions[j].getAttribute("id"));
 								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setName(extensions[j].getAttribute("name"));
-								
-								System.out.println(extensions[j].getAttribute("description"));
 								
 								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setDescription(extensions[j].getAttribute("description"));
 								
@@ -837,10 +840,10 @@ public class AssistantFactory implements IResourceChangeListener{
 	        @Override
 	        protected IStatus run(IProgressMonitor monitor) {
 	        	assistant.toSuper(node);
+	        	
 	        	return Status.OK_STATUS;
 	        }
 		};
-	
 		job.schedule();
 	}
 
@@ -867,14 +870,9 @@ public class AssistantFactory implements IResourceChangeListener{
     }
 
 	public void emptyResourceDb() {
-		/*getRepositoryManager().getServices().forEach(element -> {EcoreUtil.delete(element);});
-		getRepositoryManager().getConfigurations().forEach(element -> {EcoreUtil.delete(element);});
-		getRepositoryManager().getInterpreters().forEach(element -> {EcoreUtil.delete(element);});
-		getRepositoryManager().getRepositories().forEach(element -> {EcoreUtil.delete(element);});*/
 		getRepositoryManager().getServices().clear();
 		getRepositoryManager().getConfigurations().clear();
 		getRepositoryManager().getInterpreters().clear();
 		getRepositoryManager().getRepositories().clear();
-		
 	}
 }

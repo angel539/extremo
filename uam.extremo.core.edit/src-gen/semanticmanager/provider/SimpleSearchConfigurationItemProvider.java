@@ -48,32 +48,9 @@ public class SimpleSearchConfigurationItemProvider extends SearchConfigurationIt
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addFilterByPropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Filter By feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addFilterByPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimpleSearchConfiguration_filterBy_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimpleSearchConfiguration_filterBy_feature", "_UI_SimpleSearchConfiguration_type"),
-				 SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__FILTER_BY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -155,7 +132,6 @@ public class SimpleSearchConfigurationItemProvider extends SearchConfigurationIt
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SimpleSearchConfiguration.class)) {
-			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION__FILTER_BY:
 			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

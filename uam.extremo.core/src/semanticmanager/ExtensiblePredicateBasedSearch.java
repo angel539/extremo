@@ -2,7 +2,10 @@ package semanticmanager;
 
 import org.eclipse.emf.common.util.EList;
 
+import semanticmanager.DataModelType;
 import semanticmanager.NamedElement;
+import semanticmanager.PredicateBasedSearch;
+import semanticmanager.SearchResultOptionValue;
 import semanticmanager.Type;
 
 public interface ExtensiblePredicateBasedSearch extends PredicateBasedSearch {
