@@ -204,6 +204,19 @@ public interface IFormatAssistant {
     	return null;
     }
     
+    default SemanticNode semanticNodeFromId(Resource resource, Object trace){
+    	for(ResourceElement resourceElement : resource.getResourceElements()){
+    		if(resourceElement instanceof SemanticNode){
+    			SemanticNode node = (SemanticNode) resourceElement;
+    			
+    			if(node.getTrace().equals(trace)){
+        			return node;
+        		}
+    		}	
+    	}
+    	return null;
+    }
+    
     default Type defineIntType(){
     	return Type.INT;
     }

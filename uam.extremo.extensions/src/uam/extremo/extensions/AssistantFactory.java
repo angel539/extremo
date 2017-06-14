@@ -697,7 +697,8 @@ public class AssistantFactory implements IResourceChangeListener{
 			resource.setName(name);
 			resource.setDescription(description);
 			resource.setUri(uri);
-			resource.getDescriptors().add(descriptor);
+			if(descriptor != null)
+				resource.getDescriptors().add(descriptor);
 
 			String extensionFile = FilenameUtils.getExtension(uri);
 			loop: 
@@ -759,8 +760,9 @@ public class AssistantFactory implements IResourceChangeListener{
 			Resource resource = ExtendedSemanticmanagerFactory.eINSTANCE.createResource();
 			resource.setName(name);
 			resource.setDescription(description);
-			resource.setUri(uri);
-			resource.getDescriptors().add(descriptor);
+			resource.setUri(uri);	
+			if(descriptor != null)
+				resource.getDescriptors().add(descriptor);
 			
 			resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
 			

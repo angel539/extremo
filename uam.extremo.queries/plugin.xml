@@ -40,6 +40,12 @@
             id="extremo.queries.services.inexactmatching"
             name="Inexact Matching">
       </service>
+      <service
+            class="uam.extremo.services.WordSynonymsExpansionRankingServiceImpl"
+            filterBy="String"
+            id="extremo.queries.services.synonymsexpansion"
+            name="Synonyms Expansion">
+      </service>
    </extension>
    <extension
          point="extremo.core.extensions.search">
