@@ -19,7 +19,7 @@ import fr.inria.atlanmod.neoemf.core.PersistentEObject;
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getService()
- * @model abstract="true"
+ * @model
  * @extends PersistentEObject
  * @generated
  */

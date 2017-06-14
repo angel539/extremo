@@ -61,6 +61,7 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 			case SemanticmanagerPackage.CONSTRAINT: return (EObject)createConstraint();
 			case SemanticmanagerPackage.CONSTRAINT_RESULT: return (EObject)createConstraintResult();
 			case SemanticmanagerPackage.COMPOSITE_SEARCH_CONFIGURATION: return (EObject)createCompositeSearchConfiguration();
+			case SemanticmanagerPackage.SERVICE: return (EObject)createService();
 			case SemanticmanagerPackage.CUSTOM_SEARCH: return (EObject)createCustomSearch();
 			case SemanticmanagerPackage.PREDICATE_BASED_SEARCH: return (EObject)createPredicateBasedSearch();
 			case SemanticmanagerPackage.ATOMIC_SEARCH_RESULT: return (EObject)createAtomicSearchResult();
@@ -95,8 +96,6 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 				return createDataModelTypeFromString(eDataType, initialValue);
 			case SemanticmanagerPackage.TYPE:
 				return createTypeFromString(eDataType, initialValue);
-			case SemanticmanagerPackage.LEVEL:
-				return createLevelFromString(eDataType, initialValue);
 			case SemanticmanagerPackage.JAVA_OBJECT:
 				return createJavaObjectFromString(eDataType, initialValue);
 			default:
@@ -118,8 +117,6 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 				return convertDataModelTypeToString(eDataType, instanceValue);
 			case SemanticmanagerPackage.TYPE:
 				return convertTypeToString(eDataType, instanceValue);
-			case SemanticmanagerPackage.LEVEL:
-				return convertLevelToString(eDataType, instanceValue);
 			case SemanticmanagerPackage.JAVA_OBJECT:
 				return convertJavaObjectToString(eDataType, instanceValue);
 			default:
@@ -165,6 +162,16 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	public CompositeSearchConfiguration createCompositeSearchConfiguration() {
 		CompositeSearchConfigurationImpl compositeSearchConfiguration = new CompositeSearchConfigurationImpl();
 		return compositeSearchConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Service createService() {
+		ServiceImpl service = new ServiceImpl();
+		return service;
 	}
 
 	/**
@@ -374,26 +381,6 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	 * @generated
 	 */
 	public String convertTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Level createLevelFromString(EDataType eDataType, String initialValue) {
-		Level result = Level.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertLevelToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

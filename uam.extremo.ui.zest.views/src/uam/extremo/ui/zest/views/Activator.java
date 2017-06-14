@@ -15,7 +15,6 @@ import org.osgi.framework.BundleContext;
  * The activator class controls the plug-in life cycle
  */
 public class Activator extends AbstractUIPlugin {
-
 	// The plug-in ID
 	public static final String PLUGIN_ID = "uam.extremo.ui.zest.views"; //$NON-NLS-1$
 	public static final String ACTION_EXTENSIONS_ID = "extremo.ui.extensions.actions";
@@ -24,7 +23,6 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
-	
 	/**
 	 * The constructor
 	 */

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.core.resources.IContainer;
@@ -32,6 +33,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
@@ -48,7 +50,6 @@ import semanticmanager.DataModelType;
 import semanticmanager.ExtendedSemanticmanagerFactory;
 import semanticmanager.ExtensibleCustomSearch;
 import semanticmanager.ExtensiblePredicateBasedSearch;
-import semanticmanager.Level;
 import semanticmanager.NamedElement;
 import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
@@ -171,20 +172,16 @@ public class AssistantFactory implements IResourceChangeListener{
 						try{
 							if(extensions[j].createExecutableExtension("class") instanceof ExtensibleCustomSearch){
 								customSearch = (ExtensibleCustomSearch) extensions[j].createExecutableExtension("class");
-								
-								System.out.println(customSearch.getClass().toString());
-								
+																
 								((ExtensibleCustomSearch) customSearch).setId(extensions[j].getAttribute("id"));
 								((ExtensibleCustomSearch) customSearch).setName(extensions[j].getAttribute("name"));
-								
-								System.out.println(extensions[j].getAttribute("description"));
-								
+																
 								((ExtensibleCustomSearch) customSearch).setDescription(extensions[j].getAttribute("description"));
 								((ExtensibleCustomSearch) customSearch).setGrouped(Boolean.valueOf(extensions[j].getAttribute("resultsGrouped")));
 								
-								Level level = Level.get(extensions[j].getAttribute("level"));
-								((ExtensibleCustomSearch) customSearch).setLevel(level);
-								
+								DataModelType dataModelType = DataModelType.get(extensions[j].getAttribute("filterBy"));
+								((ExtensibleCustomSearch) customSearch).setFilterBy(dataModelType);
+
 								for(IConfigurationElement option : extensions[j].getChildren("option")){
 									String id = option.getAttribute("id");
 									String name = option.getAttribute("name");
@@ -214,16 +211,14 @@ public class AssistantFactory implements IResourceChangeListener{
 						try{
 							if(extensions[j].createExecutableExtension("class") instanceof ExtensiblePredicateBasedSearch){
 								predicateBasedSearch = (ExtensiblePredicateBasedSearch) extensions[j].createExecutableExtension("class");
-								
-								System.out.println(predicateBasedSearch.getClass().toString());
-								
+																
 								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setId(extensions[j].getAttribute("id"));
 								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setName(extensions[j].getAttribute("name"));
 								
 								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setDescription(extensions[j].getAttribute("description"));
 								
 								DataModelType dataModelType = DataModelType.get(extensions[j].getAttribute("filterBy"));
-								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setFilterBy(dataModelType);
+								((ExtensiblePredicateBasedSearch) predicateBasedSearch).setFilterBy(dataModelType);	
 								
 								for(IConfigurationElement option : extensions[j].getChildren("option")){
 									String id = option.getAttribute("id");
@@ -290,7 +285,7 @@ public class AssistantFactory implements IResourceChangeListener{
 					}
 					
 					try{
-						if(extension.createExecutableExtension("class") instanceof SearchConfiguration){
+						if(extension.createExecutableExtension("class") instanceof ConstraintInterpreter){
 							constraintInterpreter = (ConstraintInterpreter) extension.createExecutableExtension("class");
 							
 							((ConstraintInterpreter) constraintInterpreter).setId(extension.getAttribute("id"));
@@ -330,7 +325,7 @@ public class AssistantFactory implements IResourceChangeListener{
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(SERVICE_EXTENSIONS_ID);
 		
 		for(IConfigurationElement extension : extensions){
-			if(! servicesIsOnTheList(extension.getAttribute("id"))){
+			if(!servicesIsOnTheList(extension.getAttribute("id"))){
 				if(extension.getName().compareTo("service") == 0){
 					Service extensibleService;
 					
@@ -347,7 +342,7 @@ public class AssistantFactory implements IResourceChangeListener{
 					}
 					
 					try{
-						if(extension.createExecutableExtension("class") instanceof SearchConfiguration){
+						if(extension.createExecutableExtension("class") instanceof Service){
 							extensibleService = (Service) extension.createExecutableExtension("class");
 							
 							((Service) extensibleService).setId(extension.getAttribute("id"));
@@ -870,9 +865,6 @@ public class AssistantFactory implements IResourceChangeListener{
     }
 
 	public void emptyResourceDb() {
-		getRepositoryManager().getServices().clear();
-		getRepositoryManager().getConfigurations().clear();
-		getRepositoryManager().getInterpreters().clear();
-		getRepositoryManager().getRepositories().clear();
+		EcoreUtil.delete(getRepositoryManager(), true);
 	}
 }

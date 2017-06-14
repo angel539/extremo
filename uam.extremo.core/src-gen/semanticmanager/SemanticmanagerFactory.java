@@ -58,6 +58,15 @@ public interface SemanticmanagerFactory extends EFactory {
 	CompositeSearchConfiguration createCompositeSearchConfiguration();
 
 	/**
+	 * Returns a new object of class '<em>Service</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Service</em>'.
+	 * @generated
+	 */
+	Service createService();
+
+	/**
 	 * Returns a new object of class '<em>Custom Search</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

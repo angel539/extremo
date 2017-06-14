@@ -8,14 +8,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 import semanticmanager.PredicateBasedSearch;
-import semanticmanager.SemanticmanagerPackage;
 
 /**
  * This is the item provider adapter for a {@link semanticmanager.PredicateBasedSearch} object.
@@ -46,31 +40,8 @@ public class PredicateBasedSearchItemProvider extends SimpleSearchConfigurationI
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addFilterByPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Filter By feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addFilterByPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PredicateBasedSearch_filterBy_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PredicateBasedSearch_filterBy_feature", "_UI_PredicateBasedSearch_type"),
-				 SemanticmanagerPackage.Literals.PREDICATE_BASED_SEARCH__FILTER_BY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -109,12 +80,6 @@ public class PredicateBasedSearchItemProvider extends SimpleSearchConfigurationI
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(PredicateBasedSearch.class)) {
-			case SemanticmanagerPackage.PREDICATE_BASED_SEARCH__FILTER_BY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

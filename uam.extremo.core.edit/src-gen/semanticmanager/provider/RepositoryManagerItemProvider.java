@@ -173,6 +173,11 @@ public class RepositoryManagerItemProvider
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__CONFIGURATIONS,
 				 SemanticmanagerFactory.eINSTANCE.createPredicateBasedSearch()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__SERVICES,
+				 SemanticmanagerFactory.eINSTANCE.createService()));
 	}
 
 	/**

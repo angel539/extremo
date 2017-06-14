@@ -43,7 +43,6 @@ public class AtomicSearchResultItemProvider extends SearchResultItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addElementsPropertyDescriptor(object);
-			addDescriptorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -62,28 +61,6 @@ public class AtomicSearchResultItemProvider extends SearchResultItemProvider {
 				 getString("_UI_AtomicSearchResult_elements_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_AtomicSearchResult_elements_feature", "_UI_AtomicSearchResult_type"),
 				 SemanticmanagerPackage.Literals.ATOMIC_SEARCH_RESULT__ELEMENTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Descriptor feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDescriptorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AtomicSearchResult_descriptor_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AtomicSearchResult_descriptor_feature", "_UI_AtomicSearchResult_type"),
-				 SemanticmanagerPackage.Literals.ATOMIC_SEARCH_RESULT__DESCRIPTOR,
 				 true,
 				 false,
 				 true,

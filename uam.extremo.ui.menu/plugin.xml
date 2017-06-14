@@ -21,12 +21,6 @@
                   label="Validate and export"
                   style="push">
             </command>
-            <command
-                  commandId="uam.extremo.ui.menu.empty"
-                  icon="icons/trash.png"
-                  label="Empty Resource DB"
-                  style="push">
-            </command>
          </menu>
       </menuContribution>
    </extension>
@@ -47,12 +41,6 @@
             defaultHandler="uam.extremo.ui.menu.handler.ShowConsoleRunnerHandler"
             id="uam.extremo.ui.menu.console"
             name="Show Console">
-      </command>
-      <command
-            categoryId="uam.extremo.ui.menu"
-            defaultHandler="uam.extremo.ui.menu.handler.EmptyResourceDBRunnerHandler"
-            id="uam.extremo.ui.menu.empty"
-            name="Empty Resource DB">
       </command>
    </extension>
 </plugin>

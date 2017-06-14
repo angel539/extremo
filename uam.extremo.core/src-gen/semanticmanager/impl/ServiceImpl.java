@@ -29,7 +29,7 @@ import semanticmanager.Type;
  *
  * @generated
  */
-public abstract class ServiceImpl extends DefaultPersistentEObject implements Service {
+public class ServiceImpl extends DefaultPersistentEObject implements Service {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

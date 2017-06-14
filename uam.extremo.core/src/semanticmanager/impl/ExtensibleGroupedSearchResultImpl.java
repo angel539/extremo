@@ -9,7 +9,6 @@ import semanticmanager.PrimitiveTypeSearchResultOptionValue;
 import semanticmanager.Resource;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.GroupedSearchResultImpl;
-import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 

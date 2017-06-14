@@ -2,39 +2,43 @@ package uam.extremo.queries.customsearch;
 
 import java.util.Objects;
 
-import semanticmanager.AtomicSearchResult;
+import semanticmanager.GroupedSearchResult;
+import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Resource;
 import semanticmanager.ResourceElement;
 import semanticmanager.SearchResult;
+import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
+import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.impl.ExtensibleCustomSearchImpl;
 
 public class InRefsOverloadedSearch extends ExtensibleCustomSearchImpl {
-	Resource resource = null;
-	
 	@Override
 	public void search(SearchResult result) {
-		if (result instanceof AtomicSearchResult) {
-			AtomicSearchResult atomicSearchResult = (AtomicSearchResult) result;
-			Object option = atomicSearchResult.getOptionValue("resource");
-			Object maxRefsOption = atomicSearchResult.getOptionValue("maxrefs");
+		if (result instanceof GroupedSearchResult) {
+			GroupedSearchResult groupedSearchResult = (GroupedSearchResult) result;
+			Object maxRefsOption = groupedSearchResult.getOptionValue("maxrefs");
 			
 			int maxRefs = Integer.parseInt((String) maxRefsOption);
 			
-			if(option instanceof Resource){
-				resource = (Resource) option;
-				result.getApplyOnElements().add(resource);
-				preorder(atomicSearchResult, resource, maxRefs);
+			for(NamedElement namedElement : groupedSearchResult.getApplyOnElements()){
+				if (namedElement instanceof Resource) {
+					Resource resource = (Resource) namedElement;
+					
+					SemanticGroup group = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
+					group.setName(resource.getName());
+					preorder(resource, group, resource, maxRefs);
+				}
 			}
 		}
 	}
 	
-	public synchronized void preorder(AtomicSearchResult result, Resource resource, int maxRefs){
-        preorderHelper(result, resource, maxRefs);
+	public synchronized void preorder(Resource resource, SemanticGroup group, Resource node, int maxRefs){
+        preorderHelper(resource, group, node, maxRefs);
     }
      
-    private void preorderHelper(AtomicSearchResult result, ResourceElement node, int maxRefs)
+    private void preorderHelper(Resource resource, SemanticGroup group, ResourceElement node, int maxRefs)
     {
         if(node == null)
             return;
@@ -46,13 +50,13 @@ public class InRefsOverloadedSearch extends ExtensibleCustomSearchImpl {
         	inRefsCounter(resource, semanticNode, counter);
 			
 			if(counter >= maxRefs){
-				result.getElements().add(semanticNode);
+				group.getElements().add(semanticNode);
 			}
         }
         
         if(node instanceof Resource){
         	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
-        		preorderHelper(result, resourceElement, maxRefs);
+        		preorderHelper(resource, group, resourceElement, maxRefs);
         }
     }
     

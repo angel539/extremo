@@ -164,6 +164,29 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link semanticmanager.Service} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ServiceItemProvider serviceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link semanticmanager.Service}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createServiceAdapter() {
+		if (serviceItemProvider == null) {
+			serviceItemProvider = new ServiceItemProvider(this);
+		}
+
+		return serviceItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link semanticmanager.CustomSearch} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -611,6 +634,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 		if (constraintItemProvider != null) constraintItemProvider.dispose();
 		if (constraintResultItemProvider != null) constraintResultItemProvider.dispose();
 		if (compositeSearchConfigurationItemProvider != null) compositeSearchConfigurationItemProvider.dispose();
+		if (serviceItemProvider != null) serviceItemProvider.dispose();
 		if (customSearchItemProvider != null) customSearchItemProvider.dispose();
 		if (predicateBasedSearchItemProvider != null) predicateBasedSearchItemProvider.dispose();
 		if (atomicSearchResultItemProvider != null) atomicSearchResultItemProvider.dispose();

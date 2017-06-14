@@ -25,6 +25,8 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 		
 		String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
 		
+		if(obj instanceof Service) return Activator.getImageDescriptor("icons/queries/service.png").createImage();
+		
 		if(obj instanceof CustomSearch) return Activator.getImageDescriptor("icons/queries/customsearch.png").createImage();
 		if(obj instanceof PredicateBasedSearch) return Activator.getImageDescriptor("icons/queries/predicatebasedsearch.png").createImage();
 		if(obj instanceof CompositeSearchConfiguration) return Activator.getImageDescriptor("icons/queries/compositesearch.png").createImage();
@@ -204,6 +206,12 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 	public StyledString getStyledText(Object element) {
 		if(element instanceof IStructuredSelection) element = ((IStructuredSelection) element).getFirstElement();
 		
+		if (element instanceof Service) {
+			Service service = (Service) element;
+			StyledString styledString = new StyledString(service.getName());
+			return styledString;
+		}
+		
 		if (element instanceof SearchConfiguration) {
 			SearchConfiguration searchConfiguration = (SearchConfiguration) element;
 			StyledString styledString = new StyledString(searchConfiguration.getName());
@@ -257,7 +265,11 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 		
 		if(element instanceof SemanticGroup){
 			SemanticGroup semanticGroup = (SemanticGroup) element;
-			StyledString styledString = new StyledString(semanticGroup.getName());
+			StyledString styledString = new StyledString("");
+
+			if(semanticGroup.getName() != null)
+				styledString.append(semanticGroup.getName());
+	
 			styledString.append(" (" + semanticGroup.getElements().size() + ") ", StyledString.QUALIFIER_STYLER);
 
 			return styledString;
@@ -301,15 +313,11 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 		if(element instanceof SemanticNode){
 			SemanticNode semanticNode = (SemanticNode) element; 
 			if((semanticNode.getDescriptors() == null) || (semanticNode.getDescriptors().isEmpty())){
-				//Font font = JFaceResources.getFontRegistry().getItalic(JFaceResources.DEFAULT_FONT);
-				//FontDescriptor fontDescriptor = FontDescriptor.createFrom(font);
-				//fontDescriptor.
-				
 				StyledString styledString = new StyledString(semanticNode.getName());
 				//styledString.
 				
 				for(SemanticNode superC : semanticNode.getSupers()){
-					styledString.append(" -> " + superC.getName(), StyledString.QUALIFIER_STYLER);
+					styledString.append(" < " + superC.getName(), StyledString.QUALIFIER_STYLER);
 				}
 				
 				if(semanticNode.getDescribes().size() > 0)

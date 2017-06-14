@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import semanticmanager.GroupedSearchResult;
+import semanticmanager.NamedElement;
 import semanticmanager.Resource;
 import semanticmanager.ResourceElement;
 
@@ -21,8 +22,11 @@ public class SplitNodesSearch extends ExtensibleCustomSearchImpl {
 			Object option = groupedSearchResult.getOptionValue("resource");
 			if(option instanceof Resource){
 				Resource resource = (Resource) option;
-				result.getApplyOnElements().add(resource);
-				preorder(groupedSearchResult, resource);
+				for(NamedElement namedElement : groupedSearchResult.getApplyOnElements()){
+					if (namedElement instanceof Resource && namedElement.equals(resource)) {
+						preorder(groupedSearchResult, (Resource) namedElement);
+					}
+				}
 			}
 		}	
 	}

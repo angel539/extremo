@@ -19,7 +19,6 @@ import semanticmanager.SemanticmanagerPackage;
  * </p>
  * <ul>
  *   <li>{@link semanticmanager.impl.AtomicSearchResultImpl#getElements <em>Elements</em>}</li>
- *   <li>{@link semanticmanager.impl.AtomicSearchResultImpl#getDescriptor <em>Descriptor</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,24 +51,6 @@ public class AtomicSearchResultImpl extends SearchResultImpl implements AtomicSe
 	@SuppressWarnings("unchecked")
 	public EList<NamedElement> getElements() {
 		return (EList<NamedElement>)eGet(SemanticmanagerPackage.Literals.ATOMIC_SEARCH_RESULT__ELEMENTS, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NamedElement getDescriptor() {
-		return (NamedElement)eGet(SemanticmanagerPackage.Literals.ATOMIC_SEARCH_RESULT__DESCRIPTOR, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDescriptor(NamedElement newDescriptor) {
-		eSet(SemanticmanagerPackage.Literals.ATOMIC_SEARCH_RESULT__DESCRIPTOR, newDescriptor);
 	}
 
 } //AtomicSearchResultImpl

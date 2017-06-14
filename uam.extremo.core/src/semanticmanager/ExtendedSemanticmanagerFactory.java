@@ -16,8 +16,8 @@ public interface ExtendedSemanticmanagerFactory extends SemanticmanagerFactory {
 	ExtensibleAtomicSearchResult createAtomicSearchResult();
 	ExtensibleGroupedSearchResult createGroupedSearchResult();
 	
-	ExtensibleCustomSearch createCustomSearch();
-	ExtensiblePredicateBasedSearch createPredicateBasedSearch();
-	ExtensibleService createService();
-	ExtensibleConstraintInterpreter createConstraintInterpreter();
+	//ExtensibleCustomSearch createCustomSearch();
+	//ExtensiblePredicateBasedSearch createPredicateBasedSearch();
+	//ExtensibleService createService();
+	//ExtensibleConstraintInterpreter createConstraintInterpreter();
 }

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -14,8 +13,6 @@ import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.VerifyEvent;
-import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.layout.GridData;
@@ -51,6 +48,8 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	private SimpleSearchConfiguration searchConfigurationSelected = null;
 	
 	private Map<SearchOption, Object> values;
+	private Map<SearchOption, Service> serviceCalls;
+	
 	private Repository repositoryFrom;
 	private NamedElement namedElement;
 
@@ -58,14 +57,12 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	Composite selectorContainer = null;
 	Composite selectionContainer = null;
 	
-	private NamedElement descriptor = null;
-	
 	public SearchConfigurationSelectorWizardPage(
 			String pageName, 
 			String pageDescription, 
 			List<SimpleSearchConfiguration> searchConfigurations,
 			List<Service> services, 
-			Repository repositoryFrom, 
+			Repository repositoryFrom,
 			NamedElement namedElement) {
 		super(pageName);
 		
@@ -75,8 +72,8 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		
 		this.searchConfigurations = searchConfigurations;
 		this.services = services;
+		this.repositoryFrom = repositoryFrom;
 		this.namedElement = namedElement;
-		this.repositoryFrom = repositoryFrom; 
 	}
 	
 	@Override
@@ -177,12 +174,11 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    			
 	    			if (searchConfigurationSelected instanceof CustomSearch) {
 						CustomSearch customSearch = (CustomSearch) searchConfigurationSelected;
-						createSelectionFromCustomSearch(customSearch);
+						createSelectionFromSearch(customSearch);
 					}
 	    			else{
-	    				optionStringField.setText(optionStringField.getText() + " and a descriptor");
 	    				PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfigurationSelected;
-						createSelectionFromPredicateBasedSearch(predicateBasedSearch);
+						createSelectionFromSearch(predicateBasedSearch);
 	    			}
 	    		}
 	    		
@@ -193,106 +189,60 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    });
 	}
 	
-	private void createSelectionFromCustomSearch(CustomSearch customSearch) {
+	private void createSelectionFromSearch(SimpleSearchConfiguration searchConfiguration) {
 		Map<SearchOption, Object> values = new LinkedHashMap<SearchOption, Object>(); 
+		Map<SearchOption, Service> serviceCalls = new LinkedHashMap<SearchOption, Service>();
 		
-		for(SearchOption searchOption : customSearch.getOptions()){
+		for(SearchOption searchOption : searchConfiguration.getOptions()){
 			if (searchOption instanceof PrimitiveTypeSearchOption) {
 				PrimitiveTypeSearchOption primitiveTypeSearchOption = (PrimitiveTypeSearchOption) searchOption;
 				
 				if(primitiveTypeSearchOption.getType().equals(Type.STRING)){
-    				createTextField(customSearch, primitiveTypeSearchOption, 
-    								values,
+    				createTextField(searchConfiguration, primitiveTypeSearchOption, 
+    								values, serviceCalls,
     								services.stream().filter(s -> s.getFilterBy().equals(Type.STRING)).collect(Collectors.toList())
     								);	
     			}
     			
     			if(primitiveTypeSearchOption.getType().equals(Type.BOOLEAN)){
-    				createCheckButton(customSearch, primitiveTypeSearchOption, 
-    								values,
+    				createCheckButton(searchConfiguration, primitiveTypeSearchOption, 
+    								values, serviceCalls, 
     								services.stream().filter(s -> s.getFilterBy().equals(Type.BOOLEAN)).collect(Collectors.toList())
     								);	
     			}
     			
     			if(primitiveTypeSearchOption.getType().equals(Type.INT)){
-    				createNumericField(customSearch, primitiveTypeSearchOption, 
-    								values,
+    				createTextField(searchConfiguration, primitiveTypeSearchOption, 
+    								values, serviceCalls,
     								services.stream().filter(s -> s.getFilterBy().equals(Type.INT)).collect(Collectors.toList())
     								);
     			}
     			
     			if(primitiveTypeSearchOption.getType().equals(Type.FLOAT)){
-    				createNumericField(customSearch, primitiveTypeSearchOption, 
-    								values,
+    				createTextField(searchConfiguration, primitiveTypeSearchOption, 
+    								values, serviceCalls,
     								services.stream().filter(s -> s.getFilterBy().equals(Type.FLOAT)).collect(Collectors.toList())
     								);
     			}
     			
     			if(primitiveTypeSearchOption.getType().equals(Type.DOUBLE)){
-    				createNumericField(customSearch, primitiveTypeSearchOption, 
-    								values,
+    				createTextField(searchConfiguration, primitiveTypeSearchOption, 
+    								values, serviceCalls,
     								services.stream().filter(s -> s.getFilterBy().equals(Type.DOUBLE)).collect(Collectors.toList())
     								);
     			}
 			}
 			else{
 				DataModelTypeSearchOption dataModelTypeSearchOption = (DataModelTypeSearchOption) searchOption;
-    			createComboBox(customSearch, dataModelTypeSearchOption, values);
+    			createComboBox(searchConfiguration, dataModelTypeSearchOption, values);
 			}
 		}
 		
+		setServiceCalls(serviceCalls);
 		setValues(values);
 	}
 	
-	private void createSelectionFromPredicateBasedSearch(PredicateBasedSearch predicateBasedSearch) {
-		Map<SearchOption, Object> values = new LinkedHashMap<SearchOption, Object>(); 
-		
-		for(SearchOption searchOption : predicateBasedSearch.getOptions()){
-			if (searchOption instanceof PrimitiveTypeSearchOption) {
-				PrimitiveTypeSearchOption primitiveTypeSearchOption = (PrimitiveTypeSearchOption) searchOption;
-				
-				if(primitiveTypeSearchOption.getType().equals(Type.STRING)){
-    				createTextField(predicateBasedSearch, searchOption, 
-    								values, 
-    								services.stream().filter(s -> s.getFilterBy().equals(Type.STRING)).collect(Collectors.toList())
-    								);	
-    			}
-    			
-    			if(primitiveTypeSearchOption.getType().equals(Type.BOOLEAN)){
-    				createCheckButton(predicateBasedSearch, searchOption, 
-    								values,
-    								services.stream().filter(s -> s.getFilterBy().equals(Type.BOOLEAN)).collect(Collectors.toList())
-    								);	
-    			}
-    			
-    			if(primitiveTypeSearchOption.getType().equals(Type.INT)){
-    				createNumericField(predicateBasedSearch, searchOption, 
-    								values,
-    								services.stream().filter(s -> s.getFilterBy().equals(Type.INT)).collect(Collectors.toList())
-    								);
-    			}
-    			
-    			if(primitiveTypeSearchOption.getType().equals(Type.FLOAT)){
-    				createNumericField(predicateBasedSearch, searchOption, 
-    								values,
-    								services.stream().filter(s -> s.getFilterBy().equals(Type.FLOAT)).collect(Collectors.toList())
-    								);
-    			}
-    			
-    			if(primitiveTypeSearchOption.getType().equals(Type.DOUBLE)){
-    				createNumericField(predicateBasedSearch, searchOption,
-    								values,
-    								services.stream().filter(s -> s.getFilterBy().equals(Type.DOUBLE)).collect(Collectors.toList())
-    								);
-    			}
-			}
-		}
-
-		createComboBoxFilterBy(predicateBasedSearch, values);
-		setValues(values);
-	}
-	
-	private void createTextField(SimpleSearchConfiguration searchConfiguration, SearchOption searchOption, Map<SearchOption, Object> values, List<Service> services) {				
+	private void createTextField(SimpleSearchConfiguration searchConfiguration, SearchOption searchOption, Map<SearchOption, Object> values, Map<SearchOption, Service> serviceCalls, List<Service> services) {				
 		Label optionString = new Label(selectionContainer, SWT.NONE);
 		optionString.setText(searchOption.getName());
 		optionString.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -316,7 +266,7 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		    	  }
 		    	  else{
 		    		  PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfiguration;
-		    		  if(predicateBasedSearch.getOptions().size() == values.size() && getDescriptor() != null)
+		    		  if(predicateBasedSearch.getOptions().size() == values.size())
 		    			  setPageComplete(true);
 		    	  }
 		      }
@@ -345,15 +295,16 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    		}
 	    		
 	    		if(serviceSelected != null){
-	    			//values.put(searchOption, namedElementDescriptorSelected);
+	    			serviceCalls.put(searchOption, serviceSelected);
 	    		}
 	    	}
 	    });
 	    
+		serviceCalls.put(searchOption, null);
 		selectionContainer.layout();
 	}
 	
-	private void createCheckButton(SimpleSearchConfiguration searchConfiguration, SearchOption searchOption, Map<SearchOption, Object> values, List<Service> services) {
+	private void createCheckButton(SimpleSearchConfiguration searchConfiguration, SearchOption searchOption, Map<SearchOption, Object> values, Map<SearchOption, Service> serviceCalls, List<Service> services) {
 		Label optionBoolean = new Label(selectionContainer, SWT.NONE);
 		optionBoolean.setText(searchOption.getName());
 		optionBoolean.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -376,7 +327,7 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		    	  }
 		    	  else{
 		    		  PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfiguration;
-		    		  if(predicateBasedSearch.getOptions().size() == values.size() && getDescriptor() != null)
+		    		  if(predicateBasedSearch.getOptions().size() == values.size())
 		    			  setPageComplete(true);
 		    	  }
 		      }
@@ -405,87 +356,13 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    		}
 	    		
 	    		if(serviceSelected != null){
-	    			//values.put(searchOption, namedElementDescriptorSelected);
+	    			serviceCalls.put(searchOption, serviceSelected);
 	    		}
 	    	}
 	    });
 		
+		serviceCalls.put(searchOption, null);
 		values.put(searchOption, String.valueOf(optionBooleanField.getSelection()));
-		selectionContainer.layout();
-	}
-	
-	private void createNumericField(SimpleSearchConfiguration searchConfiguration, SearchOption searchOption, Map<SearchOption, Object> values, List<Service> services) {
-		Label optionInteger = new Label(selectionContainer, SWT.NONE);
-		optionInteger.setText(searchOption.getName());
-		optionInteger.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
-		Text optionIntegerField = new Text(selectionContainer, SWT.BORDER);
-		optionIntegerField.setText("");
-		optionIntegerField.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
-		
-		optionIntegerField.addKeyListener(new KeyListener() {
-		      @Override
-		      public void keyPressed(KeyEvent e) {
-		      }
-	
-		      @Override
-		      public void keyReleased(KeyEvent e) {
-		    	  values.put(searchOption, Integer.valueOf(optionIntegerField.getText()));
-		    	  
-		    	  if(searchConfiguration instanceof CustomSearch){
-		    		  if(searchConfiguration.getOptions().size() == values.size())
-		    			  setPageComplete(true);
-		    	  }
-		    	  else{
-		    		  PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfiguration;
-		    		  if(predicateBasedSearch.getOptions().size() == values.size() && getDescriptor() != null)
-		    			  setPageComplete(true);
-		    	  }
-		      }
-	    });
-		
-		optionIntegerField.addVerifyListener(new VerifyListener() {
-			@Override
-			public void verifyText(VerifyEvent e) {
-				 e.doit = e.text.matches("[0-9]+");
-			     try {
-			         new Integer(e.text);
-			     }
-			     catch (NumberFormatException nfe) {
-			         e.doit = false;
-			     }
-			}
-		});
-		
-		CCombo comboServices = new CCombo(selectionContainer, SWT.NONE);
-	    comboServices.setText("Services");
-	    comboServices.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1)); 
-	    
-	    for(Service service : services){
-			String name = service.getName();
-			comboServices.add(name);
-			comboServices.setData(service);
-		}
-	    
-	    comboServices.addSelectionListener(new SelectionAdapter() {
-	    	public void widgetSelected(SelectionEvent e) {
-	    		Service serviceSelected = null;
-	    		
-	    		loop:
-	    		for(Service s : services){
-	    			if(comboServices.getText().equals(s.getName())){
-	    				serviceSelected = s;
-	    				break loop;
-	    			}
-	    		}
-	    		
-	    		if(serviceSelected != null){
-	    			//values.put(searchOption, namedElementDescriptorSelected);
-	    		}
-	    	}
-	    });
-
-		//values.put(searchOption, optionIntegerField.getText());
 		selectionContainer.layout();
 	}
 	
@@ -506,23 +383,21 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
     			if(element instanceof NamedElement){
     				NamedElement namedElement = (NamedElement) element;
     				
-    				if(namedElement.getDescriptors().isEmpty()){
-    					if(optionLiteral.equals("Resource") && namedElement instanceof Resource){
-    						namedElementDescriptors.add(namedElement);
-    					}
-    					
-    					if(optionLiteral.equals("SemanticNode") && namedElement instanceof SemanticNode){
-    						namedElementDescriptors.add(namedElement);
-    					}
-    					
-    					if(optionLiteral.equals("DataProperty") && namedElement instanceof DataProperty){
-    						namedElementDescriptors.add(namedElement);
-    					}
-    					
-    					if(optionLiteral.equals("ObjectProperty") && namedElement instanceof ObjectProperty){
-    						namedElementDescriptors.add(namedElement);
-    					}
-    				}
+					if((optionLiteral.compareTo("Resource") == 0) && namedElement instanceof Resource){
+						namedElementDescriptors.add(namedElement);
+					}
+					
+					if((optionLiteral.compareTo("SemanticNode") == 0) && namedElement instanceof SemanticNode){
+						namedElementDescriptors.add(namedElement);
+					}
+					
+					if((optionLiteral.compareTo("DataProperty") == 0) && namedElement instanceof DataProperty){
+						namedElementDescriptors.add(namedElement);
+					}
+					
+					if((optionLiteral.compareTo("ObjectProperty") == 0) && namedElement instanceof ObjectProperty){
+						namedElementDescriptors.add(namedElement);
+					}
     			}
     		}
 	    );
@@ -531,6 +406,21 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 			String name = namedElementDescriptor.getName();
 			comboSearchOption.add(name);
 			comboSearchOption.setData(namedElementDescriptor);
+			
+			if(namedElement != null && namedElement.equals(namedElementDescriptor)){
+				comboSearchOption.setText(name);
+				values.put(searchOption, namedElementDescriptor);
+				
+				if(searchConfiguration instanceof CustomSearch){
+		    		  if(searchConfiguration.getOptions().size() == values.size())
+		    			  setPageComplete(true);
+		    	  }
+		    	  else{
+		    		  PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfiguration;
+		    		  if(predicateBasedSearch.getOptions().size() == values.size())
+		    			  setPageComplete(true);
+		    	  }
+			}
 		}
 	    
 	    comboSearchOption.addSelectionListener(new SelectionAdapter() {
@@ -554,7 +444,7 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 			    	  }
 			    	  else{
 			    		  PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfiguration;
-			    		  if(predicateBasedSearch.getOptions().size() == values.size() && getDescriptor() != null)
+			    		  if(predicateBasedSearch.getOptions().size() == values.size())
 			    			  setPageComplete(true);
 			    	  }
 	    		}
@@ -564,119 +454,20 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		selectionContainer.layout();
 	}
 	
-	private void createComboBoxFilterBy(PredicateBasedSearch predicateBasedSearch, Map<SearchOption, Object> values) {
-		Label typeLabel = new Label(selectionContainer, SWT.NONE);
-	    typeLabel.setText("Descriptor");
-	    typeLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-	    
-	    CCombo comboDescriptor = new CCombo(selectionContainer, SWT.NONE);
-	    comboDescriptor.setText("Select descriptor for " + predicateBasedSearch.getName());
-	    comboDescriptor.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
-	    
-	    String optionLiteral = predicateBasedSearch.getFilterBy().getLiteral();
-	    List<NamedElement> namedElementDescriptors = new ArrayList<NamedElement>();
-	    
-	    EObject eObject = null;
-	    if(namedElement == null){
-	    	// No NamedElement was selected and the descriptor will be chosen from the whole repository
-	    	eObject = repositoryFrom;
-	    }
-	    else{
-	    	eObject = namedElement;
-	    }
-	    
-	    eObject.eAllContents().forEachRemaining(
-    		element -> {
-    			if(element instanceof NamedElement){
-    				NamedElement namedElement = (NamedElement) element;
-    				
-    				if(namedElement.getDescriptors().isEmpty()){
-    					if(optionLiteral.equals("Resource") && namedElement instanceof Resource){
-    						namedElementDescriptors.add(namedElement);
-    					}
-    					
-    					if(optionLiteral.equals("SemanticNode") && namedElement instanceof SemanticNode){
-    						namedElementDescriptors.add(namedElement);
-    					}
-    					
-    					if(optionLiteral.equals("DataProperty") && namedElement instanceof DataProperty){
-    						namedElementDescriptors.add(namedElement);
-    					}
-    					
-    					if(optionLiteral.equals("ObjectProperty") && namedElement instanceof ObjectProperty){
-    						namedElementDescriptors.add(namedElement);
-    					}
-    				}
-    			}
-    		}
-	    );
-	    
-	    if(namedElementDescriptors.isEmpty()){
-	    	if(optionLiteral.equals("Resource") && eObject instanceof Resource){
-				namedElementDescriptors.add(namedElement);
-			}
-			
-			if(optionLiteral.equals("SemanticNode") && eObject instanceof SemanticNode){
-				namedElementDescriptors.add(namedElement);
-			}
-			
-			if(optionLiteral.equals("DataProperty") && eObject instanceof DataProperty){
-				namedElementDescriptors.add(namedElement);
-			}
-			
-			if(optionLiteral.equals("ObjectProperty") && eObject instanceof ObjectProperty){
-				namedElementDescriptors.add(namedElement);
-			}
-	    	
-			 if(namedElementDescriptors.isEmpty()){
-				 for(Control child : selectionContainer.getChildren()) child.dispose();
-			    	
-		    	Label adviceLabel = new Label(selectionContainer, SWT.NONE);
-		    	adviceLabel.setText("This query cannot be applied because there is no element descriptor");
-		    	adviceLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 4, 1));
-		    	
-		    	selectionContainer.layout();
-		    	setPageComplete(false);
-			 }
-	    }
-	    
-	    for(NamedElement namedElementDescriptor : namedElementDescriptors){
-			String name = namedElementDescriptor.getName();
-			comboDescriptor.add(name);
-			comboDescriptor.setData(namedElementDescriptor);
-		}
-	    
-	    comboDescriptor.addSelectionListener(new SelectionAdapter() {
-	    	public void widgetSelected(SelectionEvent e) {
-	    		NamedElement namedElementDescriptorSelected = null;
-	    		
-	    		loop:
-	    		for(NamedElement nE : namedElementDescriptors){
-	    			if(comboDescriptor.getText().equals(nE.getName())){
-	    				namedElementDescriptorSelected = nE;
-	    				break loop;
-	    			}
-	    		}
-	    		
-	    		if(namedElementDescriptorSelected != null){
-	    			setDescriptor(namedElementDescriptorSelected);
-	    			
-	    			if(predicateBasedSearch.getOptions().size() == values.size() && getDescriptor() != null)
-		    			  setPageComplete(true);
-	    		}
-	    	}
-	    });
-
-		selectionContainer.layout();
-	}
-	
-
 	public Map<SearchOption, Object> getValues() {
 		return values;
 	}
 
 	public void setValues(Map<SearchOption, Object> values) {
 		this.values = values;
+	}
+	
+	public Map<SearchOption, Service> getServiceCalls() {
+		return serviceCalls;
+	}
+
+	public void setServiceCalls(Map<SearchOption, Service> serviceCalls) {
+		this.serviceCalls = serviceCalls;
 	}
 
 	public SimpleSearchConfiguration getSearchConfigurationSelected() {
@@ -685,13 +476,5 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 
 	public void setSearchConfigurationSelected(SimpleSearchConfiguration searchConfigurationSelected) {
 		this.searchConfigurationSelected = searchConfigurationSelected;
-	}
-
-	public NamedElement getDescriptor() {
-		return descriptor;
-	}
-
-	public void setDescriptor(NamedElement descriptor) {
-		this.descriptor = descriptor;
 	}
 }

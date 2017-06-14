@@ -4,16 +4,9 @@ import org.eclipse.emf.ecore.EDataType;
 
 import semanticmanager.ExtendedSemanticmanagerFactory;
 import semanticmanager.ExtensibleAtomicSearchResult;
-import semanticmanager.ExtensibleConstraintInterpreter;
-import semanticmanager.ExtensibleCustomSearch;
 import semanticmanager.ExtensibleGroupedSearchResult;
-import semanticmanager.ExtensiblePredicateBasedSearch;
-import semanticmanager.ExtensibleService;
 import semanticmanager.impl.ExtensibleAtomicSearchResultImpl;
-import semanticmanager.impl.ExtensibleCustomSearchImpl;
 import semanticmanager.impl.ExtensibleGroupedSearchResultImpl;
-import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
-import semanticmanager.impl.ExtensibleServiceImpl;
 import semanticmanager.impl.SemanticmanagerFactoryImpl;
 
 public class ExtendedSemanticmanagerFactoryImpl extends SemanticmanagerFactoryImpl implements ExtendedSemanticmanagerFactory {
@@ -28,19 +21,19 @@ public class ExtendedSemanticmanagerFactoryImpl extends SemanticmanagerFactoryIm
 		return serialize;	
 	}
 
-	@Override
+	/*@Override
 	public ExtensibleCustomSearch createCustomSearch() {
 		ExtensibleCustomSearchImpl customSearch = new ExtensibleCustomSearchImpl();
 		return customSearch;
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public ExtensiblePredicateBasedSearch createPredicateBasedSearch() {
 		ExtensiblePredicateBasedSearchImpl predicateBasedSearch = new ExtensiblePredicateBasedSearchImpl();
 		return predicateBasedSearch;
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public ExtensibleService createService() {
 		ExtensibleServiceImpl service = new ExtensibleServiceImpl();
 		return service;
@@ -50,7 +43,7 @@ public class ExtendedSemanticmanagerFactoryImpl extends SemanticmanagerFactoryIm
 	public ExtensibleConstraintInterpreter createConstraintInterpreter() {
 		ExtensibleConstraintInterpreterImpl constraintInterpreter = new ExtensibleConstraintInterpreterImpl();
 		return constraintInterpreter;
-	}
+	}*/
 	
 	@Override
 	public ExtensibleAtomicSearchResult createAtomicSearchResult() {

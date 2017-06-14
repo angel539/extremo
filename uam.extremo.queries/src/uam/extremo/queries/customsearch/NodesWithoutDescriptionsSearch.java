@@ -1,6 +1,7 @@
 package uam.extremo.queries.customsearch;
 
 import semanticmanager.GroupedSearchResult;
+import semanticmanager.NamedElement;
 import semanticmanager.Resource;
 import semanticmanager.ResourceElement;
 import semanticmanager.SearchResult;
@@ -18,17 +19,21 @@ public class NodesWithoutDescriptionsSearch extends ExtensibleCustomSearchImpl {
 			
 			if(option instanceof Resource){
 				Resource resource = (Resource) option;
-				result.getApplyOnElements().add(resource);
-				
-				SemanticGroup group1 = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
-				group1.setName("Nodes with descriptions");
-				
-				SemanticGroup group2 = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
-				group2.setName("Nodes without descriptions");
-				preorder(groupedSearchResult, resource, group1, group2);
-				
-				groupedSearchResult.getGroups().add(group1);
-				groupedSearchResult.getGroups().add(group2);
+				for(NamedElement namedElement : groupedSearchResult.getApplyOnElements()){
+					if (namedElement instanceof Resource && namedElement.equals(resource)) {
+						Resource resourceSelected = (Resource) namedElement;
+						
+						SemanticGroup group1 = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
+						group1.setName("Nodes with descriptions");
+						
+						SemanticGroup group2 = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
+						group2.setName("Nodes without descriptions");
+						preorder(groupedSearchResult, resourceSelected, group1, group2);
+						
+						groupedSearchResult.getGroups().add(group1);
+						groupedSearchResult.getGroups().add(group2);	
+					}
+				}
 			}
 		}
 	}

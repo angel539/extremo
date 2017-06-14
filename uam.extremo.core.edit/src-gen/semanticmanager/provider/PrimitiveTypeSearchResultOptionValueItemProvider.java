@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -175,4 +175,12 @@ public class PrimitiveTypeSearchResultOptionValueItemProvider extends SearchResu
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__CALLS);
+		}
+		return childrenFeatures;
+	}
 }

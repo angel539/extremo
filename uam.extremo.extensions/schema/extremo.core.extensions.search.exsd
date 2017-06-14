@@ -91,7 +91,7 @@
                </documentation>
             </annotation>
          </attribute>
-         <attribute name="level" use="required">
+         <attribute name="filterBy">
             <annotation>
                <documentation>
                   
@@ -99,9 +99,15 @@
             </annotation>
             <simpleType>
                <restriction base="string">
-                  <enumeration value="descriptor">
+                  <enumeration value="Repository">
                   </enumeration>
-                  <enumeration value="description">
+                  <enumeration value="Resource">
+                  </enumeration>
+                  <enumeration value="SemanticNode">
+                  </enumeration>
+                  <enumeration value="DataProperty">
+                  </enumeration>
+                  <enumeration value="ObjectProperty">
                   </enumeration>
                </restriction>
             </simpleType>
@@ -146,6 +152,8 @@
                   <enumeration value="ObjectProperty">
                   </enumeration>
                   <enumeration value="Resource">
+                  </enumeration>
+                  <enumeration value="Repository">
                   </enumeration>
                </restriction>
             </simpleType>
@@ -204,6 +212,8 @@
                   <enumeration value="DataProperty">
                   </enumeration>
                   <enumeration value="ObjectProperty">
+                  </enumeration>
+                  <enumeration value="Repository">
                   </enumeration>
                </restriction>
             </simpleType>

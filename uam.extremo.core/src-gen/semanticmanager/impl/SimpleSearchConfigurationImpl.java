@@ -24,6 +24,7 @@ import semanticmanager.Type;
  * <ul>
  *   <li>{@link semanticmanager.impl.SimpleSearchConfigurationImpl#getOptions <em>Options</em>}</li>
  *   <li>{@link semanticmanager.impl.SimpleSearchConfigurationImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link semanticmanager.impl.SimpleSearchConfigurationImpl#getFilterBy <em>Filter By</em>}</li>
  * </ul>
  *
  * @generated
@@ -74,6 +75,24 @@ public abstract class SimpleSearchConfigurationImpl extends SearchConfigurationI
 	 */
 	public void setDescription(String newDescription) {
 		eSet(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION, newDescription);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataModelType getFilterBy() {
+		return (DataModelType)eGet(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__FILTER_BY, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFilterBy(DataModelType newFilterBy) {
+		eSet(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__FILTER_BY, newFilterBy);
 	}
 
 	/**

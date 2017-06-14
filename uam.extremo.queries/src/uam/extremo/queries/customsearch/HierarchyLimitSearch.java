@@ -4,36 +4,42 @@ import java.util.Comparator;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import semanticmanager.AtomicSearchResult;
+import semanticmanager.GroupedSearchResult;
+import semanticmanager.NamedElement;
 import semanticmanager.Resource;
 import semanticmanager.ResourceElement;
 import semanticmanager.SearchResult;
+import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
+import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.impl.ExtensibleCustomSearchImpl;
 
 public class HierarchyLimitSearch extends ExtensibleCustomSearchImpl {	
 	@Override
 	public void search(SearchResult result) {
-		if (result instanceof AtomicSearchResult) {
-			AtomicSearchResult atomicSearchResult = (AtomicSearchResult) result;
-			Object option = atomicSearchResult.getOptionValue("resource");
-			Object maxDepthOption = atomicSearchResult.getOptionValue("maxdepth");
+		if (result instanceof GroupedSearchResult) {
+			GroupedSearchResult groupedSearchResult = (GroupedSearchResult) result;
 			
+			Object maxDepthOption = groupedSearchResult.getOptionValue("maxdepth");
 			int maxDepth = Integer.parseInt((String) maxDepthOption);
 			
-			if(option instanceof Resource){
-				Resource resource = (Resource) option;
-				result.getApplyOnElements().add(resource);
-				preorder(atomicSearchResult, resource, maxDepth);
+			for(NamedElement namedElement : groupedSearchResult.getApplyOnElements()){
+				if (namedElement instanceof Resource) {
+					Resource resource = (Resource) namedElement;
+					
+					SemanticGroup group = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
+					group.setName(resource.getName());
+					preorder(group, resource, maxDepth);
+				}
 			}
 		}
 	}
 	
-	public synchronized void preorder(AtomicSearchResult result, Resource resource, int maxAttrs){
-        preorderHelper(result, resource, maxAttrs);
+	public synchronized void preorder(SemanticGroup group, Resource resource, int maxDepth){
+        preorderHelper(group, resource, maxDepth);
     }
      
-    private void preorderHelper(AtomicSearchResult result, ResourceElement node, int maxDepth)
+    private void preorderHelper(SemanticGroup group, ResourceElement node, int maxDepth)
     {
         if(node == null)
             return;
@@ -44,13 +50,13 @@ public class HierarchyLimitSearch extends ExtensibleCustomSearchImpl {
 			int depthcount = depth(semanticNode);
 			
 			if(maxDepth > depthcount){
-				result.getElements().add(semanticNode);
+				group.getElements().add(semanticNode);
 			}
         }
         
         if(node instanceof Resource){
         	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
-        		preorderHelper(result, resourceElement, maxDepth);
+        		preorderHelper(group, resourceElement, maxDepth);
         }
     }
 	

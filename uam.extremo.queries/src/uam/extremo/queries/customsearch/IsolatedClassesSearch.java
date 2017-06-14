@@ -1,26 +1,30 @@
 package uam.extremo.queries.customsearch;
 
-import semanticmanager.AtomicSearchResult;
+import semanticmanager.GroupedSearchResult;
+import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Resource;
 import semanticmanager.ResourceElement;
 import semanticmanager.SearchResult;
+import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
+import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.impl.ExtensibleCustomSearchImpl;
 
 public class IsolatedClassesSearch extends ExtensibleCustomSearchImpl {
-	Resource resource = null;
-	
 	@Override
 	public void search(SearchResult result) {
-		if (result instanceof AtomicSearchResult) {
-			AtomicSearchResult atomicSearchResult = (AtomicSearchResult) result;
-			Object option = atomicSearchResult.getOptionValue("resource");
+		if (result instanceof GroupedSearchResult) {
+			GroupedSearchResult groupedSearchResult = (GroupedSearchResult) result;
 			
-			if(option instanceof Resource){
-				resource = (Resource) option;
-				atomicSearchResult.getApplyOnElements().add(resource);
-				preorder(atomicSearchResult, resource);
+			for(NamedElement namedElement : groupedSearchResult.getApplyOnElements()){
+				if (namedElement instanceof Resource) {
+					Resource resource = (Resource) namedElement;
+					
+					SemanticGroup group = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
+					group.setName(resource.getName());
+					preorder(resource, group, resource);	
+				}
 			}
 		}
 	}
@@ -40,11 +44,11 @@ public class IsolatedClassesSearch extends ExtensibleCustomSearchImpl {
 		return counter;
 	}
 	
-	public synchronized void preorder(AtomicSearchResult result, Resource resource){
-        preorderHelper(result, resource);
+	public synchronized void preorder(Resource resource, SemanticGroup group, Resource node){
+        preorderHelper(resource, group, node);
     }
      
-    private void preorderHelper(AtomicSearchResult result, ResourceElement resourceElement){
+    private void preorderHelper(Resource resource, SemanticGroup group, ResourceElement resourceElement){
         if(resourceElement == null)
             return;
         
@@ -58,13 +62,13 @@ public class IsolatedClassesSearch extends ExtensibleCustomSearchImpl {
 			int supers = semanticNode.getSupers().size();
 			
 			if(count == 0 && incommingRefs == 0 && supers == 0){
-				result.getApplyOnElements().add(semanticNode);
+				group.getElements().add(semanticNode);
 			}
         }
         
         if(resourceElement instanceof Resource){
         	for(ResourceElement rE : ((Resource) resourceElement).getResourceElements())
-        		preorderHelper(result, rE);
+        		preorderHelper(resource, group, rE);
         }
     }
 }

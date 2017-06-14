@@ -82,6 +82,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="options" upperBound="-1"
         eType="#//SearchOption" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterBy" eType="#//DataModelType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompositeSearchConfiguration" eSuperTypes="#//SearchConfiguration">
     <eOperations name="search">
@@ -102,7 +103,7 @@
     <eLiterals name="DataProperty" value="2"/>
     <eLiterals name="ObjectProperty" value="3"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Service" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Service">
     <eOperations name="matches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="expression" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -117,7 +118,6 @@
       <eParameters name="result" eType="#//SearchResult"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="grouped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="#//Level"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PredicateBasedSearch" eSuperTypes="#//SimpleSearchConfiguration">
     <eOperations name="matches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -128,12 +128,10 @@
       <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="inps" upperBound="-1" eType="#//SearchResultOptionValue"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterBy" eType="#//DataModelType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicSearchResult" eSuperTypes="#//SearchResult">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//NamedElement"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" eType="#//NamedElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GroupedSearchResult" eSuperTypes="#//SearchResult">
     <eOperations name="createSemanticGroup" eType="#//SemanticGroup">
@@ -255,9 +253,5 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="option" eType="#//PrimitiveTypeSearchOption"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="calls" eType="#//Service"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="Level">
-    <eLiterals name="description"/>
-    <eLiterals name="descriptor" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

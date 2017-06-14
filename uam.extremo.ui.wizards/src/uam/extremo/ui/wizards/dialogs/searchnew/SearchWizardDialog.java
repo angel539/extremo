@@ -12,10 +12,6 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.spi.RegistryContributor;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.wizard.Wizard;
@@ -26,16 +22,19 @@ import semanticmanager.AtomicSearchResult;
 import semanticmanager.CustomSearch;
 import semanticmanager.DataModelTypeSearchOption;
 import semanticmanager.DataModelTypeSearchResultOptionValue;
+import semanticmanager.DataProperty;
 import semanticmanager.ExtendedSemanticmanagerFactory;
 import semanticmanager.NamedElement;
+import semanticmanager.ObjectProperty;
 import semanticmanager.PredicateBasedSearch;
 import semanticmanager.PrimitiveTypeSearchOption;
 import semanticmanager.PrimitiveTypeSearchResultOptionValue;
 import semanticmanager.Repository;
+import semanticmanager.Resource;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchOption;
 import semanticmanager.SearchResult;
-import semanticmanager.SemanticmanagerPackage;
+import semanticmanager.SemanticNode;
 import semanticmanager.Service;
 import semanticmanager.SimpleSearchConfiguration;
 import uam.extremo.extensions.AssistantFactory;
@@ -45,7 +44,6 @@ public class SearchWizardDialog extends Wizard{
 	
 	SearchConfigurationSelectorWizardPage searchPage = null;
 	
-	NamedElementSelectionWizardPage namedElementSelectionPage;
 	List<SimpleSearchConfiguration> searchConfigurations;
 	List<Service> services;
 	
@@ -62,7 +60,7 @@ public class SearchWizardDialog extends Wizard{
 											.stream().filter(ssc -> ssc instanceof SimpleSearchConfiguration)
 										    .map (ssc -> (SimpleSearchConfiguration) ssc)
 										    .collect(Collectors.toList());
-		this.services = AssistantFactory.getInstance().getServices();
+		this.services = AssistantFactory.getInstance().getServices();		
 		searchPage = new SearchConfigurationSelectorWizardPage("Search", "Select a search configuration from the query catalogue", searchConfigurations, services, repositoryFrom, namedElement);
 	}
 	
@@ -83,7 +81,6 @@ public class SearchWizardDialog extends Wizard{
 			PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfigurationSelected;
 			searchResult = ExtendedSemanticmanagerFactory.eINSTANCE.createAtomicSearchResult();
 			searchResult.setConfiguration(predicateBasedSearch);
-			if(searchPage.getDescriptor() != null) ((AtomicSearchResult) searchResult).setDescriptor(searchPage.getDescriptor());
 		}
 		else{
 			// Custom Search
@@ -92,20 +89,10 @@ public class SearchWizardDialog extends Wizard{
 			if(customSearch.isGrouped()){
 				searchResult = ExtendedSemanticmanagerFactory.eINSTANCE.createGroupedSearchResult();
 				searchResult.setConfiguration(customSearch);
-				
-				/*EditingDomain editingDomain = AdapterFactoryEditingDomain.getEditingDomainFor(searchConfigurationSelected);
-				Command command = AddCommand.create(editingDomain, customSearch,
-						SemanticmanagerPackage.eINSTANCE.getSearchConfiguration_Results(), searchResult);
-				editingDomain.getCommandStack().execute(command);*/
 			}
 			else{
 				searchResult = ExtendedSemanticmanagerFactory.eINSTANCE.createAtomicSearchResult();
 				searchResult.setConfiguration(customSearch);
-				
-				/*EditingDomain editingDomain = AdapterFactoryEditingDomain.getEditingDomainFor(searchConfigurationSelected);
-				Command command = AddCommand.create(editingDomain, customSearch,
-				SemanticmanagerPackage.eINSTANCE.getSearchConfiguration_Results(), searchResult);
-				editingDomain.getCommandStack().execute(command);*/
 			}
 		}
 		
@@ -113,6 +100,8 @@ public class SearchWizardDialog extends Wizard{
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
 				try {
 					Map<SearchOption, Object> searchOptionStringValues = searchPage.getValues();
+					Map<SearchOption, Service> searchOptionServiceCalling = searchPage.getServiceCalls();
+					
 					for(java.util.Map.Entry<SearchOption, Object> entry : searchOptionStringValues.entrySet()){
 						if (entry.getKey() instanceof PrimitiveTypeSearchOption) {
 							PrimitiveTypeSearchOption primitiveTypeSearchOption = (PrimitiveTypeSearchOption) entry.getKey();
@@ -120,6 +109,10 @@ public class SearchWizardDialog extends Wizard{
 							PrimitiveTypeSearchResultOptionValue primitiveTypeSearchResultOptionValue = ExtendedSemanticmanagerFactory.eINSTANCE.createPrimitiveTypeSearchResultOptionValue();
 							primitiveTypeSearchResultOptionValue.setOption(primitiveTypeSearchOption);
 							primitiveTypeSearchResultOptionValue.setValue(entry.getValue().toString());
+							
+							Service service = searchOptionServiceCalling.get(entry.getKey());
+							primitiveTypeSearchResultOptionValue.setCalls(service);
+							
 							searchResult.getValues().add(primitiveTypeSearchResultOptionValue);
 						}
 						
@@ -162,6 +155,8 @@ public class SearchWizardDialog extends Wizard{
 		if (searchConfigurationSelected instanceof CustomSearch) {
 			CustomSearch customSearch = (CustomSearch) searchConfigurationSelected;
 			CustomSearch customSearchBundle = callCustomSearchExtension(customSearch.getId());
+			
+			composeApplyOnElementsList(customSearch.getFilterBy().getLiteral(), searchResult);
 			customSearchBundle.search(searchResult);
 		}
 			
@@ -169,10 +164,11 @@ public class SearchWizardDialog extends Wizard{
 			PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfigurationSelected;
 			
 			if (searchResult instanceof AtomicSearchResult) {
-				AtomicSearchResult atomicSearchResult = (AtomicSearchResult) searchResult;				
-				atomicSearchResult.getApplyOnElements().addAll(atomicSearchResult.getDescriptor().getDescribes());
-				
+				AtomicSearchResult atomicSearchResult = (AtomicSearchResult) searchResult;
 				PredicateBasedSearch predicateBasedSearchBundle = callPredicateBasedSearchExtension(predicateBasedSearch.getId());
+				
+				composeApplyOnElementsList(predicateBasedSearch.getFilterBy().getLiteral(), searchResult);
+				
 				for(NamedElement namedElement : atomicSearchResult.getApplyOnElements()){
 					boolean matches = predicateBasedSearchBundle.matches(namedElement, atomicSearchResult.getValues());
 					
@@ -182,6 +178,32 @@ public class SearchWizardDialog extends Wizard{
 				}
 			}	
 		}
+	}
+	
+	private void composeApplyOnElementsList(String filterBy, SearchResult searchResult){		
+	    repositoryFrom.eAllContents().forEachRemaining(
+	    		element -> {
+	    			if(element instanceof NamedElement){
+	    				NamedElement namedElement = (NamedElement) element;
+	    				
+    					if((filterBy.compareTo("Resource") == 0) && namedElement instanceof Resource){
+    						searchResult.getApplyOnElements().add(namedElement);
+    					}
+    					
+    					if((filterBy.compareTo("SemanticNode") == 0) && namedElement instanceof SemanticNode){
+    						searchResult.getApplyOnElements().add(namedElement);
+    					}
+    					
+    					if((filterBy.compareTo("DataProperty") == 0) && namedElement instanceof DataProperty){
+    						searchResult.getApplyOnElements().add(namedElement);
+    					}
+    					
+    					if((filterBy.compareTo("ObjectProperty") == 0) && namedElement instanceof ObjectProperty){
+    						searchResult.getApplyOnElements().add(namedElement);
+    					}
+	    			}
+	    		}
+		    );
 	}
 	
 	private PredicateBasedSearch callPredicateBasedSearchExtension(String idPredicateBasedSearch){

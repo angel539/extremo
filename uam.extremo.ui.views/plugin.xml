@@ -96,6 +96,11 @@
             id="uam.extremo.ui.views.constraintvalidation"
             name="Constraint Validation">
       </command>
+      <command
+            defaultHandler="uam.extremo.ui.views.repositories.DeleteHandler"
+            id="uam.extremo.ui.views.delete"
+            name="Delete">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
@@ -132,6 +137,11 @@
                icon="icons/up16.png"
                style="push">
          </command>
+         <command
+               commandId="uam.extremo.ui.views.delete"
+               icon="icons/delete.png"
+               style="push">
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -144,6 +154,24 @@
          <command
                commandId="uam.extremo.ui.views.constraintvalidation"
                icon="icons/constraints.png"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:uam.extremo.ui.views.SearchTree">
+         <command
+               commandId="uam.extremo.ui.views.delete"
+               icon="icons/delete.png"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="uam.extremo.ui.views.ConstraintInterpreters">
+         <command
+               commandId="uam.extremo.ui.views.delete"
+               icon="icons/delete.png"
                style="push">
          </command>
       </menuContribution>
