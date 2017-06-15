@@ -380,7 +380,7 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 			EClass eClass = (EClass) parent.getTrace();
 			
 			for(EReference reference : eClass.getEAllReferences()){
-				NamedElement range = namedElementFromId(semanticResource, reference.getEReferenceType().getName());
+				NamedElement range = namedElementFromId(semanticResource, reference.getEReferenceType());
 				
 				if(range != null && range instanceof SemanticNode){
 					SemanticNode rangeSemanticNode = (SemanticNode) range;

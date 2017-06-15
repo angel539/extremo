@@ -349,7 +349,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			EClass eClass = (EClass) parent.getTrace();
 			
 			for(EReference reference : eClass.getEReferences()){
-				NamedElement range = namedElementFromId(semanticResource, reference.getEReferenceType().getName());
+				NamedElement range = namedElementFromId(semanticResource, reference.getEReferenceType());
 				
 				if(range != null && range instanceof SemanticNode){
 					SemanticNode rangeSemanticNode = (SemanticNode) range;
@@ -393,7 +393,6 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 					
 					ObjectProperty descriptor = 
 							searchObjectPropertyByName(
-									//(SemanticNode) parent.getDescriptors(), 
 									(SemanticNode) parent.getDescriptors().get(parent.getDescriptors().size() - 1),
 									eReference.getName()
 							);
