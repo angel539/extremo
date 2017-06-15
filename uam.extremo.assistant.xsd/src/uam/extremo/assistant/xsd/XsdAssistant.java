@@ -8,7 +8,6 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.io.FilenameUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -219,8 +218,6 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 					
 					if(descriptor != null){
 						Object eAttrValue = eobject.eGet(eAttribute);
-						
-						
 						String value = "";
 						if(eAttrValue != null) value = eAttrValue.toString();
 						
@@ -383,7 +380,22 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 			EClass eClass = (EClass) parent.getTrace();
 			
 			for(EReference reference : eClass.getEAllReferences()){
-				SemanticNode range = semanticNodeFromName(semanticResource, reference.getEReferenceType().getName());
+				NamedElement range = namedElementFromId(semanticResource, reference.getEReferenceType().getName());
+				
+				if(range != null && range instanceof SemanticNode){
+					SemanticNode rangeSemanticNode = (SemanticNode) range;
+					
+					ObjectProperty objectProperty = 
+							createObjectProperty(
+									reference, 
+									reference.getName(), 
+									reference.getLowerBound(), 
+									reference.getUpperBound(), 
+									rangeSemanticNode);
+					
+					addObjectPropertyToNode(parent, objectProperty);
+				}
+				/*SemanticNode range = semanticNodeFromName(semanticResource, reference.getEReferenceType().getName());
 				
 				ObjectProperty objectProperty = 
 						createObjectProperty(
@@ -393,7 +405,7 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 								reference.getUpperBound(), 
 								range);
 				
-				addObjectPropertyToNode(parent, objectProperty);
+				addObjectPropertyToNode(parent, objectProperty);*/
 			}
 		}		
 	}
@@ -416,10 +428,28 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 			EClass eClass = (EClass) parent.getTrace();
 			
 			for(EClass superclass : eClass.getESuperTypes()){
-				SemanticNode range = semanticNodeFromName(semanticResource, superclass.getName());
-				addSuperClassToNode(parent, range);
+				NamedElement range = namedElementFromName(semanticResource, superclass.getName());
+				
+				if(range != null && range instanceof SemanticNode){
+					SemanticNode semanticNodeRange = (SemanticNode) range;
+					addSuperClassToNode(parent, semanticNodeRange);
+				}
 			}
 		}
 	}
 
+	@Override
+	public void toSuper(DataProperty parent) {
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void toSuper(ObjectProperty parent) {
+		// TODO Auto-generated method stub	
+	}
+
+	@Override
+	public void toInverseOf(ObjectProperty parent) {
+		// TODO Auto-generated method stub	
+	}
 }

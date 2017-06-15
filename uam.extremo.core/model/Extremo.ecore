@@ -186,10 +186,6 @@
         eType="#//ConstraintInterpreter"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SemanticNode" eSuperTypes="#//ResourceElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="supers" upperBound="-1"
-        eType="#//SemanticNode" eOpposite="#//SemanticNode/subs"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subs" upperBound="-1" eType="#//SemanticNode"
-        eOpposite="#//SemanticNode/supers"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Property" containment="true" eOpposite="#//Property/semanticNodeFrom"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -208,6 +204,10 @@
         eType="#//Constraint" containment="true" eOpposite="#//Constraint/appliedTo"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metadata" upperBound="-1"
         eType="#//MetaData" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supers" upperBound="-1"
+        eType="#//NamedElement" eOpposite="#//NamedElement/subs"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subs" upperBound="-1" eType="#//NamedElement"
+        eOpposite="#//NamedElement/supers"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property" abstract="true" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticNodeFrom" eType="#//SemanticNode"
@@ -217,6 +217,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectProperty" eSuperTypes="#//Property">
     <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="#//SemanticNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inverseOf" eType="#//ObjectProperty"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataProperty" eSuperTypes="#//Property">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//Type"/>

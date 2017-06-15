@@ -1098,7 +1098,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSemanticNode_Supers() {
+	public EReference getSemanticNode_Properties() {
 		return (EReference)semanticNodeEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1107,26 +1107,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSemanticNode_Subs() {
-		return (EReference)semanticNodeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSemanticNode_Properties() {
-		return (EReference)semanticNodeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getSemanticNode_Abstract() {
-		return (EAttribute)semanticNodeEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)semanticNodeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1224,6 +1206,24 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getNamedElement_Supers() {
+		return (EReference)namedElementEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNamedElement_Subs() {
+		return (EReference)namedElementEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProperty() {
 		return propertyEClass;
 	}
@@ -1271,6 +1271,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 */
 	public EReference getObjectProperty_Range() {
 		return (EReference)objectPropertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getObjectProperty_InverseOf() {
+		return (EReference)objectPropertyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1609,8 +1618,6 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEReference(resourceEClass, RESOURCE__DEFAULT_CONSTRAINT_INTERPRETER);
 
 		semanticNodeEClass = createEClass(SEMANTIC_NODE);
-		createEReference(semanticNodeEClass, SEMANTIC_NODE__SUPERS);
-		createEReference(semanticNodeEClass, SEMANTIC_NODE__SUBS);
 		createEReference(semanticNodeEClass, SEMANTIC_NODE__PROPERTIES);
 		createEAttribute(semanticNodeEClass, SEMANTIC_NODE__ABSTRACT);
 
@@ -1624,6 +1631,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEReference(namedElementEClass, NAMED_ELEMENT__DESCRIBES);
 		createEReference(namedElementEClass, NAMED_ELEMENT__CONSTRAINTS);
 		createEReference(namedElementEClass, NAMED_ELEMENT__METADATA);
+		createEReference(namedElementEClass, NAMED_ELEMENT__SUPERS);
+		createEReference(namedElementEClass, NAMED_ELEMENT__SUBS);
 
 		propertyEClass = createEClass(PROPERTY);
 		createEReference(propertyEClass, PROPERTY__SEMANTIC_NODE_FROM);
@@ -1632,6 +1641,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 
 		objectPropertyEClass = createEClass(OBJECT_PROPERTY);
 		createEReference(objectPropertyEClass, OBJECT_PROPERTY__RANGE);
+		createEReference(objectPropertyEClass, OBJECT_PROPERTY__INVERSE_OF);
 
 		dataPropertyEClass = createEClass(DATA_PROPERTY);
 		createEAttribute(dataPropertyEClass, DATA_PROPERTY__TYPE);
@@ -1860,8 +1870,6 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEReference(getResource_DefaultConstraintInterpreter(), this.getConstraintInterpreter(), null, "defaultConstraintInterpreter", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(semanticNodeEClass, SemanticNode.class, "SemanticNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSemanticNode_Supers(), this.getSemanticNode(), this.getSemanticNode_Subs(), "supers", null, 0, -1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSemanticNode_Subs(), this.getSemanticNode(), this.getSemanticNode_Supers(), "subs", null, 0, -1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemanticNode_Properties(), this.getProperty(), this.getProperty_SemanticNodeFrom(), "properties", null, 0, -1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSemanticNode_Abstract(), ecorePackage.getEBoolean(), "abstract", null, 0, 1, SemanticNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1875,6 +1883,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEReference(getNamedElement_Describes(), this.getNamedElement(), this.getNamedElement_Descriptors(), "describes", null, 0, -1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNamedElement_Constraints(), this.getConstraint(), this.getConstraint_AppliedTo(), "constraints", null, 0, -1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNamedElement_Metadata(), this.getMetaData(), null, "metadata", null, 0, -1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNamedElement_Supers(), this.getNamedElement(), this.getNamedElement_Subs(), "supers", null, 0, -1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNamedElement_Subs(), this.getNamedElement(), this.getNamedElement_Supers(), "subs", null, 0, -1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyEClass, Property.class, "Property", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProperty_SemanticNodeFrom(), this.getSemanticNode(), this.getSemanticNode_Properties(), "semanticNodeFrom", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1883,6 +1893,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 
 		initEClass(objectPropertyEClass, ObjectProperty.class, "ObjectProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getObjectProperty_Range(), this.getSemanticNode(), null, "range", null, 0, 1, ObjectProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getObjectProperty_InverseOf(), this.getObjectProperty(), null, "inverseOf", null, 0, 1, ObjectProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataPropertyEClass, DataProperty.class, "DataProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataProperty_Type(), this.getType(), "type", null, 0, 1, DataProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

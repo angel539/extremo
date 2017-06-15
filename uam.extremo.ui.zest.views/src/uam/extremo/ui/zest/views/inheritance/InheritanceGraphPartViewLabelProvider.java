@@ -341,7 +341,7 @@ public class InheritanceGraphPartViewLabelProvider extends AdapterFactoryLabelPr
 				StyledString styledString = new StyledString(semanticNode.getName());
 				//styledString.
 				
-				for(SemanticNode superC : semanticNode.getSupers()){
+				for(NamedElement superC : semanticNode.getSupers()){
 					styledString.append(" < " + superC.getName(), StyledString.QUALIFIER_STYLER);
 				}
 				
@@ -353,8 +353,8 @@ public class InheritanceGraphPartViewLabelProvider extends AdapterFactoryLabelPr
 			else{
 				StyledString styledString = new StyledString(semanticNode.getName());
 				
-				for(SemanticNode superC : semanticNode.getSupers()){
-					styledString.append(" -> " + superC.getName(), StyledString.QUALIFIER_STYLER);
+				for(NamedElement superC : semanticNode.getSupers()){
+					styledString.append(" < " + superC.getName(), StyledString.QUALIFIER_STYLER);
 				}
 				
 				for(NamedElement descriptor : semanticNode.getDescriptors())
@@ -380,10 +380,19 @@ public class InheritanceGraphPartViewLabelProvider extends AdapterFactoryLabelPr
 				StyledString styledString = null;
 				if(property.getType() != null){
 					styledString = new StyledString(property.getName());
+					
+					for(NamedElement superC : property.getSupers()){
+						styledString.append(" < " + superC.getName(), StyledString.QUALIFIER_STYLER);
+					}
+					
 					styledString.append(" :" + property.getType().getLiteral(), StyledString.COUNTER_STYLER);
 				}
 				else{
 					styledString = new StyledString(property.getName());
+					
+					for(NamedElement superC : property.getSupers()){
+						styledString.append(" < " + superC.getName(), StyledString.QUALIFIER_STYLER);
+					}
 				}
 
 				styledString.append(" [" + property.getLowerBound() + ", " + property.getUpperBound() + "] ", StyledString.QUALIFIER_STYLER);
@@ -408,12 +417,21 @@ public class InheritanceGraphPartViewLabelProvider extends AdapterFactoryLabelPr
 			if((objectProperty.getDescriptors() == null) || (objectProperty.getDescriptors().isEmpty())){
 				ObjectProperty property = (ObjectProperty) element;
 				StyledString styledString = new StyledString(property.getName());
+				
+				for(NamedElement superC : property.getSupers()){
+					styledString.append(" < " + superC.getName(), StyledString.QUALIFIER_STYLER);
+				}
+				
 				if(property.getRange() != null) styledString.append(" ->" + property.getRange().getName(), StyledString.COUNTER_STYLER);
 				styledString.append(" [" + property.getLowerBound() + ", " + property.getUpperBound() + "] ", StyledString.QUALIFIER_STYLER);
 				return styledString;
 			}
 			else{
 				StyledString styledString = new StyledString(objectProperty.getName());
+				
+				for(NamedElement superC : objectProperty.getSupers()){
+					styledString.append(" < " + superC.getName(), StyledString.QUALIFIER_STYLER);
+				}
 				
 				for(NamedElement namedElement : objectProperty.getDescriptors())
 					styledString.append(" :" + namedElement.getName(), StyledString.COUNTER_STYLER);

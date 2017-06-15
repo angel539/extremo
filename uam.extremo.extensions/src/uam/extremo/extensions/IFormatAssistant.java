@@ -1,5 +1,8 @@
 package uam.extremo.extensions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import semanticmanager.Constraint;
 import semanticmanager.DataProperty;
 import semanticmanager.ExtendedSemanticmanagerFactory;
@@ -17,6 +20,9 @@ public interface IFormatAssistant {
     public void toDataProperty(SemanticNode parent);
     public void toObjectProperty(SemanticNode parent);
     public void toSuper(SemanticNode parent);
+    public void toSuper(DataProperty parent);
+    public void toSuper(ObjectProperty parent);
+    public void toInverseOf(ObjectProperty parent);
 
     default SemanticNode searchSemanticNodeByName(Resource resource, String name) {
     	if(resource == null || name == null) return null;
@@ -120,6 +126,30 @@ public interface IFormatAssistant {
     	return true;
     }
     
+    default boolean addSuperClassToObjectProperty(ObjectProperty node, ObjectProperty superproperty){
+    	if(node == null || superproperty == null) return false;
+    	node.getSupers().add(superproperty);
+    	return true;
+    }
+    
+    default boolean addSubClassToObjectProperty(ObjectProperty node, ObjectProperty subproperty){
+    	if(node == null || subproperty == null) return false;
+    	node.getSubs().add(subproperty);
+    	return true;
+    }
+    
+    default boolean addSuperClassToDataProperty(DataProperty node, DataProperty superdataproperty){
+    	if(node == null || superdataproperty == null) return false;
+    	node.getSupers().add(superdataproperty);
+    	return true;
+    }
+    
+    default boolean addSubClassToDataProperty(DataProperty node, DataProperty subdataproperty){
+    	if(node == null || subdataproperty == null) return false;
+    	node.getSubs().add(subdataproperty);
+    	return true;
+    }
+    
     default DataProperty createDataProperty(Object id, String name, int lowerbound, int upperbound, String description, Type type){
     	DataProperty dataProperty = ExtendedSemanticmanagerFactory.eINSTANCE.createDataProperty();
     	dataProperty.setTrace(id);
@@ -191,7 +221,41 @@ public interface IFormatAssistant {
     	return true;
     }
     
-    default SemanticNode semanticNodeFromName(Resource resource, String name){
+    default NamedElement namedElementFromName(Resource resource, String name){
+    	List<NamedElement> returnNamedElements = new ArrayList<>();
+    	
+    	resource.eAllContents().forEachRemaining(
+    			element -> {
+    				if (element instanceof NamedElement) {
+						NamedElement namedElement = (NamedElement) element;
+						if(namedElement.getName().compareTo(name) == 0)
+							returnNamedElements.add(namedElement);
+					}
+    			}
+    	);
+    	
+    	if(returnNamedElements.isEmpty()) return null;
+    	return returnNamedElements.get(0);
+    }
+    
+    default NamedElement namedElementFromId(Resource resource, Object id){
+    	List<NamedElement> returnNamedElements = new ArrayList<>();
+    	
+    	resource.eAllContents().forEachRemaining(
+    			element -> {
+    				if (element instanceof NamedElement) {
+						NamedElement namedElement = (NamedElement) element;
+						if(namedElement.getTrace().equals(id))
+							returnNamedElements.add(namedElement);
+					}
+    			}
+    	);
+    	
+    	if(returnNamedElements.isEmpty()) return null;
+    	return returnNamedElements.get(0);
+    }
+
+    /*default SemanticNode semanticNodeFromName(Resource resource, String name){
     	for(ResourceElement resourceElement : resource.getResourceElements()){
     		if(resourceElement instanceof SemanticNode){
     			SemanticNode node = (SemanticNode) resourceElement;
@@ -202,9 +266,9 @@ public interface IFormatAssistant {
     		}	
     	}
     	return null;
-    }
+    }*/
     
-    default SemanticNode semanticNodeFromId(Resource resource, Object trace){
+    /*default SemanticNode semanticNodeFromId(Resource resource, Object trace){
     	for(ResourceElement resourceElement : resource.getResourceElements()){
     		if(resourceElement instanceof SemanticNode){
     			SemanticNode node = (SemanticNode) resourceElement;
@@ -215,7 +279,7 @@ public interface IFormatAssistant {
     		}	
     	}
     	return null;
-    }
+    }*/
     
     default Type defineIntType(){
     	return Type.INT;

@@ -349,29 +349,33 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			EClass eClass = (EClass) parent.getTrace();
 			
 			for(EReference reference : eClass.getEReferences()){
-				SemanticNode range = semanticNodeFromName(semanticResource, reference.getEReferenceType().getName());
-
-				ObjectProperty objectProperty = 
-						createObjectProperty(
-								reference, 
-								reference.getName(), 
-								reference.getLowerBound(), 
-								reference.getUpperBound(), 
-								range);
+				NamedElement range = namedElementFromId(semanticResource, reference.getEReferenceType().getName());
 				
-				addObjectPropertyToNode(parent, objectProperty);
-				
-				// Constraints
-				for(EAnnotation annotation : eClass.getEAnnotations()){
-					if(annotation.getSource().equals(OCLUri)){
-						for(Entry<String, String> entry : annotation.getDetails().entrySet()){
-							if(! constraintNames.contains(entry.getKey())){
-								constraintNames.add(entry.getKey());
-								Constraint constraint = createConstraint("OCL", entry.getKey(), entry.getValue());
-								addConstraintToElement(objectProperty, constraint);
+				if(range != null && range instanceof SemanticNode){
+					SemanticNode rangeSemanticNode = (SemanticNode) range;
+					
+					ObjectProperty objectProperty = 
+							createObjectProperty(
+									reference, 
+									reference.getName(), 
+									reference.getLowerBound(), 
+									reference.getUpperBound(), 
+									rangeSemanticNode);
+					
+					addObjectPropertyToNode(parent, objectProperty);
+					
+					// Constraints
+					for(EAnnotation annotation : eClass.getEAnnotations()){
+						if(annotation.getSource().equals(OCLUri)){
+							for(Entry<String, String> entry : annotation.getDetails().entrySet()){
+								if(! constraintNames.contains(entry.getKey())){
+									constraintNames.add(entry.getKey());
+									Constraint constraint = createConstraint("OCL", entry.getKey(), entry.getValue());
+									addConstraintToElement(objectProperty, constraint);
+								}
 							}
-						}
-					}										
+						}										
+					}
 				}
 			}
 		}
@@ -455,9 +459,31 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 			EClass eClass = (EClass) parent.getTrace();
 			
 			for(EClass superclass : eClass.getESuperTypes()){
-				SemanticNode range = semanticNodeFromName(semanticResource, superclass.getName());
-				addSuperClassToNode(parent, range);
+				NamedElement range = namedElementFromName(semanticResource, superclass.getName());
+				
+				if(range != null && range instanceof SemanticNode){
+					SemanticNode semanticNodeRange = (SemanticNode) range;
+					addSuperClassToNode(parent, semanticNodeRange);
+				}
 			}
 		}
+	}
+
+
+	@Override
+	public void toSuper(DataProperty parent) {
+		// TODO Auto-generated method stub
+	}
+
+
+	@Override
+	public void toSuper(ObjectProperty parent) {
+		// TODO Auto-generated method stub
+	}
+
+
+	@Override
+	public void toInverseOf(ObjectProperty parent) {
+		// TODO Auto-generated method stub	
 	}
 }

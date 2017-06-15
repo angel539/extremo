@@ -30,6 +30,8 @@ import semanticmanager.SemanticmanagerPackage;
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getDescribes <em>Describes</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link semanticmanager.impl.NamedElementImpl#getMetadata <em>Metadata</em>}</li>
+ *   <li>{@link semanticmanager.impl.NamedElementImpl#getSupers <em>Supers</em>}</li>
+ *   <li>{@link semanticmanager.impl.NamedElementImpl#getSubs <em>Subs</em>}</li>
  * </ul>
  *
  * @generated
@@ -192,6 +194,26 @@ public abstract class NamedElementImpl extends DefaultPersistentEObject implemen
 	@SuppressWarnings("unchecked")
 	public EList<MetaData> getMetadata() {
 		return (EList<MetaData>)eGet(SemanticmanagerPackage.Literals.NAMED_ELEMENT__METADATA, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public EList<NamedElement> getSupers() {
+		return (EList<NamedElement>)eGet(SemanticmanagerPackage.Literals.NAMED_ELEMENT__SUPERS, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public EList<NamedElement> getSubs() {
+		return (EList<NamedElement>)eGet(SemanticmanagerPackage.Literals.NAMED_ELEMENT__SUBS, true);
 	}
 
 } //NamedElementImpl

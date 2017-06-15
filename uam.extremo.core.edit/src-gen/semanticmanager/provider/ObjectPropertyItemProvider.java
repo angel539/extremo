@@ -44,6 +44,7 @@ public class ObjectPropertyItemProvider extends PropertyItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addRangePropertyDescriptor(object);
+			addInverseOfPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -62,6 +63,28 @@ public class ObjectPropertyItemProvider extends PropertyItemProvider {
 				 getString("_UI_ObjectProperty_range_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectProperty_range_feature", "_UI_ObjectProperty_type"),
 				 SemanticmanagerPackage.Literals.OBJECT_PROPERTY__RANGE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Inverse Of feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInverseOfPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ObjectProperty_inverseOf_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ObjectProperty_inverseOf_feature", "_UI_ObjectProperty_type"),
+				 SemanticmanagerPackage.Literals.OBJECT_PROPERTY__INVERSE_OF,
 				 true,
 				 false,
 				 true,

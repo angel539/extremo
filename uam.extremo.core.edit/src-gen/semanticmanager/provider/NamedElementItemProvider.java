@@ -70,6 +70,8 @@ public class NamedElementItemProvider
 			addDrawnPropertyDescriptor(object);
 			addDescriptorsPropertyDescriptor(object);
 			addDescribesPropertyDescriptor(object);
+			addSupersPropertyDescriptor(object);
+			addSubsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -220,6 +222,50 @@ public class NamedElementItemProvider
 				 getString("_UI_NamedElement_describes_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_describes_feature", "_UI_NamedElement_type"),
 				 SemanticmanagerPackage.Literals.NAMED_ELEMENT__DESCRIBES,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Supers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSupersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_NamedElement_supers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_supers_feature", "_UI_NamedElement_type"),
+				 SemanticmanagerPackage.Literals.NAMED_ELEMENT__SUPERS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Subs feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSubsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_NamedElement_subs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NamedElement_subs_feature", "_UI_NamedElement_type"),
+				 SemanticmanagerPackage.Literals.NAMED_ELEMENT__SUBS,
 				 true,
 				 false,
 				 true,

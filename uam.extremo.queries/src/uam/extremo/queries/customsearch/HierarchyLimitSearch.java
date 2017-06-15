@@ -60,15 +60,15 @@ public class HierarchyLimitSearch extends ExtensibleCustomSearchImpl {
         }
     }
 	
-	private int depth(SemanticNode node){
+	private int depth(NamedElement node){
 		if (node.getSupers() == null) {
 			return 1;
 		}
 		else {
 			Optional optionalInteger = node.getSupers().stream().collect(
 					Collectors.maxBy(
-						new Comparator<SemanticNode>() {
-							public int compare(SemanticNode node1, SemanticNode node2) {
+						new Comparator<NamedElement>() {
+							public int compare(NamedElement node1, NamedElement node2) {
 								int depth1 = (depth(node1) + 1);
 								int depth2 = (depth(node2) + 1);
 								

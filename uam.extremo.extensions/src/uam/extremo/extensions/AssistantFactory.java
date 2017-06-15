@@ -47,16 +47,21 @@ import fr.inria.atlanmod.neoemf.resource.PersistentResourceFactory;
 import semanticmanager.Constraint;
 import semanticmanager.ConstraintInterpreter;
 import semanticmanager.DataModelType;
+import semanticmanager.DataProperty;
 import semanticmanager.ExtendedSemanticmanagerFactory;
 import semanticmanager.ExtensibleCustomSearch;
 import semanticmanager.ExtensiblePredicateBasedSearch;
+import semanticmanager.GroupedSearchResult;
 import semanticmanager.NamedElement;
+import semanticmanager.ObjectProperty;
 import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
 import semanticmanager.Resource;
 import semanticmanager.ResourceElement;
 import semanticmanager.SearchConfiguration;
+import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
+import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.Service;
 import semanticmanager.Type;
 
@@ -577,14 +582,7 @@ public class AssistantFactory implements IResourceChangeListener{
 						resource.setAlive(loaded);
 						
 						if(loaded){
-							for(ResourceElement resourceElement : resource.getResourceElements()){
-								if(resourceElement instanceof SemanticNode){
-									SemanticNode node = (SemanticNode) resourceElement;
-									toDataThread(assistant, node);
-									toObjectThread(assistant, node);
-									toSuperThread(assistant, node);
-								}
-							}
+							preorder(assistant, resource);
 						}
 						break loop;
 					}
@@ -628,14 +626,7 @@ public class AssistantFactory implements IResourceChangeListener{
 			resource.setAlive(loaded);
 			
 			if(loaded){
-				for(ResourceElement resourceElement : resource.getResourceElements()){
-					if(resourceElement instanceof SemanticNode){
-						SemanticNode node = (SemanticNode) resourceElement;
-						toDataThread(assistant, node);
-						toObjectThread(assistant, node);
-						toSuperThread(assistant, node);
-					}
-				}
+				preorder(assistant, resource);
 			}
 			
 			String projectName = repository.getProject();
@@ -677,14 +668,7 @@ public class AssistantFactory implements IResourceChangeListener{
 				resource.setAlive(loaded);
 				
 				if(loaded){
-					for(ResourceElement resourceElement : resource.getResourceElements()){
-						if(resourceElement instanceof SemanticNode){
-							SemanticNode node = (SemanticNode) resourceElement;
-							toDataThread(assistant, node);
-							toObjectThread(assistant, node);
-							toSuperThread(assistant, node);
-						}
-					}
+					preorder(assistant, resource);
 				}
 				break loop;
 			}
@@ -711,14 +695,7 @@ public class AssistantFactory implements IResourceChangeListener{
 						resource.setAlive(loaded);
 						
 						if(loaded){
-							for(ResourceElement resourceElement : resource.getResourceElements()){
-								if(resourceElement instanceof SemanticNode){
-									SemanticNode node = (SemanticNode) resourceElement;
-									toDataThread(assistant, node);
-									toObjectThread(assistant, node);
-									toSuperThread(assistant, node);
-								}
-							}
+							preorder(assistant, resource);
 						}
 						break loop;
 					}
@@ -770,14 +747,7 @@ public class AssistantFactory implements IResourceChangeListener{
 			resource.setAlive(loaded);
 			
 			if(loaded){
-				for(ResourceElement resourceElement : resource.getResourceElements()){
-					if(resourceElement instanceof SemanticNode){
-						SemanticNode node = (SemanticNode) resourceElement;
-						toDataThread(assistant, node);
-						toObjectThread(assistant, node);
-						toSuperThread(assistant, node);
-					}
-				}
+				preorder(assistant, resource);
 			}
 			
 			String projectName = repository.getProject();
@@ -808,6 +778,40 @@ public class AssistantFactory implements IResourceChangeListener{
 		}
 	}
 
+	public synchronized void preorder(IFormatAssistant assistant, Resource resource){
+        preorderHelper(assistant, resource);
+    }
+     
+    private void preorderHelper(IFormatAssistant assistant, ResourceElement node)
+    {
+        if(node == null)
+            return;
+        
+        if(node instanceof SemanticNode){
+        	SemanticNode semanticNode = (SemanticNode) node;
+        	toDataThread(assistant, semanticNode);
+			toObjectThread(assistant, semanticNode);
+			toSuperThread(assistant, semanticNode);
+        }
+        
+        if(node instanceof ObjectProperty){
+        	ObjectProperty objectProperty = (ObjectProperty) node;
+			toSuperThread(assistant, objectProperty);
+			toInverseOfThread(assistant, objectProperty);
+        }
+        
+        if(node instanceof DataProperty){
+        	DataProperty dataProperty = (DataProperty) node;
+			toSuperThread(assistant, dataProperty);
+        }
+        
+        if(node instanceof Resource){
+        	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
+        		preorderHelper(assistant, resourceElement);
+        }
+    }
+	
+	
 	private void toDataThread(IFormatAssistant assistant, SemanticNode node){
 		Job job = new Job(node.getName() + " : resolving data properties") {
 	        @Override
@@ -837,6 +841,42 @@ public class AssistantFactory implements IResourceChangeListener{
 	        @Override
 	        protected IStatus run(IProgressMonitor monitor) {
 	        	assistant.toSuper(node);
+	        	
+	        	return Status.OK_STATUS;
+	        }
+		};
+		job.schedule();
+	}
+	
+	private void toSuperThread(IFormatAssistant assistant, ObjectProperty node){
+		Job job = new Job(node.getName() + " : resolving parenthood properties") {
+	        @Override
+	        protected IStatus run(IProgressMonitor monitor) {
+	        	assistant.toSuper(node);
+	        	
+	        	return Status.OK_STATUS;
+	        }
+		};
+		job.schedule();
+	}
+	
+	private void toSuperThread(IFormatAssistant assistant, DataProperty node){
+		Job job = new Job(node.getName() + " : resolving parenthood properties") {
+	        @Override
+	        protected IStatus run(IProgressMonitor monitor) {
+	        	assistant.toSuper(node);
+	        	
+	        	return Status.OK_STATUS;
+	        }
+		};
+		job.schedule();
+	}
+	
+	private void toInverseOfThread(IFormatAssistant assistant, ObjectProperty node){
+		Job job = new Job(node.getName() + " : resolving parenthood properties") {
+	        @Override
+	        protected IStatus run(IProgressMonitor monitor) {
+	        	assistant.toInverseOf(node);
 	        	
 	        	return Status.OK_STATUS;
 	        }

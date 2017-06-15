@@ -13,8 +13,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link semanticmanager.SemanticNode#getSupers <em>Supers</em>}</li>
- *   <li>{@link semanticmanager.SemanticNode#getSubs <em>Subs</em>}</li>
  *   <li>{@link semanticmanager.SemanticNode#getProperties <em>Properties</em>}</li>
  *   <li>{@link semanticmanager.SemanticNode#isAbstract <em>Abstract</em>}</li>
  * </ul>
@@ -24,42 +22,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface SemanticNode extends ResourceElement {
-	/**
-	 * Returns the value of the '<em><b>Supers</b></em>' reference list.
-	 * The list contents are of type {@link semanticmanager.SemanticNode}.
-	 * It is bidirectional and its opposite is '{@link semanticmanager.SemanticNode#getSubs <em>Subs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Supers</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Supers</em>' reference list.
-	 * @see semanticmanager.SemanticmanagerPackage#getSemanticNode_Supers()
-	 * @see semanticmanager.SemanticNode#getSubs
-	 * @model opposite="subs"
-	 * @generated
-	 */
-	EList<SemanticNode> getSupers();
-
-	/**
-	 * Returns the value of the '<em><b>Subs</b></em>' reference list.
-	 * The list contents are of type {@link semanticmanager.SemanticNode}.
-	 * It is bidirectional and its opposite is '{@link semanticmanager.SemanticNode#getSupers <em>Supers</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Subs</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Subs</em>' reference list.
-	 * @see semanticmanager.SemanticmanagerPackage#getSemanticNode_Subs()
-	 * @see semanticmanager.SemanticNode#getSupers
-	 * @model opposite="supers"
-	 * @generated
-	 */
-	EList<SemanticNode> getSubs();
-
 	/**
 	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
 	 * The list contents are of type {@link semanticmanager.Property}.

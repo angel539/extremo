@@ -12,14 +12,17 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLDataPropertyExpression;
 import org.semanticweb.owlapi.model.OWLDataRange;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.semanticweb.owlapi.model.OWLObjectPropertyExpression;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 import semanticmanager.DataProperty;
+import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Resource;
 import semanticmanager.SemanticNode;
@@ -193,17 +196,21 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 								}
 								
 								for(IRI rangeURI : rangeURIs){
-									SemanticNode range = semanticNodeFromId(semanticResource, rangeURI);
+									NamedElement range = namedElementFromId(semanticResource, rangeURI);
 
-									ObjectProperty objectProperty = 
-											createObjectProperty(
-													property.getIRI(), 
-													prefixManager.getShortForm(property), 
-													1, 
-													1, 
-													range);
-									
-									addObjectPropertyToNode(parent, objectProperty);
+									if(range != null && range instanceof SemanticNode){
+										SemanticNode semanticNodeRange = (SemanticNode) range;
+										
+										ObjectProperty objectProperty = 
+												createObjectProperty(
+														property.getIRI(), 
+														prefixManager.getShortForm(property), 
+														1, 
+														1, 
+														semanticNodeRange);
+										
+										addObjectPropertyToNode(parent, objectProperty);
+									}
 								}
 							}
 						}
@@ -224,11 +231,66 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 				
 				for(OWLClassExpression superclass : superclasses){
 					if(! superclass.isAnonymous()){
-						SemanticNode range = semanticNodeFromId(semanticResource, superclass.asOWLClass().getIRI());
-						addSuperClassToNode(parent, range);
+						NamedElement range = namedElementFromId(semanticResource, superclass.asOWLClass().getIRI());
+						
+						if(range != null && range instanceof SemanticNode){
+							SemanticNode superSemanticNode = (SemanticNode) range;
+							addSuperClassToNode(parent, superSemanticNode);
+						}
 					}	
 				}
 			}
 		}
+	}
+
+	@Override
+	public void toSuper(DataProperty parent) {
+		if(ontology != null && parent.getTrace() != null && parent.getTrace() instanceof IRI){
+			IRI iriClass = (IRI) parent.getTrace();
+			
+			if(ontology.containsObjectPropertyInSignature(iriClass)){
+				OWLDataProperty dataProperty = factory.getOWLDataProperty(iriClass);
+				Set<OWLDataPropertyExpression> superproperties = dataProperty.getSuperProperties(ontology);
+				
+				for(OWLDataPropertyExpression superproperty : superproperties){
+					if(! superproperty.isAnonymous()){
+						NamedElement namedId = namedElementFromId(semanticResource, superproperty.asOWLDataProperty().getIRI());
+						
+						if(namedId != null && namedId instanceof DataProperty){
+							DataProperty superDataProperty = (DataProperty) namedId;
+							addSuperClassToDataProperty(parent, superDataProperty);
+						}
+					}	
+				}
+			}
+		}
+	}
+
+	@Override
+	public void toSuper(ObjectProperty parent) {
+		if(ontology != null && parent.getTrace() != null && parent.getTrace() instanceof IRI){
+			IRI iriClass = (IRI) parent.getTrace();
+			
+			if(ontology.containsObjectPropertyInSignature(iriClass)){
+				OWLObjectProperty objectProperty = factory.getOWLObjectProperty(iriClass);
+				Set<OWLObjectPropertyExpression> superproperties = objectProperty.getSuperProperties(ontology);
+				
+				for(OWLObjectPropertyExpression superproperty : superproperties){
+					if(! superproperty.isAnonymous()){
+						NamedElement namedId = namedElementFromId(semanticResource, superproperty.asOWLObjectProperty().getIRI());
+						
+						if(namedId != null && namedId instanceof ObjectProperty){
+							ObjectProperty superObjectProperty = (ObjectProperty) namedId;
+							addSuperClassToObjectProperty(parent, superObjectProperty);
+						}
+					}	
+				}
+			}
+		}
+	}
+
+	@Override
+	public void toInverseOf(ObjectProperty parent) {
+		// TODO Auto-generated method stub
 	}
 }

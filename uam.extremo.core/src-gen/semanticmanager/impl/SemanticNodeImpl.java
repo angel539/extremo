@@ -18,8 +18,6 @@ import semanticmanager.SemanticmanagerPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getSupers <em>Supers</em>}</li>
- *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getSubs <em>Subs</em>}</li>
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link semanticmanager.impl.SemanticNodeImpl#isAbstract <em>Abstract</em>}</li>
  * </ul>
@@ -44,26 +42,6 @@ public class SemanticNodeImpl extends ResourceElementImpl implements SemanticNod
 	@Override
 	protected EClass eStaticClass() {
 		return SemanticmanagerPackage.Literals.SEMANTIC_NODE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	public EList<SemanticNode> getSupers() {
-		return (EList<SemanticNode>)eGet(SemanticmanagerPackage.Literals.SEMANTIC_NODE__SUPERS, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	public EList<SemanticNode> getSubs() {
-		return (EList<SemanticNode>)eGet(SemanticmanagerPackage.Literals.SEMANTIC_NODE__SUBS, true);
 	}
 
 	/**

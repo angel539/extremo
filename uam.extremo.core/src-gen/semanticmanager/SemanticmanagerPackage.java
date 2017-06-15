@@ -1309,13 +1309,31 @@ public interface SemanticmanagerPackage extends EPackage {
 	int NAMED_ELEMENT__METADATA = 8;
 
 	/**
+	 * The feature id for the '<em><b>Supers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__SUPERS = 9;
+
+	/**
+	 * The feature id for the '<em><b>Subs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__SUBS = 10;
+
+	/**
 	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_FEATURE_COUNT = 9;
+	int NAMED_ELEMENT_FEATURE_COUNT = 11;
 
 	/**
 	 * The number of operations of the '<em>Named Element</em>' class.
@@ -1416,6 +1434,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEMANTIC_GROUP__METADATA = NAMED_ELEMENT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Supers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_GROUP__SUPERS = NAMED_ELEMENT__SUPERS;
+
+	/**
+	 * The feature id for the '<em><b>Subs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_GROUP__SUBS = NAMED_ELEMENT__SUBS;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' reference list.
@@ -1600,6 +1636,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	int RESOURCE_ELEMENT__METADATA = NAMED_ELEMENT__METADATA;
 
 	/**
+	 * The feature id for the '<em><b>Supers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__SUPERS = NAMED_ELEMENT__SUPERS;
+
+	/**
+	 * The feature id for the '<em><b>Subs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_ELEMENT__SUBS = NAMED_ELEMENT__SUBS;
+
+	/**
 	 * The feature id for the '<em><b>Resource From</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1716,6 +1770,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int RESOURCE__METADATA = RESOURCE_ELEMENT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Supers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__SUPERS = RESOURCE_ELEMENT__SUPERS;
+
+	/**
+	 * The feature id for the '<em><b>Subs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__SUBS = RESOURCE_ELEMENT__SUBS;
 
 	/**
 	 * The feature id for the '<em><b>Resource From</b></em>' container reference.
@@ -1899,6 +1971,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEMANTIC_NODE__METADATA = RESOURCE_ELEMENT__METADATA;
 
 	/**
+	 * The feature id for the '<em><b>Supers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_NODE__SUPERS = RESOURCE_ELEMENT__SUPERS;
+
+	/**
+	 * The feature id for the '<em><b>Subs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_NODE__SUBS = RESOURCE_ELEMENT__SUBS;
+
+	/**
 	 * The feature id for the '<em><b>Resource From</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1908,31 +1998,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEMANTIC_NODE__RESOURCE_FROM = RESOURCE_ELEMENT__RESOURCE_FROM;
 
 	/**
-	 * The feature id for the '<em><b>Supers</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMANTIC_NODE__SUPERS = RESOURCE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Subs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMANTIC_NODE__SUBS = RESOURCE_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__PROPERTIES = RESOURCE_ELEMENT_FEATURE_COUNT + 2;
+	int SEMANTIC_NODE__PROPERTIES = RESOURCE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -1941,7 +2013,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE__ABSTRACT = RESOURCE_ELEMENT_FEATURE_COUNT + 3;
+	int SEMANTIC_NODE__ABSTRACT = RESOURCE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Semantic Node</em>' class.
@@ -1950,7 +2022,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE_FEATURE_COUNT = RESOURCE_ELEMENT_FEATURE_COUNT + 4;
+	int SEMANTIC_NODE_FEATURE_COUNT = RESOURCE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Semantic Node</em>' class.
@@ -2051,6 +2123,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROPERTY__METADATA = NAMED_ELEMENT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Supers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__SUPERS = NAMED_ELEMENT__SUPERS;
+
+	/**
+	 * The feature id for the '<em><b>Subs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__SUBS = NAMED_ELEMENT__SUBS;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
@@ -2189,6 +2279,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	int OBJECT_PROPERTY__METADATA = PROPERTY__METADATA;
 
 	/**
+	 * The feature id for the '<em><b>Supers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY__SUPERS = PROPERTY__SUPERS;
+
+	/**
+	 * The feature id for the '<em><b>Subs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY__SUBS = PROPERTY__SUBS;
+
+	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2225,13 +2333,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int OBJECT_PROPERTY__RANGE = PROPERTY_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Inverse Of</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_PROPERTY__INVERSE_OF = PROPERTY_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Object Property</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 1;
+	int OBJECT_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Object Property</em>' class.
@@ -2332,6 +2449,24 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_PROPERTY__METADATA = PROPERTY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Supers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROPERTY__SUPERS = PROPERTY__SUPERS;
+
+	/**
+	 * The feature id for the '<em><b>Subs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROPERTY__SUBS = PROPERTY__SUBS;
 
 	/**
 	 * The feature id for the '<em><b>Semantic Node From</b></em>' container reference.
@@ -3574,28 +3709,6 @@ public interface SemanticmanagerPackage extends EPackage {
 	EClass getSemanticNode();
 
 	/**
-	 * Returns the meta object for the reference list '{@link semanticmanager.SemanticNode#getSupers <em>Supers</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Supers</em>'.
-	 * @see semanticmanager.SemanticNode#getSupers()
-	 * @see #getSemanticNode()
-	 * @generated
-	 */
-	EReference getSemanticNode_Supers();
-
-	/**
-	 * Returns the meta object for the reference list '{@link semanticmanager.SemanticNode#getSubs <em>Subs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Subs</em>'.
-	 * @see semanticmanager.SemanticNode#getSubs()
-	 * @see #getSemanticNode()
-	 * @generated
-	 */
-	EReference getSemanticNode_Subs();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link semanticmanager.SemanticNode#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3727,6 +3840,28 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getNamedElement_Metadata();
 
 	/**
+	 * Returns the meta object for the reference list '{@link semanticmanager.NamedElement#getSupers <em>Supers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Supers</em>'.
+	 * @see semanticmanager.NamedElement#getSupers()
+	 * @see #getNamedElement()
+	 * @generated
+	 */
+	EReference getNamedElement_Supers();
+
+	/**
+	 * Returns the meta object for the reference list '{@link semanticmanager.NamedElement#getSubs <em>Subs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Subs</em>'.
+	 * @see semanticmanager.NamedElement#getSubs()
+	 * @see #getNamedElement()
+	 * @generated
+	 */
+	EReference getNamedElement_Subs();
+
+	/**
 	 * Returns the meta object for class '{@link semanticmanager.Property <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3789,6 +3924,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getObjectProperty_Range();
+
+	/**
+	 * Returns the meta object for the reference '{@link semanticmanager.ObjectProperty#getInverseOf <em>Inverse Of</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Inverse Of</em>'.
+	 * @see semanticmanager.ObjectProperty#getInverseOf()
+	 * @see #getObjectProperty()
+	 * @generated
+	 */
+	EReference getObjectProperty_InverseOf();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.DataProperty <em>Data Property</em>}'.
@@ -4759,22 +4905,6 @@ public interface SemanticmanagerPackage extends EPackage {
 		EClass SEMANTIC_NODE = eINSTANCE.getSemanticNode();
 
 		/**
-		 * The meta object literal for the '<em><b>Supers</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SEMANTIC_NODE__SUPERS = eINSTANCE.getSemanticNode_Supers();
-
-		/**
-		 * The meta object literal for the '<em><b>Subs</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SEMANTIC_NODE__SUBS = eINSTANCE.getSemanticNode_Subs();
-
-		/**
 		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4873,6 +5003,22 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference NAMED_ELEMENT__METADATA = eINSTANCE.getNamedElement_Metadata();
 
 		/**
+		 * The meta object literal for the '<em><b>Supers</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMED_ELEMENT__SUPERS = eINSTANCE.getNamedElement_Supers();
+
+		/**
+		 * The meta object literal for the '<em><b>Subs</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NAMED_ELEMENT__SUBS = eINSTANCE.getNamedElement_Subs();
+
+		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.PropertyImpl <em>Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4923,6 +5069,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference OBJECT_PROPERTY__RANGE = eINSTANCE.getObjectProperty_Range();
+
+		/**
+		 * The meta object literal for the '<em><b>Inverse Of</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECT_PROPERTY__INVERSE_OF = eINSTANCE.getObjectProperty_InverseOf();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.DataPropertyImpl <em>Data Property</em>}' class.

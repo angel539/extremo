@@ -24,6 +24,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link semanticmanager.NamedElement#getDescribes <em>Describes</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link semanticmanager.NamedElement#getMetadata <em>Metadata</em>}</li>
+ *   <li>{@link semanticmanager.NamedElement#getSupers <em>Supers</em>}</li>
+ *   <li>{@link semanticmanager.NamedElement#getSubs <em>Subs</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getNamedElement()
@@ -231,5 +233,41 @@ public interface NamedElement extends PersistentEObject {
 	 * @generated
 	 */
 	EList<MetaData> getMetadata();
+
+	/**
+	 * Returns the value of the '<em><b>Supers</b></em>' reference list.
+	 * The list contents are of type {@link semanticmanager.NamedElement}.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.NamedElement#getSubs <em>Subs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Supers</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Supers</em>' reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getNamedElement_Supers()
+	 * @see semanticmanager.NamedElement#getSubs
+	 * @model opposite="subs"
+	 * @generated
+	 */
+	EList<NamedElement> getSupers();
+
+	/**
+	 * Returns the value of the '<em><b>Subs</b></em>' reference list.
+	 * The list contents are of type {@link semanticmanager.NamedElement}.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.NamedElement#getSupers <em>Supers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Subs</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Subs</em>' reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getNamedElement_Subs()
+	 * @see semanticmanager.NamedElement#getSupers
+	 * @model opposite="supers"
+	 * @generated
+	 */
+	EList<NamedElement> getSubs();
 
 } // NamedElement

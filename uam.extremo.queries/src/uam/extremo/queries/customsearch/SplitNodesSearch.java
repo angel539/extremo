@@ -31,14 +31,14 @@ public class SplitNodesSearch extends ExtensibleCustomSearchImpl {
 		}	
 	}
 	
-	public List<SemanticNode> getAllSubs(SemanticNode node){
-		List<SemanticNode> nonvisited = new ArrayList<SemanticNode>();
-		List<SemanticNode> subs = new ArrayList<SemanticNode>();
+	public List<NamedElement> getAllSubs(NamedElement node){
+		List<NamedElement> nonvisited = new ArrayList<NamedElement>();
+		List<NamedElement> subs = new ArrayList<NamedElement>();
 			
 		nonvisited.addAll(node.getSubs());
 			
 		while(!nonvisited.isEmpty()){
-			SemanticNode sn = nonvisited.get(0);
+			NamedElement sn = nonvisited.get(0);
 			
 			if(!subs.contains(sn)){
 				subs.add(sn);
