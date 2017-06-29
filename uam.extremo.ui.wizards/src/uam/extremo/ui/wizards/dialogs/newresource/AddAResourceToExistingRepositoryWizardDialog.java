@@ -59,8 +59,6 @@ public class AddAResourceToExistingRepositoryWizardDialog extends Wizard {
 				break descriptorCheck;
 			}
 		}
-		
-		long startTime = System.currentTimeMillis();
 
 		if(descriptor != null){
 			try {
@@ -78,12 +76,6 @@ public class AddAResourceToExistingRepositoryWizardDialog extends Wizard {
 				MessageDialog.openError(null, "Resource creation", e.getMessage());
 			}
 		}
-		
-		long endTime   = System.currentTimeMillis();
-
-		long totalTime = endTime - startTime;
-		
-		MessageDialog.openInformation(null, "Time: ", Long.toString(totalTime * 1000) + " seconds");
 		
 		return true;
 	}

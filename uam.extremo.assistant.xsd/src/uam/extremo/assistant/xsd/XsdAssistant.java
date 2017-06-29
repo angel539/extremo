@@ -8,23 +8,30 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+
 import org.apache.commons.io.FilenameUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import at.ac.tuwien.big.xmltext.EcoreToGenericEcoreTransformer;
-import semanticmanager.*;
-
-import org.eclipse.emf.ecore.resource.Resource;
-
+import semanticmanager.Constraint;
+import semanticmanager.ConstraintInterpreter;
+import semanticmanager.DataProperty;
+import semanticmanager.NamedElement;
+import semanticmanager.ObjectProperty;
+import semanticmanager.SemanticNode;
+import semanticmanager.Type;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
 
@@ -46,12 +53,18 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 
 	semanticmanager.Resource lastResource = null;
 	
+	Map<String, Constraint> constraints = new HashMap<String, Constraint>();
+	
+	private static String OCLUri = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+	ConstraintInterpreter constraintInterpreter = null;
+	
 	@Override
-	public boolean load(semanticmanager.Resource semanticResource) {
+	public boolean loadAndValidate(semanticmanager.Resource semanticResource, ConstraintInterpreter constraintInterpreter) {
 		boolean isImmediateRedo = semanticResource == lastResource;
 		this.semanticResource = semanticResource;	
 		lastResource = semanticResource;
 		
+		this.constraintInterpreter = constraintInterpreter;
 		
 		file = new File((String) semanticResource.getUri());
 		
@@ -138,6 +151,8 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 					addSemanticNodeToResource(semanticResource, semanticNode);
 					
 					correspondance.put(obj, semanticNode);
+					
+					//evaluateConstraints(constraints, semanticNode);
 				}
 			}
 		}	
@@ -176,6 +191,23 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 									//it is actually a descriptor element
 										
 					addSemanticNodeToResource(semanticResource, semanticNode);
+					
+					// Constraints
+					for(EAnnotation annotation : eClass.getEAnnotations()){
+						if(annotation.getSource().equals(OCLUri)){
+							for(Entry<String, String> entry : annotation.getDetails().entrySet()){
+								if(! constraints.containsKey(entry.getKey())){
+									Constraint constraint = createConstraint(
+											"OCL", 
+											entry.getKey(), 
+											entry.getValue().trim()
+									);
+									addConstraintToElement(semanticNode, constraint);
+									constraints.put(entry.getKey(), constraint);
+								}
+							}
+						}										
+					}
 				}
 			}
 		}
@@ -229,6 +261,8 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 						
 						
 						addDataPropertyToNode(parent, dataProperty);
+						
+						//evaluateConstraints(constraints, dataProperty);
 					}
 				}
 			}
@@ -276,6 +310,23 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 							);
 					
 					addDataPropertyToNode(parent, dataProperty);
+					
+					// Constraints
+					for(EAnnotation annotation : attr.getEAnnotations()){
+						if(annotation.getSource().equals(OCLUri)){
+							for(Entry<String, String> entry : annotation.getDetails().entrySet()){
+								if(! constraints.containsKey(entry.getKey())){
+									Constraint constraint = createConstraint(
+											"OCL", 
+											entry.getKey(), 
+											entry.getValue().trim()
+									);
+									addConstraintToElement(dataProperty, constraint);
+									constraints.put(entry.getKey(), constraint);
+								}
+							}
+						}										
+					}
 				}
 				catch(Exception e){
 					return;
@@ -287,20 +338,20 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 	@Override
 	public void toObjectProperty(SemanticNode parent) {
 		switch (extension) {
-		//metamodel
-		case "xsd":
-			xsdReferencesToObjectProperties(parent);
-			break;
-			
-		//model
-		case "xml":
-			xmlReferencesToObjectProperties(parent);
-			break;
-
-		default:
-			xmlReferencesToObjectProperties(parent);
-			break;
-	}
+			//metamodel
+			case "xsd":
+				xsdReferencesToObjectProperties(parent);
+				break;
+				
+			//model
+			case "xml":
+				xmlReferencesToObjectProperties(parent);
+				break;
+	
+			default:
+				xmlReferencesToObjectProperties(parent);
+				break;
+		}
 	}
 
 	private void xmlReferencesToObjectProperties(SemanticNode parent) {
@@ -322,19 +373,6 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 					if(descriptor != null){
 						Object eReferenceValue = eobject.eGet(eReference);
 						
-						/*if(eReferenceValue instanceof EObject[]){
-							for(EObject reference : (EObject[]) eReferenceValue){
-								SemanticNode range = correspondance.get(reference);
-								
-								ObjectProperty objectProperty = 
-										createObjectProperty(
-												descriptor, //descriptor
-												range //value
-										);
-								
-								addObjectPropertyToNode(parent, objectProperty);
-							}
-						}*/
 						if(eReferenceValue instanceof EList){							
 							for(Object reference : (EList) eReferenceValue){
 								if (reference instanceof EObject) {
@@ -350,7 +388,9 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 													range //value
 											);
 									
-									addObjectPropertyToNode(parent, objectProperty);	
+									addObjectPropertyToNode(parent, objectProperty);
+									
+									//evaluateConstraints(constraints, objectProperty);
 								}		
 							}
 						}
@@ -367,6 +407,8 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 										);
 								
 								addObjectPropertyToNode(parent, objectProperty);
+								
+								//evaluateConstraints(constraints, objectProperty);
 							}
 						}
 					}
@@ -380,7 +422,7 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 			EClass eClass = (EClass) parent.getTrace();
 			
 			for(EReference reference : eClass.getEAllReferences()){
-				NamedElement range = namedElementFromId(semanticResource, reference.getEReferenceType());
+				NamedElement range = namedElementFromName(semanticResource, reference.getEReferenceType().getName());
 				
 				if(range != null && range instanceof SemanticNode){
 					SemanticNode rangeSemanticNode = (SemanticNode) range;
@@ -394,18 +436,24 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 									rangeSemanticNode);
 					
 					addObjectPropertyToNode(parent, objectProperty);
+					
+					// Constraints
+					for(EAnnotation annotation : reference.getEAnnotations()){
+						if(annotation.getSource().equals(OCLUri)){
+							for(Entry<String, String> entry : annotation.getDetails().entrySet()){
+								if(! constraints.containsKey(entry.getKey())){
+									Constraint constraint = createConstraint(
+											"OCL", 
+											entry.getKey(), 
+											entry.getValue().trim()
+									);
+									addConstraintToElement(objectProperty, constraint);
+									constraints.put(entry.getKey(), constraint);
+								}
+							}
+						}										
+					}
 				}
-				/*SemanticNode range = semanticNodeFromName(semanticResource, reference.getEReferenceType().getName());
-				
-				ObjectProperty objectProperty = 
-						createObjectProperty(
-								reference, 
-								reference.getName(), 
-								reference.getLowerBound(), 
-								reference.getUpperBound(), 
-								range);
-				
-				addObjectPropertyToNode(parent, objectProperty);*/
 			}
 		}		
 	}

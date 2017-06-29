@@ -30,7 +30,6 @@ import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.ISelection;
@@ -93,7 +92,7 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 		FilteredTree tree = new FilteredTree(parent, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL, patternfilter, true);
 		
-		viewer = tree.getViewer();
+		viewer = tree.getViewer();	
 		
 		ConstraintValidationViewFilter filter = new ConstraintValidationViewFilter();
 		ViewerFilter[] filters = {filter};
@@ -110,11 +109,9 @@ public class ConstraintValidationViewPart extends ViewPart implements IViewerPro
 		viewer.setContentProvider(contentProvider);
 		
 		AssistantFactory assistantFactory = AssistantFactory.getInstance();
-		
 		viewer.setSorter(new NameSorter());
 		
 		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(new TreeViewAdapterFactoryLabelProvider(adapterFactory)));
-		
 		viewer.setInput(assistantFactory.getRepositoryManager());
 		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "extremo.ui.viewer");

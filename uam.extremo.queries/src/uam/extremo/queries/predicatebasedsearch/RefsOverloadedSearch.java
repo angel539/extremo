@@ -4,13 +4,13 @@ import org.eclipse.emf.common.util.EList;
 
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
+import semanticmanager.SearchParamValue;
 
 public class RefsOverloadedSearch extends ExtensiblePredicateBasedSearchImpl {
 	@Override
-	public boolean matches(NamedElement namedElement, EList<SearchResultOptionValue> inps) {
+	public boolean matches(NamedElement namedElement, EList<SearchParamValue> inps) {
 		if (namedElement instanceof SemanticNode) {	
 			SemanticNode semanticNode = (SemanticNode) namedElement;
 				

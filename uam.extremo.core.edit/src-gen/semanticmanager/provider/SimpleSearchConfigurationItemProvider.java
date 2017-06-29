@@ -180,12 +180,12 @@ public class SimpleSearchConfigurationItemProvider extends SearchConfigurationIt
 		newChildDescriptors.add
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__OPTIONS,
-				 SemanticmanagerFactory.eINSTANCE.createPrimitiveTypeSearchOption()));
+				 SemanticmanagerFactory.eINSTANCE.createPrimitiveTypeParam()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__OPTIONS,
-				 SemanticmanagerFactory.eINSTANCE.createDataModelTypeSearchOption()));
+				 SemanticmanagerFactory.eINSTANCE.createModelTypeParam()));
 	}
 
 }

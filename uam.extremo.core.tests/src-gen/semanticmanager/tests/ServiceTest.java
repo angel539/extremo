@@ -5,6 +5,7 @@ package semanticmanager.tests;
 import junit.framework.TestCase;
 
 import junit.textui.TestRunner;
+
 import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.Service;
 

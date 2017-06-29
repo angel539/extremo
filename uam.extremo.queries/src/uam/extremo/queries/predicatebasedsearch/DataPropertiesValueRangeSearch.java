@@ -4,12 +4,12 @@ import org.eclipse.emf.common.util.EList;
 
 import semanticmanager.DataProperty;
 import semanticmanager.NamedElement;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
+import semanticmanager.SearchParamValue;
 
 public class DataPropertiesValueRangeSearch extends ExtensiblePredicateBasedSearchImpl{
 	@Override
-	public boolean matches(NamedElement namedElement, EList<SearchResultOptionValue> inps) {
+	public boolean matches(NamedElement namedElement, EList<SearchParamValue> inps) {
 		if (namedElement instanceof DataProperty) {			
 			Object minValuefield = getOptionValueKey("minvaluefield", inps);
 			Object maxValuefield = getOptionValueKey("maxvaluefield", inps);

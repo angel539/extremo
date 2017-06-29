@@ -82,19 +82,14 @@
             name="Search">
       </command>
       <command
-            defaultHandler="uam.extremo.ui.views.repositories.actions.ExploreConnectionsHandler"
-            id="uam.extremo.ui.views.exploreConnections"
-            name="Explore">
+            defaultHandler="uam.extremo.ui.views.repositories.actions.ComposeAQueryHandler"
+            id="uam.extremo.ui.views.composeaquery"
+            name="Compose a query">
       </command>
       <command
             defaultHandler="uam.extremo.ui.views.repositories.actions.GoToParentConnectionsHandler"
             id="uam.extremo.ui.views.goToParent"
             name="Go To Parent">
-      </command>
-      <command
-            defaultHandler="uam.extremo.ui.views.repositories.actions.ConstraintValidationHandler"
-            id="uam.extremo.ui.views.constraintvalidation"
-            name="Constraint Validation">
       </command>
       <command
             defaultHandler="uam.extremo.ui.views.repositories.DeleteHandler"
@@ -120,18 +115,13 @@
                style="push">
          </command>
          <command
-               commandId="uam.extremo.ui.views.constraintvalidation"
-               icon="icons/constraints.png"
+               commandId="uam.extremo.ui.views.composeaquery"
+               icon="icons/compose.png"
                style="push">
          </command>
          <separator
                name="uam.extremo.ui.views.separator1">
          </separator>
-         <command
-               commandId="uam.extremo.ui.views.exploreConnections"
-               icon="icons/explore16.png"
-               style="push">
-         </command>
          <command
                commandId="uam.extremo.ui.views.goToParent"
                icon="icons/up16.png"
@@ -152,8 +142,8 @@
                style="push">
          </command>
          <command
-               commandId="uam.extremo.ui.views.constraintvalidation"
-               icon="icons/constraints.png"
+               commandId="uam.extremo.ui.views.composeaquery"
+               icon="icons/compose.png"
                style="push">
          </command>
       </menuContribution>

@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import semanticmanager.NamedElement;
 import semanticmanager.SearchConfiguration;
+import semanticmanager.SearchParamValue;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticmanagerPackage;
 
 /**
@@ -67,8 +67,8 @@ public abstract class SearchResultImpl extends DefaultPersistentEObject implemen
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EList<SearchResultOptionValue> getValues() {
-		return (EList<SearchResultOptionValue>)eGet(SemanticmanagerPackage.Literals.SEARCH_RESULT__VALUES, true);
+	public EList<SearchParamValue> getValues() {
+		return (EList<SearchParamValue>)eGet(SemanticmanagerPackage.Literals.SEARCH_RESULT__VALUES, true);
 	}
 
 	/**

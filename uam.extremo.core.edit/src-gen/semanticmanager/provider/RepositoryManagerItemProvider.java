@@ -176,6 +176,11 @@ public class RepositoryManagerItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__INTERPRETERS,
+				 SemanticmanagerFactory.eINSTANCE.createConstraintInterpreter()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__SERVICES,
 				 SemanticmanagerFactory.eINSTANCE.createService()));
 	}

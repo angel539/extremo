@@ -1,16 +1,16 @@
 package semanticmanager.impl;
 
-import semanticmanager.DataModelTypeSearchResultOptionValue;
 import semanticmanager.ExtensibleAtomicSearchResult;
-import semanticmanager.PrimitiveTypeSearchResultOptionValue;
-import semanticmanager.SearchResultOptionValue;
+import semanticmanager.ModelTypeParamValue;
+import semanticmanager.PrimitiveTypeParamValue;
+import semanticmanager.SearchParamValue;
 import semanticmanager.impl.AtomicSearchResultImpl;
 
 public class ExtensibleAtomicSearchResultImpl extends AtomicSearchResultImpl implements ExtensibleAtomicSearchResult {
 	public Object getOptionValue(String key) {
-		for(SearchResultOptionValue value : getValues()){
-			if (value instanceof PrimitiveTypeSearchResultOptionValue) {
-				PrimitiveTypeSearchResultOptionValue stringValue = (PrimitiveTypeSearchResultOptionValue) value;
+		for(SearchParamValue value : getValues()){
+			if (value instanceof PrimitiveTypeParamValue) {
+				PrimitiveTypeParamValue stringValue = (PrimitiveTypeParamValue) value;
 				
 				try{
 					if(stringValue.getOption().getId().equals(key)){
@@ -22,8 +22,8 @@ public class ExtensibleAtomicSearchResultImpl extends AtomicSearchResultImpl imp
 				}
 			}
 			
-			if (value instanceof DataModelTypeSearchResultOptionValue) {
-				DataModelTypeSearchResultOptionValue dataModelValue = (DataModelTypeSearchResultOptionValue) value;
+			if (value instanceof ModelTypeParamValue) {
+				ModelTypeParamValue dataModelValue = (ModelTypeParamValue) value;
 				
 				try{
 					if(dataModelValue.getOption().getId().equals(key)){

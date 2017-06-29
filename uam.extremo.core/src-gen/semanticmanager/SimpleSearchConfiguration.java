@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
 public interface SimpleSearchConfiguration extends SearchConfiguration {
 	/**
 	 * Returns the value of the '<em><b>Options</b></em>' containment reference list.
-	 * The list contents are of type {@link semanticmanager.SearchOption}.
+	 * The list contents are of type {@link semanticmanager.SearchParam}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Options</em>' containment reference list isn't clear,
@@ -37,7 +37,7 @@ public interface SimpleSearchConfiguration extends SearchConfiguration {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<SearchOption> getOptions();
+	EList<SearchParam> getOptions();
 
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.

@@ -1,15 +1,15 @@
 package semanticmanager.impl;
 
-import semanticmanager.DataModelTypeSearchResultOptionValue;
 import semanticmanager.DataProperty;
 import semanticmanager.ExtensibleGroupedSearchResult;
+import semanticmanager.ModelTypeParamValue;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
-import semanticmanager.PrimitiveTypeSearchResultOptionValue;
+import semanticmanager.PrimitiveTypeParamValue;
 import semanticmanager.Resource;
+import semanticmanager.SearchParamValue;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.GroupedSearchResultImpl;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 
 public class ExtensibleGroupedSearchResultImpl extends GroupedSearchResultImpl implements ExtensibleGroupedSearchResult {	
@@ -52,9 +52,9 @@ public class ExtensibleGroupedSearchResultImpl extends GroupedSearchResultImpl i
 	}
 
 	public Object getOptionValue(String key) {
-		for(SearchResultOptionValue value : getValues()){
-			if (value instanceof PrimitiveTypeSearchResultOptionValue) {
-				PrimitiveTypeSearchResultOptionValue stringValue = (PrimitiveTypeSearchResultOptionValue) value;
+		for(SearchParamValue value : getValues()){
+			if (value instanceof PrimitiveTypeParamValue) {
+				PrimitiveTypeParamValue stringValue = (PrimitiveTypeParamValue) value;
 				
 				try{
 					if(stringValue.getOption().getId().equals(key)){
@@ -66,8 +66,8 @@ public class ExtensibleGroupedSearchResultImpl extends GroupedSearchResultImpl i
 				}
 			}
 			
-			if (value instanceof DataModelTypeSearchResultOptionValue) {
-				DataModelTypeSearchResultOptionValue dataModelValue = (DataModelTypeSearchResultOptionValue) value;
+			if (value instanceof ModelTypeParamValue) {
+				ModelTypeParamValue dataModelValue = (ModelTypeParamValue) value;
 				
 				try{
 					if(dataModelValue.getOption().getId().equals(key)){

@@ -59,6 +59,7 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 		switch (eClass.getClassifierID()) {
 			case SemanticmanagerPackage.REPOSITORY_MANAGER: return (EObject)createRepositoryManager();
 			case SemanticmanagerPackage.CONSTRAINT: return (EObject)createConstraint();
+			case SemanticmanagerPackage.CONSTRAINT_INTERPRETER: return (EObject)createConstraintInterpreter();
 			case SemanticmanagerPackage.CONSTRAINT_RESULT: return (EObject)createConstraintResult();
 			case SemanticmanagerPackage.COMPOSITE_SEARCH_CONFIGURATION: return (EObject)createCompositeSearchConfiguration();
 			case SemanticmanagerPackage.SERVICE: return (EObject)createService();
@@ -73,10 +74,10 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 			case SemanticmanagerPackage.OBJECT_PROPERTY: return (EObject)createObjectProperty();
 			case SemanticmanagerPackage.DATA_PROPERTY: return (EObject)createDataProperty();
 			case SemanticmanagerPackage.META_DATA: return (EObject)createMetaData();
-			case SemanticmanagerPackage.PRIMITIVE_TYPE_SEARCH_OPTION: return (EObject)createPrimitiveTypeSearchOption();
-			case SemanticmanagerPackage.DATA_MODEL_TYPE_SEARCH_OPTION: return (EObject)createDataModelTypeSearchOption();
-			case SemanticmanagerPackage.DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE: return (EObject)createDataModelTypeSearchResultOptionValue();
-			case SemanticmanagerPackage.PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE: return (EObject)createPrimitiveTypeSearchResultOptionValue();
+			case SemanticmanagerPackage.PRIMITIVE_TYPE_PARAM: return (EObject)createPrimitiveTypeParam();
+			case SemanticmanagerPackage.MODEL_TYPE_PARAM: return (EObject)createModelTypeParam();
+			case SemanticmanagerPackage.MODEL_TYPE_PARAM_VALUE: return (EObject)createModelTypeParamValue();
+			case SemanticmanagerPackage.PRIMITIVE_TYPE_PARAM_VALUE: return (EObject)createPrimitiveTypeParamValue();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -142,6 +143,16 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	public Constraint createConstraint() {
 		ConstraintImpl constraint = new ConstraintImpl();
 		return constraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConstraintInterpreter createConstraintInterpreter() {
+		ConstraintInterpreterImpl constraintInterpreter = new ConstraintInterpreterImpl();
+		return constraintInterpreter;
 	}
 
 	/**
@@ -289,9 +300,9 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PrimitiveTypeSearchOption createPrimitiveTypeSearchOption() {
-		PrimitiveTypeSearchOptionImpl primitiveTypeSearchOption = new PrimitiveTypeSearchOptionImpl();
-		return primitiveTypeSearchOption;
+	public PrimitiveTypeParam createPrimitiveTypeParam() {
+		PrimitiveTypeParamImpl primitiveTypeParam = new PrimitiveTypeParamImpl();
+		return primitiveTypeParam;
 	}
 
 	/**
@@ -299,9 +310,9 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataModelTypeSearchOption createDataModelTypeSearchOption() {
-		DataModelTypeSearchOptionImpl dataModelTypeSearchOption = new DataModelTypeSearchOptionImpl();
-		return dataModelTypeSearchOption;
+	public ModelTypeParam createModelTypeParam() {
+		ModelTypeParamImpl modelTypeParam = new ModelTypeParamImpl();
+		return modelTypeParam;
 	}
 
 	/**
@@ -309,9 +320,9 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataModelTypeSearchResultOptionValue createDataModelTypeSearchResultOptionValue() {
-		DataModelTypeSearchResultOptionValueImpl dataModelTypeSearchResultOptionValue = new DataModelTypeSearchResultOptionValueImpl();
-		return dataModelTypeSearchResultOptionValue;
+	public ModelTypeParamValue createModelTypeParamValue() {
+		ModelTypeParamValueImpl modelTypeParamValue = new ModelTypeParamValueImpl();
+		return modelTypeParamValue;
 	}
 
 	/**
@@ -319,9 +330,9 @@ public class SemanticmanagerFactoryImpl extends EFactoryImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PrimitiveTypeSearchResultOptionValue createPrimitiveTypeSearchResultOptionValue() {
-		PrimitiveTypeSearchResultOptionValueImpl primitiveTypeSearchResultOptionValue = new PrimitiveTypeSearchResultOptionValueImpl();
-		return primitiveTypeSearchResultOptionValue;
+	public PrimitiveTypeParamValue createPrimitiveTypeParamValue() {
+		PrimitiveTypeParamValueImpl primitiveTypeParamValue = new PrimitiveTypeParamValueImpl();
+		return primitiveTypeParamValue;
 	}
 
 	/**

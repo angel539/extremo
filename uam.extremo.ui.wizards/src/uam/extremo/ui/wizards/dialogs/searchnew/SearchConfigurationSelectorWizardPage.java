@@ -25,15 +25,15 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import semanticmanager.CustomSearch;
-import semanticmanager.DataModelTypeSearchOption;
 import semanticmanager.DataProperty;
+import semanticmanager.ModelTypeParam;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.PredicateBasedSearch;
-import semanticmanager.PrimitiveTypeSearchOption;
+import semanticmanager.PrimitiveTypeParam;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
-import semanticmanager.SearchOption;
+import semanticmanager.SearchParam;
 import semanticmanager.SemanticNode;
 import semanticmanager.Service;
 import semanticmanager.SimpleSearchConfiguration;
@@ -47,8 +47,8 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	private List<Service> services;
 	private SimpleSearchConfiguration searchConfigurationSelected = null;
 	
-	private Map<SearchOption, Object> values;
-	private Map<SearchOption, Service> serviceCalls;
+	private Map<SearchParam, Object> values;
+	private Map<SearchParam, Service> serviceCalls;
 	
 	private Repository repositoryFrom;
 	private NamedElement namedElement;
@@ -100,7 +100,6 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		selectionContainer.layout();
 		bigContainer.layout();
 	    setControl(bigContainer);
-	    
 	    setPageComplete(false);
 	}
 	
@@ -175,10 +174,22 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    			if (searchConfigurationSelected instanceof CustomSearch) {
 						CustomSearch customSearch = (CustomSearch) searchConfigurationSelected;
 						createSelectionFromSearch(customSearch);
+						
+						/*Composite buttonCompositionContainer = new Composite(parent, SWT.NONE);
+						buttonCompositionContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 4, 1));
+						buttonCompositionContainer.setLayout(new GridLayout(4, true));
+						
+						createButtonToComposeASearch(buttonCompositionContainer, customSearch);*/
 					}
 	    			else{
 	    				PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfigurationSelected;
 						createSelectionFromSearch(predicateBasedSearch);
+						
+						/*Composite buttonCompositionContainer = new Composite(parent, SWT.NONE);
+						buttonCompositionContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 4, 1));
+						buttonCompositionContainer.setLayout(new GridLayout(4, true));
+						
+						createButtonToComposeASearch(buttonCompositionContainer, predicateBasedSearch);*/
 	    			}
 	    		}
 	    		
@@ -189,13 +200,137 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 	    });
 	}
 	
-	private void createSelectionFromSearch(SimpleSearchConfiguration searchConfiguration) {
-		Map<SearchOption, Object> values = new LinkedHashMap<SearchOption, Object>(); 
-		Map<SearchOption, Service> serviceCalls = new LinkedHashMap<SearchOption, Service>();
+	/*private void createButtonToComposeASearch(Composite parent, SimpleSearchConfiguration simpleSearchConfiguration){
+		Label beforeLabel = new Label(parent, SWT.NONE);
+		beforeLabel.setText("");
+		beforeLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
-		for(SearchOption searchOption : searchConfiguration.getOptions()){
-			if (searchOption instanceof PrimitiveTypeSearchOption) {
-				PrimitiveTypeSearchOption primitiveTypeSearchOption = (PrimitiveTypeSearchOption) searchOption;
+		final Button button = new Button(parent, SWT.PUSH);
+	    button.setText("Compose a query");
+	    button.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
+	    
+	    Label afterLabel = new Label(parent, SWT.NONE);
+	    afterLabel.setText("");
+	    afterLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+	    
+	    button.addSelectionListener(new SelectionListener() {
+	    	public void widgetSelected(SelectionEvent event) {
+	    		Composite queryCompositionContainer = new Composite(parent, SWT.NONE);
+	    		queryCompositionContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 4, 1));
+	    		queryCompositionContainer.setLayout(new GridLayout(4, true));
+	    		
+	    		createCompositeSearchConfiguration(queryCompositionContainer, simpleSearchConfiguration);
+	    		
+	    		parent.layout();
+	    		selectionContainer.layout();
+	    		bigContainer.layout();
+	    	}
+	    	
+	    	public void widgetDefaultSelected(SelectionEvent event) {
+	    		Composite queryCompositionContainer = new Composite(parent, SWT.NONE);
+	    		queryCompositionContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 4, 1));
+	    		queryCompositionContainer.setLayout(new GridLayout(4, true));
+	    		
+	    		createCompositeSearchConfiguration(queryCompositionContainer, simpleSearchConfiguration);
+	    		
+	    		parent.layout();
+	    		selectionContainer.layout();
+	    		bigContainer.layout();
+	    	}
+	    });
+	}*/
+	
+	/*private void createCompositeSearchConfiguration(Composite parent, SimpleSearchConfiguration simpleSearchConfiguration){
+		Label typeLabel = new Label(parent, SWT.NONE);
+	    typeLabel.setText("Search Type");
+	    typeLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+	    
+	    CCombo comboSearchType = new CCombo(parent, SWT.NONE);
+	    comboSearchType.setText("Select search type");
+	    comboSearchType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+	    
+		for(SimpleSearchConfiguration searchConfiguration : searchConfigurations){
+			String name = ((SimpleSearchConfiguration) searchConfiguration).getName();
+			comboSearchType.add(name);
+			comboSearchType.setData(searchConfiguration);
+		}
+		
+		Label descriptionLabel = new Label(parent, SWT.NONE);
+		descriptionLabel.setText("Description");
+		descriptionLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		
+		Label description = new Label(parent, SWT.NONE);
+		description.setText("");
+		description.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 3, 1));
+		
+		comboSearchType.addSelectionListener(new SelectionAdapter() {
+	    	public void widgetSelected(SelectionEvent e) {
+	    		for(Control child : parent.getChildren()) child.dispose();
+	    		
+	    		SimpleSearchConfiguration searchConfigurationSelected = null;
+	    		loop:
+	    		for(SimpleSearchConfiguration searchConfiguration : searchConfigurations){
+	    			if(comboSearchType.getText().equals(searchConfiguration.getName())){
+	    				searchConfigurationSelected = searchConfiguration;
+	    				break loop;
+	    			}
+	    		}
+	    		
+	    		if(searchConfigurationSelected != null){
+	    			if(searchConfigurationSelected.getDescription() != null)
+	    				description.setText(searchConfigurationSelected.getDescription());
+	    			
+	    			Device device = Display.getCurrent();
+	    			Color yellow = new Color(device, 255, 255, 0);
+	    			Label optionStringField = null;
+	    			
+	    			if(searchConfigurationSelected.getOptions().size() > 0){
+	    				Label optionString = new Label(parent, SWT.NONE);
+	    				optionString.setText("Options");
+	    				optionString.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+	    				
+	    				optionStringField = new Label(parent, SWT.BORDER);
+	    				optionStringField.setText("This configuration needs (" + searchConfigurationSelected.getOptions().size() + ") options");
+	    				optionStringField.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+	    				optionStringField.setBackground(yellow);
+	    			}
+	    			else{
+	    				Label optionString = new Label(parent, SWT.NONE);
+	    				optionString.setText("Options");
+	    				optionString.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+	    				
+	    				optionStringField = new Label(parent, SWT.BORDER);
+	    				optionStringField.setText("This configuration needs no options");
+	    				optionStringField.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+	    				optionStringField.setBackground(yellow);
+	    			}	
+	    			
+	    			if (searchConfigurationSelected instanceof CustomSearch) {
+						CustomSearch customSearch = (CustomSearch) searchConfigurationSelected;
+						createSelectionFromSearch(customSearch);
+						createButtonToComposeASearch(parent, customSearch);
+					}
+	    			else{
+	    				PredicateBasedSearch predicateBasedSearch = (PredicateBasedSearch) searchConfigurationSelected;
+						createSelectionFromSearch(predicateBasedSearch);
+						createButtonToComposeASearch(parent, predicateBasedSearch);
+	    			}
+	    		}
+	    		
+	    		selectionContainer.layout();
+	    		bigContainer.layout();
+	    		setSearchConfigurationSelected(searchConfigurationSelected); 
+	    	}
+	    });
+	}*/
+	
+	private void createSelectionFromSearch(SimpleSearchConfiguration searchConfiguration) {
+		Map<SearchParam, Object> values = new LinkedHashMap<SearchParam, Object>(); 
+		Map<SearchParam, Service> serviceCalls = new LinkedHashMap<SearchParam, Service>();
+		
+		for(SearchParam searchOption : searchConfiguration.getOptions()){
+			if (searchOption instanceof PrimitiveTypeParam) {
+				PrimitiveTypeParam primitiveTypeSearchOption = (PrimitiveTypeParam) searchOption;
 				
 				if(primitiveTypeSearchOption.getType().equals(Type.STRING)){
     				createTextField(searchConfiguration, primitiveTypeSearchOption, 
@@ -233,7 +368,7 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
     			}
 			}
 			else{
-				DataModelTypeSearchOption dataModelTypeSearchOption = (DataModelTypeSearchOption) searchOption;
+				ModelTypeParam dataModelTypeSearchOption = (ModelTypeParam) searchOption;
     			createComboBox(searchConfiguration, dataModelTypeSearchOption, values);
 			}
 		}
@@ -242,7 +377,7 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		setValues(values);
 	}
 	
-	private void createTextField(SimpleSearchConfiguration searchConfiguration, SearchOption searchOption, Map<SearchOption, Object> values, Map<SearchOption, Service> serviceCalls, List<Service> services) {				
+	private void createTextField(SimpleSearchConfiguration searchConfiguration, SearchParam searchOption, Map<SearchParam, Object> values, Map<SearchParam, Service> serviceCalls, List<Service> services) {				
 		Label optionString = new Label(selectionContainer, SWT.NONE);
 		optionString.setText(searchOption.getName());
 		optionString.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -304,7 +439,7 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		selectionContainer.layout();
 	}
 	
-	private void createCheckButton(SimpleSearchConfiguration searchConfiguration, SearchOption searchOption, Map<SearchOption, Object> values, Map<SearchOption, Service> serviceCalls, List<Service> services) {
+	private void createCheckButton(SimpleSearchConfiguration searchConfiguration, SearchParam searchOption, Map<SearchParam, Object> values, Map<SearchParam, Service> serviceCalls, List<Service> services) {
 		Label optionBoolean = new Label(selectionContainer, SWT.NONE);
 		optionBoolean.setText(searchOption.getName());
 		optionBoolean.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -366,7 +501,7 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		selectionContainer.layout();
 	}
 	
-	private void createComboBox(SimpleSearchConfiguration searchConfiguration, DataModelTypeSearchOption searchOption, Map<SearchOption, Object> values) {
+	private void createComboBox(SimpleSearchConfiguration searchConfiguration, ModelTypeParam searchOption, Map<SearchParam, Object> values) {
 		Label typeLabel = new Label(selectionContainer, SWT.NONE);
 	    typeLabel.setText(searchOption.getName());
 	    typeLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -454,19 +589,19 @@ public class SearchConfigurationSelectorWizardPage extends WizardPage {
 		selectionContainer.layout();
 	}
 	
-	public Map<SearchOption, Object> getValues() {
+	public Map<SearchParam, Object> getValues() {
 		return values;
 	}
 
-	public void setValues(Map<SearchOption, Object> values) {
+	public void setValues(Map<SearchParam, Object> values) {
 		this.values = values;
 	}
 	
-	public Map<SearchOption, Service> getServiceCalls() {
+	public Map<SearchParam, Service> getServiceCalls() {
 		return serviceCalls;
 	}
 
-	public void setServiceCalls(Map<SearchOption, Service> serviceCalls) {
+	public void setServiceCalls(Map<SearchParam, Service> serviceCalls) {
 		this.serviceCalls = serviceCalls;
 	}
 

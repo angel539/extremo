@@ -11,13 +11,13 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
 import semanticmanager.DataModelType;
-import semanticmanager.DataModelTypeSearchOption;
-import semanticmanager.DataModelTypeSearchResultOptionValue;
 import semanticmanager.ExtendedSemanticmanagerFactory;
 import semanticmanager.ExtensiblePredicateBasedSearch;
-import semanticmanager.PrimitiveTypeSearchOption;
-import semanticmanager.PrimitiveTypeSearchResultOptionValue;
-import semanticmanager.SearchResultOptionValue;
+import semanticmanager.ModelTypeParam;
+import semanticmanager.ModelTypeParamValue;
+import semanticmanager.PrimitiveTypeParam;
+import semanticmanager.PrimitiveTypeParamValue;
+import semanticmanager.SearchParamValue;
 import semanticmanager.Service;
 import semanticmanager.Type;
 import semanticmanager.impl.PredicateBasedSearchImpl;
@@ -26,7 +26,7 @@ public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl
 	public static final String SERVICE_EXTENSIONS_ID = "extremo.core.extensions.services";
 	
 	public void addPrimitiveTypeSearchOption(String id, String name, Type type) {
-		PrimitiveTypeSearchOption searchOption = ExtendedSemanticmanagerFactory.eINSTANCE.createPrimitiveTypeSearchOption();
+		PrimitiveTypeParam searchOption = ExtendedSemanticmanagerFactory.eINSTANCE.createPrimitiveTypeParam();
 		searchOption.setId(id);
 		searchOption.setName(name);
 		searchOption.setType(type);
@@ -35,7 +35,7 @@ public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl
 	}
 	
 	public void addDataModelTypeSearchOption(String id, String name, DataModelType type) {
-		DataModelTypeSearchOption searchOption = ExtendedSemanticmanagerFactory.eINSTANCE.createDataModelTypeSearchOption();
+		ModelTypeParam searchOption = ExtendedSemanticmanagerFactory.eINSTANCE.createModelTypeParam();
 		searchOption.setId(id);
 		searchOption.setName(name);
 		searchOption.setType(type);
@@ -43,10 +43,10 @@ public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl
 		getOptions().add(searchOption);
 	}
 	
-	public Object getOptionValueKey(String key, EList<SearchResultOptionValue> inps) {
-		for(SearchResultOptionValue value : inps){
-			if (value instanceof PrimitiveTypeSearchResultOptionValue) {
-				PrimitiveTypeSearchResultOptionValue stringValue = (PrimitiveTypeSearchResultOptionValue) value;
+	public Object getOptionValueKey(String key, EList<SearchParamValue> inps) {
+		for(SearchParamValue value : inps){
+			if (value instanceof PrimitiveTypeParamValue) {
+				PrimitiveTypeParamValue stringValue = (PrimitiveTypeParamValue) value;
 				
 				try{
 					if(stringValue.getOption().getId().equals(key)){						
@@ -58,8 +58,8 @@ public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl
 				}
 			}
 			
-			if (value instanceof DataModelTypeSearchResultOptionValue) {
-				DataModelTypeSearchResultOptionValue dataModelValue = (DataModelTypeSearchResultOptionValue) value;
+			if (value instanceof ModelTypeParamValue) {
+				ModelTypeParamValue dataModelValue = (ModelTypeParamValue) value;
 				
 				try{
 					if(dataModelValue.getOption().getId().equals(key)){
@@ -79,10 +79,10 @@ public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl
 		return serviceBundle.matches(valuefieldString, name);
 	}
 	
-	public SearchResultOptionValue getOptionValue(String key, EList<SearchResultOptionValue> inps) {
-		for(SearchResultOptionValue value : inps){
-			if (value instanceof PrimitiveTypeSearchResultOptionValue) {
-				PrimitiveTypeSearchResultOptionValue stringValue = (PrimitiveTypeSearchResultOptionValue) value;
+	public SearchParamValue getOptionValue(String key, EList<SearchParamValue> inps) {
+		for(SearchParamValue value : inps){
+			if (value instanceof PrimitiveTypeParamValue) {
+				PrimitiveTypeParamValue stringValue = (PrimitiveTypeParamValue) value;
 				
 				try{
 					if(stringValue.getOption().getId().equals(key)){						
@@ -94,8 +94,8 @@ public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl
 				}
 			}
 			
-			if (value instanceof DataModelTypeSearchResultOptionValue) {
-				DataModelTypeSearchResultOptionValue dataModelValue = (DataModelTypeSearchResultOptionValue) value;
+			if (value instanceof ModelTypeParamValue) {
+				ModelTypeParamValue dataModelValue = (ModelTypeParamValue) value;
 				
 				try{
 					if(dataModelValue.getOption().getId().equals(key)){

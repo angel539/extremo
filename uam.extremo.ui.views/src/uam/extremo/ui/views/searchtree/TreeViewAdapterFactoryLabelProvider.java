@@ -34,8 +34,8 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 		if(obj instanceof AtomicSearchResult) return Activator.getImageDescriptor("icons/queries/atomicsearchresult.png").createImage();
 		if(obj instanceof GroupedSearchResult) return Activator.getImageDescriptor("icons/queries/groupedsearchresult.png").createImage();
 		
-		if(obj instanceof SearchResultOptionValue) return Activator.getImageDescriptor("icons/queries/value16.png").createImage();
-		if(obj instanceof SearchOption) return Activator.getImageDescriptor("icons/queries/option16.png").createImage();
+		if(obj instanceof SearchParamValue) return Activator.getImageDescriptor("icons/queries/value16.png").createImage();
+		if(obj instanceof SearchParam) return Activator.getImageDescriptor("icons/queries/option16.png").createImage();
 		if(obj instanceof SemanticGroup) return Activator.getImageDescriptor("icons/queries/class_set.gif").createImage();
 		
 		if(obj instanceof Constraint) return Activator.getImageDescriptor("icons/constraints/constraint.png").createImage();
@@ -237,27 +237,27 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 			return styledString;
 		}
 		
-		if (element instanceof PrimitiveTypeSearchResultOptionValue) {
-			PrimitiveTypeSearchResultOptionValue searchResultOptionValue = (PrimitiveTypeSearchResultOptionValue) element;
+		if (element instanceof PrimitiveTypeParamValue) {
+			PrimitiveTypeParamValue searchResultOptionValue = (PrimitiveTypeParamValue) element;
 			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName() + " : " + searchResultOptionValue.getValue());
 			return styledString;
 		}
 		
-		if (element instanceof DataModelTypeSearchResultOptionValue) {
-			DataModelTypeSearchResultOptionValue searchResultOptionValue = (DataModelTypeSearchResultOptionValue) element;
+		if (element instanceof ModelTypeParamValue) {
+			ModelTypeParamValue searchResultOptionValue = (ModelTypeParamValue) element;
 			StyledString styledString = new StyledString(searchResultOptionValue.getOption().getName() + " : " + searchResultOptionValue.getValue().getName());
 			return styledString;
 		}
 		
-		if (element instanceof PrimitiveTypeSearchOption) {
-			PrimitiveTypeSearchOption searchOption = (PrimitiveTypeSearchOption) element;
+		if (element instanceof PrimitiveTypeParam) {
+			PrimitiveTypeParam searchOption = (PrimitiveTypeParam) element;
 			StyledString styledString = new StyledString(searchOption.getType().getLiteral());
 			styledString.append(" " + searchOption.getName(), StyledString.COUNTER_STYLER);
 			return styledString;
 		}
 		
-		if (element instanceof DataModelTypeSearchOption) {
-			DataModelTypeSearchOption searchOption = (DataModelTypeSearchOption) element;
+		if (element instanceof ModelTypeParam) {
+			ModelTypeParam searchOption = (ModelTypeParam) element;
 			StyledString styledString = new StyledString(searchOption.getType().getLiteral());
 			styledString.append(" " + searchOption.getName(), StyledString.COUNTER_STYLER);
 			return styledString;
@@ -271,14 +271,6 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 				styledString.append(semanticGroup.getName());
 	
 			styledString.append(" (" + semanticGroup.getElements().size() + ") ", StyledString.QUALIFIER_STYLER);
-
-			return styledString;
-		}
-		
-		if(element instanceof Constraint){
-			Constraint constraint = (Constraint) element;
-			StyledString styledString = new StyledString(constraint.getType() + ": " + constraint.getName());
-			styledString.append(" -> " + constraint.getBody(), StyledString.COUNTER_STYLER);
 
 			return styledString;
 		}
@@ -343,6 +335,20 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 			Constraint constraint = (Constraint) element;
 			StyledString styledString = new StyledString(((Constraint) element).getType() + " " + ((Constraint) element).getName());
 			styledString.append(" (" + constraint.getBody() + ")", StyledString.COUNTER_STYLER);
+			return styledString;
+		}
+		
+		if (element instanceof ConstraintInterpreter) {
+			ConstraintInterpreter constraintInterpreter = (ConstraintInterpreter) element;
+			StyledString styledString = new StyledString(constraintInterpreter.getType());
+			return styledString;
+		}
+		
+		if (element instanceof ConstraintResult) {
+			ConstraintResult constraintResult = (ConstraintResult) element;
+			StyledString styledString = new StyledString("");
+			styledString.append(" unsat " + constraintResult.getUnsat().size() + " elements ", StyledString.QUALIFIER_STYLER);
+			
 			return styledString;
 		}
 		

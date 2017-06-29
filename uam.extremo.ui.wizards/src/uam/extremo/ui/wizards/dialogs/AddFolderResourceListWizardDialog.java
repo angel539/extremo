@@ -1,6 +1,7 @@
 package uam.extremo.ui.wizards.dialogs;
 
 import java.io.File;
+import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -17,10 +18,12 @@ public class AddFolderResourceListWizardDialog extends Wizard {
 	NewRepositoryWizardPage newRepositoryPage;
 	ImportResourceListWizardPage newResourcePage;
 	SelectResourceDescriptorWizardPage selectDescriptorPage;
+	private List<IProject> projects;
 	
-	public AddFolderResourceListWizardDialog() {
+	public AddFolderResourceListWizardDialog(List<IProject> projects) {
 		super();
 		setNeedsProgressMonitor(true);
+		this.projects = projects;
 	}
 	
 	@Override
@@ -29,7 +32,7 @@ public class AddFolderResourceListWizardDialog extends Wizard {
 	}
 	
 	public void addPages(){	
-		newRepositoryPage = new NewRepositoryWizardPage("Repository", "Select a folder with resources");
+		newRepositoryPage = new NewRepositoryWizardPage(projects, "Repository", "Select a folder with resources");
 		newResourcePage = new ImportResourceListWizardPage("Resource list", "Select resources to import", null);	
 		selectDescriptorPage = new SelectResourceDescriptorWizardPage("Descriptor", "Select resource that works as descriptor", null);	
 		addPage(newRepositoryPage);

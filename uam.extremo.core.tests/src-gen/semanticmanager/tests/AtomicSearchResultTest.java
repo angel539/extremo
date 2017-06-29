@@ -3,6 +3,7 @@
 package semanticmanager.tests;
 
 import junit.textui.TestRunner;
+
 import semanticmanager.AtomicSearchResult;
 import semanticmanager.SemanticmanagerFactory;
 

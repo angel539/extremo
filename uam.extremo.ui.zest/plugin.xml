@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="extremo.ui.views"
+            class="uam.extremo.ui.zest.resourceexplorer.ResourceExplorerViewPart"
+            icon="icons/explore16.png"
+            id="uam.extremo.ui.zest.views.InheritanceGraphViewPart"
+            name="Explore Resource"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:uam.extremo.ui.views.RepositoryView">
+         <command
+               commandId="uam.extremo.ui.views.exploreConnections"
+               icon="icons/explore16.png"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="extremo.ui.perspective.extremo">
+         <view
+               closeable="false"
+               id="uam.extremo.ui.zest.views.InheritanceGraphViewPart"
+               minimized="false"
+               moveable="true"
+               relationship="stack"
+               relative="uam.extremo.ui.views.RepositoryView"
+               visible="true">
+         </view>
+         <viewShortcut
+               id="uam.extremo.ui.zest.views.InheritanceGraphViewPart">
+         </viewShortcut>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="uam.extremo.ui.zest.actions.ExploreConnectionsHandler"
+            id="uam.extremo.ui.views.exploreConnections"
+            name="Explore">
+      </command>
+   </extension>
+
+
+</plugin>

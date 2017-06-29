@@ -9,14 +9,14 @@ import org.eclipse.emf.common.util.EList;
 import semanticmanager.DataProperty;
 import semanticmanager.ExtensibleGroupedSearchResult;
 import semanticmanager.NamedElement;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
 import uam.extremo.queries.services.stemmer.LangUtils;
+import semanticmanager.SearchParamValue;
 
 public class DataPropertiesValueSearch extends ExtensiblePredicateBasedSearchImpl{	
 	@Override
-	public boolean matches(NamedElement namedElement, EList<SearchResultOptionValue> inps) {
+	public boolean matches(NamedElement namedElement, EList<SearchParamValue> inps) {
 		if (namedElement instanceof DataProperty) {			
 			Object valuefield = getOptionValueKey("valuefield", inps);
 			

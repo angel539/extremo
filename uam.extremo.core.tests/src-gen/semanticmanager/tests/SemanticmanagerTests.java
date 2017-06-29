@@ -31,6 +31,7 @@ public class SemanticmanagerTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new SemanticmanagerTests("semanticmanager Tests");
+		suite.addTestSuite(ConstraintInterpreterTest.class);
 		suite.addTestSuite(CompositeSearchConfigurationTest.class);
 		suite.addTestSuite(ServiceTest.class);
 		suite.addTestSuite(CustomSearchTest.class);

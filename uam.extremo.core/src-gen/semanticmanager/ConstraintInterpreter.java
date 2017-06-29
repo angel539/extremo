@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getConstraintInterpreter()
- * @model abstract="true"
+ * @model
  * @extends PersistentEObject
  * @generated
  */
@@ -99,7 +99,7 @@ public interface ConstraintInterpreter extends PersistentEObject {
 	EList<Constraint> getConstraints();
 
 	/**
-	 * Returns the value of the '<em><b>Evals</b></em>' reference list.
+	 * Returns the value of the '<em><b>Evals</b></em>' containment reference list.
 	 * The list contents are of type {@link semanticmanager.ConstraintResult}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -107,9 +107,9 @@ public interface ConstraintInterpreter extends PersistentEObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Evals</em>' reference list.
+	 * @return the value of the '<em>Evals</em>' containment reference list.
 	 * @see semanticmanager.SemanticmanagerPackage#getConstraintInterpreter_Evals()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ConstraintResult> getEvals();

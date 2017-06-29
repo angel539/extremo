@@ -10,6 +10,13 @@
             id="uam.extremo.ui.wizards.searchnew"
             name="Search">
       </wizard>
+      <wizard
+            class="uam.extremo.ui.wizards.dialogs.composeaquery.ComposeAQueryWizardDialog"
+            descriptionImage="icons/composeBig.png"
+            finalPerspective="extremo.ui.perspective.extremo"
+            id="uam.extremo.ui.wizards.composeaquery"
+            name="Compose a query">
+      </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
@@ -17,6 +24,9 @@
             targetID="extremo.ui.perspective.extremo">
          <newWizardShortcut
                id="uam.extremo.ui.wizards.searchnew">
+         </newWizardShortcut>
+         <newWizardShortcut
+               id="uam.extremo.ui.wizards.composeaquery">
          </newWizardShortcut>
          <newWizardShortcut
                id="uam.extremo.ui.nature.newprojectwizard">

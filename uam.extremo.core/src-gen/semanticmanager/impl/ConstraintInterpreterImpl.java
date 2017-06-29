@@ -33,7 +33,7 @@ import semanticmanager.SemanticmanagerPackage;
  *
  * @generated
  */
-public abstract class ConstraintInterpreterImpl extends DefaultPersistentEObject implements ConstraintInterpreter {
+public class ConstraintInterpreterImpl extends DefaultPersistentEObject implements ConstraintInterpreter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -2,8 +2,18 @@ package uam.extremo.extensions;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IContributor;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.spi.RegistryContributor;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 import semanticmanager.Constraint;
+import semanticmanager.ConstraintInterpreter;
+import semanticmanager.ConstraintResult;
 import semanticmanager.DataProperty;
 import semanticmanager.ExtendedSemanticmanagerFactory;
 import semanticmanager.MetaData;
@@ -16,7 +26,11 @@ import semanticmanager.SemanticNode;
 import semanticmanager.Type;
 
 public interface IFormatAssistant {
-    public boolean load(semanticmanager.Resource semanticResource);
+	public static final String CONSTRAINT_EXTENSIONS_ID = "extremo.core.extensions.constraintinterpreter";
+	
+    public boolean loadAndValidate(
+    		semanticmanager.Resource semanticResource, 
+    		ConstraintInterpreter interpreter);
     public void toDataProperty(SemanticNode parent);
     public void toObjectProperty(SemanticNode parent);
     public void toSuper(SemanticNode parent);
@@ -79,7 +93,7 @@ public interface IFormatAssistant {
     	Constraint constraint = ExtendedSemanticmanagerFactory.eINSTANCE.createConstraint();
     	constraint.setType(type);
     	constraint.setName(name);
-    	constraint.setBody(body);
+    	constraint.setBody(new String(body));
         return constraint;
     }
     
@@ -94,7 +108,6 @@ public interface IFormatAssistant {
     	semanticNode.setName(name);
     	semanticNode.setDescription(description);
     	semanticNode.setAbstract(isAbstract);
-    	//semanticNode.getDescriptors().add(descriptor);
         return semanticNode;
     }
     
@@ -105,6 +118,20 @@ public interface IFormatAssistant {
     	semanticNode.setDescription(description);
     	semanticNode.getDescriptors().add(descriptor);
         return semanticNode;
+    }
+    
+    default ConstraintResult createConstraintResult(ConstraintInterpreter constraintInterpreter, Resource semanticResource, Constraint constraint) {
+    	ConstraintResult constraintResult = ExtendedSemanticmanagerFactory.eINSTANCE.createConstraintResult();
+    	constraintResult.setContext(semanticResource);
+		constraintResult.setConstraint(constraint);
+    	constraintInterpreter.getEvals().add(constraintResult);
+        return constraintResult;
+    }
+    
+    default boolean addNamedElementToConstraintResult(ConstraintResult constraintResult, NamedElement unsat){
+    	constraintResult.getUnsat().add(unsat);
+    	//System.out.println(unsat.getName());
+    	return true;
     }
     
     default boolean addSemanticNodeToResource(Resource resource, SemanticNode node){
@@ -129,6 +156,12 @@ public interface IFormatAssistant {
     default boolean addSuperClassToObjectProperty(ObjectProperty node, ObjectProperty superproperty){
     	if(node == null || superproperty == null) return false;
     	node.getSupers().add(superproperty);
+    	return true;
+    }
+    
+    default boolean addInverseOfToObjectProperty(ObjectProperty node, ObjectProperty inverseOf){
+    	if(node == null || inverseOf == null) return false;
+    	node.setInverseOf(inverseOf);
     	return true;
     }
     
@@ -254,32 +287,40 @@ public interface IFormatAssistant {
     	if(returnNamedElements.isEmpty()) return null;
     	return returnNamedElements.get(0);
     }
-
-    /*default SemanticNode semanticNodeFromName(Resource resource, String name){
-    	for(ResourceElement resourceElement : resource.getResourceElements()){
-    		if(resourceElement instanceof SemanticNode){
-    			SemanticNode node = (SemanticNode) resourceElement;
-    			
-    			if(node.getName().equals(name)){
-        			return node;
-        		}
-    		}	
-    	}
-    	return null;
-    }*/
     
-    /*default SemanticNode semanticNodeFromId(Resource resource, Object trace){
-    	for(ResourceElement resourceElement : resource.getResourceElements()){
-    		if(resourceElement instanceof SemanticNode){
-    			SemanticNode node = (SemanticNode) resourceElement;
-    			
-    			if(node.getTrace().equals(trace)){
-        			return node;
-        		}
-    		}	
-    	}
-    	return null;
-    }*/
+    /*default ConstraintInterpreter callConstraintExtension(String typeConstraint){
+		IExtensionRegistry registry = Platform.getExtensionRegistry();
+		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(CONSTRAINT_EXTENSIONS_ID);
+		
+		for(IConfigurationElement extension : extensions){
+			Bundle bundle = null;
+			IContributor contributor = extension.getContributor();
+			
+			if (contributor instanceof RegistryContributor) {
+				long id = Long.parseLong(((RegistryContributor) contributor).getActualId());
+				Bundle thisBundle = FrameworkUtil.getBundle(getClass());
+				bundle = thisBundle.getBundleContext().getBundle(id);
+			}
+			else {
+				bundle = Platform.getBundle(contributor.getName());          
+			}
+			
+            if (extension.getAttribute("type").equals(typeConstraint)) {
+            	Object o;
+				try {
+					o = extension.createExecutableExtension("class");
+					if (o instanceof ConstraintInterpreter) {
+						ConstraintInterpreter constraintInterpreter = (ConstraintInterpreter) o;
+	                    return constraintInterpreter;
+	                }
+				} catch (CoreException e) {
+					return null;
+				}
+            }
+		}
+		
+		return null;
+	}*/
     
     default Type defineIntType(){
     	return Type.INT;

@@ -243,7 +243,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	int CONSTRAINT_INTERPRETER__CONSTRAINTS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Evals</b></em>' reference list.
+	 * The feature id for the '<em><b>Evals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -343,14 +343,14 @@ public interface SemanticmanagerPackage extends EPackage {
 	int CONSTRAINT_RESULT_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link semanticmanager.impl.SearchOptionImpl <em>Search Option</em>}' class.
+	 * The meta object id for the '{@link semanticmanager.impl.SearchParamImpl <em>Search Param</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see semanticmanager.impl.SearchOptionImpl
-	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchOption()
+	 * @see semanticmanager.impl.SearchParamImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchParam()
 	 * @generated
 	 */
-	int SEARCH_OPTION = 4;
+	int SEARCH_PARAM = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -359,7 +359,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_OPTION__NAME = 0;
+	int SEARCH_PARAM__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -368,25 +368,25 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_OPTION__ID = 1;
+	int SEARCH_PARAM__ID = 1;
 
 	/**
-	 * The number of structural features of the '<em>Search Option</em>' class.
+	 * The number of structural features of the '<em>Search Param</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_OPTION_FEATURE_COUNT = 2;
+	int SEARCH_PARAM_FEATURE_COUNT = 2;
 
 	/**
-	 * The number of operations of the '<em>Search Option</em>' class.
+	 * The number of operations of the '<em>Search Param</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_OPTION_OPERATION_COUNT = 0;
+	int SEARCH_PARAM_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.SearchResultImpl <em>Search Result</em>}' class.
@@ -453,32 +453,32 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEARCH_RESULT_OPERATION_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link semanticmanager.impl.SearchResultOptionValueImpl <em>Search Result Option Value</em>}' class.
+	 * The meta object id for the '{@link semanticmanager.impl.SearchParamValueImpl <em>Search Param Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see semanticmanager.impl.SearchResultOptionValueImpl
-	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResultOptionValue()
+	 * @see semanticmanager.impl.SearchParamValueImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchParamValue()
 	 * @generated
 	 */
-	int SEARCH_RESULT_OPTION_VALUE = 6;
+	int SEARCH_PARAM_VALUE = 6;
 
 	/**
-	 * The number of structural features of the '<em>Search Result Option Value</em>' class.
+	 * The number of structural features of the '<em>Search Param Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT = 0;
+	int SEARCH_PARAM_VALUE_FEATURE_COUNT = 0;
 
 	/**
-	 * The number of operations of the '<em>Search Result Option Value</em>' class.
+	 * The number of operations of the '<em>Search Param Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT = 0;
+	int SEARCH_PARAM_VALUE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.SearchConfigurationImpl <em>Search Configuration</em>}' class.
@@ -2578,14 +2578,14 @@ public interface SemanticmanagerPackage extends EPackage {
 	int META_DATA_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link semanticmanager.impl.PrimitiveTypeSearchOptionImpl <em>Primitive Type Search Option</em>}' class.
+	 * The meta object id for the '{@link semanticmanager.impl.PrimitiveTypeParamImpl <em>Primitive Type Param</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see semanticmanager.impl.PrimitiveTypeSearchOptionImpl
-	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeSearchOption()
+	 * @see semanticmanager.impl.PrimitiveTypeParamImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeParam()
 	 * @generated
 	 */
-	int PRIMITIVE_TYPE_SEARCH_OPTION = 25;
+	int PRIMITIVE_TYPE_PARAM = 25;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2594,7 +2594,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_SEARCH_OPTION__NAME = SEARCH_OPTION__NAME;
+	int PRIMITIVE_TYPE_PARAM__NAME = SEARCH_PARAM__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2603,7 +2603,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_SEARCH_OPTION__ID = SEARCH_OPTION__ID;
+	int PRIMITIVE_TYPE_PARAM__ID = SEARCH_PARAM__ID;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -2612,35 +2612,35 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_SEARCH_OPTION__TYPE = SEARCH_OPTION_FEATURE_COUNT + 0;
+	int PRIMITIVE_TYPE_PARAM__TYPE = SEARCH_PARAM_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Primitive Type Search Option</em>' class.
+	 * The number of structural features of the '<em>Primitive Type Param</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_SEARCH_OPTION_FEATURE_COUNT = SEARCH_OPTION_FEATURE_COUNT + 1;
+	int PRIMITIVE_TYPE_PARAM_FEATURE_COUNT = SEARCH_PARAM_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Primitive Type Search Option</em>' class.
+	 * The number of operations of the '<em>Primitive Type Param</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_SEARCH_OPTION_OPERATION_COUNT = SEARCH_OPTION_OPERATION_COUNT + 0;
+	int PRIMITIVE_TYPE_PARAM_OPERATION_COUNT = SEARCH_PARAM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link semanticmanager.impl.DataModelTypeSearchOptionImpl <em>Data Model Type Search Option</em>}' class.
+	 * The meta object id for the '{@link semanticmanager.impl.ModelTypeParamImpl <em>Model Type Param</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see semanticmanager.impl.DataModelTypeSearchOptionImpl
-	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getDataModelTypeSearchOption()
+	 * @see semanticmanager.impl.ModelTypeParamImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getModelTypeParam()
 	 * @generated
 	 */
-	int DATA_MODEL_TYPE_SEARCH_OPTION = 26;
+	int MODEL_TYPE_PARAM = 26;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2649,7 +2649,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MODEL_TYPE_SEARCH_OPTION__NAME = SEARCH_OPTION__NAME;
+	int MODEL_TYPE_PARAM__NAME = SEARCH_PARAM__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2658,7 +2658,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MODEL_TYPE_SEARCH_OPTION__ID = SEARCH_OPTION__ID;
+	int MODEL_TYPE_PARAM__ID = SEARCH_PARAM__ID;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -2667,35 +2667,35 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MODEL_TYPE_SEARCH_OPTION__TYPE = SEARCH_OPTION_FEATURE_COUNT + 0;
+	int MODEL_TYPE_PARAM__TYPE = SEARCH_PARAM_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Data Model Type Search Option</em>' class.
+	 * The number of structural features of the '<em>Model Type Param</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MODEL_TYPE_SEARCH_OPTION_FEATURE_COUNT = SEARCH_OPTION_FEATURE_COUNT + 1;
+	int MODEL_TYPE_PARAM_FEATURE_COUNT = SEARCH_PARAM_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Data Model Type Search Option</em>' class.
+	 * The number of operations of the '<em>Model Type Param</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MODEL_TYPE_SEARCH_OPTION_OPERATION_COUNT = SEARCH_OPTION_OPERATION_COUNT + 0;
+	int MODEL_TYPE_PARAM_OPERATION_COUNT = SEARCH_PARAM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link semanticmanager.impl.DataModelTypeSearchResultOptionValueImpl <em>Data Model Type Search Result Option Value</em>}' class.
+	 * The meta object id for the '{@link semanticmanager.impl.ModelTypeParamValueImpl <em>Model Type Param Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see semanticmanager.impl.DataModelTypeSearchResultOptionValueImpl
-	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getDataModelTypeSearchResultOptionValue()
+	 * @see semanticmanager.impl.ModelTypeParamValueImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getModelTypeParamValue()
 	 * @generated
 	 */
-	int DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE = 27;
+	int MODEL_TYPE_PARAM_VALUE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Option</b></em>' reference.
@@ -2704,7 +2704,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE__OPTION = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 0;
+	int MODEL_TYPE_PARAM_VALUE__OPTION = SEARCH_PARAM_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' reference.
@@ -2713,35 +2713,35 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE__VALUE = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 1;
+	int MODEL_TYPE_PARAM_VALUE__VALUE = SEARCH_PARAM_VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Data Model Type Search Result Option Value</em>' class.
+	 * The number of structural features of the '<em>Model Type Param Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 2;
+	int MODEL_TYPE_PARAM_VALUE_FEATURE_COUNT = SEARCH_PARAM_VALUE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Data Model Type Search Result Option Value</em>' class.
+	 * The number of operations of the '<em>Model Type Param Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT = SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT + 0;
+	int MODEL_TYPE_PARAM_VALUE_OPERATION_COUNT = SEARCH_PARAM_VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link semanticmanager.impl.PrimitiveTypeSearchResultOptionValueImpl <em>Primitive Type Search Result Option Value</em>}' class.
+	 * The meta object id for the '{@link semanticmanager.impl.PrimitiveTypeParamValueImpl <em>Primitive Type Param Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see semanticmanager.impl.PrimitiveTypeSearchResultOptionValueImpl
-	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeSearchResultOptionValue()
+	 * @see semanticmanager.impl.PrimitiveTypeParamValueImpl
+	 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeParamValue()
 	 * @generated
 	 */
-	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE = 28;
+	int PRIMITIVE_TYPE_PARAM_VALUE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2750,7 +2750,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__VALUE = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 0;
+	int PRIMITIVE_TYPE_PARAM_VALUE__VALUE = SEARCH_PARAM_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Option</b></em>' reference.
@@ -2759,7 +2759,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__OPTION = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 1;
+	int PRIMITIVE_TYPE_PARAM_VALUE__OPTION = SEARCH_PARAM_VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Calls</b></em>' reference.
@@ -2768,25 +2768,25 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__CALLS = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 2;
+	int PRIMITIVE_TYPE_PARAM_VALUE__CALLS = SEARCH_PARAM_VALUE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Primitive Type Search Result Option Value</em>' class.
+	 * The number of structural features of the '<em>Primitive Type Param Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT = SEARCH_RESULT_OPTION_VALUE_FEATURE_COUNT + 3;
+	int PRIMITIVE_TYPE_PARAM_VALUE_FEATURE_COUNT = SEARCH_PARAM_VALUE_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Primitive Type Search Result Option Value</em>' class.
+	 * The number of operations of the '<em>Primitive Type Param Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT = SEARCH_RESULT_OPTION_VALUE_OPERATION_COUNT + 0;
+	int PRIMITIVE_TYPE_PARAM_VALUE_OPERATION_COUNT = SEARCH_PARAM_VALUE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.ConnectionType <em>Connection Type</em>}' enum.
@@ -3003,10 +3003,10 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getConstraintInterpreter_Constraints();
 
 	/**
-	 * Returns the meta object for the reference list '{@link semanticmanager.ConstraintInterpreter#getEvals <em>Evals</em>}'.
+	 * Returns the meta object for the containment reference list '{@link semanticmanager.ConstraintInterpreter#getEvals <em>Evals</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Evals</em>'.
+	 * @return the meta object for the containment reference list '<em>Evals</em>'.
 	 * @see semanticmanager.ConstraintInterpreter#getEvals()
 	 * @see #getConstraintInterpreter()
 	 * @generated
@@ -3078,36 +3078,36 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getConstraintResult_Unsat();
 
 	/**
-	 * Returns the meta object for class '{@link semanticmanager.SearchOption <em>Search Option</em>}'.
+	 * Returns the meta object for class '{@link semanticmanager.SearchParam <em>Search Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Search Option</em>'.
-	 * @see semanticmanager.SearchOption
+	 * @return the meta object for class '<em>Search Param</em>'.
+	 * @see semanticmanager.SearchParam
 	 * @generated
 	 */
-	EClass getSearchOption();
+	EClass getSearchParam();
 
 	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.SearchOption#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link semanticmanager.SearchParam#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see semanticmanager.SearchOption#getName()
-	 * @see #getSearchOption()
+	 * @see semanticmanager.SearchParam#getName()
+	 * @see #getSearchParam()
 	 * @generated
 	 */
-	EAttribute getSearchOption_Name();
+	EAttribute getSearchParam_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.SearchOption#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link semanticmanager.SearchParam#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see semanticmanager.SearchOption#getId()
-	 * @see #getSearchOption()
+	 * @see semanticmanager.SearchParam#getId()
+	 * @see #getSearchParam()
 	 * @generated
 	 */
-	EAttribute getSearchOption_Id();
+	EAttribute getSearchParam_Id();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.SearchResult <em>Search Result</em>}'.
@@ -3163,14 +3163,14 @@ public interface SemanticmanagerPackage extends EPackage {
 	EOperation getSearchResult__GetOptionValue__String();
 
 	/**
-	 * Returns the meta object for class '{@link semanticmanager.SearchResultOptionValue <em>Search Result Option Value</em>}'.
+	 * Returns the meta object for class '{@link semanticmanager.SearchParamValue <em>Search Param Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Search Result Option Value</em>'.
-	 * @see semanticmanager.SearchResultOptionValue
+	 * @return the meta object for class '<em>Search Param Value</em>'.
+	 * @see semanticmanager.SearchParamValue
 	 * @generated
 	 */
-	EClass getSearchResultOptionValue();
+	EClass getSearchParamValue();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.SearchConfiguration <em>Search Configuration</em>}'.
@@ -4022,121 +4022,121 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getResourceElement_ResourceFrom();
 
 	/**
-	 * Returns the meta object for class '{@link semanticmanager.PrimitiveTypeSearchOption <em>Primitive Type Search Option</em>}'.
+	 * Returns the meta object for class '{@link semanticmanager.PrimitiveTypeParam <em>Primitive Type Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Primitive Type Search Option</em>'.
-	 * @see semanticmanager.PrimitiveTypeSearchOption
+	 * @return the meta object for class '<em>Primitive Type Param</em>'.
+	 * @see semanticmanager.PrimitiveTypeParam
 	 * @generated
 	 */
-	EClass getPrimitiveTypeSearchOption();
+	EClass getPrimitiveTypeParam();
 
 	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.PrimitiveTypeSearchOption#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see semanticmanager.PrimitiveTypeSearchOption#getType()
-	 * @see #getPrimitiveTypeSearchOption()
-	 * @generated
-	 */
-	EAttribute getPrimitiveTypeSearchOption_Type();
-
-	/**
-	 * Returns the meta object for class '{@link semanticmanager.DataModelTypeSearchOption <em>Data Model Type Search Option</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Model Type Search Option</em>'.
-	 * @see semanticmanager.DataModelTypeSearchOption
-	 * @generated
-	 */
-	EClass getDataModelTypeSearchOption();
-
-	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.DataModelTypeSearchOption#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link semanticmanager.PrimitiveTypeParam#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see semanticmanager.DataModelTypeSearchOption#getType()
-	 * @see #getDataModelTypeSearchOption()
+	 * @see semanticmanager.PrimitiveTypeParam#getType()
+	 * @see #getPrimitiveTypeParam()
 	 * @generated
 	 */
-	EAttribute getDataModelTypeSearchOption_Type();
+	EAttribute getPrimitiveTypeParam_Type();
 
 	/**
-	 * Returns the meta object for class '{@link semanticmanager.DataModelTypeSearchResultOptionValue <em>Data Model Type Search Result Option Value</em>}'.
+	 * Returns the meta object for class '{@link semanticmanager.ModelTypeParam <em>Model Type Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Model Type Search Result Option Value</em>'.
-	 * @see semanticmanager.DataModelTypeSearchResultOptionValue
+	 * @return the meta object for class '<em>Model Type Param</em>'.
+	 * @see semanticmanager.ModelTypeParam
 	 * @generated
 	 */
-	EClass getDataModelTypeSearchResultOptionValue();
+	EClass getModelTypeParam();
 
 	/**
-	 * Returns the meta object for the reference '{@link semanticmanager.DataModelTypeSearchResultOptionValue#getOption <em>Option</em>}'.
+	 * Returns the meta object for the attribute '{@link semanticmanager.ModelTypeParam#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see semanticmanager.ModelTypeParam#getType()
+	 * @see #getModelTypeParam()
+	 * @generated
+	 */
+	EAttribute getModelTypeParam_Type();
+
+	/**
+	 * Returns the meta object for class '{@link semanticmanager.ModelTypeParamValue <em>Model Type Param Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Model Type Param Value</em>'.
+	 * @see semanticmanager.ModelTypeParamValue
+	 * @generated
+	 */
+	EClass getModelTypeParamValue();
+
+	/**
+	 * Returns the meta object for the reference '{@link semanticmanager.ModelTypeParamValue#getOption <em>Option</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Option</em>'.
-	 * @see semanticmanager.DataModelTypeSearchResultOptionValue#getOption()
-	 * @see #getDataModelTypeSearchResultOptionValue()
+	 * @see semanticmanager.ModelTypeParamValue#getOption()
+	 * @see #getModelTypeParamValue()
 	 * @generated
 	 */
-	EReference getDataModelTypeSearchResultOptionValue_Option();
+	EReference getModelTypeParamValue_Option();
 
 	/**
-	 * Returns the meta object for the reference '{@link semanticmanager.DataModelTypeSearchResultOptionValue#getValue <em>Value</em>}'.
+	 * Returns the meta object for the reference '{@link semanticmanager.ModelTypeParamValue#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Value</em>'.
-	 * @see semanticmanager.DataModelTypeSearchResultOptionValue#getValue()
-	 * @see #getDataModelTypeSearchResultOptionValue()
+	 * @see semanticmanager.ModelTypeParamValue#getValue()
+	 * @see #getModelTypeParamValue()
 	 * @generated
 	 */
-	EReference getDataModelTypeSearchResultOptionValue_Value();
+	EReference getModelTypeParamValue_Value();
 
 	/**
-	 * Returns the meta object for class '{@link semanticmanager.PrimitiveTypeSearchResultOptionValue <em>Primitive Type Search Result Option Value</em>}'.
+	 * Returns the meta object for class '{@link semanticmanager.PrimitiveTypeParamValue <em>Primitive Type Param Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Primitive Type Search Result Option Value</em>'.
-	 * @see semanticmanager.PrimitiveTypeSearchResultOptionValue
+	 * @return the meta object for class '<em>Primitive Type Param Value</em>'.
+	 * @see semanticmanager.PrimitiveTypeParamValue
 	 * @generated
 	 */
-	EClass getPrimitiveTypeSearchResultOptionValue();
+	EClass getPrimitiveTypeParamValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link semanticmanager.PrimitiveTypeSearchResultOptionValue#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link semanticmanager.PrimitiveTypeParamValue#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see semanticmanager.PrimitiveTypeSearchResultOptionValue#getValue()
-	 * @see #getPrimitiveTypeSearchResultOptionValue()
+	 * @see semanticmanager.PrimitiveTypeParamValue#getValue()
+	 * @see #getPrimitiveTypeParamValue()
 	 * @generated
 	 */
-	EAttribute getPrimitiveTypeSearchResultOptionValue_Value();
+	EAttribute getPrimitiveTypeParamValue_Value();
 
 	/**
-	 * Returns the meta object for the reference '{@link semanticmanager.PrimitiveTypeSearchResultOptionValue#getOption <em>Option</em>}'.
+	 * Returns the meta object for the reference '{@link semanticmanager.PrimitiveTypeParamValue#getOption <em>Option</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Option</em>'.
-	 * @see semanticmanager.PrimitiveTypeSearchResultOptionValue#getOption()
-	 * @see #getPrimitiveTypeSearchResultOptionValue()
+	 * @see semanticmanager.PrimitiveTypeParamValue#getOption()
+	 * @see #getPrimitiveTypeParamValue()
 	 * @generated
 	 */
-	EReference getPrimitiveTypeSearchResultOptionValue_Option();
+	EReference getPrimitiveTypeParamValue_Option();
 
 	/**
-	 * Returns the meta object for the reference '{@link semanticmanager.PrimitiveTypeSearchResultOptionValue#getCalls <em>Calls</em>}'.
+	 * Returns the meta object for the reference '{@link semanticmanager.PrimitiveTypeParamValue#getCalls <em>Calls</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Calls</em>'.
-	 * @see semanticmanager.PrimitiveTypeSearchResultOptionValue#getCalls()
-	 * @see #getPrimitiveTypeSearchResultOptionValue()
+	 * @see semanticmanager.PrimitiveTypeParamValue#getCalls()
+	 * @see #getPrimitiveTypeParamValue()
 	 * @generated
 	 */
-	EReference getPrimitiveTypeSearchResultOptionValue_Calls();
+	EReference getPrimitiveTypeParamValue_Calls();
 
 	/**
 	 * Returns the meta object for enum '{@link semanticmanager.ConnectionType <em>Connection Type</em>}'.
@@ -4337,7 +4337,7 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference CONSTRAINT_INTERPRETER__CONSTRAINTS = eINSTANCE.getConstraintInterpreter_Constraints();
 
 		/**
-		 * The meta object literal for the '<em><b>Evals</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Evals</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4395,14 +4395,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference CONSTRAINT_RESULT__UNSAT = eINSTANCE.getConstraintResult_Unsat();
 
 		/**
-		 * The meta object literal for the '{@link semanticmanager.impl.SearchOptionImpl <em>Search Option</em>}' class.
+		 * The meta object literal for the '{@link semanticmanager.impl.SearchParamImpl <em>Search Param</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see semanticmanager.impl.SearchOptionImpl
-		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchOption()
+		 * @see semanticmanager.impl.SearchParamImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchParam()
 		 * @generated
 		 */
-		EClass SEARCH_OPTION = eINSTANCE.getSearchOption();
+		EClass SEARCH_PARAM = eINSTANCE.getSearchParam();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -4410,7 +4410,7 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEARCH_OPTION__NAME = eINSTANCE.getSearchOption_Name();
+		EAttribute SEARCH_PARAM__NAME = eINSTANCE.getSearchParam_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
@@ -4418,7 +4418,7 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEARCH_OPTION__ID = eINSTANCE.getSearchOption_Id();
+		EAttribute SEARCH_PARAM__ID = eINSTANCE.getSearchParam_Id();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SearchResultImpl <em>Search Result</em>}' class.
@@ -4463,14 +4463,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EOperation SEARCH_RESULT___GET_OPTION_VALUE__STRING = eINSTANCE.getSearchResult__GetOptionValue__String();
 
 		/**
-		 * The meta object literal for the '{@link semanticmanager.impl.SearchResultOptionValueImpl <em>Search Result Option Value</em>}' class.
+		 * The meta object literal for the '{@link semanticmanager.impl.SearchParamValueImpl <em>Search Param Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see semanticmanager.impl.SearchResultOptionValueImpl
-		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchResultOptionValue()
+		 * @see semanticmanager.impl.SearchParamValueImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getSearchParamValue()
 		 * @generated
 		 */
-		EClass SEARCH_RESULT_OPTION_VALUE = eINSTANCE.getSearchResultOptionValue();
+		EClass SEARCH_PARAM_VALUE = eINSTANCE.getSearchParamValue();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.SearchConfigurationImpl <em>Search Configuration</em>}' class.
@@ -5149,14 +5149,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference RESOURCE_ELEMENT__RESOURCE_FROM = eINSTANCE.getResourceElement_ResourceFrom();
 
 		/**
-		 * The meta object literal for the '{@link semanticmanager.impl.PrimitiveTypeSearchOptionImpl <em>Primitive Type Search Option</em>}' class.
+		 * The meta object literal for the '{@link semanticmanager.impl.PrimitiveTypeParamImpl <em>Primitive Type Param</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see semanticmanager.impl.PrimitiveTypeSearchOptionImpl
-		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeSearchOption()
+		 * @see semanticmanager.impl.PrimitiveTypeParamImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeParam()
 		 * @generated
 		 */
-		EClass PRIMITIVE_TYPE_SEARCH_OPTION = eINSTANCE.getPrimitiveTypeSearchOption();
+		EClass PRIMITIVE_TYPE_PARAM = eINSTANCE.getPrimitiveTypeParam();
 
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
@@ -5164,17 +5164,17 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRIMITIVE_TYPE_SEARCH_OPTION__TYPE = eINSTANCE.getPrimitiveTypeSearchOption_Type();
+		EAttribute PRIMITIVE_TYPE_PARAM__TYPE = eINSTANCE.getPrimitiveTypeParam_Type();
 
 		/**
-		 * The meta object literal for the '{@link semanticmanager.impl.DataModelTypeSearchOptionImpl <em>Data Model Type Search Option</em>}' class.
+		 * The meta object literal for the '{@link semanticmanager.impl.ModelTypeParamImpl <em>Model Type Param</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see semanticmanager.impl.DataModelTypeSearchOptionImpl
-		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getDataModelTypeSearchOption()
+		 * @see semanticmanager.impl.ModelTypeParamImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getModelTypeParam()
 		 * @generated
 		 */
-		EClass DATA_MODEL_TYPE_SEARCH_OPTION = eINSTANCE.getDataModelTypeSearchOption();
+		EClass MODEL_TYPE_PARAM = eINSTANCE.getModelTypeParam();
 
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
@@ -5182,17 +5182,17 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_MODEL_TYPE_SEARCH_OPTION__TYPE = eINSTANCE.getDataModelTypeSearchOption_Type();
+		EAttribute MODEL_TYPE_PARAM__TYPE = eINSTANCE.getModelTypeParam_Type();
 
 		/**
-		 * The meta object literal for the '{@link semanticmanager.impl.DataModelTypeSearchResultOptionValueImpl <em>Data Model Type Search Result Option Value</em>}' class.
+		 * The meta object literal for the '{@link semanticmanager.impl.ModelTypeParamValueImpl <em>Model Type Param Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see semanticmanager.impl.DataModelTypeSearchResultOptionValueImpl
-		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getDataModelTypeSearchResultOptionValue()
+		 * @see semanticmanager.impl.ModelTypeParamValueImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getModelTypeParamValue()
 		 * @generated
 		 */
-		EClass DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE = eINSTANCE.getDataModelTypeSearchResultOptionValue();
+		EClass MODEL_TYPE_PARAM_VALUE = eINSTANCE.getModelTypeParamValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Option</b></em>' reference feature.
@@ -5200,7 +5200,7 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE__OPTION = eINSTANCE.getDataModelTypeSearchResultOptionValue_Option();
+		EReference MODEL_TYPE_PARAM_VALUE__OPTION = eINSTANCE.getModelTypeParamValue_Option();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
@@ -5208,17 +5208,17 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE__VALUE = eINSTANCE.getDataModelTypeSearchResultOptionValue_Value();
+		EReference MODEL_TYPE_PARAM_VALUE__VALUE = eINSTANCE.getModelTypeParamValue_Value();
 
 		/**
-		 * The meta object literal for the '{@link semanticmanager.impl.PrimitiveTypeSearchResultOptionValueImpl <em>Primitive Type Search Result Option Value</em>}' class.
+		 * The meta object literal for the '{@link semanticmanager.impl.PrimitiveTypeParamValueImpl <em>Primitive Type Param Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see semanticmanager.impl.PrimitiveTypeSearchResultOptionValueImpl
-		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeSearchResultOptionValue()
+		 * @see semanticmanager.impl.PrimitiveTypeParamValueImpl
+		 * @see semanticmanager.impl.SemanticmanagerPackageImpl#getPrimitiveTypeParamValue()
 		 * @generated
 		 */
-		EClass PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE = eINSTANCE.getPrimitiveTypeSearchResultOptionValue();
+		EClass PRIMITIVE_TYPE_PARAM_VALUE = eINSTANCE.getPrimitiveTypeParamValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -5226,7 +5226,7 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__VALUE = eINSTANCE.getPrimitiveTypeSearchResultOptionValue_Value();
+		EAttribute PRIMITIVE_TYPE_PARAM_VALUE__VALUE = eINSTANCE.getPrimitiveTypeParamValue_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Option</b></em>' reference feature.
@@ -5234,7 +5234,7 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__OPTION = eINSTANCE.getPrimitiveTypeSearchResultOptionValue_Option();
+		EReference PRIMITIVE_TYPE_PARAM_VALUE__OPTION = eINSTANCE.getPrimitiveTypeParamValue_Option();
 
 		/**
 		 * The meta object literal for the '<em><b>Calls</b></em>' reference feature.
@@ -5242,7 +5242,7 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__CALLS = eINSTANCE.getPrimitiveTypeSearchResultOptionValue_Calls();
+		EReference PRIMITIVE_TYPE_PARAM_VALUE__CALLS = eINSTANCE.getPrimitiveTypeParamValue_Calls();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.ConnectionType <em>Connection Type</em>}' enum.

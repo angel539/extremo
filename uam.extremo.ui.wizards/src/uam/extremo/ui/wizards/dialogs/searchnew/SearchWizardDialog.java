@@ -20,19 +20,19 @@ import org.osgi.framework.FrameworkUtil;
 
 import semanticmanager.AtomicSearchResult;
 import semanticmanager.CustomSearch;
-import semanticmanager.DataModelTypeSearchOption;
-import semanticmanager.DataModelTypeSearchResultOptionValue;
 import semanticmanager.DataProperty;
 import semanticmanager.ExtendedSemanticmanagerFactory;
+import semanticmanager.ModelTypeParam;
+import semanticmanager.ModelTypeParamValue;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.PredicateBasedSearch;
-import semanticmanager.PrimitiveTypeSearchOption;
-import semanticmanager.PrimitiveTypeSearchResultOptionValue;
+import semanticmanager.PrimitiveTypeParam;
+import semanticmanager.PrimitiveTypeParamValue;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
 import semanticmanager.SearchConfiguration;
-import semanticmanager.SearchOption;
+import semanticmanager.SearchParam;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticNode;
 import semanticmanager.Service;
@@ -99,14 +99,14 @@ public class SearchWizardDialog extends Wizard{
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
 				try {
-					Map<SearchOption, Object> searchOptionStringValues = searchPage.getValues();
-					Map<SearchOption, Service> searchOptionServiceCalling = searchPage.getServiceCalls();
+					Map<SearchParam, Object> searchOptionStringValues = searchPage.getValues();
+					Map<SearchParam, Service> searchOptionServiceCalling = searchPage.getServiceCalls();
 					
-					for(java.util.Map.Entry<SearchOption, Object> entry : searchOptionStringValues.entrySet()){
-						if (entry.getKey() instanceof PrimitiveTypeSearchOption) {
-							PrimitiveTypeSearchOption primitiveTypeSearchOption = (PrimitiveTypeSearchOption) entry.getKey();
+					for(java.util.Map.Entry<SearchParam, Object> entry : searchOptionStringValues.entrySet()){
+						if (entry.getKey() instanceof PrimitiveTypeParam) {
+							PrimitiveTypeParam primitiveTypeSearchOption = (PrimitiveTypeParam) entry.getKey();
 							
-							PrimitiveTypeSearchResultOptionValue primitiveTypeSearchResultOptionValue = ExtendedSemanticmanagerFactory.eINSTANCE.createPrimitiveTypeSearchResultOptionValue();
+							PrimitiveTypeParamValue primitiveTypeSearchResultOptionValue = ExtendedSemanticmanagerFactory.eINSTANCE.createPrimitiveTypeParamValue();
 							primitiveTypeSearchResultOptionValue.setOption(primitiveTypeSearchOption);
 							primitiveTypeSearchResultOptionValue.setValue(entry.getValue().toString());
 							
@@ -116,10 +116,10 @@ public class SearchWizardDialog extends Wizard{
 							searchResult.getValues().add(primitiveTypeSearchResultOptionValue);
 						}
 						
-						if (entry.getKey() instanceof DataModelTypeSearchOption) {
-							DataModelTypeSearchOption dataModelTypeSearchOption = (DataModelTypeSearchOption) entry.getKey();
+						if (entry.getKey() instanceof ModelTypeParam) {
+							ModelTypeParam dataModelTypeSearchOption = (ModelTypeParam) entry.getKey();
 							
-							DataModelTypeSearchResultOptionValue dataModelTypeSearchResultOptionValue = ExtendedSemanticmanagerFactory.eINSTANCE.createDataModelTypeSearchResultOptionValue();
+							ModelTypeParamValue dataModelTypeSearchResultOptionValue = ExtendedSemanticmanagerFactory.eINSTANCE.createModelTypeParamValue();
 							dataModelTypeSearchResultOptionValue.setOption(dataModelTypeSearchOption);
 							dataModelTypeSearchResultOptionValue.setValue((NamedElement) entry.getValue());
 							searchResult.getValues().add(dataModelTypeSearchResultOptionValue);

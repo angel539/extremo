@@ -10,7 +10,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -187,6 +187,17 @@ public class ConstraintResultItemProvider
 	@Override
 	public ResourceLocator getResourceLocator() {
 		return ExtremoEditPlugin.INSTANCE;
+	}
+	
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.CONSTRAINT_RESULT__CONTEXT);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.CONSTRAINT_RESULT__CONSTRAINT);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.CONSTRAINT_RESULT__UNSAT);
+		}
+		return childrenFeatures;
 	}
 
 }

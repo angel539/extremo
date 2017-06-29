@@ -3,20 +3,20 @@ package uam.extremo.queries.predicatebasedsearch;
 import org.eclipse.emf.common.util.EList;
 
 import semanticmanager.NamedElement;
-import semanticmanager.PrimitiveTypeSearchResultOptionValue;
-import semanticmanager.SearchResultOptionValue;
+import semanticmanager.PrimitiveTypeParamValue;
 import semanticmanager.SemanticNode;
 import semanticmanager.Service;
 import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
+import semanticmanager.SearchParamValue;
 
 public class SemanticNodeNameSearch extends ExtensiblePredicateBasedSearchImpl {	
 	@Override
-	public boolean matches(NamedElement namedElement, EList<SearchResultOptionValue> inps) {
+	public boolean matches(NamedElement namedElement, EList<SearchParamValue> inps) {
 		if (namedElement instanceof SemanticNode) {		
-			SearchResultOptionValue option = getOptionValue("name", inps);
+			SearchParamValue option = getOptionValue("name", inps);
 			
-			if(option instanceof PrimitiveTypeSearchResultOptionValue){
-				PrimitiveTypeSearchResultOptionValue primitiveOption = (PrimitiveTypeSearchResultOptionValue) option;
+			if(option instanceof PrimitiveTypeParamValue){
+				PrimitiveTypeParamValue primitiveOption = (PrimitiveTypeParamValue) option;
 				Object optionvalue = primitiveOption.getValue();
 				
 				if((optionvalue != null) && (optionvalue instanceof String)){

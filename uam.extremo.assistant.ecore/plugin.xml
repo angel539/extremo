@@ -5,6 +5,7 @@
          point="extremo.core.extensions.assistant">
       <assistant
             class="uam.extremo.assistant.ecore.EcoreAssistant"
+            eval="OCL"
             extensions="ecore, xmi"
             id="extremo.core.ecore.assistant"
             name="Ecore">

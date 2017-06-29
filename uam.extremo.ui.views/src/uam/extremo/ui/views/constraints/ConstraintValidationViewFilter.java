@@ -11,6 +11,7 @@ public class ConstraintValidationViewFilter extends ViewerFilter {
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		return element instanceof RepositoryManager
 				|| element instanceof ConstraintInterpreter
+				|| element instanceof ConstraintResult
 				|| element instanceof Constraint
 				|| element instanceof Resource
 				|| element instanceof SemanticNode 

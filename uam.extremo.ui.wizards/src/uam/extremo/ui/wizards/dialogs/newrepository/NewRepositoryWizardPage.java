@@ -1,9 +1,8 @@
 package uam.extremo.ui.wizards.dialogs.newrepository;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -30,12 +29,16 @@ public class NewRepositoryWizardPage extends WizardPage {
 	private Composite container;
 	private CCombo comboProject;
 	
+	private List<IProject> projects;
 	
-	public NewRepositoryWizardPage(String pageName, String pageDescription) {
+	
+	public NewRepositoryWizardPage(List<IProject> projects, String pageName, String pageDescription) {
 		super(pageName);
 		setTitle(pageName);
 		setDescription(pageDescription);
 		setImageDescriptor(Activator.getImageDescriptor("icons/folder.png"));
+		
+		this.projects = projects;
 	}
 
 	@Override
@@ -45,27 +48,15 @@ public class NewRepositoryWizardPage extends WizardPage {
         container.setLayout(layout);
         layout.numColumns = 2;
         
-	    
 	    Label projectLabel = new Label(container, SWT.NONE);
-	    projectLabel.setText("Project");
-	    
+	    projectLabel.setText("Project");  
 	    
 	    comboProject = new CCombo(container, SWT.NONE);
-	   
-	    IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 	    
 	    for (IProject project : projects) {
-	    	try {
-				if(project.isNatureEnabled(NATURE_ID)){
-					comboProject.add(project.getName());
-					comboProject.setData(project.getName(), project);
-				}
-			}
-	    	catch (CoreException e) {
-				//MessageDialog.openError(null, "New repository creation", e.getMessage());
-			}
+			comboProject.add(project.getName());
+			comboProject.setData(project.getName(), project);
 		}
-	    
 	    
 	    Label nameLabel = new Label(container, SWT.NONE);
 	    nameLabel.setText("Name");

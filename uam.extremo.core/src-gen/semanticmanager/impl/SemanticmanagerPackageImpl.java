@@ -20,25 +20,25 @@ import semanticmanager.ConstraintInterpreter;
 import semanticmanager.ConstraintResult;
 import semanticmanager.CustomSearch;
 import semanticmanager.DataModelType;
-import semanticmanager.DataModelTypeSearchOption;
-import semanticmanager.DataModelTypeSearchResultOptionValue;
 import semanticmanager.DataProperty;
 import semanticmanager.GroupedSearchResult;
 import semanticmanager.MetaData;
+import semanticmanager.ModelTypeParam;
+import semanticmanager.ModelTypeParamValue;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.PredicateBasedSearch;
-import semanticmanager.PrimitiveTypeSearchOption;
-import semanticmanager.PrimitiveTypeSearchResultOptionValue;
+import semanticmanager.PrimitiveTypeParam;
+import semanticmanager.PrimitiveTypeParamValue;
 import semanticmanager.Property;
 import semanticmanager.Repository;
 import semanticmanager.RepositoryManager;
 import semanticmanager.Resource;
 import semanticmanager.ResourceElement;
 import semanticmanager.SearchConfiguration;
-import semanticmanager.SearchOption;
+import semanticmanager.SearchParam;
+import semanticmanager.SearchParamValue;
 import semanticmanager.SearchResult;
-import semanticmanager.SearchResultOptionValue;
 import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
 import semanticmanager.SemanticmanagerFactory;
@@ -87,7 +87,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass searchOptionEClass = null;
+	private EClass searchParamEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,7 +101,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass searchResultOptionValueEClass = null;
+	private EClass searchParamValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -234,28 +234,28 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass primitiveTypeSearchOptionEClass = null;
+	private EClass primitiveTypeParamEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dataModelTypeSearchOptionEClass = null;
+	private EClass modelTypeParamEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dataModelTypeSearchResultOptionValueEClass = null;
+	private EClass modelTypeParamValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass primitiveTypeSearchResultOptionValueEClass = null;
+	private EClass primitiveTypeParamValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -558,8 +558,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSearchOption() {
-		return searchOptionEClass;
+	public EClass getSearchParam() {
+		return searchParamEClass;
 	}
 
 	/**
@@ -567,8 +567,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSearchOption_Name() {
-		return (EAttribute)searchOptionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSearchParam_Name() {
+		return (EAttribute)searchParamEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -576,8 +576,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSearchOption_Id() {
-		return (EAttribute)searchOptionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getSearchParam_Id() {
+		return (EAttribute)searchParamEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -630,8 +630,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSearchResultOptionValue() {
-		return searchResultOptionValueEClass;
+	public EClass getSearchParamValue() {
+		return searchParamValueEClass;
 	}
 
 	/**
@@ -1359,8 +1359,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPrimitiveTypeSearchOption() {
-		return primitiveTypeSearchOptionEClass;
+	public EClass getPrimitiveTypeParam() {
+		return primitiveTypeParamEClass;
 	}
 
 	/**
@@ -1368,8 +1368,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPrimitiveTypeSearchOption_Type() {
-		return (EAttribute)primitiveTypeSearchOptionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getPrimitiveTypeParam_Type() {
+		return (EAttribute)primitiveTypeParamEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1377,8 +1377,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDataModelTypeSearchOption() {
-		return dataModelTypeSearchOptionEClass;
+	public EClass getModelTypeParam() {
+		return modelTypeParamEClass;
 	}
 
 	/**
@@ -1386,8 +1386,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDataModelTypeSearchOption_Type() {
-		return (EAttribute)dataModelTypeSearchOptionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getModelTypeParam_Type() {
+		return (EAttribute)modelTypeParamEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1395,8 +1395,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDataModelTypeSearchResultOptionValue() {
-		return dataModelTypeSearchResultOptionValueEClass;
+	public EClass getModelTypeParamValue() {
+		return modelTypeParamValueEClass;
 	}
 
 	/**
@@ -1404,8 +1404,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataModelTypeSearchResultOptionValue_Option() {
-		return (EReference)dataModelTypeSearchResultOptionValueEClass.getEStructuralFeatures().get(0);
+	public EReference getModelTypeParamValue_Option() {
+		return (EReference)modelTypeParamValueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1413,8 +1413,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataModelTypeSearchResultOptionValue_Value() {
-		return (EReference)dataModelTypeSearchResultOptionValueEClass.getEStructuralFeatures().get(1);
+	public EReference getModelTypeParamValue_Value() {
+		return (EReference)modelTypeParamValueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1422,8 +1422,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPrimitiveTypeSearchResultOptionValue() {
-		return primitiveTypeSearchResultOptionValueEClass;
+	public EClass getPrimitiveTypeParamValue() {
+		return primitiveTypeParamValueEClass;
 	}
 
 	/**
@@ -1431,8 +1431,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPrimitiveTypeSearchResultOptionValue_Value() {
-		return (EAttribute)primitiveTypeSearchResultOptionValueEClass.getEStructuralFeatures().get(0);
+	public EAttribute getPrimitiveTypeParamValue_Value() {
+		return (EAttribute)primitiveTypeParamValueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1440,8 +1440,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPrimitiveTypeSearchResultOptionValue_Option() {
-		return (EReference)primitiveTypeSearchResultOptionValueEClass.getEStructuralFeatures().get(1);
+	public EReference getPrimitiveTypeParamValue_Option() {
+		return (EReference)primitiveTypeParamValueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1449,8 +1449,8 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPrimitiveTypeSearchResultOptionValue_Calls() {
-		return (EReference)primitiveTypeSearchResultOptionValueEClass.getEStructuralFeatures().get(2);
+	public EReference getPrimitiveTypeParamValue_Calls() {
+		return (EReference)primitiveTypeParamValueEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1544,9 +1544,9 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEReference(constraintResultEClass, CONSTRAINT_RESULT__CONTEXT);
 		createEReference(constraintResultEClass, CONSTRAINT_RESULT__UNSAT);
 
-		searchOptionEClass = createEClass(SEARCH_OPTION);
-		createEAttribute(searchOptionEClass, SEARCH_OPTION__NAME);
-		createEAttribute(searchOptionEClass, SEARCH_OPTION__ID);
+		searchParamEClass = createEClass(SEARCH_PARAM);
+		createEAttribute(searchParamEClass, SEARCH_PARAM__NAME);
+		createEAttribute(searchParamEClass, SEARCH_PARAM__ID);
 
 		searchResultEClass = createEClass(SEARCH_RESULT);
 		createEReference(searchResultEClass, SEARCH_RESULT__VALUES);
@@ -1554,7 +1554,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEReference(searchResultEClass, SEARCH_RESULT__APPLY_ON_ELEMENTS);
 		createEOperation(searchResultEClass, SEARCH_RESULT___GET_OPTION_VALUE__STRING);
 
-		searchResultOptionValueEClass = createEClass(SEARCH_RESULT_OPTION_VALUE);
+		searchParamValueEClass = createEClass(SEARCH_PARAM_VALUE);
 
 		searchConfigurationEClass = createEClass(SEARCH_CONFIGURATION);
 		createEAttribute(searchConfigurationEClass, SEARCH_CONFIGURATION__ID);
@@ -1654,20 +1654,20 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		resourceElementEClass = createEClass(RESOURCE_ELEMENT);
 		createEReference(resourceElementEClass, RESOURCE_ELEMENT__RESOURCE_FROM);
 
-		primitiveTypeSearchOptionEClass = createEClass(PRIMITIVE_TYPE_SEARCH_OPTION);
-		createEAttribute(primitiveTypeSearchOptionEClass, PRIMITIVE_TYPE_SEARCH_OPTION__TYPE);
+		primitiveTypeParamEClass = createEClass(PRIMITIVE_TYPE_PARAM);
+		createEAttribute(primitiveTypeParamEClass, PRIMITIVE_TYPE_PARAM__TYPE);
 
-		dataModelTypeSearchOptionEClass = createEClass(DATA_MODEL_TYPE_SEARCH_OPTION);
-		createEAttribute(dataModelTypeSearchOptionEClass, DATA_MODEL_TYPE_SEARCH_OPTION__TYPE);
+		modelTypeParamEClass = createEClass(MODEL_TYPE_PARAM);
+		createEAttribute(modelTypeParamEClass, MODEL_TYPE_PARAM__TYPE);
 
-		dataModelTypeSearchResultOptionValueEClass = createEClass(DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE);
-		createEReference(dataModelTypeSearchResultOptionValueEClass, DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE__OPTION);
-		createEReference(dataModelTypeSearchResultOptionValueEClass, DATA_MODEL_TYPE_SEARCH_RESULT_OPTION_VALUE__VALUE);
+		modelTypeParamValueEClass = createEClass(MODEL_TYPE_PARAM_VALUE);
+		createEReference(modelTypeParamValueEClass, MODEL_TYPE_PARAM_VALUE__OPTION);
+		createEReference(modelTypeParamValueEClass, MODEL_TYPE_PARAM_VALUE__VALUE);
 
-		primitiveTypeSearchResultOptionValueEClass = createEClass(PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE);
-		createEAttribute(primitiveTypeSearchResultOptionValueEClass, PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__VALUE);
-		createEReference(primitiveTypeSearchResultOptionValueEClass, PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__OPTION);
-		createEReference(primitiveTypeSearchResultOptionValueEClass, PRIMITIVE_TYPE_SEARCH_RESULT_OPTION_VALUE__CALLS);
+		primitiveTypeParamValueEClass = createEClass(PRIMITIVE_TYPE_PARAM_VALUE);
+		createEAttribute(primitiveTypeParamValueEClass, PRIMITIVE_TYPE_PARAM_VALUE__VALUE);
+		createEReference(primitiveTypeParamValueEClass, PRIMITIVE_TYPE_PARAM_VALUE__OPTION);
+		createEReference(primitiveTypeParamValueEClass, PRIMITIVE_TYPE_PARAM_VALUE__CALLS);
 
 		// Create enums
 		connectionTypeEEnum = createEEnum(CONNECTION_TYPE);
@@ -1719,10 +1719,10 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		objectPropertyEClass.getESuperTypes().add(this.getProperty());
 		dataPropertyEClass.getESuperTypes().add(this.getProperty());
 		resourceElementEClass.getESuperTypes().add(this.getNamedElement());
-		primitiveTypeSearchOptionEClass.getESuperTypes().add(this.getSearchOption());
-		dataModelTypeSearchOptionEClass.getESuperTypes().add(this.getSearchOption());
-		dataModelTypeSearchResultOptionValueEClass.getESuperTypes().add(this.getSearchResultOptionValue());
-		primitiveTypeSearchResultOptionValueEClass.getESuperTypes().add(this.getSearchResultOptionValue());
+		primitiveTypeParamEClass.getESuperTypes().add(this.getSearchParam());
+		modelTypeParamEClass.getESuperTypes().add(this.getSearchParam());
+		modelTypeParamValueEClass.getESuperTypes().add(this.getSearchParamValue());
+		primitiveTypeParamValueEClass.getESuperTypes().add(this.getSearchParamValue());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(repositoryManagerEClass, RepositoryManager.class, "RepositoryManager", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1739,11 +1739,11 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEReference(getConstraint_Evaluations(), this.getConstraintResult(), this.getConstraintResult_Constraint(), "evaluations", null, 0, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConstraint_Interpreter(), this.getConstraintInterpreter(), this.getConstraintInterpreter_Constraints(), "interpreter", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(constraintInterpreterEClass, ConstraintInterpreter.class, "ConstraintInterpreter", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(constraintInterpreterEClass, ConstraintInterpreter.class, "ConstraintInterpreter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConstraintInterpreter_Id(), ecorePackage.getEString(), "id", null, 0, 1, ConstraintInterpreter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConstraintInterpreter_Name(), ecorePackage.getEString(), "name", null, 0, 1, ConstraintInterpreter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConstraintInterpreter_Constraints(), this.getConstraint(), this.getConstraint_Interpreter(), "constraints", null, 0, -1, ConstraintInterpreter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConstraintInterpreter_Evals(), this.getConstraintResult(), null, "evals", null, 0, -1, ConstraintInterpreter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraintInterpreter_Evals(), this.getConstraintResult(), null, "evals", null, 0, -1, ConstraintInterpreter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConstraintInterpreter_Type(), ecorePackage.getEString(), "type", null, 0, 1, ConstraintInterpreter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getConstraintInterpreter__Eval__Constraint_NamedElement(), ecorePackage.getEBoolean(), "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1755,19 +1755,19 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEReference(getConstraintResult_Context(), this.getResource(), null, "context", null, 0, 1, ConstraintResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConstraintResult_Unsat(), this.getNamedElement(), null, "unsat", null, 0, -1, ConstraintResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(searchOptionEClass, SearchOption.class, "SearchOption", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSearchOption_Name(), ecorePackage.getEString(), "name", null, 0, 1, SearchOption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSearchOption_Id(), ecorePackage.getEString(), "id", null, 0, 1, SearchOption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(searchParamEClass, SearchParam.class, "SearchParam", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSearchParam_Name(), ecorePackage.getEString(), "name", null, 0, 1, SearchParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSearchParam_Id(), ecorePackage.getEString(), "id", null, 0, 1, SearchParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(searchResultEClass, SearchResult.class, "SearchResult", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSearchResult_Values(), this.getSearchResultOptionValue(), null, "values", null, 0, -1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSearchResult_Values(), this.getSearchParamValue(), null, "values", null, 0, -1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSearchResult_Configuration(), this.getSearchConfiguration(), this.getSearchConfiguration_Results(), "configuration", null, 0, 1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSearchResult_ApplyOnElements(), this.getNamedElement(), null, "applyOnElements", null, 0, -1, SearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getSearchResult__GetOptionValue__String(), ecorePackage.getEJavaObject(), "getOptionValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(searchResultOptionValueEClass, SearchResultOptionValue.class, "SearchResultOptionValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(searchParamValueEClass, SearchParamValue.class, "SearchParamValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(searchConfigurationEClass, SearchConfiguration.class, "SearchConfiguration", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSearchConfiguration_Id(), ecorePackage.getEString(), "id", null, 0, 1, SearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1775,7 +1775,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEReference(getSearchConfiguration_Results(), this.getSearchResult(), this.getSearchResult_Configuration(), "results", null, 0, -1, SearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(simpleSearchConfigurationEClass, SimpleSearchConfiguration.class, "SimpleSearchConfiguration", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSimpleSearchConfiguration_Options(), this.getSearchOption(), null, "options", null, 0, -1, SimpleSearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSimpleSearchConfiguration_Options(), this.getSearchParam(), null, "options", null, 0, -1, SimpleSearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleSearchConfiguration_Description(), ecorePackage.getEString(), "description", null, 0, 1, SimpleSearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimpleSearchConfiguration_FilterBy(), this.getDataModelType(), "filterBy", null, 0, 1, SimpleSearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1815,11 +1815,11 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 
 		op = initEOperation(getPredicateBasedSearch__Matches__NamedElement_EList(), ecorePackage.getEBoolean(), "matches", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNamedElement(), "namedElement", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getSearchResultOptionValue(), "inps", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSearchParamValue(), "inps", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getPredicateBasedSearch__GetOptionValueKey__String_EList(), this.getJavaObject(), "getOptionValueKey", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getSearchResultOptionValue(), "inps", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSearchParamValue(), "inps", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(atomicSearchResultEClass, AtomicSearchResult.class, "AtomicSearchResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAtomicSearchResult_Elements(), this.getNamedElement(), null, "elements", null, 0, -1, AtomicSearchResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1906,20 +1906,20 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		initEClass(resourceElementEClass, ResourceElement.class, "ResourceElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getResourceElement_ResourceFrom(), this.getResource(), this.getResource_ResourceElements(), "resourceFrom", null, 0, 1, ResourceElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(primitiveTypeSearchOptionEClass, PrimitiveTypeSearchOption.class, "PrimitiveTypeSearchOption", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPrimitiveTypeSearchOption_Type(), this.getType(), "type", null, 0, 1, PrimitiveTypeSearchOption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(primitiveTypeParamEClass, PrimitiveTypeParam.class, "PrimitiveTypeParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPrimitiveTypeParam_Type(), this.getType(), "type", null, 0, 1, PrimitiveTypeParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataModelTypeSearchOptionEClass, DataModelTypeSearchOption.class, "DataModelTypeSearchOption", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataModelTypeSearchOption_Type(), this.getDataModelType(), "type", null, 0, 1, DataModelTypeSearchOption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(modelTypeParamEClass, ModelTypeParam.class, "ModelTypeParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getModelTypeParam_Type(), this.getDataModelType(), "type", null, 0, 1, ModelTypeParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataModelTypeSearchResultOptionValueEClass, DataModelTypeSearchResultOptionValue.class, "DataModelTypeSearchResultOptionValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataModelTypeSearchResultOptionValue_Option(), this.getDataModelTypeSearchOption(), null, "option", null, 0, 1, DataModelTypeSearchResultOptionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataModelTypeSearchResultOptionValue_Value(), this.getNamedElement(), null, "value", null, 0, 1, DataModelTypeSearchResultOptionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(modelTypeParamValueEClass, ModelTypeParamValue.class, "ModelTypeParamValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModelTypeParamValue_Option(), this.getModelTypeParam(), null, "option", null, 0, 1, ModelTypeParamValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelTypeParamValue_Value(), this.getNamedElement(), null, "value", null, 0, 1, ModelTypeParamValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(primitiveTypeSearchResultOptionValueEClass, PrimitiveTypeSearchResultOptionValue.class, "PrimitiveTypeSearchResultOptionValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPrimitiveTypeSearchResultOptionValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, PrimitiveTypeSearchResultOptionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPrimitiveTypeSearchResultOptionValue_Option(), this.getPrimitiveTypeSearchOption(), null, "option", null, 0, 1, PrimitiveTypeSearchResultOptionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPrimitiveTypeSearchResultOptionValue_Calls(), this.getService(), null, "calls", null, 0, 1, PrimitiveTypeSearchResultOptionValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(primitiveTypeParamValueEClass, PrimitiveTypeParamValue.class, "PrimitiveTypeParamValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPrimitiveTypeParamValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, PrimitiveTypeParamValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPrimitiveTypeParamValue_Option(), this.getPrimitiveTypeParam(), null, "option", null, 0, 1, PrimitiveTypeParamValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPrimitiveTypeParamValue_Calls(), this.getService(), null, "calls", null, 0, 1, PrimitiveTypeParamValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(connectionTypeEEnum, ConnectionType.class, "ConnectionType");

@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.spi.RegistryContributor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -43,15 +44,13 @@ import fr.inria.atlanmod.neoemf.data.mapdb.util.MapDbURI;
 import fr.inria.atlanmod.neoemf.option.AbstractPersistenceOptionsBuilder;
 import fr.inria.atlanmod.neoemf.resource.PersistentResource;
 import fr.inria.atlanmod.neoemf.resource.PersistentResourceFactory;
-
-import semanticmanager.Constraint;
 import semanticmanager.ConstraintInterpreter;
 import semanticmanager.DataModelType;
 import semanticmanager.DataProperty;
 import semanticmanager.ExtendedSemanticmanagerFactory;
+import semanticmanager.ExtensibleConstraintInterpreter;
 import semanticmanager.ExtensibleCustomSearch;
 import semanticmanager.ExtensiblePredicateBasedSearch;
-import semanticmanager.GroupedSearchResult;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
 import semanticmanager.Repository;
@@ -59,9 +58,7 @@ import semanticmanager.RepositoryManager;
 import semanticmanager.Resource;
 import semanticmanager.ResourceElement;
 import semanticmanager.SearchConfiguration;
-import semanticmanager.SemanticGroup;
 import semanticmanager.SemanticNode;
-import semanticmanager.SemanticmanagerFactory;
 import semanticmanager.Service;
 import semanticmanager.Type;
 
@@ -110,6 +107,15 @@ public class AssistantFactory implements IResourceChangeListener{
 							String extensionsAttribute = StringUtils.deleteWhitespace(extension.getAttribute("extensions"));
 							String[] extensionsSeparated = StringUtils.splitByWholeSeparator(extensionsAttribute, ",");
 							
+							String eval = extension.getAttribute("eval");
+							
+							if(eval != null && eval.compareTo("") != 0){
+								((FormatAssistant) assistant).setInterpreter(eval);
+								ConstraintInterpreter constraintInterpreter = getValidator(eval);
+								((FormatAssistant) assistant).setConstraintInterpreter(constraintInterpreter);
+								getRepositoryManager().getInterpreters().add(constraintInterpreter);
+							}
+							
 							List<String> extensionsCleaned = new ArrayList<String>();
 							for(String s : extensionsSeparated){
 								String cleans = StringUtils.deleteWhitespace(s);
@@ -133,6 +139,45 @@ public class AssistantFactory implements IResourceChangeListener{
 		
 		return assistants;
 	}
+	
+	private ConstraintInterpreter getValidator(String validatorId){
+    	IExtensionRegistry registry = Platform.getExtensionRegistry();
+		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(CONSTRAINT_EXTENSIONS_ID);
+		
+		for(IConfigurationElement extension : extensions){
+			Bundle bundle = null;
+			IContributor contributor = extension.getContributor();
+			
+			if (contributor instanceof RegistryContributor) {
+				long id = Long.parseLong(((RegistryContributor) contributor).getActualId());
+				Bundle thisBundle = FrameworkUtil.getBundle(getClass());
+				bundle = thisBundle.getBundleContext().getBundle(id);
+			}
+			else {
+				bundle = Platform.getBundle(contributor.getName());          
+			}
+			
+            if (extension.getAttribute("type").equals(validatorId)) {
+            	Object o;
+				try {
+					o = extension.createExecutableExtension("class");
+					if (o instanceof ConstraintInterpreter) {
+						ConstraintInterpreter constraintInterpreter = (ConstraintInterpreter) o;
+						
+						constraintInterpreter.setId(extension.getAttribute("id"));
+						constraintInterpreter.setName(extension.getAttribute("name"));
+						constraintInterpreter.setType(extension.getAttribute("type"));
+						
+	                    return constraintInterpreter;
+	                }
+				} catch (CoreException e) {
+					return null;
+				}
+            }
+		}
+		
+		return null;
+    }
 	
 	public static void setAssistants(List<IFormatAssistant> assistants) {
 		AssistantFactory.assistants = assistants;
@@ -275,7 +320,7 @@ public class AssistantFactory implements IResourceChangeListener{
 		for(IConfigurationElement extension : extensions){
 			if(! constraintInterpreterIsOnTheList(extension.getAttribute("id"))){
 				if(extension.getName().compareTo("constraintinterpreter") == 0){
-					ConstraintInterpreter constraintInterpreter;
+					ExtensibleConstraintInterpreter constraintInterpreter;
 					
 					Bundle bundle = null;
 					IContributor contributor = extension.getContributor();
@@ -290,11 +335,12 @@ public class AssistantFactory implements IResourceChangeListener{
 					}
 					
 					try{
-						if(extension.createExecutableExtension("class") instanceof ConstraintInterpreter){
-							constraintInterpreter = (ConstraintInterpreter) extension.createExecutableExtension("class");
+						if(extension.createExecutableExtension("class") instanceof ExtensibleConstraintInterpreter){
+							constraintInterpreter = (ExtensibleConstraintInterpreter) extension.createExecutableExtension("class");
 							
-							((ConstraintInterpreter) constraintInterpreter).setId(extension.getAttribute("id"));
-							((ConstraintInterpreter) constraintInterpreter).setName(extension.getAttribute("name"));
+							((ExtensibleConstraintInterpreter) constraintInterpreter).setId(extension.getAttribute("id"));
+							((ExtensibleConstraintInterpreter) constraintInterpreter).setName(extension.getAttribute("name"));
+							((ExtensibleConstraintInterpreter) constraintInterpreter).setType(extension.getAttribute("type"));
 							
 							getRepositoryManager().getInterpreters().add(constraintInterpreter);
 						}
@@ -318,7 +364,8 @@ public class AssistantFactory implements IResourceChangeListener{
 		
 		for(ConstraintInterpreter interpreter : interpreters){
 			if(interpreter instanceof ConstraintInterpreter){
-				if(((ConstraintInterpreter) interpreter).getId().compareTo(attribute)==0) return true;
+				if(((ConstraintInterpreter) interpreter).getId().compareTo(attribute) == 0) 
+					return true;
 			}
 		}
 		
@@ -393,7 +440,7 @@ public class AssistantFactory implements IResourceChangeListener{
    }
 
 	public AssistantFactory(){
-		ResourcesPlugin.getWorkspace().addResourceChangeListener (this, IResourceChangeEvent.POST_CHANGE);
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(this, IResourceChangeEvent.POST_CHANGE);
 	}
 	
 	public static void shutdown() {
@@ -411,8 +458,18 @@ public class AssistantFactory implements IResourceChangeListener{
 		 resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 		 		.put(MapDbURI.SCHEME, PersistentResourceFactory.getInstance());
 		 
-		 resourceDb = resourceSet.createResource(MapDbURI.createFileURI(new File(
-	                "models/repositoryManagerDb.mapdb")));
+		 File file = new File(
+				 ResourcesPlugin.getWorkspace().getRoot().getLocation().toString() +
+				 "/models/repositoryManagerDb.mapdb"
+				 );
+		 
+		 //resourceDb = resourceSet.createResource(MapDbURI.createFileURI(new File(
+	     //           "models/repositoryManagerDb.mapdb")));
+		 
+		 //resourceDb = resourceSet.createResource(
+			//	 MapDbURI.createFileURI(new File("models/repositoryManagerDb.mapdb"))
+			//	 );
+		 resourceDb = resourceSet.createResource(MapDbURI.createFileURI(file));
 	}
 	
 	public RepositoryManager getRepositoryManager() {
@@ -508,10 +565,6 @@ public class AssistantFactory implements IResourceChangeListener{
 	public void setDrawnElement(NamedElement drawnElement) {
 		AssistantFactory.drawnElement = drawnElement;
 	}
-	
-	public void validateConstraint(Constraint constraint) {
-		constraint.getInterpreter().eval(constraint, constraint.getAppliedTo());
-	}
 
 	public Repository createRepository(IProject project, String name, String description){
 		try{
@@ -578,7 +631,11 @@ public class AssistantFactory implements IResourceChangeListener{
 					if(extensionFile.compareTo(ext) == 0){
 						resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
 						
-						boolean loaded = assistant.load((Resource) resource);
+						ConstraintInterpreter constraintInterpreter = ((FormatAssistant) assistant).getConstraintInterpreter();
+						
+						boolean loaded = assistant.loadAndValidate(
+								(Resource) resource, 
+								constraintInterpreter);
 						resource.setAlive(loaded);
 						
 						if(loaded){
@@ -622,7 +679,11 @@ public class AssistantFactory implements IResourceChangeListener{
 			
 			resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
 			
-			boolean loaded = assistant.load((Resource) resource);
+			ConstraintInterpreter constraintInterpreter = ((FormatAssistant) assistant).getConstraintInterpreter();
+			
+			boolean loaded = assistant.loadAndValidate(
+					(Resource) resource, 
+					constraintInterpreter);
 			resource.setAlive(loaded);
 			
 			if(loaded){
@@ -664,7 +725,11 @@ public class AssistantFactory implements IResourceChangeListener{
 			if(((FormatAssistant) assistant).getNameExtension().equals(newassistant)){
 				resource.getResourceElements().clear();
 				
-				boolean loaded = assistant.load((Resource) resource);
+				ConstraintInterpreter constraintInterpreter = ((FormatAssistant) assistant).getConstraintInterpreter();
+				
+				boolean loaded = assistant.loadAndValidate(
+						(Resource) resource, 
+						constraintInterpreter);
 				resource.setAlive(loaded);
 				
 				if(loaded){
@@ -681,6 +746,7 @@ public class AssistantFactory implements IResourceChangeListener{
 			resource.setName(name);
 			resource.setDescription(description);
 			resource.setUri(uri);
+			
 			if(descriptor != null)
 				resource.getDescriptors().add(descriptor);
 
@@ -691,7 +757,11 @@ public class AssistantFactory implements IResourceChangeListener{
 					if(extensionFile.compareTo(ext) == 0){
 						resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
 						
-						boolean loaded = assistant.load((Resource) resource);
+						ConstraintInterpreter constraintInterpreter = ((FormatAssistant) assistant).getConstraintInterpreter();
+						
+						boolean loaded = assistant.loadAndValidate(
+								(Resource) resource, 
+								constraintInterpreter);
 						resource.setAlive(loaded);
 						
 						if(loaded){
@@ -743,7 +813,11 @@ public class AssistantFactory implements IResourceChangeListener{
 			
 			resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
 			
-			boolean loaded = assistant.load((Resource) resource);
+			ConstraintInterpreter constraintInterpreter = ((FormatAssistant) assistant).getConstraintInterpreter();
+			
+			boolean loaded = assistant.loadAndValidate(
+					(Resource) resource, 
+					constraintInterpreter);
 			resource.setAlive(loaded);
 			
 			if(loaded){
@@ -810,7 +884,6 @@ public class AssistantFactory implements IResourceChangeListener{
         		preorderHelper(assistant, resourceElement);
         }
     }
-	
 	
 	private void toDataThread(IFormatAssistant assistant, SemanticNode node){
 		Job job = new Job(node.getName() + " : resolving data properties") {

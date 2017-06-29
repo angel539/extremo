@@ -3,6 +3,7 @@
 package semanticmanager.tests;
 
 import junit.framework.TestCase;
+
 import semanticmanager.SearchResult;
 
 /**

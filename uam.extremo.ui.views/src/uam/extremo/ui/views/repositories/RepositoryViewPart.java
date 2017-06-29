@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
@@ -53,7 +55,6 @@ import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.ISelectionListener;
@@ -83,6 +84,7 @@ import uam.extremo.ui.wizards.dialogs.AddFolderResourceListWizardDialog;
 
 public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor{
 	public static final String ID = "uam.extremo.ui.views.RepositoryView";
+	public static final String NATURE_ID = "uam.extremo.ui.nature.extremonature";
 
 	private static TreeViewer viewer;
 	private Action addResourceToExistingRepository;
@@ -471,13 +473,32 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	private void makeActions() {
 		addFolder = new Action() {
 			public void run() {
-				WizardDialog wizardDialog = new WizardDialog(null, new AddFolderResourceListWizardDialog());
-				if (wizardDialog.open() == Window.OK) {
-					MessageDialog.openConfirm(null, "Add Folder", "Resources imported");
+			    IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+			    
+			    List<IProject> projectNatures = new ArrayList<IProject>(); 
+			    
+			    for (IProject project : projects) {
+					try {
+						if(project.isNatureEnabled(NATURE_ID)){
+							projectNatures.add(project);
+						}
+					}
+					catch (CoreException e) {
+					}
 				}
-				else{
-					MessageDialog.openError(null, "Add Folder", "Resources could not be imported");
-				}
+			    
+			    if(projectNatures.isEmpty()){
+					MessageDialog.openError(null, "Add Folder", "You have to create first an Extremo project");
+			    }
+			    else{
+			    	WizardDialog wizardDialog = new WizardDialog(null, new AddFolderResourceListWizardDialog(projectNatures));
+					if (wizardDialog.open() == Window.OK) {
+						MessageDialog.openConfirm(null, "Add Folder", "Resources imported");
+					}
+					else{
+						MessageDialog.openError(null, "Add Folder", "Resources could not be imported");
+					}
+			    }				
 			}
 		};
 		
@@ -485,7 +506,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		addFolder.setToolTipText("");
 		addFolder.setImageDescriptor(Activator.getImageDescriptor("icons/package.gif"));
 		
-		addResourceToExistingRepository = new Action() {
+		/*addResourceToExistingRepository = new Action() {
 			public void run() {
 				ISelection selection = viewer.getSelection();
 				
@@ -498,40 +519,15 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 					WizardDialog wizardDialog = new WizardDialog(activeShell, wizard);
 					wizardDialog.open();
-					
-					
-					
-					/*PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable(){
-						@Override
-						public void run() {
-							Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-
-							if(element instanceof Repository){
-								WizardDialog wizardDialog = new WizardDialog(null, new AddAResourceToExistingRepositoryWizardDialog((Repository) element));
-								
-
-								if (wizardDialog.open() == Window.OK) {
-									MessageDialog.openConfirm(activeShell, "Add resource to repository", "Resource has been added");
-								}
-								else{
-									MessageDialog.openError(activeShell, "Add resource to repository", "Resource could not be added");
-								}
-							}
-							else{
-								MessageDialog.openError(activeShell, "Add resource to repository", "Repository must be selected");
-							}
-						}
-					});*/
-
-					
 				}	
 			}
 		};
 		
 		addResourceToExistingRepository.setText("Add resource to repository");
 		addResourceToExistingRepository.setImageDescriptor(Activator.getImageDescriptor("icons/3d_objects_16.png"));
+		*/
 		
-		changeResourceToDescriptor = new Action() {
+		/*changeResourceToDescriptor = new Action() {
 			public void run() {
 				ISelection selection = viewer.getSelection();
 				
@@ -539,7 +535,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					IStructuredSelection strucSelection = (IStructuredSelection) selection;
 					Object element = strucSelection.getFirstElement();
 					
-					/*if(element instanceof Resource){
+					if(element instanceof Resource){
 						Resource resource = (Resource) element;
 						
 						if(resource.getDescriptor() != null && resource.getDescriptor() instanceof Resource){
@@ -555,7 +551,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 								MessageDialog.openError(activeShell, "Change descriptor to resource", "Resource must be selected");
 							}
 						});
-					}*/
+					}
 				}	
 			}
 		};
@@ -571,7 +567,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 					IStructuredSelection strucSelection = (IStructuredSelection) selection;
 					Object element = strucSelection.getFirstElement();
 					
-					/*PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable(){
+					PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable(){
 						@Override
 						public void run() {
 							Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
@@ -596,13 +592,13 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 								MessageDialog.openError(activeShell, "Change descriptor to resource", "Resource must be selected");
 							}
 						}
-					});*/
+					});
 				}	
 			}
 		};
 		
 		changeDescriptorToResource.setText("Change descriptor to resource");
-		changeDescriptorToResource.setImageDescriptor(Activator.getImageDescriptor("icons/right16.png"));
+		changeDescriptorToResource.setImageDescriptor(Activator.getImageDescriptor("icons/right16.png"));*/
 	}
 
 	private void hookDoubleClickAction() {

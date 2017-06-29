@@ -21,6 +21,7 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
+import semanticmanager.ConstraintInterpreter;
 import semanticmanager.DataProperty;
 import semanticmanager.NamedElement;
 import semanticmanager.ObjectProperty;
@@ -43,10 +44,12 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 	File file;
 	String extension;
 	ManchesterOWLSyntaxPrefixNameShortFormProvider prefixManager = null;
+	ConstraintInterpreter constraintInterpreter = null;
 
 	@Override
-	public boolean load(Resource semanticResource) {
+	public boolean loadAndValidate(Resource semanticResource, ConstraintInterpreter constraintInterpreter) {
 		this.semanticResource = semanticResource;
+		this.constraintInterpreter = constraintInterpreter;
 		
 		if((semanticResource.getUri().startsWith("http://"))
 				|| (semanticResource.getUri().startsWith("https://"))){
@@ -291,6 +294,22 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 
 	@Override
 	public void toInverseOf(ObjectProperty parent) {
-		// TODO Auto-generated method stub
+		if(ontology != null && parent.getTrace() != null && parent.getTrace() instanceof IRI){
+			IRI iriClass = (IRI) parent.getTrace();
+			
+			if(ontology.containsObjectPropertyInSignature(iriClass)){
+				OWLObjectProperty objectProperty = factory.getOWLObjectProperty(iriClass);
+				OWLObjectPropertyExpression inverseOf = objectProperty.getInverseProperty();
+				
+				if(inverseOf != null){
+					NamedElement namedId = namedElementFromId(semanticResource, inverseOf.asOWLObjectProperty().getIRI());
+					
+					if(namedId != null && namedId instanceof ObjectProperty){
+						ObjectProperty inverseOfObjectProperty = (ObjectProperty) namedId;
+						addInverseOfToObjectProperty(parent, inverseOfObjectProperty);
+					}
+				}
+			}
+		}
 	}
 }

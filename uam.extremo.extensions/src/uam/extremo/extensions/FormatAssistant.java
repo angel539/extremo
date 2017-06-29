@@ -3,12 +3,15 @@ package uam.extremo.extensions;
 import java.util.ArrayList;
 import java.util.List;
 
+import semanticmanager.ConstraintInterpreter;
+
 public class FormatAssistant{
 	private static FormatAssistant INSTANCE = null;
 	private String id = null;
 	private String nameExtension = null;
 	private List<String> extensions = null;
 	private String interpreter = null;
+	private ConstraintInterpreter constraintInterpreter = null;
 	
 	private static void createInstance() {
 	   	 if (INSTANCE == null) {
@@ -66,5 +69,13 @@ public class FormatAssistant{
 	public void addExtension(String extension) {
 		if(this.extensions == null) extensions = new ArrayList<String>();
 		extensions.add(extension);
+	}
+
+	public ConstraintInterpreter getConstraintInterpreter() {
+		return constraintInterpreter;
+	}
+
+	public void setConstraintInterpreter(ConstraintInterpreter constraintInterpreter) {
+		this.constraintInterpreter = constraintInterpreter;
 	}
 }

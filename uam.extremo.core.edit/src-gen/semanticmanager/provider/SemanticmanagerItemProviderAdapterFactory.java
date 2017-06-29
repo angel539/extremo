@@ -118,6 +118,29 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link semanticmanager.ConstraintInterpreter} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConstraintInterpreterItemProvider constraintInterpreterItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link semanticmanager.ConstraintInterpreter}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConstraintInterpreterAdapter() {
+		if (constraintInterpreterItemProvider == null) {
+			constraintInterpreterItemProvider = new ConstraintInterpreterItemProvider(this);
+		}
+
+		return constraintInterpreterItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link semanticmanager.ConstraintResult} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -440,95 +463,95 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.PrimitiveTypeSearchOption} instances.
+	 * This keeps track of the one adapter used for all {@link semanticmanager.PrimitiveTypeParam} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PrimitiveTypeSearchOptionItemProvider primitiveTypeSearchOptionItemProvider;
+	protected PrimitiveTypeParamItemProvider primitiveTypeParamItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.PrimitiveTypeSearchOption}.
+	 * This creates an adapter for a {@link semanticmanager.PrimitiveTypeParam}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPrimitiveTypeSearchOptionAdapter() {
-		if (primitiveTypeSearchOptionItemProvider == null) {
-			primitiveTypeSearchOptionItemProvider = new PrimitiveTypeSearchOptionItemProvider(this);
+	public Adapter createPrimitiveTypeParamAdapter() {
+		if (primitiveTypeParamItemProvider == null) {
+			primitiveTypeParamItemProvider = new PrimitiveTypeParamItemProvider(this);
 		}
 
-		return primitiveTypeSearchOptionItemProvider;
+		return primitiveTypeParamItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.DataModelTypeSearchOption} instances.
+	 * This keeps track of the one adapter used for all {@link semanticmanager.ModelTypeParam} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataModelTypeSearchOptionItemProvider dataModelTypeSearchOptionItemProvider;
+	protected ModelTypeParamItemProvider modelTypeParamItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.DataModelTypeSearchOption}.
+	 * This creates an adapter for a {@link semanticmanager.ModelTypeParam}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDataModelTypeSearchOptionAdapter() {
-		if (dataModelTypeSearchOptionItemProvider == null) {
-			dataModelTypeSearchOptionItemProvider = new DataModelTypeSearchOptionItemProvider(this);
+	public Adapter createModelTypeParamAdapter() {
+		if (modelTypeParamItemProvider == null) {
+			modelTypeParamItemProvider = new ModelTypeParamItemProvider(this);
 		}
 
-		return dataModelTypeSearchOptionItemProvider;
+		return modelTypeParamItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.DataModelTypeSearchResultOptionValue} instances.
+	 * This keeps track of the one adapter used for all {@link semanticmanager.ModelTypeParamValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataModelTypeSearchResultOptionValueItemProvider dataModelTypeSearchResultOptionValueItemProvider;
+	protected ModelTypeParamValueItemProvider modelTypeParamValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.DataModelTypeSearchResultOptionValue}.
+	 * This creates an adapter for a {@link semanticmanager.ModelTypeParamValue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDataModelTypeSearchResultOptionValueAdapter() {
-		if (dataModelTypeSearchResultOptionValueItemProvider == null) {
-			dataModelTypeSearchResultOptionValueItemProvider = new DataModelTypeSearchResultOptionValueItemProvider(this);
+	public Adapter createModelTypeParamValueAdapter() {
+		if (modelTypeParamValueItemProvider == null) {
+			modelTypeParamValueItemProvider = new ModelTypeParamValueItemProvider(this);
 		}
 
-		return dataModelTypeSearchResultOptionValueItemProvider;
+		return modelTypeParamValueItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.PrimitiveTypeSearchResultOptionValue} instances.
+	 * This keeps track of the one adapter used for all {@link semanticmanager.PrimitiveTypeParamValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PrimitiveTypeSearchResultOptionValueItemProvider primitiveTypeSearchResultOptionValueItemProvider;
+	protected PrimitiveTypeParamValueItemProvider primitiveTypeParamValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.PrimitiveTypeSearchResultOptionValue}.
+	 * This creates an adapter for a {@link semanticmanager.PrimitiveTypeParamValue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPrimitiveTypeSearchResultOptionValueAdapter() {
-		if (primitiveTypeSearchResultOptionValueItemProvider == null) {
-			primitiveTypeSearchResultOptionValueItemProvider = new PrimitiveTypeSearchResultOptionValueItemProvider(this);
+	public Adapter createPrimitiveTypeParamValueAdapter() {
+		if (primitiveTypeParamValueItemProvider == null) {
+			primitiveTypeParamValueItemProvider = new PrimitiveTypeParamValueItemProvider(this);
 		}
 
-		return primitiveTypeSearchResultOptionValueItemProvider;
+		return primitiveTypeParamValueItemProvider;
 	}
 
 	/**
@@ -632,6 +655,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	public void dispose() {
 		if (repositoryManagerItemProvider != null) repositoryManagerItemProvider.dispose();
 		if (constraintItemProvider != null) constraintItemProvider.dispose();
+		if (constraintInterpreterItemProvider != null) constraintInterpreterItemProvider.dispose();
 		if (constraintResultItemProvider != null) constraintResultItemProvider.dispose();
 		if (compositeSearchConfigurationItemProvider != null) compositeSearchConfigurationItemProvider.dispose();
 		if (serviceItemProvider != null) serviceItemProvider.dispose();
@@ -646,10 +670,10 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 		if (objectPropertyItemProvider != null) objectPropertyItemProvider.dispose();
 		if (dataPropertyItemProvider != null) dataPropertyItemProvider.dispose();
 		if (metaDataItemProvider != null) metaDataItemProvider.dispose();
-		if (primitiveTypeSearchOptionItemProvider != null) primitiveTypeSearchOptionItemProvider.dispose();
-		if (dataModelTypeSearchOptionItemProvider != null) dataModelTypeSearchOptionItemProvider.dispose();
-		if (dataModelTypeSearchResultOptionValueItemProvider != null) dataModelTypeSearchResultOptionValueItemProvider.dispose();
-		if (primitiveTypeSearchResultOptionValueItemProvider != null) primitiveTypeSearchResultOptionValueItemProvider.dispose();
+		if (primitiveTypeParamItemProvider != null) primitiveTypeParamItemProvider.dispose();
+		if (modelTypeParamItemProvider != null) modelTypeParamItemProvider.dispose();
+		if (modelTypeParamValueItemProvider != null) modelTypeParamValueItemProvider.dispose();
+		if (primitiveTypeParamValueItemProvider != null) primitiveTypeParamValueItemProvider.dispose();
 	}
 
 }

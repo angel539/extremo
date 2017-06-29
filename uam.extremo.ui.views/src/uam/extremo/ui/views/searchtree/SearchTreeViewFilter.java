@@ -25,9 +25,9 @@ public class SearchTreeViewFilter extends ViewerFilter {
 				|| element instanceof ObjectProperty
 				|| element instanceof DataProperty
 				
-				|| element instanceof PrimitiveTypeSearchOption
-				|| element instanceof DataModelTypeSearchOption
-				|| element instanceof PrimitiveTypeSearchResultOptionValue
-				|| element instanceof DataModelTypeSearchResultOptionValue;
+				|| element instanceof PrimitiveTypeParam
+				|| element instanceof ModelTypeParam
+				|| element instanceof PrimitiveTypeParamValue
+				|| element instanceof ModelTypeParamValue;
 	}
 }

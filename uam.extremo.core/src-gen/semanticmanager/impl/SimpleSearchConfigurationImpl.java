@@ -9,7 +9,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import semanticmanager.DataModelType;
-import semanticmanager.SearchOption;
+import semanticmanager.SearchParam;
 import semanticmanager.SemanticmanagerPackage;
 import semanticmanager.SimpleSearchConfiguration;
 import semanticmanager.Type;
@@ -55,8 +55,8 @@ public abstract class SimpleSearchConfigurationImpl extends SearchConfigurationI
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EList<SearchOption> getOptions() {
-		return (EList<SearchOption>)eGet(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__OPTIONS, true);
+	public EList<SearchParam> getOptions() {
+		return (EList<SearchParam>)eGet(SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__OPTIONS, true);
 	}
 
 	/**

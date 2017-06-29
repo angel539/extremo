@@ -40,6 +40,15 @@ public interface SemanticmanagerFactory extends EFactory {
 	Constraint createConstraint();
 
 	/**
+	 * Returns a new object of class '<em>Constraint Interpreter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Constraint Interpreter</em>'.
+	 * @generated
+	 */
+	ConstraintInterpreter createConstraintInterpreter();
+
+	/**
 	 * Returns a new object of class '<em>Constraint Result</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -166,40 +175,40 @@ public interface SemanticmanagerFactory extends EFactory {
 	MetaData createMetaData();
 
 	/**
-	 * Returns a new object of class '<em>Primitive Type Search Option</em>'.
+	 * Returns a new object of class '<em>Primitive Type Param</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Primitive Type Search Option</em>'.
+	 * @return a new object of class '<em>Primitive Type Param</em>'.
 	 * @generated
 	 */
-	PrimitiveTypeSearchOption createPrimitiveTypeSearchOption();
+	PrimitiveTypeParam createPrimitiveTypeParam();
 
 	/**
-	 * Returns a new object of class '<em>Data Model Type Search Option</em>'.
+	 * Returns a new object of class '<em>Model Type Param</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Model Type Search Option</em>'.
+	 * @return a new object of class '<em>Model Type Param</em>'.
 	 * @generated
 	 */
-	DataModelTypeSearchOption createDataModelTypeSearchOption();
+	ModelTypeParam createModelTypeParam();
 
 	/**
-	 * Returns a new object of class '<em>Data Model Type Search Result Option Value</em>'.
+	 * Returns a new object of class '<em>Model Type Param Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Model Type Search Result Option Value</em>'.
+	 * @return a new object of class '<em>Model Type Param Value</em>'.
 	 * @generated
 	 */
-	DataModelTypeSearchResultOptionValue createDataModelTypeSearchResultOptionValue();
+	ModelTypeParamValue createModelTypeParamValue();
 
 	/**
-	 * Returns a new object of class '<em>Primitive Type Search Result Option Value</em>'.
+	 * Returns a new object of class '<em>Primitive Type Param Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Primitive Type Search Result Option Value</em>'.
+	 * @return a new object of class '<em>Primitive Type Param Value</em>'.
 	 * @generated
 	 */
-	PrimitiveTypeSearchResultOptionValue createPrimitiveTypeSearchResultOptionValue();
+	PrimitiveTypeParamValue createPrimitiveTypeParamValue();
 
 	/**
 	 * Returns the package supported by this factory.

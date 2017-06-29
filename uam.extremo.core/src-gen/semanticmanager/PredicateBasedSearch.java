@@ -21,7 +21,7 @@ public interface PredicateBasedSearch extends SimpleSearchConfiguration {
 	 * @model namedElementRequired="true" inpsMany="true"
 	 * @generated
 	 */
-	boolean matches(NamedElement namedElement, EList<SearchResultOptionValue> inps);
+	boolean matches(NamedElement namedElement, EList<SearchParamValue> inps);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -29,6 +29,6 @@ public interface PredicateBasedSearch extends SimpleSearchConfiguration {
 	 * @model dataType="semanticmanager.JavaObject" inpsMany="true"
 	 * @generated
 	 */
-	Object getOptionValueKey(String key, EList<SearchResultOptionValue> inps);
+	Object getOptionValueKey(String key, EList<SearchParamValue> inps);
 
 } // PredicateBasedSearch

@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
 public interface SearchResult extends PersistentEObject {
 	/**
 	 * Returns the value of the '<em><b>Values</b></em>' containment reference list.
-	 * The list contents are of type {@link semanticmanager.SearchResultOptionValue}.
+	 * The list contents are of type {@link semanticmanager.SearchParamValue}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Values</em>' containment reference list isn't clear,
@@ -40,7 +40,7 @@ public interface SearchResult extends PersistentEObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<SearchResultOptionValue> getValues();
+	EList<SearchParamValue> getValues();
 
 	/**
 	 * Returns the value of the '<em><b>Configuration</b></em>' container reference.

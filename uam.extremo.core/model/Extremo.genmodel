@@ -59,9 +59,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ConstraintResult/context"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ConstraintResult/unsat"/>
     </genClasses>
-    <genClasses ecoreClass="Extremo.ecore#//SearchOption">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchOption/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchOption/id"/>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//SearchParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchParam/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchParam/id"/>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//SearchResult">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SearchResult/values"/>
@@ -71,7 +71,7 @@
         <genParameters ecoreParameter="Extremo.ecore#//SearchResult/getOptionValue/key"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="Extremo.ecore#//SearchResultOptionValue"/>
+    <genClasses image="false" ecoreClass="Extremo.ecore#//SearchParamValue"/>
     <genClasses image="false" ecoreClass="Extremo.ecore#//SearchConfiguration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchConfiguration/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SearchConfiguration/name"/>
@@ -209,20 +209,20 @@
     <genClasses image="false" ecoreClass="Extremo.ecore#//ResourceElement">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Extremo.ecore#//ResourceElement/resourceFrom"/>
     </genClasses>
-    <genClasses ecoreClass="Extremo.ecore#//PrimitiveTypeSearchOption">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//PrimitiveTypeSearchOption/type"/>
+    <genClasses ecoreClass="Extremo.ecore#//PrimitiveTypeParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//PrimitiveTypeParam/type"/>
     </genClasses>
-    <genClasses ecoreClass="Extremo.ecore#//DataModelTypeSearchOption">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//DataModelTypeSearchOption/type"/>
+    <genClasses ecoreClass="Extremo.ecore#//ModelTypeParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//ModelTypeParam/type"/>
     </genClasses>
-    <genClasses ecoreClass="Extremo.ecore#//DataModelTypeSearchResultOptionValue">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//DataModelTypeSearchResultOptionValue/option"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//DataModelTypeSearchResultOptionValue/value"/>
+    <genClasses ecoreClass="Extremo.ecore#//ModelTypeParamValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ModelTypeParamValue/option"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//ModelTypeParamValue/value"/>
     </genClasses>
-    <genClasses ecoreClass="Extremo.ecore#//PrimitiveTypeSearchResultOptionValue">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//PrimitiveTypeSearchResultOptionValue/value"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//PrimitiveTypeSearchResultOptionValue/option"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//PrimitiveTypeSearchResultOptionValue/calls"/>
+    <genClasses ecoreClass="Extremo.ecore#//PrimitiveTypeParamValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//PrimitiveTypeParamValue/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//PrimitiveTypeParamValue/option"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//PrimitiveTypeParamValue/calls"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

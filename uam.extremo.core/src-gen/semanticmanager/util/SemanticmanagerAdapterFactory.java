@@ -84,16 +84,16 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 				return createConstraintResultAdapter();
 			}
 			@Override
-			public Adapter caseSearchOption(SearchOption object) {
-				return createSearchOptionAdapter();
+			public Adapter caseSearchParam(SearchParam object) {
+				return createSearchParamAdapter();
 			}
 			@Override
 			public Adapter caseSearchResult(SearchResult object) {
 				return createSearchResultAdapter();
 			}
 			@Override
-			public Adapter caseSearchResultOptionValue(SearchResultOptionValue object) {
-				return createSearchResultOptionValueAdapter();
+			public Adapter caseSearchParamValue(SearchParamValue object) {
+				return createSearchParamValueAdapter();
 			}
 			@Override
 			public Adapter caseSearchConfiguration(SearchConfiguration object) {
@@ -168,20 +168,20 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 				return createResourceElementAdapter();
 			}
 			@Override
-			public Adapter casePrimitiveTypeSearchOption(PrimitiveTypeSearchOption object) {
-				return createPrimitiveTypeSearchOptionAdapter();
+			public Adapter casePrimitiveTypeParam(PrimitiveTypeParam object) {
+				return createPrimitiveTypeParamAdapter();
 			}
 			@Override
-			public Adapter caseDataModelTypeSearchOption(DataModelTypeSearchOption object) {
-				return createDataModelTypeSearchOptionAdapter();
+			public Adapter caseModelTypeParam(ModelTypeParam object) {
+				return createModelTypeParamAdapter();
 			}
 			@Override
-			public Adapter caseDataModelTypeSearchResultOptionValue(DataModelTypeSearchResultOptionValue object) {
-				return createDataModelTypeSearchResultOptionValueAdapter();
+			public Adapter caseModelTypeParamValue(ModelTypeParamValue object) {
+				return createModelTypeParamValueAdapter();
 			}
 			@Override
-			public Adapter casePrimitiveTypeSearchResultOptionValue(PrimitiveTypeSearchResultOptionValue object) {
-				return createPrimitiveTypeSearchResultOptionValueAdapter();
+			public Adapter casePrimitiveTypeParamValue(PrimitiveTypeParamValue object) {
+				return createPrimitiveTypeParamValueAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -260,16 +260,16 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link semanticmanager.SearchOption <em>Search Option</em>}'.
+	 * Creates a new adapter for an object of class '{@link semanticmanager.SearchParam <em>Search Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see semanticmanager.SearchOption
+	 * @see semanticmanager.SearchParam
 	 * @generated
 	 */
-	public Adapter createSearchOptionAdapter() {
+	public Adapter createSearchParamAdapter() {
 		return null;
 	}
 
@@ -288,16 +288,16 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link semanticmanager.SearchResultOptionValue <em>Search Result Option Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link semanticmanager.SearchParamValue <em>Search Param Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see semanticmanager.SearchResultOptionValue
+	 * @see semanticmanager.SearchParamValue
 	 * @generated
 	 */
-	public Adapter createSearchResultOptionValueAdapter() {
+	public Adapter createSearchParamValueAdapter() {
 		return null;
 	}
 
@@ -554,58 +554,58 @@ public class SemanticmanagerAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link semanticmanager.PrimitiveTypeSearchOption <em>Primitive Type Search Option</em>}'.
+	 * Creates a new adapter for an object of class '{@link semanticmanager.PrimitiveTypeParam <em>Primitive Type Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see semanticmanager.PrimitiveTypeSearchOption
+	 * @see semanticmanager.PrimitiveTypeParam
 	 * @generated
 	 */
-	public Adapter createPrimitiveTypeSearchOptionAdapter() {
+	public Adapter createPrimitiveTypeParamAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link semanticmanager.DataModelTypeSearchOption <em>Data Model Type Search Option</em>}'.
+	 * Creates a new adapter for an object of class '{@link semanticmanager.ModelTypeParam <em>Model Type Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see semanticmanager.DataModelTypeSearchOption
+	 * @see semanticmanager.ModelTypeParam
 	 * @generated
 	 */
-	public Adapter createDataModelTypeSearchOptionAdapter() {
+	public Adapter createModelTypeParamAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link semanticmanager.DataModelTypeSearchResultOptionValue <em>Data Model Type Search Result Option Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link semanticmanager.ModelTypeParamValue <em>Model Type Param Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see semanticmanager.DataModelTypeSearchResultOptionValue
+	 * @see semanticmanager.ModelTypeParamValue
 	 * @generated
 	 */
-	public Adapter createDataModelTypeSearchResultOptionValueAdapter() {
+	public Adapter createModelTypeParamValueAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link semanticmanager.PrimitiveTypeSearchResultOptionValue <em>Primitive Type Search Result Option Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link semanticmanager.PrimitiveTypeParamValue <em>Primitive Type Param Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see semanticmanager.PrimitiveTypeSearchResultOptionValue
+	 * @see semanticmanager.PrimitiveTypeParamValue
 	 * @generated
 	 */
-	public Adapter createPrimitiveTypeSearchResultOptionValueAdapter() {
+	public Adapter createPrimitiveTypeParamValueAdapter() {
 		return null;
 	}
 
