@@ -46,6 +46,24 @@
             id="extremo.queries.services.synonymsexpansion"
             name="Synonyms Expansion">
       </service>
+      <service
+            class="uam.extremo.services.IntervalMatchingIntServiceImpl"
+            filterBy="Int"
+            id="extremo.queries.services.intervalmatchingint"
+            name="Interval Matching">
+      </service>
+      <service
+            class="uam.extremo.services.IntervalMatchingFloatServiceImpl"
+            filterBy="Float"
+            id="extremo.queries.services.intervalmatchingfloat"
+            name="Interval Matching">
+      </service>
+      <service
+            class="uam.extremo.services.IntervalMatchingDoubleServiceImpl"
+            filterBy="Double"
+            id="extremo.queries.services.intervalmatchingdouble"
+            name="Interval Matching">
+      </service>
    </extension>
    <extension
          point="extremo.core.extensions.search">

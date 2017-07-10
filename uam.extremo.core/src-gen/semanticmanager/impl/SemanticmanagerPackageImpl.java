@@ -738,7 +738,7 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCompositeSearchConfiguration_Queries() {
+	public EReference getCompositeSearchConfiguration_Children() {
 		return (EReference)compositeSearchConfigurationEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -749,6 +749,15 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 	 */
 	public EAttribute getCompositeSearchConfiguration_Type() {
 		return (EAttribute)compositeSearchConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompositeSearchConfiguration_QueryResults() {
+		return (EReference)compositeSearchConfigurationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1569,8 +1578,9 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		createEOperation(simpleSearchConfigurationEClass, SIMPLE_SEARCH_CONFIGURATION___ADD_DATA_MODEL_TYPE_SEARCH_OPTION__STRING_STRING_DATAMODELTYPE);
 
 		compositeSearchConfigurationEClass = createEClass(COMPOSITE_SEARCH_CONFIGURATION);
-		createEReference(compositeSearchConfigurationEClass, COMPOSITE_SEARCH_CONFIGURATION__QUERIES);
+		createEReference(compositeSearchConfigurationEClass, COMPOSITE_SEARCH_CONFIGURATION__CHILDREN);
 		createEAttribute(compositeSearchConfigurationEClass, COMPOSITE_SEARCH_CONFIGURATION__TYPE);
+		createEReference(compositeSearchConfigurationEClass, COMPOSITE_SEARCH_CONFIGURATION__QUERY_RESULTS);
 		createEOperation(compositeSearchConfigurationEClass, COMPOSITE_SEARCH_CONFIGURATION___SEARCH__SEARCHRESULT);
 
 		serviceEClass = createEClass(SERVICE);
@@ -1790,8 +1800,9 @@ public class SemanticmanagerPackageImpl extends EPackageImpl implements Semantic
 		addEParameter(op, this.getDataModelType(), "type", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(compositeSearchConfigurationEClass, CompositeSearchConfiguration.class, "CompositeSearchConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCompositeSearchConfiguration_Queries(), this.getSearchConfiguration(), null, "queries", null, 1, -1, CompositeSearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompositeSearchConfiguration_Children(), this.getCompositeSearchConfiguration(), null, "children", null, 0, -1, CompositeSearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompositeSearchConfiguration_Type(), this.getConnectionType(), "type", null, 0, 1, CompositeSearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompositeSearchConfiguration_QueryResults(), this.getSearchResult(), null, "queryResults", null, 0, -1, CompositeSearchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getCompositeSearchConfiguration__Search__SearchResult(), null, "search", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getSearchResult(), "result", 0, 1, IS_UNIQUE, IS_ORDERED);

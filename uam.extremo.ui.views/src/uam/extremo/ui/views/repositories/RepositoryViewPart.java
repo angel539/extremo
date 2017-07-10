@@ -271,6 +271,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		
 		MenuManager menumanager = new MenuManager("#PopupMenu");
 		menumanager.setRemoveAllWhenShown(true);
+		//menumanager.addMenuListener(listener);
 		
 		for(IConfigurationElement extension : extensions){
 			if(extension.getName().compareTo("action") == 0){

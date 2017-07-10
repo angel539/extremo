@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.EClass;
 
 import semanticmanager.CompositeSearchConfiguration;
 import semanticmanager.ConnectionType;
-import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticmanagerPackage;
 
@@ -22,8 +21,9 @@ import semanticmanager.SemanticmanagerPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link semanticmanager.impl.CompositeSearchConfigurationImpl#getQueries <em>Queries</em>}</li>
+ *   <li>{@link semanticmanager.impl.CompositeSearchConfigurationImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link semanticmanager.impl.CompositeSearchConfigurationImpl#getType <em>Type</em>}</li>
+ *   <li>{@link semanticmanager.impl.CompositeSearchConfigurationImpl#getQueryResults <em>Query Results</em>}</li>
  * </ul>
  *
  * @generated
@@ -54,8 +54,8 @@ public class CompositeSearchConfigurationImpl extends SearchConfigurationImpl im
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EList<SearchConfiguration> getQueries() {
-		return (EList<SearchConfiguration>)eGet(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__QUERIES, true);
+	public EList<CompositeSearchConfiguration> getChildren() {
+		return (EList<CompositeSearchConfiguration>)eGet(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__CHILDREN, true);
 	}
 
 	/**
@@ -74,6 +74,16 @@ public class CompositeSearchConfigurationImpl extends SearchConfigurationImpl im
 	 */
 	public void setType(ConnectionType newType) {
 		eSet(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__TYPE, newType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public EList<SearchResult> getQueryResults() {
+		return (EList<SearchResult>)eGet(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__QUERY_RESULTS, true);
 	}
 
 	/**

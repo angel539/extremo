@@ -6,9 +6,9 @@
       <view
             category="extremo.ui.views"
             class="uam.extremo.ui.zest.resourceexplorer.ResourceExplorerViewPart"
-            icon="icons/explore16.png"
+            icon="icons/explorer16.png"
             id="uam.extremo.ui.zest.views.InheritanceGraphViewPart"
-            name="Explore Resource"
+            name="Resource Explorer"
             restorable="true">
       </view>
    </extension>
@@ -19,8 +19,18 @@
             locationURI="popup:uam.extremo.ui.views.RepositoryView">
          <command
                commandId="uam.extremo.ui.views.exploreConnections"
-               icon="icons/explore16.png"
+               icon="icons/explorer16.png"
                style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate
+                     ifEmpty="false"
+                     operator="and">
+                  <instanceof
+                        value="semanticmanager.Resource">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
          </command>
       </menuContribution>
    </extension>
@@ -47,7 +57,7 @@
       <command
             defaultHandler="uam.extremo.ui.zest.actions.ExploreConnectionsHandler"
             id="uam.extremo.ui.views.exploreConnections"
-            name="Explore">
+            name="Call Resource Explorer">
       </command>
    </extension>
 

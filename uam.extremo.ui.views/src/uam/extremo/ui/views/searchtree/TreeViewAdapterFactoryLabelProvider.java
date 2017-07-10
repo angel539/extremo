@@ -29,7 +29,13 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 		
 		if(obj instanceof CustomSearch) return Activator.getImageDescriptor("icons/queries/customsearch.png").createImage();
 		if(obj instanceof PredicateBasedSearch) return Activator.getImageDescriptor("icons/queries/predicatebasedsearch.png").createImage();
-		if(obj instanceof CompositeSearchConfiguration) return Activator.getImageDescriptor("icons/queries/compositesearch.png").createImage();
+		
+		if(obj instanceof CompositeSearchConfiguration){
+			CompositeSearchConfiguration compositeSearchConfiguration = (CompositeSearchConfiguration) obj;
+			if(compositeSearchConfiguration.getType().compareTo(ConnectionType.AND) == 0) return Activator.getImageDescriptor("icons/queries/and16.png").createImage();
+			if(compositeSearchConfiguration.getType().compareTo(ConnectionType.OR) == 0) return Activator.getImageDescriptor("icons/queries/or16.png").createImage();
+			if(compositeSearchConfiguration.getType().compareTo(ConnectionType.NOT) == 0) return Activator.getImageDescriptor("icons/queries/not16.png").createImage();
+		}
 		
 		if(obj instanceof AtomicSearchResult) return Activator.getImageDescriptor("icons/queries/atomicsearchresult.png").createImage();
 		if(obj instanceof GroupedSearchResult) return Activator.getImageDescriptor("icons/queries/groupedsearchresult.png").createImage();
@@ -212,9 +218,16 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 			return styledString;
 		}
 		
-		if (element instanceof SearchConfiguration) {
+		if (element instanceof SimpleSearchConfiguration) {
 			SearchConfiguration searchConfiguration = (SearchConfiguration) element;
 			StyledString styledString = new StyledString(searchConfiguration.getName());
+			return styledString;
+		}
+		
+		if (element instanceof CompositeSearchConfiguration) {
+			CompositeSearchConfiguration searchConfiguration = (CompositeSearchConfiguration) element;
+			StyledString styledString = new StyledString("");
+			styledString.append("(" + searchConfiguration.getQueryResults().size() + ") queries inside executed as a " + searchConfiguration.getType().getLiteral(), StyledString.COUNTER_STYLER);
 			return styledString;
 		}
 		

@@ -1,6 +1,5 @@
 package uam.extremo.ui.zest.views.inheritance;
 
-import org.eclipse.draw2d.IFigure;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -11,18 +10,18 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.zest.core.viewers.IFigureProvider;
 
+import semanticmanager.DataProperty;
 import semanticmanager.NamedElement;
-import semanticmanager.Repository;
+import semanticmanager.ObjectProperty;
 import semanticmanager.SemanticNode;
-import uam.extremo.ui.zest.views.draw2d.SemanticNodeFigure;
+import uam.extremo.ui.zest.views.Activator;
 
 public class ResourceExplorerLabelProvider
 					extends LabelProvider
-					implements IColorProvider, IFontProvider, IFigureProvider {
+					implements 
+								IColorProvider, 
+								IFontProvider{
     public Color BLACK = new Color(Display.getDefault(), 0, 0, 0);
     public Color WHITE = new Color(Display.getDefault(), 255, 255, 255);
     public Color YELLOW = new Color(Display.getDefault(), 225, 204, 79);
@@ -35,27 +34,7 @@ public class ResourceExplorerLabelProvider
 	@Override
 	public Image getImage(Object obj) {
 		if(obj instanceof IStructuredSelection) obj = ((IStructuredSelection) obj).getFirstElement();
-		
-		String imageKey = ISharedImages.IMG_OBJ_ELEMENT;
-
-		/*if(obj instanceof Repository) return Activator.getImageDescriptor("icons/repo.png").createImage();
-		
-		if(obj instanceof Resource){
-			Resource resource = (Resource) obj;
-			
-			if((resource.getDescriptors() == null) || (resource.getDescriptors().isEmpty())){
-				if((resource.getConstraints() == null) || (resource.getConstraints().isEmpty())){
-					return Activator.getImageDescriptor("icons/datamodel/resource16.png").createImage();
-				}
-				else{
-					return Activator.getImageDescriptor("icons/datamodel/resourcewithconstraints16.png").createImage();
-				}
-			}
-			else{
-				return Activator.getImageDescriptor("icons/datamodel/description16.png").createImage();
-			}
-    	}
-				
+    	
 		if(obj instanceof SemanticNode){
 			SemanticNode semanticnode = (SemanticNode) obj;
 			
@@ -179,19 +158,14 @@ public class ResourceExplorerLabelProvider
 			else{
 				return Activator.getImageDescriptor("icons/datamodel/propwithconstraints16.png").createImage();
 			}
-		}*/
-    	
-		return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);
+		}
+		
+		return null;
 	}
 	
 	@Override
 	public String getText(Object element) {
 		StringBuilder builder = new StringBuilder();
-		
-		if(element instanceof Repository){
-			Repository repository = (Repository) element;
-			builder.append(repository.getName());
-		}
 		
 		if(element instanceof NamedElement){
 			NamedElement namedElement = (NamedElement) element;
@@ -208,10 +182,14 @@ public class ResourceExplorerLabelProvider
 
 	@Override
 	public Color getBackground(Object element) {
-		Color color = Display.getCurrent().getSystemColor( SWT.COLOR_GRAY);
+		Color color = Display.getCurrent().getSystemColor( SWT.COLOR_BLACK);
 		
 		if(element instanceof SemanticNode){
-			color = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_GREEN);
+			color = Display.getCurrent().getSystemColor(SWT.COLOR_WHITE);
+		}
+		
+		if(element instanceof DataProperty){
+			color = Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW);
 		}
 		
 		return color;
@@ -231,17 +209,5 @@ public class ResourceExplorerLabelProvider
 		}
 		
 		return new Font(null, new FontData(name, size, style));
-	}
-
-	@Override
-	public IFigure getFigure(Object element) {
-		IFigure iFigure = null;
-		
-		if(element instanceof SemanticNode){
-			iFigure = new SemanticNodeFigure(((SemanticNode) element));
-			iFigure.setSize(-1, -1);
-		}
-		
-		return iFigure;
 	}
 }

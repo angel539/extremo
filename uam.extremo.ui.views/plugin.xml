@@ -82,11 +82,6 @@
             name="Search">
       </command>
       <command
-            defaultHandler="uam.extremo.ui.views.repositories.actions.ComposeAQueryHandler"
-            id="uam.extremo.ui.views.composeaquery"
-            name="Compose a query">
-      </command>
-      <command
             defaultHandler="uam.extremo.ui.views.repositories.actions.GoToParentConnectionsHandler"
             id="uam.extremo.ui.views.goToParent"
             name="Go To Parent">
@@ -115,19 +110,6 @@
                style="push">
          </command>
          <command
-               commandId="uam.extremo.ui.views.composeaquery"
-               icon="icons/compose.png"
-               style="push">
-         </command>
-         <separator
-               name="uam.extremo.ui.views.separator1">
-         </separator>
-         <command
-               commandId="uam.extremo.ui.views.goToParent"
-               icon="icons/up16.png"
-               style="push">
-         </command>
-         <command
                commandId="uam.extremo.ui.views.delete"
                icon="icons/delete.png"
                style="push">
@@ -139,11 +121,6 @@
          <command
                commandId="uam.extremo.ui.views.searchsemanticNodes"
                icon="icons/queries.png"
-               style="push">
-         </command>
-         <command
-               commandId="uam.extremo.ui.views.composeaquery"
-               icon="icons/compose.png"
                style="push">
          </command>
       </menuContribution>

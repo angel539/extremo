@@ -13,8 +13,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link semanticmanager.CompositeSearchConfiguration#getQueries <em>Queries</em>}</li>
+ *   <li>{@link semanticmanager.CompositeSearchConfiguration#getChildren <em>Children</em>}</li>
  *   <li>{@link semanticmanager.CompositeSearchConfiguration#getType <em>Type</em>}</li>
+ *   <li>{@link semanticmanager.CompositeSearchConfiguration#getQueryResults <em>Query Results</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration()
@@ -23,20 +24,20 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface CompositeSearchConfiguration extends SearchConfiguration {
 	/**
-	 * Returns the value of the '<em><b>Queries</b></em>' reference list.
-	 * The list contents are of type {@link semanticmanager.SearchConfiguration}.
+	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
+	 * The list contents are of type {@link semanticmanager.CompositeSearchConfiguration}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Queries</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Queries</em>' reference list.
-	 * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration_Queries()
-	 * @model required="true"
+	 * @return the value of the '<em>Children</em>' containment reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration_Children()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<SearchConfiguration> getQueries();
+	EList<CompositeSearchConfiguration> getChildren();
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
@@ -66,6 +67,22 @@ public interface CompositeSearchConfiguration extends SearchConfiguration {
 	 * @generated
 	 */
 	void setType(ConnectionType value);
+
+	/**
+	 * Returns the value of the '<em><b>Query Results</b></em>' reference list.
+	 * The list contents are of type {@link semanticmanager.SearchResult}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Query Results</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Query Results</em>' reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration_QueryResults()
+	 * @model
+	 * @generated
+	 */
+	EList<SearchResult> getQueryResults();
 
 	/**
 	 * <!-- begin-user-doc -->

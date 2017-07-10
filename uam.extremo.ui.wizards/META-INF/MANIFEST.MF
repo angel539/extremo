@@ -23,7 +23,7 @@ Import-Package: org.apache.commons.io,
  uam.extremo.extensions
 Export-Package: uam.extremo.ui.wizards.dialogs,
  uam.extremo.ui.wizards.dialogs.changeToResource,
- uam.extremo.ui.wizards.dialogs.composeaquery,
+ uam.extremo.ui.wizards.dialogs.link,
  uam.extremo.ui.wizards.dialogs.newrepository,
  uam.extremo.ui.wizards.dialogs.newresource,
  uam.extremo.ui.wizards.dialogs.searchnew
