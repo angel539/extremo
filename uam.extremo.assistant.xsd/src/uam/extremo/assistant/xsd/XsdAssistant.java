@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
-import at.ac.tuwien.big.xmltext.EcoreToGenericEcoreTransformer;
+import at.ac.tuwien.big.xmltext.MultiEcoreToGenericEcoreTransformer;
 import semanticmanager.Constraint;
 import semanticmanager.ConstraintInterpreter;
 import semanticmanager.DataProperty;
@@ -49,7 +49,7 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 	Map<EObject, SemanticNode> correspondance = new HashMap<EObject, SemanticNode>();
 	ResourceSet resourceSet = new ResourceSetImpl(); 
 	
-	EcoreToGenericEcoreTransformer transformer = new EcoreToGenericEcoreTransformer();
+	MultiEcoreToGenericEcoreTransformer transformer = new MultiEcoreToGenericEcoreTransformer();
 
 	semanticmanager.Resource lastResource = null;
 	
@@ -84,8 +84,8 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 			//metamodel
 			case "xsd":
 				if (!isImmediateRedo) {
-					transformer = new EcoreToGenericEcoreTransformer();
-					transformer.setXsdEcore(file.getAbsolutePath());
+					transformer = new MultiEcoreToGenericEcoreTransformer();
+					transformer.addXsdEcore(file.getAbsolutePath());
 				}
 				xsdElementsToSemanticNodes();
 				break;
@@ -160,53 +160,54 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 
 	private void xsdElementsToSemanticNodes() {
 		// Load XML Schema file via XMLText and transform it to Ecore Metamodel
-		Resource genericEcoreResource = transformer.getResult();
-		modelAll = genericEcoreResource.getAllContents();
+		List<Resource> genericEcoreResourceList = transformer.getResult();
+		for (Resource sRes: genericEcoreResourceList) {
+			modelAll = sRes.getAllContents();
 
-		if((modelAll != null) && (semanticResource.isAlive())){
-			while(modelAll.hasNext()){
-				EObject obj = modelAll.next();
-				
-				if (obj instanceof EPackage) {
-				    EPackage p = (EPackage) obj;
-				    if(p.getNsURI() != null){
-				    	resourceSet.getPackageRegistry().put(p.getNsURI(), p);
-				    }
-				    else{
-				    	resourceSet.getPackageRegistry().put(p.getName(), p);
-				    }
-				}
-				
-				if((obj != null) && (obj instanceof EClass)){
+			if((modelAll != null) && (semanticResource.isAlive())){
+				while(modelAll.hasNext()){
+					EObject obj = modelAll.next();
 					
-					EClass eClass = (EClass) obj;
-					String name = eClass.getName();
+					if (obj instanceof EPackage) {
+					    EPackage p = (EPackage) obj;
+					    if(p.getNsURI() != null){
+					    	resourceSet.getPackageRegistry().put(p.getNsURI(), p);
+					    }
+					    else{
+					    	resourceSet.getPackageRegistry().put(p.getName(), p);
+					    }
+					}
 					
-					SemanticNode semanticNode = 
-							createSemanticNodeWithoutDescriptor(
-									obj, //original object as id
-									name, 
-									name,
-									eClass.isAbstract()); // the name is used as a description label too.
-									//it is actually a descriptor element
-										
-					addSemanticNodeToResource(semanticResource, semanticNode);
-					
-					// Constraints
-					for(EAnnotation annotation : eClass.getEAnnotations()){
-						if(annotation.getSource().equals(OCLUri)){
-							for(Entry<String, String> entry : annotation.getDetails().entrySet()){
-								if(! constraints.containsKey(entry.getKey())){
-									Constraint constraint = createConstraint(
-											"OCL", 
-											entry.getKey(), 
-											entry.getValue().trim()
-									);
-									addConstraintToElement(semanticNode, constraint);
-									constraints.put(entry.getKey(), constraint);
+					if((obj != null) && (obj instanceof EClass)){
+						
+						EClass eClass = (EClass) obj;
+						String name = eClass.getName();
+						
+						SemanticNode semanticNode = 
+								createSemanticNodeWithoutDescriptor(
+										obj, //original object as id
+										name, 
+										name,
+										eClass.isAbstract()); // the name is used as a description label too.
+										//it is actually a descriptor element
+											
+						addSemanticNodeToResource(semanticResource, semanticNode);
+						// Constraints
+						for(EAnnotation annotation : eClass.getEAnnotations()){
+							if(annotation.getSource().equals(OCLUri)){
+								for(Entry<String, String> entry : annotation.getDetails().entrySet()){
+									if(! constraints.containsKey(entry.getKey())){
+										Constraint constraint = createConstraint(
+												"OCL", 
+												entry.getKey(), 
+												entry.getValue().trim()
+										);
+										addConstraintToElement(semanticNode, constraint);
+										constraints.put(entry.getKey(), constraint);
+									}
 								}
 							}
-						}										
+						}
 					}
 				}
 			}
@@ -373,6 +374,21 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 					if(descriptor != null){
 						Object eReferenceValue = eobject.eGet(eReference);
 						
+						if(eReferenceValue instanceof EObject[]){
+							for(EObject reference : (EObject[]) eReferenceValue){
+								SemanticNode range = correspondance.get(reference);
+								
+								ObjectProperty objectProperty = 
+										createObjectProperty(
+												reference, // trace
+												"", // name
+												descriptor, //descriptor
+												range //value
+										);
+								
+								addObjectPropertyToNode(parent, objectProperty);
+							}
+						}
 						if(eReferenceValue instanceof EList){							
 							for(Object reference : (EList) eReferenceValue){
 								if (reference instanceof EObject) {
@@ -454,6 +470,7 @@ public class XsdAssistant extends FormatAssistant implements IFormatAssistant {
 						}										
 					}
 				}
+				
 			}
 		}		
 	}
