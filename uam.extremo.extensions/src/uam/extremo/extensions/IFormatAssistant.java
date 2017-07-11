@@ -1,15 +1,12 @@
 package uam.extremo.extensions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IContributor;
-import org.eclipse.core.runtime.IExtensionRegistry;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.spi.RegistryContributor;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
+import java.util.Map;
+import java.util.WeakHashMap;
+
+import org.eclipse.emf.common.util.EList;
 
 import semanticmanager.Constraint;
 import semanticmanager.ConstraintInterpreter;
@@ -24,6 +21,8 @@ import semanticmanager.Resource;
 import semanticmanager.ResourceElement;
 import semanticmanager.SemanticNode;
 import semanticmanager.Type;
+import semanticmanager.impl.DataPropertyImpl;
+import semanticmanager.impl.SemanticNodeImpl;
 
 public interface IFormatAssistant {
 	public static final String CONSTRAINT_EXTENSIONS_ID = "extremo.core.extensions.constraintinterpreter";
@@ -37,30 +36,59 @@ public interface IFormatAssistant {
     public void toSuper(DataProperty parent);
     public void toSuper(ObjectProperty parent);
     public void toInverseOf(ObjectProperty parent);
+    
+    static Map<Resource,Map<String,SemanticNode>> priv_semanticNodeCache = new WeakHashMap<Resource,Map<String,SemanticNode>>();
+    static Map<SemanticNode,Map<String,DataProperty>> priv_dataPropertyCache = new WeakHashMap<SemanticNode,Map<String,DataProperty>>();
+
+    static SemanticNode PRIV_NULL = new SemanticNodeImpl() {};
+    static DataPropertyImpl PRIV_DNULL = new DataPropertyImpl() {};
 
     default SemanticNode searchSemanticNodeByName(Resource resource, String name) {
     	if(resource == null || name == null) return null;
+    	Map<String,SemanticNode> curMap = priv_semanticNodeCache.get(resource);
+    	if (curMap == null) {
+    		priv_semanticNodeCache.put(resource, curMap = new HashMap<String, SemanticNode>());
+    	}
+    	
+    	SemanticNode fastRet = curMap.get(name);
+    	if (fastRet != null) {
+    		return (fastRet==PRIV_NULL)?null:fastRet;
+    	}
     	
     	for(ResourceElement resourceElement : resource.getResourceElements()){
     		if (resourceElement instanceof SemanticNode) {
 				SemanticNode node = (SemanticNode) resourceElement;
-				
+				curMap.put(node.getName(),node); //Does not occur, otherwise it would have been returned!
 				if(node.getName().equals(name)){
 	    			return node;
 	    		}
 			}
     	}
-    	
+    	curMap.put(name,PRIV_NULL);
     	return null;
     }
     
     default DataProperty searchDataPropertyByName(SemanticNode semanticNode, String name) {
     	if(semanticNode == null || name == null) return null;
     	
+    	Map<String,DataProperty> curMap = priv_dataPropertyCache.get(semanticNode);
+    	if (curMap == null) {
+    		priv_dataPropertyCache.put(semanticNode, curMap = new HashMap<>());
+    	}
+    	
+    	DataProperty fastRet = curMap.get(name);
+    	if (fastRet != null) {
+    		return (fastRet==PRIV_DNULL)?null:fastRet;
+    	}
+    	
 		for(Property property : semanticNode.getProperties()){
-			if(property instanceof DataProperty && property.getName().equals(name)){
-    			return (DataProperty) property;
-    		}
+			String nname = property.getName();
+			if (property instanceof DataProperty) {
+				curMap.put(nname, (DataProperty)property);
+				if(property.getName().equals(name)){
+	    			return (DataProperty) property;
+	    		} 
+			}
 		}
     	
     	return null;
@@ -208,8 +236,14 @@ public interface IFormatAssistant {
     	dataProperty.setName(descriptor.getName());
     	dataProperty.setDescription(descriptor.getDescription());
     	dataProperty.setType(descriptor.getType());
-    	dataProperty.getDescriptors().add(descriptor);
-    	dataProperty.setValue(value);
+    	try {
+	    	EList<NamedElement> descriptors = dataProperty.getDescriptors();
+			descriptors.add(descriptor);
+	    	dataProperty.setValue(value);
+    	} catch (Exception e) {
+    		System.err.println(e.getMessage());
+    		e.printStackTrace();
+    	}
     	
         return dataProperty;
     }
@@ -260,9 +294,15 @@ public interface IFormatAssistant {
     	resource.eAllContents().forEachRemaining(
     			element -> {
     				if (element instanceof NamedElement) {
+    					try {
+    						//Why does this continue if something was found?
 						NamedElement namedElement = (NamedElement) element;
 						if(namedElement.getName().compareTo(name) == 0)
 							returnNamedElements.add(namedElement);
+    					} catch (Exception e) {
+    						System.err.println(e.getMessage());
+    						e.printStackTrace();
+    					}
 					}
     			}
     	);
