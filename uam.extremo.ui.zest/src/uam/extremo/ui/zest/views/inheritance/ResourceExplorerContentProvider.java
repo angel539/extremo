@@ -2,15 +2,19 @@ package uam.extremo.ui.zest.views.inheritance;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import org.apache.commons.lang3.ArrayUtils;
-import org.eclipse.emf.ecore.EObject;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.zest.core.viewers.IGraphEntityRelationshipContentProvider;
 import org.eclipse.zest.core.viewers.INestedContentProvider;
 
 import semanticmanager.*;
 
-public class ResourceExplorerContentProvider implements IGraphEntityRelationshipContentProvider, INestedContentProvider {
+public class ResourceExplorerContentProvider implements 
+		IGraphEntityRelationshipContentProvider, 
+		INestedContentProvider {
+	
 	public ResourceExplorerContentProvider() {
 		super();
 	}
@@ -18,8 +22,8 @@ public class ResourceExplorerContentProvider implements IGraphEntityRelationship
 	public Object[] getElements(Object inputElement) {		
 		ArrayList<Object> results = new ArrayList<Object>();
 		
-		if (inputElement instanceof RepositoryManager) {
-			RepositoryManager repositoryManager = (RepositoryManager) inputElement;
+		if (inputElement instanceof Resource) {
+			Resource repositoryManager = (Resource) inputElement;
 			repositoryManager.eAllContents().forEachRemaining(
 				element -> {
 					if (element instanceof SemanticNode) {
@@ -34,26 +38,37 @@ public class ResourceExplorerContentProvider implements IGraphEntityRelationship
 	}
 	
 	@Override
-	public Object [] getChildren(Object parent) {
-		if (parent instanceof EObject) {
-			Object[] containmentAll = ArrayUtils.addAll(((EObject)parent).eContents().toArray());
-			return containmentAll;
-		}
-		return new Object[0];
-	}
-	
-	@Override
-	public boolean hasChildren(Object parent) {
-		if (parent instanceof EObject){
-			if((((EObject) parent).eContents() == null || ((EObject) parent).eContents().size() == 0)){
-				return false;
-			}
-			else{
-				return true;
-			}
+	public boolean hasChildren(Object element) {
+		if (element instanceof SemanticNode) {
+			SemanticNode semanticNode = (SemanticNode) element;
+			
+			List<DataProperty> properties = 
+									semanticNode.getProperties()
+										.stream().filter(e -> e instanceof DataProperty)
+										.map(e -> (DataProperty) e)
+										.collect(Collectors.toList());
+			
+			if(!properties.isEmpty()) return true;
+			return false;
 		}
 		
 		return false;
+	}
+
+	@Override
+	public Object[] getChildren(Object element) {
+		if (element instanceof SemanticNode) {
+			SemanticNode semanticNode = (SemanticNode) element;
+			
+			List<DataProperty> properties = 
+					semanticNode.getProperties()
+						.stream().filter(e -> e instanceof DataProperty)
+						.map(e -> (DataProperty) e)
+						.collect(Collectors.toList());
+			
+			return properties.toArray(new DataProperty[properties.size()]);
+		}
+		return new Object[0];
 	}
 	
 	@Override
@@ -70,6 +85,7 @@ public class ResourceExplorerContentProvider implements IGraphEntityRelationship
 		
 		if (source instanceof SemanticNode) {
 			SemanticNode semanticNode = (SemanticNode) source;
+			
 			for(Property property : semanticNode.getProperties()){
 				if (property instanceof ObjectProperty) {
 					ObjectProperty objectProperty = (ObjectProperty) property;

@@ -199,5 +199,4 @@ public class ConstraintResultItemProvider
 		}
 		return childrenFeatures;
 	}
-
 }

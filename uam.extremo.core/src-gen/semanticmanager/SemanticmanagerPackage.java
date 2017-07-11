@@ -673,13 +673,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int COMPOSITE_SEARCH_CONFIGURATION__RESULTS = SEARCH_CONFIGURATION__RESULTS;
 
 	/**
-	 * The feature id for the '<em><b>Queries</b></em>' reference list.
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_SEARCH_CONFIGURATION__QUERIES = SEARCH_CONFIGURATION_FEATURE_COUNT + 0;
+	int COMPOSITE_SEARCH_CONFIGURATION__CHILDREN = SEARCH_CONFIGURATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -691,13 +691,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int COMPOSITE_SEARCH_CONFIGURATION__TYPE = SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Query Results</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_SEARCH_CONFIGURATION__QUERY_RESULTS = SEARCH_CONFIGURATION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Composite Search Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_SEARCH_CONFIGURATION_FEATURE_COUNT = SEARCH_CONFIGURATION_FEATURE_COUNT + 2;
+	int COMPOSITE_SEARCH_CONFIGURATION_FEATURE_COUNT = SEARCH_CONFIGURATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Search</em>' operation.
@@ -3289,15 +3298,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	EClass getCompositeSearchConfiguration();
 
 	/**
-	 * Returns the meta object for the reference list '{@link semanticmanager.CompositeSearchConfiguration#getQueries <em>Queries</em>}'.
+	 * Returns the meta object for the containment reference list '{@link semanticmanager.CompositeSearchConfiguration#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Queries</em>'.
-	 * @see semanticmanager.CompositeSearchConfiguration#getQueries()
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see semanticmanager.CompositeSearchConfiguration#getChildren()
 	 * @see #getCompositeSearchConfiguration()
 	 * @generated
 	 */
-	EReference getCompositeSearchConfiguration_Queries();
+	EReference getCompositeSearchConfiguration_Children();
 
 	/**
 	 * Returns the meta object for the attribute '{@link semanticmanager.CompositeSearchConfiguration#getType <em>Type</em>}'.
@@ -3309,6 +3318,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCompositeSearchConfiguration_Type();
+
+	/**
+	 * Returns the meta object for the reference list '{@link semanticmanager.CompositeSearchConfiguration#getQueryResults <em>Query Results</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Query Results</em>'.
+	 * @see semanticmanager.CompositeSearchConfiguration#getQueryResults()
+	 * @see #getCompositeSearchConfiguration()
+	 * @generated
+	 */
+	EReference getCompositeSearchConfiguration_QueryResults();
 
 	/**
 	 * Returns the meta object for the '{@link semanticmanager.CompositeSearchConfiguration#search(semanticmanager.SearchResult) <em>Search</em>}' operation.
@@ -4567,12 +4587,12 @@ public interface SemanticmanagerPackage extends EPackage {
 		EClass COMPOSITE_SEARCH_CONFIGURATION = eINSTANCE.getCompositeSearchConfiguration();
 
 		/**
-		 * The meta object literal for the '<em><b>Queries</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPOSITE_SEARCH_CONFIGURATION__QUERIES = eINSTANCE.getCompositeSearchConfiguration_Queries();
+		EReference COMPOSITE_SEARCH_CONFIGURATION__CHILDREN = eINSTANCE.getCompositeSearchConfiguration_Children();
 
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
@@ -4581,6 +4601,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPOSITE_SEARCH_CONFIGURATION__TYPE = eINSTANCE.getCompositeSearchConfiguration_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Query Results</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSITE_SEARCH_CONFIGURATION__QUERY_RESULTS = eINSTANCE.getCompositeSearchConfiguration_QueryResults();
 
 		/**
 		 * The meta object literal for the '<em><b>Search</b></em>' operation.

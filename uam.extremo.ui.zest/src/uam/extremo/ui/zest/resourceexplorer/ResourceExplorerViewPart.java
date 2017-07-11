@@ -27,10 +27,8 @@ import org.eclipse.zest.layouts.algorithms.RadialLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.SpringLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 
-import semanticmanager.Repository;
-import uam.extremo.extensions.AssistantFactory;
+import semanticmanager.Resource;
 import uam.extremo.ui.zest.views.Activator;
-import uam.extremo.ui.zest.views.GraphViewPartFilter;
 import uam.extremo.ui.zest.views.inheritance.ResourceExplorerContentProvider;
 import uam.extremo.ui.zest.views.inheritance.ResourceExplorerLabelProvider;
 
@@ -47,20 +45,13 @@ public class ResourceExplorerViewPart extends ViewPart implements IZoomableWorkb
 		
 	@Override
 	public void createPartControl(Composite parent) {
-		viewer = new GraphViewer(parent, SWT.BORDER);
-		
-		GraphViewPartFilter filter = new GraphViewPartFilter();
-		ViewerFilter[] filters = {filter};
-		viewer.setFilters(filters);
+		viewer = new GraphViewer(parent, SWT.NONE);
 		
 		ResourceExplorerContentProvider provider = new ResourceExplorerContentProvider();
 		viewer.setContentProvider(provider);
 		
 		ResourceExplorerLabelProvider labelProvider = new ResourceExplorerLabelProvider();
 		viewer.setLabelProvider(labelProvider);
-		
-		AssistantFactory assistantFactory = AssistantFactory.getInstance();
-		viewer.setInput(assistantFactory.getRepositoryManager());
 		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "extremo.ui.viewer");
 		
@@ -76,8 +67,8 @@ public class ResourceExplorerViewPart extends ViewPart implements IZoomableWorkb
 	    fillToolBar();
 	}
 	
-	public void setModel(Repository repository){
-		viewer.setInput(repository);
+	public void setModel(Resource resource){
+		viewer.setInput(resource);
 		viewer.refresh();
 	}
 
@@ -156,6 +147,8 @@ public class ResourceExplorerViewPart extends ViewPart implements IZoomableWorkb
 	
 	@Override
 	public void setFocus() {
+		setModel(null);
+	    super.dispose();
 	}
 	
 	private void contributeToActionBars() {

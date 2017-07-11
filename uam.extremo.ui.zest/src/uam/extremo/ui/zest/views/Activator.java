@@ -16,7 +16,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
-	public static final String PLUGIN_ID = "uam.extremo.ui.zest.views"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "uam.extremo.ui.zest"; //$NON-NLS-1$
 	public static final String ACTION_EXTENSIONS_ID = "extremo.ui.extensions.actions";
 	public static final String FILTER_EXTENSIONS_ID = "extremo.ui.extensions.filters";
 	public static final String EDITOR_EXTENSIONS_ID = "extremo.ui.extensions.drop";

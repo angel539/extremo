@@ -6,13 +6,15 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
-import semanticmanager.Repository;
-//import uam.extremo.ui.zest.views.inheritance.ConnectionsGraphViewPart;
+
+import semanticmanager.Resource;
+import uam.extremo.ui.zest.resourceexplorer.ResourceExplorerViewPart;
 
 public class ExploreConnectionsHandler extends AbstractHandler {
+	public static final String GRAPH_VIEW_ID = "uam.extremo.ui.zest.views.InheritanceGraphViewPart";
+	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
@@ -21,16 +23,19 @@ public class ExploreConnectionsHandler extends AbstractHandler {
 			IStructuredSelection strucSelection = (IStructuredSelection) selection;
 			Object firstselection = strucSelection.getFirstElement();
 			
-			if (firstselection != null && firstselection instanceof Repository) {
-				Repository repository = (Repository) firstselection;
+			if (firstselection != null && firstselection instanceof Resource) {
+				Resource resource = (Resource) firstselection;
 				
-				IWorkbenchPage wp = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-				IViewPart viewPart = wp.findView("uam.extremo.ui.zest.views.InheritanceGraphViewPart");
+				try {
+					IViewPart viewPart = HandlerUtil.getActiveWorkbenchWindow(event).getActivePage().showView(GRAPH_VIEW_ID);
 				
-				/*if (viewPart instanceof ConnectionsGraphViewPart) {
-					ConnectionsGraphViewPart graphViewPart = (ConnectionsGraphViewPart) viewPart;
-					graphViewPart.setModel(repository);
-				}*/
+					if (viewPart instanceof ResourceExplorerViewPart) {
+						ResourceExplorerViewPart resourceExplorerViewPart = (ResourceExplorerViewPart) viewPart;
+						resourceExplorerViewPart.setModel(resource);
+					}
+				}
+				catch (PartInitException e) {
+				}
 			}
 		}
 		
