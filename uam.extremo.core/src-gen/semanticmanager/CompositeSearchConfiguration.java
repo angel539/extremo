@@ -13,9 +13,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link semanticmanager.CompositeSearchConfiguration#getChildren <em>Children</em>}</li>
  *   <li>{@link semanticmanager.CompositeSearchConfiguration#getType <em>Type</em>}</li>
- *   <li>{@link semanticmanager.CompositeSearchConfiguration#getQueryResults <em>Query Results</em>}</li>
+ *   <li>{@link semanticmanager.CompositeSearchConfiguration#getChildren <em>Children</em>}</li>
+ *   <li>{@link semanticmanager.CompositeSearchConfiguration#getSearchResults <em>Search Results</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration()
@@ -23,22 +23,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface CompositeSearchConfiguration extends SearchConfiguration {
-	/**
-	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
-	 * The list contents are of type {@link semanticmanager.CompositeSearchConfiguration}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Children</em>' containment reference list.
-	 * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration_Children()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<CompositeSearchConfiguration> getChildren();
-
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link semanticmanager.ConnectionType}.
@@ -69,20 +53,36 @@ public interface CompositeSearchConfiguration extends SearchConfiguration {
 	void setType(ConnectionType value);
 
 	/**
-	 * Returns the value of the '<em><b>Query Results</b></em>' reference list.
-	 * The list contents are of type {@link semanticmanager.SearchResult}.
+	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
+	 * The list contents are of type {@link semanticmanager.CompositeSearchConfiguration}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Query Results</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Query Results</em>' reference list.
-	 * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration_QueryResults()
+	 * @return the value of the '<em>Children</em>' containment reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration_Children()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<CompositeSearchConfiguration> getChildren();
+
+	/**
+	 * Returns the value of the '<em><b>Search Results</b></em>' reference list.
+	 * The list contents are of type {@link semanticmanager.SearchResult}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Search Results</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Search Results</em>' reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration_SearchResults()
 	 * @model
 	 * @generated
 	 */
-	EList<SearchResult> getQueryResults();
+	EList<SearchResult> getSearchResults();
 
 	/**
 	 * <!-- begin-user-doc -->

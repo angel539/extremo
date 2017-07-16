@@ -93,9 +93,9 @@
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="Extremo.ecore#//CompositeSearchConfiguration">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//CompositeSearchConfiguration/children"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//CompositeSearchConfiguration/type"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//CompositeSearchConfiguration/queryResults"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//CompositeSearchConfiguration/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//CompositeSearchConfiguration/searchResults"/>
       <genOperations ecoreOperation="Extremo.ecore#//CompositeSearchConfiguration/search">
         <genParameters ecoreParameter="Extremo.ecore#//CompositeSearchConfiguration/search/result"/>
       </genOperations>

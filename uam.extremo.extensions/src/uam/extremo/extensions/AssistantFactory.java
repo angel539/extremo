@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -39,6 +40,7 @@ import org.osgi.framework.FrameworkUtil;
 
 import fr.inria.atlanmod.neoemf.data.PersistenceBackendFactoryRegistry;
 import fr.inria.atlanmod.neoemf.data.mapdb.MapDbPersistenceBackendFactory;
+import fr.inria.atlanmod.neoemf.data.mapdb.option.MapDbOptionsBuilder;
 import fr.inria.atlanmod.neoemf.data.mapdb.util.MapDbURI;
 import fr.inria.atlanmod.neoemf.option.AbstractPersistenceOptionsBuilder;
 import fr.inria.atlanmod.neoemf.resource.PersistentResource;
@@ -317,7 +319,7 @@ public class AssistantFactory implements IResourceChangeListener{
 		IConfigurationElement[] extensions = registry.getConfigurationElementsFor(CONSTRAINT_EXTENSIONS_ID);
 		
 		for(IConfigurationElement extension : extensions){
-			if(! constraintInterpreterIsOnTheList(extension.getAttribute("id"))){
+			if(! constraintInterpreterIsOnTheList(extension.getAttribute("type"))){
 				if(extension.getName().compareTo("constraintinterpreter") == 0){
 					ExtensibleConstraintInterpreter constraintInterpreter;
 					
@@ -363,7 +365,7 @@ public class AssistantFactory implements IResourceChangeListener{
 		
 		for(ConstraintInterpreter interpreter : interpreters){
 			if(interpreter instanceof ConstraintInterpreter){
-				if(((ConstraintInterpreter) interpreter).getId().compareTo(attribute) == 0) 
+				if(((ConstraintInterpreter) interpreter).getType().compareTo(attribute) == 0) 
 					return true;
 			}
 		}
@@ -469,7 +471,12 @@ public class AssistantFactory implements IResourceChangeListener{
 		RepositoryManager repositoryManager = null;
 		
 		try {
-			resourceDb.load(AbstractPersistenceOptionsBuilder.noOption());
+			Map<String, Object> options = MapDbOptionsBuilder.
+											newBuilder().
+											directWriteCacheMany().
+											asMap();
+			
+			resourceDb.load(options);
 		}
 		catch (IOException e) {
 			createRepositoryManager();
@@ -490,7 +497,12 @@ public class AssistantFactory implements IResourceChangeListener{
 			resourceDb.getContents().add(repositoryManager);
 			
 			try {
-				resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
+				Map<String, Object> options = MapDbOptionsBuilder.
+						newBuilder().
+						directWriteCacheMany().
+						asMap();
+				
+				resourceDb.save(options);
 			}
 			catch (IOException e) {
 				ExtremoLog.logError(e);
@@ -575,7 +587,13 @@ public class AssistantFactory implements IResourceChangeListener{
 			}
 			
 			getRepositoryManager().getRepositories().add(repository);
-			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
+			
+			
+			Map<String, Object> options = MapDbOptionsBuilder.
+					newBuilder().
+					cacheFeatures().
+					asMap();
+			resourceDb.save(options);
 			
 			return repository;
 		}
@@ -653,7 +671,16 @@ public class AssistantFactory implements IResourceChangeListener{
 			Activator.writeConsole(resource.getName() + " created");
 			
 			repository.getResources().add(resource);
-			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
+			
+			
+			Map<String, Object> options = MapDbOptionsBuilder.
+					newBuilder().
+					cacheFeatures().
+					asMap();
+			resourceDb.save(options);
+			
+			
+			//resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			return resource;	
 		}
 		catch(Exception e){
@@ -702,7 +729,14 @@ public class AssistantFactory implements IResourceChangeListener{
 			}
 			
 			repository.getResources().add(resource);
-			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
+			
+			Map<String, Object> options = MapDbOptionsBuilder.
+					newBuilder().
+					cacheFeatures().
+					asMap();
+			resourceDb.save(options);
+			
+			//resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			return resource;
 		}
 		catch(Exception e){
@@ -784,7 +818,15 @@ public class AssistantFactory implements IResourceChangeListener{
 			
 			repository.getResources().add(resource);
 			
-			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
+			
+			Map<String, Object> options = MapDbOptionsBuilder.
+					newBuilder().
+					cacheFeatures().
+					asMap();
+			resourceDb.save(options);
+			
+			
+			//resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			
 			return resource;
 		}
@@ -835,7 +877,15 @@ public class AssistantFactory implements IResourceChangeListener{
 			}
 			
 			repository.getResources().add(resource);
-			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
+			
+			Map<String, Object> options = MapDbOptionsBuilder.
+					newBuilder().
+					cacheFeatures().
+					asMap();
+			resourceDb.save(options);
+			
+			
+			//resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			return resource;
 		}
 		catch(Exception e){

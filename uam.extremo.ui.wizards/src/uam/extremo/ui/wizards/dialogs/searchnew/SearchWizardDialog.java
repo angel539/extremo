@@ -168,14 +168,15 @@ public class SearchWizardDialog extends Wizard{
 				PredicateBasedSearch predicateBasedSearchBundle = callPredicateBasedSearchExtension(predicateBasedSearch.getId());
 				
 				composeApplyOnElementsList(predicateBasedSearch.getFilterBy().getLiteral(), searchResult);
-				
-				for(NamedElement namedElement : atomicSearchResult.getApplyOnElements()){
-					boolean matches = predicateBasedSearchBundle.matches(namedElement, atomicSearchResult.getValues());
-					
-					if(matches){
-						atomicSearchResult.getElements().add(namedElement);
-					}
-				}
+				atomicSearchResult.getApplyOnElements().parallelStream().forEach(
+						e -> {
+							boolean matches = predicateBasedSearchBundle.matches(e, atomicSearchResult.getValues());
+							
+							if(matches){
+								atomicSearchResult.getElements().add(e);
+							}
+						}
+				);
 			}	
 		}
 	}

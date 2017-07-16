@@ -1,25 +1,25 @@
 package uam.extremo.ui.views.actions.compositesearch;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.window.Window;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import semanticmanager.AtomicSearchResult;
 import semanticmanager.CompositeSearchConfiguration;
 import semanticmanager.ConnectionType;
+import semanticmanager.ExtendedSemanticmanagerFactory;
 import semanticmanager.GroupedSearchResult;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Resource;
-import semanticmanager.ResourceElement;
+import semanticmanager.NamedElement;
 import semanticmanager.SearchResult;
 import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
-import uam.extremo.ui.wizards.dialogs.link.LinkWizardDialog;
 
 public class ComputeCompositeQueryHandler extends AbstractHandler {
 	@Override
@@ -56,44 +56,24 @@ public class ComputeCompositeQueryHandler extends AbstractHandler {
         	postorderHelper(compositeSearch);
         
         ConnectionType connectionType = compositeSearchConfiguration.getType();
+        String connectionTypeLiteral = connectionType.getLiteral();
         
-        for(SearchResult searchResult : compositeSearchConfiguration.getQueryResults()){
-        	if (searchResult instanceof AtomicSearchResult) {
-        		AtomicSearchResult atomicSearchResult = (AtomicSearchResult) searchResult;
-        		String connectionTypeLiteral = connectionType.getLiteral();
-        		
-        		switch (connectionTypeLiteral) {
-					case "or":
-						break;
-					case "and":
-						break;
-					case "not":
-						break;
-					default:
-						break;
-				}
-			}
-        	else{
-        		// then GroupedSearchResult
-        		GroupedSearchResult groupedSearchResult = (GroupedSearchResult) searchResult;
-        		String connectionTypeLiteral = connectionType.getLiteral();
-        		
-        		switch (connectionTypeLiteral) {
-					case "or":
-						break;
-					case "and":
-						break;
-					case "not":
-						break;
-					default:
-						break;
-				}
-			}
+        switch (connectionTypeLiteral) {
+			case "or":
+				computeOrQueriesCompositeSearch(compositeSearchConfiguration);
+				break;
+			case "and":
+				computeAndQueriesCompositeSearch(compositeSearchConfiguration);
+				break;
+			case "not":
+				computeNotQueriesCompositeSearch(compositeSearchConfiguration);
+				break;
+			default:
+				break;
         }
         
-        for(CompositeSearchConfiguration childCompositeSearchConfiguration
+        /*for(CompositeSearchConfiguration childCompositeSearchConfiguration
         						: compositeSearchConfiguration.getChildren()){
-        	//ConnectionType connectionType = compositeSearchConfiguration.getType();
         	for(SearchResult searchResult : childCompositeSearchConfiguration.getResults()){
         		
         		if (searchResult instanceof AtomicSearchResult) {
@@ -101,35 +81,55 @@ public class ComputeCompositeQueryHandler extends AbstractHandler {
             		
             		String connectionTypeLiteral = connectionType.getLiteral();
             		
-            		switch (connectionTypeLiteral) {
-    					case "or":
-    						break;
-    					case "and":
-    						break;
-    					case "not":
-    						break;
-    					default:
-    						break;
-    				}
     			}
-            	else{
-            		// then GroupedSearchResult
             		GroupedSearchResult groupedSearchResult = (GroupedSearchResult) searchResult;
             		
             		String connectionTypeLiteral = connectionType.getLiteral();
             		
-            		switch (connectionTypeLiteral) {
-    					case "or":
-    						break;
-    					case "and":
-    						break;
-    					case "not":
-    						break;
-    					default:
-    						break;
-    				}
     			}
         	}
-        }
+        }*/
     }
+
+	private void computeNotQueriesCompositeSearch(CompositeSearchConfiguration compositeSearchConfiguration) {
+		List<NamedElement> notElements = new ArrayList<NamedElement>();
+		
+		for(SearchResult searchResult : compositeSearchConfiguration.getSearchResults()){
+			List<NamedElement> applyOnElements = searchResult.getApplyOnElements();
+			
+			if (searchResult instanceof AtomicSearchResult) {
+				AtomicSearchResult atomicSearchResult = (AtomicSearchResult) searchResult;
+				
+				for(NamedElement e : atomicSearchResult.getElements()){
+					if(! applyOnElements.contains(e))
+						notElements.add(e);
+				}
+			}
+			else{
+				GroupedSearchResult groupedSearchResult = (GroupedSearchResult) searchResult;
+				
+				for(SemanticGroup semanticGroup : groupedSearchResult.getGroups()){
+					for(NamedElement e : semanticGroup.getElements()){
+						if(! applyOnElements.contains(e))
+							notElements.add(e);
+					}
+				}
+			}
+		}
+		
+		Set<NamedElement> hs = new HashSet<>();
+		hs.addAll(notElements);
+		notElements.clear();
+		notElements.addAll(hs);
+		
+		AtomicSearchResult notSearchResult = ExtendedSemanticmanagerFactory.eINSTANCE.createAtomicSearchResult();
+		notSearchResult.getElements().addAll(notElements);
+		compositeSearchConfiguration.getResults().add(notSearchResult);
+	}
+
+	private void computeAndQueriesCompositeSearch(CompositeSearchConfiguration compositeSearchConfiguration) {	
+	}
+
+	private void computeOrQueriesCompositeSearch(CompositeSearchConfiguration compositeSearchConfiguration) {
+	}
 }

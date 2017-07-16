@@ -157,6 +157,8 @@ public class LinkWizardDialog extends Wizard{
 			
 			composeApplyOnElementsList(customSearch.getFilterBy().getLiteral(), searchResult);
 			customSearchBundle.search(searchResult);
+			
+			compositeSearchConfiguration.getResults().add(searchResult);
 		}
 			
 		if (searchConfigurationSelected instanceof PredicateBasedSearch) {
@@ -175,10 +177,10 @@ public class LinkWizardDialog extends Wizard{
 						atomicSearchResult.getElements().add(namedElement);
 					}
 				}
+				
+				compositeSearchConfiguration.getResults().add(atomicSearchResult);
 			}	
 		}
-		
-		compositeSearchConfiguration.getQueryResults().add(searchResult);
 	}
 	
 	private void composeApplyOnElementsList(String filterBy, SearchResult searchResult){		

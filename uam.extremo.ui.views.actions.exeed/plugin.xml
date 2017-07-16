@@ -5,7 +5,7 @@
          point="extremo.ui.extensions.actions">
       <action
             class="uam.extremo.ui.views.actions.exeed.action.CreateExeedTreeStructure"
-            editorId="org.eclipse.emf.ecore.editor.presentation.EcoreEditorID"
+            editorId="org.eclipse.epsilon.dt.exeed.ExeedEditor"
             icon="icons/exeed16.png"
             id="extremo.ui.extensions.actions.exeed.repositories"
             name="Create Exeed Structure"
@@ -14,7 +14,7 @@
       </action>
       <action
             class="uam.extremo.ui.views.actions.exeed.action.CreateExeedTreeStructure"
-            editorId="org.eclipse.emf.ecore.editor.presentation.EcoreEditorID"
+            editorId="org.eclipse.epsilon.dt.exeed.ExeedEditor"
             icon="icons/exeed16.png"
             id="extremo.ui.extensions.actions.exeed.searches"
             name="Create Exeed Structure"
@@ -23,7 +23,7 @@
       </action>
       <action
             class="uam.extremo.ui.views.actions.exeed.action.CreateExeedTreeStructure"
-            editorId="org.eclipse.emf.ecore.editor.presentation.EcoreEditorID"
+            editorId="org.eclipse.epsilon.dt.exeed.ExeedEditor"
             icon="icons/exeed16.png"
             id="extremo.ui.extensions.actions.exeed.constraints"
             name="Create Exeed Structure"

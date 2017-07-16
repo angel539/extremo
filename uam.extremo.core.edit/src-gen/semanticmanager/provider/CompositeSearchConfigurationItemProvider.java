@@ -48,7 +48,7 @@ public class CompositeSearchConfigurationItemProvider extends SearchConfiguratio
 			super.getPropertyDescriptors(object);
 
 			addTypePropertyDescriptor(object);
-			addQueryResultsPropertyDescriptor(object);
+			addSearchResultsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -65,7 +65,6 @@ public class CompositeSearchConfigurationItemProvider extends SearchConfiguratio
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__QUERY_RESULTS);
 			childrenFeatures.add(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__CHILDREN);
 		}
 		return childrenFeatures;
@@ -107,19 +106,19 @@ public class CompositeSearchConfigurationItemProvider extends SearchConfiguratio
 	}
 
 	/**
-	 * This adds a property descriptor for the Query Results feature.
+	 * This adds a property descriptor for the Search Results feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addQueryResultsPropertyDescriptor(Object object) {
+	protected void addSearchResultsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CompositeSearchConfiguration_queryResults_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CompositeSearchConfiguration_queryResults_feature", "_UI_CompositeSearchConfiguration_type"),
-				 SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__QUERY_RESULTS,
+				 getString("_UI_CompositeSearchConfiguration_searchResults_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CompositeSearchConfiguration_searchResults_feature", "_UI_CompositeSearchConfiguration_type"),
+				 SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__SEARCH_RESULTS,
 				 true,
 				 false,
 				 true,

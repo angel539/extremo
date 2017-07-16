@@ -227,7 +227,7 @@ public class TreeViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProv
 		if (element instanceof CompositeSearchConfiguration) {
 			CompositeSearchConfiguration searchConfiguration = (CompositeSearchConfiguration) element;
 			StyledString styledString = new StyledString("");
-			styledString.append("(" + searchConfiguration.getQueryResults().size() + ") queries inside executed as a " + searchConfiguration.getType().getLiteral(), StyledString.COUNTER_STYLER);
+			styledString.append("(" + searchConfiguration.getSearchResults().size() + ") queries inside executed as a " + searchConfiguration.getType().getLiteral(), StyledString.COUNTER_STYLER);
 			return styledString;
 		}
 		
