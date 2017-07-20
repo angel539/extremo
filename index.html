@@ -24,7 +24,7 @@
 	    <div id="list" class="pure-u-1">
 	    	<div class="email-item pure-g">
 	            <div class="pure-u">
-	                <img class="email-avatar" alt="Demo avatar" height="64" width="64" src="images/screen.png">
+	                <img class="email-avatar" alt="Demo avatar" height="64" width="64" src="images/abstract.png">
 	            </div>
 
 	            <div class="pure-u-3-4">
@@ -165,10 +165,17 @@
 	                    <button class="secondary-button pure-button">Move to top</button>
 	                </div>
 	            </div>
+
+	            <div class="email-content-header pure-g">
+	                <div class="pure-u-1-2">
+						<h4 class="email-content-title">Handling heterogeneous sources</h4>
+	                </div>
+	            </div>
+
 				
 	            <div class="email-content-body">
 	            	<p>
-	            		The tool supports models represented in Ecore/XMI, XSD/XML and RDF-ontologies. But new model representations can be supported with the definition of an extension point. To extend the tool follow the next instructions:
+	            		The tool supports models represented in Ecore/XMI, XSD/XML and ontologies. But new model representations can be supported with the definition of an extension point. To extend the tool follow the next instructions:
 	            	</p>
 	            </div>
 
@@ -212,7 +219,7 @@
 
 				<div class="email-content-header pure-g">
 	                <div class="pure-u-1-2">
-						<h4 class="email-content-title">Integration with an Eclipse Editor</h4>
+						<h4 class="email-content-title">Integration with an Eclipse modelling tool</h4>
 	                </div>
 	            </div>
 
@@ -220,15 +227,15 @@
 					<div class="pure-g">
 						<div class="pure-u-1-2">
 							<div class="l-box">
-								<h4>Actions integration</h4>
-								<a href="images/integration/integration1.png" target="_blank"><img class="pure-img" src="images/integration/integration1.png"/></a>
+								<h4>actions</h4>
+								<a href="images/integration/uml.png" target="_blank"><img class="pure-img" src="images/integration/uml.png"/></a>
 							</div>
 						</div>
 
 						<div class="pure-u-1-2">
 							<div class="l-box">
-								<h4>Drag and Drop integration</h4>
-								<a href="images/integration/integration2.png" target="_blank"><img class="pure-img" src="images/integration/integration2.png"/></a>
+								<h4>drag and drop</h4>
+								<a href="images/integration/dsltao.png" target="_blank"><img class="pure-img" src="images/integration/dsltao.png"/></a>
 							</div>
 						</div>
 					</div>
@@ -238,7 +245,7 @@
 							<div class="l-box">
 								<p><code>extremo.ui.extensions.actions</code></p>
 								<p>
-									Illustrated with the UML2 Tree Editor, Extremo has an extension point to add actions to the view of entities. Then, the Editor Part will receive the selected elements. To transform the semantic classes into elements of the model the extension point needs to implement the method <code>execute(IEditorPart editorPart, ISelection selection)</code> and create new elements into the model.
+									Illustrated with the UML2 Tree Editor, Extremo has an extension point to add an action contribution to the views. The extension point needs to implement the method <code>execute(IEditorPart editorPart, ISelection selection)</code> and create new elements into the model under construction. Then, the Editor Part will receive the selected elements, conceptually working as a model to model transformation.
 								</p>
 							</div>
 						</div>
@@ -247,7 +254,7 @@
 							<div class="l-box">
 								<p><code>extremo.ui.extensions.drop</code></p>
 								<p>
-									Illustrated with an example of integrating Extremo in DSL-tao (a tool developed by our group). Extremo counts with an extension point to add a drop support to a Graphical Editor (based on GEF) inside Eclipse. The class that implements the extension point will receive a class with a <code>handledrop(...)</code> method that receives the list of semantic elements dragged to the editor.
+									Illustrated with an example of integration between Extremo and DSL-tao. Extremo has an extension point to add a drop support into a Graphical Editor based on GEF. The extension point needs to implement a <code>handledrop(...)</code> method that receives the list of semantic elements dragged to the editor.
 								</p>
 							</div>
 						</div>
