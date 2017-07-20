@@ -343,7 +343,6 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 										value //value
 								);
 						
-						
 						addDataPropertyToNode(parent, dataProperty);
 						//evaluateConstraints(constraints, dataProperty);
 					}

@@ -91,6 +91,11 @@
             id="uam.extremo.ui.views.delete"
             name="Delete">
       </command>
+      <command
+            defaultHandler="uam.extremo.ui.views.repositories.actions.RuvealOnRepositoryHandler"
+            id="uam.extremo.ui.views.reveal"
+            name="Reveal On Repository">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
@@ -130,6 +135,11 @@
          <command
                commandId="uam.extremo.ui.views.delete"
                icon="icons/delete.png"
+               style="push">
+         </command>
+         <command
+               commandId="uam.extremo.ui.views.reveal"
+               icon="icons/ruveal.png"
                style="push">
          </command>
       </menuContribution>

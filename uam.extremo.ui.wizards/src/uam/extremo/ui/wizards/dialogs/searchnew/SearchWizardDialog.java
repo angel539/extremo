@@ -14,7 +14,13 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.spi.RegistryContributor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.ISetSelectionTarget;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
@@ -29,8 +35,10 @@ import semanticmanager.ObjectProperty;
 import semanticmanager.PredicateBasedSearch;
 import semanticmanager.PrimitiveTypeParam;
 import semanticmanager.PrimitiveTypeParamValue;
+import semanticmanager.Property;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
+import semanticmanager.ResourceElement;
 import semanticmanager.SearchConfiguration;
 import semanticmanager.SearchParam;
 import semanticmanager.SearchResult;
@@ -96,41 +104,38 @@ public class SearchWizardDialog extends Wizard{
 			}
 		}
 		
+		Map<SearchParam, Object> searchOptionStringValues = searchPage.getValues();
+		Map<SearchParam, Service> searchOptionServiceCalling = searchPage.getServiceCalls();
+		
+		for(java.util.Map.Entry<SearchParam, Object> entry : searchOptionStringValues.entrySet()){
+			if (entry.getKey() instanceof PrimitiveTypeParam) {
+				PrimitiveTypeParam primitiveTypeSearchOption = (PrimitiveTypeParam) entry.getKey();
+				
+				PrimitiveTypeParamValue primitiveTypeSearchResultOptionValue = ExtendedSemanticmanagerFactory.eINSTANCE.createPrimitiveTypeParamValue();
+				primitiveTypeSearchResultOptionValue.setOption(primitiveTypeSearchOption);
+				primitiveTypeSearchResultOptionValue.setValue(entry.getValue().toString());
+				
+				Service service = searchOptionServiceCalling.get(entry.getKey());
+				primitiveTypeSearchResultOptionValue.setCalls(service);
+				
+				searchResult.getValues().add(primitiveTypeSearchResultOptionValue);
+			}
+			
+			if (entry.getKey() instanceof ModelTypeParam) {
+				ModelTypeParam dataModelTypeSearchOption = (ModelTypeParam) entry.getKey();
+				
+				ModelTypeParamValue dataModelTypeSearchResultOptionValue = ExtendedSemanticmanagerFactory.eINSTANCE.createModelTypeParamValue();
+				dataModelTypeSearchResultOptionValue.setOption(dataModelTypeSearchOption);
+				dataModelTypeSearchResultOptionValue.setValue((NamedElement) entry.getValue());
+				searchResult.getValues().add(dataModelTypeSearchResultOptionValue);
+			}
+		}
+		
+		
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
-				try {
-					Map<SearchParam, Object> searchOptionStringValues = searchPage.getValues();
-					Map<SearchParam, Service> searchOptionServiceCalling = searchPage.getServiceCalls();
-					
-					for(java.util.Map.Entry<SearchParam, Object> entry : searchOptionStringValues.entrySet()){
-						if (entry.getKey() instanceof PrimitiveTypeParam) {
-							PrimitiveTypeParam primitiveTypeSearchOption = (PrimitiveTypeParam) entry.getKey();
-							
-							PrimitiveTypeParamValue primitiveTypeSearchResultOptionValue = ExtendedSemanticmanagerFactory.eINSTANCE.createPrimitiveTypeParamValue();
-							primitiveTypeSearchResultOptionValue.setOption(primitiveTypeSearchOption);
-							primitiveTypeSearchResultOptionValue.setValue(entry.getValue().toString());
-							
-							Service service = searchOptionServiceCalling.get(entry.getKey());
-							primitiveTypeSearchResultOptionValue.setCalls(service);
-							
-							searchResult.getValues().add(primitiveTypeSearchResultOptionValue);
-						}
-						
-						if (entry.getKey() instanceof ModelTypeParam) {
-							ModelTypeParam dataModelTypeSearchOption = (ModelTypeParam) entry.getKey();
-							
-							ModelTypeParamValue dataModelTypeSearchResultOptionValue = ExtendedSemanticmanagerFactory.eINSTANCE.createModelTypeParamValue();
-							dataModelTypeSearchResultOptionValue.setOption(dataModelTypeSearchOption);
-							dataModelTypeSearchResultOptionValue.setValue((NamedElement) entry.getValue());
-							searchResult.getValues().add(dataModelTypeSearchResultOptionValue);
-						}
-					}
-					
-					doFinish(monitor, searchResult, searchConfigurationSelected);									
-				}
-				finally {
+					doFinish(monitor, searchResult, searchConfigurationSelected);		
 					monitor.done();
-				}
 			}
 		};
 		try {
@@ -144,6 +149,16 @@ public class SearchWizardDialog extends Wizard{
 			MessageDialog.openError(getShell(), "Error", realException.getMessage());
 			return false;
 		}
+		
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		
+		IViewPart view = page.findView("uam.extremo.ui.views.SearchTree");
+		
+		if (view instanceof ISetSelectionTarget) {
+			ISelection selection = new StructuredSelection(searchResult);
+			((ISetSelectionTarget) view).selectReveal(selection);
+		}
+					
 		
 		return true;
 	}
@@ -167,45 +182,117 @@ public class SearchWizardDialog extends Wizard{
 				AtomicSearchResult atomicSearchResult = (AtomicSearchResult) searchResult;
 				PredicateBasedSearch predicateBasedSearchBundle = callPredicateBasedSearchExtension(predicateBasedSearch.getId());
 				
-				composeApplyOnElementsList(predicateBasedSearch.getFilterBy().getLiteral(), searchResult);
-				atomicSearchResult.getApplyOnElements().parallelStream().forEach(
-						e -> {
+				composeApplyOnElementsList(predicateBasedSearch.getFilterBy().getLiteral(), searchResult);	
+				
+				try {
+					for(NamedElement e : atomicSearchResult.getApplyOnElements()){
+						if(e != null){
 							boolean matches = predicateBasedSearchBundle.matches(e, atomicSearchResult.getValues());
 							
 							if(matches){
 								atomicSearchResult.getElements().add(e);
 							}
 						}
-				);
+					}
+				} catch (Exception e) {
+					System.out.println("aqui se mete por una excepcion...");
+					e.printStackTrace();
+				}
 			}	
 		}
 	}
 	
-	private void composeApplyOnElementsList(String filterBy, SearchResult searchResult){		
-	    repositoryFrom.eAllContents().forEachRemaining(
-	    		element -> {
-	    			if(element instanceof NamedElement){
-	    				NamedElement namedElement = (NamedElement) element;
-	    				
-    					if((filterBy.compareTo("Resource") == 0) && namedElement instanceof Resource){
-    						searchResult.getApplyOnElements().add(namedElement);
-    					}
-    					
-    					if((filterBy.compareTo("SemanticNode") == 0) && namedElement instanceof SemanticNode){
-    						searchResult.getApplyOnElements().add(namedElement);
-    					}
-    					
-    					if((filterBy.compareTo("DataProperty") == 0) && namedElement instanceof DataProperty){
-    						searchResult.getApplyOnElements().add(namedElement);
-    					}
-    					
-    					if((filterBy.compareTo("ObjectProperty") == 0) && namedElement instanceof ObjectProperty){
-    						searchResult.getApplyOnElements().add(namedElement);
-    					}
-	    			}
-	    		}
-		    );
+	private void composeApplyOnElementsList(String filterBy, SearchResult searchResult){
+		for(Resource resource : repositoryFrom.getResources())
+			preorder(filterBy, resource, searchResult);
 	}
+	
+	public synchronized void preorder(String filterBy, Resource resource, SearchResult searchResult){
+		switch(filterBy){
+			case "Resource":
+				preorderHelperResource(resource, searchResult);
+				break;
+			case "SemanticNode":
+				preorderHelperSemanticNode(resource, searchResult);
+				break;
+			case "DataProperty":
+				preorderHelperDataProperty(resource, searchResult);
+				break;
+			case "ObjectProperty":
+				preorderHelperObjectProperty(resource, searchResult);
+				break;
+			default:
+				break;
+		}
+    }
+     
+    private void preorderHelperResource(ResourceElement node, SearchResult searchResult)
+    {
+        if(node == null)
+            return;
+        
+        if(node instanceof Resource){
+        	searchResult.getApplyOnElements().add(node);
+        	
+        	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
+        		preorderHelperResource(resourceElement, searchResult);
+        }
+    }
+    
+    private void preorderHelperSemanticNode(ResourceElement node, SearchResult searchResult)
+    {
+        if(node == null)
+            return;
+        
+        if(node instanceof Resource){
+        	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
+        		preorderHelperSemanticNode(resourceElement, searchResult);
+        }
+        
+        if(node instanceof SemanticNode){
+			searchResult.getApplyOnElements().add(node);
+        }
+    }
+    
+    private void preorderHelperDataProperty(ResourceElement node, SearchResult searchResult)
+    {
+        if(node == null)
+            return;
+        
+        if(node instanceof Resource){
+        	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
+        		preorderHelperDataProperty(resourceElement, searchResult);
+        }
+        
+        if(node instanceof SemanticNode){
+        	for(Property property : ((SemanticNode) node).getProperties()){
+        		if (property instanceof DataProperty) {
+					DataProperty dataProperty = (DataProperty) property;
+					searchResult.getApplyOnElements().add(dataProperty);
+				}
+        	}
+        }
+    }
+    
+    private void preorderHelperObjectProperty(ResourceElement node, SearchResult searchResult)
+    {
+        if(node == null)
+            return;
+        
+        if(node instanceof Resource){
+        	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
+        		preorderHelperObjectProperty(resourceElement, searchResult);
+        }
+        
+        if(node instanceof SemanticNode){
+        	for(Property property : ((SemanticNode) node).getProperties()){
+        		if (property instanceof ObjectProperty) {
+					ObjectProperty dataProperty = (ObjectProperty) property;
+					searchResult.getApplyOnElements().add(dataProperty);
+				}
+        	}
+        }
+    }
 	
 	private PredicateBasedSearch callPredicateBasedSearchExtension(String idPredicateBasedSearch){
 		IExtensionRegistry registry = Platform.getExtensionRegistry();

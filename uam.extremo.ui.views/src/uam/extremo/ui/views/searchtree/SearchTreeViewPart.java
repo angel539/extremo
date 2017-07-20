@@ -35,6 +35,7 @@ import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -56,11 +57,13 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.part.DrillDownAdapter;
+import org.eclipse.ui.part.ISetSelectionTarget;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
+import semanticmanager.NamedElement;
 import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
 import semanticmanager.util.SemanticmanagerAdapterFactory;
 import uam.extremo.extensions.AssistantFactory;
@@ -69,7 +72,7 @@ import uam.extremo.ui.views.draganddrop.NamedElementDragListener;
 import uam.extremo.ui.views.extensions.actions.ExtensibleViewPartActionContribution;
 import uam.extremo.ui.views.extensions.dnd.ExtensibleGEFDragAndDropContribution;
 
-public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor {
+public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor, ISetSelectionTarget {
 	public static final String ID = "uam.extremo.ui.views.SearchTree";
 	public static TreeViewer viewer;
 	
@@ -383,5 +386,17 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 	@Override
 	public Viewer getViewer() {
 		return viewer;
+	}
+
+	@Override
+	public void selectReveal(ISelection selection) {
+		if (selection != null & selection instanceof IStructuredSelection) {
+			Object firstselection = ((IStructuredSelection) selection).getFirstElement();
+
+			if (firstselection != null){
+				viewer.reveal(firstselection);
+				viewer.setExpandedState(firstselection, true);
+			}
+		}
 	}
 }

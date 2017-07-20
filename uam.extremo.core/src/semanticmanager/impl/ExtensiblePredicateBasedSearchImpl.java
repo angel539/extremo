@@ -75,8 +75,10 @@ public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl
 	}
 	
 	public boolean callService(Service service, String valuefieldString, String name) {
+		if(name == null) return false;
 		Service serviceBundle = callServiceExtension(service.getId());
-		return serviceBundle.matches(valuefieldString, name);
+		if(serviceBundle != null) return serviceBundle.matches(valuefieldString, name);
+		else return false;
 	}
 	
 	public SearchParamValue getOptionValue(String key, EList<SearchParamValue> inps) {
@@ -140,7 +142,6 @@ public class ExtensiblePredicateBasedSearchImpl extends PredicateBasedSearchImpl
 				}
             }
 		}
-		
 		return null;
 	}
 }

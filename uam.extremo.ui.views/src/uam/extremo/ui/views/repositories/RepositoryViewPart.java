@@ -62,6 +62,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.ISetSelectionTarget;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
@@ -82,7 +83,7 @@ import uam.extremo.ui.views.extensions.dnd.ExtensibleGEFDragAndDropContribution;
 import uam.extremo.ui.views.searchtree.TreeViewAdapterFactoryLabelProvider;
 import uam.extremo.ui.wizards.dialogs.AddFolderResourceListWizardDialog;
 
-public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor{
+public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor, ISetSelectionTarget{
 	public static final String ID = "uam.extremo.ui.views.RepositoryView";
 	public static final String NATURE_ID = "uam.extremo.ui.nature.extremonature";
 
@@ -506,100 +507,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		addFolder.setText("Add Folder");
 		addFolder.setToolTipText("");
 		addFolder.setImageDescriptor(Activator.getImageDescriptor("icons/package.gif"));
-		
-		/*addResourceToExistingRepository = new Action() {
-			public void run() {
-				ISelection selection = viewer.getSelection();
-				
-				if (selection != null & selection instanceof IStructuredSelection) {
-					IStructuredSelection strucSelection = (IStructuredSelection) selection;
-					Object element = strucSelection.getFirstElement();
-					
-					AddFolderResourceListWizardDialog wizard = new AddFolderResourceListWizardDialog();
-					
-					Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-					WizardDialog wizardDialog = new WizardDialog(activeShell, wizard);
-					wizardDialog.open();
-				}	
-			}
-		};
-		
-		addResourceToExistingRepository.setText("Add resource to repository");
-		addResourceToExistingRepository.setImageDescriptor(Activator.getImageDescriptor("icons/3d_objects_16.png"));
-		*/
-		
-		/*changeResourceToDescriptor = new Action() {
-			public void run() {
-				ISelection selection = viewer.getSelection();
-				
-				if (selection != null & selection instanceof IStructuredSelection) {
-					IStructuredSelection strucSelection = (IStructuredSelection) selection;
-					Object element = strucSelection.getFirstElement();
-					
-					if(element instanceof Resource){
-						Resource resource = (Resource) element;
-						
-						if(resource.getDescriptor() != null && resource.getDescriptor() instanceof Resource){
-							((Resource) resource.getDescriptor()).getRepositoryFrom().getResources().add(resource);
-						}		
-					}
-					else{
-						PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable(){
-							@Override
-							public void run() {
-								Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-
-								MessageDialog.openError(activeShell, "Change descriptor to resource", "Resource must be selected");
-							}
-						});
-					}
-				}	
-			}
-		};
-		
-		changeResourceToDescriptor.setText("Change resource to descriptor");
-		changeResourceToDescriptor.setImageDescriptor(Activator.getImageDescriptor("icons/left16.png"));
-		
-		changeDescriptorToResource = new Action() {
-			public void run() {
-				ISelection selection = viewer.getSelection();
-				
-				if (selection != null & selection instanceof IStructuredSelection) {
-					IStructuredSelection strucSelection = (IStructuredSelection) selection;
-					Object element = strucSelection.getFirstElement();
-					
-					PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable(){
-						@Override
-						public void run() {
-							Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-							
-							if(element instanceof Resource){
-								Resource resource = (Resource) element;
-								
-								if(resource.getDescriptor() == null){
-									WizardDialog wizardDialog = new WizardDialog(null, new ChangeDescriptorToResourceWizardDialog(resource));
-									if (wizardDialog.open() == Window.OK) {
-										MessageDialog.openConfirm(activeShell, "Add resource to repository", "Resource has been added");
-									}
-									else{
-										MessageDialog.openError(activeShell, "Add resource to repository", "Resource could not be added");
-									}
-								}
-								else{
-									MessageDialog.openError(activeShell, "Change descriptor to resource", "Resource is not a descriptor. It cannot be changed");
-								}
-							}
-							else{
-								MessageDialog.openError(activeShell, "Change descriptor to resource", "Resource must be selected");
-							}
-						}
-					});
-				}	
-			}
-		};
-		
-		changeDescriptorToResource.setText("Change descriptor to resource");
-		changeDescriptorToResource.setImageDescriptor(Activator.getImageDescriptor("icons/right16.png"));*/
 	}
 
 	private void hookDoubleClickAction() {
@@ -674,5 +581,17 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	@Override
 	public Viewer getViewer() {
 		return viewer;
+	}
+	
+	@Override
+	public void selectReveal(ISelection selection) {
+		if (selection != null & selection instanceof IStructuredSelection) {
+			Object firstselection = ((IStructuredSelection) selection).getFirstElement();
+
+			if (firstselection != null){
+				viewer.reveal(firstselection);
+				viewer.setExpandedState(firstselection, true);
+			}
+		}
 	}
 }

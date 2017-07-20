@@ -111,7 +111,7 @@
             class="uam.extremo.queries.predicatebasedsearch.DataPropertiesValueSearch"
             description="Checks if a data property (description) X has value Y"
             filterBy="DataProperty"
-            id="extremo.queries.predicatebased.datapropertiesvalue"
+            id="extremo.queries.predicatebased.datapropertyvalue"
             name="Data Properties Value">
          <option
                id="valuefield"
@@ -231,6 +231,18 @@
          <option
                id="name"
                name="name"
+               type="String">
+         </option>
+      </predicatebasedsearch>
+      <predicatebasedsearch
+            class="uam.extremo.queries.predicatebasedsearch.SemanticNodeDataPropertiesValueSearch"
+            description="Checks if a semantic node has a data property which value is X"
+            filterBy="SemanticNode"
+            id="extremo.queries.predicatebased.semanticnodedatapropertyvalue"
+            name="Semantic Node with a Data Property  = Value">
+         <option
+               id="value"
+               name="Value"
                type="String">
          </option>
       </predicatebasedsearch>

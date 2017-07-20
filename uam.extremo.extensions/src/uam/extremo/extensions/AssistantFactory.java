@@ -3,8 +3,13 @@ package uam.extremo.extensions;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -26,8 +31,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.IJobFunction;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.spi.RegistryContributor;
+import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -38,11 +45,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
+import com.google.inject.Inject;
+
 import fr.inria.atlanmod.neoemf.data.PersistenceBackendFactoryRegistry;
 import fr.inria.atlanmod.neoemf.data.mapdb.MapDbPersistenceBackendFactory;
 import fr.inria.atlanmod.neoemf.data.mapdb.option.MapDbOptionsBuilder;
 import fr.inria.atlanmod.neoemf.data.mapdb.util.MapDbURI;
-import fr.inria.atlanmod.neoemf.option.AbstractPersistenceOptionsBuilder;
 import fr.inria.atlanmod.neoemf.resource.PersistentResource;
 import fr.inria.atlanmod.neoemf.resource.PersistentResourceFactory;
 import semanticmanager.ConstraintInterpreter;
@@ -62,6 +70,7 @@ import semanticmanager.SearchConfiguration;
 import semanticmanager.SemanticNode;
 import semanticmanager.Service;
 import semanticmanager.Type;
+import uam.extremo.extensions.utils.ToDataPropertyTask;
 
 public class AssistantFactory implements IResourceChangeListener{
 	public static final String ASSISTANT_EXTENSIONS_ID = "extremo.core.extensions.assistant";
@@ -76,6 +85,8 @@ public class AssistantFactory implements IResourceChangeListener{
 	
 	private static ResourceSet resourceSet = new ResourceSetImpl();
 	private static org.eclipse.emf.ecore.resource.Resource resourceDb = null;
+	
+	@Inject UISynchronize sync;
 
 	public List<IFormatAssistant> getAssistances(){
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
@@ -471,12 +482,7 @@ public class AssistantFactory implements IResourceChangeListener{
 		RepositoryManager repositoryManager = null;
 		
 		try {
-			Map<String, Object> options = MapDbOptionsBuilder.
-											newBuilder().
-											directWriteCacheMany().
-											asMap();
-			
-			resourceDb.load(options);
+			resourceDb.load(Collections.emptyMap());
 		}
 		catch (IOException e) {
 			createRepositoryManager();
@@ -497,10 +503,12 @@ public class AssistantFactory implements IResourceChangeListener{
 			resourceDb.getContents().add(repositoryManager);
 			
 			try {
-				Map<String, Object> options = MapDbOptionsBuilder.
-						newBuilder().
-						directWriteCacheMany().
-						asMap();
+				Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
+	                    .directWriteCacheMany()
+	                    .autocommit()
+	                    .cacheIsSet()
+	                    .cacheSizes()
+	                    .asMap();
 				
 				resourceDb.save(options);
 			}
@@ -515,8 +523,14 @@ public class AssistantFactory implements IResourceChangeListener{
 	
 	public void save(){	
 		try {
-			resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
+			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
+                    .directWriteCacheMany()
+                    .autocommit()
+                    .cacheIsSet()
+                    .cacheSizes()
+                    .asMap();
 			
+			resourceDb.save(options);
 			if (resourceDb instanceof PersistentResource) ((PersistentResource) resourceDb).close();
 			else resourceDb.unload();
 	    }
@@ -589,12 +603,13 @@ public class AssistantFactory implements IResourceChangeListener{
 			getRepositoryManager().getRepositories().add(repository);
 			
 			
-			Map<String, Object> options = MapDbOptionsBuilder.
-					newBuilder().
-					cacheFeatures().
-					asMap();
+			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
+                    .directWriteCacheMany()
+                    .autocommit()
+                    .cacheIsSet()
+                    .cacheSizes()
+                    .asMap();
 			resourceDb.save(options);
-			
 			return repository;
 		}
 		catch(Exception e){
@@ -673,14 +688,13 @@ public class AssistantFactory implements IResourceChangeListener{
 			repository.getResources().add(resource);
 			
 			
-			Map<String, Object> options = MapDbOptionsBuilder.
-					newBuilder().
-					cacheFeatures().
-					asMap();
+			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
+                    .directWriteCacheMany()
+                    .autocommit()
+                    .cacheIsSet()
+                    .cacheSizes()
+                    .asMap();
 			resourceDb.save(options);
-			
-			
-			//resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			return resource;	
 		}
 		catch(Exception e){
@@ -730,13 +744,13 @@ public class AssistantFactory implements IResourceChangeListener{
 			
 			repository.getResources().add(resource);
 			
-			Map<String, Object> options = MapDbOptionsBuilder.
-					newBuilder().
-					cacheFeatures().
-					asMap();
+			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
+                    .directWriteCacheMany()
+                    .autocommit()
+                    .cacheIsSet()
+                    .cacheSizes()
+                    .asMap();
 			resourceDb.save(options);
-			
-			//resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			return resource;
 		}
 		catch(Exception e){
@@ -819,14 +833,13 @@ public class AssistantFactory implements IResourceChangeListener{
 			repository.getResources().add(resource);
 			
 			
-			Map<String, Object> options = MapDbOptionsBuilder.
-					newBuilder().
-					cacheFeatures().
-					asMap();
+			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
+                    .directWriteCacheMany()
+                    .autocommit()
+                    .cacheIsSet()
+                    .cacheSizes()
+                    .asMap();
 			resourceDb.save(options);
-			
-			
-			//resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			
 			return resource;
 		}
@@ -878,14 +891,13 @@ public class AssistantFactory implements IResourceChangeListener{
 			
 			repository.getResources().add(resource);
 			
-			Map<String, Object> options = MapDbOptionsBuilder.
-					newBuilder().
-					cacheFeatures().
-					asMap();
+			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
+                    .directWriteCacheMany()
+                    .autocommit()
+                    .cacheIsSet()
+                    .cacheSizes()
+                    .asMap();
 			resourceDb.save(options);
-			
-			
-			//resourceDb.save(AbstractPersistenceOptionsBuilder.noOption());
 			return resource;
 		}
 		catch(Exception e){
@@ -897,6 +909,7 @@ public class AssistantFactory implements IResourceChangeListener{
 
 	public synchronized void preorder(IFormatAssistant assistant, Resource resource){
         preorderHelper(assistant, resource);
+        preorderHelperSuperProperties(assistant, resource);
     }
      
     private void preorderHelper(IFormatAssistant assistant, ResourceElement node)
@@ -904,12 +917,23 @@ public class AssistantFactory implements IResourceChangeListener{
         if(node == null)
             return;
         
+        if(node instanceof Resource){
+        	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
+        		preorderHelper(assistant, resourceElement);
+        }
+        
         if(node instanceof SemanticNode){
-        	SemanticNode semanticNode = (SemanticNode) node;
+			SemanticNode semanticNode = (SemanticNode) node;
         	toDataThread(assistant, semanticNode);
 			toObjectThread(assistant, semanticNode);
 			toSuperThread(assistant, semanticNode);
         }
+    }
+    
+    private void preorderHelperSuperProperties(IFormatAssistant assistant, ResourceElement node)
+    {
+        if(node == null)
+            return;
         
         if(node instanceof ObjectProperty){
         	ObjectProperty objectProperty = (ObjectProperty) node;
@@ -924,80 +948,32 @@ public class AssistantFactory implements IResourceChangeListener{
         
         if(node instanceof Resource){
         	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
-        		preorderHelper(assistant, resourceElement);
+        		preorderHelperSuperProperties(assistant, resourceElement);
         }
     }
 	
 	private void toDataThread(IFormatAssistant assistant, SemanticNode node){
-		Job job = new Job(node.getName() + " : resolving data properties") {
-	        @Override
-	        protected IStatus run(IProgressMonitor monitor) {
-	        	assistant.toDataProperty(node);
-	            return Status.OK_STATUS;
-	        }
-		};
-	
-		job.schedule();
+		assistant.toDataProperty(node);
 	}
 	
 	private void toObjectThread(IFormatAssistant assistant, SemanticNode node){
-		Job job = new Job(node.getName() + " : resolving object properties") {
-	        @Override
-	        protected IStatus run(IProgressMonitor monitor) {
-	        	assistant.toObjectProperty(node);
-	            return Status.OK_STATUS;
-	        }
-		};
-	
-		job.schedule();
+	    assistant.toObjectProperty(node);
 	}
 	
 	private void toSuperThread(IFormatAssistant assistant, SemanticNode node){
-		Job job = new Job(node.getName() + " : resolving parenthood properties") {
-	        @Override
-	        protected IStatus run(IProgressMonitor monitor) {
-	        	assistant.toSuper(node);
-	        	
-	        	return Status.OK_STATUS;
-	        }
-		};
-		job.schedule();
+		assistant.toSuper(node);
 	}
 	
 	private void toSuperThread(IFormatAssistant assistant, ObjectProperty node){
-		Job job = new Job(node.getName() + " : resolving parenthood properties") {
-	        @Override
-	        protected IStatus run(IProgressMonitor monitor) {
-	        	assistant.toSuper(node);
-	        	
-	        	return Status.OK_STATUS;
-	        }
-		};
-		job.schedule();
+	    assistant.toSuper(node);
 	}
 	
 	private void toSuperThread(IFormatAssistant assistant, DataProperty node){
-		Job job = new Job(node.getName() + " : resolving parenthood properties") {
-	        @Override
-	        protected IStatus run(IProgressMonitor monitor) {
-	        	assistant.toSuper(node);
-	        	
-	        	return Status.OK_STATUS;
-	        }
-		};
-		job.schedule();
+		assistant.toSuper(node);
 	}
 	
 	private void toInverseOfThread(IFormatAssistant assistant, ObjectProperty node){
-		Job job = new Job(node.getName() + " : resolving parenthood properties") {
-	        @Override
-	        protected IStatus run(IProgressMonitor monitor) {
-	        	assistant.toInverseOf(node);
-	        	
-	        	return Status.OK_STATUS;
-	        }
-		};
-		job.schedule();
+	   assistant.toInverseOf(node);
 	}
 
 	@Override

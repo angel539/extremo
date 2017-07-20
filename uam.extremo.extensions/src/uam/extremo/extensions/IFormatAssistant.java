@@ -31,6 +31,7 @@ public interface IFormatAssistant {
     public boolean loadAndValidate(
     		semanticmanager.Resource semanticResource, 
     		ConstraintInterpreter interpreter);
+    
     public void toDataProperty(SemanticNode parent);
     public void toObjectProperty(SemanticNode parent);
     public void toSuper(SemanticNode parent);
@@ -261,8 +262,10 @@ public interface IFormatAssistant {
     			element -> {
     				if (element instanceof NamedElement) {
 						NamedElement namedElement = (NamedElement) element;
-						if(namedElement.getName().compareTo(name) == 0)
+						if(namedElement.getName().compareTo(name) == 0){
 							returnNamedElements.add(namedElement);
+							return;
+						}
 					}
     			}
     	);
@@ -278,8 +281,10 @@ public interface IFormatAssistant {
     			element -> {
     				if (element instanceof NamedElement) {
 						NamedElement namedElement = (NamedElement) element;
-						if(namedElement.getTrace().equals(id))
+						if(namedElement.getTrace().equals(id)){
 							returnNamedElements.add(namedElement);
+							return;
+						}
 					}
     			}
     	);

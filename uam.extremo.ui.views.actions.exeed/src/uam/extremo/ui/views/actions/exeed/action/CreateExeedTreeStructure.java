@@ -20,6 +20,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeSelection;
+import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -46,6 +47,12 @@ public class CreateExeedTreeStructure extends ExtensibleViewPartActionContributi
 		        if (selection instanceof IStructuredSelection) {
 		            if (selection instanceof ITreeSelection) {
 		                TreeSelection treeSelection = (TreeSelection) selection;
+		                //TreePath[] treePaths = treeSelection.getPaths();
+		                
+		                /*for(TreePath treePath : treePaths){
+		                	System.out.println(">>>" + treePath.getSegmentCount() + "__" + treePath.getLastSegment());
+		                }*/
+
 		                Object object = treeSelection.getFirstElement();
 		                
 		                if((object instanceof NamedElement) && 

@@ -21,7 +21,6 @@ public class SemanticNodeNameSearch extends ExtensiblePredicateBasedSearchImpl {
 				
 				if((optionvalue != null) && (optionvalue instanceof String)){
 					String valuefieldString = (String) optionvalue;
-					
 					if(primitiveOption.getCalls() != null){
 						Service service = primitiveOption.getCalls();
 						return callService(service, ((SemanticNode) namedElement).getName(), valuefieldString);

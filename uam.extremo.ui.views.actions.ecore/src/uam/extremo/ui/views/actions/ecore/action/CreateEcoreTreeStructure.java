@@ -103,7 +103,6 @@ public class CreateEcoreTreeStructure extends ExtensibleViewPartActionContributi
 											SemanticNode semanticNode = (SemanticNode) resourceElement;
 											
 											EClass eClassSource = relation.get(semanticNode);
-											
 											for(Property property : semanticNode.getProperties()){
 												if(property instanceof ObjectProperty){
 													ObjectProperty objectProperty = (ObjectProperty) property;
