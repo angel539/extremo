@@ -22,16 +22,30 @@
 	    </div>
 
 	    <div id="list" class="pure-u-1">
+	    	<div class="email-item pure-g">
+	            <div class="pure-u">
+	                <img class="email-avatar" alt="Demo avatar" height="64" width="64" src="images/screen.png">
+	            </div>
+
+	            <div class="pure-u-3-4">
+	                <h5 class="email-name">Abstract</h5>
+	                <h4 class="email-subject">Brief explanation about the project</h4>
+	                <p class="email-desc">
+	                    <a href="#abstract">Modelling and meta-modelling assistance with Extremo</a>
+	                </p>
+	            </div>
+	        </div>
+
 	        <div class="email-item pure-g">
 	            <div class="pure-u">
 	                <img class="email-avatar" alt="Demo avatar" height="64" width="64" src="images/screen.png">
 	            </div>
 
 	            <div class="pure-u-3-4">
-	                <h5 class="email-name">Demos</h5>
+	                <h5 class="email-name">Demo</h5>
 	                <h4 class="email-subject">Screencasts and video demo</h4>
 	                <p class="email-desc">
-	                    <a href="#demo">Watch some videos.</a>
+	                    <a href="#demo">Example of how to import resources, quering, constraint interpretation and integration with a modelling tool</a>
 	                </p>
 	            </div>
 	        </div>
@@ -111,6 +125,11 @@
 						</div>
 					</div>
 	            </div>
+	            <div class="email-content-header pure-g">
+	                <div id="abstract" class="pure-u-1-2">
+						<h2 class="email-content-title">Abstract</h2>
+	                </div>
+	            </div>
 	            <div class="email-content-body">
 <p>Model-Driven Engineering (MDE) uses models as the main assets in the software development process. The structure of a model is described through a meta-model and therefore modelling and meta-modelling are recurrent activities in MDE. While there is a vast amount of MDE tools nowadays, modelling and meta-modelling are tasks typically performed in an unassisted way. One reason for this situation is that these tools cannot extract useful knowledge for modelling, which might be found in heterogeneous information sources, such as XML, RDF, CSV or other models and meta-models.</p>
 
@@ -130,39 +149,14 @@
 	                </div>
 	            </div>
 
-
 	            <div class="email-content-body">
 					<div class="pure-g">
-						<div class="pure-u-1-1">
-							<h4 class="email-content-title">Handling heterogeneous sources and quering</h4>
-						</div>
-					
-						<div class="pure-u-1-1">
-							<h4 class="email-content-title">Integration with a modelling tool</h4>
-						</div>
-						
-						<div class="pure-u-1-1">
-							<h4 class="email-content-title">Designing a metamodel from the recommended classes</h4>
-						</div>
+						<video width="320" height="240" controls>
+							  <source src="videos/demo.mp4" type="video/mp4">
+						</video>
 					</div>
 				</div>
 				
-				<div class="email-content-header pure-g">
-	                <div id="modelling" class="pure-u-1-2">
-						<h2 class="email-content-title">Tool Support: Extending the tool</h2>
-	                </div>
-
-	                <div class="email-content-controls pure-u-1-2">
-	                    <button class="secondary-button pure-button">Move to top</button>
-	                </div>
-	            </div>
-				
-				<div class="email-content-header pure-g">
-	                <div class="pure-u-1-2">
-						<h4 class="email-content-title">Contributing with a new format assistant</h4>
-	                </div>
-	            </div>
-
 	            <div class="email-content-body">
 	            	<p>
 	            		The tool supports models represented in Ecore/XMI, XSD/XML and RDF-ontologies. But new model representations can be supported with the definition of an extension point. To extend the tool follow the next instructions:
