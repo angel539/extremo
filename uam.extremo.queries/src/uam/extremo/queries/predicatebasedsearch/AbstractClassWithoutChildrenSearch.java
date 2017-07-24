@@ -1,15 +1,12 @@
 package uam.extremo.queries.predicatebasedsearch;
 
-import org.eclipse.emf.common.util.EList;
-
 import semanticmanager.NamedElement;
-import semanticmanager.SearchParamValue;
 import semanticmanager.SemanticNode;
 import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
 
 public class AbstractClassWithoutChildrenSearch extends ExtensiblePredicateBasedSearchImpl {
 	@Override
-	public boolean matches(NamedElement namedElement, EList<SearchParamValue> inps) {
+	public boolean matches(NamedElement namedElement) {
 		if (namedElement instanceof SemanticNode) {
 			SemanticNode semanticNode = (SemanticNode) namedElement;
 			

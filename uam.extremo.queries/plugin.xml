@@ -239,7 +239,7 @@
             description="Checks if a semantic node has a data property which value is X"
             filterBy="SemanticNode"
             id="extremo.queries.predicatebased.semanticnodedatapropertyvalue"
-            name="Semantic Node with a Data Property  = Value">
+            name="A node with a property that values X">
          <option
                id="value"
                name="Value"

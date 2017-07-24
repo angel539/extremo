@@ -169,9 +169,10 @@ public class LinkWizardDialog extends Wizard{
 				PredicateBasedSearch predicateBasedSearchBundle = callPredicateBasedSearchExtension(predicateBasedSearch.getId());
 				
 				composeApplyOnElementsList(predicateBasedSearch.getFilterBy().getLiteral(), searchResult);
+				predicateBasedSearchBundle.init(atomicSearchResult.getValues());
 				
 				for(NamedElement namedElement : atomicSearchResult.getApplyOnElements()){
-					boolean matches = predicateBasedSearchBundle.matches(namedElement, atomicSearchResult.getValues());
+					boolean matches = predicateBasedSearchBundle.matches(namedElement);
 					
 					if(matches){
 						atomicSearchResult.getElements().add(namedElement);

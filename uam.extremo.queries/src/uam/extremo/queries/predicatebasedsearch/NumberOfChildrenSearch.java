@@ -8,12 +8,17 @@ import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
 import semanticmanager.SearchParamValue;
 
 public class NumberOfChildrenSearch extends ExtensiblePredicateBasedSearchImpl {
+	Object childrenValueField = null;
+	
 	@Override
-	public boolean matches(NamedElement namedElement, EList<SearchParamValue> inps) {
+	public void init(EList<SearchParamValue> inputs) {
+		childrenValueField = getOptionValueKey("children", inputs);
+	}
+	
+	@Override
+	public boolean matches(NamedElement namedElement) {
 		if (namedElement instanceof SemanticNode) {	
 			SemanticNode semanticNode = (SemanticNode) namedElement;
-				
-			Object childrenValueField = getOptionValueKey("children", inps);
 			
 			if((childrenValueField != null) && (childrenValueField instanceof String)){
 				int parents = Integer.parseInt((String) childrenValueField);

@@ -394,6 +394,7 @@ public class SearchTreeViewPart extends ViewPart implements IViewerProvider, ISe
 			Object firstselection = ((IStructuredSelection) selection).getFirstElement();
 
 			if (firstselection != null){
+				viewer.collapseAll();
 				viewer.reveal(firstselection);
 				viewer.setExpandedState(firstselection, true);
 			}

@@ -48,7 +48,7 @@ public class CompositeSearchConfigurationItemProvider extends SearchConfiguratio
 			super.getPropertyDescriptors(object);
 
 			addTypePropertyDescriptor(object);
-			addSearchResultsPropertyDescriptor(object);
+			addInputSearchResultsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -106,19 +106,19 @@ public class CompositeSearchConfigurationItemProvider extends SearchConfiguratio
 	}
 
 	/**
-	 * This adds a property descriptor for the Search Results feature.
+	 * This adds a property descriptor for the Input Search Results feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSearchResultsPropertyDescriptor(Object object) {
+	protected void addInputSearchResultsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CompositeSearchConfiguration_searchResults_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CompositeSearchConfiguration_searchResults_feature", "_UI_CompositeSearchConfiguration_type"),
-				 SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__SEARCH_RESULTS,
+				 getString("_UI_CompositeSearchConfiguration_inputSearchResults_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CompositeSearchConfiguration_inputSearchResults_feature", "_UI_CompositeSearchConfiguration_type"),
+				 SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__INPUT_SEARCH_RESULTS,
 				 true,
 				 false,
 				 true,

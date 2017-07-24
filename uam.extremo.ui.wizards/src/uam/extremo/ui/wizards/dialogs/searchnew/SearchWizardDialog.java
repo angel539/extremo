@@ -12,6 +12,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.spi.RegistryContributor;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
@@ -182,29 +183,133 @@ public class SearchWizardDialog extends Wizard{
 				AtomicSearchResult atomicSearchResult = (AtomicSearchResult) searchResult;
 				PredicateBasedSearch predicateBasedSearchBundle = callPredicateBasedSearchExtension(predicateBasedSearch.getId());
 				
+				long startTime = System.nanoTime();
+				
+				//composeForEach(predicateBasedSearch.getFilterBy().getLiteral(), searchResult);
 				composeApplyOnElementsList(predicateBasedSearch.getFilterBy().getLiteral(), searchResult);	
 				
-				try {
-					for(NamedElement e : atomicSearchResult.getApplyOnElements()){
-						if(e != null){
-							boolean matches = predicateBasedSearchBundle.matches(e, atomicSearchResult.getValues());
-							
-							if(matches){
-								atomicSearchResult.getElements().add(e);
-							}
+				long endTime = System.nanoTime();
+				
+				long duration = (endTime - startTime);
+				
+				System.out.println("%1: " + duration);
+				
+				predicateBasedSearchBundle.init(atomicSearchResult.getValues());
+				
+				long startTimeNamedElement = System.nanoTime();
+				
+				for(NamedElement e : atomicSearchResult.getApplyOnElements()){
+					if(e != null){
+						boolean matches = predicateBasedSearchBundle.matches(e);
+						
+						if(matches){
+							atomicSearchResult.getElements().add(e);
 						}
 					}
-				} catch (Exception e) {
-					System.out.println("aqui se mete por una excepcion...");
-					e.printStackTrace();
 				}
+				
+				long endTimeNamedElement = System.nanoTime();
+				
+				long durationNamedElement = (endTimeNamedElement - startTimeNamedElement);
+				
+				System.out.println("%2: " + durationNamedElement);
+				
+				/*long startTimeNamedElementParallel = System.nanoTime();
+				
+				atomicSearchResult.getApplyOnElements().parallelStream().forEach(
+							e -> {
+								if(e != null){
+									boolean matches = predicateBasedSearchBundle.matches(e);
+									
+									if(matches){
+										atomicSearchResult.getElements().add(e);
+									}
+								}
+							}
+						);
+				
+				long endTimeNamedElementParallel = System.nanoTime();
+				
+				long durationNamedElementParallel = (endTimeNamedElementParallel - startTimeNamedElementParallel);
+				
+				System.out.println("%3: " + durationNamedElementParallel);*/
 			}	
 		}
 	}
 	
+	void composeForEach(String filterBy, SearchResult searchResult){
+		switch(filterBy){
+			case "Resource":
+				repositoryFrom.eAllContents().forEachRemaining(
+						e -> {
+							if(e instanceof Resource) searchResult.getApplyOnElements().add((Resource) e);
+						}
+				);
+				break;
+			case "SemanticNode":
+				repositoryFrom.eAllContents().forEachRemaining(
+						e -> {
+							if(e instanceof SemanticNode) searchResult.getApplyOnElements().add((SemanticNode) e);
+						}
+				);
+				break;
+			case "DataProperty":
+				repositoryFrom.eAllContents().forEachRemaining(
+						e -> {
+							if(e instanceof DataProperty) searchResult.getApplyOnElements().add((DataProperty) e);
+						}
+				);
+				break;
+			case "ObjectProperty":
+				repositoryFrom.eAllContents().forEachRemaining(
+						e -> {
+							if(e instanceof ObjectProperty) searchResult.getApplyOnElements().add((ObjectProperty) e);
+						}
+				);
+				break;
+			default:
+				break;
+		}
+		
+		
+	}
+	
 	private void composeApplyOnElementsList(String filterBy, SearchResult searchResult){
-		for(Resource resource : repositoryFrom.getResources())
-			preorder(filterBy, resource, searchResult);
+        //List<EObject> result = new ArrayList<>();
+		Iterable<EObject> allContents = AssistantFactory.getInstance().getResourceDb()::getAllContents;
+        
+        for (EObject o : allContents) {
+        	
+        	switch(filterBy){
+				case "Resource":
+					if(o instanceof Resource){
+		    			searchResult.getApplyOnElements().add((Resource) o);
+		            }
+					break;
+				case "SemanticNode":
+					if(o instanceof SemanticNode){
+		    			searchResult.getApplyOnElements().add((SemanticNode) o);
+		            }
+					break;
+				case "DataProperty":
+					if(o instanceof DataProperty){
+		    			searchResult.getApplyOnElements().add((DataProperty) o);
+		            }
+					break;
+				case "ObjectProperty":
+					if(o instanceof ObjectProperty){
+		    			searchResult.getApplyOnElements().add((ObjectProperty) o);
+		            }
+					break;
+				default:
+					break;
+        	}
+        }
+	        //return result;
+	    //}
+		
+		//for(Resource resource : repositoryFrom.getResources())
+			//preorder(filterBy, resource, searchResult);
 	}
 	
 	public synchronized void preorder(String filterBy, Resource resource, SearchResult searchResult){

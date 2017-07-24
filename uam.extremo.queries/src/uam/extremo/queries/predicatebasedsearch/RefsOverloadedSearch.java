@@ -9,12 +9,17 @@ import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
 import semanticmanager.SearchParamValue;
 
 public class RefsOverloadedSearch extends ExtensiblePredicateBasedSearchImpl {
+	Object maxRefsValueField = null;
+	
 	@Override
-	public boolean matches(NamedElement namedElement, EList<SearchParamValue> inps) {
+	public void init(EList<SearchParamValue> inputs) {
+		maxRefsValueField = getOptionValueKey("maxrefs", inputs);
+	}
+	
+	@Override
+	public boolean matches(NamedElement namedElement) {
 		if (namedElement instanceof SemanticNode) {	
 			SemanticNode semanticNode = (SemanticNode) namedElement;
-				
-			Object maxRefsValueField = getOptionValueKey("maxrefs", inps);
 			
 			if((maxRefsValueField != null) && (maxRefsValueField instanceof String)){
 				int maxRefs = Integer.parseInt((String) maxRefsValueField);

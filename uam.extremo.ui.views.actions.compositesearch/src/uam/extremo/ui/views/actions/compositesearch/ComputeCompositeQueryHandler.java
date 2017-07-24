@@ -94,7 +94,7 @@ public class ComputeCompositeQueryHandler extends AbstractHandler {
 	private void computeNotQueriesCompositeSearch(CompositeSearchConfiguration compositeSearchConfiguration) {
 		List<NamedElement> notElements = new ArrayList<NamedElement>();
 		
-		for(SearchResult searchResult : compositeSearchConfiguration.getSearchResults()){
+		for(SearchResult searchResult : compositeSearchConfiguration.getInputSearchResults()){
 			List<NamedElement> applyOnElements = searchResult.getApplyOnElements();
 			
 			if (searchResult instanceof AtomicSearchResult) {

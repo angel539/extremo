@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link semanticmanager.CompositeSearchConfiguration#getType <em>Type</em>}</li>
  *   <li>{@link semanticmanager.CompositeSearchConfiguration#getChildren <em>Children</em>}</li>
- *   <li>{@link semanticmanager.CompositeSearchConfiguration#getSearchResults <em>Search Results</em>}</li>
+ *   <li>{@link semanticmanager.CompositeSearchConfiguration#getInputSearchResults <em>Input Search Results</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration()
@@ -69,20 +69,20 @@ public interface CompositeSearchConfiguration extends SearchConfiguration {
 	EList<CompositeSearchConfiguration> getChildren();
 
 	/**
-	 * Returns the value of the '<em><b>Search Results</b></em>' reference list.
+	 * Returns the value of the '<em><b>Input Search Results</b></em>' reference list.
 	 * The list contents are of type {@link semanticmanager.SearchResult}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Search Results</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Input Search Results</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Search Results</em>' reference list.
-	 * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration_SearchResults()
+	 * @return the value of the '<em>Input Search Results</em>' reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getCompositeSearchConfiguration_InputSearchResults()
 	 * @model
 	 * @generated
 	 */
-	EList<SearchResult> getSearchResults();
+	EList<SearchResult> getInputSearchResults();
 
 	/**
 	 * <!-- begin-user-doc -->

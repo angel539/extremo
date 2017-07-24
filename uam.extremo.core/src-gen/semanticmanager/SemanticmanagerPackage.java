@@ -691,13 +691,13 @@ public interface SemanticmanagerPackage extends EPackage {
 	int COMPOSITE_SEARCH_CONFIGURATION__CHILDREN = SEARCH_CONFIGURATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Search Results</b></em>' reference list.
+	 * The feature id for the '<em><b>Input Search Results</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_SEARCH_CONFIGURATION__SEARCH_RESULTS = SEARCH_CONFIGURATION_FEATURE_COUNT + 2;
+	int COMPOSITE_SEARCH_CONFIGURATION__INPUT_SEARCH_RESULTS = SEARCH_CONFIGURATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Composite Search Configuration</em>' class.
@@ -1006,7 +1006,7 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PREDICATE_BASED_SEARCH___MATCHES__NAMEDELEMENT_ELIST = SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT + 0;
+	int PREDICATE_BASED_SEARCH___MATCHES__NAMEDELEMENT = SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Option Value Key</em>' operation.
@@ -1018,13 +1018,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int PREDICATE_BASED_SEARCH___GET_OPTION_VALUE_KEY__STRING_ELIST = SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Init</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDICATE_BASED_SEARCH___INIT__ELIST = SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Predicate Based Search</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PREDICATE_BASED_SEARCH_OPERATION_COUNT = SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT + 2;
+	int PREDICATE_BASED_SEARCH_OPERATION_COUNT = SIMPLE_SEARCH_CONFIGURATION_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link semanticmanager.impl.AtomicSearchResultImpl <em>Atomic Search Result</em>}' class.
@@ -2025,13 +2034,22 @@ public interface SemanticmanagerPackage extends EPackage {
 	int SEMANTIC_NODE__ABSTRACT = RESOURCE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Domain</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMANTIC_NODE__DOMAIN = RESOURCE_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Semantic Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMANTIC_NODE_FEATURE_COUNT = RESOURCE_ELEMENT_FEATURE_COUNT + 2;
+	int SEMANTIC_NODE_FEATURE_COUNT = RESOURCE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Semantic Node</em>' class.
@@ -3320,15 +3338,15 @@ public interface SemanticmanagerPackage extends EPackage {
 	EReference getCompositeSearchConfiguration_Children();
 
 	/**
-	 * Returns the meta object for the reference list '{@link semanticmanager.CompositeSearchConfiguration#getSearchResults <em>Search Results</em>}'.
+	 * Returns the meta object for the reference list '{@link semanticmanager.CompositeSearchConfiguration#getInputSearchResults <em>Input Search Results</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Search Results</em>'.
-	 * @see semanticmanager.CompositeSearchConfiguration#getSearchResults()
+	 * @return the meta object for the reference list '<em>Input Search Results</em>'.
+	 * @see semanticmanager.CompositeSearchConfiguration#getInputSearchResults()
 	 * @see #getCompositeSearchConfiguration()
 	 * @generated
 	 */
-	EReference getCompositeSearchConfiguration_SearchResults();
+	EReference getCompositeSearchConfiguration_InputSearchResults();
 
 	/**
 	 * Returns the meta object for the '{@link semanticmanager.CompositeSearchConfiguration#search(semanticmanager.SearchResult) <em>Search</em>}' operation.
@@ -3435,14 +3453,14 @@ public interface SemanticmanagerPackage extends EPackage {
 	EClass getPredicateBasedSearch();
 
 	/**
-	 * Returns the meta object for the '{@link semanticmanager.PredicateBasedSearch#matches(semanticmanager.NamedElement, org.eclipse.emf.common.util.EList) <em>Matches</em>}' operation.
+	 * Returns the meta object for the '{@link semanticmanager.PredicateBasedSearch#matches(semanticmanager.NamedElement) <em>Matches</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Matches</em>' operation.
-	 * @see semanticmanager.PredicateBasedSearch#matches(semanticmanager.NamedElement, org.eclipse.emf.common.util.EList)
+	 * @see semanticmanager.PredicateBasedSearch#matches(semanticmanager.NamedElement)
 	 * @generated
 	 */
-	EOperation getPredicateBasedSearch__Matches__NamedElement_EList();
+	EOperation getPredicateBasedSearch__Matches__NamedElement();
 
 	/**
 	 * Returns the meta object for the '{@link semanticmanager.PredicateBasedSearch#getOptionValueKey(java.lang.String, org.eclipse.emf.common.util.EList) <em>Get Option Value Key</em>}' operation.
@@ -3453,6 +3471,16 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getPredicateBasedSearch__GetOptionValueKey__String_EList();
+
+	/**
+	 * Returns the meta object for the '{@link semanticmanager.PredicateBasedSearch#init(org.eclipse.emf.common.util.EList) <em>Init</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Init</em>' operation.
+	 * @see semanticmanager.PredicateBasedSearch#init(org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getPredicateBasedSearch__Init__EList();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.AtomicSearchResult <em>Atomic Search Result</em>}'.
@@ -3749,6 +3777,17 @@ public interface SemanticmanagerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSemanticNode_Abstract();
+
+	/**
+	 * Returns the meta object for the reference list '{@link semanticmanager.SemanticNode#getDomain <em>Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Domain</em>'.
+	 * @see semanticmanager.SemanticNode#getDomain()
+	 * @see #getSemanticNode()
+	 * @generated
+	 */
+	EReference getSemanticNode_Domain();
 
 	/**
 	 * Returns the meta object for class '{@link semanticmanager.NamedElement <em>Named Element</em>}'.
@@ -4603,12 +4642,12 @@ public interface SemanticmanagerPackage extends EPackage {
 		EReference COMPOSITE_SEARCH_CONFIGURATION__CHILDREN = eINSTANCE.getCompositeSearchConfiguration_Children();
 
 		/**
-		 * The meta object literal for the '<em><b>Search Results</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Input Search Results</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPOSITE_SEARCH_CONFIGURATION__SEARCH_RESULTS = eINSTANCE.getCompositeSearchConfiguration_SearchResults();
+		EReference COMPOSITE_SEARCH_CONFIGURATION__INPUT_SEARCH_RESULTS = eINSTANCE.getCompositeSearchConfiguration_InputSearchResults();
 
 		/**
 		 * The meta object literal for the '<em><b>Search</b></em>' operation.
@@ -4702,7 +4741,7 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation PREDICATE_BASED_SEARCH___MATCHES__NAMEDELEMENT_ELIST = eINSTANCE.getPredicateBasedSearch__Matches__NamedElement_EList();
+		EOperation PREDICATE_BASED_SEARCH___MATCHES__NAMEDELEMENT = eINSTANCE.getPredicateBasedSearch__Matches__NamedElement();
 
 		/**
 		 * The meta object literal for the '<em><b>Get Option Value Key</b></em>' operation.
@@ -4711,6 +4750,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation PREDICATE_BASED_SEARCH___GET_OPTION_VALUE_KEY__STRING_ELIST = eINSTANCE.getPredicateBasedSearch__GetOptionValueKey__String_EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Init</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PREDICATE_BASED_SEARCH___INIT__ELIST = eINSTANCE.getPredicateBasedSearch__Init__EList();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.AtomicSearchResultImpl <em>Atomic Search Result</em>}' class.
@@ -4947,6 +4994,14 @@ public interface SemanticmanagerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SEMANTIC_NODE__ABSTRACT = eINSTANCE.getSemanticNode_Abstract();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEMANTIC_NODE__DOMAIN = eINSTANCE.getSemanticNode_Domain();
 
 		/**
 		 * The meta object literal for the '{@link semanticmanager.impl.NamedElementImpl <em>Named Element</em>}' class.

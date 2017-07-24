@@ -82,9 +82,29 @@
             name="Search">
       </command>
       <command
-            defaultHandler="uam.extremo.ui.views.repositories.actions.GoToParentConnectionsHandler"
-            id="uam.extremo.ui.views.goToParent"
-            name="Go To Parent">
+            defaultHandler="uam.extremo.ui.views.repositories.actions.GoToTypeHandler"
+            id="uam.extremo.ui.views.goToType"
+            name="Go To Type">
+      </command>
+      <command
+            defaultHandler="uam.extremo.ui.views.repositories.actions.GoToParentHandler"
+            id="uam.extremo.ui.views.goToTypeContainer"
+            name="Go To Type Container">
+      </command>
+      <command
+            defaultHandler="uam.extremo.ui.views.repositories.actions.GoToDomainHandler"
+            id="uam.extremo.ui.views.goToDomain"
+            name="Go To Domain">
+            <visibleWhen
+                     checkEnabled="false">
+                  <iterate
+                        ifEmpty="false"
+                        operator="and">
+                     <instanceof
+                           value="semanticmanager.SemanticNode">
+                     </instanceof>
+                  </iterate>
+            </visibleWhen>
       </command>
       <command
             defaultHandler="uam.extremo.ui.views.repositories.DeleteHandler"
@@ -119,6 +139,24 @@
                icon="icons/delete.png"
                style="push">
          </command>
+         <separator
+               name="uam.extremo.ui.views.separator1">
+         </separator>
+         <command
+               commandId="uam.extremo.ui.views.goToType"
+               icon="icons/type.png"
+               style="push">
+         </command>
+         <command
+               commandId="uam.extremo.ui.views.goToTypeContainer"
+               icon="icons/container.png"
+               style="push">
+         </command>
+         <command
+               commandId="uam.extremo.ui.views.goToDomain"
+               icon="icons/domain.png"
+               style="push">
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -142,6 +180,24 @@
                icon="icons/ruveal.png"
                style="push">
          </command>
+         <separator
+               name="uam.extremo.ui.views.separator1">
+         </separator>
+         <command
+               commandId="uam.extremo.ui.views.goToType"
+               icon="icons/type.png"
+               style="push">
+         </command>
+         <command
+               commandId="uam.extremo.ui.views.goToTypeContainer"
+               icon="icons/container.png"
+               style="push">
+         </command>
+         <command
+               commandId="uam.extremo.ui.views.goToDomain"
+               icon="icons/domain.png"
+               style="push">
+         </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -149,6 +205,24 @@
          <command
                commandId="uam.extremo.ui.views.delete"
                icon="icons/delete.png"
+               style="push">
+         </command>
+         <separator
+               name="uam.extremo.ui.views.separator1">
+         </separator>
+         <command
+               commandId="uam.extremo.ui.views.goToType"
+               icon="icons/type.png"
+               style="push">
+         </command>
+         <command
+               commandId="uam.extremo.ui.views.goToTypeContainer"
+               icon="icons/container.png"
+               style="push">
+         </command>
+         <command
+               commandId="uam.extremo.ui.views.goToDomain"
+               icon="icons/domain.png"
                style="push">
          </command>
       </menuContribution>

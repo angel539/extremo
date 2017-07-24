@@ -9,24 +9,27 @@ import semanticmanager.Service;
 import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
 import semanticmanager.SearchParamValue;
 
-public class DataPropertiesValueSearch extends ExtensiblePredicateBasedSearchImpl{	
+public class DataPropertiesValueSearch extends ExtensiblePredicateBasedSearchImpl{
+	Object optionvalue = null;
+	Service service = null;
+	
 	@Override
-	public boolean matches(NamedElement namedElement, EList<SearchParamValue> inps) {
+	public void init(EList<SearchParamValue> inputs) {
+		PrimitiveTypeParamValue primitiveOption = (PrimitiveTypeParamValue) getOptionValue("valuefield", inputs);
+		service = primitiveOption.getCalls();
+		optionvalue = primitiveOption.getValue();
+	}
+	
+	@Override
+	public boolean matches(NamedElement namedElement) {
 		if (namedElement instanceof DataProperty) {		
-			Object option = getOptionValue("valuefield", inps);
-			
-			if(option != null &&  option instanceof PrimitiveTypeParamValue){
-				PrimitiveTypeParamValue primitiveOption = (PrimitiveTypeParamValue) option;
-				Object optionvalue = primitiveOption.getValue();
-				
 				if((optionvalue != null) && (optionvalue instanceof String)){
 					String valuefieldString = (String) optionvalue;
 					
 					if(((DataProperty) namedElement).getValue() == null || ((DataProperty) namedElement).getValue().compareTo("") == 0)
 						return false;
 					
-					if(primitiveOption.getCalls() != null){						
-						Service service = primitiveOption.getCalls();
+					if(service != null){						
 						return callService(service, ((DataProperty) namedElement).getValue(), valuefieldString);
 					}
 					else{		
@@ -36,8 +39,6 @@ public class DataPropertiesValueSearch extends ExtensiblePredicateBasedSearchImp
 							return false;
 					}
 				}
-			}
-			return false;
 		}
 		return false;
 	}

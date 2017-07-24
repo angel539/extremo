@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link semanticmanager.SemanticNode#getProperties <em>Properties</em>}</li>
  *   <li>{@link semanticmanager.SemanticNode#isAbstract <em>Abstract</em>}</li>
+ *   <li>{@link semanticmanager.SemanticNode#getDomain <em>Domain</em>}</li>
  * </ul>
  *
  * @see semanticmanager.SemanticmanagerPackage#getSemanticNode()
@@ -65,5 +66,23 @@ public interface SemanticNode extends ResourceElement {
 	 * @generated
 	 */
 	void setAbstract(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Domain</b></em>' reference list.
+	 * The list contents are of type {@link semanticmanager.ObjectProperty}.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.ObjectProperty#getRange <em>Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Domain</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Domain</em>' reference list.
+	 * @see semanticmanager.SemanticmanagerPackage#getSemanticNode_Domain()
+	 * @see semanticmanager.ObjectProperty#getRange
+	 * @model opposite="range"
+	 * @generated
+	 */
+	EList<ObjectProperty> getDomain();
 
 } // SemanticNode

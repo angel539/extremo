@@ -95,7 +95,7 @@
     <genClasses ecoreClass="Extremo.ecore#//CompositeSearchConfiguration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//CompositeSearchConfiguration/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//CompositeSearchConfiguration/children"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//CompositeSearchConfiguration/searchResults"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//CompositeSearchConfiguration/inputSearchResults"/>
       <genOperations ecoreOperation="Extremo.ecore#//CompositeSearchConfiguration/search">
         <genParameters ecoreParameter="Extremo.ecore#//CompositeSearchConfiguration/search/result"/>
       </genOperations>
@@ -118,11 +118,13 @@
     <genClasses ecoreClass="Extremo.ecore#//PredicateBasedSearch">
       <genOperations ecoreOperation="Extremo.ecore#//PredicateBasedSearch/matches">
         <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/matches/namedElement"/>
-        <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/matches/inps"/>
       </genOperations>
       <genOperations ecoreOperation="Extremo.ecore#//PredicateBasedSearch/getOptionValueKey">
         <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/getOptionValueKey/key"/>
         <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/getOptionValueKey/inps"/>
+      </genOperations>
+      <genOperations ecoreOperation="Extremo.ecore#//PredicateBasedSearch/init">
+        <genParameters ecoreParameter="Extremo.ecore#//PredicateBasedSearch/init/inputs"/>
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="Extremo.ecore#//AtomicSearchResult">
@@ -176,6 +178,7 @@
     <genClasses ecoreClass="Extremo.ecore#//SemanticNode">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/properties"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//SemanticNode/abstract"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Extremo.ecore#//SemanticNode/domain"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Extremo.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Extremo.ecore#//NamedElement/name"/>

@@ -23,6 +23,7 @@ package semanticmanager;
 public interface ObjectProperty extends Property {
 	/**
 	 * Returns the value of the '<em><b>Range</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link semanticmanager.SemanticNode#getDomain <em>Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Range</em>' reference isn't clear,
@@ -32,7 +33,8 @@ public interface ObjectProperty extends Property {
 	 * @return the value of the '<em>Range</em>' reference.
 	 * @see #setRange(SemanticNode)
 	 * @see semanticmanager.SemanticmanagerPackage#getObjectProperty_Range()
-	 * @model
+	 * @see semanticmanager.SemanticNode#getDomain
+	 * @model opposite="domain"
 	 * @generated
 	 */
 	SemanticNode getRange();

@@ -23,7 +23,7 @@ import semanticmanager.SemanticmanagerPackage;
  * <ul>
  *   <li>{@link semanticmanager.impl.CompositeSearchConfigurationImpl#getType <em>Type</em>}</li>
  *   <li>{@link semanticmanager.impl.CompositeSearchConfigurationImpl#getChildren <em>Children</em>}</li>
- *   <li>{@link semanticmanager.impl.CompositeSearchConfigurationImpl#getSearchResults <em>Search Results</em>}</li>
+ *   <li>{@link semanticmanager.impl.CompositeSearchConfigurationImpl#getInputSearchResults <em>Input Search Results</em>}</li>
  * </ul>
  *
  * @generated
@@ -82,8 +82,8 @@ public class CompositeSearchConfigurationImpl extends SearchConfigurationImpl im
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EList<SearchResult> getSearchResults() {
-		return (EList<SearchResult>)eGet(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__SEARCH_RESULTS, true);
+	public EList<SearchResult> getInputSearchResults() {
+		return (EList<SearchResult>)eGet(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__INPUT_SEARCH_RESULTS, true);
 	}
 
 	/**

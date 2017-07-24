@@ -18,10 +18,10 @@ public interface PredicateBasedSearch extends SimpleSearchConfiguration {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model namedElementRequired="true" inpsMany="true"
+	 * @model namedElementRequired="true"
 	 * @generated
 	 */
-	boolean matches(NamedElement namedElement, EList<SearchParamValue> inps);
+	boolean matches(NamedElement namedElement);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -30,5 +30,13 @@ public interface PredicateBasedSearch extends SimpleSearchConfiguration {
 	 * @generated
 	 */
 	Object getOptionValueKey(String key, EList<SearchParamValue> inps);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model inputsMany="true"
+	 * @generated
+	 */
+	void init(EList<SearchParamValue> inputs);
 
 } // PredicateBasedSearch

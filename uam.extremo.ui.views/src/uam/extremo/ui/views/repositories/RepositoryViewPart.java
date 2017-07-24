@@ -69,8 +69,10 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
 import semanticmanager.NamedElement;
+import semanticmanager.ObjectProperty;
 import semanticmanager.Repository;
 import semanticmanager.Resource;
+import semanticmanager.SemanticNode;
 import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
 import semanticmanager.util.SemanticmanagerAdapterFactory;
 import uam.extremo.extensions.AssistantFactory;
@@ -589,9 +591,41 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 			Object firstselection = ((IStructuredSelection) selection).getFirstElement();
 
 			if (firstselection != null){
+				viewer.collapseAll();
 				viewer.reveal(firstselection);
 				viewer.setExpandedState(firstselection, true);
 			}
+		}
+	}
+	
+	public void goToParent(NamedElement namedElement) {
+		viewer.collapseAll();
+		
+		if(namedElement.eContainer() != null && namedElement.eContainer() instanceof NamedElement){
+			NamedElement container = (NamedElement) namedElement.eContainer();
+			
+			for(NamedElement descriptor : container.getDescriptors()){
+				viewer.reveal(descriptor);
+				viewer.setExpandedState(descriptor, true);
+			}
+		}
+	}
+	
+	public void goToType(NamedElement namedElement) {
+		viewer.collapseAll();
+		
+		for(NamedElement descriptor : namedElement.getDescriptors()){
+			viewer.reveal(descriptor);
+			viewer.setExpandedState(descriptor, true);
+		}
+	}
+	
+	public void goToDomain(SemanticNode semanticNode) {
+		viewer.collapseAll();
+		
+		for(ObjectProperty objectProperty : semanticNode.getDomain()){
+			viewer.reveal(objectProperty);
+			viewer.setExpandedState(objectProperty, true);
 		}
 	}
 }

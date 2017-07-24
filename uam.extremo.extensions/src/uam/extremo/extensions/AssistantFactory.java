@@ -478,6 +478,10 @@ public class AssistantFactory implements IResourceChangeListener{
 		 resourceDb = resourceSet.createResource(MapDbURI.createFileURI(file));
 	}
 	
+	public org.eclipse.emf.ecore.resource.Resource getResourceDb(){
+		return resourceDb;
+	}
+	
 	public RepositoryManager getRepositoryManager() {
 		RepositoryManager repositoryManager = null;
 		

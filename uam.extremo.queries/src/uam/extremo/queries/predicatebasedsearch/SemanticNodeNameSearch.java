@@ -9,34 +9,35 @@ import semanticmanager.Service;
 import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
 import semanticmanager.SearchParamValue;
 
-public class SemanticNodeNameSearch extends ExtensiblePredicateBasedSearchImpl {	
+public class SemanticNodeNameSearch extends ExtensiblePredicateBasedSearchImpl {
+	Service service = null;
+	Object name = null;
+	
 	@Override
-	public boolean matches(NamedElement namedElement, EList<SearchParamValue> inps) {
-		if (namedElement instanceof SemanticNode) {		
-			SearchParamValue option = getOptionValue("name", inps);
-			
-			if(option instanceof PrimitiveTypeParamValue){
-				PrimitiveTypeParamValue primitiveOption = (PrimitiveTypeParamValue) option;
-				Object optionvalue = primitiveOption.getValue();
-				
-				if((optionvalue != null) && (optionvalue instanceof String)){
-					String valuefieldString = (String) optionvalue;
-					if(primitiveOption.getCalls() != null){
-						Service service = primitiveOption.getCalls();
-						return callService(service, ((SemanticNode) namedElement).getName(), valuefieldString);
-					}
-					else{		
-						if(((SemanticNode) namedElement).getName().compareTo(valuefieldString) == 0)
-							return true;
-						else
-							return false;
-					}
+	public void init(EList<SearchParamValue> inputs) {
+		PrimitiveTypeParamValue primitiveOption = (PrimitiveTypeParamValue) getOptionValue("name", inputs);
+		service = primitiveOption.getCalls();
+		name = primitiveOption.getValue();
+	}
+	
+	@Override
+	public boolean matches(NamedElement namedElement) {
+		if (namedElement instanceof SemanticNode) {
+			if((name != null) && (name instanceof String)){
+				String valuefieldString = (String) name;
+				if(service != null){
+					return callService(service, ((SemanticNode) namedElement).getName(), valuefieldString);
+				}
+				else{		
+					if(((SemanticNode) namedElement).getName().compareTo(valuefieldString) == 0)
+						return true;
+					else
+						return false;
 				}
 			}
 			
 			return false;
 		}
-		
 		return false;
 	}
 }
