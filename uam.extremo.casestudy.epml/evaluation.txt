@@ -1,0 +1,43 @@
+EVALUATION
+==========
+
+META-LEVEL
+Construct                 # of items
+EPackage                  18
+eClassifiers (abstract)
+ecore:EClass              262
+eStructuralFeatures (abstract)
+  ecore:EAttribute        26
+  ecore:EReference        500
+ecore:EDataType           263
+eLiterals                 58
+OCL Invariants            88 (see AD1)
+
+xs/xsd:schema             27+3
+xs/xsd:element, xs/xsd:complexType 637+48, 256+19
+xs/xsd:attribute (all)    84+20
+xs/xsd:attribute (type equals "xs/xsd:IDREF" only) 3+0
+xs/xsd:? (ref=?)          110
+xs/xsd:simpleType (all)   56+4
+xs/xsd:enumeration (belongs to xs/xsd:simpleType) 52+2
+XSD Restrictions          84 (see AD2)
+
+AD1:
+eCl@ss Case Study Ecore baseline? → all annotations with “source” specifying the value “http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot”:
+//*/eAnnotations[@source = "http://www.eclipse.org/emf/2002/Ecore"]/details[@value != "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"]/@value
+RETURNS 88 ITEMS → right-click result window in Oxygen, select “Save result as XML”, open in Notepad++, Suchen > Vorkommnisse markieren, Suchen nach = “<description>“, hit “Alle suchen”, Suchen > Lesezeichen > Zeilen mit Lesezeichen kopieren → Create new text file and past content; replace “<description>” and </description> with empty string
+
+AD2:
+eCl@ss Case Study XML schema baseline → all restrictions that are not restricting enumerations or length:
+//*/*:restriction/* except //*/*:restriction/*:enumeration except //*/*:restriction/*:length
+RETURNS 84 ITEMS ← amount of required OCL invariants?
+
+---------
+
+MODEL-LEVEL
+TBD
+
+
+
+See also:
+https://www.eclipse.org/modeling/emf/docs/overviews/XMLSchemaToEcoreMapping.pdf
