@@ -70,10 +70,10 @@
 	            </div>
 
 				<div class="pure-u-3-4">
-	                <h5 class="email-name">Put in practice</h5>
-	                <h4 class="email-subject">Running Example</h4>
+	                <h5 class="email-name">Evaluation</h5>
+	                <h4 class="email-subject">Case studies</h4>
 	                <p class="email-desc">
-						<a href="#example">Study of a graphical DSL to issue visas to cross the US border</a>
+						<a href="#example">How useful is Extremo to solve practical problems in Language Engineering?</a>
 	                </p>
 	            </div>
 	        </div>
@@ -92,6 +92,20 @@
 	            </div>
 	        </div>
 
+	        <div class="email-item email-item-unread pure-g">
+	            <div class="pure-u">
+	                <img class="email-avatar" alt="Eclipse avatar" height="64" width="64" src="images/xmltext.png">
+	            </div>
+
+	            <div class="pure-u-3-4">
+	                <h5 class="email-name">Friends</h5>
+	                <h4 class="email-subject">XMLIntellEdit</h4>
+	                <p class="email-desc">
+	                    <a href="http://xmlintelledit.big.tuwien.ac.at/">Intelligent—XML—Editing</a>
+	                </p>
+	            </div>
+	        </div>
+
 	        <div class="email-item pure-g">
             <div class="pure-u">
                 <img class="email-avatar" alt="Acknowledment avatar" height="64" width="64" src="images/applause.png">
@@ -102,6 +116,21 @@
                 <h4 class="email-subject">FPU Grant</h4>
                 <p class="email-desc">
 					<a href="http://www.mecd.gob.es/mecd/servicios-al-ciudadano-mecd/catalogo/general/educacion/998758/ficha.html">This work is supported by the Ministry of Education of Spain (FPU grant FPU13/02698) and by the Spanish MINECO (TIN2014-52129-R)</a>
+                </p>
+            </div>
+
+            <div class="email-item pure-g">
+            <div class="pure-u">
+                <img class="email-avatar" alt="Miso" height="64" width="64" src="images/miso.png">
+            </div>
+
+            <div class="pure-u-3-4">
+                <h5 class="email-name">Project made by</h5>
+                <h4 class="email-subject">Miso</h4>
+                <p class="email-desc">
+					<a href="http://http://www.miso.es/">
+						Modelling & Software Engineering Research Group
+					</a>
                 </p>
             </div>
         </div>
@@ -229,6 +258,116 @@
 					</div>
 				</div>
 
+				<!--
+
+				 <div class="email-content-header pure-g">
+	                <div class="pure-u-1-2">
+						<h4 class="email-content-title">Query Extensibility</h4>
+	                </div>
+	            </div>
+
+				
+	            <div class="email-content-body">
+	            	<p>
+	            		The tool supports predicate based searches and custom searches in order to query the common data model. New model queries can be supported with the definition of an extension point. To extend the tool follow the next instructions:
+	            	</p>
+	            </div>
+
+	            <div class="email-content-body">
+					<p><code>Eclipse</code> > <code>New</code> > <code>Other</code> > <code>Plugin project</code> > ... > <code>Finish</code></p>
+
+					<p>In the <code>MANIFEST</code> insert a Dependency to <code>uam.extremo.core.extensions</code> and to <code>uam.extremo.core</code>. Both dependencies give access to the core classes of Extremo.</p>
+
+					<p>Add an extension to <code>extremo.core.extensions.search</code> and then a new Predicate Based Search / Custom Search. Give the query a <code>name</code>, a <code>class implementation</code>, and a type from the data model to indicate in which level the query will be applied to.</p>
+					<p>A new all-methods-empty class should be created implementing the <code>ExtensiblePredicateBasedSearch</code>/<code>ExtensibleCustomSearch</code> class. In the predicate based search case, this class needs to return a boolean if the element passed as parameter matches with a condition. The Custom Search is open to interpretation.</p>
+					<div class="pure-g">
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Adding the dependencies</h5>
+								<a href="images/tool/ext11.png" target="_blank"><img class="pure-img" src="images/tool/ext11.png"/></a>
+							</div>
+						</div>
+
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Selecting the extension</h5>
+								<a href="images/tool/ext12.png" target="_blank"><img class="pure-img" src="images/tool/ext12.png"/></a>
+							</div>
+						</div>
+
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Assistant definition</h5>
+								<a href="images/tool/ext13.png" target="_blank"><img class="pure-img" src="images/tool/ext13.png"/></a>
+							</div>
+						</div>
+
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Class implementation</h5>
+								<a href="images/tool/ext14.png" target="_blank"><img class="pure-img" src="images/tool/ext14.png"/></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				-->
+
+				<!--
+
+				 <div class="email-content-header pure-g">
+	                <div class="pure-u-1-2">
+						<h4 class="email-content-title">Constraint Interpreter Extensibility</h4>
+	                </div>
+	            </div>
+
+				
+	            <div class="email-content-body">
+	            	<p>
+	            		The tool supports models represented in Ecore/XMI, XSD/XML and ontologies. But new model representations can be supported with the definition of an extension point. To extend the tool follow the next instructions:
+	            	</p>
+	            </div>
+
+	            <div class="email-content-body">
+					<p><code>Eclipse</code> > <code>New</code> > <code>Other</code> > <code>Plugin project</code> > ... > <code>Finish</code></p>
+
+					<p>In the <code>MANIFEST</code> insert a Dependency to <code>uam.extremo.core.extensions</code> and to <code>uam.extremo.core</code>. Both dependencies give access to the core classes of Extremo.</p>
+
+					<p>Add an extension to <code>extremo.core.extensions.assistant</code> and then a new Assistant. Give the assistant a <code>name</code>, a <code>class implementation</code>, and list the file extensions the assistant will be applied to.</p>
+					<p>A new all-methods-empty class should be created implementing the <code>IFormatAssistant</code> class. This class needs to parse your format to our class structure (shown in the metamodel above).</p>
+					<div class="pure-g">
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Adding the dependencies</h5>
+								<a href="images/tool/ext11.png" target="_blank"><img class="pure-img" src="images/tool/ext11.png"/></a>
+							</div>
+						</div>
+
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Selecting the extension</h5>
+								<a href="images/tool/ext12.png" target="_blank"><img class="pure-img" src="images/tool/ext12.png"/></a>
+							</div>
+						</div>
+
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Assistant definition</h5>
+								<a href="images/tool/ext13.png" target="_blank"><img class="pure-img" src="images/tool/ext13.png"/></a>
+							</div>
+						</div>
+
+						<div class="pure-u-1-4">
+							<div class="l-box">
+								<h5>Class implementation</h5>
+								<a href="images/tool/ext14.png" target="_blank"><img class="pure-img" src="images/tool/ext14.png"/></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				-->
+
 				<div class="email-content-header pure-g">
 	                <div class="pure-u-1-2">
 						<h4 class="email-content-title">Integration with an Eclipse modelling tool</h4>
@@ -275,7 +414,7 @@
 
 				<div class="email-content-header pure-g">
 	                <div id="example" class="pure-u-1-2">
-						<h2 class="email-content-title">Running example</h2>
+						<h2 class="email-content-title">Case Studies</h2>
 	                </div>
 
 	                <div class="email-content-controls pure-u-1-2">
