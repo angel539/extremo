@@ -7,6 +7,7 @@
     <semanticResources>urn:iso:std:iso:ts:29002:-10:ed-1:tech:xml-schema:cataloguesimplified</semanticResources>
     <semanticResources>EPML.ecore</semanticResources>
     <semanticResources>eClassDictionary/eClassDictionary4.ecore</semanticResources>
+    <semanticResources>eClassDictionary4.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_ZiCFIGQJEeeUAoFySkqsKA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_JYk_BWPtEeeUAoFySkqsKA" name="uam.extremo.casestudy.epml class diagram" repPath="#_JYk_AGPtEeeUAoFySkqsKA">

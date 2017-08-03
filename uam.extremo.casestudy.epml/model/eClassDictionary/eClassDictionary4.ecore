@@ -133,9 +133,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="instanceIdentification"
         lowerBound="1" eType="#//PROPERTIESREFERENCE" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="population" lowerBound="1"
-        eType="ecore:EClass urn:iso:std:iso:ts:29002:-10:ed-1:tech:xml-schema:cataloguesimplified#//Catalogue"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CLASSIFICATION">
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertyClassifications"

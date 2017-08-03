@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: uam.extremo.casestudy.epmltext
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: uam.extremo.casestudy.epmltext; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: uam.extremo.casestudy.epml,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: uam.extremo.casestudy.epmltext.formatting2,
+ uam.extremo.casestudy.epmltext.services,
+ uam.extremo.casestudy.epmltext.parser.antlr.internal,
+ uam.extremo.casestudy.epmltext.scoping,
+ uam.extremo.casestudy.epmltext.generator,
+ uam.extremo.casestudy.epmltext.validation,
+ uam.extremo.casestudy.epmltext.parser.antlr,
+ uam.extremo.casestudy.epmltext.serializer,
+ uam.extremo.casestudy.epmltext
+Import-Package: org.apache.log4j
