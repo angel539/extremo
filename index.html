@@ -444,45 +444,110 @@
 							<div class="l-box">
                                 <span>The system is useful...</span>
 	                                <ul>
-	                                    <li>As support for the development of new domain meta-models. This way, domain concepts and vocabulary can be sought in external sources such as XML documents or ontologies.</li>
-	                                    <li>The creation of <a href="http://ieeexplore.ieee.org/document/6858077/?reload=true&amp;arnumber=6858077" target="_blank">‘concept’ meta-models</a> (a minimal metamodel that gathers the core primitives within a domain).</li>
-	                                    <li>The creation of models for a particular domain. In this case, model elements conforming to the same or similar meta-model can be incorporated into the model being built, and heterogeneous information sources can be queried in order to extract concrete data values.</li>
-	                                    <li>The detection of 'bad smells' or signs of bad modelling practices in a set of resources.</li>
-	                                </ul>
+<li>As support for the development of new domain meta-models. This way, domain concepts and vocabulary can be sought in external sources such as XML documents or ontologies.</li>
+
+<li>To create models for a particular domain. In this case, model elements conforming to the same or similar meta-model can be incorporated into the model being built, and heterogeneous information sources can be queried in order to extract concrete data values.</li>
+
+<li>To design a concept meta-model. A concept is a minimal meta-model that gathers the core primitives within a domain, e.g., for workflow languages.</li>
+
+<li>To aggregate multiple existing models into a model-based product line. 
+In this approach, a description of the space of possible features of a software system is created, typically through a feature model.</li>
+
+<li>To detect bad smells or signs of bad modelling practices in a set of resources. This is possible, as we can perform queries over a repository to e.g., detect isolated nodes, or find abstract classes with no children.</li>
+	                            	</ul>
 							</div>
 						</div>
 				
 						<div class="pure-u-1-1">
 							<div class="l-box">
 								<span></span>
-	                                <h5 class="email-content-title">Contruction of a DSL for describing administrative e-Government processes for immigration</h5>
+	                                <h5 class="email-content-title">Case 1: We will construct a language for the modelling of processes to issue visas according to the American regulation, called IWML. The language will include elements showing the variety of offices, concepts from the domain of immigration and agents involved in the process and generic elements of workflow languages like BPMN</h5>
 	                            <span></span>
 							</div>
 						</div>
 
-                        <div class="pure-u-1-2">
+                        <div class="pure-u-1-3">
 							<div class="l-box">
-								<a href="images/examples/example-visa.png" target="_blank"><img class="pure-img" src="images/examples/example-visa.png"/></a>
+								<a href="images/examples/case1-1.png" target="_blank"><img class="pure-img" src="images/examples/case1-1.png"/></a>
 							</div>
 						</div>
                         
-						<div class="pure-u-1-2">
+						<div class="pure-u-1-3">
 							<div class="l-box">
-								<a href="images/examples/example-metamodel.png" target="_blank"><img class="pure-img" src="images/examples/example-metamodel.png"/></a>
+								<a href="images/examples/case1-2.png" target="_blank"><img class="pure-img" src="images/examples/case1-2.png"/></a>
 							</div>
                         </div>
 
-                        <div class="pure-u-1-2">
+                        <div class="pure-u-1-3">
 							<div class="l-box">
-								<p>Process for issuing a visa with the example DSL (left) and leyend (right)</p>
+								<a href="images/examples/case1-3.png" target="_blank"><img class="pure-img" src="images/examples/case1-3.png"/></a>
+							</div>
+                        </div>
+
+                        <div class="pure-u-1-3">
+							<div class="l-box">
+								<p>Example process for issuing a visa with IWML (left) and legend (right)</p>
 							</div>
 						</div>
                         
-						<div class="pure-u-1-2">
+						<div class="pure-u-1-3">
 							<div class="l-box">
-								<p>Resulting meta-model excerpt for the case study</p>
+								<p>Integration of Extremo with DSL-tao (from the perspective of the case study)</p>
 							</div>
                         </div>
+
+                        <div class="pure-u-1-3">
+							<div class="l-box">
+								<p>Excerpt of the processes for immigration meta-model.).</p>
+							</div>
+                        </div>
+
+						<div class="pure-u-1-1">
+							<div class="l-box">
+								<span></span>
+	                                <h5 class="email-content-title">Case 2: We construct a language for the modelling of production systems conforming to the eCl@ss-standard called EPML. The language includes elements from conveyor-belt systems that must fulfill the constraints imposed by the eCl@ss-standard and the GEMOC initiative\footnote{\url{http://www.gemoc.org}}, such as the Signal Process Modelling Language (SigPML)---a DSL dedicated to data flow processing.
+									</h5>
+	                            <span></span>
+							</div>
+						</div>
+
+                        <div class="pure-u-1-3">
+							<div class="l-box">
+								<a href="images/examples/case2-1.png" target="_blank"><img class="pure-img" src="images/examples/case2-1.png"/></a>
+							</div>
+						</div>
+                        
+						<div class="pure-u-1-3">
+							<div class="l-box">
+								<a href="images/examples/case2-2.png" target="_blank"><img class="pure-img" src="images/examples/case2-2.png"/></a>
+							</div>
+                        </div>
+
+                        <div class="pure-u-1-3">
+							<div class="l-box">
+								<a href="images/examples/case2-3.png" target="_blank"><img class="pure-img" src="images/examples/case2-3.png"/></a>
+							</div>
+                        </div>
+
+                        <div class="pure-u-1-3">
+							<div class="l-box">
+								<p>Abstract graphical representation of the conveyor-belt production sys- tem model.</p>
+							</div>
+						</div>
+                        
+						<div class="pure-u-1-3">
+							<div class="l-box">
+								<p>Integration of Extremo with the Sample Reflective Ecore Model Editor (from the perspective of the case study)</p>
+							</div>
+                        </div>
+
+                        <div class="pure-u-1-3">
+							<div class="l-box">
+								<p>Excerpt of industrial production system meta-model based on SigPML and the eCl@ss-standard.</p>
+							</div>
+                        </div>
+
+
 					</div>
 				</div>
 
