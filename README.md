@@ -5,6 +5,7 @@ This repository is part of a research project and was supported by the Ministry 
 Contributions:
 
 Automated modelling assistance by integrating heterogeneous information sources
+
 Ángel Mora Segura, Juan de Lara, Patrick Neubauer, Manuel Wimmer
 Computer Languages, Systems and Structures. JCR: 1.615 (Q2)
 
