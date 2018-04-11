@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.assistant.ecore/uam.extremo.assistant.ecore.iml" filepath="$PROJECT_DIR$/uam.extremo.assistant.ecore/uam.extremo.assistant.ecore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.assistant.ont/uam.extremo.assistant.ont.iml" filepath="$PROJECT_DIR$/uam.extremo.assistant.ont/uam.extremo.assistant.ont.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.assistant.xsd/uam.extremo.assistant.xsd.iml" filepath="$PROJECT_DIR$/uam.extremo.assistant.xsd/uam.extremo.assistant.xsd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.casestudy.epml/uam.extremo.casestudy.epml.iml" filepath="$PROJECT_DIR$/uam.extremo.casestudy.epml/uam.extremo.casestudy.epml.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.constraints.regex/uam.extremo.constraints.regex.iml" filepath="$PROJECT_DIR$/uam.extremo.constraints.regex/uam.extremo.constraints.regex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.core/uam.extremo.core.iml" filepath="$PROJECT_DIR$/uam.extremo.core/uam.extremo.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.core.edit/uam.extremo.core.edit.iml" filepath="$PROJECT_DIR$/uam.extremo.core.edit/uam.extremo.core.edit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.core.editor/uam.extremo.core.editor.iml" filepath="$PROJECT_DIR$/uam.extremo.core.editor/uam.extremo.core.editor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.core.tests/uam.extremo.core.tests.iml" filepath="$PROJECT_DIR$/uam.extremo.core.tests/uam.extremo.core.tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.extensions/uam.extremo.extensions.iml" filepath="$PROJECT_DIR$/uam.extremo.extensions/uam.extremo.extensions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.interpreter.ocl/uam.extremo.interpreter.ocl.iml" filepath="$PROJECT_DIR$/uam.extremo.interpreter.ocl/uam.extremo.interpreter.ocl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.queries/uam.extremo.queries.iml" filepath="$PROJECT_DIR$/uam.extremo.queries/uam.extremo.queries.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.menu/uam.extremo.ui.menu.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.menu/uam.extremo.ui.menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.nature/uam.extremo.ui.nature.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.nature/uam.extremo.ui.nature.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.perspective/uam.extremo.ui.perspective.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.perspective/uam.extremo.ui.perspective.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.preferences/uam.extremo.ui.preferences.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.preferences/uam.extremo.ui.preferences.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.views/uam.extremo.ui.views.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.views/uam.extremo.ui.views.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.views.actions.compositesearch/uam.extremo.ui.views.actions.compositesearch.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.views.actions.compositesearch/uam.extremo.ui.views.actions.compositesearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.views.actions.ecore/uam.extremo.ui.views.actions.ecore.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.views.actions.ecore/uam.extremo.ui.views.actions.ecore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.views.actions.exeed/uam.extremo.ui.views.actions.exeed.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.views.actions.exeed/uam.extremo.ui.views.actions.exeed.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.views.actions.uml2/uam.extremo.ui.views.actions.uml2.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.views.actions.uml2/uam.extremo.ui.views.actions.uml2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.views.extensions/uam.extremo.ui.views.extensions.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.views.extensions/uam.extremo.ui.views.extensions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.wizards/uam.extremo.ui.wizards.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.wizards/uam.extremo.ui.wizards.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uam.extremo.ui.zest/uam.extremo.ui.zest.iml" filepath="$PROJECT_DIR$/uam.extremo.ui.zest/uam.extremo.ui.zest.iml" />
+    </modules>
+  </component>
+</project>
