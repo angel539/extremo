@@ -247,4 +247,89 @@
          </option>
       </predicatebasedsearch>
    </extension>
+   <extension
+         point="extremo.core.extensions.search">
+      <predicatebasedsearch
+            class="uam.extremo.queries.predicatebasedsearch.types.SemanticNodeIsTypeOf"
+            description="Checks if a semantic node is type of a chosen descriptor"
+            filterBy="SemanticNode"
+            id="extremo.queries.predicatebased.semanticnodetype"
+            name="A Semantic Node Is Type Of">
+         <option
+               id="descriptor"
+               name="descriptor"
+               type="SemanticNode">
+         </option>
+      </predicatebasedsearch>
+      <predicatebasedsearch
+            class="uam.extremo.queries.predicatebasedsearch.types.DataPropertyIsTypeOf"
+            description="Checks if a data property is type of a chosen descriptor"
+            filterBy="DataProperty"
+            id="extremo.queries.predicatebased.datapropertytype"
+            name="A Data Property Is Type Of">
+         <option
+               id="descriptor"
+               name="descriptor"
+               type="DataProperty">
+         </option>
+      </predicatebasedsearch>
+      <predicatebasedsearch
+            class="uam.extremo.queries.predicatebasedsearch.types.ObjectPropertyIsTypeOf"
+            description="Checks if a object property is type of a chosen descriptor"
+            filterBy="ObjectProperty"
+            id="extremo.queries.predicatebased.objectpropertytype"
+            name="A Object Property Is Type Of">
+         <option
+               id="descriptor"
+               name="descriptor"
+               type="ObjectProperty">
+         </option>
+      </predicatebasedsearch>
+      <predicatebasedsearch
+            class="uam.extremo.queries.predicatebasedsearch.types.ObjectPropertyIsKindOf"
+            description="Checks if a object property is kind of a chosen descriptor"
+            filterBy="ObjectProperty"
+            id="extremo.queries.predicatebased.objectpropertykind"
+            name="A Object Property Is Kind Of">
+         <option
+               id="descriptor"
+               name="descriptor"
+               type="ObjectProperty">
+         </option>
+      </predicatebasedsearch>
+      <predicatebasedsearch
+            class="uam.extremo.queries.predicatebasedsearch.types.DataPropertyIsKindOf"
+            description="Checks if a data property is kind of a chosen descriptor"
+            filterBy="DataProperty"
+            id="extremo.queries.predicatebased.datapropertykind"
+            name="A Data Property Is Kind Of">
+         <option
+               id="descriptor"
+               name="descriptor"
+               type="DataProperty">
+         <option
+               id="descriptor"
+               name="descriptor"
+               type="SemanticNode">
+         </option>
+         </option>
+      </predicatebasedsearch>
+      <predicatebasedsearch
+            class="uam.extremo.queries.predicatebasedsearch.types.SemanticNodeIsKindOf"
+            description="Checks if a semantic node is kind of a chosen descriptor"
+            filterBy="SemanticNode"
+            id="extremo.queries.predicatebased.semanticnodekind"
+            name="A Semantic Node Is Kind Of">
+         <option
+               id="descriptor"
+               name="descriptor"
+               type="SemanticNode">
+            <option
+                  id="descriptor"
+                  name="descriptor"
+                  type="SemanticNode">
+            </option>
+         </option>
+      </predicatebasedsearch>
+   </extension>
 </plugin>

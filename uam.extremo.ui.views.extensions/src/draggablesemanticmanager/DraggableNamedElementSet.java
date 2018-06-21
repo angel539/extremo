@@ -39,5 +39,4 @@ public interface DraggableNamedElementSet extends PersistentEObject {
 	 * @generated
 	 */
 	EList<DraggableSemanticNode> getDraggableSemanticNodes();
-
 } // DraggableNamedElementSet

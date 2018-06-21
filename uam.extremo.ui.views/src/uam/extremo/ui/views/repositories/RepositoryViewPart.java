@@ -84,6 +84,7 @@ import uam.extremo.ui.views.extensions.actions.ExtensibleViewPartActionContribut
 import uam.extremo.ui.views.extensions.dnd.ExtensibleGEFDragAndDropContribution;
 import uam.extremo.ui.views.searchtree.TreeViewAdapterFactoryLabelProvider;
 import uam.extremo.ui.wizards.dialogs.AddFolderResourceListWizardDialog;
+import uam.extremo.ui.wizards.dialogs.AddResourceLinkWizardDialog;
 
 public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISelectionProvider, ITabbedPropertySheetPageContributor, ISetSelectionTarget{
 	public static final String ID = "uam.extremo.ui.views.RepositoryView";
@@ -92,6 +93,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	private static TreeViewer viewer;
 	private Action addResourceToExistingRepository;
 	private Action addFolder;
+	private Action addLinkFromWeb;
 	
 	private Action changeResourceToDescriptor;
 	private Action changeDescriptorToResource;
@@ -274,7 +276,6 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		
 		MenuManager menumanager = new MenuManager("#PopupMenu");
 		menumanager.setRemoveAllWhenShown(true);
-		//menumanager.addMenuListener(listener);
 		
 		for(IConfigurationElement extension : extensions){
 			if(extension.getName().compareTo("action") == 0){
@@ -472,6 +473,7 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 	
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(addFolder);
+		manager.add(addLinkFromWeb);
 	}
 
 	private void makeActions() {
@@ -509,6 +511,24 @@ public class RepositoryViewPart extends ViewPart implements IViewerProvider, ISe
 		addFolder.setText("Add Folder");
 		addFolder.setToolTipText("");
 		addFolder.setImageDescriptor(Activator.getImageDescriptor("icons/package.gif"));
+		
+		addLinkFromWeb = new Action() {
+			public void run() {
+			    List<IFormatAssistant> assistances = AssistantFactory.getInstance().getAssistances();
+			    	WizardDialog wizardDialog = new WizardDialog(null, new AddResourceLinkWizardDialog(assistances));
+				
+			    	if (wizardDialog.open() == Window.OK) {
+					MessageDialog.openConfirm(null, "Add Folder", "Resources imported");
+				}
+				else{
+					MessageDialog.openError(null, "Add Link From Web", "Resources could not be imported");
+				}
+			}				
+		};
+		
+		addLinkFromWeb.setText("Add Link From Web");
+		addLinkFromWeb.setToolTipText("");
+		addLinkFromWeb.setImageDescriptor(Activator.getImageDescriptor("icons/link-16.png"));
 	}
 
 	private void hookDoubleClickAction() {

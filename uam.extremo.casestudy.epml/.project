@@ -26,41 +26,4 @@
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>uam.extremo.ui.nature.extremonature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>SigPML</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>eClassStandard</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>eClassStandard2</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>SigPML/sigpml.ecore</name>
-			<type>1</type>
-			<location>/Users/blizzfire/REPOS/extremo/uam.extremo.casestudy.epml/model/sigPML/sigpml.ecore</location>
-		</link>
-		<link>
-			<name>eClassStandard/dictionary.xsd</name>
-			<type>1</type>
-			<location>/Users/blizzfire/REPOS/extremo/uam.extremo.casestudy.epml/model/eClassStandard/dictionary.xsd</location>
-		</link>
-		<link>
-			<name>eClassStandard/eClass9_1_BASIC_EN_SG_27.xml</name>
-			<type>1</type>
-			<location>/Users/blizzfire/REPOS/extremo/uam.extremo.casestudy.epml/model/eClassStandard/eClass9_1_BASIC_EN_SG_27.xml</location>
-		</link>
-		<link>
-			<name>eClassStandard2/dictionary.xsd</name>
-			<type>1</type>
-			<location>/Users/blizzfire/REPOS/extremo/uam.extremo.casestudy.epml/model/eClassStandard/dictionary.xsd</location>
-		</link>
-	</linkedResources>
 </projectDescription>

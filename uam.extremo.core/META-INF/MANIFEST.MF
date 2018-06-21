@@ -36,19 +36,11 @@ Bundle-Localization: plugin
 Bundle-Activator: uam.extremo.core.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport,
- fr.inria.atlanmod.neoemf.core;visibility:=reexport
+ org.eclipse.emf.ecore.xmi;bundle-version="2.12.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.apache.commons.io;
-  uses:="org.apache.commons.io.filefilter",
- semanticmanager;
-  uses:="semanticmanager.queries,
-   semanticmanager.constraints",
- semanticmanager.impl;
-  uses:="org.eclipse.emf.ecore,
-   semanticmanager.queries,
-   semanticmanager,
-   semanticmanager.constraints",
+Export-Package: org.apache.commons.io;uses:="org.apache.commons.io.filefilter",
+ semanticmanager;uses:="org.eclipse.emf.common.util",
+ semanticmanager.impl;uses:="org.eclipse.emf.ecore,semanticmanager,org.eclipse.emf.common.util",
  semanticmanager.util;
   uses:="org.eclipse.emf.ecore,
    semanticmanager,
@@ -56,7 +48,6 @@ Export-Package: org.apache.commons.io;
    org.eclipse.emf.common.notify.impl,
    org.eclipse.emf.ecore.util",
  uam.extremo.core.utils,
- uam.extremo.core.wordnet;
-  uses:="edu.smu.tspell.wordnet"
+ uam.extremo.core.wordnet;uses:="edu.smu.tspell.wordnet"
 Bundle-ActivationPolicy: lazy
-Import-Package: org.apache.commons.lang3
+Import-Package: fr.inria.atlanmod.neoemf.core;version="1.0.2"

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Ont
-Bundle-SymbolicName: uam.extremo.assistant.ont;singleton:=true
+Bundle-SymbolicName: uam.extremo.assistant.ontologies;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: uam.extremo.assistant.ont.Activator
 Require-Bundle: org.eclipse.ui,

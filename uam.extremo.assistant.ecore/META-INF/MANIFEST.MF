@@ -4,17 +4,21 @@ Bundle-Name: Ecore
 Bundle-SymbolicName: uam.extremo.assistant.ecore; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: uam.extremo.assistant.ecore.Activator
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime,
  uam.extremo.extensions;bundle-version="1.0.0",
- org.eclipse.emf;bundle-version="2.6.0",
  uam.extremo.core;bundle-version="1.0.0",
  org.eclipse.emf.ecore.xmi;bundle-version="2.12.0",
- org.eclipse.emf.ecore
+ org.eclipse.ui;bundle-version="3.107.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: lib/commons-collections4-4.1.jar,
  lib/commons-io-2.4.jar,
  lib/commons-lang3-3.4.jar,
  .
-Export-Package: uam.extremo.assistant.ecore
+Export-Package: uam.extremo.assistant.ecore;
+  uses:="org.osgi.framework,
+   semanticmanager,
+   org.eclipse.emf.common.util,
+   org.eclipse.emf.ecore.resource,
+   uam.extremo.extensions,
+   org.eclipse.ui.plugin"

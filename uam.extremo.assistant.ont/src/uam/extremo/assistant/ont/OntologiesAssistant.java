@@ -3,7 +3,10 @@ package uam.extremo.assistant.ont;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -12,14 +15,22 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLDataPropertyAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLDataPropertyExpression;
 import org.semanticweb.owlapi.model.OWLDataRange;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLObject;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLObjectPropertyExpression;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.reasoner.NodeSet;
+import org.semanticweb.owlapi.reasoner.OWLReasoner;
+import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
+import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
+import org.semanticweb.owlapi.util.AutoIRIMapper;
 
 import semanticmanager.ConstraintInterpreter;
 import semanticmanager.DataProperty;
@@ -30,22 +41,26 @@ import semanticmanager.SemanticNode;
 import semanticmanager.Type;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
-import uk.ac.manchester.cs.owl.owlapi.mansyntaxrenderer.ManchesterOWLSyntaxPrefixNameShortFormProvider;
 
 public class OntologiesAssistant extends FormatAssistant implements IFormatAssistant {
 	public IRI owl_iri = null;
 	public File owl_file = null;
 	public String path = null;
 
+	OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 	OWLDataFactory factory = OWLManager.getOWLDataFactory();
 	OWLOntology ontology = null;
-	
-	semanticmanager.Resource semanticResource = null;
+    
 	File file;
 	String extension;
-	ManchesterOWLSyntaxPrefixNameShortFormProvider prefixManager = null;
 	ConstraintInterpreter constraintInterpreter = null;
-
+	semanticmanager.Resource semanticResource = null;
+	
+	OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
+	OWLReasoner reasoner = null;
+	
+	Map<OWLObject, SemanticNode> correspondance = new HashMap<OWLObject, SemanticNode>();
+	
 	@Override
 	public boolean loadAndValidate(Resource semanticResource, ConstraintInterpreter constraintInterpreter) {
 		this.semanticResource = semanticResource;
@@ -53,63 +68,65 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 		
 		if((semanticResource.getUri().startsWith("http://"))
 				|| (semanticResource.getUri().startsWith("https://"))){
-			this.owl_iri = 
-					IRI.create(semanticResource.getUri());
-		}
-		else{
-			this.owl_file = new File(semanticResource.getUri());
+			owl_iri = IRI.create(semanticResource.getUri());
 			
-			if(! this.owl_file.isFile()) 
-				return false;
-		}
-		
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-
-		if(owl_file == null){
 			try {
-				ontology = manager.loadOntologyFromOntologyDocument(owl_iri);
+				ontology = manager.loadOntology(owl_iri);
 			}
 			catch (OWLOntologyCreationException e) {
 				return false;
 			}
 		}
 		else{
-			try {
-				ontology = manager.loadOntologyFromOntologyDocument(owl_file);
-			}
-			catch (OWLOntologyCreationException e) {
-				return false;
-			}
+			owl_file = new File(semanticResource.getUri());
+			File file = this.owl_file.getParentFile();
+			AutoIRIMapper autoIRIMapper = new AutoIRIMapper(file, true);
+	        manager.addIRIMapper(autoIRIMapper);
+			
+	        if(!owl_file.isFile()){
+	        		return false;
+	        }
+	        else{
+	        		try {
+					ontology = manager.loadOntologyFromOntologyDocument(owl_file);
+				}
+				catch (OWLOntologyCreationException e) {
+					return false;
+				}
+	        }
 		}
-
-		prefixManager = new ManchesterOWLSyntaxPrefixNameShortFormProvider(manager, ontology);
-		owlClassesToSemanticNodes();
 		
+		reasoner = reasonerFactory.createReasoner(ontology);
+		owlClassesToSemanticNodes();
 		return true;
 	}
 	
 	private void owlClassesToSemanticNodes() {
 		if(ontology != null){
-			for(OWLClass owlClass : ontology.getClassesInSignature()){
+			for(OWLClass owlClass : ontology.getClassesInSignature(true)){
 				SemanticNode semanticNode = 
 						createSemanticNodeWithoutDescriptor(
 								owlClass.getIRI(), //original object as id
-								prefixManager.getShortForm(owlClass), 
+								owlClass.getIRI().getFragment(), 
 								"",
 								false);
 									
 				addSemanticNodeToResource(semanticResource, semanticNode);
+				correspondance.put(owlClass, semanticNode);
 				
-				for(OWLNamedIndividual individual : owlClass.getIndividualsInSignature()){
+				NodeSet<OWLNamedIndividual> individualsNodeSet = reasoner.getInstances(owlClass, true);
+				Set<OWLNamedIndividual> individuals = individualsNodeSet.getFlattened();
+
+				for (OWLNamedIndividual ind : individuals) {
 					SemanticNode individualSemanticNode = 
 							createSemanticNode(
-									individual.getIRI(), 
-									prefixManager.getShortForm(owlClass), 
+									ind.getIRI(), 
+									ind.getIRI().getFragment(),
 									"", 
 									semanticNode //the element descriptor
 							);
-					
 					addSemanticNodeToResource(semanticResource, individualSemanticNode);
+					correspondance.put(ind, individualSemanticNode);
 				}
 			}
 		}
@@ -117,14 +134,16 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 
 	@Override
 	public void toDataProperty(SemanticNode parent) {
-		if(ontology != null && parent.getTrace() != null && parent.getTrace() instanceof IRI){
-			IRI iriClass = (IRI) parent.getTrace();
+		if(ontology != null && parent.getTrace() != null && parent.getTrace() instanceof IRI){			
+			reasoner = reasonerFactory.createReasoner(ontology);
+		
+			IRI iri = (IRI) parent.getTrace();
 			
-			if(ontology.containsClassInSignature(iriClass)){
-				for(OWLDataProperty property : ontology.getDataPropertiesInSignature()){
+			if(ontology.containsClassInSignature(iri, true)){
+				for(OWLDataProperty property : ontology.getDataPropertiesInSignature(true)){
 					for(OWLClassExpression domain : property.getDomains(ontology)){
 						if(! domain.isAnonymous()){
-							if(domain.asOWLClass().getIRI().toString().compareTo(iriClass.toString()) == 0){
+							if(domain.asOWLClass().getIRI().toString().compareTo(iri.toString()) == 0){
 								Collection<OWLDataRange> ranges = property.getRanges(ontology);
 								
 								List<String> rangeURIs = new ArrayList<String>();
@@ -148,9 +167,9 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 									DataProperty dataProperty = 
 											createDataProperty(
 													property.getIRI(), 
-													prefixManager.getShortForm(property), 
-													1, 
-													1,
+													property.getIRI().getFragment(),
+													0, 
+													manager.getOWLDataFactory().getOWLDataExactCardinality(1, property).getCardinality(),
 													"", 
 													type //the type selected from the enum class
 											);
@@ -161,10 +180,10 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 								if(property.isOWLDataProperty()){
 									DataProperty dataProperty = 
 											createDataProperty(
-													property.asOWLDataProperty().getIRI(), 
-													prefixManager.getShortForm(property.asOWLDataProperty()), 
-													1, 
-													1,
+													property.asOWLDataProperty().getIRI(),
+													property.getIRI().getFragment(),
+													0, 
+													manager.getOWLDataFactory().getOWLDataExactCardinality(1, property).getCardinality(),
 													"", 
 													type //the type selected from the enum class
 											);
@@ -176,19 +195,51 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 					}
 				}
 			}
+			
+			if(ontology.containsIndividualInSignature(iri, true)){
+				OWLDataFactory factory = manager.getOWLDataFactory();
+				OWLNamedIndividual individual = factory.getOWLNamedIndividual(iri);
+				
+				Set<OWLDataPropertyAssertionAxiom> properties = ontology.getDataPropertyAssertionAxioms(individual);
+				for (OWLDataPropertyAssertionAxiom axiom : properties) {
+					OWLDataProperty dataPropertyExpression = axiom.getProperty().asOWLDataProperty();
+					
+					for(NamedElement descriptor : parent.getDescriptors()){
+						if(descriptor instanceof SemanticNode){
+							SemanticNode semanticNodeDescriptor = (SemanticNode) descriptor;
+							
+							DataProperty dataPropertyDescriptor = 
+									searchDataPropertyByName(
+											semanticNodeDescriptor,
+											dataPropertyExpression.getIRI().getFragment()
+									);
+							
+							if(dataPropertyDescriptor != null){									
+								DataProperty dataPropertyDescription = 
+										createDataProperty(
+												dataPropertyDescriptor, //descriptor
+												axiom.getObject().getLiteral() //value
+										);
+								
+								addDataPropertyToNode(parent, dataPropertyDescription);
+							}	
+						}
+					}
+				}
+			}
 		}
 	}
 
 	@Override
 	public void toObjectProperty(SemanticNode parent) {
 		if(ontology != null && parent.getTrace() != null && parent.getTrace() instanceof IRI){
-			IRI iriClass = (IRI) parent.getTrace();
+			IRI iri = (IRI) parent.getTrace();
 			
-			if(ontology.containsClassInSignature(iriClass)){
-				for(OWLObjectProperty property : ontology.getObjectPropertiesInSignature()){
+			if(ontology.containsClassInSignature(iri, true)){
+				for(OWLObjectProperty property : ontology.getObjectPropertiesInSignature(true)){
 					for(OWLClassExpression domain : property.getDomains(ontology)){
 						if(!domain.isAnonymous()){
-							if(domain.asOWLClass().getIRI().toString().compareTo(iriClass.toString()) == 0){
+							if(domain.asOWLClass().getIRI().toString().compareTo(iri.toString()) == 0){
 								Collection<OWLClassExpression> ranges = property.getRanges(ontology);
 								List<IRI> rangeURIs = new ArrayList<IRI>();
 								
@@ -207,9 +258,10 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 										ObjectProperty objectProperty = 
 												createObjectProperty(
 														property.getIRI(), 
-														prefixManager.getShortForm(property), 
-														1, 
-														1, 
+														//prefixManager.getShortForm(property),
+														property.getIRI().getFragment(),
+														0, 
+														manager.getOWLDataFactory().getOWLObjectExactCardinality(1, property).getCardinality(), 
 														semanticNodeRange);
 										
 										addObjectPropertyToNode(parent, objectProperty);
@@ -220,7 +272,48 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 					}
 				}
 			}
+			
+			if(ontology.containsIndividualInSignature(iri, true)){
+				OWLDataFactory factory = manager.getOWLDataFactory();
+				OWLNamedIndividual individual = factory.getOWLNamedIndividual(iri);
+				
+				Set<OWLObjectPropertyAssertionAxiom> properties = ontology.getObjectPropertyAssertionAxioms(individual);
+				
+				for (OWLObjectPropertyAssertionAxiom axiom : properties) {
+					OWLObjectProperty objectPropertyExpression = axiom.getProperty().asOWLObjectProperty();
+					
+					ObjectProperty descriptor = 
+							searchObjectPropertyByName(
+									(SemanticNode) parent.getDescriptors().get(parent.getDescriptors().size() - 1),
+									objectPropertyExpression.getIRI().getFragment()
+							);
+					
+					NodeSet<OWLNamedIndividual> values = reasoner.getObjectPropertyValues(individual, objectPropertyExpression);
+					Iterator<org.semanticweb.owlapi.reasoner.Node<OWLNamedIndividual>> iteratorValues = values.iterator();
+					
+					iteratorValues.forEachRemaining(
+						element -> {
+							org.semanticweb.owlapi.reasoner.Node<OWLNamedIndividual> node = element;
+							
+							if(descriptor != null){	
+								SemanticNode range = correspondance.get(node.getRepresentativeElement());
+								
+								ObjectProperty objectPropertyDescription = 
+										createObjectProperty(
+												objectPropertyExpression.getIRI(), 
+												objectPropertyExpression.getIRI().getFragment(),
+												descriptor, //descriptor
+												range
+										);
+								
+								addObjectPropertyToNode(parent, objectPropertyDescription);
+							}
+						}
+					);
+				}
+			}		
 		}	
+		//}
 	}
 
 	@Override
@@ -228,7 +321,7 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 		if(ontology != null && parent.getTrace() != null && parent.getTrace() instanceof IRI){
 			IRI iriClass = (IRI) parent.getTrace();
 			
-			if(ontology.containsClassInSignature(iriClass)){
+			if(ontology.containsClassInSignature(iriClass, true)){
 				OWLClass clazz = factory.getOWLClass(iriClass);
 				Set<OWLClassExpression> superclasses = clazz.getSuperClasses(ontology);
 				
@@ -251,7 +344,7 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 		if(ontology != null && parent.getTrace() != null && parent.getTrace() instanceof IRI){
 			IRI iriClass = (IRI) parent.getTrace();
 			
-			if(ontology.containsObjectPropertyInSignature(iriClass)){
+			if(ontology.containsObjectPropertyInSignature(iriClass, true)){
 				OWLDataProperty dataProperty = factory.getOWLDataProperty(iriClass);
 				Set<OWLDataPropertyExpression> superproperties = dataProperty.getSuperProperties(ontology);
 				
@@ -274,7 +367,7 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 		if(ontology != null && parent.getTrace() != null && parent.getTrace() instanceof IRI){
 			IRI iriClass = (IRI) parent.getTrace();
 			
-			if(ontology.containsObjectPropertyInSignature(iriClass)){
+			if(ontology.containsObjectPropertyInSignature(iriClass, true)){
 				OWLObjectProperty objectProperty = factory.getOWLObjectProperty(iriClass);
 				Set<OWLObjectPropertyExpression> superproperties = objectProperty.getSuperProperties(ontology);
 				
@@ -296,8 +389,7 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 	public void toInverseOf(ObjectProperty parent) {
 		if(ontology != null && parent.getTrace() != null && parent.getTrace() instanceof IRI){
 			IRI iriClass = (IRI) parent.getTrace();
-			
-			if(ontology.containsObjectPropertyInSignature(iriClass)){
+			if(ontology.containsObjectPropertyInSignature(iriClass, true)){
 				OWLObjectProperty objectProperty = factory.getOWLObjectProperty(iriClass);
 				OWLObjectPropertyExpression inverseOf = objectProperty.getInverseProperty();
 				

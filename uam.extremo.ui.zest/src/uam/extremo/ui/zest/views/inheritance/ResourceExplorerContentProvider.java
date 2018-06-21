@@ -19,11 +19,15 @@ public class ResourceExplorerContentProvider implements
 		super();
 	}
 
-	public Object[] getElements(Object inputElement) {		
+	public Object[] getElements(Object inputElement) {
+		if(inputElement == null)
+				return new Object[]{};
+		
 		ArrayList<Object> results = new ArrayList<Object>();
 		
 		if (inputElement instanceof Resource) {
 			Resource repositoryManager = (Resource) inputElement;
+			
 			repositoryManager.eAllContents().forEachRemaining(
 				element -> {
 					if (element instanceof SemanticNode) {
@@ -81,6 +85,10 @@ public class ResourceExplorerContentProvider implements
 
 	@Override
 	public Object[] getRelationships(Object source, Object dest) {
+		if(source == null || dest == null){
+			return new Object[] {};
+		}
+		
 		Collection<ObjectProperty> results = new ArrayList<ObjectProperty>();
 		
 		if (source instanceof SemanticNode) {

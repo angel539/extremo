@@ -106,7 +106,6 @@ public class NewRepositoryWizardPage extends WizardPage {
 	    	  }
 	    	}); 
 
-
 	    path = new Text(container, SWT.BORDER | SWT.SINGLE);
 	    path.setText("");
 	    path.addKeyListener(new KeyListener() {
@@ -126,7 +125,6 @@ public class NewRepositoryWizardPage extends WizardPage {
 	    name.setLayoutData(gd);
 	    description.setLayoutData(gd);
 	    path.setLayoutData(gd);
-	    //comboProject.setLayoutData(gd);
 	    
 	    setControl(container);
 	    setPageComplete(false);

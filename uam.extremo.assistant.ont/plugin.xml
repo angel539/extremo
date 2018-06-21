@@ -5,7 +5,7 @@
          point="extremo.core.extensions.assistant">
       <assistant
             class="uam.extremo.assistant.ont.OntologiesAssistant"
-            extensions="owl, rdf"
+            extensions="owl, rdf, xml"
             id="extremo.assistant.ontologies"
             name="Ontologies">
       </assistant>

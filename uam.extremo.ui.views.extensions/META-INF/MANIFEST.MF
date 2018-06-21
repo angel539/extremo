@@ -9,15 +9,10 @@ Bundle-Localization: plugin
 Bundle-Activator: uam.extremo.ui.views.extensions.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport,
- fr.inria.atlanmod.neoemf.core;visibility:=reexport,
- org.eclipse.ui.workbench,
  org.eclipse.gef,
  uam.extremo.core,
- uam.extremo.extensions,
- org.eclipse.jface,
- org.eclipse.graphiti.ui,
- org.eclipse.gef.examples.logic
+ org.eclipse.gef.examples.logic,
+ fr.inria.atlanmod.neoemf.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: uam.extremo.ui.views.extensions,

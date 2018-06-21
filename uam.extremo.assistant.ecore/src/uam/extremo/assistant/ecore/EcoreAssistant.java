@@ -87,9 +87,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 				xmiObjectsToSemanticNodes();
 				break;
 		}
-		
-		
-		
+
 		return true;	
 	}
 
@@ -120,11 +118,11 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 				
 				if (obj instanceof EPackage) {
 				    EPackage p = (EPackage) obj;
+				    
 				    if(p.getNsURI() != null){
-				    	resourceSet.getPackageRegistry().put(p.getNsURI(), p);
-				    }
-				    else{
-				    	resourceSet.getPackageRegistry().put(p.getName(), p);
+				    		resourceSet.getPackageRegistry().put(p.getNsURI(), p);
+				    }else{
+				    		resourceSet.getPackageRegistry().put(p.getName(), p);
 				    }
 				}
 				

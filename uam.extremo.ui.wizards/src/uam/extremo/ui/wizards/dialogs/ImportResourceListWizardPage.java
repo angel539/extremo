@@ -54,11 +54,11 @@ public class ImportResourceListWizardPage extends WizardPage {
 	    tc2.setWidth(350);
 	    
 	    if(dir != null){
-	    	File dirFile = new File(dir);
-	    	
-	    	if(dirFile.isDirectory()){
-	    		List<File> ficheros = getFilesForFolder(dirFile);
-	    		
+		    	File dirFile = new File(dir);
+		    	
+		    	if(dirFile.isDirectory()){
+		    		List<File> ficheros = getFilesForFolder(dirFile);
+		    		
 				if(ficheros!=null){
 					for(File file : ficheros){
 						TableItem item = new TableItem(table, SWT.CHECK);
@@ -67,16 +67,16 @@ public class ImportResourceListWizardPage extends WizardPage {
 						item.setData("description", "");
 						item.setData("assistant", null);
 						
-			    		item.setChecked(true);
-				    	item.setText(new String[]{file.getName(), file.getAbsolutePath()});
+			    			item.setChecked(true);
+			    			item.setText(new String[]{file.getName(), file.getAbsolutePath()});
 					}
 				}
-	    	}	
+		    	}
 	    }
 		
 	    table.setSortColumn(tc1);
 	    table.setTouchEnabled(true);
-    	table.setHeaderVisible(true);
+	    table.setHeaderVisible(true);
 	    
 	    setControl(container);
 	    setPageComplete(true);

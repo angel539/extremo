@@ -77,7 +77,6 @@ public class ColumnOneRepositoryViewAdapterFactoryLabelProvider extends AdapterF
 				DataProperty property = (DataProperty) element;
 				StyledString styledString = new StyledString(property.getName());
 				if(property.getType() != null) styledString.append(": " + property.getType().getLiteral(), StyledString.COUNTER_STYLER);
-				
 				return styledString;
 			}
 			else{

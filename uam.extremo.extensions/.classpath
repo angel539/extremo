@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="icons/"/>
 	<classpathentry exported="true" kind="lib" path="lib/blueprints-neo4j-graph-2.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/blueprints-core-2.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="icons/"/>
 	<classpathentry exported="true" kind="lib" path="lib/neo4j-kernel-2.1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/neo4j-lucene-index-3.1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/lucene-core-6.5.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/blueprints-core-2.1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/eclipse-collections-8.0.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/eclipse-collections-api-8.0.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/eclipse-collections-forkjoin-8.0.0.jar"/>

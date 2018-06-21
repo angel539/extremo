@@ -6,10 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+
+import javax.inject.Inject;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -26,15 +24,9 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IContributor;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.IJobFunction;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.spi.RegistryContributor;
-import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -42,10 +34,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.ui.internal.UISynchronizer;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
-
-import com.google.inject.Inject;
 
 import fr.inria.atlanmod.neoemf.data.PersistenceBackendFactoryRegistry;
 import fr.inria.atlanmod.neoemf.data.mapdb.MapDbPersistenceBackendFactory;
@@ -70,7 +61,6 @@ import semanticmanager.SearchConfiguration;
 import semanticmanager.SemanticNode;
 import semanticmanager.Service;
 import semanticmanager.Type;
-import uam.extremo.extensions.utils.ToDataPropertyTask;
 
 public class AssistantFactory implements IResourceChangeListener{
 	public static final String ASSISTANT_EXTENSIONS_ID = "extremo.core.extensions.assistant";
@@ -86,7 +76,7 @@ public class AssistantFactory implements IResourceChangeListener{
 	private static ResourceSet resourceSet = new ResourceSetImpl();
 	private static org.eclipse.emf.ecore.resource.Resource resourceDb = null;
 	
-	@Inject UISynchronize sync;
+	@Inject UISynchronizer sync;
 
 	public List<IFormatAssistant> getAssistances(){
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
@@ -606,6 +596,28 @@ public class AssistantFactory implements IResourceChangeListener{
 			
 			getRepositoryManager().getRepositories().add(repository);
 			
+			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
+                    .directWriteCacheMany()
+                    .autocommit()
+                    .cacheIsSet()
+                    .cacheSizes()
+                    .asMap();
+			resourceDb.save(options);
+			return repository;
+		}
+		catch(Exception e){
+			ExtremoLog.logError(e);
+			Activator.writeConsole(e.getMessage());
+			return null;
+		}
+	}
+	
+	public Repository createRepositoryLink(String name, String description){
+		try{
+			Repository repository = ExtendedSemanticmanagerFactory.eINSTANCE.createRepository();
+			repository.setName(name);
+			repository.setDescription(description);
+			getRepositoryManager().getRepositories().add(repository);
 			
 			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
                     .directWriteCacheMany()
@@ -688,9 +700,7 @@ public class AssistantFactory implements IResourceChangeListener{
 			}
 			
 			Activator.writeConsole(resource.getName() + " created");
-			
 			repository.getResources().add(resource);
-			
 			
 			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
                     .directWriteCacheMany()
@@ -714,7 +724,6 @@ public class AssistantFactory implements IResourceChangeListener{
 			resource.setName(name);
 			resource.setDescription(description);
 			resource.setUri(uri);
-			
 			resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
 			
 			ConstraintInterpreter constraintInterpreter = ((FormatAssistant) assistant).getConstraintInterpreter();
@@ -726,35 +735,37 @@ public class AssistantFactory implements IResourceChangeListener{
 			
 			if(loaded){
 				preorder(assistant, resource);
+				
+				String projectName = repository.getProject();
+				IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+				
+				if(project != null){
+					IFolder folder = project.getFolder(repository.getName());
+					IFile child = folder.getFile(name);
+					
+					IPath location = new Path(uri);
+					
+					try{
+						child.createLink(location, IResource.FILE, null);
+					}
+					catch(Exception e){
+						ExtremoLog.logError(e);
+						Activator.writeConsole(e.getMessage());
+					}
+				}
+				
+				repository.getResources().add(resource);
+				
+				Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
+	                    .directWriteCacheMany()
+	                    .autocommit()
+	                    .cacheIsSet()
+	                    .cacheSizes()
+	                    .asMap();
+				resourceDb.save(options);
 			}
 			
-			String projectName = repository.getProject();
-			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 			
-			if(project != null){
-				IFolder folder = project.getFolder(repository.getName());
-				IFile child = folder.getFile(name);
-				
-				IPath location = new Path(uri);
-				
-				try{
-					child.createLink(location, IResource.FILE, null);
-				}
-				catch(Exception e){
-					ExtremoLog.logError(e);
-					Activator.writeConsole(e.getMessage());
-				}
-			}
-			
-			repository.getResources().add(resource);
-			
-			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
-                    .directWriteCacheMany()
-                    .autocommit()
-                    .cacheIsSet()
-                    .cacheSizes()
-                    .asMap();
-			resourceDb.save(options);
 			return resource;
 		}
 		catch(Exception e){
@@ -763,6 +774,46 @@ public class AssistantFactory implements IResourceChangeListener{
 			return null;
 		}
 	}
+    
+    public Resource createResourceDescriptorLink(Repository repository, String name, String description, String uri, IFormatAssistant assistant) throws CoreException{
+		try{
+			Resource resource = ExtendedSemanticmanagerFactory.eINSTANCE.createResource();
+			resource.setName(name);
+			resource.setDescription(description);
+			resource.setUri(uri);
+			resource.setAssistant(((FormatAssistant) assistant).getNameExtension());
+			
+			ConstraintInterpreter constraintInterpreter = ((FormatAssistant) assistant).getConstraintInterpreter();
+			
+			boolean loaded = assistant.loadAndValidate(
+					(Resource) resource, 
+					constraintInterpreter);
+			resource.setAlive(loaded);
+			
+			if(loaded){
+				preorder(assistant, resource);
+				
+				repository.getResources().add(resource);
+				
+				Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
+	                    .directWriteCacheMany()
+	                    .autocommit()
+	                    .cacheIsSet()
+	                    .cacheSizes()
+	                    .asMap();
+				resourceDb.save(options);
+			}
+			
+			
+			return resource;
+		}
+		catch(Exception e){
+			ExtremoLog.logError(e);
+			Activator.writeConsole(e.getMessage());
+			return null;
+		}
+	}
+    
 
     public void changeResourceAssistant(Resource resource, String newassistant) throws IOException{
 		loop: 
@@ -836,7 +887,6 @@ public class AssistantFactory implements IResourceChangeListener{
 			
 			repository.getResources().add(resource);
 			
-			
 			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
                     .directWriteCacheMany()
                     .autocommit()
@@ -870,38 +920,40 @@ public class AssistantFactory implements IResourceChangeListener{
 			boolean loaded = assistant.loadAndValidate(
 					(Resource) resource, 
 					constraintInterpreter);
+			
 			resource.setAlive(loaded);
 			
 			if(loaded){
 				preorder(assistant, resource);
-			}
-			
-			String projectName = repository.getProject();
-			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-			
-			if(project != null){
-				IFolder folder = project.getFolder(repository.getName());
-				IFile child = folder.getFile(name);
 				
-				IPath location = new Path(uri);
-				try{
-					child.createLink(location, IResource.FILE, null);
+				String projectName = repository.getProject();
+				IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+				
+				if(project != null){
+					IFolder folder = project.getFolder(repository.getName());
+					IFile child = folder.getFile(name);
+					
+					IPath location = new Path(uri);
+					try{
+						child.createLink(location, IResource.FILE, null);
+					}
+					catch(Exception e){
+						ExtremoLog.logError(e);
+						Activator.writeConsole(e.getMessage());
+					}
 				}
-				catch(Exception e){
-					ExtremoLog.logError(e);
-					Activator.writeConsole(e.getMessage());
-				}
+				
+				repository.getResources().add(resource);
+				
+				Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
+	                    .directWriteCacheMany()
+	                    .autocommit()
+	                    .cacheIsSet()
+	                    .cacheSizes()
+	                    .asMap();
+				resourceDb.save(options);
 			}
 			
-			repository.getResources().add(resource);
-			
-			Map<String, Object> options = MapDbOptionsBuilder.newBuilder()
-                    .directWriteCacheMany()
-                    .autocommit()
-                    .cacheIsSet()
-                    .cacheSizes()
-                    .asMap();
-			resourceDb.save(options);
 			return resource;
 		}
 		catch(Exception e){
