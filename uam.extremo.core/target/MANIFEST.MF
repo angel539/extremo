@@ -15,7 +15,7 @@ Export-Package: org.apache.commons.io;uses:="org.apache.commons.io.fil
  ommon.notify.impl,  org.eclipse.emf.ecore.util",uam.extremo.core.util
  s,uam.extremo.core.wordnet;uses:="edu.smu.tspell.wordnet"
 Bundle-Name: %pluginName
-Bundle-Version: 1.0.0.201806211254
+Bundle-Version: 1.0.0.201806211642
 Bundle-ClassPath: .,lib/aopalliance-1.0.jar,lib/commons-collections4-4
  .1.jar,lib/commons-io-2.4.jar,lib/commons-lang3-3.4.jar,lib/commons-m
  ath3-3.6.1-javadoc.jar,lib/commons-math3-3.6.1-sources.jar,lib/common

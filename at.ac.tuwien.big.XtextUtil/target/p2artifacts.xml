@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='at.ac.tuwien.big.XtextUtil' version='1.0.0.201806211254'>
+  <artifact classifier='osgi.bundle' id='at.ac.tuwien.big.XtextUtil' version='1.0.0.201806211642'>
     <properties size='5'>
-      <property name='artifact.size' value='7127985'/>
-      <property name='download.size' value='7127985'/>
+      <property name='artifact.size' value='7127984'/>
+      <property name='download.size' value='7127984'/>
       <property name='maven-groupId' value='uam.extremo'/>
       <property name='maven-artifactId' value='at.ac.tuwien.big.XtextUtil'/>
       <property name='maven-version' value='1.0.0-SNAPSHOT'/>

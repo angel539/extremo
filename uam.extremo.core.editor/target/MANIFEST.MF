@@ -10,7 +10,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Export-Package: semanticmanager.presentation
 Bundle-Name: %pluginName
-Bundle-Version: 1.0.0.201806211254
+Bundle-Version: 1.0.0.201806211642
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Bundle-Activator: semanticmanager.presentation.ExtremoEditorPlugin$Imp

@@ -44,7 +44,7 @@ Export-Package: at.ac.tuwien.big.instanceconvert,at.ac.tuwien.big.xmlt
  ge,xontomlextensionsschemacoreSimplified,xontomlextensionsschemacoreS
  implified.impl,xontomlextensionsschemacoreSimplified.util
 Bundle-Name: Xmltext
-Bundle-Version: 1.0.0.201806211254
+Bundle-Version: 1.0.0.201806211642
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Bundle-Activator: at.ac.tuwien.big.xmltext.Activator

@@ -4,7 +4,7 @@ Export-Package: at.ac.tuwien.big.xtext.equalizer,at.ac.tuwien.big.xtex
  t.equalizer.impl,at.ac.tuwien.big.xtext.util,at.ac.tuwien.big.xtext.u
  til.ui,at.ac.tuwien.big.xtextutil,net.ricecode.similarity,xtextutil
 Bundle-Name: XtextUtil
-Bundle-Version: 1.0.0.201806211254
+Bundle-Version: 1.0.0.201806211642
 Bundle-ClassPath: .,lib/commons-cli-1.2.jar,lib/commons-codec-1.8.jar,
  lib/commons-lang3-3.1.jar,lib/commons-math3-3.4.1.jar,lib/diffutils-1
  .2.1.jar,lib/jcommon-1.0.20.jar,lib/jfreechart-1.0.15.jar,lib/JMetal-

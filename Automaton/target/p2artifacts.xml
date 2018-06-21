@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='Automaton' version='1.0.0.201806211254'>
+  <artifact classifier='osgi.bundle' id='Automaton' version='1.0.0.201806211642'>
     <properties size='5'>
       <property name='artifact.size' value='119878'/>
       <property name='download.size' value='119878'/>

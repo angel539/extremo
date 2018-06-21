@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='uam.extremo.core.edit' version='1.0.0.201806211254'>
+  <artifact classifier='osgi.bundle' id='uam.extremo.core.edit' version='1.0.0.201806211642'>
     <properties size='5'>
-      <property name='artifact.size' value='97434'/>
-      <property name='download.size' value='97434'/>
+      <property name='artifact.size' value='97433'/>
+      <property name='download.size' value='97433'/>
       <property name='maven-groupId' value='uam.extremo'/>
       <property name='maven-artifactId' value='uam.extremo.core.edit'/>
       <property name='maven-version' value='1.0.0-SNAPSHOT'/>
