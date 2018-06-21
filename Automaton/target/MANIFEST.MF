@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-SymbolicName: Automaton
 Export-Package: dk.brics.automaton
 Bundle-Name: Automaton
-Bundle-Version: 1.0.0.201806211254
+Bundle-Version: 1.0.0.201806211642
 Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime
 Bundle-ManifestVersion: 2
 Bundle-Activator: automaton.Activator
