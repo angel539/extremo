@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: uam.extremo.core.edit;singleton:=true
+Require-Bundle: uam.extremo.core;visibility:=reexport,org.eclipse.emf.
+ edit;visibility:=reexport
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Export-Package: semanticmanager.provider
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0.201806211254
+Bundle-ClassPath: .,icons/
+Bundle-Localization: plugin
+Bundle-Activator: semanticmanager.provider.ExtremoEditPlugin$Implement
+ ation
+
