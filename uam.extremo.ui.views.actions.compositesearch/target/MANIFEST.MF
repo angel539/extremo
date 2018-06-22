@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: uam.extremo.ui.views.actions.compositesearch;sing
+ leton:=true
+Export-Package: uam.extremo.ui.views.actions.compositesearch
+Bundle-Name: Compositesearch
+Bundle-Version: 1.0.0.201806220835
+Bundle-ClassPath: icons/,.
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,uam.extremo.ui
+ .views.extensions;bundle-version="1.0.0",uam.extremo.ui.wizards,fr.in
+ ria.atlanmod.neoemf.core;bundle-version="1.0.2"
+Bundle-ManifestVersion: 2
+Bundle-Activator: uam.extremo.ui.views.actions.compositesearch.Activat
+ or
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Import-Package: semanticmanager,semanticmanager.impl
+

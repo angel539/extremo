@@ -6,8 +6,8 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: uam.extremo.ui.zest.views.Activator
 Require-Bundle: org.eclipse.zest.core;bundle-version="1.5.201",
  org.eclipse.zest.layouts;bundle-version="1.1.200",
- uam.extremo.core.edit,
- org.eclipse.emf.edit.ui
+ org.eclipse.emf.edit.ui,
+ org.eclipse.emf.ecore
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: uam.extremo.ui.zest.actions,
@@ -16,3 +16,5 @@ Export-Package: uam.extremo.ui.zest.actions,
  uam.extremo.ui.zest.views.inheritance
 Bundle-ClassPath: .,
  icons/
+Import-Package: semanticmanager,
+ semanticmanager.impl

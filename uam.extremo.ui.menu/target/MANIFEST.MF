@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: uam.extremo.ui.menu; singleton:=true
+Export-Package: uam.extremo.ui.menu,uam.extremo.ui.menu.handler
+Bundle-Name: Menu
+Bundle-Version: 1.0.0.201806220835
+Bundle-ClassPath: icons/,.
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.ui
+ .console
+Bundle-ManifestVersion: 2
+Bundle-Activator: uam.extremo.ui.menu.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Import-Package: uam.extremo.extensions
+

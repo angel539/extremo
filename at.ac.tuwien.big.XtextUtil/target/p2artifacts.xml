@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='at.ac.tuwien.big.XtextUtil' version='1.0.0.201806211642'>
+  <artifact classifier='osgi.bundle' id='at.ac.tuwien.big.XtextUtil' version='1.0.0.201806220835'>
     <properties size='5'>
       <property name='artifact.size' value='7127984'/>
       <property name='download.size' value='7127984'/>
