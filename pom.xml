@@ -6,6 +6,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
+  <!-- Help: https://maven.apache.org/repository/guide-central-repository-upload.html -->
+
   <name>Extremo</name>
   <description>A tool for modelling and metamodelling assistance</description>
 
@@ -211,4 +213,12 @@
       <url>https://www.eclipse.org/legal/epl-2.0/</url>
     </license>
   </licenses>
+
+  <!-- In Git, the SCM connection is already developed by default. -->
+  <!-- Help: http://maven.apache.org/scm/git.html -->
+  <scm>
+    <connection>scm:git:https://github.com/angel539/extremo.git</connection>
+    <developerConnection>scm:git:https://github.com/angel539/extremo.git</developerConnection>
+    <url>https://github.com/angel539/extremo</url>
+  </scm>
 </project>
