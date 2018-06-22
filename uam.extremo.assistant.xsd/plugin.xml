@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="extremo.core.extensions.assistant">
+      <assistant
+            class="uam.extremo.assistant.xsd.XsdAssistant"
+            extensions="xsd, xml"
+            id="extremo.core.xsd.assistant"
+            name="Xsd">
+      </assistant>
+   </extension>
+
+</plugin>

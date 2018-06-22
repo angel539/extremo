@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="extremo.ui.extensions.actions">
+      <action
+            class="uam.extremo.ui.views.actions.ecore.action.CreateEcoreTreeStructure"
+            editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"
+            icon="icons/ecore16.png"
+            id="extremo.ui.extensions.actions.ecore.repositories"
+            name="Create Ecore Structure"
+            position="menumanager"
+            view="repositories">
+      </action>
+      <action
+            class="uam.extremo.ui.views.actions.ecore.action.CreateEcoreTreeStructure"
+            editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"
+            icon="icons/ecore16.png"
+            id="extremo.ui.extensions.actions.ecore.searches"
+            name="Create Ecore Structure"
+            position="menumanager"
+            view="searches">
+      </action>
+      <action
+            class="uam.extremo.ui.views.actions.ecore.action.CreateEcoreTreeStructure"
+            editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"
+            icon="icons/ecore16.png"
+            id="extremo.ui.extensions.actions.ecore.constraints"
+            name="Create Ecore Structure"
+            position="menumanager"
+            view="constraints">
+      </action>
+   </extension>
+
+</plugin>
