@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: uam.extremo.ui.views; singleton:=true
+Export-Package: uam.extremo.ui.views,uam.extremo.ui.views.constraints,
+ uam.extremo.ui.views.draganddrop,uam.extremo.ui.views.repositories,ua
+ m.extremo.ui.views.repositories.actions,uam.extremo.ui.views.searchtr
+ ee
+Bundle-Name: Views
+Bundle-Version: 1.0.0.201806220835
+Bundle-ClassPath: icons/,.
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.graphiti.ui,org.e
+ clipse.gef;bundle-version="3.10.1",org.eclipse.graphiti.ui,org.eclips
+ e.graphiti;bundle-version="0.12.1",org.eclipse.emf.ecore.editor;bundl
+ e-version="2.11.0",uam.extremo.ui.views.extensions;bundle-version="1.
+ 0.0",uam.extremo.ui.wizards,uam.extremo.core.edit,uam.extremo.extensi
+ ons;bundle-version="1.0.0",org.eclipse.ui.console,org.eclipse.ui.view
+ s.properties.tabbed;bundle-version="3.6.100"
+Bundle-ManifestVersion: 2
+Bundle-Activator: uam.extremo.ui.views.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+

@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.zest.core.viewers.IGraphEntityRelationshipContentProvider;
 import org.eclipse.zest.core.viewers.INestedContentProvider;
@@ -28,7 +30,7 @@ public class ResourceExplorerContentProvider implements
 		if (inputElement instanceof Resource) {
 			Resource repositoryManager = (Resource) inputElement;
 			
-			repositoryManager.eAllContents().forEachRemaining(
+			EcoreUtil.getAllProperContents((EObject) repositoryManager, true).forEachRemaining(
 				element -> {
 					if (element instanceof SemanticNode) {
 						SemanticNode semanticNode = (SemanticNode) element;

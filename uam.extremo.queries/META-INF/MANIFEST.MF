@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: uam.extremo.queries.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- uam.extremo.core;bundle-version="1.0.0"
+ fr.inria.atlanmod.neoemf.core;bundle-version="1.0.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: dict/,
@@ -44,3 +44,5 @@ Export-Package: uam.extremo.queries,
  uam.extremo.queries.services.utils,
  uam.extremo.queries.services.wordnet,
  uam.extremo.services
+Import-Package: semanticmanager,
+ semanticmanager.impl

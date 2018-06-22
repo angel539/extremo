@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: uam.extremo.ui.wizards;singleton:=true
+Export-Package: uam.extremo.ui.wizards,uam.extremo.ui.wizards.dialogs,
+ uam.extremo.ui.wizards.dialogs.changeToResource,uam.extremo.ui.wizard
+ s.dialogs.link,uam.extremo.ui.wizards.dialogs.newrepository,uam.extre
+ mo.ui.wizards.dialogs.newresource,uam.extremo.ui.wizards.dialogs.sear
+ chnew
+Bundle-Name: Wizards
+Bundle-Version: 1.0.0.201806220835
+Bundle-ClassPath: icons/,.
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,or
+ g.eclipse.emf.edit.ui,uam.extremo.core.edit,uam.extremo.extensions;bu
+ ndle-version="1.0.0"
+Bundle-ManifestVersion: 2
+Bundle-Activator: uam.extremo.ui.wizards.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+

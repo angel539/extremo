@@ -29,8 +29,7 @@ Bundle-ClassPath: .,
  lib/owlapi-osgidistribution-3.5.4.jar,
  lib/slf4j-api-1.7.10.jar,
  lib/slf4j-simple-1.7.10.jar,
- lib/trove4j-3.0.3.jar,
- dict/
+ lib/trove4j-3.0.3.jar
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-Activator: uam.extremo.core.Activator
@@ -46,8 +45,6 @@ Export-Package: org.apache.commons.io;uses:="org.apache.commons.io.filefilter",
    semanticmanager,
    org.eclipse.emf.common.notify,
    org.eclipse.emf.common.notify.impl,
-   org.eclipse.emf.ecore.util",
- uam.extremo.core.utils,
- uam.extremo.core.wordnet;uses:="edu.smu.tspell.wordnet"
+   org.eclipse.emf.ecore.util"
 Bundle-ActivationPolicy: lazy
 Import-Package: fr.inria.atlanmod.neoemf.core;version="1.0.2"

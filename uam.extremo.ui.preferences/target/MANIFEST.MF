@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: uam.extremo.ui.preferences; singleton:=true
+Export-Package: uam.extremo.ui.preferences,uam.extremo.ui.preferences.
+ page
+Bundle-Name: Preferences
+Bundle-Version: 1.0.0.201806220835
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,uam.extremo.ex
+ tensions;bundle-version="1.0.0"
+Bundle-ManifestVersion: 2
+Bundle-Activator: uam.extremo.ui.preferences.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+

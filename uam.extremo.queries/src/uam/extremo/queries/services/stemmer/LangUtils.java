@@ -8,7 +8,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 
-import uam.extremo.core.utils.Stemmer;
+import uam.extremo.queries.utils.Stemmer;
 
 public class LangUtils {
 	public static List<String> cleanRepeated(List<String> dirtyList){

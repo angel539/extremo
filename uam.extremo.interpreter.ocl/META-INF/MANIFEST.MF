@@ -7,6 +7,8 @@ Bundle-Activator: uam.extremo.interpreter.ocl.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
- uam.extremo.core
+ fr.inria.atlanmod.neoemf.core;bundle-version="1.0.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
+Import-Package: semanticmanager,
+ semanticmanager.impl
