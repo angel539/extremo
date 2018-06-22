@@ -169,3 +169,4 @@ fabric.properties
 **/.recommenders
 **/.project
 **/.classpath
+.DS_Store
