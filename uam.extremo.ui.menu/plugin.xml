@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               id="extremoMenu"
+               label="Extremo">
+            <command
+                  commandId="uam.extremo.ui.menu.console"
+                  icon="icons/Console-16.png"
+                  label="Show Console"
+                  style="push">
+            </command>
+            <command
+                  commandId="uam.extremo.ui.menu.exporter"
+                  icon="icons/Save16.png"
+                  label="Validate and export"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="uam.extremo.ui.menu"
+            name="Extremo">
+      </category>
+      <command
+            categoryId="uam.extremo.ui.menu"
+            defaultHandler="uam.extremo.ui.menu.handler.ExportRunnerHandler"
+            id="uam.extremo.ui.menu.exporter"
+            name="Validate and export">
+      </command>
+      <command
+            categoryId="uam.extremo.ui.menu"
+            defaultHandler="uam.extremo.ui.menu.handler.ShowConsoleRunnerHandler"
+            id="uam.extremo.ui.menu.console"
+            name="Show Console">
+      </command>
+   </extension>
+</plugin>

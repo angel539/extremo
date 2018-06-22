@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         name="UML2"
+         point="extremo.ui.extensions.actions">
+      <action
+            class="uam.extremo.ui.views.actions.uml2.action.CreateUmlTreeStructure"
+            editor="org.eclipse.uml2.uml.editor.presentation.UMLEditor"
+            editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+            icon="icons/uml16.png"
+            id="extremo.ui.extensions.actions.uml.repositories"
+            name="Create UML Structure"
+            position="menumanager"
+            view="repositories">
+      </action>
+      <action
+            class="uam.extremo.ui.views.actions.uml2.action.CreateUmlTreeStructure"
+            editor="org.eclipse.uml2.uml.editor.presentation.UMLEditor"
+            editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+            icon="icons/uml16.png"
+            id="extremo.ui.extensions.actions.uml.searches"
+            name="Create UML Structure"
+            position="menumanager"
+            view="searches">
+      </action>
+      <action
+            class="uam.extremo.ui.views.actions.uml2.action.CreateUmlTreeStructure"
+            editor="org.eclipse.uml2.uml.editor.presentation.UMLEditor"
+            editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+            icon="icons/uml16.png"
+            id="extremo.ui.extensions.actions.uml.constraints"
+            name="Create UML Structure"
+            position="menumanager"
+            view="constraints">
+      </action>
+   </extension>
+
+</plugin>

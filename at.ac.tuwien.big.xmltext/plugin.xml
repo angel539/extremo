@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Library3WithReferences -->
+      <package
+            uri="platform:/plugin/library3WithReferences.xsd"
+            class="Library3WithReferences.Library3Package"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Library3WithReferences -->
+      <parser
+            type="library3"
+            class="Library3WithReferences.util.Library3ResourceFactoryImpl"/>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Library3 -->
+      <package
+            uri="platform:/plugin/library3.xsd"
+            class="library3.Library3Package"
+            genModel="Library3.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Library3 -->
+      <parser
+            type="library3"
+            class="library3.util.Library3ResourceFactoryImpl"/>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated library3.ecore.simple -->
+      <package
+            uri="platform:/plugin/library3.xsd-simplified"
+            class="library3Simplified.Library3SimplifiedPackage"
+            genModel="library3.ecore.simple.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated library3simple -->
+      <package
+            uri="http://platform:/plugin/library3.xsdsimplified"
+            class="library3Simplified.library3SimplifiedPackage"
+            genModel="library3simple.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated simpleany -->
+      <package
+            uri="http://platform:/plugin/simpleany.xsdsimplified"
+            class="simpleanySimplified.simpleanySimplifiedPackage"
+            genModel="simpleany.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated bgf -->
+      <package
+            uri="file:/C:/Users/Robert/Documents/AME/xmltext/XMLIntellEdit/source/at.ac.tuwien.big.xmltext/bgf/bgf.xsdsimplified"
+            class="org_sl_planet_bgfSimplified.Org_sl_planet_bgfSimplifiedPackage"
+            genModel="bgf/bgf.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dictionarySimple9 -->
+      <package
+            uri="urn:iso:std:iso:ts:29002:-10:ed-1:tech:xml-schema:valuesimplified"
+            class="isostdisots_29002_10ed_1techxmlschemavalueSimplified.Isostdisots_29002_10ed_1techxmlschemavalueSimplifiedPackage"
+            genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple9.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dictionarySimple3 -->
+      <package
+            uri="urn:iso:std:iso:ts:29002:-10:ed-1:tech:xml-schema:cataloguesimplified"
+            class="isostdisots_29002_10ed_1techxmlschemacatalogueSimplified.Isostdisots_29002_10ed_1techxmlschemacatalogueSimplifiedPackage"
+            genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple3.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dictionarySimple7 -->
+      <package
+            uri="urn:x-ontoml-extensions:schema:coresimplified"
+            class="xontomlextensionsschemacoreSimplified.XontomlextensionsschemacoreSimplifiedPackage"
+            genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple7.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dictionarySimple4 -->
+      <package
+            uri="urn:iso:std:iso:is:13584:-32:ed-1:tech:xml-schema:ontomlsimplified"
+            class="isostdisois_13584_32ed_1techxmlschemaontomlSimplified.Isostdisois_13584_32ed_1techxmlschemaontomlSimplifiedPackage"
+            genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple4.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dictionarySimple5 -->
+      <package
+            uri="urn:iso:std:iso:ts:29002:-4:ed-1:tech:xml-schema:basicsimplified"
+            class="isostdisots_29002_4ed_1techxmlschemabasicSimplified.Isostdisots_29002_4ed_1techxmlschemabasicSimplifiedPackage"
+            genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple5.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dictionarySimple8 -->
+      <package
+            uri="urn:eclass:xml-schema:dictionary:2.0simplified"
+            class="eclassxmlschemadictionary_2_0Simplified.Eclassxmlschemadictionary_2_0SimplifiedPackage"
+            genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple8.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dictionarySimple6 -->
+      <package
+            uri="urn:eclass:xml-schema:header:2.0simplified"
+            class="eclassxmlschemaheader_2_0Simplified.Eclassxmlschemaheader_2_0SimplifiedPackage"
+            genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple6.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dictionarySimple6 -->
+      <package
+            uri="urn:eclass:xml-schema:common:2.0simplified"
+            class="eclassxmlschemacommon_2_0Simplified.Eclassxmlschemacommon_2_0SimplifiedPackage"
+            genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple6.genmodel"/>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated sigpml -->
+      <package
+            uri="http://org.gemoc.sigpml.model/1.0"
+            class="sigpml.SigpmlPackage"
+            genModel="examples/EXTREMO-ECLASS-CASE-STUDY/sigPML/adapted/sigpml.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ProductionSystemLanguage -->
+      <package
+            uri="uam.psl"
+            class="prodsyslang.ProdsyslangPackage"
+            genModel="examples/EXTREMO-ECLASS-CASE-STUDY/ProductionSystemLanguage.genmodel_old"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dictionarySimple2 -->
+      <package
+            uri="urn:iso:std:iso:ts:29002:-5:ed-1:tech:xml-schema:identifiersimplified"
+            class="isostdisots_29002_5ed_1techxmlschemaidentifierSimplified.Isostdisots_29002_5ed_1techxmlschemaidentifierSimplifiedPackage"
+            genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple2.genmodel"/>
+   </extension>
+
+</plugin>

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ont
+Bundle-SymbolicName: uam.extremo.assistant.ontologies;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: uam.extremo.assistant.ont.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ uam.extremo.core;bundle-version="1.0.0",
+ uam.extremo.extensions;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ lib/owlapi-3.2.3/owlapi-bin.jar
+Export-Package: uam.extremo.assistant.ont
