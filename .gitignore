@@ -6,16 +6,21 @@
 ######################
 
 # Folder view configuration files
-.DS_Store
-Desktop.ini
+**/.DS_Store
+**/Desktop.ini
 
 # Thumbnail cache files
 ._*
-Thumbs.db
+**/Thumbs.db
 
 # Files that might appear on external disks
-.Spotlight-V100
-.Trashes
+**/.Spotlight-V100
+**/.Trashes
+**/.DocumentRevisions-V100
+**/.fseventsd
+**/.TemporaryItems
+**/.VolumeIcon.icns
+**/*~
 
 ######################
 ######   Java   ######
@@ -136,14 +141,31 @@ fabric.properties
 ######################
 
 **/target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/pom.xml.versionsBackup
+**/pom.xml.next
+**/release.properties
+**/dependency-reduced-pom.xml
+**/buildNumber.properties
+**/.mvn/timing.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+
+######################
+###### Eclipse #######
+######################
+**/.metadata
+**/bin/
+**/tmp/
+**/*.tmp
+**/*.bak
+**/*.swp
+**/*~.nib
+**/local.properties
+**/.settings/
+**/.loadpath
+**/.recommenders
+**/.project
+**/.classpath
