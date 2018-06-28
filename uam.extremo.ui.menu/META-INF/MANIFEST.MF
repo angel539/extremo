@@ -9,8 +9,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.console
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: icons/,
- .
+Bundle-ClassPath: .
 Export-Package: uam.extremo.ui.menu,
  uam.extremo.ui.menu.handler
 Import-Package: uam.extremo.extensions

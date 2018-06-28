@@ -4,42 +4,8 @@ Bundle-Name: Xmltext
 Bundle-SymbolicName: at.ac.tuwien.big.xmltext;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: at.ac.tuwien.big.xmltext.Activator
+Bundle-Activator: at.ac.tuwien.big.xmltext.internal.Activator
 Bundle-Localization: plugin
-Export-Package: at.ac.tuwien.big.instanceconvert,
- at.ac.tuwien.big.xmltext,
- at.ac.tuwien.big.xmltext.ecoretransform,
- at.ac.tuwien.big.xmltext.ecoretransform.impl,
- at.ac.tuwien.util,
- at.tuwien.big.virtmod.datatype,
- eclassxmlschemacommon_2_0Simplified,
- eclassxmlschemacommon_2_0Simplified.impl,
- eclassxmlschemacommon_2_0Simplified.util,
- eclassxmlschemadictionary_2_0Simplified,
- eclassxmlschemadictionary_2_0Simplified.impl,
- eclassxmlschemadictionary_2_0Simplified.util,
- eclassxmlschemaheader_2_0Simplified,
- eclassxmlschemaheader_2_0Simplified.impl,
- eclassxmlschemaheader_2_0Simplified.util,
- isostdisois_13584_32ed_1techxmlschemaontomlSimplified,
- isostdisois_13584_32ed_1techxmlschemaontomlSimplified.impl,
- isostdisois_13584_32ed_1techxmlschemaontomlSimplified.util,
- isostdisots_29002_10ed_1techxmlschemacatalogueSimplified,
- isostdisots_29002_10ed_1techxmlschemacatalogueSimplified.impl,
- isostdisots_29002_10ed_1techxmlschemacatalogueSimplified.util,
- isostdisots_29002_10ed_1techxmlschemavalueSimplified,
- isostdisots_29002_10ed_1techxmlschemavalueSimplified.impl,
- isostdisots_29002_10ed_1techxmlschemavalueSimplified.util,
- isostdisots_29002_4ed_1techxmlschemabasicSimplified,
- isostdisots_29002_4ed_1techxmlschemabasicSimplified.impl,
- isostdisots_29002_4ed_1techxmlschemabasicSimplified.util,
- isostdisots_29002_5ed_1techxmlschemaidentifierSimplified,
- isostdisots_29002_5ed_1techxmlschemaidentifierSimplified.impl,
- isostdisots_29002_5ed_1techxmlschemaidentifierSimplified.util,
- mypackage,
- xontomlextensionsschemacoreSimplified,
- xontomlextensionsschemacoreSimplified.impl,
- xontomlextensionsschemacoreSimplified.util
 Require-Bundle: org.eclipse.xsd,
  org.eclipse.emf.codegen.ecore,
  org.eclipse.core.runtime,
@@ -67,8 +33,7 @@ Require-Bundle: org.eclipse.xsd,
  org.eclipse.xtext.xtext.wizard,
  org.eclipse.ui,
  org.eclipse.core.runtime
-Import-Package: at.ac.tuwien.big.xtext.util,
- dk.brics.automaton,
+Import-Package: automaton.internal.dk.brics.automaton,
  org.apache.commons.lang3;version="3.1.0",
  org.apache.log4j,
  org.eclipse.core.runtime,
@@ -76,3 +41,11 @@ Import-Package: at.ac.tuwien.big.xtext.util,
  org.eclipse.xtext.xtext.ui.wizard.project
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: at.ac.tuwien.big.xmltext.generator,
+ at.ac.tuwien.big.xmltext.internal;x-internal:=true,
+ at.ac.tuwien.big.xmltext.internal.datatype;x-internal:=true,
+ at.ac.tuwien.big.xmltext.internal.instance.convert;x-internal:=true,
+ at.ac.tuwien.big.xmltext.internal.instance.ecoretransform;x-internal:=true,
+ at.ac.tuwien.big.xmltext.internal.instance.ecoretransform.impl;x-internal:=true,
+ at.ac.tuwien.big.xmltext.internal.mypackage;x-internal:=true,
+ at.ac.tuwien.big.xmltext.util

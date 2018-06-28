@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>uam.extremo</groupId>
-  <artifactId>extremo</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
 
+  <groupId>io.github.angel539.extremo</groupId>
+  <artifactId>extremo</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
   <!-- Help: https://maven.apache.org/repository/guide-central-repository-upload.html -->
 
   <name>Extremo</name>
@@ -31,7 +32,7 @@
   </developers>
   
   <modules>
-    <module>Automaton</module>
+    <module>automaton</module>
     <module>at.ac.tuwien.big.XtextUtil</module>
     <module>at.ac.tuwien.big.xmltext</module>
     <module>uam.extremo.core</module>
@@ -39,7 +40,7 @@
     <module>uam.extremo.core.editor</module>
     <module>uam.extremo.extensions</module>
     <module>uam.extremo.assistant.ecore</module>
-    <module>uam.extremo.assistant.ont</module>
+    <module>uam.extremo.assistant.ontologies</module>
     <module>uam.extremo.assistant.xsd</module>
     <module>uam.extremo.constraints.regex</module>
     <module>uam.extremo.interpreter.ocl</module>
@@ -60,39 +61,66 @@
     <module>update-site</module>
   </modules>
 
-  <!-- List of dependencies. Inherited by the tree of poms. --> 
+  <!-- 
+      List of dependencies. Inherited by the tree of poms. 
+      -->
+  <!-- 
+      Information about the dependencies scope:
+
+        https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
+  -->
   <dependencies>
     <dependency>
       <groupId>org.eclipse.ui</groupId>
       <artifactId>org.eclipse.ui</artifactId>
-      <version>3.5.0.I20090604-2000</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.emf</groupId>
       <artifactId>org.eclipse.emf.ecore</artifactId>
-      <version>[2.12.0, 3.0.0)</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.emf</groupId>
       <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-      <version>2.12.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.emf</groupId>
+      <artifactId>org.eclipse.emf.common</artifactId>
     </dependency>
     <dependency>
       <groupId>fr.inria.atlanmod.neoemf</groupId>
       <artifactId>neoemf-core</artifactId>
-      <version>1.0.2</version>
-    </dependency>
-    <dependency>
-      <groupId>fr.inria.atlanmod.neoemf</groupId>
-      <artifactId>neoemf-io</artifactId>
-      <version>1.0.2</version>
-    </dependency>
-    <dependency>
-      <groupId>fr.inria.atlanmod.neoemf</groupId>
-      <artifactId>neoemf-data-mapdb</artifactId>
-      <version>1.0.2</version>
     </dependency>
   </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.eclipse.ui</groupId>
+        <artifactId>org.eclipse.ui</artifactId>
+        <version>3.5.0.I20090604-2000</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.emf</groupId>
+        <artifactId>org.eclipse.emf.ecore</artifactId>
+        <version>[2.12.0, 3.0.0)</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.emf</groupId>
+        <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+        <version>2.12.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.emf</groupId>
+        <artifactId>org.eclipse.emf.common</artifactId>
+        <version>[2.12.0,3.0.0)</version>
+      </dependency>
+      <dependency>
+        <groupId>fr.inria.atlanmod.neoemf</groupId>
+        <artifactId>neoemf-core</artifactId>
+        <version>1.0.2</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <!-- Repositories. Basically, where mvn looks for the dependencies. --> 
   <repositories>
@@ -117,10 +145,27 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
+    <repository>
+      <id>jitpack.io</id>
+      <name>jitpack</name>
+      <url>https://jitpack.io</url>
+    </repository>
   </repositories>
 
   <!-- List of plugins needed for the compilation / execution of the plugin --> 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>.</directory>
+        <includes>
+          <include>plugin.xml</include>
+        </includes>
+      </resource>
+    </resources>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -218,6 +263,19 @@
         </executions>
       </plugin>
 
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
       <!-- Waiting for repository on Sonatype -->
       
       <!--<plugin>
@@ -263,6 +321,35 @@
     </plugins>
   </build>
 
+  <!-- 
+    Extracted from:
+    https://gist.github.com/ktuukkan/8cf2de1e915185118c60
+
+    Maven config for snapshot dependencies on Sonatype
+  -->
+  <profiles>
+    <profile>
+      <id>maven-snapshots</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+          <id>ossrh-snapshots</id>
+          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+            <checksumPolicy>ignore</checksumPolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
   <!-- The licence is the common one for tools developed under Eclipse PDE -->
   <licenses>
     <license>
@@ -271,7 +358,7 @@
     </license>
   </licenses>
 
-  <!-- In Git, the SCM connection is already developed by default. -->
+  <!-- In Git, the SCM connection is already serviced by default. -->
   <!-- Help: http://maven.apache.org/scm/git.html -->
   <scm>
     <connection>scm:git:https://github.com/angel539/extremo.git</connection>

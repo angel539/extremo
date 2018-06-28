@@ -12,7 +12,6 @@ Require-Bundle: org.eclipse.ui,
  uam.extremo.ui.views.extensions
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: icons/,
- .
+Bundle-ClassPath: .
 Export-Package: uam.extremo.ui.views.actions.ecore,
  uam.extremo.ui.views.actions.ecore.action

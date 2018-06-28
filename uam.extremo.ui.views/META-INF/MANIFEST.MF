@@ -24,5 +24,7 @@ Export-Package: uam.extremo.ui.views,
  uam.extremo.ui.views.repositories,
  uam.extremo.ui.views.repositories.actions,
  uam.extremo.ui.views.searchtree
-Bundle-ClassPath: icons/,
- .
+Bundle-ClassPath: .
+Import-Package: semanticmanager,
+ semanticmanager.impl,
+ semanticmanager.util

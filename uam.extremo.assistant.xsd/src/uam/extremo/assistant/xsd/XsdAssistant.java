@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
-import at.ac.tuwien.big.xmltext.MultiEcoreToGenericEcoreTransformer;
+import at.ac.tuwien.big.xmltext.generator.MultiEcoreToGenericEcoreTransformer;
 import semanticmanager.Constraint;
 import semanticmanager.ConstraintInterpreter;
 import semanticmanager.DataProperty;

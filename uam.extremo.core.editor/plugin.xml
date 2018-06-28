@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
-
 <!--
 -->
-
 <plugin>
-
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated Extremo -->
       <category
@@ -21,8 +18,6 @@
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
-
-
    <extension point="org.eclipse.ui.editors">
       <!-- @generated Extremo -->
       <editor
