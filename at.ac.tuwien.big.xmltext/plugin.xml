@@ -69,7 +69,7 @@
       <!-- @generated dictionarySimple9 -->
       <package
             uri="urn:iso:std:iso:ts:29002:-10:ed-1:tech:xml-schema:valuesimplified"
-            class="isostdisots_29002_10ed_1techxmlschemavalueSimplified.Isostdisots_29002_10ed_1techxmlschemavalueSimplifiedPackage"
+            class="at.ac.tuwien.big.xmltext.internal.isostdisots_29002_10ed_1techxmlschemavalueSimplified.Isostdisots_29002_10ed_1techxmlschemavalueSimplifiedPackage"
             genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple9.genmodel"/>
    </extension>
 
@@ -77,7 +77,7 @@
       <!-- @generated dictionarySimple3 -->
       <package
             uri="urn:iso:std:iso:ts:29002:-10:ed-1:tech:xml-schema:cataloguesimplified"
-            class="isostdisots_29002_10ed_1techxmlschemacatalogueSimplified.Isostdisots_29002_10ed_1techxmlschemacatalogueSimplifiedPackage"
+            class="at.ac.tuwien.big.xmltext.internal.isostdisots_29002_10ed_1techxmlschemacatalogueSimplified.Isostdisots_29002_10ed_1techxmlschemacatalogueSimplifiedPackage"
             genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple3.genmodel"/>
    </extension>
 
@@ -93,7 +93,7 @@
       <!-- @generated dictionarySimple4 -->
       <package
             uri="urn:iso:std:iso:is:13584:-32:ed-1:tech:xml-schema:ontomlsimplified"
-            class="isostdisois_13584_32ed_1techxmlschemaontomlSimplified.Isostdisois_13584_32ed_1techxmlschemaontomlSimplifiedPackage"
+            class="at.ac.tuwien.big.internal.isostdisois_13584_32ed_1techxmlschemaontomlSimplified.Isostdisois_13584_32ed_1techxmlschemaontomlSimplifiedPackage"
             genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple4.genmodel"/>
    </extension>
 
@@ -101,7 +101,7 @@
       <!-- @generated dictionarySimple5 -->
       <package
             uri="urn:iso:std:iso:ts:29002:-4:ed-1:tech:xml-schema:basicsimplified"
-            class="isostdisots_29002_4ed_1techxmlschemabasicSimplified.Isostdisots_29002_4ed_1techxmlschemabasicSimplifiedPackage"
+            class="at.ac.tuwien.big.xmltext.internal.isostdisots_29002_4ed_1techxmlschemabasicSimplified.Isostdisots_29002_4ed_1techxmlschemabasicSimplifiedPackage"
             genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple5.genmodel"/>
    </extension>
 
@@ -109,7 +109,7 @@
       <!-- @generated dictionarySimple8 -->
       <package
             uri="urn:eclass:xml-schema:dictionary:2.0simplified"
-            class="eclassxmlschemadictionary_2_0Simplified.Eclassxmlschemadictionary_2_0SimplifiedPackage"
+            class="at.ac.tuwien.big.xmltext.internal.eclassxmlschemadictionary_2_0Simplified.Eclassxmlschemadictionary_2_0SimplifiedPackage"
             genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple8.genmodel"/>
    </extension>
 
@@ -117,7 +117,7 @@
       <!-- @generated dictionarySimple6 -->
       <package
             uri="urn:eclass:xml-schema:header:2.0simplified"
-            class="eclassxmlschemaheader_2_0Simplified.Eclassxmlschemaheader_2_0SimplifiedPackage"
+            class="at.ac.tuwien.big.xmltext.internal.eclassxmlschemaheader_2_0Simplified.Eclassxmlschemaheader_2_0SimplifiedPackage"
             genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple6.genmodel"/>
    </extension>
 
@@ -125,7 +125,7 @@
       <!-- @generated dictionarySimple6 -->
       <package
             uri="urn:eclass:xml-schema:common:2.0simplified"
-            class="eclassxmlschemacommon_2_0Simplified.Eclassxmlschemacommon_2_0SimplifiedPackage"
+            class="at.ac.tuwien.big.xmltext.internal.eclassxmlschemacommon_2_0Simplified.Eclassxmlschemacommon_2_0SimplifiedPackage"
             genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple6.genmodel"/>
    </extension>
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -148,7 +148,7 @@
       <!-- @generated dictionarySimple2 -->
       <package
             uri="urn:iso:std:iso:ts:29002:-5:ed-1:tech:xml-schema:identifiersimplified"
-            class="isostdisots_29002_5ed_1techxmlschemaidentifierSimplified.Isostdisots_29002_5ed_1techxmlschemaidentifierSimplifiedPackage"
+            class="at.ac.tuwien.big.xmltext.internal.isostdisots_29002_5ed_1techxmlschemaidentifierSimplified.Isostdisots_29002_5ed_1techxmlschemaidentifierSimplifiedPackage"
             genModel="examples/EXTREMO-ECLASS-CASE-STUDY/dictionarySimple/dictionarySimple2.genmodel"/>
    </extension>
 

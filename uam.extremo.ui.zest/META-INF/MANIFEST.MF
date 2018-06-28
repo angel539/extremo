@@ -14,7 +14,6 @@ Export-Package: uam.extremo.ui.zest.actions,
  uam.extremo.ui.zest.resourceexplorer,
  uam.extremo.ui.zest.views,
  uam.extremo.ui.zest.views.inheritance
-Bundle-ClassPath: .,
- icons/
+Bundle-ClassPath: .
 Import-Package: semanticmanager,
  semanticmanager.impl

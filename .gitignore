@@ -167,6 +167,6 @@ fabric.properties
 **/.settings/
 **/.loadpath
 **/.recommenders
-**/.project
 **/.classpath
+**/.project
 .DS_Store

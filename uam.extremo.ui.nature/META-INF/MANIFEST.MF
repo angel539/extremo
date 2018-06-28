@@ -15,5 +15,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: uam.extremo.ui.nature,
  uam.extremo.ui.nature.newprojectwizard
-Bundle-ClassPath: icons/,
- .
+Bundle-ClassPath: .

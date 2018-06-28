@@ -14,6 +14,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 import semanticmanager.SemanticmanagerPackage;
 
+
+
 /**
  * This is the item provider adapter for a {@link semanticmanager.AtomicSearchResult} object.
  * <!-- begin-user-doc -->

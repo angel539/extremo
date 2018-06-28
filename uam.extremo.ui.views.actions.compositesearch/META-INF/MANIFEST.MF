@@ -11,8 +11,7 @@ Require-Bundle: org.eclipse.ui,
  fr.inria.atlanmod.neoemf.core;bundle-version="1.0.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: icons/,
- .
+Bundle-ClassPath: .
 Export-Package: uam.extremo.ui.views.actions.compositesearch
 Import-Package: semanticmanager,
  semanticmanager.impl

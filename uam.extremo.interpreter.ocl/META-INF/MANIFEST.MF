@@ -12,3 +12,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: semanticmanager,
  semanticmanager.impl
+Export-Package: uam.extremo.interpreter.ocl
