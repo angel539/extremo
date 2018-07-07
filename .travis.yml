@@ -1,0 +1,8 @@
+language: java
+
+jdk:
+  - oraclejdk7
+
+after_success:
+   - mvn clean test jacoco:report coveralls:jacoco
+#  - mvn clean cobertura:cobertura coveralls:cobertura
