@@ -1,8 +1,24 @@
+sudo: false
+
 language: java
 
-jdk:
-  - oraclejdk7
+env:  
+  global:
+    - DISPLAY=:99.0
 
-after_success:
-   - mvn clean test jacoco:report coveralls:jacoco
-#  - mvn clean cobertura:cobertura coveralls:cobertura
+before_install:
+  - sh -e /etc/init.d/xvfb start - sleep 10
+
+jdk: oraclejdk8
+
+cache:
+  directories:
+  - $HOME/.m2
+
+install: true
+
+script:
+- mvn -Pnu -Pgui clean verify
+
+after_failure:
+- find -name "*.txt" | grep -F 'surefire-reports' | xargs cat
