@@ -1,18 +1,17 @@
 package uam.extremo.queries.customsearch;
 
-import semanticmanager.SearchResult;
-import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticNode;
-import semanticmanager.SemanticmanagerFactory;
-import semanticmanager.impl.ExtensibleCustomSearchImpl;
+import uam.extremo.core.GroupedSearchResult;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.Resource;
+import uam.extremo.core.ResourceElement;
+import uam.extremo.core.SearchResult;
+import uam.extremo.core.SemanticGroup;
+import uam.extremo.core.SemanticNode;
+import uam.extremo.core.SemanticmanagerFactory;
+import uam.extremo.core.impl.ExtensibleCustomSearchImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import semanticmanager.GroupedSearchResult;
-import semanticmanager.NamedElement;
-import semanticmanager.Resource;
-import semanticmanager.ResourceElement;
 
 public class SplitNodesSearch extends ExtensibleCustomSearchImpl {
 	@Override

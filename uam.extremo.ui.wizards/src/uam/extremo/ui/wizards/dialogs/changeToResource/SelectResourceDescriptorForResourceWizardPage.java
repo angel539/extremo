@@ -16,9 +16,8 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
+import uam.extremo.core.Resource;
 import uam.extremo.ui.wizards.*;
-
-import semanticmanager.Resource;
 
 public class SelectResourceDescriptorForResourceWizardPage extends WizardPage {
 	private Composite container;

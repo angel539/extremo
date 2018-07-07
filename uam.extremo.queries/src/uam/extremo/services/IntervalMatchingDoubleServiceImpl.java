@@ -2,7 +2,7 @@ package uam.extremo.services;
 
 import org.apache.commons.lang3.StringUtils;
 
-import semanticmanager.impl.ExtensibleServiceImpl;
+import uam.extremo.core.impl.ExtensibleServiceImpl;
 
 public class IntervalMatchingDoubleServiceImpl extends ExtensibleServiceImpl {
 	@Override

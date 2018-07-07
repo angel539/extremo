@@ -63,7 +63,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import semanticmanager.provider.SemanticmanagerItemProviderAdapterFactory;
-import semanticmanager.util.SemanticmanagerAdapterFactory;
+import uam.extremo.core.util.SemanticmanagerAdapterFactory;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.views.Activator;
 import uam.extremo.ui.views.draganddrop.NamedElementDragListener;

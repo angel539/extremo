@@ -10,7 +10,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import semanticmanager.NamedElement;
+import uam.extremo.core.NamedElement;
 import uam.extremo.ui.views.repositories.RepositoryViewPart;
 
 public class GoToTypeHandler extends AbstractHandler {

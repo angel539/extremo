@@ -1,6 +1,6 @@
 package uam.extremo.ui.preferences.page;
 
-import uam.extremo.extensions.preferences.IPointSettings;
+import uam.extremo.extensions.internal.preferences.IPointSettings;
 
 public class AllTheSamePreferencePointSettings implements IPointSettings {
 	public static String NAME = "All the same";

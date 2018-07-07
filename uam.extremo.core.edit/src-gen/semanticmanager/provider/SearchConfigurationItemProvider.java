@@ -24,12 +24,12 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import semanticmanager.SearchConfiguration;
-import semanticmanager.SemanticmanagerFactory;
-import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.SearchConfiguration;
+import uam.extremo.core.SemanticmanagerFactory;
+import uam.extremo.core.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link semanticmanager.SearchConfiguration} object.
+ * This is the item provider adapter for a {@link uam.extremo.core.SearchConfiguration} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

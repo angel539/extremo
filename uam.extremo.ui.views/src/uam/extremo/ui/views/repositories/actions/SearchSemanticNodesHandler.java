@@ -11,8 +11,8 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import semanticmanager.NamedElement;
-import semanticmanager.Repository;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.Repository;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.ui.wizards.dialogs.searchnew.SearchWizardDialog;
 

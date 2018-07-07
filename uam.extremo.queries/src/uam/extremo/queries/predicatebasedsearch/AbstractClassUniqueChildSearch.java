@@ -1,8 +1,8 @@
 package uam.extremo.queries.predicatebasedsearch;
 
-import semanticmanager.NamedElement;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.SemanticNode;
+import uam.extremo.core.impl.ExtensiblePredicateBasedSearchImpl;
 
 public class AbstractClassUniqueChildSearch extends ExtensiblePredicateBasedSearchImpl {
 	@Override

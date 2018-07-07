@@ -7,7 +7,7 @@ import org.eclipse.swt.dnd.DropTargetAdapter;
 import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.Transfer;
 
-import semanticmanager.NamedElement;
+import uam.extremo.core.NamedElement;
 import uam.extremo.ui.views.extensions.dnd.DraggableNamedElementTransfer;
 
 public class ViewPartViewerDropAdapter extends DropTargetAdapter{

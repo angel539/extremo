@@ -3,7 +3,7 @@ package uam.extremo.ui.wizards.dialogs.changeToResource;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.TableItem;
 
-import semanticmanager.Resource;
+import uam.extremo.core.Resource;
 
 public class ChangeDescriptorToResourceWizardDialog extends Wizard {
 	SelectResourceDescriptorForResourceWizardPage selectDescriptorPage;

@@ -4,9 +4,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.TransferData;
 
+import uam.extremo.core.NamedElement;
 import uam.extremo.ui.views.Serializer;
-
-import semanticmanager.NamedElement;
 
 public class SemanticNodeModelTransfer extends ByteArrayTransfer {
 	private static final String TYPE_NAME = "extremo-model-transfer-format";

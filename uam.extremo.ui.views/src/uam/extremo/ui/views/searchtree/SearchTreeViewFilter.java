@@ -4,7 +4,7 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import semanticmanager.*;
+import uam.extremo.core.*;
 
 public class SearchTreeViewFilter extends ViewerFilter {
 	@Override

@@ -3,6 +3,8 @@ package uam.extremo.extensions;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 
+import uam.extremo.extensions.internal.Activator;
+
 public class ExtremoLog {
 	public static void logInfo(String message) {
 		log(IStatus.INFO, IStatus.OK, message, null);

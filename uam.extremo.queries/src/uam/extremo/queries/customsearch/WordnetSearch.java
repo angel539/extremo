@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import semanticmanager.*;
-import semanticmanager.impl.ExtensibleCustomSearchImpl;
+import uam.extremo.core.*;
+import uam.extremo.core.impl.ExtensibleCustomSearchImpl;
 import uam.extremo.queries.services.stemmer.LangUtils;
 import uam.extremo.queries.services.wordnet.WordnetSearchExpansionTree;
 

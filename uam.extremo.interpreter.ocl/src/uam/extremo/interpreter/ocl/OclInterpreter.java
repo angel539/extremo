@@ -5,9 +5,9 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 
 import org.eclipse.emf.common.util.Diagnostic;
 
-import semanticmanager.Constraint;
-import semanticmanager.NamedElement;
-import semanticmanager.impl.ExtensibleConstraintInterpreterImpl;
+import uam.extremo.core.Constraint;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.impl.ExtensibleConstraintInterpreterImpl;
 
 public class OclInterpreter extends ExtensibleConstraintInterpreterImpl {	
 	@Override

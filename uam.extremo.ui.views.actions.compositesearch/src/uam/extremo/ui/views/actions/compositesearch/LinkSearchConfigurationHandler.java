@@ -9,7 +9,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import semanticmanager.CompositeSearchConfiguration;
+import uam.extremo.core.CompositeSearchConfiguration;
 import uam.extremo.ui.wizards.dialogs.link.LinkWizardDialog;
 
 public class LinkSearchConfigurationHandler extends AbstractHandler {

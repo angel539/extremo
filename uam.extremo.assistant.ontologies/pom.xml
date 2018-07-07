@@ -3,6 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 
+  <!--
+      The naming convention is based on the Guide provided by mvn:
+      https://maven.apache.org/guides/mini/guide-naming-conventions.html
+    -->
   <parent>
     <groupId>io.github.angel539.extremo</groupId>
     <artifactId>extremo</artifactId>
@@ -10,15 +14,15 @@
   </parent>
 
   <artifactId>uam.extremo.assistant.ontologies</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 
   <name>Extremo::Extensions::Ontologies</name>
 
   <dependencies>
     <dependency>
-      <groupId>net.sourceforge.owlapi</groupId>
-      <artifactId>owlapi-api</artifactId>
-      <version>3.3</version>
+      <groupId>owlapi</groupId>
+      <artifactId>owlapi</artifactId>
     </dependency>
     <dependency>
       <groupId>fr.inria.atlanmod.neoemf</groupId>
@@ -29,9 +33,9 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>net.sourceforge.owlapi</groupId>
-        <artifactId>owlapi-api</artifactId>
-        <version>3.3</version>
+        <groupId>owlapi</groupId>
+        <artifactId>owlapi</artifactId>
+        <version>3.2.4</version>
       </dependency>
       <dependency>
         <groupId>fr.inria.atlanmod.neoemf</groupId>

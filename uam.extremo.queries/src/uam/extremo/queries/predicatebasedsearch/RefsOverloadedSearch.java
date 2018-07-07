@@ -2,11 +2,11 @@ package uam.extremo.queries.predicatebasedsearch;
 
 import org.eclipse.emf.common.util.EList;
 
-import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
-import semanticmanager.SearchParamValue;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.ObjectProperty;
+import uam.extremo.core.SearchParamValue;
+import uam.extremo.core.SemanticNode;
+import uam.extremo.core.impl.ExtensiblePredicateBasedSearchImpl;
 
 public class RefsOverloadedSearch extends ExtensiblePredicateBasedSearchImpl {
 	Object maxRefsValueField = null;

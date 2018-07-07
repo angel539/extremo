@@ -14,12 +14,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import semanticmanager.GroupedSearchResult;
-import semanticmanager.SemanticmanagerFactory;
-import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.GroupedSearchResult;
+import uam.extremo.core.SemanticmanagerFactory;
+import uam.extremo.core.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link semanticmanager.GroupedSearchResult} object.
+ * This is the item provider adapter for a {@link uam.extremo.core.GroupedSearchResult} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

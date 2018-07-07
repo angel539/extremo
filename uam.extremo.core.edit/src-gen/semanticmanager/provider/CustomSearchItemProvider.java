@@ -14,11 +14,11 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import semanticmanager.CustomSearch;
-import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.CustomSearch;
+import uam.extremo.core.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link semanticmanager.CustomSearch} object.
+ * This is the item provider adapter for a {@link uam.extremo.core.CustomSearch} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

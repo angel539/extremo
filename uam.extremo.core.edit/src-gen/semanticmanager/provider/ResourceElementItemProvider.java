@@ -11,10 +11,10 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import semanticmanager.ResourceElement;
+import uam.extremo.core.ResourceElement;
 
 /**
- * This is the item provider adapter for a {@link semanticmanager.ResourceElement} object.
+ * This is the item provider adapter for a {@link uam.extremo.core.ResourceElement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

@@ -25,6 +25,6 @@ Export-Package: uam.extremo.ui.views,
  uam.extremo.ui.views.repositories.actions,
  uam.extremo.ui.views.searchtree
 Bundle-ClassPath: .
-Import-Package: semanticmanager,
- semanticmanager.impl,
- semanticmanager.util
+Import-Package: uam.extremo.core,
+ uam.extremo.core.impl,
+ uam.extremo.core.util

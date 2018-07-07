@@ -12,12 +12,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.SemanticmanagerPackage;
 
 
 
 /**
- * This is the item provider adapter for a {@link semanticmanager.AtomicSearchResult} object.
+ * This is the item provider adapter for a {@link uam.extremo.core.AtomicSearchResult} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

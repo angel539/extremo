@@ -1,6 +1,6 @@
 package uam.extremo.services;
 
-import semanticmanager.impl.ExtensibleServiceImpl;
+import uam.extremo.core.impl.ExtensibleServiceImpl;
 
 public class WordSynonymsExpansionRankingServiceImpl extends ExtensibleServiceImpl {
 	public WordSynonymsExpansionRankingServiceImpl() {

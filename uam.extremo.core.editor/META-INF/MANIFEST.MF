@@ -16,6 +16,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.ide;visibility:=reexport,
  uam.extremo.core.edit;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
-Import-Package: semanticmanager,
- semanticmanager.impl,
- semanticmanager.util
+Import-Package: uam.extremo.core,
+ uam.extremo.core.impl,
+ uam.extremo.core.util

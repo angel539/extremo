@@ -9,7 +9,7 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import semanticmanager.Resource;
+import uam.extremo.core.Resource;
 import uam.extremo.ui.zest.resourceexplorer.ResourceExplorerViewPart;
 
 public class ExploreConnectionsHandler extends AbstractHandler {

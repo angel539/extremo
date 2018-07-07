@@ -15,5 +15,5 @@ Export-Package: uam.extremo.ui.zest.actions,
  uam.extremo.ui.zest.views,
  uam.extremo.ui.zest.views.inheritance
 Bundle-ClassPath: .
-Import-Package: semanticmanager,
- semanticmanager.impl
+Import-Package: uam.extremo.core,
+ uam.extremo.core.impl

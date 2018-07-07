@@ -2,11 +2,11 @@ package uam.extremo.queries.predicatebasedsearch.types;
 
 import org.eclipse.emf.common.util.EList;
 
-import semanticmanager.DataProperty;
-import semanticmanager.ModelTypeParamValue;
-import semanticmanager.NamedElement;
-import semanticmanager.SearchParamValue;
-import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
+import uam.extremo.core.DataProperty;
+import uam.extremo.core.ModelTypeParamValue;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.SearchParamValue;
+import uam.extremo.core.impl.ExtensiblePredicateBasedSearchImpl;
 
 public class DataPropertyIsKindOf extends ExtensiblePredicateBasedSearchImpl {
 	NamedElement descriptor = null;

@@ -5,25 +5,15 @@ Bundle-SymbolicName: uam.extremo.core;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-Activator: uam.extremo.core.Activator
+Bundle-Activator: uam.extremo.core.internal.activator.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;bundle-version="2.12.0",
  fr.inria.atlanmod.neoemf.data.mapdb;bundle-version="1.0.2",
  fr.inria.atlanmod.neoemf.core;bundle-version="1.0.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: semanticmanager;uses:="org.eclipse.emf.ecore,org.eclipse.emf.common.util,fr.inria.atlanmod.neoemf.core",
- semanticmanager.impl;
-  uses:="org.eclipse.emf.ecore,
-   org.eclipse.emf.ecore.impl,
-   semanticmanager,
-   org.eclipse.emf.common.util,
-   fr.inria.atlanmod.neoemf.core",
- semanticmanager.util;
-  uses:="org.eclipse.emf.ecore,
-   semanticmanager,
-   org.eclipse.emf.common.notify,
-   org.eclipse.emf.common.notify.impl,
-   org.eclipse.emf.ecore.util",
- uam.extremo.core
 Bundle-ActivationPolicy: lazy
+Export-Package: uam.extremo.core,
+ uam.extremo.core.impl,
+ uam.extremo.core.internal.activator;x-internal:=true,
+ uam.extremo.core.util

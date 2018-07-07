@@ -27,7 +27,7 @@ import org.eclipse.zest.layouts.algorithms.RadialLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.SpringLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 
-import semanticmanager.Resource;
+import uam.extremo.core.Resource;
 import uam.extremo.ui.zest.views.Activator;
 import uam.extremo.ui.zest.views.inheritance.ResourceExplorerContentProvider;
 import uam.extremo.ui.zest.views.inheritance.ResourceExplorerLabelProvider;

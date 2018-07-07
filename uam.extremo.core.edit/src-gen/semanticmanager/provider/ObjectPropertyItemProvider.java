@@ -12,11 +12,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import semanticmanager.ObjectProperty;
-import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.ObjectProperty;
+import uam.extremo.core.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link semanticmanager.ObjectProperty} object.
+ * This is the item provider adapter for a {@link uam.extremo.core.ObjectProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

@@ -11,7 +11,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.zest.core.viewers.IGraphEntityRelationshipContentProvider;
 import org.eclipse.zest.core.viewers.INestedContentProvider;
 
-import semanticmanager.*;
+import uam.extremo.core.*;
 
 public class ResourceExplorerContentProvider implements 
 		IGraphEntityRelationshipContentProvider, 

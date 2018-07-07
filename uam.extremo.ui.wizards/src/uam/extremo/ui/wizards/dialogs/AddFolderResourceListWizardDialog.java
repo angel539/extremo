@@ -10,7 +10,7 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.TableItem;
 
-import semanticmanager.*;
+import uam.extremo.core.*;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.wizards.dialogs.newrepository.NewRepositoryWizardPage;

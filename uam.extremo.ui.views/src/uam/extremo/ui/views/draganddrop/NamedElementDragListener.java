@@ -6,7 +6,7 @@ import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
 import org.eclipse.swt.dnd.TextTransfer;
 
-import semanticmanager.NamedElement;
+import uam.extremo.core.NamedElement;
 
 public class NamedElementDragListener implements DragSourceListener {
 	private final TreeViewer viewer;

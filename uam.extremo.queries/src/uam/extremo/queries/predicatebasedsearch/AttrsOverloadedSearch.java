@@ -2,12 +2,12 @@ package uam.extremo.queries.predicatebasedsearch;
 
 import org.eclipse.emf.common.util.EList;
 
-import semanticmanager.DataProperty;
-import semanticmanager.NamedElement;
-import semanticmanager.PrimitiveTypeParamValue;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
-import semanticmanager.SearchParamValue;
+import uam.extremo.core.DataProperty;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.PrimitiveTypeParamValue;
+import uam.extremo.core.SearchParamValue;
+import uam.extremo.core.SemanticNode;
+import uam.extremo.core.impl.ExtensiblePredicateBasedSearchImpl;
 
 public class AttrsOverloadedSearch extends ExtensiblePredicateBasedSearchImpl {
 	Object optionvalue = null;

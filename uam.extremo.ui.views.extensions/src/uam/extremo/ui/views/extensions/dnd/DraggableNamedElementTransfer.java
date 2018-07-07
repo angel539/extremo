@@ -10,9 +10,8 @@ import org.eclipse.swt.dnd.TransferData;
 import draggablesemanticmanager.DraggableNamedElement;
 import draggablesemanticmanager.DraggableSemanticNode;
 import draggablesemanticmanager.DraggablesemanticmanagerFactory;
-//import draggablesemanticmanager.DraggablesemanticmanagerPackage;
-import semanticmanager.NamedElement;
-import semanticmanager.SemanticNode;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.SemanticNode;
 
 public class DraggableNamedElementTransfer extends ByteArrayTransfer{
 	private static final String TYPE_NAME = "extremo-model-transfer-format";

@@ -19,7 +19,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
-import uam.extremo.extensions.preferences.IPointSettings;
+import uam.extremo.extensions.internal.preferences.IPointSettings;
 import uam.extremo.ui.preferences.Activator;
 
 public class RuleWeightPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {

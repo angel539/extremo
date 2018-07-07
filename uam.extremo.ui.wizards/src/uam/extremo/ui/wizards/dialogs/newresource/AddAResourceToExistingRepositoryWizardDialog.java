@@ -6,7 +6,7 @@ import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.TableItem;
 
-import semanticmanager.*;
+import uam.extremo.core.*;
 import uam.extremo.extensions.AssistantFactory;
 
 public class AddAResourceToExistingRepositoryWizardDialog extends Wizard {
