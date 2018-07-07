@@ -22,12 +22,12 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import semanticmanager.RepositoryManager;
-import semanticmanager.SemanticmanagerFactory;
-import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.RepositoryManager;
+import uam.extremo.core.SemanticmanagerFactory;
+import uam.extremo.core.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link semanticmanager.RepositoryManager} object.
+ * This is the item provider adapter for a {@link uam.extremo.core.RepositoryManager} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

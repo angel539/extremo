@@ -3,25 +3,25 @@ package uam.extremo.extensions;
 import java.util.ArrayList;
 import java.util.List;
 
-import semanticmanager.Constraint;
-import semanticmanager.ConstraintInterpreter;
-import semanticmanager.ConstraintResult;
-import semanticmanager.DataProperty;
-import semanticmanager.ExtendedSemanticmanagerFactory;
-import semanticmanager.MetaData;
-import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Property;
-import semanticmanager.Resource;
-import semanticmanager.ResourceElement;
-import semanticmanager.SemanticNode;
-import semanticmanager.Type;
+import uam.extremo.core.Constraint;
+import uam.extremo.core.ConstraintInterpreter;
+import uam.extremo.core.ConstraintResult;
+import uam.extremo.core.DataProperty;
+import uam.extremo.core.ExtendedSemanticmanagerFactory;
+import uam.extremo.core.MetaData;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.ObjectProperty;
+import uam.extremo.core.Property;
+import uam.extremo.core.Resource;
+import uam.extremo.core.ResourceElement;
+import uam.extremo.core.SemanticNode;
+import uam.extremo.core.Type;
 
 public interface IFormatAssistant {
 	public static final String CONSTRAINT_EXTENSIONS_ID = "extremo.core.extensions.constraintinterpreter";
 	
     public boolean loadAndValidate(
-    		semanticmanager.Resource semanticResource, 
+    		uam.extremo.core.Resource semanticResource, 
     		ConstraintInterpreter interpreter);
     
     public void toDataProperty(SemanticNode parent);
@@ -72,7 +72,7 @@ public interface IFormatAssistant {
     }
     
     default Resource createResource(String uri, String name, String description, boolean active, boolean alive, Resource descriptor) {
-	    	semanticmanager.Resource resource = ExtendedSemanticmanagerFactory.eINSTANCE.createResource();
+	    	uam.extremo.core.Resource resource = ExtendedSemanticmanagerFactory.eINSTANCE.createResource();
 	    	resource.setUri(uri);
 	    	resource.setName(name);
 	    	resource.setDescription(description);

@@ -3,7 +3,7 @@ package uam.extremo.extensions;
 import java.util.ArrayList;
 import java.util.List;
 
-import semanticmanager.ConstraintInterpreter;
+import uam.extremo.core.ConstraintInterpreter;
 
 public class FormatAssistant{
 	private static FormatAssistant INSTANCE = null;

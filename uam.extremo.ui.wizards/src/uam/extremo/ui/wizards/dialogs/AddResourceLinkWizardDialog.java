@@ -5,7 +5,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 
-import semanticmanager.*;
+import uam.extremo.core.*;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.extensions.IFormatAssistant;
 import uam.extremo.ui.wizards.dialogs.newrepository.NewLinkResourceWizardPage;

@@ -24,20 +24,20 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import semanticmanager.CustomSearch;
-import semanticmanager.DataProperty;
-import semanticmanager.ModelTypeParam;
-import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
-import semanticmanager.PredicateBasedSearch;
-import semanticmanager.PrimitiveTypeParam;
-import semanticmanager.Repository;
-import semanticmanager.Resource;
-import semanticmanager.SearchParam;
-import semanticmanager.SemanticNode;
-import semanticmanager.Service;
-import semanticmanager.SimpleSearchConfiguration;
-import semanticmanager.Type;
+import uam.extremo.core.CustomSearch;
+import uam.extremo.core.DataProperty;
+import uam.extremo.core.ModelTypeParam;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.ObjectProperty;
+import uam.extremo.core.PredicateBasedSearch;
+import uam.extremo.core.PrimitiveTypeParam;
+import uam.extremo.core.Repository;
+import uam.extremo.core.Resource;
+import uam.extremo.core.SearchParam;
+import uam.extremo.core.SemanticNode;
+import uam.extremo.core.Service;
+import uam.extremo.core.SimpleSearchConfiguration;
+import uam.extremo.core.Type;
 import uam.extremo.ui.wizards.Activator;
 
 public class SearchConfigurationSelectorWizardPage extends WizardPage {

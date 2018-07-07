@@ -12,11 +12,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import semanticmanager.SemanticGroup;
-import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.SemanticGroup;
+import uam.extremo.core.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link semanticmanager.SemanticGroup} object.
+ * This is the item provider adapter for a {@link uam.extremo.core.SemanticGroup} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

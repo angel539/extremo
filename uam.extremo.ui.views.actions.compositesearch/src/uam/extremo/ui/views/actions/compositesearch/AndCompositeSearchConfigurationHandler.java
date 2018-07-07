@@ -7,11 +7,11 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import semanticmanager.CompositeSearchConfiguration;
-import semanticmanager.ConnectionType;
-import semanticmanager.ExtendedSemanticmanagerFactory;
-import semanticmanager.RepositoryManager;
-import semanticmanager.SimpleSearchConfiguration;
+import uam.extremo.core.CompositeSearchConfiguration;
+import uam.extremo.core.ConnectionType;
+import uam.extremo.core.ExtendedSemanticmanagerFactory;
+import uam.extremo.core.RepositoryManager;
+import uam.extremo.core.SimpleSearchConfiguration;
 
 public class AndCompositeSearchConfigurationHandler extends AbstractHandler {
 	@Override

@@ -69,10 +69,9 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
-import semanticmanager.SemanticmanagerFactory;
-import semanticmanager.SemanticmanagerPackage;
 import semanticmanager.provider.ExtremoEditPlugin;
-
+import uam.extremo.core.SemanticmanagerFactory;
+import uam.extremo.core.SemanticmanagerPackage;
 
 import org.eclipse.core.runtime.Path;
 

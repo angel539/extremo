@@ -7,8 +7,8 @@ import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.swt.graphics.Image;
 
-import semanticmanager.Constraint;
-import semanticmanager.Resource;
+import uam.extremo.core.Constraint;
+import uam.extremo.core.Resource;
 
 public class ColumnTwoRepositoryViewAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider implements IStyledLabelProvider{
 	public ColumnTwoRepositoryViewAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {

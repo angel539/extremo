@@ -12,14 +12,14 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import semanticmanager.AtomicSearchResult;
-import semanticmanager.CompositeSearchConfiguration;
-import semanticmanager.ConnectionType;
-import semanticmanager.ExtendedSemanticmanagerFactory;
-import semanticmanager.GroupedSearchResult;
-import semanticmanager.NamedElement;
-import semanticmanager.SearchResult;
-import semanticmanager.SemanticGroup;
+import uam.extremo.core.AtomicSearchResult;
+import uam.extremo.core.CompositeSearchConfiguration;
+import uam.extremo.core.ConnectionType;
+import uam.extremo.core.ExtendedSemanticmanagerFactory;
+import uam.extremo.core.GroupedSearchResult;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.SearchResult;
+import uam.extremo.core.SemanticGroup;
 
 public class ComputeCompositeQueryHandler extends AbstractHandler {
 	@Override

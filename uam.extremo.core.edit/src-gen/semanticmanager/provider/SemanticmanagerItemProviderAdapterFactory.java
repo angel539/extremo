@@ -21,7 +21,7 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import semanticmanager.util.SemanticmanagerAdapterFactory;
+import uam.extremo.core.util.SemanticmanagerAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -72,7 +72,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.RepositoryManager} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.RepositoryManager} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -80,7 +80,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected RepositoryManagerItemProvider repositoryManagerItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.RepositoryManager}.
+	 * This creates an adapter for a {@link uam.extremo.core.RepositoryManager}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -95,7 +95,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.Constraint} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.Constraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -103,7 +103,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected ConstraintItemProvider constraintItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.Constraint}.
+	 * This creates an adapter for a {@link uam.extremo.core.Constraint}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -118,7 +118,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.ConstraintInterpreter} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.ConstraintInterpreter} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -126,7 +126,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected ConstraintInterpreterItemProvider constraintInterpreterItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.ConstraintInterpreter}.
+	 * This creates an adapter for a {@link uam.extremo.core.ConstraintInterpreter}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -141,7 +141,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.ConstraintResult} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.ConstraintResult} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -149,7 +149,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected ConstraintResultItemProvider constraintResultItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.ConstraintResult}.
+	 * This creates an adapter for a {@link uam.extremo.core.ConstraintResult}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -164,7 +164,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.CompositeSearchConfiguration} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.CompositeSearchConfiguration} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -172,7 +172,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected CompositeSearchConfigurationItemProvider compositeSearchConfigurationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.CompositeSearchConfiguration}.
+	 * This creates an adapter for a {@link uam.extremo.core.CompositeSearchConfiguration}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -187,7 +187,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.Service} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.Service} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -195,7 +195,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected ServiceItemProvider serviceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.Service}.
+	 * This creates an adapter for a {@link uam.extremo.core.Service}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -210,7 +210,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.CustomSearch} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.CustomSearch} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -218,7 +218,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected CustomSearchItemProvider customSearchItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.CustomSearch}.
+	 * This creates an adapter for a {@link uam.extremo.core.CustomSearch}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -233,7 +233,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.PredicateBasedSearch} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.PredicateBasedSearch} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -241,7 +241,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected PredicateBasedSearchItemProvider predicateBasedSearchItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.PredicateBasedSearch}.
+	 * This creates an adapter for a {@link uam.extremo.core.PredicateBasedSearch}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -256,7 +256,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.AtomicSearchResult} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.AtomicSearchResult} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -264,7 +264,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected AtomicSearchResultItemProvider atomicSearchResultItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.AtomicSearchResult}.
+	 * This creates an adapter for a {@link uam.extremo.core.AtomicSearchResult}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -279,7 +279,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.GroupedSearchResult} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.GroupedSearchResult} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -287,7 +287,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected GroupedSearchResultItemProvider groupedSearchResultItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.GroupedSearchResult}.
+	 * This creates an adapter for a {@link uam.extremo.core.GroupedSearchResult}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -302,7 +302,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.SemanticGroup} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.SemanticGroup} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -310,7 +310,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected SemanticGroupItemProvider semanticGroupItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.SemanticGroup}.
+	 * This creates an adapter for a {@link uam.extremo.core.SemanticGroup}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -325,7 +325,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.Repository} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.Repository} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -333,7 +333,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected RepositoryItemProvider repositoryItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.Repository}.
+	 * This creates an adapter for a {@link uam.extremo.core.Repository}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -348,7 +348,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.Resource} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.Resource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -356,7 +356,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected ResourceItemProvider resourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.Resource}.
+	 * This creates an adapter for a {@link uam.extremo.core.Resource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -371,7 +371,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.SemanticNode} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.SemanticNode} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -379,7 +379,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected SemanticNodeItemProvider semanticNodeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.SemanticNode}.
+	 * This creates an adapter for a {@link uam.extremo.core.SemanticNode}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -394,7 +394,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.ObjectProperty} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.ObjectProperty} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -402,7 +402,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected ObjectPropertyItemProvider objectPropertyItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.ObjectProperty}.
+	 * This creates an adapter for a {@link uam.extremo.core.ObjectProperty}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -417,7 +417,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.DataProperty} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.DataProperty} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -425,7 +425,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected DataPropertyItemProvider dataPropertyItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.DataProperty}.
+	 * This creates an adapter for a {@link uam.extremo.core.DataProperty}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -440,7 +440,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.MetaData} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.MetaData} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -448,7 +448,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected MetaDataItemProvider metaDataItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.MetaData}.
+	 * This creates an adapter for a {@link uam.extremo.core.MetaData}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -463,7 +463,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.PrimitiveTypeParam} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.PrimitiveTypeParam} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -471,7 +471,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected PrimitiveTypeParamItemProvider primitiveTypeParamItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.PrimitiveTypeParam}.
+	 * This creates an adapter for a {@link uam.extremo.core.PrimitiveTypeParam}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -486,7 +486,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.ModelTypeParam} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.ModelTypeParam} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -494,7 +494,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected ModelTypeParamItemProvider modelTypeParamItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.ModelTypeParam}.
+	 * This creates an adapter for a {@link uam.extremo.core.ModelTypeParam}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -509,7 +509,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.ModelTypeParamValue} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.ModelTypeParamValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -517,7 +517,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected ModelTypeParamValueItemProvider modelTypeParamValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.ModelTypeParamValue}.
+	 * This creates an adapter for a {@link uam.extremo.core.ModelTypeParamValue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -532,7 +532,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link semanticmanager.PrimitiveTypeParamValue} instances.
+	 * This keeps track of the one adapter used for all {@link uam.extremo.core.PrimitiveTypeParamValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -540,7 +540,7 @@ public class SemanticmanagerItemProviderAdapterFactory extends SemanticmanagerAd
 	protected PrimitiveTypeParamValueItemProvider primitiveTypeParamValueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link semanticmanager.PrimitiveTypeParamValue}.
+	 * This creates an adapter for a {@link uam.extremo.core.PrimitiveTypeParamValue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

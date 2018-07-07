@@ -10,6 +10,7 @@
   </parent>
 
   <artifactId>uam.extremo.ui.perspective</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 
   <name>Extremo::UI::Perspective</name>

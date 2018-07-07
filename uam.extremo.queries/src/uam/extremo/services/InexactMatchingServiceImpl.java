@@ -2,7 +2,7 @@ package uam.extremo.services;
 
 import java.util.List;
 
-import semanticmanager.impl.ExtensibleServiceImpl;
+import uam.extremo.core.impl.ExtensibleServiceImpl;
 import uam.extremo.queries.services.stemmer.LangUtils;
 
 public class InexactMatchingServiceImpl extends ExtensibleServiceImpl {

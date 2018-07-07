@@ -23,7 +23,7 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
-import semanticmanager.ConstraintInterpreter;
+import uam.extremo.core.ConstraintInterpreter;
 import uam.extremo.extensions.AssistantFactory;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;

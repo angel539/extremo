@@ -2,11 +2,11 @@ package uam.extremo.queries.predicatebasedsearch.types;
 
 import org.eclipse.emf.common.util.EList;
 
-import semanticmanager.ModelTypeParamValue;
-import semanticmanager.NamedElement;
-import semanticmanager.SearchParamValue;
-import semanticmanager.SemanticNode;
-import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
+import uam.extremo.core.ModelTypeParamValue;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.SearchParamValue;
+import uam.extremo.core.SemanticNode;
+import uam.extremo.core.impl.ExtensiblePredicateBasedSearchImpl;
 
 public class SemanticNodeIsTypeOf extends ExtensiblePredicateBasedSearchImpl {
 	NamedElement descriptor = null;

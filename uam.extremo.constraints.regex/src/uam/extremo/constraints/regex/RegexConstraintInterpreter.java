@@ -1,8 +1,8 @@
 package uam.extremo.constraints.regex;
 
-import semanticmanager.Constraint;
-import semanticmanager.NamedElement;
-import semanticmanager.impl.ConstraintInterpreterImpl;
+import uam.extremo.core.Constraint;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.impl.ConstraintInterpreterImpl;
 
 public class RegexConstraintInterpreter extends ConstraintInterpreterImpl {
 	@Override

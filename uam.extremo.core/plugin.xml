@@ -8,13 +8,13 @@
       <!-- @generated Extremo -->
       <package
             uri="http://www.core.extremo/SemanticManager"
-            class="semanticmanager.SemanticmanagerPackage"
+            class="uam.extremo.core.SemanticmanagerPackage"
             genModel="model/Extremo.genmodel"/>
    </extension>
    <extension
          point="org.eclipse.emf.ecore.factory_override">
       <factory
-            class="semanticmanager.impl.ExtendedSemanticmanagerFactoryImpl"
+            class="uam.extremo.core.impl.ExtendedSemanticmanagerFactoryImpl"
             uri="http://www.core.extremo/SemanticManager">
       </factory>
    </extension>

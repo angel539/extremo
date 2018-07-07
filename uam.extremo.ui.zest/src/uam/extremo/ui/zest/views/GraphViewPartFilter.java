@@ -4,8 +4,7 @@ import org.eclipse.jface.viewers.Viewer;
 
 import org.eclipse.jface.viewers.ViewerFilter;
 
-import semanticmanager.RepositoryManager;
-import semanticmanager.*;
+import uam.extremo.core.*;
 
 public class GraphViewPartFilter extends ViewerFilter {
 	@Override

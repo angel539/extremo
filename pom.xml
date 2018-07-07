@@ -2,6 +2,10 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 
+  <!--
+    The naming convention is based on the Guide provided by mvn:
+    https://maven.apache.org/guides/mini/guide-naming-conventions.html
+  -->
   <groupId>io.github.angel539.extremo</groupId>
   <artifactId>extremo</artifactId>
   <version>1.0.0-SNAPSHOT</version>
@@ -149,9 +153,14 @@
       <name>jitpack</name>
       <url>https://jitpack.io</url>
     </repository>
+    <repository>
+      <id>bbop</id>
+      <name>bbop</name>
+      <url> http://code.berkeleybop.org/maven/repository/</url>
+    </repository>
   </repositories>
 
-  <!-- List of plugins needed for the compilation / execution of the plugin --> 
+  <!-- List of plugins needed for the compilation / execution of the project --> 
   <build>
     <resources>
       <resource>
@@ -166,6 +175,7 @@
     </resources>
 
     <plugins>
+      <!-- Compiler --> 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -210,6 +220,7 @@
         <version>1.2.0</version>
       </plugin>
 
+      <!-- Platform configuration -->
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
@@ -262,22 +273,38 @@
         </executions>
       </plugin>
 
-      <plugin>
-        <artifactId>maven-dependency-plugin</artifactId>
+      <!-- To get the javadoc jar generated -->
+      <!--<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
         <executions>
           <execution>
-            <id>copy-dependencies</id>
-            <phase>package</phase>
+            <id>attach-javadocs</id>
             <goals>
-              <goal>copy-dependencies</goal>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>-->
+
+      <!-- To deploy the components to OSSRH and release them to Central Repository -->
+
+      <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.8.2</version>
+        <executions>
+          <execution>
+            <id>default-deploy</id>
+            <phase>deploy</phase>
+            <goals>
+              <goal>deploy</goal>
             </goals>
           </execution>
         </executions>
       </plugin>
 
-      <!-- Waiting for repository on Sonatype -->
-      
-      <!--<plugin>
+      <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
         <version>1.6.7</version>
@@ -291,36 +318,46 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>2.2.1</version>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.3</version>
+        <configuration>
+          <localCheckout>true</localCheckout>
+          <pushChanges>false</pushChanges>
+          <mavenExecutorId>forked-path</mavenExecutorId>
+          <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-gitexe</artifactId>
+            <version>1.9.5</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      <!-- Dependency management -->
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
-            <id>attach-sources</id>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
             <goals>
-              <goal>jar-no-fork</goal>
+              <goal>copy-dependencies</goal>
             </goals>
           </execution>
         </executions>
       </plugin>
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.9.1</version>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
+      <!-- GPG sign artifacts as per http://central.sonatype.org/pages/apache-maven.html
+             credentials stored locally in .m2\settings.xml
+              http://maven.apache.org/plugins/maven-gpg-plugin/
+              http://maven.apache.org/plugins/maven-gpg-plugin/usage.html
+             -->
+      <!--<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
-        <version>1.5</version>
+        <version>1.6</version>
         <executions>
           <execution>
             <id>sign-artifacts</id>
@@ -328,6 +365,12 @@
             <goals>
               <goal>sign</goal>
             </goals>
+            <configuration>
+              <gpgArguments>
+                <arg>\-\-pinentry-mode</arg> \remove \\
+                <arg>loopback</arg>
+              </gpgArguments>
+            </configuration>
           </execution>
         </executions>
       </plugin>-->
@@ -335,47 +378,24 @@
   </build>
 
   <!-- 
-    Extracted from:
-    https://gist.github.com/ktuukkan/8cf2de1e915185118c60
-
-    Maven config for snapshot dependencies on Sonatype
+    For the deployment of the artifacts on Sonatype
+    For SNAPSHOTS deploy with a version in the form of 1.0.0-SNAPSHOT
+    For RELEASES deploy with a version in the form of 1.0.0
   -->
-  <profiles>
-    <profile>
-      <id>maven-snapshots</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <repositories>
-        <repository>
-          <id>ossrh-snapshots</id>
-          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-          <releases>
-            <enabled>false</enabled>
-          </releases>
-          <snapshots>
-            <enabled>true</enabled>
-            <updatePolicy>always</updatePolicy>
-            <checksumPolicy>ignore</checksumPolicy>
-          </snapshots>
-        </repository>
-      </repositories>
-    </profile>
-  </profiles>
-
-  <!-- For the deployment of the artifacts -->
   <distributionManagement>
     <snapshotRepository>
-      <id>ossrh</id>
+      <id>oss.sonatype.org</id> <!-- Repository for SNAPSHOTS -->
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
     <repository>
-      <id>ossrh</id>
+      <id>oss.sonatype.org</id> <!-- Repository for RELEASES -->
       <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
   </distributionManagement>
   
-  <!-- The licence is the common one for tools developed under Eclipse PDE -->
+  <!-- 
+    The licence is the common one for tools developed under Eclipse PDE 
+  -->
   <licenses>
     <license>
       <name>Eclipse Public License v2.0</name>
@@ -383,11 +403,47 @@
     </license>
   </licenses>
 
-  <!-- In Git, the SCM connection is already serviced by default. -->
-  <!-- Help: http://maven.apache.org/scm/git.html -->
+  <!-- 
+    In Git, the SCM connection is already serviced by default. 
+  -->
+  <!-- 
+    Help: http://maven.apache.org/scm/git.html 
+  -->
   <scm>
     <connection>scm:git:https://github.com/angel539/extremo.git</connection>
     <developerConnection>scm:git:https://github.com/angel539/extremo.git</developerConnection>
     <url>https://github.com/angel539/extremo</url>
+    <tag>HEAD</tag>
   </scm>
+
+  <profiles>
+    <!-- GPG Signature on release -->
+    <profile>
+      <id>release-sign-artifacts</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.6</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

@@ -2,12 +2,12 @@ package uam.extremo.queries.predicatebasedsearch;
 
 import org.eclipse.emf.common.util.EList;
 
-import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
-import semanticmanager.PrimitiveTypeParamValue;
-import semanticmanager.SearchParamValue;
-import semanticmanager.Service;
-import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.ObjectProperty;
+import uam.extremo.core.PrimitiveTypeParamValue;
+import uam.extremo.core.SearchParamValue;
+import uam.extremo.core.Service;
+import uam.extremo.core.impl.ExtensiblePredicateBasedSearchImpl;
 
 public class ObjectPropertyName extends ExtensiblePredicateBasedSearchImpl {
 	Service service = null;

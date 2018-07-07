@@ -28,12 +28,12 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 
-import semanticmanager.DataProperty;
-import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Property;
-import semanticmanager.ResourceElement;
-import semanticmanager.SemanticNode;
+import uam.extremo.core.DataProperty;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.ObjectProperty;
+import uam.extremo.core.Property;
+import uam.extremo.core.ResourceElement;
+import uam.extremo.core.SemanticNode;
 import uam.extremo.ui.views.extensions.actions.ExtensibleViewPartActionContribution;
 
 public class CreateEcoreTreeStructure extends ExtensibleViewPartActionContribution {
@@ -69,8 +69,8 @@ public class CreateEcoreTreeStructure extends ExtensibleViewPartActionContributi
 									resource = resourceSet.createResource(uri);
 								}
 								
-								if(object instanceof semanticmanager.Resource){
-									semanticmanager.Resource semanticResource = (semanticmanager.Resource) object;
+								if(object instanceof uam.extremo.core.Resource){
+									uam.extremo.core.Resource semanticResource = (uam.extremo.core.Resource) object;
 									
 									EPackage newPackage = null;
 									if((mainPackage != null) && (mainPackage instanceof EPackage)){
@@ -118,8 +118,8 @@ public class CreateEcoreTreeStructure extends ExtensibleViewPartActionContributi
 									resource.getContents().add(newPackage);
 								}	
 									
-								if(object instanceof semanticmanager.SemanticNode){
-									semanticmanager.SemanticNode semanticNode = (semanticmanager.SemanticNode) object;
+								if(object instanceof uam.extremo.core.SemanticNode){
+									uam.extremo.core.SemanticNode semanticNode = (uam.extremo.core.SemanticNode) object;
 									
 								    EPackage newPackage = null;
 									if((mainPackage != null) && (mainPackage instanceof EPackage)){

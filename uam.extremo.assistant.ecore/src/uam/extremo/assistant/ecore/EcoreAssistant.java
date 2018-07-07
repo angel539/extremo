@@ -27,20 +27,20 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import semanticmanager.Constraint;
-import semanticmanager.ConstraintInterpreter;
-import semanticmanager.ConstraintResult;
-import semanticmanager.DataProperty;
-import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
-import semanticmanager.SemanticNode;
-import semanticmanager.Type;
+import uam.extremo.core.Constraint;
+import uam.extremo.core.ConstraintInterpreter;
+import uam.extremo.core.ConstraintResult;
+import uam.extremo.core.DataProperty;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.ObjectProperty;
+import uam.extremo.core.SemanticNode;
+import uam.extremo.core.Type;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
 
 public class EcoreAssistant extends FormatAssistant implements IFormatAssistant {
 	File file;
-	semanticmanager.Resource semanticResource = null;
+	uam.extremo.core.Resource semanticResource = null;
 	TreeIterator<EObject> modelAll = null;
 	
 	String extension;
@@ -54,7 +54,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 	ConstraintInterpreter constraintInterpreter = null;
 	
 	@Override
-	public boolean loadAndValidate(semanticmanager.Resource semanticResource, ConstraintInterpreter constraintInterpreter) {
+	public boolean loadAndValidate(uam.extremo.core.Resource semanticResource, ConstraintInterpreter constraintInterpreter) {
 		this.semanticResource = semanticResource;
 		this.constraintInterpreter = constraintInterpreter;
 		
@@ -204,7 +204,7 @@ public class EcoreAssistant extends FormatAssistant implements IFormatAssistant 
 					
 					SemanticNode conforms_to = 
 							searchSemanticNodeByName(
-									(semanticmanager.Resource) semanticResource.getDescriptors().get(semanticResource.getDescriptors().size() - 1), 
+									(uam.extremo.core.Resource) semanticResource.getDescriptors().get(semanticResource.getDescriptors().size() - 1), 
 									obj.eClass().getName()
 							);
 					

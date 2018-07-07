@@ -32,13 +32,13 @@ import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 
-import semanticmanager.ConstraintInterpreter;
-import semanticmanager.DataProperty;
-import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Resource;
-import semanticmanager.SemanticNode;
-import semanticmanager.Type;
+import uam.extremo.core.ConstraintInterpreter;
+import uam.extremo.core.DataProperty;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.ObjectProperty;
+import uam.extremo.core.Resource;
+import uam.extremo.core.SemanticNode;
+import uam.extremo.core.Type;
 import uam.extremo.extensions.FormatAssistant;
 import uam.extremo.extensions.IFormatAssistant;
 
@@ -54,7 +54,7 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 	File file;
 	String extension;
 	ConstraintInterpreter constraintInterpreter = null;
-	semanticmanager.Resource semanticResource = null;
+	uam.extremo.core.Resource semanticResource = null;
 	
 	OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
 	OWLReasoner reasoner = null;

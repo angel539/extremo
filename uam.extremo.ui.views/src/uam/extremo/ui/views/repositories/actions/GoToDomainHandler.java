@@ -10,8 +10,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import semanticmanager.NamedElement;
-import semanticmanager.SemanticNode;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.SemanticNode;
 import uam.extremo.ui.views.repositories.RepositoryViewPart;
 
 public class GoToDomainHandler extends AbstractHandler {

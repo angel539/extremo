@@ -20,6 +20,6 @@ Export-Package: uam.extremo.ui.wizards,
  uam.extremo.ui.wizards.dialogs.newresource,
  uam.extremo.ui.wizards.dialogs.searchnew
 Bundle-ClassPath: .
-Import-Package: semanticmanager,
- semanticmanager.impl,
- semanticmanager.util
+Import-Package: uam.extremo.core,
+ uam.extremo.core.impl,
+ uam.extremo.core.util

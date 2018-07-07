@@ -21,5 +21,5 @@ Export-Package: uam.extremo.queries,
  uam.extremo.queries.services.wordnet,
  uam.extremo.queries.utils,
  uam.extremo.services
-Import-Package: semanticmanager,
- semanticmanager.impl
+Import-Package: uam.extremo.core,
+ uam.extremo.core.impl

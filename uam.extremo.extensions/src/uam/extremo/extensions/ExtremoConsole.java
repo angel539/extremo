@@ -13,6 +13,8 @@ import org.eclipse.ui.console.IConsoleView;
 import org.eclipse.ui.part.IPageBookViewPage;
 import org.osgi.framework.Bundle;
 
+import uam.extremo.extensions.internal.Activator;
+
 public class ExtremoConsole implements IConsole {
 	public static final String CONSOLE_ID = "extremo.core.console";
 	

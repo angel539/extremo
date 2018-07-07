@@ -3,7 +3,7 @@ package uam.extremo.ui.views.searchtree;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
 
-import semanticmanager.NamedElement;
+import uam.extremo.core.NamedElement;
 
 public class NamedElementTreeViewerComparator extends ViewerComparator{
 	@Override

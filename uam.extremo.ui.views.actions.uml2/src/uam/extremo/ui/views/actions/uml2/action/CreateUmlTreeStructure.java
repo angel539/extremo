@@ -28,12 +28,13 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
-import semanticmanager.DataProperty;
-import semanticmanager.NamedElement;
-import semanticmanager.ObjectProperty;
-import semanticmanager.Property;
-import semanticmanager.ResourceElement;
-import semanticmanager.SemanticNode;
+
+import uam.extremo.core.DataProperty;
+import uam.extremo.core.NamedElement;
+import uam.extremo.core.ObjectProperty;
+import uam.extremo.core.Property;
+import uam.extremo.core.ResourceElement;
+import uam.extremo.core.SemanticNode;
 import uam.extremo.ui.views.extensions.actions.ExtensibleViewPartActionContribution;
 
 public class CreateUmlTreeStructure extends ExtensibleViewPartActionContribution {
@@ -68,8 +69,8 @@ public class CreateUmlTreeStructure extends ExtensibleViewPartActionContribution
 									resource = resourceSet.createResource(uri);
 								}
 								
-								if(object instanceof semanticmanager.Resource){
-									semanticmanager.Resource semanticResource = (semanticmanager.Resource) object;
+								if(object instanceof uam.extremo.core.Resource){
+									uam.extremo.core.Resource semanticResource = (uam.extremo.core.Resource) object;
 									
 									org.eclipse.uml2.uml.Package newPackage = null;
 									if((mainPackage != null) && (mainPackage instanceof org.eclipse.uml2.uml.Package)){
@@ -79,7 +80,7 @@ public class CreateUmlTreeStructure extends ExtensibleViewPartActionContribution
 									    newPackage = createPackage(semanticResource.getName(), "http://" + semanticResource.getName());
 									}
 									
-									Map<semanticmanager.Type, PrimitiveType> primitiveTypes = createPrimitiveTypes(newPackage);
+									Map<uam.extremo.core.Type, PrimitiveType> primitiveTypes = createPrimitiveTypes(newPackage);
 								    Map<SemanticNode, org.eclipse.uml2.uml.Class> relation = new HashMap<SemanticNode, org.eclipse.uml2.uml.Class>();
 								    
 									for(ResourceElement resourceElement : semanticResource.getResourceElements()){
@@ -120,8 +121,8 @@ public class CreateUmlTreeStructure extends ExtensibleViewPartActionContribution
 									resource.getContents().add(newPackage);
 								}	
 									
-								if(object instanceof semanticmanager.SemanticNode){
-									semanticmanager.SemanticNode semanticNode = (semanticmanager.SemanticNode) object;
+								if(object instanceof uam.extremo.core.SemanticNode){
+									uam.extremo.core.SemanticNode semanticNode = (uam.extremo.core.SemanticNode) object;
 									
 									org.eclipse.uml2.uml.Package newPackage = null;
 									if((mainPackage != null) && (mainPackage instanceof EPackage)){
@@ -131,7 +132,7 @@ public class CreateUmlTreeStructure extends ExtensibleViewPartActionContribution
 									    newPackage = createPackage(semanticNode.getResourceFrom().getName(), "http://" + semanticNode.getResourceFrom().getName());
 									}
 								    
-									Map<semanticmanager.Type, PrimitiveType> primitiveTypes = createPrimitiveTypes(newPackage);
+									Map<uam.extremo.core.Type, PrimitiveType> primitiveTypes = createPrimitiveTypes(newPackage);
 									org.eclipse.uml2.uml.Class eClassNew = createClass(newPackage,
 											semanticNode);
 								       
@@ -179,23 +180,23 @@ public class CreateUmlTreeStructure extends ExtensibleViewPartActionContribution
 		);
 	}
 
-	protected static Map<semanticmanager.Type, PrimitiveType> createPrimitiveTypes(org.eclipse.uml2.uml.Package package_){
-		Map<semanticmanager.Type, PrimitiveType> primitiveTypes = new HashMap<semanticmanager.Type, PrimitiveType>();
+	protected static Map<uam.extremo.core.Type, PrimitiveType> createPrimitiveTypes(org.eclipse.uml2.uml.Package package_){
+		Map<uam.extremo.core.Type, PrimitiveType> primitiveTypes = new HashMap<uam.extremo.core.Type, PrimitiveType>();
 		
-		PrimitiveType booleanType = (PrimitiveType) package_.createOwnedPrimitiveType(semanticmanager.Type.BOOLEAN.getLiteral());
-		primitiveTypes.put(semanticmanager.Type.BOOLEAN, booleanType);
+		PrimitiveType booleanType = (PrimitiveType) package_.createOwnedPrimitiveType(uam.extremo.core.Type.BOOLEAN.getLiteral());
+		primitiveTypes.put(uam.extremo.core.Type.BOOLEAN, booleanType);
 		
-		PrimitiveType stringType = (PrimitiveType) package_.createOwnedPrimitiveType(semanticmanager.Type.STRING.getLiteral());
-		primitiveTypes.put(semanticmanager.Type.STRING, stringType);
+		PrimitiveType stringType = (PrimitiveType) package_.createOwnedPrimitiveType(uam.extremo.core.Type.STRING.getLiteral());
+		primitiveTypes.put(uam.extremo.core.Type.STRING, stringType);
 		
-		PrimitiveType intType = (PrimitiveType) package_.createOwnedPrimitiveType(semanticmanager.Type.INT.getLiteral());
-		primitiveTypes.put(semanticmanager.Type.INT, intType);
+		PrimitiveType intType = (PrimitiveType) package_.createOwnedPrimitiveType(uam.extremo.core.Type.INT.getLiteral());
+		primitiveTypes.put(uam.extremo.core.Type.INT, intType);
 		
-		PrimitiveType floatType = (PrimitiveType) package_.createOwnedPrimitiveType(semanticmanager.Type.FLOAT.getLiteral());
-		primitiveTypes.put(semanticmanager.Type.FLOAT, floatType);
+		PrimitiveType floatType = (PrimitiveType) package_.createOwnedPrimitiveType(uam.extremo.core.Type.FLOAT.getLiteral());
+		primitiveTypes.put(uam.extremo.core.Type.FLOAT, floatType);
 		
-		PrimitiveType doubleType = (PrimitiveType) package_.createOwnedPrimitiveType(semanticmanager.Type.DOUBLE.getLiteral());
-		primitiveTypes.put(semanticmanager.Type.DOUBLE, doubleType);
+		PrimitiveType doubleType = (PrimitiveType) package_.createOwnedPrimitiveType(uam.extremo.core.Type.DOUBLE.getLiteral());
+		primitiveTypes.put(uam.extremo.core.Type.DOUBLE, doubleType);
 		
 		return primitiveTypes;
 	}

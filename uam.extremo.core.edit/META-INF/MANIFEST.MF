@@ -14,6 +14,6 @@ Require-Bundle: fr.inria.atlanmod.neoemf.core;bundle-version="1.0.2",
  org.eclipse.emf.edit;bundle-version="2.12.0",
  uam.extremo.core;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
-Import-Package: semanticmanager,
- semanticmanager.impl,
- semanticmanager.util
+Import-Package: uam.extremo.core,
+ uam.extremo.core.impl,
+ uam.extremo.core.util
