@@ -1,4 +1,5 @@
 language: java
+install: true
 env:
   global:
     - secure: "JQ468JXdFyFs5SSRuznKWFTHhUxTfzbN38DYZyRPWVRtifLZt/jFfYKa1Ugm2GS30kpy9RyGV3iCIuQaNquJPVT75TMwMIsu8wopVC8hLs403IkDDQrQ6q0FSG01BPO/j+pofOxGsSJCNbaPFDY4jx5hvKXiSWLQ6aCyuJ+AiKUbhearhKpBEaLlahADbhN1zMffD77lKBsUFsq+lMtsfRrNYR5aTvdje9mtUxhDYYllJNrQS+KxTKtAHyl59+WnRXD2VuT0aHqyE2Jgtuyq5F1+ty/eMAL6OZs9pETrpL50UXtncrOw8ku/xamcZ3DMslG6CvVAgNq4C8gVXx8JAXsfsSI+awKQcgOQ3wd7GPKgDVrfIfXrHBon3gXlk13PubJ5pXN0q2suCtSPQfc9vMhyz5R94zkamQnESSj7wOQL6CwPDyr4s2ZbvJ2emOcEJ5h4S2EDaVn+12TE6sqsxtv0GPAsagTHtaM9BDuVM23FQwgMkTU4ZUEYV/prPOrGbosWQGcl/9GwwXqginEhav/Z8/HuD7nmfUv3Xery/9d/5yVaqgWxx1ZMxulnzI5u5Vz2mzcKtzRFFACBC4f2wmUkE7+TuWKioIfJERujhtvdaj0Wi0iDO80LniawhXzESnjHHBfdANo1x+7Fyytnqv3n/iUkmiHjmzvMBNAa4b4="
@@ -11,7 +12,7 @@ env:
     - # ^^ GPG_PASSPHRASE
 
 install: mvn install -P !build-extras -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-script: mvn --settings .travis-settings.xml test -P !build-extras -B
+script: mvn --settings cd/mvnsettings.xml test -P !build-extras -B
 
 cache:
   directories:
