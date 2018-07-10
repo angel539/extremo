@@ -11,7 +11,7 @@ env:
     - # ^^ GPG_PASSPHRASE
 
 install: mvn install -P !build-extras -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-script: mvn test -P !build-extras -B
+script: mvn --settings .travis-settings.xml test -P !build-extras -B
 
 cache:
   directories:
