@@ -1,24 +1,16 @@
 sudo: false
-
 language: java
 
-env:  
-  global:
-    - DISPLAY=:99.0
-
-before_install:
-  - sh -e /etc/init.d/xvfb start - sleep 10
-
-jdk: oraclejdk8
+services:
+  - docker
 
 cache:
-  directories:
-  - $HOME/.m2
+    directories:
+        - "$HOME/.cache"
 
-install: true
-
-script:
-- mvn -Pnu -Pgui clean verify
-
-after_failure:
-- find -name "*.txt" | grep -F 'surefire-reports' | xargs cat
+deploy:
+    provider: script
+    script: "cp .travis.settings.xml $HOME/.m2/settings.xml && mvn deploy"
+    skip_cleanup: true
+    on:
+      tags: true
