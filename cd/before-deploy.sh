@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 if [ "$TRAVIS_BRANCH" = 'master' ] && [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
-    openssl aes-256-cbc -K $encrypted_46d5efca5ac9_key -iv $encrypted_46d5efca5ac9_iv -in codesigning.asc.enc -out codesigning.asc -d
-    gpg2 --fast-import cd/signingkey.asc
+    openssl aes-256-cbc -K $encrypted_SOME_key -iv $encrypted_SOME_iv -in cd/signingkey.asc.enc -out cd/signingkey.asc -d
+    gpg --fast-import cd/signingkey.asc
 fi
