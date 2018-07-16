@@ -1,9 +1,20 @@
 language: java
 
+jdk:
+  - oraclejdk8
+
+script: mvn --settings .travis/settings.xml clean  verify
+
 deploy:
-  provider: releases
-  api_key:
-    secure: hdsd5b3VIz0vX1D01lh8w6LlXGCMz3fNb3WI5aPndPHb4HCPpc+LiWpyHe9RGA02Y9yRfvYFVNsUaAhJH+Kubn1/IZlYqI05DrEVrp7oQgqkDvSW19+MJ+2fiTRfkwzRkvfmEVTu4yVY/NHXj29waUOx1RENRD2YJR7rvFTZaxJGgPNRLcmnW7mcn5RPfwGvr2cudiRg43gQ8fF6dA4H6Tt8DhewJQZKQrQbL3+f3E91B86raHhavQKCcea38kvUnQYl14UWnIn4ZyywJBW9AH79Zexw7zGlF8K//TWX8cyp2bfPltZcsvZQl4yZmPxXjCxNEl1rOh2sxgLsOoxcpadhr9+u0K5heTCXFUd/SMm1zMDX/gZrpUWh3wNa7x9+aQqozfaJaXiUvoog/UuaC40h0Ce0N09HKTfN5aEDkFa09CMjBq5YL3WHC5qyej8AZZHAc3g/YdHLRbX5vRc4P8GilCR6ryha/xtPBEJ9ZY93HofzV1XDuENsUohAnnGuYoHb4VCND/6FLNgtSt+TIut/dhfLkvntJF5xhSJO139g09vs3g8oRgEkxihnEupjOzWLW9kFma6RR2y1tqAI7i+iCthDqKRDtJyxihcD+vXnICg4AXzmqG7ObigfEMlCWp1Pyho6VekrZTltb1/QEm3oY5ZIqc/DBRa+raGmKbY=
-  file: extremo.jar
-  on:
-    repo: angel539/extremo
+  -
+    provider: script
+    script: .travis/deploy.sh
+    skip_cleanup: true
+    on:
+      repo: angel539/extremo
+      tags: true
+      jdk: oraclejdk8
+
+notifications:
+  email:
+    - Angel.MoraS@uam.es
