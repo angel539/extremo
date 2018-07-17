@@ -1,8 +1,7 @@
-before_install:
-  - openssl aes-256-cbc -K $encrypted_46d5efca5ac9_key -iv $encrypted_46d5efca5ac9_iv -in .config/pgp-public-keys.asc.enc -out .config/pgp-public-keys.asc -d
-  - openssl aes-256-cbc -K $encrypted_46d5efca5ac9_key -iv $encrypted_46d5efca5ac9_iv -in .config/pgp-private-keys.asc.enc -out .config/pgp-private-keys.asc -d
-  - openssl aes-256-cbc -K $encrypted_46d5efca5ac9_key -iv $encrypted_46d5efca5ac9_iv -in .config/pgp-ownertrust.asc.enc -out .config/pgp-ownertrust.asc -d
-
+#before_install:
+#  - openssl aes-256-cbc -K $encrypted_46d5efca5ac9_key -iv $encrypted_46d5efca5ac9_iv -in .config/pgp-public-keys.asc.enc -out .config/pgp-public-keys.asc -d
+#  - openssl aes-256-cbc -K $encrypted_46d5efca5ac9_key -iv $encrypted_46d5efca5ac9_iv -in .config/pgp-private-keys.asc.enc -out .config/pgp-private-keys.asc -d
+#  - openssl aes-256-cbc -K $encrypted_46d5efca5ac9_key -iv $encrypted_46d5efca5ac9_iv -in .config/pgp-ownertrust.asc.enc -out .config/pgp-ownertrust.asc -d
 install:
   - mvn install -P !build-extras -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
