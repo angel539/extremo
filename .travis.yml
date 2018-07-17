@@ -1,13 +1,12 @@
 before_install:
-  - echo $gpg_password | gpg2 --passphrase-fd 0 privatekeys.asc.gpg
-
+- openssl aes-256-cbc -K $encrypted_46d5efca5ac9_key -iv $encrypted_46d5efca5ac9_iv
+  -in secrets.gpg.enc -out secrets.gpg -d
+- echo $gpg_password | gpg2 --passphrase-fd 0 privatekeys.asc.gpg
 install:
 - mvn --settings settings.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true
   -B -V
-  
 script:
 - mvn clean deploy --settings settings.xml -DskipTests=true -B -U -Prelease
-
 env:
   global:
     secure: NDQsSQ7lvn1FSQpZEFeTZAoLLTAtHsTghZv+GsyqUR63gYlotNOV8nf8+qYumzgEd0unwSOv83nfAanDPrb5J1xtyR7hHXz65tkwxg0bI8efT1iQjso3T8iupCNwK5q7EN+R7vjfA9xGHaX6+4Tgu9G+Lx1/ma184y97Qd5J8mUesoVoyEu/HgSsx3ouyCdUWrJqaZk6TjZs/YISEuLBUYir0sbWxg9J26AaWMAIOYxciE83UcW9Gzh10nrM7gjvfdVfGYXSzjx6HTcpjCB71foS+0s3S0Z2f3aK/+QygRlxPIGTHi8LKRAJYQpUNTmpJo01kdZxt/yhgiV3udDPznIes3QA1caitGtUV8FRs4IGA2TXbCWIFrh2XzRQtJGHPl/R4EK3EtvIqVj0RDRF3Z2is4SyN5cvxO56haYx4T7GEAU8I8JtLG5oVIMEWUf/BzLgpJG1AXDwd1CwC3x6LzNPBKUzP0JH0o3MOmQKqp1/pjy1GbnzA+3ll5Ifd9aR8TsemmQ/uv5UAVZECFHIKNQQOY673Z2ByN+htmon+ZD18O95jEbTbAaNtlr27aCPf/2tJ+3jHUXhH8ghLDnNbFXnAckjKH0V7vL9Q0c5C6ccBfU2aZfineiMx3oMbHddeuDeHPMUbNT8+1TlGNYdaAd95hg2P79Hc6WZevRkqRE=
