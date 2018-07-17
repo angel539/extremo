@@ -2,6 +2,20 @@
 #  - openssl aes-256-cbc -K $encrypted_46d5efca5ac9_key -iv $encrypted_46d5efca5ac9_iv -in .config/pgp-public-keys.asc.enc -out .config/pgp-public-keys.asc -d
 #  - openssl aes-256-cbc -K $encrypted_46d5efca5ac9_key -iv $encrypted_46d5efca5ac9_iv -in .config/pgp-private-keys.asc.enc -out .config/pgp-private-keys.asc -d
 #  - openssl aes-256-cbc -K $encrypted_46d5efca5ac9_key -iv $encrypted_46d5efca5ac9_iv -in .config/pgp-ownertrust.asc.enc -out .config/pgp-ownertrust.asc -d
+os: linux
+sudo: false
+dist: trusty
+
+language: java
+jdk: oraclejdk8
+
+env:
+  global:
+    # SONATYPE_USERNAME
+  - secure: "NgYxuUr/E9m7rC+VJ3M/IJHzhfGYXiV8TTSMNrm6eKOMFY+K2A9Ixh4vAqOFlc/b6NUKLvRzlmetfMtphmX6OLaBADz0lpcb3kd7tTBzgwBqlZeZun2PSZ9st+/6snllhljzeYY/rbiKGkAzm8v9uMiGwFkFWFjADnwgq5qMLoxJQ19HTl+EAa/EEEmEp50zCxIDx9bpQgHBluTlxskRK/t/RNzP/YVPLHRupLrwJB6GoJXRTjmWYf8JyV9P+AICbIyIDak32ykjteKsoIIbh+/U2Nn2SxiitARS4BsXYBluwsQJJN6LiMEr17FK5XmGK8V8E/UOnTLtRdbffdb6WuInA9ibAJn/Dj2uUdr7SKCAzw1vIEiblHJndMG2YOBLKEldqdYZuEP/pSFyy/vYq+FdAA4AXGOvavSLjftWg+kMKfnHCkiF0szTHSSQd0hepZVOOyXoI3wBJVKv5OiF8aEMj38jPQ1Nh7srSZAydtwltfAvZjz8bqfrhSoJf0YXWxfSnC/l+aQXUZstBfkL2f8DVUGV7Iy38l6OQJwCUFPhnnL7+01wyOMfIBU/FgBoBC1NTzgnU43UZr7rNvUW6wMulYXBIGEYWRXg2/xLHWac98LBGlEiH7wlhm+sn7VvGKn1PTFSMR8ADkMTIGnHaqwuDTntoHRZgml5UYuKduI="
+    # SONATYPE_PASSWORD
+  - secure: "b62wNz36SQAcz7bjFRd/Qu8jY27TT0nTxPnlYeo9i9s6xdlNjGBLPKIbX2yWGSRJAL72vfq9+HVdWrpTYtKyuY5XfgDWxbTaRGcqtJOcCaMYMQiUIUzqIyujHBo+HtP4A/mIoCdXp8DHPGdHbfHEr+yMAOkDE2QPW+13O7PQsXvWt+WqTyEHvKuja+sNCDYpy0SMyPQVA+5vLE1zNseN8Yu2fa7RtFA5HlCwj0Ctoo6nBU3EXRZsBuUYOJ55O2Osmj8aR22WFb80fNWO6kdY2wjZDVwv0TghqI488r+IqLp7Hx2igQ29a3pn8pUV0OVDNkJK3OzomtGGqcCP8p8bXPJ5jON2fXmNxxC35DWczrS0+CgewWf+u7yHoYaafmLTPxGaw57NvjW9v1LvEqmWj0TQMlBkWZH2FTr008zv8kOjqsEwG5jqMDSi7du5P+hYo2jHm6JHOvn+1HtRO1C6HzL+K7KHyFsKNDVWSsdKJEGfk/KlUw1WtQSqhWbdTOwu4jq61RvrAbwVVhlcIy9f/skGyyinSMKQEm4SqVDB99rBan/iY/hhbDzFZ9MVLaOQPJo4YejMY4PDMcffq1eKVCU4vfc52+O0KwDiUw5UZcPS0d3cPGrq/A6vbPd07qJnpgKhLJ/CX3WKXq5zg1AaueKbcpSRy5HPVvUDnFKfPyw=" 
+
 install:
   - mvn install -P !build-extras -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
@@ -10,10 +24,3 @@ script:
 
 after_success:
   - bash .config/deploy.sh
-
-env:
-  global:
-    # SONATYPE_USERNAME
-  - secure: "NgYxuUr/E9m7rC+VJ3M/IJHzhfGYXiV8TTSMNrm6eKOMFY+K2A9Ixh4vAqOFlc/b6NUKLvRzlmetfMtphmX6OLaBADz0lpcb3kd7tTBzgwBqlZeZun2PSZ9st+/6snllhljzeYY/rbiKGkAzm8v9uMiGwFkFWFjADnwgq5qMLoxJQ19HTl+EAa/EEEmEp50zCxIDx9bpQgHBluTlxskRK/t/RNzP/YVPLHRupLrwJB6GoJXRTjmWYf8JyV9P+AICbIyIDak32ykjteKsoIIbh+/U2Nn2SxiitARS4BsXYBluwsQJJN6LiMEr17FK5XmGK8V8E/UOnTLtRdbffdb6WuInA9ibAJn/Dj2uUdr7SKCAzw1vIEiblHJndMG2YOBLKEldqdYZuEP/pSFyy/vYq+FdAA4AXGOvavSLjftWg+kMKfnHCkiF0szTHSSQd0hepZVOOyXoI3wBJVKv5OiF8aEMj38jPQ1Nh7srSZAydtwltfAvZjz8bqfrhSoJf0YXWxfSnC/l+aQXUZstBfkL2f8DVUGV7Iy38l6OQJwCUFPhnnL7+01wyOMfIBU/FgBoBC1NTzgnU43UZr7rNvUW6wMulYXBIGEYWRXg2/xLHWac98LBGlEiH7wlhm+sn7VvGKn1PTFSMR8ADkMTIGnHaqwuDTntoHRZgml5UYuKduI="
-    # SONATYPE_PASSWORD
-  - secure: "b62wNz36SQAcz7bjFRd/Qu8jY27TT0nTxPnlYeo9i9s6xdlNjGBLPKIbX2yWGSRJAL72vfq9+HVdWrpTYtKyuY5XfgDWxbTaRGcqtJOcCaMYMQiUIUzqIyujHBo+HtP4A/mIoCdXp8DHPGdHbfHEr+yMAOkDE2QPW+13O7PQsXvWt+WqTyEHvKuja+sNCDYpy0SMyPQVA+5vLE1zNseN8Yu2fa7RtFA5HlCwj0Ctoo6nBU3EXRZsBuUYOJ55O2Osmj8aR22WFb80fNWO6kdY2wjZDVwv0TghqI488r+IqLp7Hx2igQ29a3pn8pUV0OVDNkJK3OzomtGGqcCP8p8bXPJ5jON2fXmNxxC35DWczrS0+CgewWf+u7yHoYaafmLTPxGaw57NvjW9v1LvEqmWj0TQMlBkWZH2FTr008zv8kOjqsEwG5jqMDSi7du5P+hYo2jHm6JHOvn+1HtRO1C6HzL+K7KHyFsKNDVWSsdKJEGfk/KlUw1WtQSqhWbdTOwu4jq61RvrAbwVVhlcIy9f/skGyyinSMKQEm4SqVDB99rBan/iY/hhbDzFZ9MVLaOQPJo4YejMY4PDMcffq1eKVCU4vfc52+O0KwDiUw5UZcPS0d3cPGrq/A6vbPd07qJnpgKhLJ/CX3WKXq5zg1AaueKbcpSRy5HPVvUDnFKfPyw=" 
