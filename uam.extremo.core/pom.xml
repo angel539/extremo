@@ -10,7 +10,7 @@
   <parent>
     <groupId>io.github.angel539.extremo</groupId>
     <artifactId>extremo</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>uam.extremo.core</artifactId>

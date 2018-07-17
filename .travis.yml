@@ -11,11 +11,3 @@ env:
 script:
 - cd angel539/io.github.angel539
 - mvn clean verify
-
-deploy:
-  provider: releases
-  api_key:
-    secure: QhTmbdrPmHi6taNwFKg/IzpoA4LfhAqXYsA/ZlgaiQirfeshThm7/Dpdj/GYT5byOJo7mki3n+i4OcmzRa6Y7dYDSdwo3kSxhC2vvVMfqdM+DfQTOVDWjKV0sbvT5h1XrlGoxg4jYKAXYq2twMr17SxFdBLTvfFRXHUI0ippAvcx+ijudzsWoD+zekUh4AaVg0Q6mStcp/9NZvyVsYkvlc7bZsbkFDXkNNEKFKa/vHh006hdbttqJ7uWxUs/THDLnZE6M2iDrpCzirgAwY1TODWtTlG/9Pceu1Fex1VkbDMuArUxldw5GmXR5f+miCKxJdElIAmsWcqNeD1OdMPHk5DlPQXydNddKqEdUqu84FiuJumCQzqqozSuqokC+Hshy11N6DIPIJ2c2zLDvZF69v4zkURafyUqQ1rhgI5XZIeDgEQ+HKYV+vTryP2WWRr43R3OsbN0Vi8jgNnL4SFTa5hGbQT3U5de8sVnkPQNM+bXDOQXLJ33m2IvCl6PQlprubIUahVB8Jrr15WIeXrTGPq29PmJ2haAmPKXh3fqrl/+jwtLawYoD9+2JN9aAPCr+lqGRAmFgXbz1dPCkqg0QyVj4QCdm4c3I/In6t9jd2bYyj3/VvX2DM+H+WJ1UBDz9wxzWmR2/C/VuPux3OSVtYVC7EMKANRZEbGxI1w6HDo=
-  file: "/extremo/update-site/target/update-site-1.0.0-SNAPSHOT.zip"
-  on:
-    repo: angel539/extremo
