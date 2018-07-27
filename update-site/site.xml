@@ -3,7 +3,7 @@
    <description name="Extremo" url="http://angel539.github.io/extremo/update-site/">
       We propose an approach to provide modelling and meta-modelling assistance. The approach gathers heterogeneous information sources in various technological spaces, and represents them uniformly in a common data model. This enables their uniform querying, by means of an extensible mechanism, which can make use of services, e.g., for synonym search and word sense analysis. The query results can then be easily incorporated into the (meta-)model being built.
    </description>
-   <feature url="features/uam.extremo.features_1.0.0.201806181548.jar" id="uam.extremo.features" version="1.0.0.201806181548" patch="true">
+   <feature url="features/uam.extremo.features_1.0.0.201807271339.jar" id="uam.extremo.features" version="1.0.0.201807271339">
       <category name="Extremo"/>
    </feature>
    <category-def name="Extremo" label="Extremo"/>
