@@ -82,12 +82,16 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 			File file = this.owl_file.getParentFile();
 			AutoIRIMapper autoIRIMapper = new AutoIRIMapper(file, true);
 	        manager.addIRIMapper(autoIRIMapper);
+	        
+	        System.out.println("venga esto es nuevo");
 			
 	        if(!owl_file.isFile()){
+	        	 System.out.println("venga esto es nuevo 2");
 	        		return false;
 	        }
 	        else{
 	        		try {
+	        			 System.out.println("venga esto es nuevo 3");
 					ontology = manager.loadOntologyFromOntologyDocument(owl_file);
 				}
 				catch (OWLOntologyCreationException e) {
@@ -95,6 +99,8 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 				}
 	        }
 		}
+		
+		 System.out.println("venga esto es nuevo 4");
 		
 		reasoner = reasonerFactory.createReasoner(ontology);
 		owlClassesToSemanticNodes();
@@ -104,6 +110,8 @@ public class OntologiesAssistant extends FormatAssistant implements IFormatAssis
 	private void owlClassesToSemanticNodes() {
 		if(ontology != null){
 			for(OWLClass owlClass : ontology.getClassesInSignature(true)){
+				 System.out.println("venga esto es nuevo 5");
+				 
 				SemanticNode semanticNode = 
 						createSemanticNodeWithoutDescriptor(
 								owlClass.getIRI(), //original object as id
