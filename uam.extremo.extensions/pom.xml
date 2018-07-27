@@ -18,18 +18,12 @@
   <packaging>eclipse-plugin</packaging>
 
   <name>Extremo::Extensions</name>
-
    <dependencies>
     <dependency>
       <groupId>fr.inria.atlanmod.neoemf</groupId>
       <artifactId>neoemf-data-mapdb</artifactId>
     </dependency>
-    <dependency>
-    	<groupId>org.reflections</groupId>
-    	<artifactId>reflections</artifactId>
-    </dependency>
    </dependencies>
-
    <dependencyManagement>
     <dependencies>
       <dependency>
@@ -37,19 +31,6 @@
         <artifactId>neoemf-data-mapdb</artifactId>
         <version>1.0.2</version>
       </dependency>
-      <dependency>
-      	<groupId>org.reflections</groupId>
-      	<artifactId>reflections</artifactId>
-      	<version>0.9.11</version>
-      </dependency>
     </dependencies>
   </dependencyManagement>
-
-
-      
-
-
-
-
-
 </project>

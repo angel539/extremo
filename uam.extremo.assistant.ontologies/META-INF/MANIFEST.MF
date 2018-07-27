@@ -13,5 +13,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: uam.extremo.assistant.ontologies,
  uam.extremo.assistant.ontologies.internal;x-internal:=true
-Bundle-ClassPath: lib/owlapi-3.2.4.jar,
- .
+Bundle-ClassPath: .

@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import at.ac.tuwien.big.xmltext.util.MyEcoreUtil;
 
-
 public interface InstanceCreator  {
 	
 	InstanceCreator DEFAULT = new InstanceCreator() {

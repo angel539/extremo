@@ -22,5 +22,4 @@ Export-Package: at.ac.tuwien.big.XtextUtil.internal;x-internal:=true,
  at.ac.tuwien.big.XtextUtil.internal.net.ricecode.similarity;x-internal:=true,
  at.ac.tuwien.big.XtextUtil.internal.util;x-internal:=true,
  at.ac.tuwien.big.XtextUtil.internal.util.ui;x-internal:=true
-Bundle-ClassPath: lib/diffutils-1.2.jar,
- .
+Bundle-ClassPath: .

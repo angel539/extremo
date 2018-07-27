@@ -8,8 +8,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.emf.edit.ui,
  uam.extremo.core.edit,
- uam.extremo.extensions;bundle-version="1.0.0",
- org.apache.commons.io;bundle-version="2.2.0"
+ org.apache.commons.io;bundle-version="2.2.0",
+ uam.extremo.core;bundle-version="1.0.0",
+ uam.extremo.extensions;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: uam.extremo.ui.wizards,
@@ -20,6 +21,3 @@ Export-Package: uam.extremo.ui.wizards,
  uam.extremo.ui.wizards.dialogs.newresource,
  uam.extremo.ui.wizards.dialogs.searchnew
 Bundle-ClassPath: .
-Import-Package: uam.extremo.core,
- uam.extremo.core.impl,
- uam.extremo.core.util

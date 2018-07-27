@@ -7,7 +7,8 @@ Bundle-Activator: uam.extremo.ui.zest.views.Activator
 Require-Bundle: org.eclipse.zest.core;bundle-version="1.5.201",
  org.eclipse.zest.layouts;bundle-version="1.1.200",
  org.eclipse.emf.edit.ui,
- org.eclipse.emf.ecore
+ org.eclipse.emf.ecore,
+ uam.extremo.core;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: uam.extremo.ui.zest.actions,
@@ -15,5 +16,3 @@ Export-Package: uam.extremo.ui.zest.actions,
  uam.extremo.ui.zest.views,
  uam.extremo.ui.zest.views.inheritance
 Bundle-ClassPath: .
-Import-Package: uam.extremo.core,
- uam.extremo.core.impl

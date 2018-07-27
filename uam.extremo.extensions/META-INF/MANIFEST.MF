@@ -14,14 +14,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.workbench,
  org.eclipse.jface;bundle-version="3.11.1",
  org.eclipse.core.resources;bundle-version="3.10.1",
- org.apache.commons.io;bundle-version="2.2.0"
+ org.apache.commons.io;bundle-version="2.2.0",
+ uam.extremo.core;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: .,
- lib/reflections-0.9.11.jar
-Export-Package: uam.extremo.extensions,
- uam.extremo.extensions.internal.preferences,
- uam.extremo.extensions.internal.utils,
- uam.extremo.extensions.internal.wizard
-Import-Package: com.google.inject,
- uam.extremo.core
+Export-Package: uam.extremo.extensions
+Import-Package: com.google.inject
