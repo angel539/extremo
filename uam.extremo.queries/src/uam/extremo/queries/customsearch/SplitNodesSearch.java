@@ -1,32 +1,58 @@
+/*******************************************************************************
+ * Copyright (c) 2018 Universidad Autónoma de Madrid (Spain).
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ *
+ * This Source Code may also be made available under the following Secondary
+ * Licenses when the conditions for such availability set forth in the Eclipse
+ * Public License, v. 2.0 are satisfied: GNU General Public License, version 3.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR GPL-3.0
+ *
+ * Contributors:
+ * 				Ángel Mora Segura - implementation
+ ******************************************************************************/
 package uam.extremo.queries.customsearch;
 
-import uam.extremo.core.GroupedSearchResult;
-import uam.extremo.core.NamedElement;
-import uam.extremo.core.Resource;
-import uam.extremo.core.ResourceElement;
-import uam.extremo.core.SearchResult;
-import uam.extremo.core.SemanticGroup;
-import uam.extremo.core.SemanticNode;
-import uam.extremo.core.SemanticmanagerFactory;
-import uam.extremo.core.impl.ExtensibleCustomSearchImpl;
+import semanticmanager.GroupedSearchResult;
+import semanticmanager.NamedElement;
+import semanticmanager.Repository;
+import semanticmanager.Resource;
+import semanticmanager.ResourceElement;
+import semanticmanager.SearchParamValue;
+import semanticmanager.SearchResult;
+import semanticmanager.SemanticGroup;
+import semanticmanager.SemanticNode;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
+
 public class SplitNodesSearch extends ExtensibleCustomSearchImpl {
 	@Override
-	public void search(SearchResult result) {
+	public void init(EList<SearchParamValue> inputs) {
+	}
+	
+	@Override
+	public void search(Repository repository, SearchResult result) {
 		if (result instanceof GroupedSearchResult) {
 			GroupedSearchResult groupedSearchResult = (GroupedSearchResult) result;
-			Object option = groupedSearchResult.getOptionValue("resource");
-			if(option instanceof Resource){
-				Resource resource = (Resource) option;
-				for(NamedElement namedElement : groupedSearchResult.getApplyOnElements()){
-					if (namedElement instanceof Resource && namedElement.equals(resource)) {
-						preorder(groupedSearchResult, (Resource) namedElement);
-					}
+			TreeIterator<EObject> iterator = repository.eAllContents();
+			iterator.forEachRemaining(
+				e -> {
+					if(e instanceof Resource && ((Resource) e).getDescriptors().isEmpty()){
+						preorder(groupedSearchResult, (Resource) e);
+						iterator.prune();
+					}	
 				}
-			}
+			);
 		}	
 	}
 	
@@ -62,7 +88,7 @@ public class SplitNodesSearch extends ExtensibleCustomSearchImpl {
         	SemanticNode semanticNode = (SemanticNode) node;
 			if(semanticNode.getSupers() == null || semanticNode.getSupers().size() == 0){
 				if((semanticNode.getSubs() != null) && (semanticNode.getSubs().size() > 0)){
-					SemanticGroup group = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
+					SemanticGroup group = result.createSemanticGroup(node.getName(), node.getName());
 					group.getElements().addAll(getAllSubs(semanticNode));
 					result.getGroups().add(group);
 				}
@@ -74,5 +100,4 @@ public class SplitNodesSearch extends ExtensibleCustomSearchImpl {
         		preorderHelper(result, resourceElement);
         }
     }
-
 }

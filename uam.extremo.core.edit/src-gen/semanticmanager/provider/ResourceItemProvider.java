@@ -16,12 +16,12 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import uam.extremo.core.Resource;
-import uam.extremo.core.SemanticmanagerFactory;
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.Resource;
+import semanticmanager.SemanticmanagerFactory;
+import semanticmanager.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.Resource} object.
+ * This is the item provider adapter for a {@link semanticmanager.Resource} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -48,79 +48,12 @@ public class ResourceItemProvider extends ResourceElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addActivePropertyDescriptor(object);
-			addAlivePropertyDescriptor(object);
-			addAssistantPropertyDescriptor(object);
 			addUriPropertyDescriptor(object);
 			addDefaultConstraintInterpreterPropertyDescriptor(object);
+			addAssistantPropertyDescriptor(object);
+			addGuardSemanticNodesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Active feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addActivePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Resource_active_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Resource_active_feature", "_UI_Resource_type"),
-				 SemanticmanagerPackage.Literals.RESOURCE__ACTIVE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Alive feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAlivePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Resource_alive_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Resource_alive_feature", "_UI_Resource_type"),
-				 SemanticmanagerPackage.Literals.RESOURCE__ALIVE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Assistant feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAssistantPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Resource_assistant_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Resource_assistant_feature", "_UI_Resource_type"),
-				 SemanticmanagerPackage.Literals.RESOURCE__ASSISTANT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -159,6 +92,50 @@ public class ResourceItemProvider extends ResourceElementItemProvider {
 				 getString("_UI_Resource_defaultConstraintInterpreter_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Resource_defaultConstraintInterpreter_feature", "_UI_Resource_type"),
 				 SemanticmanagerPackage.Literals.RESOURCE__DEFAULT_CONSTRAINT_INTERPRETER,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Assistant feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAssistantPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Resource_assistant_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Resource_assistant_feature", "_UI_Resource_type"),
+				 SemanticmanagerPackage.Literals.RESOURCE__ASSISTANT,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Guard Semantic Nodes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addGuardSemanticNodesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Resource_guardSemanticNodes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Resource_guardSemanticNodes_feature", "_UI_Resource_type"),
+				 SemanticmanagerPackage.Literals.RESOURCE__GUARD_SEMANTIC_NODES,
 				 true,
 				 false,
 				 true,
@@ -235,10 +212,8 @@ public class ResourceItemProvider extends ResourceElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Resource.class)) {
-			case SemanticmanagerPackage.RESOURCE__ACTIVE:
-			case SemanticmanagerPackage.RESOURCE__ALIVE:
-			case SemanticmanagerPackage.RESOURCE__ASSISTANT:
 			case SemanticmanagerPackage.RESOURCE__URI:
+			case SemanticmanagerPackage.RESOURCE__ASSISTANT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case SemanticmanagerPackage.RESOURCE__RESOURCE_ELEMENTS:

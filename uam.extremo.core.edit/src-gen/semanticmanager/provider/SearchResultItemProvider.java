@@ -12,8 +12,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -23,12 +21,13 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import uam.extremo.core.SearchResult;
-import uam.extremo.core.SemanticmanagerFactory;
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.SearchResult;
+import semanticmanager.SemanticmanagerFactory;
+import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.provider.ExtremoEditPlugin;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.SearchResult} object.
+ * This is the item provider adapter for a {@link semanticmanager.SearchResult} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -62,31 +61,8 @@ public class SearchResultItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addApplyOnElementsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Apply On Elements feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addApplyOnElementsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SearchResult_applyOnElements_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SearchResult_applyOnElements_feature", "_UI_SearchResult_type"),
-				 SemanticmanagerPackage.Literals.SEARCH_RESULT__APPLY_ON_ELEMENTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

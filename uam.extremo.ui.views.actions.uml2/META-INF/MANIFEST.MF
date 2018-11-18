@@ -1,16 +1,15 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Uml2
-Bundle-SymbolicName: uam.extremo.ui.views.actions.uml2;singleton:=true
+Bundle-SymbolicName: uam.extremo.ui.extensions.actions;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: uam.extremo.ui.views.actions.uml2.Activator
+Bundle-Activator: uam.extremo.ui.extensions.actions.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.uml2.uml.resources,
  org.eclipse.uml2.uml.editor;bundle-version="5.1.0",
  uam.extremo.core;bundle-version="1.0.0",
- uam.extremo.ui.views.extensions
+ uam.extremo.ui.extensions;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
-Export-Package: uam.extremo.ui.views.actions.uml2,
- uam.extremo.ui.views.actions.uml2.action
+Export-Package: uam.extremo.ui.extensions.actions

@@ -14,11 +14,11 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import uam.extremo.core.PrimitiveTypeParamValue;
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.PrimitiveTypeParamValue;
+import semanticmanager.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.PrimitiveTypeParamValue} object.
+ * This is the item provider adapter for a {@link semanticmanager.PrimitiveTypeParamValue} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -46,7 +46,6 @@ public class PrimitiveTypeParamValueItemProvider extends SearchParamValueItemPro
 			super.getPropertyDescriptors(object);
 
 			addValuePropertyDescriptor(object);
-			addOptionPropertyDescriptor(object);
 			addCallsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -70,28 +69,6 @@ public class PrimitiveTypeParamValueItemProvider extends SearchParamValueItemPro
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Option feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PrimitiveTypeParamValue_option_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PrimitiveTypeParamValue_option_feature", "_UI_PrimitiveTypeParamValue_type"),
-				 SemanticmanagerPackage.Literals.PRIMITIVE_TYPE_PARAM_VALUE__OPTION,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}

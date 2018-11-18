@@ -1,15 +1,30 @@
+/*******************************************************************************
+ * Copyright (c) 2018 Universidad Autónoma de Madrid (Spain).
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ *
+ * This Source Code may also be made available under the following Secondary
+ * Licenses when the conditions for such availability set forth in the Eclipse
+ * Public License, v. 2.0 are satisfied: GNU General Public License, version 3.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR GPL-3.0
+ *
+ * Contributors:
+ * 				Ángel Mora Segura - implementation
+ ******************************************************************************/
 package uam.extremo.queries.predicatebasedsearch;
 
 import org.eclipse.emf.common.util.EList;
 
-import uam.extremo.core.DataProperty;
-import uam.extremo.core.NamedElement;
-import uam.extremo.core.PrimitiveTypeParamValue;
-import uam.extremo.core.Property;
-import uam.extremo.core.SearchParamValue;
-import uam.extremo.core.SemanticNode;
-import uam.extremo.core.Service;
-import uam.extremo.core.impl.ExtensiblePredicateBasedSearchImpl;
+import semanticmanager.impl.ExtensiblePredicateBasedSearchImpl;
+import semanticmanager.DataProperty;
+import semanticmanager.NamedElement;
+import semanticmanager.Property;
+import semanticmanager.SearchParamValue;
+import semanticmanager.SemanticNode;
+import semanticmanager.Service;
 
 public class SemanticNodeDataPropertiesValueSearch extends ExtensiblePredicateBasedSearchImpl {
 	Object optionvalue = null;
@@ -17,9 +32,8 @@ public class SemanticNodeDataPropertiesValueSearch extends ExtensiblePredicateBa
 	
 	@Override
 	public void init(EList<SearchParamValue> inputs) {
-		PrimitiveTypeParamValue option = (PrimitiveTypeParamValue) getOptionValue("value", inputs);
-		service = option.getCalls();
-		optionvalue = option.getValue();
+		optionvalue = getParamValue("value", inputs);
+		service = getServiceForParamValue("value", inputs);	
 	}
 	
 	@Override

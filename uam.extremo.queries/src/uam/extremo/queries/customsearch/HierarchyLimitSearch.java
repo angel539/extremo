@@ -1,88 +1,93 @@
+/*******************************************************************************
+ * Copyright (c) 2018 Universidad Autónoma de Madrid (Spain).
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ *
+ * This Source Code may also be made available under the following Secondary
+ * Licenses when the conditions for such availability set forth in the Eclipse
+ * Public License, v. 2.0 are satisfied: GNU General Public License, version 3.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR GPL-3.0
+ *
+ * Contributors:
+ * 				Ángel Mora Segura - implementation
+ ******************************************************************************/
 package uam.extremo.queries.customsearch;
 
-import java.util.Comparator;
-import java.util.Optional;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
-import uam.extremo.core.GroupedSearchResult;
-import uam.extremo.core.NamedElement;
-import uam.extremo.core.Resource;
-import uam.extremo.core.ResourceElement;
-import uam.extremo.core.SearchResult;
-import uam.extremo.core.SemanticGroup;
-import uam.extremo.core.SemanticNode;
-import uam.extremo.core.SemanticmanagerFactory;
-import uam.extremo.core.impl.ExtensibleCustomSearchImpl;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
+import semanticmanager.AtomicSearchResult;
+import semanticmanager.NamedElement;
+import semanticmanager.Repository;
+import semanticmanager.SearchParamValue;
+import semanticmanager.SearchResult;
+import semanticmanager.SemanticNode;
 
 public class HierarchyLimitSearch extends ExtensibleCustomSearchImpl {	
+	Object maxDepthOption = null;
+	
 	@Override
-	public void search(SearchResult result) {
-		if (result instanceof GroupedSearchResult) {
-			GroupedSearchResult groupedSearchResult = (GroupedSearchResult) result;
+	public void init(EList<SearchParamValue> inputs) {
+		maxDepthOption = getParamValue("maxdepth", inputs);
+	}
+	
+	@Override
+	public void search(Repository repository, SearchResult result) {
+		if (result instanceof AtomicSearchResult) {
+			AtomicSearchResult atomicSearchResult = (AtomicSearchResult) result;
 			
-			Object maxDepthOption = groupedSearchResult.getOptionValue("maxdepth");
-			int maxDepth = Integer.parseInt((String) maxDepthOption);
-			
-			for(NamedElement namedElement : groupedSearchResult.getApplyOnElements()){
-				if (namedElement instanceof Resource) {
-					Resource resource = (Resource) namedElement;
-					
-					SemanticGroup group = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
-					group.setName(resource.getName());
-					preorder(group, resource, maxDepth);
+			int maxDepth = -1;
+			if (maxDepthOption instanceof Integer) {
+				maxDepth = (int) maxDepthOption;
+			}
+			else{
+				if (maxDepthOption instanceof String){
+					maxDepth = Integer.parseInt((String) maxDepthOption);
 				}
+			}
+			
+			if(maxDepth >= 0){
+				final int maxDepthFinal = maxDepth;
+				
+				TreeIterator<EObject> iterator = repository.eAllContents();
+				iterator.forEachRemaining(
+					e -> {
+						if(e instanceof SemanticNode){
+							int maxD = maxDepth((SemanticNode) e);
+							
+							if(maxD >= maxDepthFinal){
+								atomicSearchResult.getElements().add((SemanticNode) e);
+							}
+							iterator.prune();
+						}
+					}
+				);
 			}
 		}
 	}
 	
-	public synchronized void preorder(SemanticGroup group, Resource resource, int maxDepth){
-        preorderHelper(group, resource, maxDepth);
-    }
-     
-    private void preorderHelper(SemanticGroup group, ResourceElement node, int maxDepth)
-    {
-        if(node == null)
-            return;
-        
-        if(node instanceof SemanticNode){
-        	SemanticNode semanticNode = (SemanticNode) node;
-			
-			int depthcount = depth(semanticNode);
-			
-			if(maxDepth > depthcount){
-				group.getElements().add(semanticNode);
-			}
-        }
-        
-        if(node instanceof Resource){
-        	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
-        		preorderHelper(group, resourceElement, maxDepth);
-        }
-    }
-	
-	private int depth(NamedElement node){
-		if (node.getSupers() == null) {
-			return 1;
-		}
-		else {
-			Optional optionalInteger = node.getSupers().stream().collect(
-					Collectors.maxBy(
-						new Comparator<NamedElement>() {
-							public int compare(NamedElement node1, NamedElement node2) {
-								int depth1 = (depth(node1) + 1);
-								int depth2 = (depth(node2) + 1);
-								
-								if(depth1 > depth2) 
-									return depth1;
-								else 
-									return depth2;
-							}
-						}
-					)
-			);
-			
-			Integer resultInteger = optionalInteger.isPresent() ? (int) optionalInteger.get() : 0;
-			return resultInteger;
-		}
-	}	
+	int maxDepth(NamedElement node){
+		 if ((node == null) || (node.getSupers() == null) || (node.getSupers().size() == 0))
+			 return 0;
+		 else{
+			 int[] depths = new int[node.getSupers().size()];
+			 
+			 for(int i = 0; i < node.getSupers().size(); i++){
+				 depths[i] = maxDepth(node.getSupers().get(i));
+			 }
+			 
+			 List<Integer> depthsList = Arrays.stream(depths).boxed().collect(Collectors.toList());
+			 return Collections.max(depthsList) + 1;
+		 }
+	 } 
 }

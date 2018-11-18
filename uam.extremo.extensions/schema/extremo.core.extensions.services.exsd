@@ -90,7 +90,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="semanticmanager.impl.ExtensibleServiceImpl:"/>
+                  <meta.attribute kind="java" basedOn="uam.extremo.core.impl.ExtensibleServiceImpl:"/>
                </appinfo>
             </annotation>
          </attribute>

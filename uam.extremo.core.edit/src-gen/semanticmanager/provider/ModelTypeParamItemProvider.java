@@ -14,11 +14,11 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import uam.extremo.core.ModelTypeParam;
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.ModelTypeParam;
+import semanticmanager.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.ModelTypeParam} object.
+ * This is the item provider adapter for a {@link semanticmanager.ModelTypeParam} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

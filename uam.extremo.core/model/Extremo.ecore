@@ -8,10 +8,14 @@
         eType="#//Repository" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="configurations" upperBound="-1"
         eType="#//SearchConfiguration" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="interpreters" upperBound="-1"
-        eType="#//ConstraintInterpreter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraintInterpreters"
+        upperBound="-1" eType="#//ConstraintInterpreter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
         eType="#//Service" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="formatAssistants" upperBound="-1"
+        eType="#//FormatAssistant" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelPersistences" upperBound="-1"
+        eType="#//ModelPersistence" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Constraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -24,7 +28,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="interpreter" eType="#//ConstraintInterpreter"
         eOpposite="#//ConstraintInterpreter/constraints"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConstraintInterpreter">
+  <eClassifiers xsi:type="ecore:EClass" name="ConstraintInterpreter" abstract="true">
     <eOperations name="eval" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="constraint" eType="#//Constraint"/>
       <eParameters name="namedElement" eType="#//NamedElement"/>
@@ -49,15 +53,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SearchResult" abstract="true">
-    <eOperations name="getOptionValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
-      <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
         eType="#//SearchParamValue" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//SearchConfiguration"
         eOpposite="#//SearchConfiguration/results"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="applyOnElements" upperBound="-1"
-        eType="#//NamedElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SearchParamValue" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="SearchConfiguration" abstract="true">
@@ -66,6 +65,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="results" upperBound="-1"
         eType="#//SearchResult" containment="true" eOpposite="#//SearchResult/configuration"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SimpleSearchConfiguration" abstract="true"
       eSuperTypes="#//SearchConfiguration">
@@ -79,18 +79,27 @@
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="type" eType="#//DataModelType"/>
     </eOperations>
+    <eOperations name="init">
+      <eParameters name="inputs" upperBound="-1" eType="#//SearchParamValue"/>
+    </eOperations>
+    <eOperations name="getParamValue" eType="#//JavaObject">
+      <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="inputs" upperBound="-1" eType="#//SearchParamValue"/>
+    </eOperations>
+    <eOperations name="getServiceForParamValue" eType="#//Service">
+      <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="inputs" upperBound="-1" eType="#//SearchParamValue"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="options" upperBound="-1"
         eType="#//SearchParam" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterBy" eType="#//DataModelType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompositeSearchConfiguration" eSuperTypes="#//SearchConfiguration">
     <eOperations name="search">
       <eParameters name="result" eType="#//SearchResult"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ConnectionType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//CompositeSearchConfiguration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="searchConfigurations" upperBound="-1"
+        eType="#//SearchConfiguration" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputSearchResults" upperBound="-1"
         eType="#//SearchResult"/>
   </eClassifiers>
@@ -105,7 +114,7 @@
     <eLiterals name="DataProperty" value="2"/>
     <eLiterals name="ObjectProperty" value="3"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Service">
+  <eClassifiers xsi:type="ecore:EClass" name="Service" abstract="true">
     <eOperations name="matches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="expression" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -115,22 +124,17 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterBy" eType="#//Type"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomSearch" eSuperTypes="#//SimpleSearchConfiguration">
+  <eClassifiers xsi:type="ecore:EClass" name="CustomSearch" abstract="true" eSuperTypes="#//SimpleSearchConfiguration">
     <eOperations name="search">
+      <eParameters name="repository" eType="#//Repository"/>
       <eParameters name="result" eType="#//SearchResult"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="grouped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PredicateBasedSearch" eSuperTypes="#//SimpleSearchConfiguration">
+  <eClassifiers xsi:type="ecore:EClass" name="PredicateBasedSearch" abstract="true"
+      eSuperTypes="#//SimpleSearchConfiguration">
     <eOperations name="matches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="namedElement" lowerBound="1" eType="#//NamedElement"/>
-    </eOperations>
-    <eOperations name="getOptionValueKey" eType="#//JavaObject">
-      <eParameters name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="inps" upperBound="-1" eType="#//SearchParamValue"/>
-    </eOperations>
-    <eOperations name="init">
-      <eParameters name="inputs" upperBound="-1" eType="#//SearchParamValue"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicSearchResult" eSuperTypes="#//SearchResult">
@@ -142,25 +146,9 @@
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="addSemanticNodeToSemanticGroup">
-      <eParameters name="semanticGroup" eType="#//SemanticGroup"/>
-      <eParameters name="semanticNode" eType="#//SemanticNode"/>
-    </eOperations>
-    <eOperations name="addDataPropertyToSemanticGroup">
-      <eParameters name="semanticGroup" eType="#//SemanticGroup"/>
-      <eParameters name="dataProperty" eType="#//DataProperty"/>
-    </eOperations>
-    <eOperations name="addObjectPropertyToSemanticGroup">
-      <eParameters name="semanticGroup" eType="#//SemanticGroup"/>
-      <eParameters name="objectProperty" eType="#//ObjectProperty"/>
-    </eOperations>
     <eOperations name="addNamedElementToSemanticGroup">
       <eParameters name="semanticGroup" eType="#//SemanticGroup"/>
       <eParameters name="namedElement" eType="#//NamedElement"/>
-    </eOperations>
-    <eOperations name="addResourceToSemanticGroup">
-      <eParameters name="semanticGroup" eType="#//SemanticGroup"/>
-      <eParameters name="resource" eType="#//Resource"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
         eType="#//SemanticGroup" containment="true"/>
@@ -177,10 +165,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//ResourceElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assistant" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceElements" upperBound="-1"
         eType="#//ResourceElement" containment="true" eOpposite="#//ResourceElement/resourceFrom"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -188,6 +172,9 @@
         eOpposite="#//Repository/resources"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="defaultConstraintInterpreter"
         eType="#//ConstraintInterpreter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assistant" eType="#//FormatAssistant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="guardSemanticNodes" upperBound="-1"
+        eType="#//SemanticNode"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SemanticNode" eSuperTypes="#//ResourceElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
@@ -252,12 +239,53 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//DataModelType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelTypeParamValue" eSuperTypes="#//SearchParamValue">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="option" eType="#//ModelTypeParam"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//NamedElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PrimitiveTypeParamValue" eSuperTypes="#//SearchParamValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="option" eType="#//PrimitiveTypeParam"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="calls" eType="#//Service"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FormatAssistant" abstract="true">
+    <eOperations name="loadAndValidate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="resource" eType="#//Resource"/>
+      <eParameters name="constraintInterpreter" eType="#//ConstraintInterpreter"/>
+    </eOperations>
+    <eOperations name="toDataProperty">
+      <eParameters name="node" eType="#//SemanticNode"/>
+    </eOperations>
+    <eOperations name="toObjectProperty">
+      <eParameters name="node" eType="#//SemanticNode"/>
+    </eOperations>
+    <eOperations name="toSuper">
+      <eParameters name="node" eType="#//SemanticNode"/>
+    </eOperations>
+    <eOperations name="toSuper">
+      <eParameters name="dataProperty" eType="#//DataProperty"/>
+    </eOperations>
+    <eOperations name="toSuper">
+      <eParameters name="objectProperty" eType="#//ObjectProperty"/>
+    </eOperations>
+    <eOperations name="toInverseOf">
+      <eParameters name="objectProperty" eType="#//ObjectProperty"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extensions" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interpreter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraintInterpreter"
+        eType="#//ConstraintInterpreter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelPersistence" abstract="true">
+    <eOperations name="load" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="save" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="addContent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="repositoryManager" eType="#//RepositoryManager"/>
+    </eOperations>
+    <eOperations name="getContent" eType="#//RepositoryManager"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -10,17 +10,18 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import uam.extremo.core.CompositeSearchConfiguration;
-import uam.extremo.core.SemanticmanagerFactory;
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.CompositeSearchConfiguration;
+import semanticmanager.SemanticmanagerFactory;
+import semanticmanager.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.CompositeSearchConfiguration} object.
+ * This is the item provider adapter for a {@link semanticmanager.CompositeSearchConfiguration} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -51,36 +52,6 @@ public class CompositeSearchConfigurationItemProvider extends SearchConfiguratio
 			addInputSearchResultsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__CHILDREN);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -128,6 +99,36 @@ public class CompositeSearchConfigurationItemProvider extends SearchConfiguratio
 	}
 
 	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__SEARCH_CONFIGURATIONS);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This returns CompositeSearchConfiguration.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,7 +169,7 @@ public class CompositeSearchConfigurationItemProvider extends SearchConfiguratio
 			case SemanticmanagerPackage.COMPOSITE_SEARCH_CONFIGURATION__TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case SemanticmanagerPackage.COMPOSITE_SEARCH_CONFIGURATION__CHILDREN:
+			case SemanticmanagerPackage.COMPOSITE_SEARCH_CONFIGURATION__SEARCH_CONFIGURATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -188,7 +189,8 @@ public class CompositeSearchConfigurationItemProvider extends SearchConfiguratio
 
 		newChildDescriptors.add
 			(createChildParameter
-				(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__CHILDREN,
+				(SemanticmanagerPackage.Literals.COMPOSITE_SEARCH_CONFIGURATION__SEARCH_CONFIGURATIONS,
 				 SemanticmanagerFactory.eINSTANCE.createCompositeSearchConfiguration()));
-	}	
+	}
+
 }

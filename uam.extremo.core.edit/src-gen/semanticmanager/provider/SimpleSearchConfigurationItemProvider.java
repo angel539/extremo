@@ -10,18 +10,15 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import uam.extremo.core.SemanticmanagerFactory;
-import uam.extremo.core.SemanticmanagerPackage;
-import uam.extremo.core.SimpleSearchConfiguration;
+import semanticmanager.SemanticmanagerFactory;
+import semanticmanager.SemanticmanagerPackage;
+import semanticmanager.SimpleSearchConfiguration;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.SimpleSearchConfiguration} object.
+ * This is the item provider adapter for a {@link semanticmanager.SimpleSearchConfiguration} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -48,54 +45,8 @@ public class SimpleSearchConfigurationItemProvider extends SearchConfigurationIt
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDescriptionPropertyDescriptor(object);
-			addFilterByPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Description feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimpleSearchConfiguration_description_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimpleSearchConfiguration_description_feature", "_UI_SimpleSearchConfiguration_type"),
-				 SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Filter By feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addFilterByPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SimpleSearchConfiguration_filterBy_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SimpleSearchConfiguration_filterBy_feature", "_UI_SimpleSearchConfiguration_type"),
-				 SemanticmanagerPackage.Literals.SIMPLE_SEARCH_CONFIGURATION__FILTER_BY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -155,10 +106,6 @@ public class SimpleSearchConfigurationItemProvider extends SearchConfigurationIt
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SimpleSearchConfiguration.class)) {
-			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION__DESCRIPTION:
-			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION__FILTER_BY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case SemanticmanagerPackage.SIMPLE_SEARCH_CONFIGURATION__OPTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

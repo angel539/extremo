@@ -18,14 +18,12 @@ import difflib.Patch;
 import difflib.myers.MyersDiff;
 
 public class DocumentChanger {
-
 	  public static List<Character> asList(final String string) {
 	        return new AbstractList<Character>() {
 	            public int size() { return string.length(); }
 	            public Character get(int index) { return string.charAt(index); }
 	        };
 	    }
-	  
 	  
 	  public static void modify(String oldContent, String newContent, IXtextDocument doc) {
 			List<String> oldLines = Arrays.asList(oldContent.split("\n"));
@@ -36,7 +34,6 @@ public class DocumentChanger {
 			int curCharPos = 0;
 			for (Delta delta: patch.getDeltas()) {
 				//int originalDiffLine = delta.getOriginal().getPosition()+1;
-				
 				Chunk original = delta.getOriginal();
 				Chunk revised = delta.getRevised();
 				while (curLinePos < revised.getPosition()) {
@@ -56,7 +53,7 @@ public class DocumentChanger {
 		            for (Delta strDelta : strDeltas) {
 		            	int advance = strDelta.getOriginal().getPosition()-curSubPos;
 		            	curCharPos+= advance;
-		            	curSubPos = strDelta.getOriginal().getPosition()+strDelta.getOriginal().getSize();
+		            	curSubPos = strDelta.getOriginal().getPosition()+strDelta.getOriginal().size();
 		            	List<Character> newChars = (List<Character>)strDelta.getRevised().getLines();
 		            	StringBuilder builder = new StringBuilder();
 		            	for (Character c: newChars) {
@@ -64,14 +61,14 @@ public class DocumentChanger {
 		            	}
 		            	String buildStr = builder.toString();
 		            	try {
-								doc.replace(curCharPos, strDelta.getOriginal().getSize(), buildStr);
+								doc.replace(curCharPos, strDelta.getOriginal().size(), buildStr);
 							} catch (BadLocationException e) {
 								e.printStackTrace();
 							}
 		                curCharPos+= buildStr.length();
 		            }
 		            curCharPos+= start.size()+1-curSubPos;
-		            if (oldCharPos + revised.getSize()+1 != curCharPos) {
+		            if (oldCharPos + revised.size()+1 != curCharPos) {
 		            	System.err.println();
 		            }
 

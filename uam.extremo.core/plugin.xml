@@ -4,18 +4,19 @@
 <!--
 -->
 <plugin>
+   <extension
+         point="org.eclipse.emf.ecore.factory_override">
+      <factory
+            class="semanticmanager.impl.ExtendedSemanticmanagerFactoryImpl"
+            uri="http://www.core.extremo/SemanticManager">
+      </factory>
+   </extension>
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Extremo -->
       <package
             uri="http://www.core.extremo/SemanticManager"
-            class="uam.extremo.core.SemanticmanagerPackage"
+            class="semanticmanager.SemanticmanagerPackage"
             genModel="model/Extremo.genmodel"/>
    </extension>
-   <extension
-         point="org.eclipse.emf.ecore.factory_override">
-      <factory
-            class="uam.extremo.core.impl.ExtendedSemanticmanagerFactoryImpl"
-            uri="http://www.core.extremo/SemanticManager">
-      </factory>
-   </extension>
+
 </plugin>

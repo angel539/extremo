@@ -42,13 +42,14 @@ public class PatchUtil {
 		for (Delta delta: patch.getDeltas()) {
 			System.out.println("Deltas: "+Arrays.toString(delta.getOriginal().getLines().toArray())+ " ==> "+Arrays.toString(delta.getRevised().getLines().toArray()));
 		}
+		
 		for (Delta delta: patch.getDeltas()) {
 			System.out.println("Delta: "+Arrays.toString(delta.getOriginal().getLines().toArray())+ " ==> "+Arrays.toString(delta.getRevised().getLines().toArray()));
 			Chunk original = delta.getOriginal();
 			Chunk revised = delta.getRevised();
 			int newPos = revised.getPosition();			
 			//Set the first elements
-			int common = Math.min(original.getSize(),revised.getSize());
+			int common = Math.min(original.size(),revised.size());
 			for (int i = 0; i < common; ++i) {
 				if (source instanceof AbstractEList) {
 					((AbstractEList) source).setUnique(newPos+i, (T)revised.getLines().get(i));
@@ -58,11 +59,11 @@ public class PatchUtil {
 				System.out.println("Set["+(newPos+i)+"] = "+revised.getLines().get(i));
 			}
 			//Remove all others - das passt vielleicht nicht!
-			for (int i = common; i < original.getSize(); ++i) {
+			for (int i = common; i < original.size(); ++i) {
 				source.remove(common+newPos);
 				System.out.println("Remove["+(newPos+common)+"]");
 			}
-			for (int i = revised.getSize()-1; i >= common; --i) {
+			for (int i = revised.size()-1; i >= common; --i) {
 				//Irgendwie muss ich beim Listenadd so etwas haben
 				//das die "richtige" Border nimmt
 				System.out.println("Add to ["+(newPos+common)+"]: "+revised.getLines().get(i));

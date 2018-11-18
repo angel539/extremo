@@ -8,8 +8,6 @@ import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-import uam.extremo.extensions.AssistantFactory;
-
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -52,7 +50,7 @@ public class Activator extends AbstractUIPlugin{
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);        
-		AssistantFactory.getInstance().save();
+		//AssistantFactory.getInstance().save();
 	}
 
 	/**

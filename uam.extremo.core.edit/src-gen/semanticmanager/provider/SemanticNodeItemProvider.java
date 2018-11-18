@@ -16,12 +16,12 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import uam.extremo.core.SemanticNode;
-import uam.extremo.core.SemanticmanagerFactory;
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.SemanticNode;
+import semanticmanager.SemanticmanagerFactory;
+import semanticmanager.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.SemanticNode} object.
+ * This is the item provider adapter for a {@link semanticmanager.SemanticNode} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

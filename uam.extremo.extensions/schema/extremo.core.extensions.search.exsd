@@ -73,7 +73,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="semanticmanager.impl.ExtensibleCustomSearchImpl:"/>
+                  <meta.attribute kind="java" basedOn="uam.extremo.core.impl.ExtensibleCustomSearchImpl:"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -90,27 +90,6 @@
                   
                </documentation>
             </annotation>
-         </attribute>
-         <attribute name="filterBy">
-            <annotation>
-               <documentation>
-                  
-               </documentation>
-            </annotation>
-            <simpleType>
-               <restriction base="string">
-                  <enumeration value="Repository">
-                  </enumeration>
-                  <enumeration value="Resource">
-                  </enumeration>
-                  <enumeration value="SemanticNode">
-                  </enumeration>
-                  <enumeration value="DataProperty">
-                  </enumeration>
-                  <enumeration value="ObjectProperty">
-                  </enumeration>
-               </restriction>
-            </simpleType>
          </attribute>
       </complexType>
    </element>
@@ -186,7 +165,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn="semanticmanager.impl.ExtensiblePredicateBasedSearchImpl:"/>
+                  <meta.attribute kind="java" basedOn="uam.extremo.core.impl.ExtensiblePredicateBasedSearchImpl:"/>
                </appinfo>
             </annotation>
          </attribute>

@@ -10,7 +10,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -22,11 +22,12 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import uam.extremo.core.ConstraintInterpreter;
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.ConstraintInterpreter;
+import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.provider.ExtremoEditPlugin;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.ConstraintInterpreter} object.
+ * This is the item provider adapter for a {@link semanticmanager.ConstraintInterpreter} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -236,15 +237,6 @@ public class ConstraintInterpreterItemProvider
 	@Override
 	public ResourceLocator getResourceLocator() {
 		return ExtremoEditPlugin.INSTANCE;
-	}
-	
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(SemanticmanagerPackage.Literals.CONSTRAINT_INTERPRETER__EVALS);
-		}
-		return childrenFeatures;
 	}
 
 }

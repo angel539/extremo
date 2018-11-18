@@ -1,24 +1,23 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Queries
-Bundle-SymbolicName: uam.extremo.queries;singleton:=true
+Bundle-SymbolicName: uam.extremo.extensions.queries;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: uam.extremo.queries.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  fr.inria.atlanmod.neoemf.core;bundle-version="1.0.2",
- org.apache.commons.lang3;bundle-version="3.1.0"
+ org.apache.commons.lang3;bundle-version="3.1.0",
+ uam.extremo.core;bundle-version="1.0.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ lib/jaws-bin.jar,
+ dict/
 Export-Package: uam.extremo.queries,
  uam.extremo.queries.customsearch,
  uam.extremo.queries.predicatebasedsearch,
- uam.extremo.queries.predicatebasedsearch.types,
- uam.extremo.queries.services.stemmer,
  uam.extremo.queries.services.utils,
- uam.extremo.queries.services.wordnet,
- uam.extremo.queries.utils,
  uam.extremo.services
-Import-Package: uam.extremo.core,
- uam.extremo.core.impl

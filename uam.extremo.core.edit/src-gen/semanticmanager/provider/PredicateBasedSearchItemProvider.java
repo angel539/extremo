@@ -8,12 +8,13 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import uam.extremo.core.PredicateBasedSearch;
+import semanticmanager.PredicateBasedSearch;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.PredicateBasedSearch} object.
+ * This is the item provider adapter for a {@link semanticmanager.PredicateBasedSearch} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -25,7 +26,6 @@ public class PredicateBasedSearchItemProvider extends SimpleSearchConfigurationI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
 	public PredicateBasedSearchItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}

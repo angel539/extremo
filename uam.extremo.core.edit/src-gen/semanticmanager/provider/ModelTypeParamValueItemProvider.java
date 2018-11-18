@@ -12,10 +12,10 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.SemanticmanagerPackage;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.ModelTypeParamValue} object.
+ * This is the item provider adapter for a {@link semanticmanager.ModelTypeParamValue} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -42,32 +42,9 @@ public class ModelTypeParamValueItemProvider extends SearchParamValueItemProvide
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOptionPropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Option feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ModelTypeParamValue_option_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModelTypeParamValue_option_feature", "_UI_ModelTypeParamValue_type"),
-				 SemanticmanagerPackage.Literals.MODEL_TYPE_PARAM_VALUE__OPTION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

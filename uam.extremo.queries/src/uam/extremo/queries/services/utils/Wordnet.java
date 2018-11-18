@@ -10,61 +10,30 @@
  *******************************************************************************/
 package uam.extremo.queries.services.utils;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
-import org.osgi.framework.Bundle;
-
+//import org.eclipse.core.runtime.FileLocator;
+//import org.eclipse.core.runtime.IPath;
+//import org.eclipse.core.runtime.Path;
+//import org.eclipse.core.runtime.Platform;
+//import org.osgi.framework.Bundle;
 import edu.smu.tspell.wordnet.Synset;
 import edu.smu.tspell.wordnet.SynsetType;
 import edu.smu.tspell.wordnet.WordNetDatabase;
 import edu.smu.tspell.wordnet.WordSense;
-import uam.extremo.queries.services.wordnet.Activator;
+import uam.extremo.queries.Activator;
 
 public class Wordnet{
 	private WordNetDatabase database = null;
-	private static Wordnet INSTANCE = null;
-   
-	   public Wordnet(){
-		   super();
-		   
-		   String wordnet_location = getPathDict();
-		   System.setProperty("wordnet.database.dir", wordnet_location);
-		   database = WordNetDatabase.getFileInstance();
-	   }
-   
-   private static String getPathDict(){
-	   Bundle plugin = Platform.getBundle(Activator.PLUGIN_ID);
-	   IPath relativeIPath = new Path("dict" + File.separator);	
-	   
-	   URL fileInPlugin = FileLocator.find(plugin, relativeIPath, null);
-	   URL srcUrl;
-		try {
-			srcUrl = FileLocator.toFileURL(fileInPlugin);
-			File src = new File(srcUrl.getPath());	
-			return src.getPath();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-   }
-   
-   public WordNetDatabase getDatabase() {
-       return database;
-   }
-
-   public void setDatabase(WordNetDatabase database) {
-       this.database = database;
-   }
+	
+	public Wordnet(){
+		super();
+		System.setProperty("wordnet.database.dir", Activator.getPath("dict"));
+		database = WordNetDatabase.getFileInstance();
+	}
    
    public List<String> getDefinitions(String concept){
 	   List<String> definitions = new ArrayList<String>();
@@ -74,7 +43,10 @@ public class Wordnet{
 		   for (int i = 0; i < synsets.length; i++){
 			   definitions.add(synsets[i].getDefinition());
 		   }
-	   }else return null;
+	   }
+	   else
+		   return null;
+	   
 	   return definitions;
    }
    
@@ -94,6 +66,7 @@ public class Wordnet{
 		   
 		   Tuple<String[], String[]> wordformsAndExamples = new Tuple<String[], String[]>(synset.getWordForms(), synset.getUsageExamples(), tagCount);
 		   synonyms.put(synset.getDefinition(), wordformsAndExamples);
+		   System.out.println("tag counts for " + concept + ">><" + tagCount + ":::" + concept);
 	   }
 	   
 	   return synonyms;
@@ -178,32 +151,4 @@ public class Wordnet{
 	   
 	   return false;
    }
-   
-   private static void createInstance() {
-	   	 if (INSTANCE == null) {
-	   		 synchronized(Wordnet.class) {
-	   			 if (INSTANCE == null) {
-
-	   				 
-	   				 INSTANCE = new Wordnet();
-	   			 }
-	   		 }
-	     }
-	}
-
-	public static Wordnet getInstance() {
-	    if (INSTANCE == null){
-	    	createInstance();
-	    }
-	    return INSTANCE;
-	}
-	
-	public Object clone() throws CloneNotSupportedException {
-		throw new CloneNotSupportedException(); 
-	}
-	
-	public static void main(String [] args){
-		List<String> results = Wordnet.getInstance().getMeanings("bank");
-		for(int i = 0; i < results.size(); i++) System.out.println("--" + i + "____" + results.get(i));
-	}
 }

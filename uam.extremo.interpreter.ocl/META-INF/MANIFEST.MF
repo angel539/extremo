@@ -1,15 +1,15 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Ocl
-Bundle-SymbolicName: uam.extremo.interpreter.ocl;singleton:=true
+Bundle-SymbolicName: uam.extremo.extensions.contraintinterpreters;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: uam.extremo.interpreter.ocl.Activator
+Bundle-Activator: uam.extremo.extensions.constraintinterpreters.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
  fr.inria.atlanmod.neoemf.core;bundle-version="1.0.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Import-Package: uam.extremo.core,
- uam.extremo.core.impl
-Export-Package: uam.extremo.interpreter.ocl
+Import-Package: semanticmanager,
+ semanticmanager.impl
+Export-Package: uam.extremo.extensions.constraintinterpreters.ocl

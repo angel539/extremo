@@ -24,12 +24,13 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import uam.extremo.core.SearchConfiguration;
-import uam.extremo.core.SemanticmanagerFactory;
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.SearchConfiguration;
+import semanticmanager.SemanticmanagerFactory;
+import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.provider.ExtremoEditPlugin;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.SearchConfiguration} object.
+ * This is the item provider adapter for a {@link semanticmanager.SearchConfiguration} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -65,6 +66,7 @@ public class SearchConfigurationItemProvider
 
 			addIdPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -105,6 +107,28 @@ public class SearchConfigurationItemProvider
 				 getString("_UI_SearchConfiguration_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SearchConfiguration_name_feature", "_UI_SearchConfiguration_type"),
 				 SemanticmanagerPackage.Literals.SEARCH_CONFIGURATION__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SearchConfiguration_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SearchConfiguration_description_feature", "_UI_SearchConfiguration_type"),
+				 SemanticmanagerPackage.Literals.SEARCH_CONFIGURATION__DESCRIPTION,
 				 true,
 				 false,
 				 false,
@@ -172,6 +196,7 @@ public class SearchConfigurationItemProvider
 		switch (notification.getFeatureID(SearchConfiguration.class)) {
 			case SemanticmanagerPackage.SEARCH_CONFIGURATION__ID:
 			case SemanticmanagerPackage.SEARCH_CONFIGURATION__NAME:
+			case SemanticmanagerPackage.SEARCH_CONFIGURATION__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case SemanticmanagerPackage.SEARCH_CONFIGURATION__RESULTS:

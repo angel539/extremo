@@ -22,12 +22,13 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import uam.extremo.core.RepositoryManager;
-import uam.extremo.core.SemanticmanagerFactory;
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.RepositoryManager;
+import semanticmanager.SemanticmanagerFactory;
+import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.provider.ExtremoEditPlugin;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.RepositoryManager} object.
+ * This is the item provider adapter for a {@link semanticmanager.RepositoryManager} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -79,8 +80,10 @@ public class RepositoryManagerItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__REPOSITORIES);
 			childrenFeatures.add(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__CONFIGURATIONS);
-			childrenFeatures.add(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__INTERPRETERS);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__CONSTRAINT_INTERPRETERS);
 			childrenFeatures.add(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__SERVICES);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__FORMAT_ASSISTANTS);
+			childrenFeatures.add(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__MODEL_PERSISTENCES);
 		}
 		return childrenFeatures;
 	}
@@ -135,8 +138,10 @@ public class RepositoryManagerItemProvider
 		switch (notification.getFeatureID(RepositoryManager.class)) {
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__REPOSITORIES:
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__CONFIGURATIONS:
-			case SemanticmanagerPackage.REPOSITORY_MANAGER__INTERPRETERS:
+			case SemanticmanagerPackage.REPOSITORY_MANAGER__CONSTRAINT_INTERPRETERS:
 			case SemanticmanagerPackage.REPOSITORY_MANAGER__SERVICES:
+			case SemanticmanagerPackage.REPOSITORY_MANAGER__FORMAT_ASSISTANTS:
+			case SemanticmanagerPackage.REPOSITORY_MANAGER__MODEL_PERSISTENCES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -163,26 +168,6 @@ public class RepositoryManagerItemProvider
 			(createChildParameter
 				(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__CONFIGURATIONS,
 				 SemanticmanagerFactory.eINSTANCE.createCompositeSearchConfiguration()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__CONFIGURATIONS,
-				 SemanticmanagerFactory.eINSTANCE.createCustomSearch()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__CONFIGURATIONS,
-				 SemanticmanagerFactory.eINSTANCE.createPredicateBasedSearch()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__INTERPRETERS,
-				 SemanticmanagerFactory.eINSTANCE.createConstraintInterpreter()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SemanticmanagerPackage.Literals.REPOSITORY_MANAGER__SERVICES,
-				 SemanticmanagerFactory.eINSTANCE.createService()));
 	}
 
 	/**

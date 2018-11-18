@@ -22,11 +22,12 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import uam.extremo.core.MetaData;
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.MetaData;
+import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.provider.ExtremoEditPlugin;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.MetaData} object.
+ * This is the item provider adapter for a {@link semanticmanager.MetaData} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

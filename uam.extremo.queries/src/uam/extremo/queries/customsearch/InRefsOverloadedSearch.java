@@ -1,82 +1,71 @@
+/*******************************************************************************
+ * Copyright (c) 2018 Universidad Autónoma de Madrid (Spain).
+ * 
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ *
+ * This Source Code may also be made available under the following Secondary
+ * Licenses when the conditions for such availability set forth in the Eclipse
+ * Public License, v. 2.0 are satisfied: GNU General Public License, version 3.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR GPL-3.0
+ *
+ * Contributors:
+ * 				Ángel Mora Segura - implementation
+ ******************************************************************************/
 package uam.extremo.queries.customsearch;
 
-import java.util.Objects;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 
-import uam.extremo.core.GroupedSearchResult;
-import uam.extremo.core.NamedElement;
-import uam.extremo.core.ObjectProperty;
-import uam.extremo.core.Resource;
-import uam.extremo.core.ResourceElement;
-import uam.extremo.core.SearchResult;
-import uam.extremo.core.SemanticGroup;
-import uam.extremo.core.SemanticNode;
-import uam.extremo.core.SemanticmanagerFactory;
-import uam.extremo.core.impl.ExtensibleCustomSearchImpl;
+import semanticmanager.impl.ExtensibleCustomSearchImpl;
+import semanticmanager.AtomicSearchResult;
+import semanticmanager.Repository;
+import semanticmanager.SearchParamValue;
+import semanticmanager.SearchResult;
+import semanticmanager.SemanticNode;
 
 public class InRefsOverloadedSearch extends ExtensibleCustomSearchImpl {
+	Object maxRefsOption = null;
+	
 	@Override
-	public void search(SearchResult result) {
-		if (result instanceof GroupedSearchResult) {
-			GroupedSearchResult groupedSearchResult = (GroupedSearchResult) result;
-			Object maxRefsOption = groupedSearchResult.getOptionValue("maxrefs");
-			
-			int maxRefs = Integer.parseInt((String) maxRefsOption);
-			
-			for(NamedElement namedElement : groupedSearchResult.getApplyOnElements()){
-				if (namedElement instanceof Resource) {
-					Resource resource = (Resource) namedElement;
-					
-					SemanticGroup group = SemanticmanagerFactory.eINSTANCE.createSemanticGroup();
-					group.setName(resource.getName());
-					preorder(resource, group, resource, maxRefs);
+	public void init(EList<SearchParamValue> inputs) {
+		maxRefsOption = getParamValue("maxrefs", inputs);
+	}
+	
+	@Override
+	public void search(Repository repository, SearchResult result) {
+		if (result instanceof AtomicSearchResult) {
+			AtomicSearchResult atomicSearchResult = (AtomicSearchResult) result;
+			int maxRefs = -1;
+
+			if (maxRefsOption instanceof Integer) {
+				maxRefs = (int) maxRefsOption;
+			}
+			else{
+				if (maxRefsOption instanceof String){
+					maxRefs = Integer.parseInt((String) maxRefsOption);
 				}
+			}
+			
+			if(maxRefs >= 0){
+				final int maxRefsFinal = maxRefs;
+				
+				TreeIterator<EObject> iterator = repository.eAllContents();
+				iterator.forEachRemaining( // O(n) in general -> with pruning
+					e -> {
+						if(e instanceof SemanticNode){
+				        	SemanticNode range = (SemanticNode) e;
+				        	if(range.getDomain().size() >= maxRefsFinal){
+								atomicSearchResult.getElements().add(range);
+							}
+				        	iterator.prune(); // It skips over all the nodes below the most recent result of calling next().
+				        }
+					}
+				);
 			}
 		}
 	}
-	
-	public synchronized void preorder(Resource resource, SemanticGroup group, Resource node, int maxRefs){
-        preorderHelper(resource, group, node, maxRefs);
-    }
-     
-    private void preorderHelper(Resource resource, SemanticGroup group, ResourceElement node, int maxRefs)
-    {
-        if(node == null)
-            return;
-        
-        if(node instanceof SemanticNode){
-        	SemanticNode semanticNode = (SemanticNode) node;
-			
-        	int counter = 0;
-        	inRefsCounter(resource, semanticNode, counter);
-			
-			if(counter >= maxRefs){
-				group.getElements().add(semanticNode);
-			}
-        }
-        
-        if(node instanceof Resource){
-        	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
-        		preorderHelper(resource, group, resourceElement, maxRefs);
-        }
-    }
-    
-    public synchronized void inRefsCounter(ResourceElement node, SemanticNode semanticNode, int counter){
-    	inRefsCounterHelper(node, semanticNode, counter);
-    }
-     
-    private void inRefsCounterHelper(ResourceElement node, SemanticNode pointer, int counter){
-        if(node == null)
-            return;
-        
-        if(node instanceof SemanticNode){
-        	counter += ((SemanticNode) node).getProperties().stream().
-					filter(p -> p instanceof ObjectProperty && Objects.equals(((ObjectProperty) p).getRange(), pointer)).
-					count();
-        }
-        
-        if(node instanceof Resource){
-        	for(ResourceElement resourceElement : ((Resource) node).getResourceElements())
-        		inRefsCounterHelper(resourceElement, pointer, counter);
-        }
-    }
 }

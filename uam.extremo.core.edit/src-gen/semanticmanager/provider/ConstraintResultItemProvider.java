@@ -10,7 +10,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -20,10 +20,11 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
-import uam.extremo.core.SemanticmanagerPackage;
+import semanticmanager.SemanticmanagerPackage;
+import uam.extremo.core.provider.ExtremoEditPlugin;
 
 /**
- * This is the item provider adapter for a {@link uam.extremo.core.ConstraintResult} object.
+ * This is the item provider adapter for a {@link semanticmanager.ConstraintResult} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -188,15 +189,5 @@ public class ConstraintResultItemProvider
 	public ResourceLocator getResourceLocator() {
 		return ExtremoEditPlugin.INSTANCE;
 	}
-	
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(SemanticmanagerPackage.Literals.CONSTRAINT_RESULT__CONTEXT);
-			childrenFeatures.add(SemanticmanagerPackage.Literals.CONSTRAINT_RESULT__CONSTRAINT);
-			childrenFeatures.add(SemanticmanagerPackage.Literals.CONSTRAINT_RESULT__UNSAT);
-		}
-		return childrenFeatures;
-	}
+
 }
