@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY afn "http://jena.apache.org/ARQ/function#">
+	<!ENTITY dc "http://purl.org/dc/elements/1.1/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY fibo-be-fct-fct "https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/">
+	<!ENTITY fibo-be-le-fbo "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/">
+	<!ENTITY fibo-be-le-lp "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/">
+	<!ENTITY fibo-be-sps-sps "https://spec.edmcouncil.org/fibo/ontology/BE/SoleProprietorships/SoleProprietorships/">
+	<!ENTITY fibo-fnd-aap-agt "https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/">
+	<!ENTITY fibo-fnd-org-org "https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/Organizations/">
+	<!ENTITY fibo-fnd-pas-pas "https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/">
+	<!ENTITY fibo-fnd-pty-rl "https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/">
+	<!ENTITY fibo-fnd-rel-rel "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/">
+	<!ENTITY fibo-fnd-utl-av "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/">
+	<!ENTITY grddl "http://www.w3.org/2003/g/data-view#">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+	<!ENTITY sm "http://www.omg.org/techprocess/ab/SpecificationMetadata/">
+	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"
+	xmlns:afn="http://jena.apache.org/ARQ/function#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:fibo-be-fct-fct="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"
+	xmlns:fibo-be-le-fbo="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"
+	xmlns:fibo-be-le-lp="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"
+	xmlns:fibo-be-sps-sps="https://spec.edmcouncil.org/fibo/ontology/BE/SoleProprietorships/SoleProprietorships/"
+	xmlns:fibo-fnd-aap-agt="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/"
+	xmlns:fibo-fnd-org-org="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/Organizations/"
+	xmlns:fibo-fnd-pas-pas="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/"
+	xmlns:fibo-fnd-pty-rl="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"
+	xmlns:fibo-fnd-rel-rel="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"
+	xmlns:fibo-fnd-utl-av="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
+	xmlns:grddl="http://www.w3.org/2003/g/data-view#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:sm="http://www.omg.org/techprocess/ab/SpecificationMetadata/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+	
+	<owl:Ontology rdf:about="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/">
+		<rdfs:label>Functional Entities Ontology</rdfs:label>
+		<dct:abstract>This ontology defines the fundamental concepts for entities defined by their function, such as the relationship to the various forms which one or another functionally-defined entity may take. It also includes a number of basic types of entity defined by function, such as business and non-profit. The concepts in this ontology are intended to be extensible in other ontologies which may be dedicated to specific kinds of functionally-defined business entity or organization.</dct:abstract>
+		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
+		<sm:contentLanguage rdf:datatype="&xsd;anyURI">http://www.omg.org/spec/ODM/</sm:contentLanguage>
+		<sm:contentLanguage rdf:datatype="&xsd;anyURI">http://www.w3.org/standards/techs/owl#w3c_all</sm:contentLanguage>
+		<sm:copyright>Copyright (c) 2013-2018 EDM Council, Inc.
+Copyright (c) 2013-2018 Object Management Group, Inc.</sm:copyright>
+		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/BE/Corporations/Corporations/</sm:dependsOn>
+		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/</sm:dependsOn>
+		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/BE/SoleProprietorships/SoleProprietorships/</sm:dependsOn>
+		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
+		<sm:fileAbbreviation>fibo-be-fct-fct</sm:fileAbbreviation>
+		<sm:filename>FunctionalEntities.rdf</sm:filename>
+		<rdfs:seeAlso rdf:resource="http://www.omg.org/spec/EDMC-FIBO/AboutTheEDMC-FIBOFamily/"/>
+		<rdfs:seeAlso rdf:resource="http://www.omg.org/spec/EDMC-FIBO/BE/AboutBE/"/>
+		<rdfs:seeAlso rdf:resource="http://www.omg.org/spec/EDMC-FIBO/BE/FunctionalEntities/AboutFunctionalEntities/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/BE/Corporations/Corporations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/BE/LegalEntities/FormalBusinessOrganizations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/BE/LegalEntities/LegalPersons/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/BE/SoleProprietorships/SoleProprietorships/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/FND/AgentsAndPeople/Agents/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/FND/Organizations/FormalOrganizations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/FND/Organizations/Organizations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/FND/Parties/Roles/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/FND/ProductsAndServices/ProductsAndServices/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/FND/Relations/Relations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/FND/Utilities/AnnotationVocabulary/"/>
+		<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/2018Q2/BE/FunctionalEntities/FunctionalEntities/"/>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities.rdf version of this ontology was modified by the FIBO 2.0 revision to address missing labels and definitions on the deprecated sole proprietorship class to match those in the equivalent class.</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.0 FTF report.</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.1 RTF report. Changes include deprecation of the SoleProprietorship class and making it equivalent to the class with the same name in the Sole Proprietorships ontology. This version also introduces a new FunctionalEntity class, as the parent of FunctionalBusinessEntity in this ontology and as the parent of Government in the GovernmentEntities ontology.</skos:changeNote>
+		<fibo-fnd-utl-av:hasMaturityLevel rdf:resource="&fibo-fnd-utl-av;Release"/>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&fibo-be-fct-fct;Business">
+		<rdfs:subClassOf rdf:resource="&fibo-be-fct-fct;FunctionalBusinessEntity"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;isCharacterizedBy"/>
+				<owl:someValuesFrom rdf:resource="&fibo-be-fct-fct;CommercialActivity"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>business</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<skos:definition>An organization or economic system where goods and services are exchanged for one another or for money. Every business requires some form of investment and enough customers to whom its output can be sold on a consistent basis in order to make a profit. Businesses can be privately owned, not-for-profit or state-owned. An example of a corporate business is PepsiCo, while a mom-and-pop catering business is a private enterprise.</skos:definition>
+		<fibo-fnd-utl-av:definitionOrigin rdf:datatype="&xsd;anyURI">http://www.businessdictionary.com/definition/business.html</fibo-fnd-utl-av:definitionOrigin>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&fibo-be-fct-fct;Commerce">
+		<rdfs:subClassOf rdf:resource="&fibo-be-fct-fct;CommercialActivity"/>
+		<rdfs:label>commerce</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<skos:definition>the commercial activity of buying and selling goods</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&fibo-be-fct-fct;CommercialActivity">
+		<rdfs:label>commercial activity</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<skos:definition>the context of carrying out trade and other commercial, i.e., for-profit activities</skos:definition>
+		<fibo-fnd-utl-av:explanatoryNote>This is the context which distinguishes businesses or commercial organizations from organizations in general, the latter including government, trans-national and non profit organizations. Note that these distinctions are usually made with reference to these kinds of context and are not necessarily reflected in the structure of those organizations.</fibo-fnd-utl-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&fibo-be-fct-fct;CooperativeSociety">
+		<rdfs:subClassOf rdf:resource="&fibo-be-fct-fct;FunctionalBusinessEntity"/>
+		<rdfs:label>cooperative society</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<skos:definition>a commercial enterprise owned and managed by and for the benefit of customers or workers</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&fibo-be-fct-fct;FamilyOffice">
+		<rdfs:subClassOf rdf:resource="&fibo-be-fct-fct;FunctionalBusinessEntity"/>
+		<rdfs:label>family office</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<skos:definition>a family office as defined in the relevant legislation</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&fibo-be-fct-fct;FunctionalBusinessEntity">
+		<rdfs:subClassOf rdf:resource="&fibo-be-fct-fct;FunctionalEntity"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;hasIdentity"/>
+				<owl:onClass>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&fibo-be-le-lp;LegalPerson">
+							</rdf:Description>
+							<rdf:Description rdf:about="&fibo-fnd-org-org;Organization">
+							</rdf:Description>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:onClass>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>functional business entity</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<skos:definition>a business entity defined in terms of its function</skos:definition>
+		<fibo-fnd-utl-av:explanatoryNote>The key distinguishing feature of a functional business entity is that it may itself be constituted as some kind of business or legal entity, but the definition of this entity does not depend on it always having one specific legal structure (for example, always being a limited company). This would define for example a bank, a special purpose vehicle, most government bodies and so on.</fibo-fnd-utl-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&fibo-be-fct-fct;FunctionalEntity">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-rl;ThingInRole"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;hasIdentity"/>
+				<owl:onClass rdf:resource="&fibo-fnd-aap-agt;AutonomousAgent"/>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>functional entity</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<skos:definition>any independent party (i.e., person, business entity, governmental entity, or other organization) defined in terms of its function</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&fibo-be-fct-fct;Merchant">
+		<rdfs:subClassOf rdf:resource="&fibo-be-fct-fct;Business"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;isCharacterizedBy"/>
+				<owl:someValuesFrom rdf:resource="&fibo-be-fct-fct;Commerce"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>merchant</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<skos:definition>a business entity engaged in a trading activity</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&fibo-be-fct-fct;SoleProprietorship">
+		<rdfs:label>sole proprietorship</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+		<owl:equivalentClass rdf:resource="&fibo-be-sps-sps;SoleProprietorship"/>
+		<skos:definition>an unincorporated business owned by a single person</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>Barron&apos;s Dictionary of Business and Economics Terms, Fifth Edition, 2012</fibo-fnd-utl-av:adaptedFrom>
+	</owl:Class>
+	
+	<owl:ObjectProperty rdf:about="&fibo-be-fct-fct;isCharacterizedBy">
+		<rdfs:label>is characterized by</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<owl:deprecated rdf:datatype="&xsd;boolean">true</owl:deprecated>
+		<owl:inverseOf rdf:resource="&fibo-fnd-rel-rel;characterizes"/>
+		<skos:definition>that context in which a contextually defined thing is defined</skos:definition>
+	</owl:ObjectProperty>
+	
+	<owl:Class rdf:about="&fibo-be-le-fbo;OrganizationIdentifier">
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;isIssuedBy"/>
+				<owl:onClass>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&fibo-be-fct-fct;FunctionalEntity">
+							</rdf:Description>
+							<rdf:Description rdf:about="&fibo-fnd-pty-rl;AgentInRole">
+							</rdf:Description>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:onClass>
+				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&fibo-fnd-pas-pas;ServiceProvider">
+		<rdfs:subClassOf rdf:resource="&fibo-be-fct-fct;FunctionalEntity"/>
+	</owl:Class>
+
+</rdf:RDF>
