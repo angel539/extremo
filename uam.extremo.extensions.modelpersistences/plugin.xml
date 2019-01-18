@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="extremo.core.extensions.modelpersistence">
+      <modelpersistence
+            class="uam.extremo.extensions.modelpersistences.xmi.XMIModelPersistence"
+            id="uam.extremo.extensions.modelpersistences.xmi"
+            name="XMI">
+      </modelpersistence>
+      <modelpersistence
+            class="uam.extremo.extensions.modelpersistences.neoemf.NeoEMFMapDBModelPersistence"
+            id="uam.extremo.extensions.modelpersistences.neoemf.mapdb"
+            name="NeoEMF-MapDB">
+      </modelpersistence>
+      <modelpersistence
+            class="uam.extremo.extensions.modelpersistences.neoemf.NeoEMFBerkeleyDBModelPersistence"
+            id="uam.extremo.extensions.modelpersistences.neoemf.berkeleydb"
+            name="NeoEMF-BerkeleyDB">
+      </modelpersistence>
+   </extension>
+
+</plugin>

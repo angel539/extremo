@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension
+         name="UML2"
+         point="extremo.ui.extensions.actions">
+      <action
+            class="uam.extremo.ui.extensions.actions.CreateUmlTreeStructure"
+            editor="org.eclipse.uml2.uml.editor.presentation.UMLEditor"
+            editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+            icon="icons/uml16.png"
+            id="extremo.ui.extensions.actions.uml.repositories"
+            name="Create UML Structure"
+            position="menumanager"
+            view="repositories">
+      </action>
+      <action
+            class="uam.extremo.ui.extensions.actions.CreateUmlTreeStructure"
+            editor="org.eclipse.uml2.uml.editor.presentation.UMLEditor"
+            editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+            icon="icons/uml16.png"
+            id="extremo.ui.extensions.actions.uml.searches"
+            name="Create UML Structure"
+            position="menumanager"
+            view="searches">
+      </action>
+      <action
+            class="uam.extremo.ui.extensions.actions.CreateUmlTreeStructure"
+            editor="org.eclipse.uml2.uml.editor.presentation.UMLEditor"
+            editorId="org.eclipse.uml2.uml.editor.presentation.UMLEditorID"
+            icon="icons/uml16.png"
+            id="extremo.ui.extensions.actions.uml.constraints"
+            name="Create UML Structure"
+            position="menumanager"
+            view="constraints">
+      </action>
+   </extension>
+   <extension
+         point="extremo.ui.extensions.actions">
+      <action
+            class="uam.extremo.ui.extensions.actions.CreateEcoreTreeStructure"
+            editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"
+            icon="icons/ecore16.png"
+            id="extremo.ui.extensions.actions.ecore.repositories"
+            name="Create Ecore Structure"
+            position="menumanager"
+            view="repositories">
+      </action>
+      <action
+            class="uam.extremo.ui.extensions.actions.CreateEcoreTreeStructure"
+            editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"
+            icon="icons/ecore16.png"
+            id="extremo.ui.extensions.actions.ecore.searches"
+            name="Create Ecore Structure"
+            position="menumanager"
+            view="searches">
+      </action>
+      <action
+            class="uam.extremo.ui.extensions.actions.CreateEcoreTreeStructure"
+            editorId="org.eclipse.emf.ecore.presentation.EcoreEditorID"
+            icon="icons/ecore16.png"
+            id="extremo.ui.extensions.actions.ecore.constraints"
+            name="Create Ecore Structure"
+            position="menumanager"
+            view="constraints">
+      </action>
+   </extension>
+   <extension
+         point="extremo.ui.extensions.actions">
+      <action
+            class="uam.extremo.ui.extensions.actions.CreateExeedTreeStructure"
+            editorId="org.eclipse.epsilon.dt.exeed.ExeedEditor"
+            icon="icons/exeed16.png"
+            id="extremo.ui.extensions.actions.exeed.repositories"
+            name="Create Exeed Structure"
+            position="menumanager"
+            view="repositories">
+      </action>
+      <action
+            class="uam.extremo.ui.extensions.actions.CreateExeedTreeStructure"
+            editorId="org.eclipse.epsilon.dt.exeed.ExeedEditor"
+            icon="icons/exeed16.png"
+            id="extremo.ui.extensions.actions.exeed.searches"
+            name="Create Exeed Structure"
+            position="menumanager"
+            view="searches">
+      </action>
+      <action
+            class="uam.extremo.ui.extensions.actions.CreateExeedTreeStructure"
+            editorId="org.eclipse.epsilon.dt.exeed.ExeedEditor"
+            icon="icons/exeed16.png"
+            id="extremo.ui.extensions.actions.exeed.constraints"
+            name="Create Exeed Structure"
+            position="menumanager"
+            view="constraints">
+      </action>
+   </extension>
+</plugin>

@@ -84,6 +84,17 @@ public class AssistantManager{
 		return instance;
 	}
 	
+	/*
+	 * Thread Safe Singleton
+	 */
+	public static synchronized AssistantManager getInstanceTest(){
+		if (instance == null) {
+			instance = new AssistantManager();
+			repositoryManager = SemanticmanagerFactory.eINSTANCE.createRepositoryManager();
+		}
+		return instance;
+	}
+	
 	public RepositoryManager getRepositoryManager() {
 		return repositoryManager;
 	}
@@ -302,6 +313,21 @@ public class AssistantManager{
 		}
 	}
 	
+	public Repository createRepository(String name, String description){
+		try{
+			Repository repository = SemanticmanagerFactory.eINSTANCE.createRepository();
+			repository.setName(name);
+			repository.setDescription(description);
+			return repository;
+		}
+		catch(Exception e){
+			System.err.println(e);
+			ExtremoLog.logError(e);
+			Activator.writeConsole(e.getMessage());
+			return null;
+		}
+	}
+	
 	public Repository createRepository(IProject project, String name, String description){
 		try{
 			Repository repository = SemanticmanagerFactory.eINSTANCE.createRepository();
@@ -311,6 +337,7 @@ public class AssistantManager{
 			return repository;
 		}
 		catch(Exception e){
+			System.err.println(e);
 			ExtremoLog.logError(e);
 			Activator.writeConsole(e.getMessage());
 			return null;
@@ -319,7 +346,6 @@ public class AssistantManager{
 	
     public Resource createResourceDescriptor(Repository repository, String name, String description, String uri, FormatAssistant assistant) throws CoreException{
 		try{
-			long startTime = System.nanoTime();
 			Resource resource = SemanticmanagerFactory.eINSTANCE.createResource();
 			resource.setName(name);
 			resource.setDescription(description);
@@ -333,9 +359,6 @@ public class AssistantManager{
 				repository.getResources().add(resource);
 			}
 			
-			long endTime = System.nanoTime();
-			Activator.writeConsole("Loaded " + resource.getName() + " " + (endTime - startTime) / 1e6 + " milis.");
-			
 			return resource;
 		}
 		catch(Exception e){
@@ -347,7 +370,6 @@ public class AssistantManager{
 	
 	public Resource createResource(Repository repository, Resource descriptor, String name, String description, String uri, FormatAssistant assistant) throws CoreException{	
 		try {
-			long startTime = System.nanoTime();
 			Resource resource = SemanticmanagerFactory.eINSTANCE.createResource();
 			resource.setName(name);
 			resource.setDescription(description);
@@ -364,12 +386,10 @@ public class AssistantManager{
 				repository.getResources().add(resource);
 			}
 			
-			long endTime = System.nanoTime();
-			Activator.writeConsole("Loaded " + resource.getName() + " " + (endTime - startTime) / 1e6 + " milis.");
-			
 			return resource;
 		}
 		catch(Exception e){
+			System.err.println(e);
 			ExtremoLog.logError(e);
 			Activator.writeConsole(e.getMessage());
 			return null;
@@ -390,8 +410,6 @@ public class AssistantManager{
 	}
 
 	public void search(Repository repository, SimpleSearchConfiguration searchConfiguration, SearchResult searchResult) { // searchResult reified
-		long startTime = System.nanoTime();
-		
 		((SimpleSearchConfiguration) searchConfiguration).init(new BasicEList<SearchParamValue>(searchResult.getValues()));
 		
 		if(searchConfiguration instanceof PredicateBasedSearch){		
@@ -409,9 +427,6 @@ public class AssistantManager{
 		}
 		
 		searchConfiguration.getResults().add(searchResult);
-		
-		long endTime = System.nanoTime();
-		Activator.writeConsole("Searching..." + searchConfiguration.getName() + " " + (endTime - startTime) / 1e6 + " milis.");
 	}
 	
 	// we need the original repository
@@ -504,68 +519,6 @@ public class AssistantManager{
 	
 	private void computeNotCompositeSearch(CompositeSearchConfiguration root, SimpleSearchConfiguration child){
 	}
-	
-	
-	
-	/*private void transform(FormatAssistant assistant, Resource resource){ // containing the semanticnodes
-		resource.eAllContents().forEachRemaining(
-				e -> {
-					if(e instanceof SemanticNode){
-						assistant.toDataProperty((SemanticNode) e);
-						assistant.toObjectProperty((SemanticNode) e);
-						assistant.toSuper((SemanticNode) e);
-					}
-				}
-		);
-		
-		resource.getGuardSemanticNodes().forEach(
-			e -> {
-				assistant.toDataProperty((SemanticNode) e);
-				assistant.toObjectProperty((SemanticNode) e);
-				assistant.toSuper((SemanticNode) e);
-			}
-		);
-		resource.getGuardDataProperties().forEach(e -> assistant.toSuper((DataProperty) e));
-		resource.getGuardObjectProperties().forEach(
-			e -> {
-				assistant.toSuper((ObjectProperty) e);
-				assistant.toInverseOf((ObjectProperty) e);
-			}
-		);
-	}*/
-	
-	/*private void transform(FormatAssistant assistant, Resource resource){
-		TreeIterator<EObject> modelIterator = resource.eAllContents();
-		
-		modelIterator.forEachRemaining(
-				e -> {
-					if(e instanceof SemanticNode){
-						assistant.toDataProperty((SemanticNode) e);
-						assistant.toObjectProperty((SemanticNode) e);
-						assistant.toSuper((SemanticNode) e);
-					}
-				}
-		);
-	}*/
-	
-	/*private void transform(FormatAssistant assistant, Resource resource){
-		List<SemanticNode> semanticNodesFlattened = new ArrayList<SemanticNode>();
-		resource.eAllContents().forEachRemaining(
-				e -> {
-					if(e instanceof SemanticNode){
-						semanticNodesFlattened.add((SemanticNode) e);
-					}
-				}
-		);
-		
-		ForkAssistant fb = new ForkAssistant(assistant, semanticNodesFlattened, 0, semanticNodesFlattened.size());
-		ForkJoinPool pool = new ForkJoinPool();
-		long startTime = System.currentTimeMillis();
-        pool.invoke(fb);
-        long endTime = System.currentTimeMillis();
-        System.out.println("Image blur took " + (endTime - startTime) + 
-                " milliseconds.");
-	}*/
 	
 	private synchronized void preorder(FormatAssistant assistant, Resource resource) {
         preorderHelper(assistant, resource);
