@@ -11,7 +11,7 @@ Copy this site&apos;s URL into Eclipse, and hit Enter. When the site loads, sele
 
 Click Next, agree to the license terms, and install.
    </description>
-   <feature url="features/uam.extremo.features_1.0.0.201901201643.jar" id="uam.extremo.features" version="1.0.0.201901201643" patch="true">
+   <feature url="features/uam.extremo.features_1.0.0.201901201656.jar" id="uam.extremo.features" version="1.0.0.201901201656" patch="true">
       <category name="Extremo"/>
    </feature>
    <category-def name="Extremo" label="Extremo">
