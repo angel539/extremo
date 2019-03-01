@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="main" nsURI="http://www.core.extremo/003/" nsPrefix="main">
+  <eClassifiers xsi:type="ecore:EClass" name="Bank"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Company">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="loans" upperBound="-1"
+        eType="#//Loan"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Loan">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="money" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="#//Condition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lender" lowerBound="1"
+        eType="#//Bank"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fixed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="percent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="euribor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="durationDays" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Swap">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="legs" lowerBound="2" upperBound="-1"
+        eType="#//Company"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contracts" lowerBound="1"
+        upperBound="-1" eType="#//ConditionSwap"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionSwap">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="beneficiary" lowerBound="1"
+        eType="#//Company"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debtor" lowerBound="1"
+        eType="#//Company"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="paymentDays" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalAmount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validator" lowerBound="1"
+        eType="#//Validator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Validator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Blockchain">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" eType="#//Validator"/>
+  </eClassifiers>
+</ecore:EPackage>

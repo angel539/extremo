@@ -1,0 +1,260 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NormalAccount 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ExternalTransaction 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ContractEthereumAccount 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 64
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 44
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: storageRootContractEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalId 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: processor 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: codeHashContractEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NormalAccount 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ExternalTransaction 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ContractEthereumAccount 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 64
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 44
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: codeHashContractEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalId 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: processor 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: storageRootContractEthereumAccount 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date 

@@ -1,0 +1,156 @@
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Process  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 1 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap_return  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: account  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: have  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap_go  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: has  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: tiene  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: ejec  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: run  > Differences: 0  > Submatches: 0 
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Process  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 1 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap_return  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: account  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: have  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap_go  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: has  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: tiene  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: ejec  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: run  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Process  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 1 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap_return  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: account  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: have  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap_go  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: has  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: tiene  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: ejec  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: run  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Process  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 1 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap_return  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: account  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: have  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap_go  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: has  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: tiene  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: ejec  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: run  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 

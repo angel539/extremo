@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="main" nsURI="http://com.extremo/023/" nsPrefix="main">
+  <eClassifiers xsi:type="ecore:EClass" name="Swap">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasLeg" eType="#//SwapLeg"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SwapLeg"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SwapTerms"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DerivativeInstrument"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Interest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isFixed" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContractParty">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasLoan" eType="#//Loan"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasContract" eType="#//Contract"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pays" eType="#//Interest"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receives" eType="#//Interest"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Block">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stateBlock" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalTransactionsBlock"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="heightBlock" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalCoinsBlock" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minerBlock" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasBlockheaderBlock" eType="#//Blockheader"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasTransactions" eType="#//Transaction"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Blockheader">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nonceBlockheader" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestampBlockheader" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hashPreviousBlockheader"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="difficultyBlockheader"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="merkleRootBlockheader"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transaction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="isValitatedBy" lowerBound="1"
+        eType="#//ExternalEntity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Contract">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="swap" lowerBound="1" eType="#//Swap"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="isFacilitatedBy" eType="#//Facilitator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transaction" eType="#//Transaction"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InterestPaymentTerms"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MarketRate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Bank">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providesLoan" eType="#//Loan"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Loan">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interestRate" lowerBound="1"
+        eType="#//Interest"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="terms" eType="#//InterestPaymentTerms"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Facilitator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternalEntity"/>
+</ecore:EPackage>

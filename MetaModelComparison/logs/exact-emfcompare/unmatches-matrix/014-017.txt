@@ -1,0 +1,184 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Corporation  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 26
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: meeting  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: color  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: expand  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: complete  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: duration  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: priority  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: year  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: month  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: day  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: difference  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: hardness  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: comment  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Corporation  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 26
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: meeting  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: color  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: expand  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: complete  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: duration  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: priority  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: year  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: month  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: day  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: difference  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: hardness  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: comment  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Corporation  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 26
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: meeting  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: color  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: expand  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: complete  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: duration  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: priority  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: year  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: month  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: day  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: difference  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: hardness  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: comment  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Corporation  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 26
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: meeting  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: color  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: expand  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: complete  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: duration  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: priority  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: year  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: month  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: day  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: difference  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: hardness  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: comment  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 

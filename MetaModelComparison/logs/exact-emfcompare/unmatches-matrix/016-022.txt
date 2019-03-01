@@ -1,0 +1,372 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 18
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: SimpleTask  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CoumpoundTask  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: BusinessProcess  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ApplicationTask  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: DepositAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: LoanAccount  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Checking  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Savings  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CreditCard  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Mortgage  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: InternalTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ExternalTransaction  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 6 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NormalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ContractEthereumAccount  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumAccount  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Account  > Differences: 0  > Submatches: 14 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 9 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 22
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: TransactionDayWeek  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: referenceTo  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sender  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: containsTask  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: realizes  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: otherAccount  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: TradeState  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 18
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: SimpleTask  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CoumpoundTask  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: BusinessProcess  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ApplicationTask  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: DepositAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: LoanAccount  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Checking  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Savings  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CreditCard  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Mortgage  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: InternalTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ExternalTransaction  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 6 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NormalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ContractEthereumAccount  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumAccount  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: referenceTo  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sender  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: containsTask  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: realizes  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: otherAccount  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 22
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: TransactionDayWeek  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Account  > Differences: 0  > Submatches: 14 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 9 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: TradeState  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 18
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: SimpleTask  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CoumpoundTask  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: BusinessProcess  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ApplicationTask  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: DepositAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: LoanAccount  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Checking  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Savings  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CreditCard  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Mortgage  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: InternalTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ExternalTransaction  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 6 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NormalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ContractEthereumAccount  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumAccount  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: referenceTo  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sender  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: containsTask  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: realizes  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: otherAccount  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 22
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: TransactionDayWeek  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Account  > Differences: 0  > Submatches: 14 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 9 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: TradeState  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 18
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: SimpleTask  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CoumpoundTask  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: BusinessProcess  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ApplicationTask  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: DepositAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: LoanAccount  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Checking  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Savings  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CreditCard  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Mortgage  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: InternalTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ExternalTransaction  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 6 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NormalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ContractEthereumAccount  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumAccount  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: referenceTo  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sender  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: containsTask  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: realizes  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: otherAccount  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 22
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: TransactionDayWeek  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Account  > Differences: 0  > Submatches: 14 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 9 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: TradeState  > Differences: 0  > Submatches: 6 

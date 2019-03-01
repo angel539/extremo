@@ -1,0 +1,212 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: MessageCallEthereumTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumTransaction  > Differences: 0  > Submatches: 8 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 8 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 10
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: dataMessageCallEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: recipientEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasPriceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: sEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: valueEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasLimitEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: vEthereumTransaction  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeLifecycleStage  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: MessageCallEthereumTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumTransaction  > Differences: 0  > Submatches: 8 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 10
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: dataMessageCallEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: recipientEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasPriceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: sEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: valueEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasLimitEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: vEthereumTransaction  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 8 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeLifecycleStage  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: MessageCallEthereumTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumTransaction  > Differences: 0  > Submatches: 8 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 10
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: dataMessageCallEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: recipientEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasPriceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: sEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: valueEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasLimitEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: vEthereumTransaction  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 8 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeLifecycleStage  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: MessageCallEthereumTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumTransaction  > Differences: 0  > Submatches: 8 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 10
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: dataMessageCallEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: recipientEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasPriceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: sEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: valueEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasLimitEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: vEthereumTransaction  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 8 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeLifecycleStage  > Differences: 0  > Submatches: 6 

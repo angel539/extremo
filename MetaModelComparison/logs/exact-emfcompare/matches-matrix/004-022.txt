@@ -1,0 +1,96 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 60 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 60 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 60 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 60 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 60 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 60 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 60 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 60 

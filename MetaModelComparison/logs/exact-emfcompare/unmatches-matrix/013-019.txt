@@ -1,0 +1,216 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CompoundTask  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Friday  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Account  > Differences: 0  > Submatches: 9 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 20 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 9 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: executionDay  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: sender  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: elements  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: connections  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: DaysOfWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Type  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CompoundTask  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: sender  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: elements  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: connections  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: executionDay  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Account  > Differences: 0  > Submatches: 9 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 20 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 9 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Friday  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: DaysOfWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Type  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CompoundTask  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: sender  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: elements  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: connections  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: executionDay  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Account  > Differences: 0  > Submatches: 9 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 20 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 9 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Friday  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: DaysOfWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Type  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CompoundTask  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 4 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: sender  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: elements  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: UNMATCHED RIGHT!: connections  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: executionDay  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Account  > Differences: 0  > Submatches: 9 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 20 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 9 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Friday  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: DaysOfWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Type  > Differences: 0  > Submatches: 6 

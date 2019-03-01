@@ -1,0 +1,196 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: IRS  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Leg  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Execution  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Loan  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: MONTHLY  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: YEARLY  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payment  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 11
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swaps  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: companies  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: execution  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: legs  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: company  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loan  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Period  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: IRS  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Leg  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Execution  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Loan  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 11
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swaps  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: companies  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: execution  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: legs  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: company  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loan  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payment  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: MONTHLY  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: YEARLY  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Period  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: IRS  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Leg  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Execution  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Loan  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 11
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swaps  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: companies  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: execution  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: legs  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: company  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loan  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payment  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: MONTHLY  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: YEARLY  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Period  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: IRS  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Leg  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Execution  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Loan  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 11
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swaps  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: companies  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: execution  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: legs  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: company  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loan  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payment  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: MONTHLY  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: YEARLY  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Period  > Differences: 0  > Submatches: 2 

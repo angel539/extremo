@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="main" nsURI="http://com.extremo/010/" nsPrefix="main">
+  <eClassifiers xsi:type="ecore:EClass" name="Aplication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="companies" upperBound="-1"
+        eType="#//Company" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Banks" upperBound="-1"
+        eType="#//Banks" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="facilitators" upperBound="-1"
+        eType="#//Facilitator" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Facilitator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="swaps" upperBound="-1"
+        eType="#//IR_Swap" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IR_Swap">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" lowerBound="2"
+        upperBound="2" eType="#//SwapTransaction" eOpposite="ecores/Control-Group-Ecores/010.ecore#//SwapTransaction/swap"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Company">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" upperBound="-1"
+        eType="#//SwapTransaction" eOpposite="ecores/Control-Group-Ecores/010.ecore#//Transaction/company"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" upperBound="-1"
+        eType="#//BankTransaction" eOpposite="ecores/Control-Group-Ecores/010.ecore#//Transaction/company"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Banks">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" upperBound="-1"
+        eType="#//SwapTransaction" eOpposite="ecores/Control-Group-Ecores/010.ecore#//Transaction/company"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" upperBound="-1"
+        eType="#//BankTransaction" eOpposite="ecores/Control-Group-Ecores/010.ecore#//Transaction/company"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="loans" upperBound="-1"
+        eType="#//BankTransaction" eOpposite="ecores/Control-Group-Ecores/010.ecore#//BankTransaction/bank"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BankTransaction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="company" lowerBound="1"
+        eType="#//Company" eOpposite="ecores/Control-Group-Ecores/010.ecore#//Company/transactions"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interest" lowerBound="1"
+        eType="#//Floating" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interest" lowerBound="1"
+        eType="#//Fixed" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bank" lowerBound="1" eType="#//Banks"
+        eOpposite="ecores/Control-Group-Ecores/010.ecore#//Banks/loans"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SwapTransaction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="company" lowerBound="1"
+        eType="#//Company" eOpposite="ecores/Control-Group-Ecores/010.ecore#//Company/transactions"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interest" lowerBound="1"
+        eType="#//Floating" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interest" lowerBound="1"
+        eType="#//Fixed" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="swap" lowerBound="1" eType="#//IR_Swap"
+        eOpposite="ecores/Control-Group-Ecores/010.ecore#//IR_Swap/transactions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Floating">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="percent" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Over" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Fixed">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="percent" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+</ecore:EPackage>

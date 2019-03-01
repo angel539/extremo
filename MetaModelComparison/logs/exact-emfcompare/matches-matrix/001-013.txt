@@ -1,0 +1,200 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 87 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 87 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 87 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 87 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 87 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 87 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 87 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Account  > Differences: 0  > Submatches: 13 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 87 

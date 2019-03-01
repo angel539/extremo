@@ -1,0 +1,216 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 9
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ExternalTransaction  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: DepositAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: MessageCallEthereumTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumTransaction  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NormalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ContractEthereumAccount  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumAccount  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 8 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 23
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: dataMessageCallEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: recipientEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasPriceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: sEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: valueEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasLimitEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: vEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 9
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ExternalTransaction  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: DepositAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: MessageCallEthereumTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumTransaction  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NormalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ContractEthereumAccount  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumAccount  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 23
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: dataMessageCallEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: recipientEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasPriceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: sEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: valueEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasLimitEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: vEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 8 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 9
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ExternalTransaction  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: DepositAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: MessageCallEthereumTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumTransaction  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NormalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ContractEthereumAccount  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumAccount  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 23
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: dataMessageCallEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: recipientEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasPriceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: sEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: valueEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasLimitEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: vEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 8 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 9
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ExternalTransaction  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: DepositAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: MessageCallEthereumTransaction  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumTransaction  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NormalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ContractEthereumAccount  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: EthereumAccount  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 23
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: processor  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: externalId  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: amount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: date  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: comment  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: type  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: dataMessageCallEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: recipientEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasPriceEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: sEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: valueEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: gasLimitEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: vEthereumTransaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: nonceEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: addressEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balanceEthereumAccount  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: EthereumAccount  > Differences: 0  > Submatches: 8 

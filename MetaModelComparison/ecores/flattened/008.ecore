@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="main" nsURI="http://com.extremo/008/" nsPrefix="main">
+  <eClassifiers xsi:type="ecore:EClass" name="Swap">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="legs" lowerBound="2" upperBound="-1"
+        eType="#//Company"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="payements" lowerBound="2"
+        upperBound="-1" eType="#//Transfer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bank">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="loans" upperBound="-1"
+        eType="#//Loan"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Company">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="loans" upperBound="-1"
+        eType="#//Loan"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transfers" upperBound="-1"
+        eType="#//Transfer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Loan">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ammount" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="payedAmmount" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interestType" lowerBound="1"
+        eType="#//FixedType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interestType" lowerBound="1"
+        eType="#//VariableType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="borrower" lowerBound="1"
+        eType="#//Bank"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="borrower" lowerBound="1"
+        eType="#//Company"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="loaner" lowerBound="1"
+        eType="#//Bank"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="loaner" lowerBound="1"
+        eType="#//Company"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FixedType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="control" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transfer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Company"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="destination" lowerBound="1"
+        eType="#//Company"/>
+  </eClassifiers>
+</ecore:EPackage>

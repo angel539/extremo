@@ -1,0 +1,172 @@
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: System  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company1Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company2Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany1  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany2  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: contain  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sign  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: offers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: make  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: System  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 2 
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company1Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company2Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany1  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany2  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: contain  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sign  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: offers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: make  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: System  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 2 
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company1Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company2Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany1  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany2  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: contain  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sign  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: offers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: make  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: System  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 2 
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company1Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company2Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany1  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany2  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: contain  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sign  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: offers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: make  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 

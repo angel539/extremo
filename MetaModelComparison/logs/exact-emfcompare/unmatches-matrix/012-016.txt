@@ -1,0 +1,232 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CashflowTerms  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: SwapTerms  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Collection  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 15 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: rate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: TransactionDayWeek  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeState  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CashflowTerms  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: SwapTerms  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Collection  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: rate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: TransactionDayWeek  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 15 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeState  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CashflowTerms  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: SwapTerms  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Collection  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: rate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: TransactionDayWeek  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 15 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeState  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: CashflowTerms  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: SwapTerms  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Collection  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 6
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: rate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: creditLimit  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: gracePeriod  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: storageRootContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: codeHashContractEthereumAccount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: UNMATCHED RIGHT!: TransactionDayWeek  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transaction  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Transaction  > Differences: 0  > Submatches: 15 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeState  > Differences: 0  > Submatches: 6 

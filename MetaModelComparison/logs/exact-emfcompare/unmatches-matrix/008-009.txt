@@ -1,0 +1,212 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Loan  > Differences: 0  > Submatches: 10 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: InterestType  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: FixedType  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: VariableType  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Entity  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EParameter
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EOperation
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: execute  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: getPaid  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: pay  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: ammount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payedAmmount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: control  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: period  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: active  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 9
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: legs  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: payements  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: interestType  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: borrower  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loaner  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: source  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: destination  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loans  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Loan  > Differences: 0  > Submatches: 10 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: InterestType  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: FixedType  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: VariableType  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Entity  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 9
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: legs  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: payements  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: interestType  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: borrower  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loaner  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: source  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: destination  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loans  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: ammount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payedAmmount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: control  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: period  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: active  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EOperation
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: execute  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: getPaid  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: pay  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EParameter
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Loan  > Differences: 0  > Submatches: 10 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: InterestType  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: FixedType  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: VariableType  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Entity  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 9
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: legs  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: payements  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: interestType  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: borrower  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loaner  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: source  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: destination  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loans  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: ammount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payedAmmount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: control  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: period  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: active  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EOperation
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: execute  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: getPaid  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: pay  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EParameter
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Loan  > Differences: 0  > Submatches: 10 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: InterestType  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: FixedType  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: VariableType  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Entity  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 9
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: legs  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: payements  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: interestType  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: borrower  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loaner  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: source  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: destination  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: loans  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: ammount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: payedAmmount  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: control  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: period  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: active  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EOperation
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: execute  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: getPaid  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EOperation  > Name: pay  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EParameter
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EParameter  > Name: null  > Differences: 0  > Submatches: 0 

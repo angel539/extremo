@@ -1,0 +1,144 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 42 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 42 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 42 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 42 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 42 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 42 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 42 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: id  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 42 

@@ -1,0 +1,38 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 

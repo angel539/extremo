@@ -1,0 +1,196 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Part  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ListTasks  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Yearly  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monthly  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: validate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: package  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: verify  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: frequency  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: year  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: account  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: customer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: first  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: second  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: tasks  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Frequency  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: TaskType  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Part  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ListTasks  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: frequency  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: year  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: account  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: customer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: first  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: second  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: tasks  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Yearly  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monthly  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: validate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: package  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: verify  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Frequency  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: TaskType  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Part  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ListTasks  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: frequency  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: year  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: account  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: customer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: first  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: second  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: tasks  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Yearly  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monthly  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: validate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: package  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: verify  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Frequency  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: TaskType  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 7
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: NamedElement  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transfer  > Differences: 0  > Submatches: 4 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Part  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: ListTasks  > Differences: 0  > Submatches: 1 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Task  > Differences: 0  > Submatches: 2 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: frequency  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: year  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: account  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: customer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: transfer  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: bank  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: first  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: second  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: tasks  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: swap  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 5
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Yearly  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: Monthly  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: validate  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: package  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: verify  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: Frequency  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: TaskType  > Differences: 0  > Submatches: 3 

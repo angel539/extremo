@@ -1,0 +1,268 @@
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: System  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 3 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company1Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company2Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany1  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany2  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeState  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: contain  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sign  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: offers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: make  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: System  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 3 
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company1Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company2Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany1  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany2  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: contain  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sign  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: offers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: make  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeState  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: System  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 3 
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company1Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company2Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany1  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany2  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: contain  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sign  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: offers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: make  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeState  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: System  > Differences: 0  > Submatches: 2 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 3 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Bank  > Differences: 0  > Submatches: 3 
+####################
+Type: java.util.Map$Entry
+Counter: 1
+####################
+ 
+ > Type: java.util.Map$Entry  > Name:  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 8
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company1Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: company2Conditions  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany1  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: contractCompany2  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 4
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: contain  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: sign  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: offers  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: make  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnumLiteral
+Counter: 13
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Thursday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Monday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Sunday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Tuesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Saturday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Wednesday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: Friday  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: OpenTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: TerminatedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClearedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: MaturedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: ClosedTrade  > Differences: 0  > Submatches: 0 
+ > Type: org.eclipse.emf.ecore.EEnumLiteral  > Name: UNMATCHED RIGHT!: AmendedTrade  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EEnum
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: DaysOfTheWeek  > Differences: 0  > Submatches: 7 
+ > Type: org.eclipse.emf.ecore.EEnum  > Name: UNMATCHED RIGHT!: TradeState  > Differences: 0  > Submatches: 6 
+####################
+Type: org.eclipse.emf.ecore.EAnnotation
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAnnotation  > Name:  > Differences: 0  > Submatches: 1 

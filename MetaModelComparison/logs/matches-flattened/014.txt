@@ -1,0 +1,208 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: SwapLeg 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 60
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 23
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rate 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rate 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 3
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: SwapLeg 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Swap 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Customer 
+####################
+Type: org.eclipse.emf.ecore.EReference
+Counter: 60
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: accounts 
+ > Type: org.eclipse.emf.ecore.EReference  > Name: hasLeg 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 23
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rate 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: rate 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: description 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: number 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: balance 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: periodStart 

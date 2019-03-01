@@ -1,0 +1,160 @@
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 96 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Bank  > Differences: 0  > Submatches: 34 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 96 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Bank  > Differences: 0  > Submatches: 34 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 96 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Bank  > Differences: 0  > Submatches: 34 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 96 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Bank  > Differences: 0  > Submatches: 34 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 96 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Bank  > Differences: 0  > Submatches: 34 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 96 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Bank  > Differences: 0  > Submatches: 34 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 96 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Bank  > Differences: 0  > Submatches: 34 
+####################
+Type: org.eclipse.emf.ecore.EClass
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Company  > Differences: 0  > Submatches: 8 
+ > Type: org.eclipse.emf.ecore.EClass  > Name: Transaction  > Differences: 0  > Submatches: 5 
+####################
+Type: org.eclipse.emf.ecore.EAttribute
+Counter: 1
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EAttribute  > Name: name  > Differences: 0  > Submatches: 0 
+####################
+Type: org.eclipse.emf.ecore.EPackage
+Counter: 2
+####################
+ 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: main  > Differences: 0  > Submatches: 96 
+ > Type: org.eclipse.emf.ecore.EPackage  > Name: Bank  > Differences: 0  > Submatches: 34 
