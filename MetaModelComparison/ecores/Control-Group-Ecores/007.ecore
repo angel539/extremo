@@ -31,9 +31,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentage" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" lowerBound="1" eType="#//transferKinds"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Remaining amount" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="RemainingAmount" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Total Debt" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TotalDebt" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entity" abstract="true">

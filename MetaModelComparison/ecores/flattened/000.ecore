@@ -13,17 +13,17 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sender" eType="#//ContractEthereumAccount"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sender" eType="#//NormalAccount"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="referenceTo" eType="#//SwapLeg"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="referenceTo" eType="#//Swap"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referenceTo" eType="#//SwapLeg"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompoundTask">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sender" eType="#//ContractEthereumAccount"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sender" eType="#//NormalAccount"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containsTask" upperBound="-1"
-        eType="#//SimpleTask"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="containsTask" upperBound="-1"
         eType="#//CompoundTask"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containsTask" upperBound="-1"
+        eType="#//SimpleTask"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Customer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -32,9 +32,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="accounts" upperBound="-1"
         eType="#//Checking"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="accounts" upperBound="-1"
-        eType="#//Savings"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="accounts" upperBound="-1"
         eType="#//Mortgage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="accounts" upperBound="-1"
+        eType="#//Savings"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DaysOfTheWeek">
     <eLiterals name="Thursday" literal="Thursday"/>
@@ -59,13 +59,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="configure" upperBound="-1"
         eType="#//NormalAccount"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//SwapLeg"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//SimpleTask"/>
+        eType="#//Swap"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//CompoundTask"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//Swap"/>
+        eType="#//SimpleTask"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//SwapLeg"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//Customer"/>
   </eClassifiers>
@@ -106,8 +106,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="TransactionDayWeek" eType="#//DaysOfTheWeek"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="otherAccount" eType="#//CreditCard"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="otherAccount" eType="#//Checking"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="otherAccount" eType="#//Savings"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="otherAccount" eType="#//Mortgage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="otherAccount" eType="#//Savings"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalTransaction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

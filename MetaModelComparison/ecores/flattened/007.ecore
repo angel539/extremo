@@ -40,17 +40,17 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" lowerBound="1" eType="#//transferKinds"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Sender" lowerBound="1"
+        eType="#//Bank"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Sender" lowerBound="1"
         eType="#//Facilitator"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Sender" lowerBound="1"
         eType="#//Company"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Sender" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Receiver" lowerBound="1"
         eType="#//Bank"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Receiver" lowerBound="1"
         eType="#//Facilitator"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Receiver" lowerBound="1"
         eType="#//Company"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Receiver" lowerBound="1"
-        eType="#//Bank"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Facilitator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

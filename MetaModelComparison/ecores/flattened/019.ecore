@@ -26,9 +26,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="sender" upperBound="-1"
         eType="#//EthereumAccount"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containsTask" upperBound="-1"
-        eType="#//CoumpoundTask" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="containsTask" upperBound="-1"
         eType="#//SimpleTask" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containsTask" upperBound="-1"
+        eType="#//CoumpoundTask" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Flow"/>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessProcess"/>

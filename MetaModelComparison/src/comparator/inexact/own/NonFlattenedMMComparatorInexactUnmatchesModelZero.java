@@ -1,4 +1,4 @@
-package comparator.exact.flattened;
+package comparator.inexact.own;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -41,12 +41,12 @@ import org.eclipse.emf.ecore.resource.Resource;
 import com.google.common.primitives.Ints;
 import comparator.MMComparator;
 
-public class FlattenedMMComparatorUnmatchesModelZero extends MMComparator{
+public class NonFlattenedMMComparatorInexactUnmatchesModelZero extends MMComparator{
 	private static String[] columns = {"Model", "Unmatches", "EClasses", "EAttributes", "EReferences", "ERest"};
 	private Map<File, List<ENamedElement>> unmatchesLeft = new HashMap<File, List<ENamedElement>>();
 	private Map<File, List<ENamedElement>> unmatchesRight = new HashMap<File, List<ENamedElement>>();
 	
-	public FlattenedMMComparatorUnmatchesModelZero() throws IOException { 	
+	public NonFlattenedMMComparatorInexactUnmatchesModelZero() throws IOException { 	
 		super();
 	}
 	
@@ -62,56 +62,56 @@ public class FlattenedMMComparatorUnmatchesModelZero extends MMComparator{
 		
 		TreeIterator<EObject> rightTreeIterator = right.getAllContents();
 		rightTreeIterator.forEachRemaining(
-				rightElement -> {
-					if(rightElement instanceof ENamedElement && !(rightElement instanceof EPackage)){
-						ENamedElement rightENamedElement = (ENamedElement) rightElement;
-						
-						TreeIterator<EObject> leftTreeIterator = left.getAllContents();
-						leftTreeIterator.forEachRemaining(
-							leftElement -> {
-								if(leftElement instanceof ENamedElement && !(leftElement instanceof EPackage)){
-									ENamedElement leftENamedElement = (ENamedElement) leftElement;
-									if(leftENamedElement instanceof EReference && rightENamedElement instanceof EReference){
-										EReference leftEReference = (EReference) leftENamedElement;
-										EReference rightEReference = (EReference) rightENamedElement;
+			rightElement -> {
+				if(rightElement instanceof ENamedElement && !(rightElement instanceof EPackage)){
+					ENamedElement rightENamedElement = (ENamedElement) rightElement;
+				
+					TreeIterator<EObject> leftTreeIterator = left.getAllContents();
+					leftTreeIterator.forEachRemaining(
+						leftElement -> {
+							if(leftElement instanceof ENamedElement && !(leftElement instanceof EPackage)){
+								ENamedElement leftENamedElement = (ENamedElement) leftElement;
+								if(leftENamedElement instanceof EReference && rightENamedElement instanceof EReference){
+									EReference leftEReference = (EReference) leftENamedElement;
+									EReference rightEReference = (EReference) rightENamedElement;
+									
+									if(inexactMatch(leftEReference.getName(), rightEReference.getName())
+													&& inexactMatch(leftEReference.getEContainingClass().getName(), rightEReference.getEContainingClass().getName())){
+										EClass domainLeft = leftEReference.getEReferenceType();
+										EClass domainRight = rightEReference.getEReferenceType();
+										if(domainLeft != null && domainRight != null
+																		&& inexactMatch(domainLeft.getName(), domainRight.getName())){
+											if(!matches.containsValue(rightEReference))
+												matches.put(leftEReference, rightEReference);
+										}
+									}
+								}
+								else{
+									if(leftENamedElement instanceof EAttribute && rightENamedElement instanceof EAttribute){
+										EAttribute leftEAttribute = (EAttribute) leftENamedElement;
+										EAttribute rightEAttribute = (EAttribute) rightENamedElement;
 										
-										if((leftEReference.getName().compareTo(rightEReference.getName()) == 0)
-															&& (leftEReference.getEContainingClass().getName().compareTo(rightEReference.getEContainingClass().getName()) == 0)){
-											EClass domainLeft = leftEReference.getEReferenceType();
-											EClass domainRight = rightEReference.getEReferenceType();
-											if(domainLeft != null && domainRight != null
-													&& domainLeft.getName().compareTo(domainRight.getName()) == 0){
-												if(!matches.containsValue(rightEReference))
-													matches.put(leftEReference, rightEReference);
-											}
+										if(inexactMatch(leftEAttribute.getName(), rightEAttribute.getName())
+												&& inexactMatch(leftEAttribute.getEContainingClass().getName(), rightEAttribute.getEContainingClass().getName())){
+											if(!matches.containsValue(rightEAttribute))
+												matches.put(leftEAttribute, rightEAttribute);
 										}
 									}
 									else{
-										if(leftENamedElement instanceof EAttribute && rightENamedElement instanceof EAttribute){
-											EAttribute leftElementAttribute = (EAttribute) leftENamedElement;
-											EAttribute rightElementAttribute = (EAttribute) rightENamedElement;
-											
-											if((leftElementAttribute.getName().compareTo(rightElementAttribute.getName()) == 0) 
-															&& (leftElementAttribute.getEContainingClass().getName().compareTo(rightElementAttribute.getEContainingClass().getName()) == 0)){
-												if(!matches.containsValue(rightElementAttribute))
-													matches.put(leftElementAttribute, rightElementAttribute);
+										if(!(leftENamedElement instanceof EStructuralFeature) && !(rightENamedElement instanceof EStructuralFeature)){
+											if(inexactMatch(leftENamedElement.getName(), rightENamedElement.getName()) && leftENamedElement.getClass().getName().compareTo(rightENamedElement.getClass().getName()) == 0){
+												if(!matches.containsValue(rightENamedElement))
+													matches.put(leftENamedElement, rightENamedElement);
 											}
 										}
-										else{
-											if(!(leftENamedElement instanceof EStructuralFeature) && !(rightENamedElement instanceof EStructuralFeature)){
-												if(leftENamedElement.getName().compareTo(rightENamedElement.getName()) == 0 && leftENamedElement.getClass().getName().compareTo(rightENamedElement.getClass().getName()) == 0){
-													if(!matches.containsValue(rightENamedElement))
-														matches.put(leftENamedElement, rightENamedElement);
-												}
-											}
-										}	
-									}		
-								}
+									}	
+								}		
 							}
-						);
-					}
+						}
+					);
 				}
-			);
+			}
+		);
 		
 		List<ENamedElement> matchesLeft =new ArrayList<ENamedElement>(matches.keySet());
 		TreeIterator<EObject> leftIterator = left.getAllContents();
@@ -141,7 +141,6 @@ public class FlattenedMMComparatorUnmatchesModelZero extends MMComparator{
 					if(!optional.isPresent()) {
 						unmatchesLeft.add((ENamedElement) rightElement);
 					}
-					//}
 				}
 			}
 		);
@@ -152,11 +151,16 @@ public class FlattenedMMComparatorUnmatchesModelZero extends MMComparator{
 	
 	@Override
 	public void match() throws IOException {
-		File mm000 = new File("ecores/flattened/000.ecore");
+		File mm000 = new File("ecores/000.ecore");
 		
-		List<File> flattenedModels = getFilesForFolder(new File("ecores/flattened/"));
-		for(File flattenedModel : flattenedModels){
-			if(!flattenedModel.equals(mm000)) compare(mm000, flattenedModel);
+		List<File> controlGroup = getFilesForFolder(new File("ecores/Control-Group-Ecores/"));
+		for(File mmControl : controlGroup){
+			compare(mm000, mmControl);
+		}
+		
+		List<File> experimentGroup = getFilesForFolder(new File("ecores/Experiment-Group-Ecores/"));
+		for(File mmExperiment : experimentGroup){
+			compare(mm000, mmExperiment);
 		}
 		
 		generateStatsMatches();
@@ -250,7 +254,7 @@ public class FlattenedMMComparatorUnmatchesModelZero extends MMComparator{
         	unmatchesRightSheet.autoSizeColumn(i);
         }
 
-        FileOutputStream fileOut = new FileOutputStream("logs/exact-flattened/stats/exact-flattened-unmatches-model-zero.xlsx");
+        FileOutputStream fileOut = new FileOutputStream("logs/inexact-nonflattened/stats/inexact-unmatches-model-zero.xlsx");
         workbook.write(fileOut);
         fileOut.close();
         // Closing the workbook
@@ -263,7 +267,7 @@ public class FlattenedMMComparatorUnmatchesModelZero extends MMComparator{
 		
 		for(Entry<File, List<ENamedElement>> entry : this.unmatchesLeft.entrySet()){
 			String fileNameWithoutExtension = FilenameUtils.removeExtension(entry.getKey().getName());
-			Path file = Paths.get("logs/exact-flattened/unmatches/" + fileNameWithoutExtension + "left" + ".txt");
+			Path file = Paths.get("logs/inexact-nonflattened/unmatches/" + fileNameWithoutExtension + "left" + ".txt");
 			
 			try {
 				Map<EClass, List<EObject>> mapping = entry.getValue().stream().collect(Collectors.groupingBy(match -> match.eClass(), Collectors.toList()));
@@ -285,7 +289,7 @@ public class FlattenedMMComparatorUnmatchesModelZero extends MMComparator{
 		
 		for(Entry<File, List<ENamedElement>> entry : this.unmatchesRight.entrySet()){
 			String fileNameWithoutExtension = FilenameUtils.removeExtension(entry.getKey().getName());
-			Path file = Paths.get("logs/exact-flattened/unmatches/" + fileNameWithoutExtension + "right" + ".txt");
+			Path file = Paths.get("logs/inexact-nonflattened/unmatches/" + fileNameWithoutExtension + "right" + ".txt");
 			
 			try {
 				Map<EClass, List<EObject>> mapping = entry.getValue().stream().collect(Collectors.groupingBy(match -> match.eClass(), Collectors.toList()));

@@ -1,4 +1,4 @@
-package comparator.exact.flattened;
+package comparator.inexact.flattened;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -41,11 +41,11 @@ import com.google.common.primitives.Ints;
 
 import comparator.MMComparator;
 
-public class FlattenedMMComparatorMatchesModelZero extends MMComparator{
+public class FlattenedMMComparatorInexactMatchesModelZero extends MMComparator{
 	private static String[] columns = {"Model", "Matches", "EClasses", "EAttributes", "EReferences", "ERest"};
 	private Map<File, Map<ENamedElement, ENamedElement>> matchesPerModel = new HashMap<File, Map<ENamedElement, ENamedElement>>();
 	
-	public FlattenedMMComparatorMatchesModelZero() throws IOException {
+	public FlattenedMMComparatorInexactMatchesModelZero() throws IOException {
 		super();
 	}
 	
@@ -58,56 +58,56 @@ public class FlattenedMMComparatorMatchesModelZero extends MMComparator{
 		
 		TreeIterator<EObject> rightTreeIterator = right.getAllContents();
 		rightTreeIterator.forEachRemaining(
-				rightElement -> {
-					if(rightElement instanceof ENamedElement && !(rightElement instanceof EPackage)){
-						ENamedElement rightENamedElement = (ENamedElement) rightElement;
-						
-						TreeIterator<EObject> leftTreeIterator = left.getAllContents();
-						leftTreeIterator.forEachRemaining(
-							leftElement -> {
-								if(leftElement instanceof ENamedElement && !(leftElement instanceof EPackage)){
-									ENamedElement leftENamedElement = (ENamedElement) leftElement;
-									if(leftENamedElement instanceof EReference && rightENamedElement instanceof EReference){
-										EReference leftEReference = (EReference) leftENamedElement;
-										EReference rightEReference = (EReference) rightENamedElement;
+			rightElement -> {
+				if(rightElement instanceof ENamedElement && !(rightElement instanceof EPackage)){
+					ENamedElement rightENamedElement = (ENamedElement) rightElement;
+				
+					TreeIterator<EObject> leftTreeIterator = left.getAllContents();
+					leftTreeIterator.forEachRemaining(
+						leftElement -> {
+							if(leftElement instanceof ENamedElement && !(leftElement instanceof EPackage)){
+								ENamedElement leftENamedElement = (ENamedElement) leftElement;
+								if(leftENamedElement instanceof EReference && rightENamedElement instanceof EReference){
+									EReference leftEReference = (EReference) leftENamedElement;
+									EReference rightEReference = (EReference) rightENamedElement;
+									
+									if(inexactMatch(leftEReference.getName(), rightEReference.getName())
+													&& inexactMatch(leftEReference.getEContainingClass().getName(), rightEReference.getEContainingClass().getName())){
+										EClass domainLeft = leftEReference.getEReferenceType();
+										EClass domainRight = rightEReference.getEReferenceType();
+										if(domainLeft != null && domainRight != null
+																		&& inexactMatch(domainLeft.getName(), domainRight.getName())){
+											if(!matches.containsValue(rightEReference))
+												matches.put(leftEReference, rightEReference);
+										}
+									}
+								}
+								else{
+									if(leftENamedElement instanceof EAttribute && rightENamedElement instanceof EAttribute){
+										EAttribute leftEAttribute = (EAttribute) leftENamedElement;
+										EAttribute rightEAttribute = (EAttribute) rightENamedElement;
 										
-										if((leftEReference.getName().compareTo(rightEReference.getName()) == 0)
-															&& (leftEReference.getEContainingClass().getName().compareTo(rightEReference.getEContainingClass().getName()) == 0)){
-											EClass domainLeft = leftEReference.getEReferenceType();
-											EClass domainRight = rightEReference.getEReferenceType();
-											if(domainLeft != null && domainRight != null
-													&& domainLeft.getName().compareTo(domainRight.getName()) == 0){
-												if(!matches.containsValue(rightEReference))
-													matches.put(leftEReference, rightEReference);
-											}
+										if(inexactMatch(leftEAttribute.getName(), rightEAttribute.getName())
+												&& inexactMatch(leftEAttribute.getEContainingClass().getName(), rightEAttribute.getEContainingClass().getName())){
+											if(!matches.containsValue(rightEAttribute))
+												matches.put(leftEAttribute, rightEAttribute);
 										}
 									}
 									else{
-										if(leftENamedElement instanceof EAttribute && rightENamedElement instanceof EAttribute){
-											EAttribute leftElementAttribute = (EAttribute) leftENamedElement;
-											EAttribute rightElementAttribute = (EAttribute) rightENamedElement;
-											
-											if((leftElementAttribute.getName().compareTo(rightElementAttribute.getName()) == 0) 
-															&& (leftElementAttribute.getEContainingClass().getName().compareTo(rightElementAttribute.getEContainingClass().getName()) == 0)){
-												if(!matches.containsValue(rightElementAttribute))
-													matches.put(leftElementAttribute, rightElementAttribute);
+										if(!(leftENamedElement instanceof EStructuralFeature) && !(rightENamedElement instanceof EStructuralFeature)){
+											if(inexactMatch(leftENamedElement.getName(), rightENamedElement.getName()) && leftENamedElement.getClass().getName().compareTo(rightENamedElement.getClass().getName()) == 0){
+												if(!matches.containsValue(rightENamedElement))
+													matches.put(leftENamedElement, rightENamedElement);
 											}
 										}
-										else{
-											if(!(leftENamedElement instanceof EStructuralFeature) && !(rightENamedElement instanceof EStructuralFeature)){
-												if(leftENamedElement.getName().compareTo(rightENamedElement.getName()) == 0 && leftENamedElement.getClass().getName().compareTo(rightENamedElement.getClass().getName()) == 0){
-													if(!matches.containsValue(rightENamedElement))
-														matches.put(leftENamedElement, rightENamedElement);
-												}
-											}
-										}	
-									}		
-								}
+									}	
+								}		
 							}
-						);
-					}
+						}
+					);
 				}
-			);
+			}
+		);
 		
 		this.matchesPerModel.put(file2, matches);
 	}
@@ -166,7 +166,7 @@ public class FlattenedMMComparatorMatchesModelZero extends MMComparator{
             sheet.autoSizeColumn(i);
         }
 
-        FileOutputStream fileOut = new FileOutputStream("logs/exact-flattened/stats/exact-flattened-model-zero.xlsx");
+        FileOutputStream fileOut = new FileOutputStream("logs/inexact-flattened/stats/inexact-flattened-model-zero.xlsx");
         workbook.write(fileOut);
         fileOut.close();
         // Closing the workbook
@@ -183,7 +183,7 @@ public class FlattenedMMComparatorMatchesModelZero extends MMComparator{
 			List<ENamedElement> keySet = new ArrayList<ENamedElement>(eObjects.keySet());
 			
 			String fileNameWithoutExtension = FilenameUtils.removeExtension(entry.getKey().getName());
-			Path file = Paths.get("logs/exact-flattened/matches/" + fileNameWithoutExtension + ".txt");
+			Path file = Paths.get("logs/inexact-flattened/matches/" + fileNameWithoutExtension + ".txt");
 			
 			try {
 				Map<EClass, List<EObject>> mapping = keySet.stream().collect(Collectors.groupingBy(match -> match.eClass(), Collectors.toList()));

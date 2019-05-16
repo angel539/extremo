@@ -14,12 +14,7 @@
         eType="#//Transfer"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Loan">
-    <eOperations name="getPaid" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters/>
-      <eParameters/>
-      <eParameters/>
-      <eParameters/>
-    </eOperations>
+    <eOperations name="getPaid" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interestType" lowerBound="1"
         eType="#//InterestType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ammount" lowerBound="1"
