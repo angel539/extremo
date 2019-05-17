@@ -1,8 +1,4 @@
-%%%%%%%%%%%%%
-%% Comparator
-%%%%%%%%%%%%%
-
-Using Eclipse IDE.
+A. Using Eclipse IDE.
 1. Download the project "MetaModelComparison.zip" from branch "comparator"
 2. Unzip de project
 2. Import project by using "File" > "Import" > "General" > "Existing projects into workspace"
@@ -11,10 +7,7 @@ Using Eclipse IDE.
 4. To use the counter class:
 		"src/comparator/counters/BasicMetricCounter.java" > "Run As..." > "Java Application"
 
-%%%%%%%%%%%%%%%%%%%
-%% Input: Artifacts
-%%%%%%%%%%%%%%%%%%%
-Location of the artifacts collected from the experiment: "\ecores" folder
+B. Location of the artifacts collected from the experiment: "\ecores" folder
 Structure of the folder:
 \ecores
 	\Control-Group-Ecores > Artifacts collected in the control group.
@@ -22,10 +15,7 @@ Structure of the folder:
 	\flattened > Flattened version of the artifacts (they do not validate)
 	000.ecore > Solution used as a reference in the case study.
 
-%%%%%%%%%%%%%%%%%
-%% Outputs: \logs
-%%%%%%%%%%%%%%%%%
-Structure of the folder \logs:
+C. Structure of the folder \logs:
 \logs
 	\exact-emfcompare
 		\matches: ".txt" files with the elements that match in the comparison with the ecore "000.ecore".
