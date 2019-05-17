@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:petrinets="http://www.core.petrinet/PetriNets">
+  <petrinets:TPArc weight="1182134935" input="/7" output="/2"/>
+  <petrinets:TPArc weight="-1173631172" input="/4" output="/2"/>
+  <petrinets:Place name="qenrIlnnkg45kO0CY6otDii6BksIiQRFiWDJh5lBuvIQDuphemK4IatYiA45wxYVKpAZY" tokens="512062837"/>
+  <petrinets:PTArc weight="861230710" output="/5" input="/2"/>
+  <petrinets:Transition name="j9G0aDly4oIuGgvMpRm7IpvLvAGQBwf8bJzvMyOP7jcKrjujhOiiSZssZaCt2MdBbiF" inputs="/2" outputs="/2"/>
+  <petrinets:Transition name="FCrjrEu0jM7WG7ciPnIMxtPRKwvJnJ70Byb8Wc8ZTTBtZR3WiYpcmv2WOe2" inputs="/2" outputs="/2"/>
+  <petrinets:Token/>
+  <petrinets:Transition name="uu01x4WTzCtNuuQb3txy54VIKWPUV0RQINB6NBhgzzPJxpzF14rEkDrZNxOznY0wLPaD2" inputs="/2" outputs="/2"/>
+  <petrinets:PetriNet bound="1408666644"/>
+</xmi:XMI>

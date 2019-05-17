@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinets="http://www.core.petrinet/PetriNets">
+  <petrinets:TPArc weight="1525639082" input="/8/@nodes.3" output="/4"/>
+  <petrinets:Token/>
+  <petrinets:Place name="LvN1vCAUGhEOWO7PcmBN1yrxmKsVqNS9MomJpEETmPtkCE6mFIj10bZVjUKBfo" tokens="-1505402495"/>
+  <petrinets:TPArc weight="145615064" input="/5/@nodes.5" output="/8/@nodes.4"/>
+  <petrinets:Place name="BQK18pAVsBDo67BHnHVeLDYXj4JEYBD4dwLDOoEVCNn6t61SJ1yqFIx9kERKyVkJStti" tokens="-304234875"/>
+  <petrinets:PetriNet bound="1853970861">
+    <nodes xsi:type="petrinets:Place" name="evddP1pc1axK5ZAcQ1PvbiTAr94BCYWhaEVz9lBjIjke2DgQGnNiANSh6gVxnQ" tokens="433528905"/>
+    <nodes xsi:type="petrinets:Transition" name="2T2SPUSqtvEOBBYoZZjQkGIaIOyvQvBjBlgcCjfyKws4lOCqxUCgCwdIPfTntTpu" inputs="/8/@nodes.6 /17/@nodes.2 /8/@nodes.4 /8/@nodes.5 /5/@nodes.8 /12" outputs="/6 /5/@nodes.0 /16 /8/@nodes.4 /8/@nodes.5 /13 /17/@nodes.4 /4"/>
+    <nodes xsi:type="petrinets:Transition" name="ujDEUMt23JSlN6TNgMwY5DvK6EdCKgP3jqvz2IvGU68YZshyNJTx9Dht1de" inputs="/16 /4 /6 /17/@nodes.2 /5/@nodes.0" outputs="/6 /5/@nodes.8 /2 /17/@nodes.4 /8/@nodes.4 /12 /8/@nodes.6"/>
+    <nodes xsi:type="petrinets:Transition" name="sxxZBE39tbVQGx13OVn03O3cfP5cTt9EHJLJQSTvNkQ56Qe8XMZFocZTXV6gbH5GJxx" inputs="/8/@nodes.6 /6 /17/@nodes.4 /13 /12" outputs="/8/@nodes.6 /2 /17/@nodes.4 /16 /6 /17/@nodes.2"/>
+    <nodes xsi:type="petrinets:Transition" name="ZCuglSZhKidMBZT0ZiQLFgvKiVSIoJ3Uhi6JhCoFnkBXAykukuutdPk0Y0elHW" inputs="/6 /5/@nodes.8 /12 /13 /8/@nodes.6 /16" outputs="/17/@nodes.2 /4 /5/@nodes.0 /6 /16 /2"/>
+    <nodes xsi:type="petrinets:Transition" name="4mmzVO4pP7AQlmK6hVDHZwBYRiy2VwlsjK3IkW6knm11naTHsKqRxuxSrqKDDthYdPB6" inputs="/6 /8/@nodes.5 /2 /12 /13 /5/@nodes.8" outputs="/5/@nodes.8 /13 /8/@nodes.6 /6 /4"/>
+    <nodes xsi:type="petrinets:Transition" name="mlpNoIWSxUtjc2lgcc5K9f0kzVhkm1MHdmzcli2CbaJubzlUsF43fQvgNfZt6pi" inputs="/8/@nodes.5 /5/@nodes.0 /8/@nodes.6 /8/@nodes.4 /2 /5/@nodes.8 /13 /4" outputs="/4 /5/@nodes.8 /8/@nodes.4 /16 /5/@nodes.0 /17/@nodes.4 /6 /12"/>
+    <nodes xsi:type="petrinets:Transition" name="0Q4ismr92zx7CGZqmnnRQ4cC9HTcT8ySIiQCR6EWgentlbQTTcUrCIMnSteQyx" inputs="/5/@nodes.0 /13 /17/@nodes.2 /17/@nodes.4 /16 /8/@nodes.6 /4" outputs="/17/@nodes.4 /5/@nodes.8 /2 /12 /16 /8/@nodes.4 /4"/>
+    <nodes xsi:type="petrinets:Place" name="qzUQRGycjHoDJFYmvc1uUAKdqfrspZdKnmzKlTU25y4ASR54S30fdQgrylCeqHFZzFHM" tokens="-327260980"/>
+    <arcs xsi:type="petrinets:TPArc" weight="2092695338" input="/5/@nodes.6" output="/8/@nodes.5"/>
+    <arcs xsi:type="petrinets:PTArc" weight="-2067054566" output="/8/@nodes.0" input="/17/@nodes.4"/>
+    <arcs xsi:type="petrinets:PTArc" weight="-1440160034" output="/17/@nodes.0" input="/2"/>
+    <arcs xsi:type="petrinets:TPArc" weight="850750148" input="/8/@nodes.3" output="/13"/>
+    <arcs xsi:type="petrinets:TPArc" weight="29214339" input="/17/@nodes.7" output="/2"/>
+    <arcs xsi:type="petrinets:TPArc" weight="1245992400" input="/17/@nodes.7" output="/13"/>
+    <arcs xsi:type="petrinets:TPArc" weight="-1515734622" input="/17/@nodes.0" output="/8/@nodes.5"/>
+    <arcs xsi:type="petrinets:TPArc" weight="1417482694" input="/8/@nodes.2" output="/5/@nodes.0"/>
+  </petrinets:PetriNet>
+  <petrinets:Place name="f4ohkoMWMdpbCBeEVGb1WgLT8suLf03hvFgoK5qcDXUlJRy9QBfJPKHUBCL1I" tokens="1466563234"/>
+  <petrinets:PTArc weight="1445588224" output="/5/@nodes.1" input="/12"/>
+  <petrinets:PetriNet bound="1550759505">
+    <nodes xsi:type="petrinets:Transition" name="SeCflGsxcm2TLBhCVOEDqrb8TTHSxE1MxsgYfIQmiHTwXe1cszEKvlUOlpbDQPt" inputs="/5/@nodes.0 /6 /8/@nodes.4 /5/@nodes.8 /4 /2" outputs="/2 /5/@nodes.8 /17/@nodes.4 /13 /8/@nodes.6 /6 /8/@nodes.5"/>
+    <nodes xsi:type="petrinets:Transition" name="uWo8a7g83hdnywaVs1pcFNaSkwMmWrIBPWVZ17B0S2vtEpiVhebJzv6S1PE7h" inputs="/17/@nodes.4 /17/@nodes.2 /2 /8/@nodes.5 /16" outputs="/8/@nodes.4 /12 /17/@nodes.2 /5/@nodes.8 /13 /4 /2 /8/@nodes.5"/>
+    <nodes xsi:type="petrinets:Transition" name="0vREx8DFIolUWNZadIMsU5RkHF4mRnmRrFXIMuBr8oNQib3io9r4acbyzIN8YFw6kkMaie" inputs="/17/@nodes.4 /17/@nodes.2 /16 /8/@nodes.5 /8/@nodes.6" outputs="/4 /16 /5/@nodes.0 /5/@nodes.8 /6 /8/@nodes.4"/>
+    <nodes xsi:type="petrinets:Transition" name="o9tVvaKk16Zxzgh0PMhAKY2WDoMBk7HiSbQgT2gr5xGNTtRDq9jZhFFA0LAaYzC9q" inputs="/5/@nodes.8 /8/@nodes.6 /6 /16 /17/@nodes.4 /5/@nodes.0" outputs="/12 /8/@nodes.5 /2 /8/@nodes.4 /4"/>
+    <nodes xsi:type="petrinets:Place" name="bk0pqTSBYXeaMetalczQAJDDiiUb2N4Qppji1xDKXWO6NObegqp2havtDVOqeDsH9eKAo" tokens="625999700"/>
+    <nodes xsi:type="petrinets:Place" name="09PAzG9TXNPDpeTARxATW6vbrmzsfGxDKqk5tsGTDQFBcfCzzeyregrhFs5HB8" tokens="-1295613985"/>
+    <nodes xsi:type="petrinets:Place" name="3XGhvXr9H3qZHpPQOKmrowsTcnAPWbwWWu8p9gccAk7tTzMnHYOwCku5L48" tokens="812594782"/>
+    <nodes xsi:type="petrinets:Transition" name="8KHyNHlIYC3OAuuYL6kcqS9UZn1GGMLatkAtYy7Z8MSPGTz4wjk39jtvuFFQqG" inputs="/4 /8/@nodes.6 /17/@nodes.2 /8/@nodes.4 /5/@nodes.0 /12 /13" outputs="/13 /8/@nodes.5 /6 /2 /17/@nodes.2 /17/@nodes.4 /12"/>
+    <arcs xsi:type="petrinets:PTArc" weight="2130239183" output="/5/@nodes.2" input="/2"/>
+    <arcs xsi:type="petrinets:TPArc" weight="-1685497716" input="/5/@nodes.2" output="/2"/>
+    <arcs xsi:type="petrinets:PTArc" weight="-1516738520" output="/5/@nodes.7" input="/6"/>
+    <arcs xsi:type="petrinets:TPArc" weight="-591011612" input="/8/@nodes.3" output="/8/@nodes.6"/>
+    <arcs xsi:type="petrinets:PTArc" weight="-1110320711" output="/5/@nodes.6" input="/6"/>
+    <arcs xsi:type="petrinets:PTArc" weight="-133761102" output="/5/@nodes.7" input="/2"/>
+    <arcs xsi:type="petrinets:TPArc" weight="-392810897" input="/8/@nodes.1" output="/17/@nodes.4"/>
+    <arcs xsi:type="petrinets:TPArc" weight="-570804195" input="/17/@nodes.5" output="/17/@nodes.4"/>
+  </petrinets:PetriNet>
+  <petrinets:PTArc weight="-248851291" output="/8/@nodes.1" input="/5/@nodes.8"/>
+  <petrinets:Transition name="Y8zIrArTgQvWIonsZdu1hB5nFeq5IWEJlzKQJay9FkhnBL38erEIyf6xjo6nWgUMHxVI" inputs="/2 /12 /8/@nodes.4 /8/@nodes.6 /6 /13 /4" outputs="/16 /8/@nodes.5 /12 /6 /2 /8/@nodes.4 /17/@nodes.4"/>
+  <petrinets:Token/>
+  <petrinets:Place name="LgkDVNPiFIddFa6jHkmTayXwAly6dZ8vtrfVu7aUs2W4WiCJNq02nORrGaLeWVDQFdXSCQ" tokens="-2054888842"/>
+  <petrinets:Place name="4j5fZrs5Wgs1EyB7zkWrTc3ByasonSZEpCYqXaCcvPYexB90sFm1KG5NoiAidSKo6mq" tokens="-979210392"/>
+  <petrinets:PTArc weight="917920989" output="/8/@nodes.3" input="/6"/>
+  <petrinets:Token/>
+  <petrinets:Place name="0mYjRGti7mJbjBUviHI4FN0eFA81eYAjlDWiUCWB1cljt57NDHjjdOj1zGO" tokens="-1834374599"/>
+  <petrinets:PetriNet bound="1144701334">
+    <nodes xsi:type="petrinets:Transition" name="hy9UP0TP3Y2iohos1Q5k3VaRvPUb2uB6FzBxetTL9tGwmIuzXSgFy2kKxQFbJIlli1k" inputs="/6 /5/@nodes.8 /13 /8/@nodes.5 /2" outputs="/8/@nodes.5 /4 /5/@nodes.8 /5/@nodes.0 /17/@nodes.4"/>
+    <nodes xsi:type="petrinets:Transition" name="gD3VDziCYlZRwkg9u9ODYSObXkKvepw5Txnc1HvqjPhULXx11eG9HypBa02GE" inputs="/13 /12 /8/@nodes.4 /6 /4 /8/@nodes.5 /5/@nodes.8" outputs="/16 /8/@nodes.4 /17/@nodes.2 /17/@nodes.4 /8/@nodes.5 /5/@nodes.0 /8/@nodes.6"/>
+    <nodes xsi:type="petrinets:Place" name="c2qY0DdfBFHGKGgEtyPQoWRQj3TF8TSrzoWZqCWJiWItC3DqZq4l0Eve5yk4hRki6baY" tokens="324291906"/>
+    <nodes xsi:type="petrinets:Transition" name="YJzvCmbIKv6Hf1RtiQoV354fo3WgHGBkfFPkCWILiC2OL6r6ESpv1cJAop" inputs="/8/@nodes.6 /8/@nodes.5 /17/@nodes.2 /4" outputs="/2 /8/@nodes.6 /5/@nodes.0 /8/@nodes.4"/>
+    <nodes xsi:type="petrinets:Place" name="6oPnzPmt9I3VvhOWZ1mNH3VAJeLlVnMxelk8VEbzytznRIG4k0hPvTzkT4gwX5IX34Bxr" tokens="1102521503"/>
+    <nodes xsi:type="petrinets:Transition" name="m6BUeLWKkWYWvbrcUz5nJcJsgr4FvObSDATDlJeZ2RakCMMOIddiy8vIkKZhmvB1EmRSmc" inputs="/17/@nodes.2 /4 /13 /5/@nodes.0 /5/@nodes.8 /12" outputs="/5/@nodes.8 /17/@nodes.2 /8/@nodes.5 /16 /2"/>
+    <nodes xsi:type="petrinets:Transition" name="aYjGAsxJDUGM1qT17vWYqERUHDzaxxSkR1aR5wxFY0feaYiVXQvO6BCYnho0Xi6E" inputs="/5/@nodes.0 /5/@nodes.8 /16 /8/@nodes.5 /17/@nodes.4 /12" outputs="/13 /17/@nodes.2 /8/@nodes.5 /6 /4 /5/@nodes.8 /8/@nodes.6 /16 /12"/>
+    <nodes xsi:type="petrinets:Transition" name="MEuRw9IotdTdw9Aj6jwK2vE2q1Wlq0CxWrcZzcGrSO2oYvvEvGK5kgMApz6ogjt40e0Ii" inputs="/16 /13 /4 /17/@nodes.4 /12 /8/@nodes.4" outputs="/12 /8/@nodes.5 /8/@nodes.6 /2 /17/@nodes.4"/>
+  </petrinets:PetriNet>
+</xmi:XMI>

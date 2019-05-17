@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinets="http://www.core.petrinet/PetriNets">
+  <petrinets:PTArc weight="1116589911" output="/1/@nodes.1" input="/1/@nodes.0"/>
+  <petrinets:PetriNet bound="-1220210971">
+    <nodes xsi:type="petrinets:Place" name="SowZWyhwh54apcgn94IkycWg1h8TT3TMledzSSw6Fb9BDj74OtP5uVTqqpjZA9" tokens="-1208736210"/>
+    <nodes xsi:type="petrinets:Transition" name="IutZpoOBMX6fMxI3rW3V0CZ3eB0wulLhAZZxMxYrHPtFaPDaXdimpVfB22DZgV0BxCgs" inputs="/1/@nodes.6 /1/@nodes.0 /1/@nodes.4" outputs="/1/@nodes.0 /1/@nodes.4 /1/@nodes.3 /1/@nodes.6"/>
+    <nodes xsi:type="petrinets:Transition" name="USWnsOuRKBJrFGOOp939PjmJsuIqpp8zfQV8VsGbq2sSV1uJM05tzt4YWq6RoiMdT9" inputs="/1/@nodes.0 /1/@nodes.6 /1/@nodes.3" outputs="/1/@nodes.4 /1/@nodes.0 /1/@nodes.6 /1/@nodes.3"/>
+    <nodes xsi:type="petrinets:Place" name="uCMaHeA3m7uHOsIgbyCVaxgJzB6jlKJYRjpS9hXjUIGJBPIpt9ArRArvp6Dvx5C2rQ" tokens="1005329261"/>
+    <nodes xsi:type="petrinets:Place" name="R7pJST6nzxUKIYr0dFM1wUn4fb6EnlksXpZ5ZlmZEaANm0Di6OAJbbFTAiuv" tokens="302982398"/>
+    <nodes xsi:type="petrinets:Transition" name="w3GG2q67sPyblzpdEtumSgrz0mSRzKkdTvqdVn8adeZOdBmAr0qbfzePZ7Zw7" inputs="/1/@nodes.4 /1/@nodes.0 /1/@nodes.3" outputs="/1/@nodes.0 /1/@nodes.4 /1/@nodes.3 /1/@nodes.6"/>
+    <nodes xsi:type="petrinets:Place" name="X6jRWWNEZZTwylSN9fa9IwBBl80KErs8JsFwCo7LMQXIBXPa4bJmSmO0OV7iiqJPCmj" tokens="1036192615"/>
+    <nodes xsi:type="petrinets:Transition" name="2PVry3o9qWDHvrnj1mvhlbXxclUbozuwfSHouxrxUNKb34ztp9A0LybaPjs" inputs="/1/@nodes.6 /1/@nodes.3 /1/@nodes.0" outputs="/1/@nodes.3 /1/@nodes.0"/>
+    <nodes xsi:type="petrinets:Transition" name="IBFbCCz9SxSQtIKiFoA3qdMbB0TTv1V27xy6YlVzAOh1v1jCn8wCpLZQYXQUz" inputs="/1/@nodes.3 /1/@nodes.4 /1/@nodes.0 /1/@nodes.6" outputs="/1/@nodes.4 /1/@nodes.3 /1/@nodes.6"/>
+  </petrinets:PetriNet>
+</xmi:XMI>
