@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinets="http://www.core.petrinet/PetriNets">
+  <petrinets:TPArc weight="1607909443" input="/6" output="/8/@nodes.0"/>
+  <petrinets:PTArc weight="980745860" output="/6" input="/8/@nodes.0"/>
+  <petrinets:Token/>
+  <petrinets:TPArc weight="1497421407" input="/8/@nodes.6" output="/8/@nodes.5"/>
+  <petrinets:Place name="cKoYLxRLL7s5ML4BihzaUAJdqTZIlFHemUkAQG0CxihuTACWWq1Vt9IYOsU2LURmBqaX" tokens="-476048999"/>
+  <petrinets:PTArc weight="-603880736" output="/8/@nodes.4" input="/8/@nodes.5"/>
+  <petrinets:Transition name="jgyvPGwUCT3NHPwQ0uhclbWTRYRtVmkifxGl0Bt1zibZlaMQ4lBfRlkOD3oLhNijssM" inputs="/8/@nodes.0 /8/@nodes.5 /8/@nodes.1 /4 /8/@nodes.2" outputs="/8/@nodes.2 /8/@nodes.1 /4 /8/@nodes.0 /8/@nodes.5"/>
+  <petrinets:TPArc weight="-1015510392" input="/8/@nodes.4" output="/8/@nodes.1"/>
+  <petrinets:PetriNet bound="-1491894093">
+    <nodes xsi:type="petrinets:Place" name="KbpWtvXO8RfQbWSfJJGCxth3aNznpPA83Xp0ADgsYhPQooRfcQ39aPZEqpgTC" tokens="-2100301451"/>
+    <nodes xsi:type="petrinets:Place" name="Yg43yI7Bdkpfni61FRc6XZxmFElV0hRbLdBXIRvF4qE6zTDhWTsA3S4HgYdkz2y3DoByA" tokens="-1832704256"/>
+    <nodes xsi:type="petrinets:Place" name="3NWHsVu2uxyDd14g4SZdmG8ey1iPnfRlwdOCyvFI60WLwBzzVEYvgwqDUXP2LLo63" tokens="1491088632"/>
+    <nodes xsi:type="petrinets:Transition" name="1buKkGZ4APT4OLChNEtk8JTJbaGUgjRI3wkAOaKfEeNAe1nyOQwU27ZvJKnKAa" inputs="/8/@nodes.0 /8/@nodes.2 /4 /8/@nodes.1" outputs="/8/@nodes.2 /8/@nodes.0 /4 /8/@nodes.1"/>
+    <nodes xsi:type="petrinets:Transition" name="NRvzMEYj2wWyRg7IaqHoqF5NuhR0F86EdKJXRE7pQFjg4C7Sd1NiOEmmOWYsQZJjHt" inputs="/8/@nodes.0 /8/@nodes.1 /8/@nodes.2 /8/@nodes.5" outputs="/8/@nodes.1 /8/@nodes.0 /8/@nodes.2 /8/@nodes.5 /4"/>
+    <nodes xsi:type="petrinets:Place" name="viEz5clUJqubM3Er2ushPK0wwIBA2ziJEe9XBQD4Ov420nvFRqwOZdouyIHkP274zNP" tokens="303939202"/>
+    <nodes xsi:type="petrinets:Transition" name="yCCnv30lV63Xn0gzwFcgxKfQ3XNiGeKruFRHnBUYPlbjaa3VAqYMouEgntLwvr6eU" inputs="/8/@nodes.1 /8/@nodes.0 /8/@nodes.5 /8/@nodes.2" outputs="/8/@nodes.0 /8/@nodes.1 /8/@nodes.2 /8/@nodes.5"/>
+  </petrinets:PetriNet>
+</xmi:XMI>
