@@ -227,13 +227,13 @@
 	                </div>
 	            </div>
 	            <div class="email-content-body">
-<p> Model-driven engineering (MDE) uses models as its main assets in the software development process. The structure of a model is described through a meta-model. Even though modelling and meta-modelling are recurrent activities in MDE and a vast amount of MDE tools exist nowadays, they are tasks typically performed in an unassisted way. Usually, these tools cannot extract useful knowledge available in heterogeneous information sources like XML, RDF, CSV or other models and meta-models.
-			    </p>
-<p>We propose an approach to provide modelling and meta-modelling assistance. The approach gathers heterogeneous information sources in various technological spaces and represents them uniformly in a common data model. This enables their uniform querying, by means of an extensible mechanism, which can make use of services, e.g., for synonym search and word sense analysis. The query results can then be easily
-incorporated into the (meta-)model being built. The approach has been realized in the Extremo tool, developed as an Eclipse plugin.
-			    </p>
-<p>Extremo has been validated in the context of two domains -- production systems and process modelling -- taking into account a large and complex industrial standard for classification and product description. Further validation results indicate that the integration of Extremo in various modelling environments can be achieved with low effort, and that the tool is able to handle information from most existing technological spaces.			    
-			    </p>		    
+		    <p> Model-driven engineering (MDE) often relies on domain-specific languages (DSLs) to develop complex systems. DSLs usually serve to build models that contain primitives and concepts specifically tailored to a particular domain. The abstract syntax of DSLs is described through a meta-model (which is itself a model), and hence the construction of models and meta-models is a common activity in MDE.</p>
+
+<p>Constructing DSLs requires deep domain understanding, typically involving two roles: a domain expert, who has in-depth knowledge of a particular domain, and a meta-modelling expert, who is experienced in object-oriented design, class-based modelling, and language engineering. However, the latter may lack domain expertise, leading to uninformed decisions and compromised language quality.</p>
+
+<p>Under the hypothesis that reusing heterogeneous knowledge helps build more accurate models more efficiently, this work proposes building a (meta-)modelling assistant. This way, the proposed system represents heterogeneous information sources with a common data model, supports its uniform querying and reusing information chunks for building (meta-)models. Moreover, to understand how and whether modelling assistants help in designing a new DSL, an analytical and empirical evaluation has been conducted. The evaluation tested whether a modelling assistant for information reuse would be useful to obtain more complete and correct (meta-)models, built in a more efficient way, facilitating the labour of the (meta-)modelling expert and demonstrating the benefits of introducing reusability practices in the early phases of software development.</p>
+
+<p>The ideas proposed in this work have been implemented in a prototype application called Extremo, a modelling assistant that helps reuse information from heterogeneous artefacts, like models, meta-models, ontologies, or XML documents.</p>
 			</div>
 	            <div class="pure-g">
 						<div class="pure-u-1-4">
